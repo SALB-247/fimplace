@@ -5,17 +5,19 @@ id: home
 permalink: /
 ---
 
-# Welcome! 🌱
+# FimPlace 
 
-<p style="padding: 3em 1em; background: #f5f7ff; border-radius: 4px;">
-  Take a look at <span style="font-weight: bold">[[Your first note]]</span> to get started on your exploration.
-</p>
+핌플레이스는 르세라핌 관련 장소를 기록하는 보관소입니다.
 
-This digital garden template is free, open-source, and [available on GitHub here](https://github.com/maximevaillancourt/digital-garden-jekyll-template).
+문의는 fim.hlight@gmail.com으로 부탁드립니다.
 
-The easiest way to get started is to read this [step-by-step guide explaining how to set this up from scratch](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll).
+<strong>Fimplace list</strong>
 
-<strong>Recently updated notes</strong>
+[[2025년 사쿠라 생일 이벤트]]
+[[르니버스 촬영지]]
+
+
+<strong>최근 업데이트된 장소</strong>
 
 <ul>
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
@@ -26,8 +28,3 @@ The easiest way to get started is to read this [step-by-step guide explaining ho
   {% endfor %}
 </ul>
 
-<style>
-  .wrapper {
-    max-width: 46em;
-  }
-</style>
