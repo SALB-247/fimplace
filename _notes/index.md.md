@@ -1,3 +1,0 @@
-Fimplace
-
-[[Theme]][[index]]
