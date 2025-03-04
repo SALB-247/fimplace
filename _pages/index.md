@@ -11,11 +11,20 @@ permalink: /
 
 문의는 fim.hlight@gmail.com으로 부탁드립니다.
 
-<strong>Fimplace list</strong>
+
+<strong>Hilighted list</strong>
 
 [[2025년 사쿠라 생일 이벤트]]
 
+
+<strong>Fimplace list</strong>
+
 [[르니버스 촬영지]]
+
+[[SNS 장소]]
+
+
+
 
 
 <strong>최근 업데이트된 장소</strong>
