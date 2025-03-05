@@ -14,16 +14,16 @@ permalink: /
 
 <strong>Hilighted list</strong>
 
-[[2025년 사쿠라 생일 이벤트]]
+[[-2025년 사쿠라 생일 이벤트]]
 
 
 <strong>Fimplace list</strong>
 
-[[르니버스 촬영지]]
+[[-자체 컨텐츠 촬영지]]
 
-[[SNS 장소]]
+[[-SNS 장소]]
 
-
+[[-외부 컨텐츠 촬영지]]
 
 
 
