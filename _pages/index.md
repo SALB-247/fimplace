@@ -16,6 +16,7 @@ permalink: /
 
 [[-2025년 사쿠라 생일 이벤트]]
 
+[[진즈하여행 대구편!]]
 
 <strong>Fimplace list</strong>
 
