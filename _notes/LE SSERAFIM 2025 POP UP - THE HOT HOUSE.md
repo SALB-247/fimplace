@@ -2,11 +2,14 @@
 title: LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 tags:
   - 팝업스토어
+  - HOT
 ---
 
 
 LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 오프라인 판매처 및 판매 항목
+
+<img src="assets/GlZuy5XbcAADgAw.jpg">
 
 ## **LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE**  
 
