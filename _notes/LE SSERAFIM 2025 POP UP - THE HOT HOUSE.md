@@ -19,9 +19,9 @@ LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 * LE SSERAFIM X HATCHINGROOM Collab Merch.  
 * LE SSERAFIM X LEEJAE Collab Merch.  
 
-## [🅽네이버지도](https://naver.me/5ssT1u67)
+#### [🅽네이버지도](https://naver.me/5ssT1u67)
 
-## [🅚카카오 지도](https://place.map.kakao.com/1160613732)
+#### [🅚카카오 지도](https://place.map.kakao.com/1160613732)
 
 
 
@@ -31,9 +31,9 @@ LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 #### 판매 품목
 - LE SSERAFIM X HATCHINGROOM Collab Merch.  
 
-## [🅽네이버지도](https://naver.me/5T4AYi2u)
+#### [🅽네이버지도](https://naver.me/5T4AYi2u)
 
-## [🅚카카오 지도](https://place.map.kakao.com/581785058)
+#### [🅚카카오 지도](https://place.map.kakao.com/581785058)
 
   
 ## **HATCHINGROOM 서촌 (**[LINK](https://maps.app.goo.gl/qwXRRoqMhDFgLzkf8)**)**  
@@ -42,9 +42,9 @@ LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 #### 판매 품목
 - LE SSERAFIM X HATCHINGROOM Collab Merch.  
 
-## [🅽네이버지도](https://naver.me/5XJgOeRR)
+#### [🅽네이버지도](https://naver.me/5XJgOeRR)
 
-## [🅚카카오 지도](https://place.map.kakao.com/1792989211)
+#### [🅚카카오 지도](https://place.map.kakao.com/1792989211)
 
   
 ## **HATCHINGROOM 롯데월드몰 (**[LINK](https://maps.app.goo.gl/VjZRJMbBm1sAQ39XA)**)**  
@@ -53,6 +53,6 @@ LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 #### 판매 품목
 - LE SSERAFIM X HATCHINGROOM Collab Merch.
 
-## [🅽네이버지도](https://naver.me/FO9dt3fy)
+#### [🅽네이버지도](https://naver.me/FO9dt3fy)
 
-## [🅚카카오 지도](https://place.map.kakao.com/744528010)
+#### [🅚카카오 지도](https://place.map.kakao.com/744528010)
