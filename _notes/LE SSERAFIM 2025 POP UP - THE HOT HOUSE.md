@@ -5,15 +5,15 @@ tags:
 ---
 
 
-# LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
-
+LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 오프라인 판매처 및 판매 항목
 
 ## **LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE**  
 
-- 2025. 03. 14 - 2025. 03. 23 / 11:00 - 20:00  
-- 서울 성동구 뚝섬로17길 35 ([LINK](https://maps.app.goo.gl/us3iGFVpYK8BGtZh9))  
-- 판매 품목  
+03.14 ~ 03. 23 / 11:00 - 20:00  
+서울 성동구 뚝섬로17길 35 ([LINK](https://maps.app.goo.gl/us3iGFVpYK8BGtZh9))  
+
+#### 판매 품목  
 * LE SSERAFIM 5th Mini Album 'HOT’ Official Merch.  
 * LE SSERAFIM Brand Merch.  
 * LE SSERAFIM X HATCHINGROOM Collab Merch.  
@@ -27,8 +27,9 @@ tags:
 
 ## **HATCHINGROOM 성수 (**[LINK](https://maps.app.goo.gl/vMcUTrPZnW8hRrxL7)**)**  
 
-- 2025. 03. 14 ~ / 13:00 - 20:00  
-- 판매 품목 : LE SSERAFIM X HATCHINGROOM Collab Merch.  
+03.14 ~ / 13:00 - 20:00  
+#### 판매 품목
+- LE SSERAFIM X HATCHINGROOM Collab Merch.  
 
 ## [🅽네이버지도](https://naver.me/5T4AYi2u)
 
@@ -37,8 +38,9 @@ tags:
   
 ## **HATCHINGROOM 서촌 (**[LINK](https://maps.app.goo.gl/qwXRRoqMhDFgLzkf8)**)**  
 
-- 2025. 03. 14 ~ / 13:00 - 20:00  
-- 판매 품목 : LE SSERAFIM X HATCHINGROOM Collab Merch.  
+03.14 ~ / 13:00 - 20:00    
+#### 판매 품목
+- LE SSERAFIM X HATCHINGROOM Collab Merch.  
 
 ## [🅽네이버지도](https://naver.me/5XJgOeRR)
 
@@ -47,8 +49,9 @@ tags:
   
 ## **HATCHINGROOM 롯데월드몰 (**[LINK](https://maps.app.goo.gl/VjZRJMbBm1sAQ39XA)**)**  
 
-- 2025. 03. 14 ~ / 10:30 - 22:00  
-- 판매 품목 : LE SSERAFIM X HATCHINGROOM Collab Merch.
+03.14 ~ / 10:30 - 22:00  
+#### 판매 품목
+- LE SSERAFIM X HATCHINGROOM Collab Merch.
 
 ## [🅽네이버지도](https://naver.me/FO9dt3fy)
 
