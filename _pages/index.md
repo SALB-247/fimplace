@@ -18,6 +18,8 @@ permalink: /
 
 <img src="assets/1741273417.jpg">
 
+🔥
+
 [[LE SSERAFIM 2025 POP UP - THE HOT HOUSE]]
 
 🌸
