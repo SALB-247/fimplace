@@ -7,7 +7,7 @@ permalink: /
 
 # FimPlace 
 
-🐆🐱🐶🦢🐥
+🐆🌸🐍🦢🐥
 
 핌플레이스는 르세라핌 관련 장소를 기록하는 보관소입니다.
 
@@ -16,11 +16,15 @@ permalink: /
 
 <strong>Hilighted list</strong>
 
-🐱
+<img src="assets/1741273417.jpg">
+
+[[LE SSERAFIM 2025 POP UP - THE HOT HOUSE]]
+
+🌸
 
 [[2025년 사쿠라 생일 이벤트]]
 
-🐶+🦢
+🐍🦢
 
 [[진즈하여행 총집편]]
 
