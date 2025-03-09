@@ -4,6 +4,7 @@ tags:
   - 자체컨텐츠_촬영지
   - DAY-OFF
   - 카페
+  - 가평
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oWLG3Zwcn84?si=M1WwyY0k80xH7aB7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
