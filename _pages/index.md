@@ -16,7 +16,7 @@ permalink: /
 
 <strong>Hilighted list</strong>
 
-<img src="assets/1741273417.jpg">
+<img src="assets/E18485E185A1E1848BE185AEE18490E185B5E186BC20E18491E185A9E18489E185B3E18490E1.jpg">
 
 🐆🌸🐍🦢🐥
 
