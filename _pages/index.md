@@ -14,7 +14,7 @@ permalink: /
 문의는 fim.hlight@gmail.com으로 부탁드립니다.
 
 
-<strong>Hilighted list</strong>
+<strong>High-lighted list</strong>
 
 <img src="assets/E18485E185A1E1848BE185AEE18490E185B5E186BC20E18491E185A9E18489E185B3E18490E1.jpg">
 
