@@ -19,6 +19,9 @@ permalink: /
 <img src="assets/jqstsowdwl.jpg">
 
 
+🐆 [[2025 채원 생일 이벤트]]
+
+
 
 🐍🦢
 
