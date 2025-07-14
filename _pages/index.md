@@ -16,10 +16,13 @@ permalink: /
 
 <strong>High-lighted list</strong>
 
-<img src="assets/cc.png">
+<img src="assets/cc 1.png">
 <!--<img src="assets/jqstsowdwl.jpg">-->
 
+
 ## 🐆 [[2025 채원 생일 이벤트]]
+
+## 🦢 [[2025 즈하 생일 이벤트]]
 
 
 
