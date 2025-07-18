@@ -16,7 +16,7 @@ permalink: /
 
 <strong>High-lighted list</strong>
 
-<img src="assets/cc 3.png">
+<img src="assets/cc.png">
 <!--<img src="assets/jqstsowdwl.jpg">-->
 
 
