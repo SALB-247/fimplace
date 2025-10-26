@@ -16,9 +16,12 @@ permalink: /
 
 <strong>High-lighted list</strong>
 
---<img src="assets/jqstsowdwl.jpg">
+<!--<img src="assets/jqstsowdwl.jpg">-->
 
-## 🐍 [[2025 윤진 생일 이벤트]]
+<img src="assets/spagetti_title.png">
+## [[SPAGHETTI 오프라인 이벤트]]
+
+
 
 ## 🐥 [[2025 은채 생일 이벤트]]
 
