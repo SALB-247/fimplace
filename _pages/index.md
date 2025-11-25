@@ -19,11 +19,8 @@ permalink: /
 <!--<img src="assets/jqstsowdwl.jpg">-->
 
 <img src="assets/spagetti_title.png">
-## [[SPAGHETTI 오프라인 이벤트]]
 
-
-
-## 🐥 [[2025 은채 생일 이벤트]]
+**2026-01-31/2026-02-01 EHC Seoul Encore**
 
 
 🐍🦢
