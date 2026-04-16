@@ -20,8 +20,6 @@ permalink: /
 
 <img src="assets/spagetti_title.png">
 
-## **[[2026 사쿠라 생일 이벤트]]**
-
 
 🐍🦢
 
