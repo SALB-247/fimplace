@@ -18,7 +18,7 @@ permalink: /
 
 <!--<img src="assets/jqstsowdwl.jpg">-->
 
-<img src="assets/FFU.jpg">
+<img src="assets/weverse_1-303499675.jpeg">
 
 
 🐍🦢
