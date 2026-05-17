@@ -40,6 +40,7 @@
         document.getElementById('note-map-count').textContent =
           matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)';
 
+
         var map = L.map('note-map', { maxZoom: 17, minZoom: 5 });
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
           subdomains: 'abcd', maxZoom: 17, detectRetina: true,
