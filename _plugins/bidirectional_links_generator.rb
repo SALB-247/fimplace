@@ -99,10 +99,11 @@ class BidirectionalLinksGenerator < Jekyll::Generator
       end
     end
 
-    File.write('_includes/notes_graph.json', JSON.dump({
-      edges: graph_edges,
-      nodes: graph_nodes,
-    }))
+    # 내용 변경됐을 때만 write (Jekyll watch 무한 루프 방지)
+    new_content = JSON.dump(edges: graph_edges, nodes: graph_nodes)
+    graph_file = '_includes/notes_graph.json'
+    existing = File.exist?(graph_file) ? File.read(graph_file) : nil
+    File.write(graph_file, new_content) if existing != new_content
   end
 
   def note_id_from_note(note)
