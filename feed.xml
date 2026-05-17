@@ -1,0 +1,28 @@
+---
+layout: null
+permalink: /feed.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title }}</title>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ site.url }}{{ site.baseurl }}/feed.xml" rel="self" type="application/rss+xml" />
+    <description>{{ site.description | escape }}</description>
+    <language>ko-kr</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {%- assign recent = site.notes | sort: "last_modified_at_timestamp" | reverse | slice: 0, 30 -%}
+    {%- for note in recent -%}
+      {%- if note.title and note.title != "" %}
+    <item>
+      <title>{{ note.title | xml_escape }}</title>
+      <link>{{ site.url }}{{ site.baseurl }}{{ note.url }}</link>
+      <guid isPermaLink="true">{{ site.url }}{{ site.baseurl }}{{ note.url }}</guid>
+      <pubDate>{{ note.last_modified_at | date_to_rfc822 }}</pubDate>
+      <description>{{ note.content | strip_html | strip_newlines | truncate: 240 | xml_escape }}</description>
+    </item>
+      {%- endif -%}
+    {%- endfor %}
+  </channel>
+</rss>

@@ -25,6 +25,14 @@ permalink: /
 
 [[진즈하여행 총집편]]
 
+<strong>둘러보기</strong>
+
+🗺️ [전체 지도 보기](/map/) — 모든 장소를 한눈에
+
+🔍 [장소 검색](/search/) — 이름·태그·멤버로 검색
+
+🏷️ [모든 태그](/tags/) — 카테고리 / 멤버별 인덱스
+
 <strong>Fimplace list</strong>
 
 [[-자체 컨텐츠 촬영지]]

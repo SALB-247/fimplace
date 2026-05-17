@@ -1,0 +1,47 @@
+<script>
+  // YouTube / 지도 facade 클릭 -> 실제 iframe 로드
+  (function () {
+    function activate(el) {
+      var src, iframe;
+      if (el.classList.contains('yt-facade')) {
+        src = el.getAttribute('data-yt-src');
+        iframe = document.createElement('iframe');
+        iframe.setAttribute('src', src);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.width = '100%';
+        iframe.style.aspectRatio = '16 / 9';
+        iframe.style.border = '0';
+        iframe.style.borderRadius = '4px';
+        el.replaceWith(iframe);
+      } else if (el.classList.contains('map-facade')) {
+        src = el.getAttribute('data-map-src');
+        iframe = document.createElement('iframe');
+        iframe.setAttribute('src', src);
+        iframe.setAttribute('loading', 'lazy');
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.width = '100%';
+        iframe.style.aspectRatio = '4 / 3';
+        iframe.style.border = '0';
+        iframe.style.borderRadius = '4px';
+        el.replaceWith(iframe);
+      }
+    }
+
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('.yt-facade, .map-facade');
+      if (el) activate(el);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var el = e.target.closest('.yt-facade, .map-facade');
+      if (el) {
+        e.preventDefault();
+        activate(el);
+      }
+    });
+  })();
+</script>

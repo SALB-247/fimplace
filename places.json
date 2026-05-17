@@ -1,0 +1,9 @@
+---
+layout: null
+permalink: /places.json
+sitemap: false
+---
+{
+  "places":        {{ site.data.places        | default: empty | jsonify }},
+  "category_tags": {{ site.data.category_tags | default: empty | jsonify }}
+}

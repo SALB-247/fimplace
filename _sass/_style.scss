@@ -1,8 +1,10 @@
+@use "sass:color";
+
 $color-primary: hsl(0, 0%, 10%);
 $color-text: hsl(0, 0%, 20%);
 $color-subtext: hsl(0, 0%, 30%);
 $color-border: hsl(0, 0%, 85%);
-$color-box-background: mix($color-primary, white, 4%);
+$color-box-background: color.mix($color-primary, white, 4%);
 $border-radius: 4px;
 $font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
   sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
@@ -32,7 +34,7 @@ time {
 footer {
   margin: 2em 0;
   font-size: 0.8em;
-  color: mix($color-text, white, 80%);
+  color: color.mix($color-text, white, 80%);
   padding-top: 1em;
 }
 
@@ -144,3 +146,202 @@ code {
   color: #ccc;
   cursor: help;
 }
+
+/* ---------- 반응형 iframe (YouTube, Google Maps 등) ---------- */
+content iframe,
+.responsive-embed iframe {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: $border-radius;
+  margin: 1em 0;
+  display: block;
+}
+
+/* 지도 iframe은 4:3 비율로 */
+content iframe[src*="google.com/maps"],
+content iframe[src*="kakao.com"],
+content iframe[src*="naver.com"] {
+  aspect-ratio: 4 / 3;
+}
+
+/* ---------- 태그 / 멤버 칩 ---------- */
+.note-tags,
+.note-members {
+  margin: 0.5em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.tag-chip,
+.member-chip {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  font-size: 0.78em;
+  background: $color-box-background;
+  border-radius: 999px;
+  border-bottom: none !important;
+  color: $color-subtext;
+  text-decoration: none;
+
+  &:after {
+    content: "" !important;
+  }
+
+  &:hover {
+    background: #ffeec9 !important;
+    color: $color-primary !important;
+  }
+}
+
+/* 멤버별 색상 (르세라핌 5인) */
+.member-chip.member-사쿠라      { background: #ffd9e8; color: #8b1e4a; }
+.member-chip.member-김채원      { background: #ffe5cc; color: #8b4a1e; }
+.member-chip.member-허윤진      { background: #fff4b8; color: #6e5b00; }
+.member-chip.member-카즈하      { background: #d6ecff; color: #1e4a8b; }
+.member-chip.member-홍은채      { background: #e0d6ff; color: #4a1e8b; }
+
+/* ---------- 검색바 (nav) ---------- */
+.nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  align-items: center;
+}
+
+.nav-links a {
+  border-bottom: none;
+  font-size: 0.9em;
+  color: $color-subtext;
+
+  &:after { content: "" !important; }
+  &:hover { color: $color-primary !important; }
+}
+
+.search-box {
+  flex: 1 1 200px;
+  max-width: 280px;
+
+  input {
+    width: 100%;
+    padding: 0.4em 0.8em;
+    border: 1px solid $color-border;
+    border-radius: 999px;
+    font-size: 0.9em;
+    font-family: inherit;
+    background: #fafafa;
+
+    &:focus {
+      outline: none;
+      border-color: $color-subtext;
+      background: white !important;
+      color: $color-text !important;
+    }
+  }
+}
+
+/* ---------- 검색 결과 / 태그 목록 ---------- */
+.result-list {
+  list-style: none;
+  padding: 0;
+}
+
+.result-list li {
+  padding: 0.6em 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.result-list li .excerpt {
+  font-size: 0.85em;
+  color: $color-subtext;
+  margin-top: 0.2em;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 1em 0 2em;
+}
+
+/* ---------- YouTube facade (lazy thumbnail) ---------- */
+.yt-facade {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  cursor: pointer;
+  border-radius: $border-radius;
+  overflow: hidden;
+  margin: 1em 0;
+}
+
+.yt-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  max-height: none;
+  margin: 0;
+}
+
+.yt-facade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.3) 100%);
+}
+
+.yt-facade::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68px;
+  height: 48px;
+  margin: -24px 0 0 -34px;
+  background: #f00;
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(0,0,0,0.35);
+  clip-path: polygon(40% 30%, 40% 70%, 70% 50%);
+}
+
+.yt-facade:hover::after {
+  background: #c00;
+}
+
+/* ---------- 지도 facade ---------- */
+.map-facade {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #e9eef3 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 20 C 35 20 25 30 25 45 C 25 65 50 85 50 85 C 50 85 75 65 75 45 C 75 30 65 20 50 20 Z M 50 52 C 46 52 43 49 43 45 C 43 41 46 38 50 38 C 54 38 57 41 57 45 C 57 49 54 52 50 52 Z' fill='%23888'/></svg>") center / 80px no-repeat;
+  cursor: pointer;
+  border-radius: $border-radius;
+  margin: 1em 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1em;
+  text-align: center;
+  color: $color-subtext;
+  font-size: 0.9em;
+}
+
+.map-facade:hover {
+  background-color: #dfe7ee;
+}
+

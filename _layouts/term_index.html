@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<article>
+  <h1>{{ page.title }}</h1>
+  <p style="color: hsl(0,0%,30%); font-size: 0.9em;">
+    {{ page.notes.size }}개의 장소
+    &middot;
+    {% if page.kind == 'tag' %}<a class="internal-link" href="{{ site.baseurl }}/tags/">전체 태그 보기</a>{% endif %}
+    {% if page.kind == 'member' %}<a class="internal-link" href="{{ site.baseurl }}/tags/#members">전체 멤버 보기</a>{% endif %}
+  </p>
+
+  <ul class="result-list">
+    {% for note in page.notes %}
+      <li>
+        <a class="internal-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
+        {% if note.tags %}
+          {% for t in note.tags %}
+            <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/">#{{ t }}</a>
+          {% endfor %}
+        {% endif %}
+        {% if note.last_modified_at %}
+          <div class="excerpt">{{ note.last_modified_at | date: "%Y-%m-%d" }} 업데이트</div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</article>

@@ -1,0 +1,135 @@
+---
+layout: page
+title: 검색
+id: search
+permalink: /search/
+---
+
+<h1>장소 검색</h1>
+
+<p style="color: hsl(0, 0%, 30%); font-size: 0.95em;">
+  장소명, 주소, 태그, 멤버를 공백으로 구분해 여러 단어 검색이 가능합니다. (모든 단어 포함)
+</p>
+
+<input type="search" id="search-input" placeholder="예: 사쿠라 카페 용산"
+       autofocus autocomplete="off"
+       style="width: 100%; padding: 0.8em 1em; font-size: 1.1em;
+              border: 1px solid hsl(0, 0%, 85%); border-radius: 8px;
+              font-family: inherit; margin-bottom: 1.5em;" />
+
+<div id="search-meta" style="font-size: 0.85em; color: hsl(0,0%,30%); margin-bottom: 1em;"></div>
+
+<ul id="search-results" class="result-list"></ul>
+
+<script>
+(function () {
+  var input = document.getElementById('search-input');
+  var meta  = document.getElementById('search-meta');
+  var ul    = document.getElementById('search-results');
+  var INDEX = null;
+
+  function loadIndex(cb) {
+    if (INDEX) return cb(INDEX);
+    fetch('{{ site.baseurl }}/search-index.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        INDEX = (data || []).map(function (item) {
+          return {
+            raw:       item,
+            titleN:    normalize(item.title),
+            tagsN:     normalize((item.tags || []).join(' ')),
+            membersN:  normalize((item.members || []).join(' ')),
+            addressN:  normalize(item.address || ''),
+            bodyN:     normalize(item.excerpt || '')
+          };
+        });
+        cb(INDEX);
+      })
+      .catch(function (e) {
+        meta.textContent = '검색 인덱스를 불러올 수 없습니다. (' + e + ')';
+      });
+  }
+
+  // 한글 친화 정규화: NFC + 소문자 + 공백 제거
+  function normalize(s) {
+    s = (s || '').toString();
+    if (s.normalize) s = s.normalize('NFC');
+    return s.toLowerCase().replace(/\s+/g, '');
+  }
+
+  // 단어 하나가 한 노트에서 얻는 점수. 어느 필드에도 없으면 0.
+  function partScore(part, idx) {
+    if (idx.titleN.indexOf(part)    !== -1) return 100;
+    if (idx.tagsN.indexOf(part)     !== -1) return  60;
+    if (idx.membersN.indexOf(part)  !== -1) return  50;
+    if (idx.addressN.indexOf(part)  !== -1) return  40;
+    if (idx.bodyN.indexOf(part)     !== -1) return  20;
+    return 0;
+  }
+
+  // 다중 단어 AND 매칭: 모든 단어가 어딘가에 매칭되어야 함
+  function score(parts, idx) {
+    var total = 0;
+    for (var i = 0; i < parts.length; i++) {
+      var s = partScore(parts[i], idx);
+      if (s === 0) return 0;  // 한 단어라도 없으면 fail
+      total += s;
+    }
+    return total;
+  }
+
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function render(q) {
+    var qNFC = (q || '').normalize ? q.normalize('NFC') : (q || '');
+    var rawParts = qNFC.toLowerCase().split(/\s+/).filter(Boolean);
+    var parts = rawParts.map(function (p) { return p.replace(/\s+/g, ''); }).filter(Boolean);
+
+    if (parts.length === 0) {
+      meta.textContent = '';
+      ul.innerHTML = '';
+      return;
+    }
+    loadIndex(function (idx) {
+      var hits = [];
+      for (var i = 0; i < idx.length; i++) {
+        var s = score(parts, idx[i]);
+        if (s > 0) hits.push({ s: s, item: idx[i].raw });
+      }
+      hits.sort(function (a, b) { return b.s - a.s; });
+      hits = hits.slice(0, 100);
+
+      meta.textContent = hits.length + '개 결과 (전체 ' + idx.length + '개 노트 중)';
+
+      ul.innerHTML = hits.map(function (h) {
+        var i = h.item;
+        var tagHtml = (i.tags || []).slice(0, 6).map(function (t) {
+          return '<span class="tag-chip" style="margin-right:0.3em">#' + escapeHtml(t) + '</span>';
+        }).join('');
+        var addr = i.address ? '<div class="excerpt">📍 ' + escapeHtml(i.address) + '</div>' : '';
+        return '<li>' +
+          '<a class="internal-link" href="' + i.url + '">' + escapeHtml(i.title) + '</a> ' +
+          tagHtml +
+          addr +
+          '</li>';
+      }).join('');
+    });
+  }
+
+  var timer = null;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { render(input.value); }, 120);
+  });
+
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('q')) {
+    input.value = params.get('q');
+    render(input.value);
+  }
+})();
+</script>

@@ -1,3 +1,13 @@
-<div>
-    <a class="internal-link" href="{{ site.baseurl }}/"><b>{{ site.title }}</b></a>
+<div class="nav-row">
+  <div class="nav-links">
+    <a class="internal-link" href="{{ site.baseurl }}/" style="font-weight: bold; color: hsl(0,0%,10%);">{{ site.title }}</a>
+    <a class="internal-link" href="{{ site.baseurl }}/map/">지도</a>
+    <a class="internal-link" href="{{ site.baseurl }}/tags/">태그</a>
+    <a class="internal-link" href="{{ site.baseurl }}/search/">검색</a>
+    <a class="internal-link" href="{{ site.baseurl }}/about">소개</a>
+  </div>
+
+  <form class="search-box" action="{{ site.baseurl }}/search/" method="get" role="search">
+    <input type="search" name="q" placeholder="장소 검색..." aria-label="검색" />
+  </form>
 </div>

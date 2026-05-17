@@ -1,0 +1,35 @@
+---
+layout: page
+title: 태그
+permalink: /tags/
+---
+
+<h1>모든 태그</h1>
+
+<p style="color: hsl(0,0%,30%); font-size: 0.9em;">
+  태그를 클릭하면 해당 카테고리의 장소들을 볼 수 있습니다.
+</p>
+
+<div class="tag-cloud">
+  {% if site.data.all_tags %}
+    {% for t in site.data.all_tags %}
+      <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t.name | url_encode }}/" style="font-size: {{ t.count | times: 0.06 | plus: 0.78 }}em;">
+        #{{ t.name }} <span style="opacity: 0.6">({{ t.count }})</span>
+      </a>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<h2 id="members" style="margin-top: 2em;">멤버별</h2>
+
+<div class="tag-cloud">
+  {% if site.data.all_members %}
+    {% for m in site.data.all_members %}
+      <a class="member-chip member-{{ m.name | downcase }}" href="{{ site.baseurl }}/member/{{ m.name | downcase | url_encode }}/">
+        {{ m.name }} <span style="opacity: 0.6">({{ m.count }})</span>
+      </a>
+    {% endfor %}
+  {% else %}
+    <p style="color: hsl(0,0%,30%); font-size: 0.85em;">아직 멤버 정보가 등록된 노트가 없습니다. 노트 frontmatter에 <code>members:</code> 항목을 추가해보세요.</p>
+  {% endif %}
+</div>

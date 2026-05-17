@@ -1,0 +1,223 @@
+---
+layout: page
+title: 지도
+permalink: /map/
+---
+
+<h1>핌플레이스 지도</h1>
+
+<p style="color: hsl(0,0%,30%); font-size: 0.9em;">
+  르세라핌 관련 장소 전체를 한 지도에서 보세요.
+  카테고리 → 태그 순으로 좁혀가며 검색할 수 있습니다.
+</p>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+<style>
+  #map-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.6em;
+    margin: 1em 0;
+    align-items: stretch;
+  }
+  #map-filters select {
+    padding: 0.5em 0.8em;
+    border-radius: 6px;
+    border: 1px solid hsl(0,0%,85%);
+    font-family: inherit;
+    background: white;
+    width: 100%;
+  }
+  #map-filters select:disabled {
+    background: #f5f5f5;
+    color: #aaa;
+  }
+  #filter-controls {
+    display: flex;
+    gap: 0.6em;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 0.5em;
+  }
+  #filter-reset {
+    padding: 0.45em 0.9em;
+    border-radius: 6px;
+    border: 1px solid hsl(0,0%,85%);
+    background: white;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  #filter-reset:hover { background: #fffaf1; }
+  #result-count {
+    font-size: 0.85em;
+    color: hsl(0,0%,30%);
+    margin-left: auto;
+  }
+</style>
+
+<div id="map-filters">
+  <select id="filter-region" aria-label="지역 필터">
+    <option value="">🗺️ 모든 지역</option>
+  </select>
+  <select id="filter-category" aria-label="카테고리 필터">
+    <option value="">🏷️ 모든 카테고리</option>
+  </select>
+  <select id="filter-tag" aria-label="태그 필터" disabled>
+    <option value="">먼저 카테고리 선택</option>
+  </select>
+  <select id="filter-member" aria-label="멤버 필터">
+    <option value="">👥 모든 멤버</option>
+  </select>
+</div>
+
+<div id="filter-controls">
+  <button id="filter-reset" type="button">필터 초기화</button>
+  <span id="result-count"></span>
+</div>
+
+<div id="map" style="width:100%; height:70vh; min-height:480px; border-radius:8px; border:1px solid hsl(0,0%,85%);"></div>
+
+<p style="font-size:0.8em; color:hsl(0,0%,30%); margin-top:0.5em;">
+  좌표는 각 노트의 Google Maps embed에서 자동 추출됩니다.
+  좌표가 있는 장소 수: <strong>{{ site.data.places_count | default: 0 }}</strong>
+</p>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<script>
+(function () {
+  var mapEl = document.getElementById('map');
+  if (!mapEl) return;
+
+  var map = L.map('map').setView([36.5, 127.8], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  var cluster = L.markerClusterGroup();
+  map.addLayer(cluster);
+
+  var regionSel   = document.getElementById('filter-region');
+  var categorySel = document.getElementById('filter-category');
+  var tagSel      = document.getElementById('filter-tag');
+  var memberSel   = document.getElementById('filter-member');
+  var resetBtn    = document.getElementById('filter-reset');
+  var countEl     = document.getElementById('result-count');
+
+  var ALL = [];
+  var CATEGORY_TAGS = {};  // { "장소 유형": ["카페","음식점",...], ... }
+
+  function uniqueSort(arr) {
+    return Array.from(new Set(arr.filter(Boolean))).sort();
+  }
+
+  function buildStaticFilters(places) {
+    var regions = uniqueSort(places.map(function (p) { return p.region; }));
+    var members = uniqueSort([].concat.apply([], places.map(function (p) { return p.members || []; })));
+    regions.forEach(function (r) { regionSel.add(new Option(r, r)); });
+    members.forEach(function (m) { memberSel.add(new Option(m, m)); });
+
+    // 카테고리는 places.json 의 category_tags 키 순서를 보존
+    Object.keys(CATEGORY_TAGS).forEach(function (cat) {
+      var cnt = CATEGORY_TAGS[cat].length;
+      categorySel.add(new Option(cat + ' (' + cnt + ')', cat));
+    });
+  }
+
+  function repopulateTagFilter(category) {
+    // 기존 옵션 제거
+    while (tagSel.options.length > 1) tagSel.remove(1);
+    if (!category) {
+      tagSel.options[0].text = '먼저 카테고리 선택';
+      tagSel.disabled = true;
+      tagSel.value = '';
+      return;
+    }
+    var tags = CATEGORY_TAGS[category] || [];
+    tagSel.options[0].text = '전체 ' + category;
+    tagSel.disabled = false;
+    tags.forEach(function (t) {
+      tagSel.add(new Option('#' + t, t));
+    });
+    tagSel.value = '';
+  }
+
+  function popupHtml(p) {
+    var tagHtml = (p.tags || []).slice(0, 6).map(function (t) {
+      return '<span style="display:inline-block; padding:0.05em 0.4em; margin-right:0.2em; background:#f0f0f5; border-radius:999px; font-size:0.78em;">#' + t + '</span>';
+    }).join('');
+    var extLinks = [];
+    if (p.kakao_url) extLinks.push('<a href="' + p.kakao_url + '" target="_blank" rel="noopener">카카오</a>');
+    if (p.naver_url) extLinks.push('<a href="' + p.naver_url + '" target="_blank" rel="noopener">네이버</a>');
+    var srcBadge = p.source ? '<span style="font-size:0.7em; color:#999;">[' + p.source + ']</span>' : '';
+    return '<div style="min-width:200px">' +
+      '<strong><a href="' + p.url + '">' + p.title + '</a></strong> ' + srcBadge +
+      (p.business && p.business !== p.title ? '<div style="font-size:0.8em; color:#444; margin-top:0.2em;">' + p.business + '</div>' : '') +
+      (p.address ? '<div style="font-size:0.8em; color:#666; margin-top:0.3em;">📍 ' + p.address + '</div>' : '') +
+      (extLinks.length ? '<div style="margin-top:0.3em; font-size:0.8em;">' + extLinks.join(' &middot; ') + '</div>' : '') +
+      (tagHtml ? '<div style="margin-top:0.4em">' + tagHtml + '</div>' : '') +
+      '</div>';
+  }
+
+  function render() {
+    cluster.clearLayers();
+    var r = regionSel.value;
+    var c = categorySel.value;
+    var t = tagSel.value;
+    var m = memberSel.value;
+    var filtered = ALL.filter(function (p) {
+      if (r && p.region !== r) return false;
+      if (c && (!p.categories || p.categories.indexOf(c) === -1)) return false;
+      if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
+      if (m && (!p.members || p.members.indexOf(m) === -1)) return false;
+      return true;
+    });
+    filtered.forEach(function (p) {
+      var marker = L.marker([p.lat, p.lng]).bindPopup(popupHtml(p));
+      cluster.addLayer(marker);
+    });
+    countEl.textContent = filtered.length + ' / ' + ALL.length + ' 장소';
+
+    if (filtered.length > 0) {
+      try {
+        var bounds = L.latLngBounds(filtered.map(function (p) { return [p.lat, p.lng]; }));
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+      } catch (e) {}
+    }
+  }
+
+  regionSel.addEventListener('change', render);
+  memberSel.addEventListener('change', render);
+  categorySel.addEventListener('change', function () {
+    repopulateTagFilter(categorySel.value);
+    render();
+  });
+  tagSel.addEventListener('change', render);
+  resetBtn.addEventListener('click', function () {
+    regionSel.value = ''; categorySel.value = ''; memberSel.value = '';
+    repopulateTagFilter('');
+    render();
+  });
+
+  fetch('{{ site.baseurl }}/places.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      ALL = (data && data.places) || [];
+      CATEGORY_TAGS = (data && data.category_tags) || {};
+      buildStaticFilters(ALL);
+      render();
+    })
+    .catch(function () {
+      countEl.textContent = '지도 데이터를 불러올 수 없습니다.';
+    });
+})();
+</script>
