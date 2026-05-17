@@ -1,7 +1,7 @@
 ---
 title: SPAGETTI 오프라인 이벤트
 tags:
-  - spagetti
+  - spaghetti
   - 팝업스토어
 ---
 # 케이타운포유 (코엑스/부산)
