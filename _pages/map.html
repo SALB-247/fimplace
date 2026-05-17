@@ -26,12 +26,15 @@ permalink: /map/
     align-items: stretch;
   }
   #map-filters select {
-    padding: 0.5em 0.8em;
+    padding: 0.6em 0.8em;
     border-radius: 6px;
     border: 1px solid hsl(0,0%,85%);
     font-family: inherit;
     background: white;
     width: 100%;
+    font-size: 16px;  /* iOS 자동 줌 방지 */
+    min-height: 44px; /* 터치 최소 크기 */
+    box-sizing: border-box;
   }
   #map-filters select:disabled {
     background: #f5f5f5;
@@ -45,12 +48,14 @@ permalink: /map/
     margin-bottom: 0.5em;
   }
   #filter-reset {
-    padding: 0.45em 0.9em;
+    padding: 0.6em 0.9em;
     border-radius: 6px;
     border: 1px solid hsl(0,0%,85%);
     background: white;
     cursor: pointer;
     font-family: inherit;
+    font-size: 14px;
+    min-height: 40px;
   }
   #filter-reset:hover { background: #fffaf1; }
   #result-count {
@@ -58,20 +63,45 @@ permalink: /map/
     color: hsl(0,0%,30%);
     margin-left: auto;
   }
+
+  /* 좁은 화면 (모바일) */
+  @media (max-width: 600px) {
+    #map-filters {
+      grid-template-columns: 1fr 1fr; /* 2열 고정 */
+      gap: 0.4em;
+    }
+    #map { height: 60vh !important; min-height: 360px !important; }
+    #result-count {
+      width: 100%;
+      margin-left: 0;
+      text-align: right;
+    }
+  }
+  @media (max-width: 380px) {
+    #map-filters { grid-template-columns: 1fr; } /* 1열 */
+  }
+
+  /* Leaflet popup 모바일 대응 */
+  .leaflet-popup-content {
+    margin: 10px 12px !important;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .leaflet-popup-content a { word-break: break-word; }
 </style>
 
 <div id="map-filters">
   <select id="filter-region" aria-label="지역 필터">
-    <option value="">🗺️ 모든 지역</option>
+    <option value="">🗺️ 지역 (전체)</option>
   </select>
   <select id="filter-category" aria-label="카테고리 필터">
-    <option value="">🏷️ 모든 카테고리</option>
+    <option value="">🏷️ 카테고리 (전체)</option>
   </select>
-  <select id="filter-tag" aria-label="태그 필터" disabled>
-    <option value="">먼저 카테고리 선택</option>
+  <select id="filter-tag" aria-label="세부 카테고리 필터" disabled>
+    <option value="">📂 세부 카테고리 (카테고리 먼저)</option>
   </select>
   <select id="filter-member" aria-label="멤버 필터">
-    <option value="">👥 모든 멤버</option>
+    <option value="">👥 멤버 (전체)</option>
   </select>
 </div>
 
@@ -97,11 +127,52 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  var map = L.map('map').setView([36.5, 127.8], 7);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap'
-  }).addTo(map);
+  // maxZoom 18 로 통일 (그 이상은 일부 지역에서 타일 누락으로 단색 발생)
+  var map = L.map('map', { maxZoom: 18, minZoom: 6 }).setView([36.5, 127.8], 7);
+
+  var voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 18
+  });
+  var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  });
+  var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri', maxZoom: 18
+  });
+
+  {% assign vkey = site.vworld_api_key | default: '' %}
+  {% if vkey != '' %}
+  // VWorld (한국 정부 지도) - 한국 정밀도 최고, zoom 20까지
+  var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
+    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>',
+    maxZoom: 18
+  });
+  var vworldGray = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/gray/{z}/{y}/{x}.png', {
+    attribution: '&copy; VWorld', maxZoom: 18
+  });
+  var vworldHybrid = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Hybrid/{z}/{y}/{x}.png', {
+    attribution: '&copy; VWorld', maxZoom: 18
+  });
+
+  vworldBase.addTo(map);  // VWorld 기본을 디폴트로
+  var layerControl = L.control.layers({
+    '🇰🇷 VWorld 한국': vworldBase,
+    '🇰🇷 VWorld 회색': vworldGray,
+    '🇰🇷 VWorld 위성+라벨': vworldHybrid,
+    '깔끔 (Voyager)': voyager,
+    '기본 (OSM)': osm,
+    '위성 (Esri)': satellite
+  }, null, { position: 'topright', collapsed: true }).addTo(map);
+  {% else %}
+  voyager.addTo(map);
+  L.control.layers({
+    '깔끔 (Voyager)': voyager,
+    '기본 (OSM)': osm,
+    '위성 (Esri)': satellite
+  }, null, { position: 'topright', collapsed: true }).addTo(map);
+  {% endif %}
 
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
@@ -134,16 +205,15 @@ permalink: /map/
   }
 
   function repopulateTagFilter(category) {
-    // 기존 옵션 제거
     while (tagSel.options.length > 1) tagSel.remove(1);
     if (!category) {
-      tagSel.options[0].text = '먼저 카테고리 선택';
+      tagSel.options[0].text = '📂 세부 카테고리 (카테고리 먼저)';
       tagSel.disabled = true;
       tagSel.value = '';
       return;
     }
     var tags = CATEGORY_TAGS[category] || [];
-    tagSel.options[0].text = '전체 ' + category;
+    tagSel.options[0].text = '📂 ' + category + ' 전체';
     tagSel.disabled = false;
     tags.forEach(function (t) {
       tagSel.add(new Option('#' + t, t));
@@ -178,7 +248,8 @@ permalink: /map/
       if (r && p.region !== r) return false;
       if (c && (!p.categories || p.categories.indexOf(c) === -1)) return false;
       if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
-      if (m && (!p.members || p.members.indexOf(m) === -1)) return false;
+      // 멤버 필터: 멤버 미기재(빈 배열) 노트는 "전체 공통"으로 간주하여 통과
+      if (m && p.members && p.members.length > 0 && p.members.indexOf(m) === -1) return false;
       return true;
     });
     filtered.forEach(function (p) {

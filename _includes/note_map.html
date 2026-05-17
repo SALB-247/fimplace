@@ -1,0 +1,87 @@
+<!-- 본문에 internal-link 가 3개 이상이고 그 중 좌표 매칭되는 게 2개 이상이면 미니 지도 표시 -->
+<div id="note-map-container" hidden style="margin-top: 2em;">
+  <h3 style="margin-bottom: 0.5em;">이 노트에 등장하는 장소</h3>
+  <p style="font-size:0.85em; color:hsl(0,0%,30%); margin: 0 0 0.5em;">
+    <span id="note-map-count"></span>
+  </p>
+  <div id="note-map" style="width:100%; height:400px; border-radius:8px; border:1px solid hsl(0,0%,85%);"></div>
+</div>
+
+<script>
+(function () {
+  var contentEl = document.querySelector('content');
+  if (!contentEl) return;
+  var hrefs = Array.from(contentEl.querySelectorAll('a.internal-link'))
+                    .map(function (a) { return a.getAttribute('href'); })
+                    .filter(Boolean);
+  if (hrefs.length < 3) return;
+
+  // places.json 로드 (브라우저 캐시 활용)
+  fetch('{{ site.baseurl }}/places.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var places = (data && data.places) || [];
+      var byUrl = {};
+      places.forEach(function (p) { byUrl[p.url] = p; });
+
+      // 중복 href 제거
+      var seen = {};
+      var unique = hrefs.filter(function (h) {
+        if (seen[h]) return false;
+        seen[h] = true;
+        return true;
+      });
+      var matched = unique.map(function (h) { return byUrl[h]; }).filter(Boolean);
+      if (matched.length < 2) return;
+
+      loadLeaflet(function () {
+        var container = document.getElementById('note-map-container');
+        container.hidden = false;
+        document.getElementById('note-map-count').textContent =
+          matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)';
+
+        var map = L.map('note-map', { maxZoom: 18, minZoom: 5 });
+        {% assign vkey2 = site.vworld_api_key | default: '' %}
+        {% if vkey2 != '' %}
+        L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey2 }}/Base/{z}/{y}/{x}.png', {
+          maxZoom: 18, attribution: '&copy; VWorld'
+        }).addTo(map);
+        {% else %}
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+          subdomains: 'abcd', maxZoom: 18, attribution: '&copy; OSM &copy; CARTO'
+        }).addTo(map);
+        {% endif %}
+
+        var latlngs = matched.map(function (p) { return [p.lat, p.lng]; });
+        var bounds = L.latLngBounds(latlngs);
+        map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
+
+        matched.forEach(function (p) {
+          var addr = p.address ? '<div style="font-size:0.8em; color:#666; margin-top:0.2em;">' + escapeHtml(p.address) + '</div>' : '';
+          L.marker([p.lat, p.lng])
+            .bindPopup('<strong><a href="' + p.url + '">' + escapeHtml(p.title) + '</a></strong>' + addr)
+            .addTo(map);
+        });
+      });
+    })
+    .catch(function () { /* fail silent */ });
+
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"]/g, function (c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
+  function loadLeaflet(cb) {
+    if (window.L) return cb();
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    js.onload = cb;
+    document.body.appendChild(js);
+  }
+})();
+</script>

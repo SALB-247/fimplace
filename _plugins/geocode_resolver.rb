@@ -50,10 +50,14 @@ module GeocodeResolver
         end
       end
     end
-    # Atomic write: 임시 파일에 fsync 후 rename → 중간 중단되도 캐시 손상 X
+    new_content = lines.join("\n") + "\n"
+    # 내용 같으면 skip (Jekyll watch 무한 루프 방지)
+    existing = File.exist?(CACHE_FILE) ? File.read(CACHE_FILE) : nil
+    return if existing == new_content
+    # Atomic write: 임시 파일에 fsync 후 rename
     tmp = "#{CACHE_FILE}.tmp"
     File.open(tmp, 'w:utf-8') do |f|
-      f.write(lines.join("\n") + "\n")
+      f.write(new_content)
       f.fsync
     end
     File.rename(tmp, CACHE_FILE)

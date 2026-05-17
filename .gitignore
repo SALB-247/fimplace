@@ -1,15 +1,26 @@
-# Generated website directory
+# === 빌드 산출물 (커밋 X) ===
 _site/
-
-# Sass cache
-.sass-cache/
-
-# Jekyll cache & metadata
 .jekyll-cache/
 .jekyll-metadata
+.sass-cache/
 
-# Notes graph metadata
-_includes/notes_graph.json
+# === 자동 생성 (커밋 X) ===
+_includes/notes_graph.json   # bidirectional_links_generator 가 매 빌드마다 갱신
+*.tmp
+*.bak
 
-# Obsidian config
+# === Obsidian / 에디터 설정 (개인 환경) ===
 .obsidian/
+_notes/.obsidian/
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# === Ruby ===
+vendor/
+.bundle/
+
+# === 노드 (혹시 추후 도입 시) ===
+node_modules/

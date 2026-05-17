@@ -2,8 +2,34 @@ title:               Fimplace
 description:         핌플레이스는 르세라핌 관련 장소를 기록하는 보관소입니다.
 url:                 https://fimplace.netlify.app
 default_og_image:    /assets/image.jpg
+
+# VWorld (한국 정부 무료 지도) API 키
+# 발급: https://www.vworld.kr/dev/v4api.do
+#  - 회원가입 → "오픈 API 인증키 발급" → 신청 (즉시 발급)
+#  - 인증 도메인에 fimplace.netlify.app 추가 (localhost 도 함께 등록)
+#  - 발급된 키를 아래에 따옴표 안에 입력
+# 키가 비어있으면 VWorld 레이어 비활성화 (다른 타일은 정상 작동)
+vworld_api_key:      'B7673B36-0A29-3557-9C44-13AA8FEE8D8A'
 include:             ['_pages']
-exclude:             ['_includes/notes_graph.json']
+exclude:
+  - _includes/notes_graph.json
+  - .github/
+  - .obsidian/
+  - _notes/.obsidian/
+  - .ruby-version
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - netlify.toml
+  - node_modules/
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
+  - .jekyll-metadata
+  - .DS_Store
+keep_files: []
 # You may need to change the base URL depending on your deploy configuration.
 baseurl:             ''
 
