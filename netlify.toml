@@ -1,3 +1,9 @@
 [build]
   command = "jekyll build --trace"
   publish = "_site"
+
+[build.environment]
+  # .ruby-version 과 일치
+  RUBY_VERSION = "3.2.1"
+  # bundler 가 Linux native gem 자동 fetch
+  BUNDLE_FORCE_RUBY_PLATFORM = "false"

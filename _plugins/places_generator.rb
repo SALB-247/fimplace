@@ -24,7 +24,7 @@ module PlacesGenerator
   }
   KR_REGIONS = REGION_MAP.keys
 
-  # 도(道) 우선 매칭. "경기 광주시"에서 "광주"(광역시)로 잘못 분류되는 것 방지.
+  # 도(道) 우선. "경기 광주시"에서 광주광역시로 잘못 분류되는 것 방지
   DOMINANT_REGIONS = %w[경기 강원 충북 충남 전북 전남 경북 경남 제주
                         서울 부산 대구 인천 광주 대전 울산 세종]
 
@@ -34,7 +34,6 @@ module PlacesGenerator
     \s+\S*(?:구|시|군|읍|면|동)\s+[^\n<|"\[#]+
   /x
 
-  # 행정동/지명 -> 도/시/구 prefix 자동 보강
   AREA_REGION_PREFIX = {
     '해방촌'   => '서울 용산구', '경리단길' => '서울 용산구',
     '이태원'   => '서울 용산구', '한남동'   => '서울 용산구',
@@ -83,7 +82,6 @@ module PlacesGenerator
     ''
   end
 
-  # Google Maps iframe URL의 !2z base64 -> 사용자가 검색한 키워드
   def self.extract_iframe_query(content)
     return nil unless (m = content.match(MAP_PLACE_NAME_REGEX))
     encoded = m[1]
@@ -118,7 +116,6 @@ module PlacesGenerator
     out.uniq.reject { |s| s.nil? || s.length < 2 }
   end
 
-  # 주소 -> 점진적 broader 변형 리스트 (원본/정제/도로+번지/도로/구)
   def self.address_variants(addr)
     return [] if addr.nil? || addr.empty?
     out = []
@@ -229,9 +226,6 @@ module PlacesGenerator
   end
 
   # 신규 항목을 places_db.yml 에 정렬 유지하며 추가
-  # - 매 빌드마다 단순 append 가 아니라 정렬 후 rewrite
-  # - 키 알파벳 순으로 유지돼 git merge conflict 최소화
-  # - 내용 변경 없으면 file write skip (Jekyll watch 무한 루프 방지)
   def self.append_db_entry(title, entry)
     return if title.nil? || title.empty?
     require 'yaml'
@@ -250,7 +244,7 @@ module PlacesGenerator
       "# - places_generator 가 우선 참조",
       "# - 매핑된 노트: lat/lng/source",
       "# - 명시적 스킵: skipped: true",
-      "# - 키는 알파벳 순 정렬 (수동 추가 시 git conflict 방지)",
+      "# - 키는 알파벳 순 정렬",
       ""
     ]
     db.keys.sort.each do |k|
