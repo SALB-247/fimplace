@@ -127,6 +127,7 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
+
   // maxZoom 18 로 통일 (그 이상은 일부 지역에서 타일 누락으로 단색 발생)
   var map = L.map('map', { maxZoom: 18, minZoom: 6 }).setView([36.5, 127.8], 7);
 
@@ -140,13 +141,7 @@ permalink: /map/
   });
   var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri', maxZoom: 18
-  });
 
-  {% assign vkey = site.vworld_api_key | default: '' %}
-  {% if vkey != '' %}
-  // VWorld (한국 정부 지도) - 한국 정밀도 최고, zoom 20까지
-  var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
-    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>',
     maxZoom: 18
   });
   var vworldGray = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/gray/{z}/{y}/{x}.png', {
@@ -173,6 +168,7 @@ permalink: /map/
     '위성 (Esri)': satellite
   }, null, { position: 'topright', collapsed: true }).addTo(map);
   {% endif %}
+
 
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);

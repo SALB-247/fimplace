@@ -34,6 +34,7 @@ module PlacesGenerator
     \s+\S*(?:구|시|군|읍|면|동)\s+[^\n<|"\[#]+
   /x
 
+  # 행정동/지명 -> 도/시/구 prefix 자동 보강
   AREA_REGION_PREFIX = {
     '해방촌'   => '서울 용산구', '경리단길' => '서울 용산구',
     '이태원'   => '서울 용산구', '한남동'   => '서울 용산구',
@@ -82,6 +83,7 @@ module PlacesGenerator
     ''
   end
 
+  # Google Maps iframe URL의 !2z base64 -> 사용자가 검색한 키워드
   def self.extract_iframe_query(content)
     return nil unless (m = content.match(MAP_PLACE_NAME_REGEX))
     encoded = m[1]
@@ -116,6 +118,7 @@ module PlacesGenerator
     out.uniq.reject { |s| s.nil? || s.length < 2 }
   end
 
+  # 주소 -> 점진적 broader 변형 리스트 (원본/정제/도로+번지/도로/구)
   def self.address_variants(addr)
     return [] if addr.nil? || addr.empty?
     out = []
