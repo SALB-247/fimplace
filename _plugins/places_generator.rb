@@ -1,4 +1,8 @@
 # frozen_string_literal: true
+#
+# 노트별 좌표 해석 + places.json 생성
+# - 우선순위: frontmatter coords -> iframe 검색어 -> 상호명 -> iframe 좌표 -> 주소 캐스케이드 -> known_places -> cleaned title
+# - 신규 해석된 노트는 _data/places_db.yml 에 정렬 유지하며 자동 추가
 require 'json'
 require 'set'
 require 'base64'
@@ -20,6 +24,10 @@ module PlacesGenerator
   }
   KR_REGIONS = REGION_MAP.keys
 
+  # 도(道) 우선 매칭. "경기 광주시"에서 "광주"(광역시)로 잘못 분류되는 것 방지.
+  DOMINANT_REGIONS = %w[경기 강원 충북 충남 전북 전남 경북 경남 제주
+                        서울 부산 대구 인천 광주 대전 울산 세종]
+
   ADDR_LINE_REGEX = /
     (?:#{KR_REGIONS.join('|')})
     (?:특별시|광역시|특별자치도|특별자치시|도)?
@@ -27,27 +35,22 @@ module PlacesGenerator
   /x
 
   AREA_REGION_PREFIX = {
-    '해방촌'   => '서울 용산구',
-    '경리단길' => '서울 용산구',
-    '이태원'   => '서울 용산구',
-    '한남동'   => '서울 용산구',
-    '연남동'   => '서울 마포구',
-    '연희동'   => '서울 서대문구',
-    '망원동'   => '서울 마포구',
-    '서촌'     => '서울 종로구',
-    '북촌'     => '서울 종로구',
-    '익선동'   => '서울 종로구'
+    '해방촌'   => '서울 용산구', '경리단길' => '서울 용산구',
+    '이태원'   => '서울 용산구', '한남동'   => '서울 용산구',
+    '연남동'   => '서울 마포구', '연희동'   => '서울 서대문구',
+    '망원동'   => '서울 마포구', '서촌'     => '서울 종로구',
+    '북촌'     => '서울 종로구', '익선동'   => '서울 종로구'
   }
 
   def self.region_from_address(addr)
     return nil if addr.nil? || addr.empty?
-    REGION_MAP.each { |p, l| return l if addr.include?(p) }
+    DOMINANT_REGIONS.each { |prefix| return prefix if addr.include?(prefix) }
     nil
   end
 
   def self.region_from_tags(tags)
     Array(tags).each do |t|
-      REGION_MAP.each { |p, l| return l if t.to_s.include?(p) }
+      DOMINANT_REGIONS.each { |prefix| return prefix if t.to_s.include?(prefix) }
     end
     nil
   end
@@ -164,7 +167,6 @@ module PlacesGenerator
       lat, lng = note.data['coords']
       return { 'lat' => lat.to_f, 'lng' => lng.to_f, 'source' => 'frontmatter' }
     end
-
     region = region_from_address(address) || region_from_tags(tags)
     title = note.data['title'].to_s
     hints = tags + [title]
@@ -177,9 +179,7 @@ module PlacesGenerator
     end
 
     if business && !business.empty?
-      biz_queries = business_variants(business).flat_map do |b|
-        region ? [b, "#{b} #{region}"] : [b]
-      end.uniq
+      biz_queries = business_variants(business).flat_map { |b| region ? [b, "#{b} #{region}"] : [b] }.uniq
       result = GeocodeResolver.lookup_cascade(biz_queries, hints, cache)
       return result if result
     end
@@ -225,25 +225,53 @@ module PlacesGenerator
     t.empty? ? nil : t
   end
 
+  # 신규 항목을 places_db.yml 에 정렬 유지하며 추가
+  # - 매 빌드마다 단순 append 가 아니라 정렬 후 rewrite
+  # - 키 알파벳 순으로 유지돼 git merge conflict 최소화
+  # - 내용 변경 없으면 file write skip (Jekyll watch 무한 루프 방지)
   def self.append_db_entry(title, entry)
     return if title.nil? || title.empty?
+    require 'yaml'
     db_file = '_data/places_db.yml'
-    quoted = title.gsub('"', '\\"')
-    lines = ["", "\"#{quoted}\":"]
-    if entry['skipped']
-      lines << "  skipped: true"
-      lines << "  reason: \"#{(entry['reason'] || '').gsub('"', '\\"')}\""
-    else
-      lines << "  lat: #{entry['lat']}"
-      lines << "  lng: #{entry['lng']}"
-      lines << "  source: #{entry['source'] || 'unknown'}"
-    end
-    File.open(db_file, 'a:utf-8') do |f|
-      f.write(lines.join("\n") + "\n")
-      f.fsync
-    end
+    db = File.exist?(db_file) ? (YAML.load_file(db_file) || {}) : {}
+    db[title] = entry
+    rewrite_db_sorted(db_file, db)
   rescue StandardError => e
-    Jekyll.logger.warn('Places', "DB append failed for '#{title}': #{e.message}") if defined?(Jekyll)
+    Jekyll.logger.warn('Places', "DB write failed for '#{title}': #{e.message}") if defined?(Jekyll)
+  end
+
+  def self.rewrite_db_sorted(db_file, db)
+    esc = ->(s) { s.to_s.gsub('"', '\\"') }
+    lines = [
+      "# 노트별 좌표 DB",
+      "# - places_generator 가 우선 참조",
+      "# - 매핑된 노트: lat/lng/source",
+      "# - 명시적 스킵: skipped: true",
+      "# - 키는 알파벳 순 정렬 (수동 추가 시 git conflict 방지)",
+      ""
+    ]
+    db.keys.sort.each do |k|
+      v = db[k]
+      next unless v.is_a?(Hash)
+      lines << "\"#{esc.call(k)}\":"
+      if v['skipped']
+        lines << "  skipped: true"
+        lines << "  reason: \"#{esc.call(v['reason'])}\"" if v['reason']
+      else
+        lines << "  lat: #{v['lat']}"
+        lines << "  lng: #{v['lng']}"
+        lines << "  source: #{v['source'] || 'unknown'}"
+        lines << "  note: \"#{esc.call(v['note'])}\"" if v['note']
+      end
+    end
+    new_content = lines.join("\n") + "\n"
+    existing = File.exist?(db_file) ? File.read(db_file) : nil
+    return if existing == new_content
+    tmp = "#{db_file}.tmp"
+    File.open(tmp, 'w:utf-8') do |f|
+      f.write(new_content); f.fsync
+    end
+    File.rename(tmp, db_file)
   end
 
   class Generator < Jekyll::Generator
@@ -303,28 +331,19 @@ module PlacesGenerator
         source_counter[coords['source']] += 1
 
         places << {
-          'title'      => title,
-          'url'        => "#{site.baseurl}#{note.url}",
-          'lat'        => coords['lat'],
-          'lng'        => coords['lng'],
-          'source'     => coords['source'],
-          'address'    => addr.to_s,
-          'business'   => biz.to_s,
-          'iframe_q'   => iframe_q.to_s,
-          'kakao_url'  => ext_urls['kakao'] ? "https://place.map.kakao.com/#{ext_urls['kakao']}" : '',
-          'naver_url'  => ext_urls['naver'].to_s,
-          'region'     => PlacesGenerator.region_from_address(addr) || PlacesGenerator.region_from_tags(tags),
-          'tags'       => tags,
-          'members'    => Array(note.data['members']).map(&:to_s),
-          'categories' => categories
+          'title' => title, 'url' => "#{site.baseurl}#{note.url}",
+          'lat' => coords['lat'], 'lng' => coords['lng'], 'source' => coords['source'],
+          'address' => addr.to_s, 'business' => biz.to_s, 'iframe_q' => iframe_q.to_s,
+          'kakao_url' => ext_urls['kakao'] ? "https://place.map.kakao.com/#{ext_urls['kakao']}" : '',
+          'naver_url' => ext_urls['naver'].to_s,
+          'region' => PlacesGenerator.region_from_address(addr) || PlacesGenerator.region_from_tags(tags),
+          'tags' => tags, 'members' => Array(note.data['members']).map(&:to_s), 'categories' => categories
         }
       end
 
       if defined?(Jekyll)
         Jekyll.logger.info('Places', "mapped #{places.size}, skipped #{skipped.size} (#{newly_resolved} new resolved, #{newly_skipped} new skipped)")
-        source_counter.sort_by { |_, c| -c }.each do |s, c|
-          Jekyll.logger.info('Places', "  source #{s}: #{c}")
-        end
+        source_counter.sort_by { |_, c| -c }.each { |s, c| Jekyll.logger.info('Places', "  source #{s}: #{c}") }
         skipped.each { |t| Jekyll.logger.warn('Places', "skipped: #{t}") } if skipped.size <= 30
       end
 
@@ -344,7 +363,6 @@ module PlacesGenerator
       uncategorized = all_tags_counter.keys.reject { |t| categorized.include?(t) }
                                            .sort_by { |t| -all_tags_counter[t] }
       cats_with_tags['기타'] = uncategorized unless uncategorized.empty?
-
       site.data['category_tags'] = cats_with_tags
     end
   end
