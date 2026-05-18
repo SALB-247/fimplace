@@ -13,7 +13,7 @@ permalink: /tags/
 <div class="tag-cloud">
   {% if site.data.all_tags %}
     {% for t in site.data.all_tags %}
-      <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t.name | url_encode }}/" style="font-size: {{ t.count | times: 0.06 | plus: 0.78 }}em;">
+      <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t.name | url_encode }}/">
         #{{ t.name }} <span style="opacity: 0.6">({{ t.count }})</span>
       </a>
     {% endfor %}
