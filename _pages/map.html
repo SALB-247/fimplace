@@ -135,17 +135,9 @@ permalink: /map/
   var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
     attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 18
   });
-  var vworldGray = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/gray/{z}/{y}/{x}.png', {
-    attribution: '&copy; VWorld', maxZoom: 18
-  });
-  var vworldHybrid = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Hybrid/{z}/{y}/{x}.png', {
-    attribution: '&copy; VWorld', maxZoom: 18
-  });
   vworldBase.addTo(map);
   L.control.layers({
     '🇰🇷 VWorld 한국': vworldBase,
-    '🇰🇷 VWorld 회색': vworldGray,
-    '🇰🇷 VWorld 위성+라벨': vworldHybrid,
     '깔끔 (Voyager)': voyager,
     '기본 (OSM)': osm,
     '위성 (Esri)': satellite

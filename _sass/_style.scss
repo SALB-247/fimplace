@@ -167,6 +167,19 @@ content iframe[src*="naver.com"] {
   aspect-ratio: 4 / 3;
 }
 
+/* Instagram embed: 세로형 포스트 컨텐츠, aspect-ratio 비활성 */
+content iframe[src*="instagram.com"] {
+  aspect-ratio: auto;
+  max-width: 540px;
+  height: 720px;       /* 데스크탑 기본 (이미지 + 캡션) */
+  margin: 1em auto;
+}
+@media (max-width: 600px) {
+  content iframe[src*="instagram.com"] {
+    height: 620px;     /* 모바일에서는 약간 축소 */
+  }
+}
+
 /* ---------- 태그 / 멤버 칩 ---------- */
 .note-tags,
 .note-members {
