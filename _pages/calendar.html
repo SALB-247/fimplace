@@ -171,8 +171,4 @@ sitemap: false
       }).filter(function (e) { return e.range && e.range.start && e.range.end; });
       render('ongoing');
     })
-    .catch(function () {
-      contentEl.innerHTML = '<p>이벤트 데이터를 불러올 수 없습니다.</p>';
-    });
-})();
-</script>
+    .catch(function 

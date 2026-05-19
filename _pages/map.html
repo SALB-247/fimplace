@@ -21,48 +21,23 @@ permalink: /map/
   #map-filters {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.6em;
-    margin: 1em 0;
-    align-items: stretch;
+    gap: 0.6em; margin: 1em 0; align-items: stretch;
   }
   #map-filters select {
-    padding: 0.6em 0.8em;
-    border-radius: 6px;
-    border: 1px solid hsl(0,0%,85%);
-    font-family: inherit;
-    background: white;
-    width: 100%;
-    font-size: 16px;
-    min-height: 44px;
-    box-sizing: border-box;
+    padding: 0.6em 0.8em; border-radius: 6px; border: 1px solid hsl(0,0%,85%);
+    font-family: inherit; background: white; width: 100%;
+    font-size: 16px; min-height: 44px; box-sizing: border-box;
   }
-  #map-filters select:disabled {
-    background: #f5f5f5;
-    color: #aaa;
-  }
+  #map-filters select:disabled { background: #f5f5f5; color: #aaa; }
   #filter-controls {
-    display: flex;
-    gap: 0.6em;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 0.5em;
+    display: flex; gap: 0.6em; flex-wrap: wrap; align-items: center; margin-bottom: 0.5em;
   }
   #filter-reset {
-    padding: 0.6em 0.9em;
-    border-radius: 6px;
-    border: 1px solid hsl(0,0%,85%);
-    background: white;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 14px;
-    min-height: 40px;
+    padding: 0.6em 0.9em; border-radius: 6px; border: 1px solid hsl(0,0%,85%);
+    background: white; cursor: pointer; font-family: inherit; font-size: 14px; min-height: 40px;
   }
   #filter-reset:hover { background: #fffaf1; }
-  #result-count {
-    font-size: 0.85em;
-    color: hsl(0,0%,30%);
-    margin-left: auto;
-  }
+  #result-count { font-size: 0.85em; color: hsl(0,0%,30%); margin-left: auto; }
   @media (max-width: 600px) {
     #map-filters { grid-template-columns: 1fr 1fr; gap: 0.4em; }
     #map { height: 60vh !important; min-height: 360px !important; }
@@ -71,12 +46,34 @@ permalink: /map/
   @media (max-width: 380px) {
     #map-filters { grid-template-columns: 1fr; }
   }
-  .leaflet-popup-content {
-    margin: 10px 12px !important;
-    font-size: 14px;
-    line-height: 1.5;
-  }
+  .leaflet-popup-content { margin: 10px 12px !important; font-size: 14px; line-height: 1.5; }
   .leaflet-popup-content a { word-break: break-word; }
+
+  /* 이모지 마커 */
+  .fim-marker-wrap {
+    background: transparent !important; border: 0 !important;
+    overflow: visible !important; white-space: nowrap;
+  }
+  .fim-marker {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 2.5px solid #222; background: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.5);
+    cursor: pointer; transition: transform 0.1s;
+    white-space: nowrap; box-sizing: border-box;
+  }
+  .fim-marker:hover { transform: scale(1.15); }
+  .fim-marker span {
+    font-size: 18px; line-height: 1; letter-spacing: -2px;
+    white-space: nowrap; display: inline-block;
+  }
+  .fim-marker.multi {
+    width: auto; min-width: 34px; border-radius: 999px;
+    padding: 0 8px; height: 34px;
+  }
+  .fim-marker.multi span { letter-spacing: 1px; }
+  .fim-marker.mono { background: #f5f5f5; border-color: #555; }
+  .fim-marker.mono span { font-size: 16px; }
 </style>
 
 <div id="map-filters">
@@ -96,18 +93,18 @@ permalink: /map/
 
 <div id="filter-controls">
   <button id="filter-reset" type="button">필터 초기화</button>
+  <label style="display:inline-flex; align-items:center; gap:0.3em; font-size:0.9em; color:hsl(0,0%,30%); cursor:pointer;">
+    <input type="checkbox" id="filter-include-ended" style="width:18px; height:18px;">
+    종료된 이벤트도 표시
+  </label>
   <span id="result-count"></span>
 </div>
 
 <div id="map" style="width:100%; height:70vh; min-height:480px; border-radius:8px; border:1px solid hsl(0,0%,85%);"></div>
 
-<div id="map-legend" style="display:flex; flex-wrap:wrap; gap:0.6em; margin-top:0.5em; font-size:0.78em; color:hsl(0,0%,30%);">
-  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#f0a8cf; border:2px solid #222;"></span> 사쿠라</span>
-  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#aeb7c2; border:2px solid #222;"></span> 김채원</span>
-  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#44b5a3; border:2px solid #222;"></span> 허윤진</span>
-  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#5f9fd6; border:2px solid #222;"></span> 카즈하</span>
-  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#f4857f; border:2px solid #222;"></span> 홍은채</span>
-  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#9e9e9e; border:2px solid #222;"></span> 공통</span>
+<div id="map-legend" style="display:flex; flex-wrap:wrap; gap:0.7em; margin-top:0.6em; font-size:0.82em; color:hsl(0,0%,30%);">
+  <span>🌸 사쿠라</span> <span>🐆 김채원</span> <span>🐍 허윤진</span>
+  <span>🦢 카즈하</span> <span>🐥 홍은채</span> <span>📍 공통</span>
 </div>
 
 <p style="font-size:0.8em; color:hsl(0,0%,30%); margin-top:0.5em;">
@@ -124,7 +121,6 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  // maxZoom 18 (그 이상은 일부 지역에서 단색 발생)
   var map = L.map('map', { maxZoom: 18, minZoom: 6 }).setView([36.5, 127.8], 7);
 
   var voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
@@ -132,8 +128,7 @@ permalink: /map/
     subdomains: 'abcd', maxZoom: 18
   });
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 18
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 18
   });
   var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri', maxZoom: 18
@@ -167,22 +162,35 @@ permalink: /map/
   var categorySel = document.getElementById('filter-category');
   var tagSel      = document.getElementById('filter-tag');
   var memberSel   = document.getElementById('filter-member');
+  var endedCheck  = document.getElementById('filter-include-ended');
   var resetBtn    = document.getElementById('filter-reset');
   var countEl     = document.getElementById('result-count');
 
   var ALL = [];
   var CATEGORY_TAGS = {};
 
-  function uniqueSort(arr) {
-    return Array.from(new Set(arr.filter(Boolean))).sort();
+  // 제목 YYMMDD-YYMMDD 종료일이 오늘보다 과거면 ended
+  var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
+  function isEnded(title) {
+    if (!title) return false;
+    var m = title.match(/(\d{6})[-_~]?(\d{4,6})?(?=[^\d]|$)/);
+    if (!m) return false;
+    var endStr = m[2] || m[1];
+    if (endStr.length === 4) endStr = m[1].substring(0, 2) + endStr;
+    var y = parseInt(endStr.substring(0, 2), 10) + 2000;
+    var mo = parseInt(endStr.substring(2, 4), 10) - 1;
+    var d = parseInt(endStr.substring(4, 6), 10);
+    if (mo < 0 || mo > 11 || d < 1 || d > 31) return false;
+    return new Date(y, mo, d) < TODAY;
   }
+
+  function uniqueSort(arr) { return Array.from(new Set(arr.filter(Boolean))).sort(); }
 
   function buildStaticFilters(places) {
     var regions = uniqueSort(places.map(function (p) { return p.region; }));
     var members = uniqueSort([].concat.apply([], places.map(function (p) { return p.members || []; })));
     regions.forEach(function (r) { regionSel.add(new Option(r, r)); });
     members.forEach(function (m) { memberSel.add(new Option(m, m)); });
-
     Object.keys(CATEGORY_TAGS).forEach(function (cat) {
       var cnt = CATEGORY_TAGS[cat].length;
       categorySel.add(new Option(cat + ' (' + cnt + ')', cat));
@@ -193,40 +201,48 @@ permalink: /map/
     while (tagSel.options.length > 1) tagSel.remove(1);
     if (!category) {
       tagSel.options[0].text = '📂 세부 카테고리 (카테고리 먼저)';
-      tagSel.disabled = true;
-      tagSel.value = '';
-      return;
+      tagSel.disabled = true; tagSel.value = ''; return;
     }
     var tags = CATEGORY_TAGS[category] || [];
     tagSel.options[0].text = '📂 ' + category + ' 전체';
     tagSel.disabled = false;
-    tags.forEach(function (t) {
-      tagSel.add(new Option('#' + t, t));
-    });
+    tags.forEach(function (t) { tagSel.add(new Option('#' + t, t)); });
     tagSel.value = '';
   }
 
-  // 멤버별 마커 색상 (멤버 칩과 동일)
-  var MEMBER_COLOR = {
-    '사쿠라': '#f0a8cf',
-    '김채원': '#aeb7c2',
-    '허윤진': '#44b5a3',
-    '카즈하': '#5f9fd6',
-    '홍은채': '#f4857f'
+  var MEMBER_EMOJI = {
+    '사쿠라': '🌸', '김채원': '🐆', '허윤진': '🐍', '카즈하': '🦢', '홍은채': '🐥'
   };
-  function markerStyle(p) {
+  var MEMBER_BORDER = {
+    '사쿠라': '#f0a8cf', '김채원': '#aeb7c2', '허윤진': '#44b5a3',
+    '카즈하': '#5f9fd6', '홍은채': '#f4857f'
+  };
+  var MEMBER_BG = {
+    '사쿠라': '#fce4f0', '김채원': '#e6e9ed', '허윤진': '#d5ece6',
+    '카즈하': '#dfecf7', '홍은채': '#fde0de'
+  };
+
+  function markerIcon(p) {
     var members = p.members || [];
-    var color = members.length > 0 ? (MEMBER_COLOR[members[0]] || '#9e9e9e') : '#9e9e9e';
-    // 2인 이상: 두번째 멤버 색상으로 외곽선 (구분), 그 외: 진한 외곽선으로 가시성 확보
-    var stroke = members.length > 1 ? (MEMBER_COLOR[members[1]] || '#222') : '#222';
-    return {
-      radius: 8,
-      fillColor: color,
-      color: stroke,
-      weight: 2.5,        // 외곽선 두껍게
-      opacity: 1,
-      fillOpacity: 0.95
-    };
+    var html, size, isMulti = members.length > 1;
+    if (members.length === 0) {
+      html = '<div class="fim-marker mono"><span>📍</span></div>';
+      size = [34, 34];
+    } else if (isMulti) {
+      var emojis = members.map(function (m) { return MEMBER_EMOJI[m] || '·'; }).join('');
+      html = '<div class="fim-marker multi" style="background:#fff;border-color:#222;"><span>' + emojis + '</span></div>';
+      size = [18 + members.length * 28, 34];
+    } else {
+      var emoji = MEMBER_EMOJI[members[0]] || '·';
+      var bg = MEMBER_BG[members[0]] || '#fff';
+      var border = MEMBER_BORDER[members[0]] || '#222';
+      html = '<div class="fim-marker" style="background:' + bg + ';border-color:' + border + ';"><span>' + emoji + '</span></div>';
+      size = [34, 34];
+    }
+    return L.divIcon({
+      className: 'fim-marker-wrap', html: html,
+      iconSize: size, iconAnchor: [size[0] / 2, size[1] / 2]
+    });
   }
 
   function popupHtml(p) {
@@ -237,8 +253,9 @@ permalink: /map/
     if (p.kakao_url) extLinks.push('<a href="' + p.kakao_url + '" target="_blank" rel="noopener">카카오</a>');
     if (p.naver_url) extLinks.push('<a href="' + p.naver_url + '" target="_blank" rel="noopener">네이버</a>');
     var srcBadge = p.source ? '<span style="font-size:0.7em; color:#999;">[' + p.source + ']</span>' : '';
+    var endedBadge = isEnded(p.title) ? '<span style="font-size:0.7em; color:#fff; background:#999; padding:0.1em 0.4em; border-radius:999px; margin-left:0.3em;">종료</span>' : '';
     return '<div style="min-width:200px">' +
-      '<strong><a href="' + p.url + '">' + p.title + '</a></strong> ' + srcBadge +
+      '<strong><a href="' + p.url + '">' + p.title + '</a></strong> ' + srcBadge + endedBadge +
       (p.business && p.business !== p.title ? '<div style="font-size:0.8em; color:#444; margin-top:0.2em;">' + p.business + '</div>' : '') +
       (p.address ? '<div style="font-size:0.8em; color:#666; margin-top:0.3em;">📍 ' + p.address + '</div>' : '') +
       (extLinks.length ? '<div style="margin-top:0.3em; font-size:0.8em;">' + extLinks.join(' &middot; ') + '</div>' : '') +
@@ -252,19 +269,28 @@ permalink: /map/
     var c = categorySel.value;
     var t = tagSel.value;
     var m = memberSel.value;
+    var includeEnded = endedCheck.checked;
+    var totalEnded = 0;
     var filtered = ALL.filter(function (p) {
+      // 종료된 이벤트는 토글 OFF일 때 숨김
+      if (isEnded(p.title)) {
+        totalEnded++;
+        if (!includeEnded) return false;
+      }
       if (r && p.region !== r) return false;
       if (c && (!p.categories || p.categories.indexOf(c) === -1)) return false;
       if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
-      // 멤버 미기재(빈 배열)는 "전체 공통"으로 항상 표시
+      // 멤버 미기재(빈 배열) 노트는 "전체 공통"으로 항상 표시
       if (m && p.members && p.members.length > 0 && p.members.indexOf(m) === -1) return false;
       return true;
     });
     filtered.forEach(function (p) {
-      var marker = L.circleMarker([p.lat, p.lng], markerStyle(p)).bindPopup(popupHtml(p));
+      var marker = L.marker([p.lat, p.lng], { icon: markerIcon(p) }).bindPopup(popupHtml(p));
       cluster.addLayer(marker);
     });
-    countEl.textContent = filtered.length + ' / ' + ALL.length + ' 장소';
+    var msg = filtered.length + ' / ' + ALL.length + ' 장소';
+    if (!includeEnded && totalEnded > 0) msg += ' (종료 ' + totalEnded + '개 숨김)';
+    countEl.textContent = msg;
 
     if (filtered.length > 0) {
       try {
@@ -276,6 +302,7 @@ permalink: /map/
 
   regionSel.addEventListener('change', render);
   memberSel.addEventListener('change', render);
+  endedCheck.addEventListener('change', render);
   categorySel.addEventListener('change', function () {
     repopulateTagFilter(categorySel.value);
     render();
@@ -283,6 +310,7 @@ permalink: /map/
   tagSel.addEventListener('change', render);
   resetBtn.addEventListener('click', function () {
     regionSel.value = ''; categorySel.value = ''; memberSel.value = '';
+    endedCheck.checked = false;
     repopulateTagFilter('');
     render();
   });

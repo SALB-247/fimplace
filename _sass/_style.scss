@@ -345,24 +345,3 @@ content iframe[src*="instagram.com"] {
 }
 
 /* ---------- 지도 facade ---------- */
-.map-facade {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #e9eef3 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 20 C 35 20 25 30 25 45 C 25 65 50 85 50 85 C 50 85 75 65 75 45 C 75 30 65 20 50 20 Z M 50 52 C 46 52 43 49 43 45 C 43 41 46 38 50 38 C 54 38 57 41 57 45 C 57 49 54 52 50 52 Z' fill='%23888'/></svg>") center / 80px no-repeat;
-  cursor: pointer;
-  border-radius: $border-radius;
-  margin: 1em 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 1em;
-  text-align: center;
-  color: $color-subtext;
-  font-size: 0.9em;
-}
-
-.map-facade:hover {
-  background-color: #dfe7ee;
-}
-

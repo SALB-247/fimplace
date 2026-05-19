@@ -21,7 +21,15 @@ layout: default
     {% if page.members and page.members.size > 0 %}
     <div class="note-members">
       {% for member in page.members %}
-        <a class="member-chip member-{{ member | downcase }}" href="{{ site.baseurl }}/member/{{ member | downcase | url_encode }}/">{{ member }}</a>
+        {% assign emoji = '' %}
+        {% case member %}
+          {% when '사쿠라' %}{% assign emoji = '🌸' %}
+          {% when '김채원' %}{% assign emoji = '🐆' %}
+          {% when '허윤진' %}{% assign emoji = '🐍' %}
+          {% when '카즈하' %}{% assign emoji = '🦢' %}
+          {% when '홍은채' %}{% assign emoji = '🐥' %}
+        {% endcase %}
+        <a class="member-chip member-{{ member | downcase }}" href="{{ site.baseurl }}/member/{{ member | downcase | url_encode }}/">{{ emoji }} {{ member }}</a>
       {% endfor %}
     </div>
     {% endif %}
