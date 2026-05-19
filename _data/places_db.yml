@@ -63,9 +63,8 @@
   lng: 127.0580919133534
   source: iframe
 "SNS 장소":
-  lat: 37.8810569
-  lng: 127.7297641
-  source: nominatim
+  skipped: true
+  reason: "모음/목차 페이지 (단일 위치 없음)"
 "SPAGETTI 오프라인 이벤트":
   lat: 37.55715
   lng: 126.92369
@@ -802,9 +801,8 @@
   lng: 127.03788
   source: known:왕십리역
 "외부 컨텐츠 촬영지":
-  lat: 37.566571
-  lng: 126.9015317
-  source: nominatim
+  skipped: true
+  reason: "모음/목차 페이지 (단일 위치 없음)"
 "용산마루":
   lat: 37.5261609
   lng: 126.9633618
@@ -847,9 +845,8 @@
   lng: 126.3727702
   source: nominatim
 "자체 컨텐츠 촬영지":
-  lat: 37.566571
-  lng: 126.9015317
-  source: nominatim
+  skipped: true
+  reason: "모음/목차 페이지 (단일 위치 없음)"
 "쟈스민":
   lat: 37.8853
   lng: 127.7338
@@ -1221,17 +1218,8 @@
   lng: 127.185197
   source: nominatim
 
-"-자체 컨텐츠 촬영지":
-  skipped: true
-  reason: "모음/목차 페이지 (단일 위치 없음)"
 
-"-외부 컨텐츠 촬영지":
-  skipped: true
-  reason: "모음/목차 페이지 (단일 위치 없음)"
 
-"-SNS 장소":
-  skipped: true
-  reason: "모음/목차 페이지 (단일 위치 없음)"
 
 "SPAGHETTI 오프라인 이벤트":
   skipped: true

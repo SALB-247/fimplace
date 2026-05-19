@@ -50,30 +50,56 @@ permalink: /map/
   .leaflet-popup-content a { word-break: break-word; }
 
   /* 이모지 마커 */
+  /* Leaflet div-icon 기본 padding/margin 0 (치우침 원인 1) */
+  .leaflet-div-icon.fim-marker-wrap,
   .fim-marker-wrap {
     background: transparent !important; border: 0 !important;
-    overflow: visible !important; white-space: nowrap;
+    overflow: visible !important;
+    padding: 0 !important; margin: 0 !important;
+    display: flex !important; align-items: center; justify-content: center;
+    white-space: nowrap;
   }
   .fim-marker {
     width: 34px; height: 34px; border-radius: 50%;
     border: 2.5px solid #222; background: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.5);
     cursor: pointer; transition: transform 0.1s;
     white-space: nowrap; box-sizing: border-box;
+    text-align: center;
+    padding: 0;
   }
   .fim-marker:hover { transform: scale(1.15); }
+  /* 단일 이모지: span을 1em 정사각형으로 만들고 이모지를 그 안에서 flex 중앙 정렬
+     → 이모지 글리프 좌우 advance width 차이를 균일화 */
   .fim-marker span {
-    font-size: 18px; line-height: 1; letter-spacing: -2px;
-    white-space: nowrap; display: inline-block;
+    font-size: 18px; line-height: 1;
+    width: 1em; height: 1em;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* 이모지 컬러 폰트 명시 — 시스템별 일관성 ↑ */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+                 "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
+    letter-spacing: 0;
+    white-space: nowrap;
   }
   .fim-marker.multi {
     width: auto; min-width: 34px; border-radius: 999px;
     padding: 0 8px; height: 34px;
   }
-  .fim-marker.multi span { letter-spacing: 1px; }
+  /* 다중 이모지: 1em 사각형 강제 해제 (이모지들이 가로로 쭉 늘어나야 함) */
+  .fim-marker.multi span {
+    width: auto;
+    display: inline-flex !important;
+    letter-spacing: 1px;
+  }
   .fim-marker.mono { background: #f5f5f5; border-color: #555; }
   .fim-marker.mono span { font-size: 16px; }
+
+  /* 이모지별 시각 중심 보정 (글리프 비대칭 흡수) */
+  .fim-marker[data-member="허윤진"] span { transform: translateX(-1px); }
 </style>
 
 <div id="map-filters">
@@ -103,7 +129,7 @@ permalink: /map/
 <div id="map" style="width:100%; height:70vh; min-height:480px; border-radius:8px; border:1px solid hsl(0,0%,85%);"></div>
 
 <div id="map-legend" style="display:flex; flex-wrap:wrap; gap:0.7em; margin-top:0.6em; font-size:0.82em; color:hsl(0,0%,30%);">
-  <span>🌸 사쿠라</span> <span>🐆 김채원</span> <span>🐍 허윤진</span>
+  <span>🌸 사쿠라</span> <span>🐯 김채원</span> <span>🐍 허윤진</span>
   <span>🦢 카즈하</span> <span>🐥 홍은채</span> <span>📍 공통</span>
 </div>
 
@@ -211,7 +237,7 @@ permalink: /map/
   }
 
   var MEMBER_EMOJI = {
-    '사쿠라': '🌸', '김채원': '🐆', '허윤진': '🐍', '카즈하': '🦢', '홍은채': '🐥'
+    '사쿠라': '🌸', '김채원': '🐯', '허윤진': '🐍', '카즈하': '🦢', '홍은채': '🐥'
   };
   var MEMBER_BORDER = {
     '사쿠라': '#f0a8cf', '김채원': '#aeb7c2', '허윤진': '#44b5a3',
@@ -236,12 +262,13 @@ permalink: /map/
       var emoji = MEMBER_EMOJI[members[0]] || '·';
       var bg = MEMBER_BG[members[0]] || '#fff';
       var border = MEMBER_BORDER[members[0]] || '#222';
-      html = '<div class="fim-marker" style="background:' + bg + ';border-color:' + border + ';"><span>' + emoji + '</span></div>';
+      html = '<div class="fim-marker" data-member="' + members[0] + '" style="background:' + bg + ';border-color:' + border + ';"><span>' + emoji + '</span></div>';
       size = [34, 34];
     }
     return L.divIcon({
       className: 'fim-marker-wrap', html: html,
-      iconSize: size, iconAnchor: [size[0] / 2, size[1] / 2]
+      iconSize: size,
+      iconAnchor: [Math.round(size[0] / 2), Math.round(size[1] / 2)]
     });
   }
 
