@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 #
 # 노트별 좌표 해석 + places.json 생성
-# - 우선순위: frontmatter coords -> iframe 검색어 -> 상호명 -> iframe 좌표 -> 주소 캐스케이드 -> known_places -> cleaned title
+# - 우선순위: DB 캐시 -> frontmatter coords -> iframe 검색어 -> 상호명 -> 주소 캐스케이드 -> known_places -> cleaned title -> iframe !2d!3d (최후 fallback, KR만)
+# - iframe URL의 !2d/!3d는 지도 뷰포트 중심값이라 마커 좌표와 다를 수 있어 신뢰도 낮음 (Place ID 필요)
 # - 신규 해석된 노트는 _data/places_db.yml 에 정렬 유지하며 자동 추가
 require 'json'
 require 'set'
@@ -162,15 +163,43 @@ module PlacesGenerator
     nil
   end
 
+  # 이벤트 모음/목차 페이지 자동 감지
+  # 핵심 기준: "위치/상호명 섹션이 없는데 내부 링크가 다수" — 단일 장소가 아닌 인덱스
+  # 보조 기준: 총집편, 또는 "이벤트" + 모음 키워드, 또는 "이벤트"인데 날짜범위 없음
+  def self.compilation_page?(title, content)
+    has_location_block = content =~ /##\s*(위치|주소|상호명)/
+    links_count = content.scan(/\[\[[^\]]+\]\]/).size
+
+    # 명백한 키워드: 총집편 (단일 키워드만으로 확정)
+    return true if title.include?('총집편')
+
+    # "이벤트"가 들어간 제목 + YYMMDD-YYMMDD 날짜범위 없음 + 내부 링크 4개 이상
+    if title.include?('이벤트') && title !~ /\d{6}\s*[-~]\s*\d{6}/
+      return true if links_count >= 4 && !has_location_block
+    end
+
+    # "모음" 단어가 본문/제목에 있고 단일 위치 정보 없음
+    if (title.include?('모음') || content.include?('모음')) && !has_location_block && links_count >= 4
+      return true
+    end
+
+    # 내부 링크가 매우 많고 위치 정보 없음 (일반 인덱스 페이지)
+    return true if links_count >= 8 && !has_location_block
+
+    false
+  end
+
   def self.resolve_coords(site, note, content, address, business, iframe_query, tags, cache)
     if note.data['coords'].is_a?(Array) && note.data['coords'].size == 2
       lat, lng = note.data['coords']
       return { 'lat' => lat.to_f, 'lng' => lng.to_f, 'source' => 'frontmatter' }
     end
+
     region = region_from_address(address) || region_from_tags(tags)
     title = note.data['title'].to_s
     hints = tags + [title]
 
+    # iframe 검색어 (!2z base64) — 가장 신뢰도 높은 식별자
     if iframe_query && !iframe_query.empty?
       iq = [iframe_query]
       iq << "#{iframe_query} #{region}" if region && !iframe_query.include?(region)
@@ -182,16 +211,6 @@ module PlacesGenerator
       biz_queries = business_variants(business).flat_map { |b| region ? [b, "#{b} #{region}"] : [b] }.uniq
       result = GeocodeResolver.lookup_cascade(biz_queries, hints, cache)
       return result if result
-    end
-
-    if (m = content.match(MAP_COORD_REGEX))
-      lng = m[1].to_f
-      lat = m[2].to_f
-      if GeocodeResolver.in_korea?(lat, lng)
-        return { 'lat' => lat, 'lng' => lng, 'source' => 'iframe' }
-      else
-        Jekyll.logger.warn('Places', "iframe outside KR for '#{title}'") if defined?(Jekyll)
-      end
     end
 
     if address && !address.empty?
@@ -206,6 +225,15 @@ module PlacesGenerator
     if cleaned && cleaned.length >= 3
       result = GeocodeResolver.lookup(cleaned, tags, cache, source_tag: 'nominatim:title')
       return result if result
+    end
+
+    # 최후의 보루: iframe !2d!3d (지도 뷰포트 중심값이라 부정확 가능 — 한국 영역만 허용)
+    if (m = content.match(MAP_COORD_REGEX))
+      lng = m[1].to_f
+      lat = m[2].to_f
+      if GeocodeResolver.in_korea?(lat, lng)
+        return { 'lat' => lat, 'lng' => lng, 'source' => 'iframe' }
+      end
     end
 
     nil
@@ -310,6 +338,14 @@ module PlacesGenerator
           end
         end
 
+        # 이벤트 모음/목차 페이지 자동 감지 → skipped 캐싱
+        if !coords && PlacesGenerator.compilation_page?(title, content)
+          PlacesGenerator.append_db_entry(title, { 'skipped' => true, 'reason' => '이벤트 모음/목차 페이지 (자동 감지)' })
+          newly_skipped += 1
+          skipped << title
+          next
+        end
+
         unless coords
           coords = PlacesGenerator.resolve_coords(site, note, content, addr, biz, iframe_q, tags, cache)
           if coords
@@ -337,7 +373,6 @@ module PlacesGenerator
           'tags' => tags, 'members' => Array(note.data['members']).map(&:to_s), 'categories' => categories
         }
       end
-
       if defined?(Jekyll)
         Jekyll.logger.info('Places', "mapped #{places.size}, skipped #{skipped.size} (#{newly_resolved} new resolved, #{newly_skipped} new skipped)")
         source_counter.sort_by { |_, c| -c }.each { |s, c| Jekyll.logger.info('Places', "  source #{s}: #{c}") }
