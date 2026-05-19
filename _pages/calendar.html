@@ -1,0 +1,178 @@
+---
+layout: page
+title: 캘린더
+permalink: /calendar/
+published: false   # 이벤트 시즌에만 활성화 (nav.html 의 캘린더 링크도 함께 부활)
+sitemap: false
+---
+
+<h1>이벤트 캘린더</h1>
+
+<p style="color: hsl(0,0%,30%); font-size: 0.9em;">
+  노트 제목의 날짜(<code>YYMMDD-YYMMDD</code>) 패턴에서 자동 추출.
+  현재 진행 중인 광고/생일카페/이벤트를 한눈에 볼 수 있습니다.
+</p>
+
+<style>
+  .cal-tabs { display:flex; gap:0.4em; margin: 1em 0; flex-wrap: wrap; }
+  .cal-tab {
+    padding: 0.5em 1em;
+    border-radius: 999px;
+    border: 1px solid hsl(0,0%,85%);
+    background: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+  }
+  .cal-tab.active { background: #8b88e6; color: white; border-color: #8b88e6; }
+  .cal-section { margin: 1.5em 0; }
+  .cal-section h2 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    color: hsl(0,0%,15%);
+    border-bottom: 1px solid hsl(0,0%,90%);
+    padding-bottom: 0.3em;
+  }
+  .cal-list { list-style:none; padding: 0; }
+  .cal-list li {
+    padding: 0.6em 0;
+    border-bottom: 1px solid hsl(0,0%,93%);
+    display: grid;
+    grid-template-columns: minmax(120px, max-content) 1fr;
+    gap: 0.8em;
+    align-items: baseline;
+  }
+  .cal-date {
+    font-size: 0.82em;
+    color: hsl(0,0%,40%);
+    font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+    white-space: nowrap;
+  }
+  .cal-title a { word-break: break-word; }
+  .cal-badge {
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    border-radius: 999px;
+    font-size: 0.72em;
+    margin-left: 0.4em;
+    color: white;
+  }
+  .b-ongoing { background: #16a34a; }
+  .b-upcoming { background: #2563eb; }
+  .b-past { background: #9ca3af; }
+  .cal-empty { color: hsl(0,0%,50%); font-style: italic; padding: 0.5em 0; }
+  @media (max-width: 600px) {
+    .cal-list li { grid-template-columns: 1fr; gap: 0.2em; }
+  }
+</style>
+
+<div class="cal-tabs">
+  <button class="cal-tab active" data-filter="ongoing">진행 중</button>
+  <button class="cal-tab" data-filter="upcoming">예정</button>
+  <button class="cal-tab" data-filter="past">종료</button>
+  <button class="cal-tab" data-filter="all">전체</button>
+</div>
+
+<div id="cal-content"></div>
+
+<script>
+(function () {
+  // 제목에서 YYMMDD-YYMMDD 또는 YYMMDD 패턴 추출
+  // 예: "신용산역 DID광고_250302-250401" → 시작 250302, 종료 250401
+  function parseRange(title) {
+    var m = title.match(/(\d{6})[-_~]?(\d{4,6})?(?=[^\d]|$)/);
+    if (!m) return null;
+    var start = m[1];
+    var end = m[2] || start;
+    if (end.length === 4) end = start.substring(0, 2) + end; // 같은 해 가정
+    return { start: ymd(start), end: ymd(end) };
+  }
+  function ymd(s) {
+    // YYMMDD -> Date
+    var y = parseInt(s.substring(0, 2), 10) + 2000;
+    var mo = parseInt(s.substring(2, 4), 10) - 1;
+    var d = parseInt(s.substring(4, 6), 10);
+    if (mo < 0 || mo > 11 || d < 1 || d > 31) return null;
+    return new Date(y, mo, d);
+  }
+  function fmt(d) {
+    if (!d) return '?';
+    return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0');
+  }
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"]/g, function (c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
+  var contentEl = document.getElementById('cal-content');
+  var tabs = document.querySelectorAll('.cal-tab');
+  var EVENTS = [];
+
+  function bucketize() {
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var ongoing = [], upcoming = [], past = [];
+    EVENTS.forEach(function (e) {
+      if (!e.range) return;
+      var s = e.range.start, end = e.range.end;
+      if (!s || !end) return;
+      if (s <= now && now <= end) ongoing.push(e);
+      else if (s > now) upcoming.push(e);
+      else past.push(e);
+    });
+    return { ongoing: ongoing, upcoming: upcoming, past: past };
+  }
+
+  function renderList(events, label, badgeClass) {
+    if (events.length === 0) return '<p class="cal-empty">해당 기간 이벤트 없음.</p>';
+    events.sort(function (a, b) { return a.range.start - b.range.start; });
+    return '<ul class="cal-list">' + events.map(function (e) {
+      var s = fmt(e.range.start), en = fmt(e.range.end);
+      var same = s === en;
+      return '<li>' +
+        '<span class="cal-date">' + s + (same ? '' : ' ~ ' + en) + '</span>' +
+        '<span class="cal-title"><a href="' + e.url + '">' + escapeHtml(e.title) + '</a>' +
+        '<span class="cal-badge ' + badgeClass + '">' + label + '</span></span>' +
+        '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function render(filter) {
+    var b = bucketize();
+    if (filter === 'all') {
+      contentEl.innerHTML =
+        '<div class="cal-section"><h2>진행 중 (' + b.ongoing.length + ')</h2>' + renderList(b.ongoing, '진행중', 'b-ongoing') + '</div>' +
+        '<div class="cal-section"><h2>예정 (' + b.upcoming.length + ')</h2>' + renderList(b.upcoming, '예정', 'b-upcoming') + '</div>' +
+        '<div class="cal-section"><h2>종료 (' + b.past.length + ')</h2>' + renderList(b.past.slice(-50), '종료', 'b-past') + '</div>';
+    } else if (filter === 'ongoing') {
+      contentEl.innerHTML = '<div class="cal-section"><h2>진행 중 (' + b.ongoing.length + ')</h2>' + renderList(b.ongoing, '진행중', 'b-ongoing') + '</div>';
+    } else if (filter === 'upcoming') {
+      contentEl.innerHTML = '<div class="cal-section"><h2>예정 (' + b.upcoming.length + ')</h2>' + renderList(b.upcoming, '예정', 'b-upcoming') + '</div>';
+    } else if (filter === 'past') {
+      // 최근 100개만
+      contentEl.innerHTML = '<div class="cal-section"><h2>최근 종료 (' + b.past.length + ')</h2>' + renderList(b.past.slice(-100).reverse(), '종료', 'b-past') + '</div>';
+    }
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.classList.remove('active'); });
+      t.classList.add('active');
+      render(t.dataset.filter);
+    });
+  });
+
+  // 데이터 로드: search-index.json 사용 (제목 + URL 만 필요)
+  fetch('{{ site.baseurl }}/search-index.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      EVENTS = (data || []).map(function (it) {
+        return { title: it.title, url: it.url, range: parseRange(it.title) };
+      }).filter(function (e) { return e.range && e.range.start && e.range.end; });
+      render('ongoing');
+    })
+    .catch(function () {
+      contentEl.innerHTML = '<p>이벤트 데이터를 불러올 수 없습니다.</p>';
+    });
+})();
+</script>

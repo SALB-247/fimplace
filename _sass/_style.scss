@@ -167,6 +167,19 @@ content iframe[src*="naver.com"] {
   aspect-ratio: 4 / 3;
 }
 
+/* Instagram embed: 세로형 포스트 컨텐츠, aspect-ratio 비활성 */
+content iframe[src*="instagram.com"] {
+  aspect-ratio: auto;
+  max-width: 540px;
+  height: 720px;       /* 데스크탑 기본 (이미지 + 캡션) */
+  margin: 1em auto;
+}
+@media (max-width: 600px) {
+  content iframe[src*="instagram.com"] {
+    height: 620px;     /* 모바일에서는 약간 축소 */
+  }
+}
+
 /* ---------- 태그 / 멤버 칩 ---------- */
 .note-tags,
 .note-members {
@@ -197,12 +210,19 @@ content iframe[src*="naver.com"] {
   }
 }
 
-/* 멤버별 색상 (르세라핌 5인) */
-.member-chip.member-사쿠라      { background: #ffd9e8; color: #8b1e4a; }
-.member-chip.member-김채원      { background: #ffe5cc; color: #8b4a1e; }
-.member-chip.member-허윤진      { background: #fff4b8; color: #6e5b00; }
-.member-chip.member-카즈하      { background: #d6ecff; color: #1e4a8b; }
-.member-chip.member-홍은채      { background: #e0d6ff; color: #4a1e8b; }
+/* 멤버별 색상 — 지도 마커와 통일. 글자색은 WCAG AA 대비 충족 */
+.member-chip.member-사쿠라      { background: #f0a8cf; color: #4a1432; border: 1px solid #d97aa8; }
+.member-chip.member-김채원      { background: #aeb7c2; color: #1f2a36; border: 1px solid #8a96a5; }
+.member-chip.member-허윤진      { background: #44b5a3; color: #ffffff; border: 1px solid #2a8576; }
+.member-chip.member-카즈하      { background: #5f9fd6; color: #ffffff; border: 1px solid #3a78ad; }
+.member-chip.member-홍은채      { background: #f4857f; color: #4a0e0a; border: 1px solid #d05a52; }
+
+/* hover 시 명도 살짝 어둡게 */
+.member-chip.member-사쿠라:hover { background: #e98ebd !important; color: #4a1432 !important; }
+.member-chip.member-김채원:hover { background: #9aa4b1 !important; color: #1f2a36 !important; }
+.member-chip.member-허윤진:hover { background: #38a190 !important; color: #ffffff !important; }
+.member-chip.member-카즈하:hover { background: #4d8fc7 !important; color: #ffffff !important; }
+.member-chip.member-홍은채:hover { background: #ef6e67 !important; color: #4a0e0a !important; }
 
 /* ---------- 검색바 (nav) ---------- */
 .nav-row {

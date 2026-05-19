@@ -101,6 +101,15 @@ permalink: /map/
 
 <div id="map" style="width:100%; height:70vh; min-height:480px; border-radius:8px; border:1px solid hsl(0,0%,85%);"></div>
 
+<div id="map-legend" style="display:flex; flex-wrap:wrap; gap:0.6em; margin-top:0.5em; font-size:0.78em; color:hsl(0,0%,30%);">
+  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#f0a8cf; border:2px solid #222;"></span> 사쿠라</span>
+  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#aeb7c2; border:2px solid #222;"></span> 김채원</span>
+  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#44b5a3; border:2px solid #222;"></span> 허윤진</span>
+  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#5f9fd6; border:2px solid #222;"></span> 카즈하</span>
+  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#f4857f; border:2px solid #222;"></span> 홍은채</span>
+  <span style="display:inline-flex; align-items:center; gap:0.3em;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#9e9e9e; border:2px solid #222;"></span> 공통</span>
+</div>
+
 <p style="font-size:0.8em; color:hsl(0,0%,30%); margin-top:0.5em;">
   좌표가 있는 장소 수: <strong>{{ site.data.places_count | default: 0 }}</strong>
 </p>
@@ -135,17 +144,9 @@ permalink: /map/
   var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
     attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 18
   });
-  var vworldGray = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/gray/{z}/{y}/{x}.png', {
-    attribution: '&copy; VWorld', maxZoom: 18
-  });
-  var vworldHybrid = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Hybrid/{z}/{y}/{x}.png', {
-    attribution: '&copy; VWorld', maxZoom: 18
-  });
   vworldBase.addTo(map);
   L.control.layers({
     '🇰🇷 VWorld 한국': vworldBase,
-    '🇰🇷 VWorld 회색': vworldGray,
-    '🇰🇷 VWorld 위성+라벨': vworldHybrid,
     '깔끔 (Voyager)': voyager,
     '기본 (OSM)': osm,
     '위성 (Esri)': satellite
@@ -205,6 +206,29 @@ permalink: /map/
     tagSel.value = '';
   }
 
+  // 멤버별 마커 색상 (멤버 칩과 동일)
+  var MEMBER_COLOR = {
+    '사쿠라': '#f0a8cf',
+    '김채원': '#aeb7c2',
+    '허윤진': '#44b5a3',
+    '카즈하': '#5f9fd6',
+    '홍은채': '#f4857f'
+  };
+  function markerStyle(p) {
+    var members = p.members || [];
+    var color = members.length > 0 ? (MEMBER_COLOR[members[0]] || '#9e9e9e') : '#9e9e9e';
+    // 2인 이상: 두번째 멤버 색상으로 외곽선 (구분), 그 외: 진한 외곽선으로 가시성 확보
+    var stroke = members.length > 1 ? (MEMBER_COLOR[members[1]] || '#222') : '#222';
+    return {
+      radius: 8,
+      fillColor: color,
+      color: stroke,
+      weight: 2.5,        // 외곽선 두껍게
+      opacity: 1,
+      fillOpacity: 0.95
+    };
+  }
+
   function popupHtml(p) {
     var tagHtml = (p.tags || []).slice(0, 6).map(function (t) {
       return '<span style="display:inline-block; padding:0.05em 0.4em; margin-right:0.2em; background:#f0f0f5; border-radius:999px; font-size:0.78em;">#' + t + '</span>';
@@ -237,7 +261,7 @@ permalink: /map/
       return true;
     });
     filtered.forEach(function (p) {
-      var marker = L.marker([p.lat, p.lng]).bindPopup(popupHtml(p));
+      var marker = L.circleMarker([p.lat, p.lng], markerStyle(p)).bindPopup(popupHtml(p));
       cluster.addLayer(marker);
     });
     countEl.textContent = filtered.length + ' / ' + ALL.length + ' 장소';

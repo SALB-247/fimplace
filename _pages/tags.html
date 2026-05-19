@@ -7,20 +7,43 @@ permalink: /tags/
 <h1>모든 태그</h1>
 
 <p style="color: hsl(0,0%,30%); font-size: 0.9em;">
-  태그를 클릭하면 해당 카테고리의 장소들을 볼 수 있습니다.
+  카테고리별로 그룹화된 태그 목록입니다. 태그를 클릭하면 해당 장소들을 볼 수 있습니다.
 </p>
 
-<div class="tag-cloud">
-  {% if site.data.all_tags %}
-    {% for t in site.data.all_tags %}
-      <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t.name | url_encode }}/">
-        #{{ t.name }} <span style="opacity: 0.6">({{ t.count }})</span>
-      </a>
-    {% endfor %}
-  {% endif %}
-</div>
+<style>
+  .tag-cat-section { margin: 1.5em 0; }
+  .tag-cat-section h2 { margin-bottom: 0.4em; font-size: 1.05em; color: hsl(0,0%,15%); border-bottom: 1px solid hsl(0,0%,90%); padding-bottom: 0.2em; }
+  .tag-cat-section .tag-cloud { margin-top: 0.4em; }
+  .tag-cat-section .empty { font-size: 0.85em; color: hsl(0,0%,50%); }
+</style>
 
-<h2 id="members" style="margin-top: 2em;">멤버별</h2>
+{% if site.data.category_tags %}
+  {% for cat in site.data.category_tags %}
+    {% assign cat_name = cat[0] %}
+    {% assign cat_tags = cat[1] %}
+    {% if cat_tags and cat_tags.size > 0 %}
+    <section class="tag-cat-section">
+      <h2>{{ cat_name }} <span style="font-weight:normal; color:hsl(0,0%,50%); font-size:0.85em;">({{ cat_tags.size }})</span></h2>
+      <div class="tag-cloud">
+        {% for t in cat_tags %}
+          {% if cat_name contains '멤버' %}
+            <a class="member-chip member-{{ t | downcase }}" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/">{{ t }}</a>
+          {% else %}
+            <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/">#{{ t }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <p>카테고리 데이터가 아직 빌드되지 않았습니다.</p>
+{% endif %}
+
+<h2 id="members" style="margin-top: 2em;">멤버별 인덱스</h2>
+<p style="font-size:0.9em; color:hsl(0,0%,30%);">
+  태그에서 자동 추출된 멤버. 클릭 시 해당 멤버 등장 노트 목록으로 이동합니다.
+</p>
 
 <div class="tag-cloud">
   {% if site.data.all_members %}
@@ -30,6 +53,6 @@ permalink: /tags/
       </a>
     {% endfor %}
   {% else %}
-    <p style="color: hsl(0,0%,30%); font-size: 0.85em;">아직 멤버 정보가 등록된 노트가 없습니다. 노트 frontmatter에 <code>members:</code> 항목을 추가해보세요.</p>
+    <p style="color: hsl(0,0%,30%); font-size: 0.85em;">멤버 정보가 등록된 노트가 없습니다.</p>
   {% endif %}
 </div>

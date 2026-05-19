@@ -1,0 +1,59 @@
+<div class="share-buttons" style="display:flex; gap:0.5em; flex-wrap:wrap; margin: 1.5em 0 0.5em; font-size: 0.9em;">
+  <span style="color: hsl(0,0%,30%); align-self:center;">공유:</span>
+  <button type="button" class="share-btn" data-share="copy"
+          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid hsl(0,0%,85%); background:white; cursor:pointer; font-family:inherit;">
+    🔗 URL 복사
+  </button>
+  <a class="share-btn" data-share="twitter"
+     href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+     target="_blank" rel="noopener"
+     style="padding:0.4em 0.9em; border-radius:999px; border:1px solid hsl(0,0%,85%); background:white; text-decoration:none; color:inherit;">
+    𝕏 트위터
+  </a>
+  <button type="button" class="share-btn" data-share="webshare"
+          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid hsl(0,0%,85%); background:white; cursor:pointer; font-family:inherit;">
+    📤 공유…
+  </button>
+  <span id="share-toast" style="display:none; padding:0.4em 0.9em; background:#222; color:white; border-radius:999px; font-size:0.85em;">URL 복사됨!</span>
+</div>
+
+<script>
+(function () {
+  var btns = document.querySelectorAll('.share-btn');
+  var toast = document.getElementById('share-toast');
+  var url = '{{ site.url }}{{ site.baseurl }}{{ page.url }}';
+  var title = '{{ page.title | escape }}';
+
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.display = 'inline-block';
+    setTimeout(function () { toast.style.display = 'none'; }, 1800);
+  }
+
+  btns.forEach(function (b) {
+    var kind = b.getAttribute('data-share');
+    if (kind === 'copy') {
+      b.addEventListener('click', function () {
+        navigator.clipboard.writeText(url).then(function () {
+          showToast('🔗 URL 복사됨!');
+        }, function () {
+          // Fallback
+          var ta = document.createElement('textarea');
+          ta.value = url; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+          showToast('🔗 URL 복사됨!');
+        });
+      });
+    } else if (kind === 'webshare') {
+      if (!navigator.share) {
+        b.style.display = 'none';  // 미지원 시 숨김
+        return;
+      }
+      b.addEventListener('click', function () {
+        navigator.share({ title: title, url: url }).catch(function () {});
+      });
+    }
+  });
+})();
+</script>
