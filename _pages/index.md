@@ -17,13 +17,9 @@ permalink: /
 <strong>High-lighted list</strong>
 
 <!--<img src="assets/jqstsowdwl.jpg">-->
+<img src="assets/pf.jpg">
 
-<img src="assets/weverse_1-303499675.jpeg">
-
-
-🐍🦢
-
-[[진즈하여행 총집편]]
+[[PUREFLOW_pt1_오프라인 이벤트 모음]]
 
 <strong>둘러보기</strong>
 
