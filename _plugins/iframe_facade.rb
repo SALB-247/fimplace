@@ -24,11 +24,8 @@ module IframeFacade
       %(<div class="yt-facade" role="button" tabindex="0" aria-label="YouTube 영상 재생" data-yt-src="#{src}"><img loading="lazy" src="#{thumb}" alt="YouTube thumbnail"></div>)
     end
 
-    # 2) Google Maps
-    html = html.gsub(MAP_REGEX) do
-      src = Regexp.last_match(2)
-      %(<div class="map-facade" role="button" tabindex="0" aria-label="지도 보기" data-map-src="#{src}"><span>지도를 보려면 클릭하세요</span></div>)
-    end
+    # 2) Google Maps — facade 비활성화: 노트 진입 즉시 지도 보이도록 iframe 그대로 둠
+    # (loading=lazy 는 아래 GENERIC_IFRAME_REGEX 가 보강)
 
     # 3) 기타 iframe(이미 변환된 것 제외) - loading=lazy 보강
     html = html.gsub(GENERIC_IFRAME_REGEX) do
