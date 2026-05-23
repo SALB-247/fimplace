@@ -29,6 +29,9 @@ exclude:
   - .jekyll-cache/
   - .jekyll-metadata
   - .DS_Store
+  - scripts/
+  - _notes_import_output/
+  - .claude/
 keep_files: []
 # You may need to change the base URL depending on your deploy configuration.
 baseurl:             ''
