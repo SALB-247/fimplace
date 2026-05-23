@@ -150,7 +150,7 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  var map = L.map('map', { maxZoom: 18, minZoom: 6 }).setView([36.5, 127.8], 7);
+  var map = L.map('map', { maxZoom: 18, minZoom: 2 }).setView([36.5, 127.8], 7);
 
   var voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -252,6 +252,15 @@ permalink: /map/
     var countries = uniqueSort(places.map(function (p) { return p.country; }));
     if (countries.length <= 1) countrySel.style.display = 'none';
     rebuildOptions();
+    // 첫 로드 default: 한국 (있을 때). VWorld 타일 + 한국 중심 view.
+    if (countries.indexOf('kr') !== -1) {
+      countrySel.value = 'kr';
+      setTileForCountry('kr');
+      var v = COUNTRY_VIEW['kr'];
+      map.setView(v.center, v.zoom);
+      skipFitBoundsOnce = true;
+      rebuildOptions();
+    }
   }
 
   function applyEnded(arr) {
