@@ -7,6 +7,7 @@
 require 'json'
 require 'set'
 require 'base64'
+require 'date'
 
 module PlacesGenerator
   MAP_COORD_REGEX         = /maps\/embed\?[^"']*?!2d(-?\d+\.\d+)!3d(-?\d+\.\d+)/
@@ -29,6 +30,25 @@ module PlacesGenerator
   DOMINANT_REGIONS = %w[경기 강원 충북 충남 전북 전남 경북 경남 제주
                         서울 부산 대구 인천 광주 대전 울산 세종]
 
+  # 일본 광역 단위 (도도부현). 도시명은 광역으로 alias.
+  # 노트의 tags 에서 직접 매칭. 매칭은 긴 키 우선 (예: "야마나시현" > "야마나시")
+  JP_REGION_ALIAS = {
+    '도쿄'       => '도쿄',
+    '오다이바'   => '도쿄',
+    '오사카'     => '오사카',
+    '교토'       => '교토',
+    '나고야'     => '아이치현',
+    '아이치현'   => '아이치현',
+    '야마나시현' => '야마나시현',
+    '미에현'     => '미에현',
+    '카나가와현' => '카나가와현',
+    '고베'       => '효고현',
+    '효고현'     => '효고현',
+    '홋카이도'   => '홋카이도',
+    '후쿠오카'   => '후쿠오카'
+  }
+  JP_REGION_KEYS_SORTED = JP_REGION_ALIAS.keys.sort_by { |k| -k.length }
+
   ADDR_LINE_REGEX = /
     (?:#{KR_REGIONS.join('|')})
     (?:특별시|광역시|특별자치도|특별자치시|도)?
@@ -43,15 +63,24 @@ module PlacesGenerator
     '북촌'     => '서울 종로구', '익선동'   => '서울 종로구'
   }
 
-  def self.region_from_address(addr)
+  def self.region_from_address(addr, country = nil)
     return nil if addr.nil? || addr.empty?
+    return nil if country && country != 'kr'
     DOMINANT_REGIONS.each { |prefix| return prefix if addr.include?(prefix) }
     nil
   end
 
-  def self.region_from_tags(tags)
-    Array(tags).each do |t|
-      DOMINANT_REGIONS.each { |prefix| return prefix if t.to_s.include?(prefix) }
+  def self.region_from_tags(tags, country = nil)
+    arr = Array(tags).map(&:to_s)
+    if country == 'jp'
+      arr.each do |t|
+        JP_REGION_KEYS_SORTED.each { |k| return JP_REGION_ALIAS[k] if t.include?(k) }
+      end
+      return nil
+    end
+    return nil if country && country != 'kr'
+    arr.each do |t|
+      DOMINANT_REGIONS.each { |prefix| return prefix if t.include?(prefix) }
     end
     nil
   end
@@ -160,6 +189,50 @@ module PlacesGenerator
         return { 'lat' => lat, 'lng' => lng, 'source' => "known:#{key}" } if lat != 0 && lng != 0
       end
     end
+    nil
+  end
+
+  # YYMMDD 6자리 문자열 → Date (잘못된 값이면 nil)
+  def self.parse_yymmdd(str)
+    return nil unless str.is_a?(String) && str =~ /\A\d{6}\z/
+    Date.new(2000 + str[0..1].to_i, str[2..3].to_i, str[4..5].to_i)
+  rescue ArgumentError
+    nil
+  end
+
+  # 종료 여부 판정.
+  # 우선순위:
+  # 1) frontmatter end_date / valid_until / ended_at (YYYY-MM-DD 또는 Date)
+  # 2) 파일명 또는 title 에서 YYMMDD[-_~]YYMMDD 패턴 종료일
+  # 3) 파일명 또는 title 에서 YYMMDD[-_~]MMDD 패턴 (시작의 YY 차용)
+  # 매칭이 하나도 안 잡히면 nil (판정 불가 — 클라이언트 fallback)
+  def self.detect_ended(note, today)
+    %w[end_date valid_until ended_at].each do |k|
+      v = note.data[k]
+      next if v.nil? || v.to_s.empty?
+      begin
+        d = v.is_a?(Date) ? v : Date.parse(v.to_s)
+        return d < today
+      rescue ArgumentError
+        # invalid date string, skip
+      end
+    end
+
+    candidates = []
+    candidates << File.basename(note.path, '.*') if note.respond_to?(:path) && note.path
+    candidates << note.data['title'].to_s
+    candidates.compact.uniq.each do |s|
+      next if s.empty?
+      if (m = s.match(/(\d{6})[-_~](\d{6})(?=[^\d]|\z)/))
+        d = parse_yymmdd(m[2])
+        return d < today if d
+      end
+      if (m = s.match(/(\d{6})[-_~](\d{4})(?=[^\d]|\z)/))
+        d = parse_yymmdd(m[1][0..1] + m[2])
+        return d < today if d
+      end
+    end
+
     nil
   end
 
@@ -307,6 +380,7 @@ module PlacesGenerator
       tag_to_cats = PlacesGenerator.build_tag_to_categories(site)
       cache = GeocodeResolver.load_cache
       db = site.data['places_db'] || {}
+      today = Date.today
 
       places = []
       skipped = []
@@ -363,13 +437,20 @@ module PlacesGenerator
         categories << '기타' if categories.empty? && !tags.empty?
         source_counter[coords['source']] += 1
 
+        country = note.data['country'].to_s.downcase
+        country = 'kr' if country.empty?
+        region = PlacesGenerator.region_from_address(addr, country) ||
+                 PlacesGenerator.region_from_tags(tags, country)
+        ended = PlacesGenerator.detect_ended(note, today)
         places << {
           'title' => title, 'url' => "#{site.baseurl}#{note.url}",
           'lat' => coords['lat'], 'lng' => coords['lng'], 'source' => coords['source'],
           'address' => addr.to_s, 'business' => biz.to_s, 'iframe_q' => iframe_q.to_s,
           'kakao_url' => ext_urls['kakao'] ? "https://place.map.kakao.com/#{ext_urls['kakao']}" : '',
           'naver_url' => ext_urls['naver'].to_s,
-          'region' => PlacesGenerator.region_from_address(addr) || PlacesGenerator.region_from_tags(tags),
+          'country' => country,
+          'region' => region,
+          'ended' => ended,
           'tags' => tags, 'members' => Array(note.data['members']).map(&:to_s), 'categories' => categories
         }
       end

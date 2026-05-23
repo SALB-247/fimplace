@@ -42,26 +42,106 @@
   lat: 37.52904
   lng: 126.9658
   source: known:신용산역
+"Cafe Tapirosu":
+  lat: 35.66003331525706
+  lng: 139.7320823435513
+  source: frontmatter
 "Cafe거부기 앤 쿠펫 판교점":
   lat: 37.41348157196217
   lng: 127.09549951184967
   source: iframe
+"Chiikawa Land Nagoya PARCO":
+  lat: 35.16363085524375
+  lng: 136.90810802991047
+  source: frontmatter
+"Crescendo":
+  lat: 35.70005571091255
+  lng: 139.82712090367016
+  source: frontmatter
 "DID광고 (명동,신촌,잠실,건대입구역)_250315-250329":
   lat: 37.54029
   lng: 127.06973
   source: known:건대입구역
+"Delicius":
+  lat: 34.70266189491034
+  lng: 135.49661333558387
+  source: frontmatter
+"Furaibo Fukiage":
+  lat: 35.1594967131762
+  lng: 136.92833209981816
+  source: frontmatter
+"Ginan":
+  lat: 34.66391909903067
+  lng: 135.50492881026605
+  source: frontmatter
+"H.L.N.A SKYGARDEN":
+  lat: 35.62465430886911
+  lng: 139.77467065302824
+  source: frontmatter
 "HIDE AND SEEK 홍대점":
   lat: 37.55814857192415
   lng: 126.91766811185558
   source: iframe
+"HYSTERIC GLAMOUR SHIBUYA":
+  lat: 35.66521269479718
+  lng: 139.70260454751397
+  source: frontmatter
+"Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko)":
+  lat: 35.4857441319693
+  lng: 138.73497584047868
+  source: frontmatter
+"Hotokura Funari Kawaguchiko":
+  lat: 35.49048740790474
+  lng: 138.7608169183054
+  source: frontmatter
 "IFC몰":
   lat: 37.5250873
   lng: 126.9253994
   source: nominatim
+"ITALIAN＆BAKERY MACARONI CLUB":
+  lat: 35.48435623189231
+  lng: 138.77807930000588
+  source: frontmatter
+"KPOP TOGETHER x 맵달SEOUL (PUREFLOW_pt1_260522-260528)":
+  lat: 37.5477118
+  lng: 127.0668088
+  source: nominatim:cleaned
+"Kanekichien":
+  lat: 35.72764984794253
+  lng: 139.76569745569128
+  source: frontmatter
 "LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE":
   lat: 37.540550925498316
   lng: 127.0580919133534
   source: iframe
+"LE SSERAFIM 2026 SS POP UP":
+  lat: 37.5246532
+  lng: 126.9641564
+  source: nominatim
+"Matsusaka Beef WHAT’S (B1)":
+  lat: 35.0084357015462
+  lng: 135.75799042944726
+  source: frontmatter
+"Naruto Taiyaki Honpo Tenjinbashi 3 Chome":
+  lat: 34.70253757003955
+  lng: 135.51141223911097
+  source: frontmatter
+"Negishi Yurakucho Shop":
+  lat: 35.67653909873416
+  lng: 139.76468111733172
+  source: frontmatter
+"Neko Action":
+  lat: 35.72768669353171
+  lng: 139.76763741103352
+  source: frontmatter
+"Odaiba Beach":
+  lat: 35.63030123612463
+  lng: 139.77533818002368
+  source: frontmatter
+"PUREFLOW_pt1_오프라인 이벤트 모음":
+  lat: 37.49797
+  lng: 127.02768
+  source: known:강남역
 "SNS 장소":
   skipped: true
   reason: "모음/목차 페이지 (단일 위치 없음)"
@@ -69,15 +149,90 @@
   lat: 37.55715
   lng: 126.92369
   source: known:홍대
+"SPAGHETTI 오프라인 이벤트":
+  skipped: true
+  reason: "모음/목차 페이지 (단일 위치 없음)"
+"STUSSY Harajuku Chapter":
+  lat: 35.669678110516436
+  lng: 139.70738453924602
+  source: frontmatter
+"Santa Monica Crepes":
+  lat: 35.67024149167671
+  lng: 139.706579510499
+  source: frontmatter
+"Sushi Kan":
+  lat: 35.66201038472517
+  lng: 139.72520628284838
+  source: frontmatter
+"The Polo Women's Shop":
+  lat: 35.66561668955773
+  lng: 139.70477149999326
+  source: frontmatter
+"Udon-ya Fukusuke":
+  lat: 34.462363133471264
+  lng: 136.72314821725044
+  source: frontmatter
 "VIEW 376":
   lat: 37.527
   lng: 127.044
   source: manual
   note: "서울 강남구 압구정동 376-1 한강변 (청담나들목 인근) - 이전 좌표 수정"
+"Weverse Lucky Store (PUREFLOW_pt1)":
+  lat: 37.5306766
+  lng: 126.9655108
+  source: nominatim:cleaned
 "bar420":
   lat: 37.56855102401059
   lng: 126.98650887715222
   source: iframe
+"gelato pique cafe bio concept 表参道ヒルズ店":
+  lat: 35.666909456576704
+  lng: 139.70931384193594
+  source: frontmatter
+"ittan五條堂":
+  lat: 34.68788577806099
+  lng: 135.49744126442394
+  source: frontmatter
+"les joues de BeBe":
+  lat: 34.784145774612064
+  lng: 135.6269598988587
+  source: frontmatter
+"むっちゃん万十 博多バスターミナル店":
+  lat: 33.591432776926496
+  lng: 130.4196480920568
+  source: frontmatter
+"オザワ洋菓子店":
+  lat: 35.70538900506996
+  lng: 139.7644254913664
+  source: frontmatter
+"カプセル楽局谷中銀座商店街店":
+  lat: 35.72770045849337
+  lng: 139.765110738911
+  source: frontmatter
+"九州じゃんがら 芝大門店":
+  lat: 35.656439306332416
+  lng: 139.75358912883567
+  source: frontmatter
+"吉兆招福亭 おかげ横丁":
+  lat: 34.46256968629815
+  lng: 136.722656367524
+  source: frontmatter
+"呑喜屋":
+  lat: 34.79541864022743
+  lng: 135.4132364803413
+  source: frontmatter
+"川西屋":
+  lat: 34.46442564010486
+  lng: 136.72277481164298
+  source: frontmatter
+"極味や 名古屋パルコ店":
+  lat: 35.16362254533292
+  lng: 136.9073329895902
+  source: frontmatter
+"가와구치 호":
+  lat: 35.51647286692768
+  lng: 138.75609925844378
+  source: frontmatter
 "강남 G-Vision_250317-250319":
   lat: 37.49797
   lng: 127.02768
@@ -118,6 +273,10 @@
   lat: 37.5608615
   lng: 126.9259885
   source: iframe
+"곤파치 오다이바":
+  lat: 35.62818271917383
+  lng: 139.77369532883571
+  source: frontmatter
 "골든피스":
   lat: 37.537864471929474
   lng: 127.00065011335336
@@ -159,6 +318,10 @@
   lat: 35.871111119402364
   lng: 128.59059251332775
   source: iframe
+"규카츠 쿄토 카츠규 시부야 도겐자카점":
+  lat: 35.6573008934384
+  lng: 139.69619329999998
+  source: frontmatter
 "귤의정원 바령":
   lat: 33.505281873256855
   lng: 126.70349621169616
@@ -167,6 +330,10 @@
   lat: 37.55113617192602
   lng: 127.04477841185522
   source: iframe
+"글리코사인":
+  lat: 34.66890544009837
+  lng: 135.5010457711643
+  source: frontmatter
 "금수복국 해운대본점":
   lat: 35.1624
   lng: 129.1596
@@ -280,6 +447,10 @@
   lat: 37.46720400025496
   lng: 126.85479775222419
   source: iframe
+"도큐 플라자 하라주쿠 하라카도":
+  lat: 35.6683891419183
+  lng: 139.70471992883571
+  source: frontmatter
 "도토리캐리커쳐 망원점":
   lat: 37.5566478
   lng: 126.9048885
@@ -288,6 +459,10 @@
   lat: 37.5688306
   lng: 126.9689014
   source: nominatim
+"동구리 공화국 가마쿠라점":
+  lat: 35.3194498147501
+  lng: 139.5514141
+  source: frontmatter
 "동기간":
   lat: 37.85525050740018
   lng: 127.5464749133587
@@ -409,6 +584,10 @@
   lat: 37.5612
   lng: 127.00019
   source: nominatim
+"뮤직코리아 (PURELFOW_pt1)_260522-260531":
+  lat: 37.5656978
+  lng: 126.9778244
+  source: nominatim
 "미라벨 오에프알":
   lat: 37.579826873246155
   lng: 126.96939481335433
@@ -523,6 +702,14 @@
   lat: 37.5172094
   lng: 126.9040371
   source: nominatim
+"사유원":
+  lat: 36.0899049
+  lng: 128.6845156
+  source: nominatim
+"산리오 퓨로랜드":
+  lat: 35.62449019761734
+  lng: 139.42927154232862
+  source: frontmatter
 "삼겹살 전문점 대통령 본점":
   lat: 37.57560450071063
   lng: 126.99485201057385
@@ -539,6 +726,10 @@
   lat: 37.51423877193563
   lng: 127.64909531185396
   source: iframe
+"샤부겐":
+  lat: 35.676466211798825
+  lng: 139.736947
+  source: frontmatter
 "서면 고메":
   lat: 35.1574
   lng: 129.0596
@@ -594,6 +785,10 @@
   lat: 35.85704772017789
   lng: 128.5865642133275
   source: iframe
+"센트레 더 베이커리":
+  lat: 35.67554647307421
+  lng: 139.76659519999998
+  source: frontmatter
 "소인수서울 성수":
   lat: 37.5456157
   lng: 127.0447497
@@ -655,6 +850,14 @@
   lat: 37.5104372719367
   lng: 126.95578511185366
   source: iframe
+"시부야 스시 진난":
+  lat: 35.66174305844474
+  lng: 139.7001656711643
+  source: frontmatter
+"시코쓰 호":
+  lat: 42.75853796096147
+  lng: 141.3282578862878
+  source: frontmatter
 "식물원김밥 용산점":
   lat: 37.524
   lng: 126.992
@@ -692,18 +895,38 @@
   lat: 37.5421403
   lng: 127.0615505
   source: nominatim:cleaned
+"아라시야마 치쿠린":
+  lat: 35.01681430662937
+  lng: 135.6712905711643
+  source: frontmatter
 "아르떼뮤지엄 강릉":
   lat: 37.7916054
   lng: 128.9073854
   source: nominatim
+"아리마온센":
+  lat: 34.79925938095472
+  lng: 135.24628091795554
+  source: frontmatter
 "아스테리카 바이 더체어":
   lat: 37.23416347201036
   lng: 127.29005081184242
   source: iframe
+"아이스 오우카":
+  lat: 35.647728127863125
+  lng: 139.71085026883966
+  source: frontmatter
 "아침고요수목원":
   lat: 37.7417282
   lng: 127.3520162
   source: nominatim
+"아카사카 코미깡":
+  lat: 33.58608694009183
+  lng: 130.39148497245168
+  source: frontmatter
+"아카후쿠 본점":
+  lat: 34.46263193943961
+  lng: 136.72350232698582
+  source: frontmatter
 "안지랑곱창막창 앞산 본점":
   lat: 35.83754001787236
   lng: 128.57262802416506
@@ -716,6 +939,18 @@
   lat: 37.4913091
   lng: 127.0324917
   source: nominatim
+"애플뮤직 (PUREFLOW_pt1_260522-260531":
+  lat: 37.5566933
+  lng: 126.9367277
+  source: nominatim:road
+"야나카긴자":
+  lat: 35.7277674322777
+  lng: 139.7656588269858
+  source: frontmatter
+"야바톤 야바쵸본점":
+  lat: 35.16170879901201
+  lng: 136.90622537116428
+  source: frontmatter
 "어나더사이드":
   lat: 37.554127799999996
   lng: 126.837073
@@ -757,6 +992,9 @@
   lat: 37.57939657203516
   lng: 126.9820165777821
   source: iframe
+"오설록 콜라보_260522-260521":
+  skipped: true
+  reason: "resolver returned nil"
 "오설록 티하우스 북촌점":
   lat: 37.58089517203488
   lng: 126.98231627778208
@@ -770,6 +1008,14 @@
   lat: 37.535900039302476
   lng: 126.99003998813646
   source: iframe
+"오이시 공원 카페":
+  lat: 35.52294763273339
+  lng: 138.74576292650843
+  source: frontmatter
+"오타루 운하":
+  lat: 43.199029268337355
+  lng: 141.0021068711643
+  source: frontmatter
 "오토김밥 본점":
   lat: 37.5358
   lng: 126.993
@@ -788,6 +1034,10 @@
   lat: 37.6541371
   lng: 126.7757724
   source: nominatim:cleaned
+"와라야키 미깡":
+  lat: 34.79541864022743
+  lng: 135.4132364803413
+  source: frontmatter
 "와이레스 플래그십 스토어":
   lat: 37.58185669992861
   lng: 126.98034939784421
@@ -819,6 +1069,14 @@
   lat: 37.51147672675132
   lng: 127.10284450379183
   source: iframe
+"유니버설 스튜디오 재팬":
+  lat: 34.66569003645751
+  lng: 135.4323077711643
+  source: frontmatter
+"유야케 단단":
+  lat: 35.72764224515543
+  lng: 139.7670756711643
+  source: frontmatter
 "육담온 이태원점":
   lat: 37.53473102594937
   lng: 126.99270397715155
@@ -860,6 +1118,10 @@
   lat: 37.1876956
   lng: 126.65076
   source: nominatim
+"전율미궁":
+  lat: 35.48743467515755
+  lng: 138.7837124719319
+  source: frontmatter
 "정지애쿠킹스튜디오":
   lat: 37.5068015
   lng: 127.0254824
@@ -885,6 +1147,10 @@
   lat: 37.5259638
   lng: 126.9284184
   source: nominatim
+"조조엔 록본기점":
+  lat: 35.66389222501808
+  lng: 139.73130563557532
+  source: frontmatter
 "종로계림닭도리탕원조마포점":
   lat: 37.539599272045535
   lng: 126.94481417587248
@@ -928,6 +1194,14 @@
   lat: 37.70074087788364
   lng: 126.39455698454505
   source: iframe
+"츠키시마몬자 오코게 시부야":
+  lat: 35.660427507420785
+  lng: 139.6993698134929
+  source: frontmatter
+"카와구치코 자연생활관":
+  lat: 35.52290508476149
+  lng: 138.74556879720942
+  source: frontmatter
 "카페 시아 아틀리에_250730-250802":
   lat: 37.525110999999995
   lng: 126.969145
@@ -964,6 +1238,14 @@
   lat: 37.50940729301328
   lng: 127.05870498928158
   source: iframe
+"케이타운포유 Special Store (PUREFLOW_pt1_260523-260528)":
+  lat: 37.5128251
+  lng: 127.0572645
+  source: nominatim:cleaned
+"코가류 타코야끼 본점":
+  lat: 34.67224226952638
+  lng: 135.49774670270247
+  source: frontmatter
 "코이크":
   lat: 37.562267324370914
   lng: 126.92129687715205
@@ -972,6 +1254,10 @@
   lat: 37.54933153475944
   lng: 126.91759575208236
   source: iframe
+"쿠시카츠 다루마 도톤보리점":
+  lat: 34.66883951198686
+  lng: 135.5026406822117
+  source: frontmatter
 "쿨키즈 쿠키 용산점":
   lat: 37.531684
   lng: 126.9718384
@@ -1001,6 +1287,10 @@
   lat: 35.14850465893755
   lng: 129.06466071331508
   source: iframe
+"텐푸라 히라오 다이묘점":
+  lat: 33.5888104303477
+  lng: 130.3942868558215
+  source: frontmatter
 "토담골 논현점":
   lat: 37.50866
   lng: 127.0343
@@ -1026,6 +1316,10 @@
   lat: 37.5184679
   lng: 127.0260551
   source: nominatim
+"팀랩 플래닛 도쿄":
+  lat: 35.64906403124433
+  lng: 139.78979535767138
+  source: frontmatter
 "파니에":
   lat: 35.158305899999995
   lng: 128.98993744863284
@@ -1034,10 +1328,22 @@
   lat: 35.1602041
   lng: 129.1652071
   source: nominatim
+"파리미키 시부야점":
+  lat: 35.66194987530108
+  lng: 139.7005953288357
+  source: frontmatter
 "파차마마베이커리":
   lat: 37.5334386
   lng: 126.9740959
   source: nominatim
+"파티셰리 몽쉐르 도지마 본점":
+  lat: 34.6948174893997
+  lng: 135.4954685288357
+  source: frontmatter
+"팡 메종 긴자점":
+  lat: 35.671556342091215
+  lng: 139.7705129423286
+  source: frontmatter
 "페스타 바이 민구":
   lat: 37.55012347192626
   lng: 126.99958811185526
@@ -1074,6 +1380,10 @@
   lat: 37.556837852377015
   lng: 126.92108863409352
   source: iframe
+"피에르 마르코리니 긴자본점":
+  lat: 35.671136280418345
+  lng: 139.76353841285862
+  source: frontmatter
 "하도세미":
   lat: 33.521034673250554
   lng: 126.88639081169671
@@ -1136,6 +1446,10 @@
   lat: 35.0197491
   lng: 126.781814
   source: nominatim
+"한일관":
+  lat: 34.67468895914544
+  lng: 135.50508091779184
+  source: frontmatter
 "한정선":
   lat: 37.542931025362726
   lng: 127.0516024127205
@@ -1176,6 +1490,18 @@
   lat: 35.158584972646956
   lng: 129.1683114117592
   source: iframe
+"호루탄야 (Horutanya)":
+  lat: 35.16799190337118
+  lng: 136.9037556134929
+  source: frontmatter
+"호시노 리조트 토마무 운카이 테라스":
+  lat: 43.07711876769242
+  lng: 142.59879045397162
+  source: frontmatter
+"혼 세키구치":
+  lat: 34.666290913966044
+  lng: 135.50535179919157
+  source: frontmatter
 "홍대 대형 전광판_250312-250319":
   lat: 37.554844
   lng: 126.9231535
@@ -1209,6 +1535,10 @@
   lat: 37.51934717193428
   lng: 126.97243311185397
   source: iframe
+"후지큐 하이랜드":
+  lat: 35.48694233203442
+  lng: 138.7805618288357
+  source: frontmatter
 "후지필름 하우스오브포토그래피서울":
   lat: 37.53473102594937
   lng: 126.99270397715155
@@ -1217,10 +1547,7 @@
   lat: 37.5201192
   lng: 127.185197
   source: nominatim
-
-
-
-
-"SPAGHETTI 오프라인 이벤트":
-  skipped: true
-  reason: "모음/목차 페이지 (단일 위치 없음)"
+"히미츠도":
+  lat: 35.72733091552948
+  lng: 139.76661303104703
+  source: frontmatter

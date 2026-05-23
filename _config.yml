@@ -29,6 +29,7 @@ exclude:
   - .jekyll-cache/
   - .jekyll-metadata
   - .DS_Store
+  - scripts/
 keep_files: []
 # You may need to change the base URL depending on your deploy configuration.
 baseurl:             ''

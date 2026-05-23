@@ -4,3 +4,62 @@
   lng: 127.3520162
   source: nominatim
   matched: "아침고요수목원, 432, 행현리, 상면, 가평군, 경기도, 12448, 대한민국"
+"맵달SEOUL 성수":
+  failed: true
+"맵달SEOUL 성수 서울":
+  lat: 37.5477118
+  lng: 127.0668088
+  source: nominatim:cleaned
+  matched: "서울 양평해장국"
+"LE SSERAFIM 2026 SS POP UP":
+  failed: true
+"LE SSERAFIM 2026 SS POP UP 서울":
+  failed: true
+"서울 용산구 한강대로 42":
+  lat: 37.5246532
+  lng: 126.9641564
+  source: nominatim
+  matched: "42, 한강대로, 한강로3가, 한강로동, 용산구, 서울특별시, 04389, 대한민국"
+"Weverse Lucky Store  PUREFLOW_pt1":
+  failed: true
+"Weverse Lucky Store  PUREFLOW_pt1  서울":
+  failed: true
+"서울특별시 용산구 한강대로 23길 55 CGV 용산 아이파크몰 7층 오픈스튜디오":
+  failed: true
+"서울특별시 용산구 한강대로 23길 55 CGV 용산 아이파크몰":
+  lat: 37.5306766
+  lng: 126.9655108
+  source: nominatim:cleaned
+  matched: "CGV 용산"
+"뮤직코리아 명동 2호점":
+  lat: 37.5656978
+  lng: 126.9778244
+  source: nominatim
+  matched: "2호선"
+"사유원":
+  failed: true
+"사유원 대구":
+  failed: true
+"대구 군위군 부계면 치산효령로 1176":
+  lat: 36.0899049
+  lng: 128.6845156
+  source: nominatim
+  matched: "치산효령로, 부계면, 군위군, 대구광역시, 43162, 대한민국"
+"오피크 현대백화점 유플렉스신촌점":
+  failed: true
+"오피크 현대백화점 유플렉스신촌점 서울":
+  failed: true
+"오피크 현대백화점 유플렉스신촌":
+  lat: 37.5566933
+  lng: 126.9367277
+  source: nominatim:road
+  matched: "오크베리 현대백화점 유플렉스 신촌점"
+"오설록 콜라보":
+  failed: true
+"케타포 코엑스":
+  failed: true
+"케타포 코엑스 서울":
+  lat: 37.5128251
+  lng: 127.0572645
+  source: nominatim:cleaned
+  matched: "코엑스 인터콘티넨탈 호텔 서울"

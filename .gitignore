@@ -5,7 +5,8 @@ _site/
 .sass-cache/
 
 # === 자동 생성 (커밋 X) ===
-_includes/notes_graph.json   # bidirectional_links_generator 가 매 빌드마다 갱신
+# bidirectional_links_generator 가 매 빌드마다 갱신
+_includes/notes_graph.json
 *.tmp
 *.bak
 

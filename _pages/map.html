@@ -103,6 +103,9 @@ permalink: /map/
 </style>
 
 <div id="map-filters">
+  <select id="filter-country" aria-label="국가 필터">
+    <option value="">🌏 전체</option>
+  </select>
   <select id="filter-region" aria-label="지역 필터">
     <option value="">🗺️ 지역 (전체)</option>
   </select>
@@ -166,6 +169,7 @@ permalink: /map/
     attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 18
   });
   vworldBase.addTo(map);
+  var currentTile = vworldBase;
   L.control.layers({
     '🇰🇷 VWorld 한국': vworldBase,
     '깔끔 (Voyager)': voyager,
@@ -174,6 +178,8 @@ permalink: /map/
   }, null, { position: 'topright', collapsed: true }).addTo(map);
   {% else %}
   voyager.addTo(map);
+  var vworldBase = null;
+  var currentTile = voyager;
   L.control.layers({
     '깔끔 (Voyager)': voyager,
     '기본 (OSM)': osm,
@@ -181,9 +187,19 @@ permalink: /map/
   }, null, { position: 'topright', collapsed: true }).addTo(map);
   {% endif %}
 
+  // country 변경 시 자동 타일 전환: 한국=VWorld(있을 때), 그 외=Voyager
+  function setTileForCountry(country) {
+    var next = (country === 'kr' && vworldBase) ? vworldBase : voyager;
+    if (currentTile === next) return;
+    map.removeLayer(currentTile);
+    map.addLayer(next);
+    currentTile = next;
+  }
+
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
 
+  var countrySel  = document.getElementById('filter-country');
   var regionSel   = document.getElementById('filter-region');
   var categorySel = document.getElementById('filter-category');
   var tagSel      = document.getElementById('filter-tag');
@@ -194,10 +210,29 @@ permalink: /map/
 
   var ALL = [];
   var CATEGORY_TAGS = {};
+  var COUNTRY_LABEL = {
+    kr: '🇰🇷 한국', jp: '🇯🇵 일본', tw: '🇹🇼 대만',
+    us: '🇺🇸 미국', cn: '🇨🇳 중국', th: '🇹🇭 태국'
+  };
+  // country 변경 시 지도 중심/줌. '' (전체)는 한국+일본을 함께 보이는 줌.
+  var COUNTRY_VIEW = {
+    '':  { center: [36.5, 132.0], zoom: 5 },
+    kr:  { center: [36.5, 127.8], zoom: 7 },
+    jp:  { center: [36.0, 138.0], zoom: 5 },
+    tw:  { center: [23.7, 121.0], zoom: 7 },
+    us:  { center: [39.0, -98.0], zoom: 4 },
+    cn:  { center: [35.0, 105.0], zoom: 4 },
+    th:  { center: [13.7, 100.5], zoom: 6 }
+  };
+  // country 변경 직후엔 render 의 자동 fitBounds 를 한 번 스킵 (setView 의도 보존)
+  var skipFitBoundsOnce = false;
 
-  // 제목 YYMMDD-YYMMDD 종료일이 오늘보다 과거면 ended
+  // 종료 판정: places.json 의 ended 필드(서버 계산)를 우선,
+  // 없으면 제목의 YYMMDD-YYMMDD 패턴 fallback.
   var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
-  function isEnded(title) {
+  function isEnded(p) {
+    if (p && typeof p.ended === 'boolean') return p.ended;
+    var title = (p && typeof p === 'object') ? p.title : p;
     if (!title) return false;
     var m = title.match(/(\d{6})[-_~]?(\d{4,6})?(?=[^\d]|$)/);
     if (!m) return false;
@@ -213,27 +248,104 @@ permalink: /map/
   function uniqueSort(arr) { return Array.from(new Set(arr.filter(Boolean))).sort(); }
 
   function buildStaticFilters(places) {
-    var regions = uniqueSort(places.map(function (p) { return p.region; }));
-    var members = uniqueSort([].concat.apply([], places.map(function (p) { return p.members || []; })));
-    regions.forEach(function (r) { regionSel.add(new Option(r, r)); });
-    members.forEach(function (m) { memberSel.add(new Option(m, m)); });
-    Object.keys(CATEGORY_TAGS).forEach(function (cat) {
-      var cnt = CATEGORY_TAGS[cat].length;
-      categorySel.add(new Option(cat + ' (' + cnt + ')', cat));
-    });
+    // 1개 국가뿐이면 country 셀렉터 자체를 숨김 (UI 깔끔). 옵션 채우기는 rebuildOptions 가 담당.
+    var countries = uniqueSort(places.map(function (p) { return p.country; }));
+    if (countries.length <= 1) countrySel.style.display = 'none';
+    rebuildOptions();
   }
 
-  function repopulateTagFilter(category) {
-    while (tagSel.options.length > 1) tagSel.remove(1);
-    if (!category) {
-      tagSel.options[0].text = '📂 세부 카테고리 (카테고리 먼저)';
-      tagSel.disabled = true; tagSel.value = ''; return;
+  function applyEnded(arr) {
+    if (endedCheck.checked) return arr;
+    return arr.filter(function (p) { return !isEnded(p); });
+  }
+
+  // 한 select 의 옵션을 카운트와 함께 재구성. count 0 옵션은 제외.
+  // currentValue 가 새 옵션에 없으면 빈 값으로 reset.
+  function rebuildSelect(sel, items, currentValue, labelFn, firstText) {
+    if (firstText !== undefined) sel.options[0].text = firstText;
+    while (sel.options.length > 1) sel.remove(1);
+    var seen = false;
+    items.forEach(function (it) {
+      if (!it.count) return;
+      sel.add(new Option(labelFn(it.value, it.count), it.value));
+      if (it.value === currentValue) seen = true;
+    });
+    sel.value = seen ? currentValue : '';
+  }
+
+  // 상위 필터(country→region→category→tag) 적용 후 풀 단계별로 잘라
+  // 각 select 의 유효 옵션 + 카운트를 동적으로 재구성. 0 옵션은 자동 숨김.
+  function rebuildOptions() {
+    var cc = countrySel.value, r = regionSel.value, c = categorySel.value, t = tagSel.value;
+
+    var basePool     = applyEnded(ALL);
+    var afterCountry = basePool.filter(function (p) { return !cc || p.country === cc; });
+    var afterRegion  = afterCountry.filter(function (p) { return !r  || p.region  === r;  });
+    var afterCategory= afterRegion.filter(function (p) { return !c || (p.categories || []).indexOf(c) !== -1; });
+    var afterTag     = afterCategory.filter(function (p) { return !t || (p.tags       || []).indexOf(t) !== -1; });
+
+    // country: 상위 없음 → basePool 기준
+    var countryCounts = {};
+    basePool.forEach(function (p) { countryCounts[p.country] = (countryCounts[p.country] || 0) + 1; });
+    var countryItems = Object.keys(countryCounts).sort().map(function (k) { return { value: k, count: countryCounts[k] }; });
+    rebuildSelect(countrySel, countryItems, cc,
+      function (v, n) { return (COUNTRY_LABEL[v] || v.toUpperCase()) + ' (' + n + ')'; },
+      '🌏 전체 (' + basePool.length + ')');
+
+    // region: country 적용 후 풀 (null region 은 옵션에서 제외)
+    var regionCounts = {};
+    afterCountry.forEach(function (p) { if (p.region) regionCounts[p.region] = (regionCounts[p.region] || 0) + 1; });
+    var regionItems = Object.keys(regionCounts).sort().map(function (k) { return { value: k, count: regionCounts[k] }; });
+    if (regionItems.length === 0) {
+      while (regionSel.options.length > 1) regionSel.remove(1);
+      regionSel.options[0].text = '🗺️ 지역 (해당 풀에 없음)';
+      regionSel.disabled = true; regionSel.value = '';
+    } else {
+      regionSel.disabled = false;
+      rebuildSelect(regionSel, regionItems, r,
+        function (v, n) { return v + ' (' + n + ')'; },
+        '🗺️ 지역 전체 (' + afterCountry.length + ')');
     }
-    var tags = CATEGORY_TAGS[category] || [];
-    tagSel.options[0].text = '📂 ' + category + ' 전체';
-    tagSel.disabled = false;
-    tags.forEach(function (t) { tagSel.add(new Option('#' + t, t)); });
-    tagSel.value = '';
+
+    // category: region 적용 후 풀 + CATEGORY_TAGS 키 순서 유지
+    var categoryCounts = {};
+    afterRegion.forEach(function (p) {
+      (p.categories || []).forEach(function (cat) { categoryCounts[cat] = (categoryCounts[cat] || 0) + 1; });
+    });
+    var categoryItems = Object.keys(CATEGORY_TAGS).map(function (cat) { return { value: cat, count: categoryCounts[cat] || 0 }; });
+    rebuildSelect(categorySel, categoryItems, c,
+      function (v, n) { return v + ' (' + n + ')'; },
+      '🏷️ 카테고리 전체');
+
+    // tag: category 적용 후 풀 + 해당 카테고리의 태그 목록
+    if (!c) {
+      while (tagSel.options.length > 1) tagSel.remove(1);
+      tagSel.options[0].text = '📂 세부 카테고리 (카테고리 먼저)';
+      tagSel.disabled = true; tagSel.value = '';
+    } else {
+      var tagsForCat = CATEGORY_TAGS[c] || [];
+      var tagCounts = {};
+      afterCategory.forEach(function (p) {
+        (p.tags || []).forEach(function (tk) {
+          if (tagsForCat.indexOf(tk) !== -1) tagCounts[tk] = (tagCounts[tk] || 0) + 1;
+        });
+      });
+      var tagItems = tagsForCat.map(function (tk) { return { value: tk, count: tagCounts[tk] || 0 }; });
+      tagSel.disabled = false;
+      rebuildSelect(tagSel, tagItems, t,
+        function (v, n) { return '#' + v + ' (' + n + ')'; },
+        '📂 ' + c + ' 전체');
+    }
+
+    // member: tag 적용 후 풀 (멤버 미기재 노트는 개별 멤버 카운트에 포함하지 않음)
+    var memberCounts = {};
+    afterTag.forEach(function (p) {
+      (p.members || []).forEach(function (mm) { memberCounts[mm] = (memberCounts[mm] || 0) + 1; });
+    });
+    var memberItems = Object.keys(memberCounts).sort().map(function (k) { return { value: k, count: memberCounts[k] }; });
+    rebuildSelect(memberSel, memberItems, memberSel.value,
+      function (v, n) { return v + ' (' + n + ')'; },
+      '👥 멤버 전체');
   }
 
   var MEMBER_EMOJI = {
@@ -280,7 +392,7 @@ permalink: /map/
     if (p.kakao_url) extLinks.push('<a href="' + p.kakao_url + '" target="_blank" rel="noopener">카카오</a>');
     if (p.naver_url) extLinks.push('<a href="' + p.naver_url + '" target="_blank" rel="noopener">네이버</a>');
     var srcBadge = p.source ? '<span style="font-size:0.7em; color:#999;">[' + p.source + ']</span>' : '';
-    var endedBadge = isEnded(p.title) ? '<span style="font-size:0.7em; color:#fff; background:#999; padding:0.1em 0.4em; border-radius:999px; margin-left:0.3em;">종료</span>' : '';
+    var endedBadge = isEnded(p) ? '<span style="font-size:0.7em; color:#fff; background:#999; padding:0.1em 0.4em; border-radius:999px; margin-left:0.3em;">종료</span>' : '';
     return '<div style="min-width:200px">' +
       '<strong><a href="' + p.url + '">' + p.title + '</a></strong> ' + srcBadge + endedBadge +
       (p.business && p.business !== p.title ? '<div style="font-size:0.8em; color:#444; margin-top:0.2em;">' + p.business + '</div>' : '') +
@@ -292,6 +404,7 @@ permalink: /map/
 
   function render() {
     cluster.clearLayers();
+    var cc = countrySel.value;
     var r = regionSel.value;
     var c = categorySel.value;
     var t = tagSel.value;
@@ -300,10 +413,11 @@ permalink: /map/
     var totalEnded = 0;
     var filtered = ALL.filter(function (p) {
       // 종료된 이벤트는 토글 OFF일 때 숨김
-      if (isEnded(p.title)) {
+      if (isEnded(p)) {
         totalEnded++;
         if (!includeEnded) return false;
       }
+      if (cc && p.country !== cc) return false;
       if (r && p.region !== r) return false;
       if (c && (!p.categories || p.categories.indexOf(c) === -1)) return false;
       if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
@@ -319,26 +433,38 @@ permalink: /map/
     if (!includeEnded && totalEnded > 0) msg += ' (종료 ' + totalEnded + '개 숨김)';
     countEl.textContent = msg;
 
-    if (filtered.length > 0) {
+    if (filtered.length > 0 && !skipFitBoundsOnce) {
       try {
         var bounds = L.latLngBounds(filtered.map(function (p) { return [p.lat, p.lng]; }));
         map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
       } catch (e) {}
     }
+    skipFitBoundsOnce = false;
   }
 
-  regionSel.addEventListener('change', render);
-  memberSel.addEventListener('change', render);
-  endedCheck.addEventListener('change', render);
-  categorySel.addEventListener('change', function () {
-    repopulateTagFilter(categorySel.value);
+  countrySel.addEventListener('change', function () {
+    var cc = countrySel.value;
+    setTileForCountry(cc);
+    var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
+    map.setView(v.center, v.zoom);
+    skipFitBoundsOnce = true;
+    rebuildOptions();
     render();
   });
-  tagSel.addEventListener('change', render);
+  regionSel.addEventListener('change',   function () { rebuildOptions(); render(); });
+  categorySel.addEventListener('change', function () { rebuildOptions(); render(); });
+  tagSel.addEventListener('change',      function () { rebuildOptions(); render(); });
+  endedCheck.addEventListener('change',  function () { rebuildOptions(); render(); });
+  memberSel.addEventListener('change', render);
   resetBtn.addEventListener('click', function () {
+    countrySel.value = '';
     regionSel.value = ''; categorySel.value = ''; memberSel.value = '';
     endedCheck.checked = false;
-    repopulateTagFilter('');
+    setTileForCountry('');
+    var v = COUNTRY_VIEW[''];
+    map.setView(v.center, v.zoom);
+    skipFitBoundsOnce = true;
+    rebuildOptions();
     render();
   });
 
