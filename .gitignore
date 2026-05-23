@@ -10,6 +10,12 @@ _includes/notes_graph.json
 *.tmp
 *.bak
 
+# === 임포트/유틸 스크립트 (사이트 빌드와 무관, 로컬 작업용) ===
+scripts/
+
+# === 임포트 산출물 (검수 후 _notes/ 로 이동, 본 폴더는 임시) ===
+_notes_import_output/
+
 # === Obsidian / 에디터 설정 (개인 환경) ===
 .obsidian/
 _notes/.obsidian/
