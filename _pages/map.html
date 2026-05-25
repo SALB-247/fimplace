@@ -210,20 +210,48 @@ permalink: /map/
 
   var ALL = [];
   var CATEGORY_TAGS = {};
+  // 이 country 들만 지도에 노출 (빈 배열이면 모두 표시).
+  // 향후 노트 검수 끝나면 'hk','mo','tw','fr','it' 등 추가 또는 배열 비우기.
+  var VISIBLE_COUNTRIES = ['kr', 'jp'];
   var COUNTRY_LABEL = {
     kr: '🇰🇷 한국', jp: '🇯🇵 일본', tw: '🇹🇼 대만',
-    us: '🇺🇸 미국', cn: '🇨🇳 중국', th: '🇹🇭 태국'
+    us: '🇺🇸 미국', cn: '🇨🇳 중국', th: '🇹🇭 태국',
+    hk: '🇭🇰 홍콩', mo: '🇲🇴 마카오',
+    fr: '🇫🇷 프랑스', it: '🇮🇹 이탈리아', gb: '🇬🇧 영국'
   };
+  // 여러 country 를 셀렉터에서 한 옵션으로 묶기 위한 그룹.
+  // members 의 country 들은 그룹 ID 로 합쳐서 카운트·필터·setView 처리됨.
+  var COUNTRY_GROUPS = {
+    hk_mo: { label: '🇭🇰 홍콩·마카오', members: ['hk', 'mo'] }
+  };
+  var COUNTRY_TO_GROUP = {};
+  Object.keys(COUNTRY_GROUPS).forEach(function (gid) {
+    COUNTRY_GROUPS[gid].members.forEach(function (c) { COUNTRY_TO_GROUP[c] = gid; });
+  });
+
   // country 변경 시 지도 중심/줌. '' (전체)는 한국+일본을 함께 보이는 줌.
   var COUNTRY_VIEW = {
-    '':  { center: [36.5, 132.0], zoom: 5 },
-    kr:  { center: [36.5, 127.8], zoom: 7 },
-    jp:  { center: [36.0, 138.0], zoom: 5 },
-    tw:  { center: [23.7, 121.0], zoom: 7 },
-    us:  { center: [39.0, -98.0], zoom: 4 },
-    cn:  { center: [35.0, 105.0], zoom: 4 },
-    th:  { center: [13.7, 100.5], zoom: 6 }
+    '':    { center: [36.5, 132.0], zoom: 5 },
+    kr:    { center: [36.5, 127.8], zoom: 7 },
+    jp:    { center: [36.0, 138.0], zoom: 5 },
+    tw:    { center: [23.7, 121.0], zoom: 7 },
+    us:    { center: [39.0, -98.0], zoom: 4 },
+    cn:    { center: [35.0, 105.0], zoom: 4 },
+    th:    { center: [13.7, 100.5], zoom: 6 },
+    hk:    { center: [22.32, 114.17], zoom: 11 },
+    mo:    { center: [22.20, 113.55], zoom: 12 },
+    hk_mo: { center: [22.28, 113.95], zoom: 10 },
+    fr:    { center: [48.86, 2.35], zoom: 6 },
+    it:    { center: [42.0, 12.5], zoom: 6 },
+    gb:    { center: [51.5, -0.12], zoom: 6 }
   };
+  // 그룹 ID 선택 시 매칭 헬퍼 (render·rebuildOptions 공용)
+  function countryMatches(p, cc) {
+    if (!cc) return true;
+    var group = COUNTRY_GROUPS[cc];
+    if (group) return group.members.indexOf(p.country) !== -1;
+    return p.country === cc;
+  }
   // country 변경 직후엔 render 의 자동 fitBounds 를 한 번 스킵 (setView 의도 보존)
   var skipFitBoundsOnce = false;
 
@@ -288,17 +316,23 @@ permalink: /map/
     var cc = countrySel.value, r = regionSel.value, c = categorySel.value, t = tagSel.value;
 
     var basePool     = applyEnded(ALL);
-    var afterCountry = basePool.filter(function (p) { return !cc || p.country === cc; });
+    var afterCountry = basePool.filter(function (p) { return countryMatches(p, cc); });
     var afterRegion  = afterCountry.filter(function (p) { return !r  || p.region  === r;  });
     var afterCategory= afterRegion.filter(function (p) { return !c || (p.categories || []).indexOf(c) !== -1; });
     var afterTag     = afterCategory.filter(function (p) { return !t || (p.tags       || []).indexOf(t) !== -1; });
 
-    // country: 상위 없음 → basePool 기준
+    // country: 상위 없음 → basePool 기준. 그룹에 속한 country 들은 그룹 ID 로 합산.
     var countryCounts = {};
-    basePool.forEach(function (p) { countryCounts[p.country] = (countryCounts[p.country] || 0) + 1; });
+    basePool.forEach(function (p) {
+      var key = COUNTRY_TO_GROUP[p.country] || p.country;
+      countryCounts[key] = (countryCounts[key] || 0) + 1;
+    });
     var countryItems = Object.keys(countryCounts).sort().map(function (k) { return { value: k, count: countryCounts[k] }; });
     rebuildSelect(countrySel, countryItems, cc,
-      function (v, n) { return (COUNTRY_LABEL[v] || v.toUpperCase()) + ' (' + n + ')'; },
+      function (v, n) {
+        var label = (COUNTRY_GROUPS[v] && COUNTRY_GROUPS[v].label) || COUNTRY_LABEL[v] || v.toUpperCase();
+        return label + ' (' + n + ')';
+      },
       '🌏 전체 (' + basePool.length + ')');
 
     // region: country 적용 후 풀 (null region 은 옵션에서 제외)
@@ -426,7 +460,7 @@ permalink: /map/
         totalEnded++;
         if (!includeEnded) return false;
       }
-      if (cc && p.country !== cc) return false;
+      if (!countryMatches(p, cc)) return false;
       if (r && p.region !== r) return false;
       if (c && (!p.categories || p.categories.indexOf(c) === -1)) return false;
       if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
@@ -480,7 +514,10 @@ permalink: /map/
   fetch('{{ site.baseurl }}/places.json')
     .then(function (r) { return r.json(); })
     .then(function (data) {
-      ALL = (data && data.places) || [];
+      var raw = (data && data.places) || [];
+      ALL = VISIBLE_COUNTRIES.length
+        ? raw.filter(function (p) { return VISIBLE_COUNTRIES.indexOf(p.country) !== -1; })
+        : raw;
       CATEGORY_TAGS = (data && data.category_tags) || {};
       buildStaticFilters(ALL);
       render();

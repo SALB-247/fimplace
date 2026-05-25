@@ -262,11 +262,42 @@ module PlacesGenerator
     false
   end
 
-  def self.resolve_coords(site, note, content, address, business, iframe_query, tags, cache)
-    if note.data['coords'].is_a?(Array) && note.data['coords'].size == 2
-      lat, lng = note.data['coords']
-      return { 'lat' => lat.to_f, 'lng' => lng.to_f, 'source' => 'frontmatter' }
+  # frontmatter 의 coords / lat-lng 를 어떤 형식이든 [lat, lng] 로 정규화.
+  # 지원 형식:
+  #   coords: [37.5, 127.0]           (배열)
+  #   coords: 37.5, 127.0             (무따옴표 콤마)
+  #   coords: "37.5, 127.0"           (따옴표)
+  #   coords: "[37.5, 127.0]"         (따옴표 + 대괄호)
+  #   lat: 37.5  /  lng: 127.0        (두 필드)
+  # (0, 0) 은 placeholder 로 간주해 무시.
+  def self.parse_frontmatter_coords(note)
+    raw = note.data['coords']
+    pair = nil
+    case raw
+    when Array
+      pair = [raw[0], raw[1]] if raw.size == 2
+    when String
+      cleaned = raw.gsub(/[\[\]]/, '').strip
+      parts = cleaned.split(',').map(&:strip)
+      pair = parts if parts.size == 2
     end
+    pair ||= [note.data['lat'], note.data['lng']] if note.data['lat'] && note.data['lng']
+    return nil unless pair && pair.size == 2
+
+    begin
+      lat = Float(pair[0].to_s)
+      lng = Float(pair[1].to_s)
+    rescue ArgumentError, TypeError
+      return nil
+    end
+    return nil if lat == 0.0 && lng == 0.0
+    return nil if lat.abs > 90 || lng.abs > 180
+    { 'lat' => lat, 'lng' => lng, 'source' => 'frontmatter' }
+  end
+
+  def self.resolve_coords(site, note, content, address, business, iframe_query, tags, cache)
+    # frontmatter coords 는 generate() 에서 이미 우선 처리됨.
+    # 여기는 폴백: iframe → business → address → known_places → cleaned title → iframe!2d!3d
 
     region = region_from_address(address) || region_from_tags(tags)
     title = note.data['title'].to_s
@@ -402,17 +433,24 @@ module PlacesGenerator
         ext_urls = PlacesGenerator.extract_external_urls(content)
 
         coords = nil
-        db_entry = db[title]
-        if db_entry.is_a?(Hash)
-          if db_entry['skipped']
-            skipped << title
-            next
-          elsif db_entry['lat'] && db_entry['lng']
-            coords = { 'lat' => db_entry['lat'].to_f, 'lng' => db_entry['lng'].to_f, 'source' => db_entry['source'] || 'db' }
+
+        # 1) frontmatter coords / lat-lng 최우선 — 사용자가 명시한 좌표는 캐시·자동감지보다 우선
+        coords = PlacesGenerator.parse_frontmatter_coords(note)
+
+        # 2) db 캐시 (frontmatter 없을 때만)
+        unless coords
+          db_entry = db[title]
+          if db_entry.is_a?(Hash)
+            if db_entry['skipped']
+              skipped << title
+              next
+            elsif db_entry['lat'] && db_entry['lng']
+              coords = { 'lat' => db_entry['lat'].to_f, 'lng' => db_entry['lng'].to_f, 'source' => db_entry['source'] || 'db' }
+            end
           end
         end
 
-        # 이벤트 모음/목차 페이지 자동 감지 → skipped 캐싱
+        # 3) 이벤트 모음/목차 페이지 자동 감지 → skipped 캐싱
         if !coords && PlacesGenerator.compilation_page?(title, content)
           PlacesGenerator.append_db_entry(title, { 'skipped' => true, 'reason' => '이벤트 모음/목차 페이지 (자동 감지)' })
           newly_skipped += 1
