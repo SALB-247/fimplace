@@ -196,6 +196,34 @@ permalink: /map/
     currentTile = next;
   }
 
+  // viewport 가 VWorld 가 커버하는 한국 영역 안인지.
+  // 사용자가 직접 pan/zoom 해서 한국 밖으로 나가면 OSM(Voyager) 로 자동 전환되도록.
+  var KR_BOUNDS = { latMin: 33.0, latMax: 39.5, lngMin: 124.0, lngMax: 132.0 };
+  function inKoreaView() {
+    if (map.getZoom() < 6) return false;  // 너무 줌아웃이면 VWorld 의미 없음
+    var c = map.getCenter();
+    return c.lat >= KR_BOUNDS.latMin && c.lat <= KR_BOUNDS.latMax &&
+           c.lng >= KR_BOUNDS.lngMin && c.lng <= KR_BOUNDS.lngMax;
+  }
+
+  // map move/zoom 끝날 때마다 viewport 기준 자동 타일 swap.
+  // 단, 사용자가 명시적으로 country=jp 선택했거나 레이어 컨트롤로 다른 타일을 골랐을 때는 건드리지 않음.
+  function autoSwapTileByViewport() {
+    if (!vworldBase) return;  // VWorld 키 없으면 swap 안 함
+    if (currentTile !== vworldBase && currentTile !== voyager) return;  // Esri 위성 등 수동 선택 존중
+    var cc = countrySel ? countrySel.value : '';
+    if (cc && cc !== 'kr') return;  // 일본/홍콩 등 명시적 선택 시 자동 swap 안 함
+
+    var target = inKoreaView() ? vworldBase : voyager;
+    if (currentTile === target) return;
+    map.removeLayer(currentTile);
+    map.addLayer(target);
+    currentTile = target;
+  }
+  map.on('moveend', autoSwapTileByViewport);
+  // 사용자가 레이어 컨트롤로 직접 베이스 레이어 바꾸면 currentTile 갱신
+  map.on('baselayerchange', function (e) { currentTile = e.layer; });
+
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
 
