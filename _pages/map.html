@@ -150,23 +150,24 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  var map = L.map('map', { maxZoom: 18, minZoom: 2 }).setView([36.5, 127.8], 7);
+  var map = L.map('map', { maxZoom: 19, minZoom: 2 }).setView([36.5, 127.8], 7);
 
   var voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 18
+    subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19
   });
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 18
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
   });
   var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri', maxZoom: 18
+    attribution: 'Tiles &copy; Esri', maxZoom: 19
   });
 
   {% assign vkey = site.vworld_api_key | default: '' %}
   {% if vkey != '' %}
+  // VWorld Base 레이어 native maxZoom = 19 (WMTSCapabilities 확인)
   var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
-    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 18
+    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19
   });
   vworldBase.addTo(map);
   var currentTile = vworldBase;
