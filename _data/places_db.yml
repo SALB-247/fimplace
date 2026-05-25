@@ -42,6 +42,14 @@
   lat: 37.52904
   lng: 126.9658
   source: known:신용산역
+"Akakara Shinjuku":
+  lat: 35.69507390212706
+  lng: 139.70109338998495
+  source: frontmatter
+"Akanoren Ramen":
+  lat: 35.65994663330081
+  lng: 139.725029768882
+  source: frontmatter
 "Cafe Tapirosu":
   lat: 35.66003331525706
   lng: 139.7320823435513
@@ -50,6 +58,10 @@
   lat: 37.41348157196217
   lng: 127.09549951184967
   source: iframe
+"Cheese & Doria":
+  lat: 35.70614180858677
+  lng: 139.7539765568532
+  source: frontmatter
 "Chiikawa Land Nagoya PARCO":
   lat: 35.16363085524375
   lng: 136.90810802991047
@@ -110,6 +122,14 @@
   lat: 35.72764984794253
   lng: 139.76569745569128
   source: frontmatter
+"Kitsuneya":
+  lat: 35.66576361788579
+  lng: 139.7699529938628
+  source: frontmatter
+"Kokorogi":
+  lat: 35.48446394384715
+  lng: 138.77840684257362
+  source: frontmatter
 "LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE":
   lat: 37.540550925498316
   lng: 127.0580919133534
@@ -156,6 +176,10 @@
   lat: 35.669678110516436
   lng: 139.70738453924602
   source: frontmatter
+"Sandwich House Maruhen":
+  lat: 35.671307076269294
+  lng: 139.76562275703324
+  source: frontmatter
 "Santa Monica Crepes":
   lat: 35.67024149167671
   lng: 139.706579510499
@@ -163,6 +187,14 @@
 "Sushi Kan":
   lat: 35.66201038472517
   lng: 139.72520628284838
+  source: frontmatter
+"Takoyaki Dotonbori Kukuru":
+  lat: 34.66879232466452
+  lng: 135.50096714255966
+  source: frontmatter
+"Tenjinbashisuji":
+  lat: 34.702557292768724
+  lng: 135.5114857515082
   source: frontmatter
 "The Polo Women's Shop":
   lat: 35.66561668955773
@@ -181,6 +213,10 @@
   lat: 37.5306766
   lng: 126.9655108
   source: nominatim:cleaned
+"Yamacho":
+  lat: 35.66509010158406
+  lng: 139.77009776327517
+  source: frontmatter
 "bar420":
   lat: 37.56855102401059
   lng: 126.98650887715222
