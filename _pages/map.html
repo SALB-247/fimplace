@@ -167,22 +167,24 @@ permalink: /map/
     worldCopyJump: false
   }).setView([36.5, 127.8], 7);
 
+  // noWrap=false (기본): maxBounds 안에서 자동으로 타일이 wrap 되어 lng>180 영역(미국 등)에도 그려짐.
+  // 무한 wrap 은 maxBounds + maxBoundsViscosity=1 로 차단.
   var voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, noWrap: true
+    subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19
   });
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19, noWrap: true
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
   });
   var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri', maxZoom: 19, noWrap: true
+    attribution: 'Tiles &copy; Esri', maxZoom: 19
   });
 
   {% assign vkey = site.vworld_api_key | default: '' %}
   {% if vkey != '' %}
-  // VWorld Base 레이어 native maxZoom = 19 (WMTSCapabilities 확인)
+  // VWorld Base 레이어 native maxZoom = 19 (WMTSCapabilities 확인). 한국 외엔 회색이지만 wrap 자체는 허용.
   var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
-    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19, noWrap: true
+    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19
   });
   vworldBase.addTo(map);
   var currentTile = vworldBase;
@@ -217,8 +219,10 @@ permalink: /map/
   //   1) 한국 영역 안일 때만 VWorld 타일 자동 swap
   //   2) 선택된 country 의 영역 밖으로 pan 하면 country 셀렉터만 '전체' 로 자동 reset
   var COUNTRY_BOUNDS = {
-    kr:    { latMin: 33.0, latMax: 39.5, lngMin: 124.0, lngMax: 132.0 },
-    jp:    { latMin: 24.0, latMax: 46.0, lngMin: 122.0, lngMax: 146.0 },
+    // 한국·일본 lng 가 겹치지 않도록 lng=130 을 기준선으로 분리.
+    // (서울 127, 부산 129.1, 후쿠오카 130.4, 도쿄 139.6 → 데이터상 안전한 분리)
+    kr:    { latMin: 33.0, latMax: 39.5, lngMin: 124.0, lngMax: 130.0 },
+    jp:    { latMin: 24.0, latMax: 46.0, lngMin: 130.0, lngMax: 146.0 },
     hk:    { latMin: 22.1, latMax: 22.6, lngMin: 113.8, lngMax: 114.5 },
     mo:    { latMin: 22.0, latMax: 22.3, lngMin: 113.4, lngMax: 113.7 },
     hk_mo: { latMin: 22.0, latMax: 22.6, lngMin: 113.4, lngMax: 114.5 },
