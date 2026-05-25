@@ -150,24 +150,39 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  var map = L.map('map', { maxZoom: 19, minZoom: 2 }).setView([36.5, 127.8], 7);
+  // 좌우 무한 wrap 차단 + 양 끝이 대서양 한가운데(lng=-30 / +330)가 되도록.
+  // lng 범위 [-30, 330] 사용 → 한·일(127~138)은 화면 왼쪽 1/3, 태평양이 자연스러운 중앙,
+  // 미국(wrap된 235~293)은 화면 오른쪽, 유럽(-8~18)은 화면 왼쪽 끝, 양 끝은 대서양 가운데.
+  var WORLD_BOUNDS = L.latLngBounds([-85.0511, -30], [85.0511, 330]);
+  // lng 를 -30 ~ +330 범위로 정규화 (대서양 가운데 기준 wrap)
+  function wrapLng(lng) {
+    if (lng < -30)  return lng + 360;
+    if (lng >= 330) return lng - 360;
+    return lng;
+  }
+  var map = L.map('map', {
+    maxZoom: 19, minZoom: 2,
+    maxBounds: WORLD_BOUNDS,
+    maxBoundsViscosity: 1.0,   // 1.0 = 경계 밖으로 끌어도 단단히 막힘
+    worldCopyJump: false
+  }).setView([36.5, 127.8], 7);
 
   var voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19
+    subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, noWrap: true
   });
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19, noWrap: true
   });
   var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri', maxZoom: 19
+    attribution: 'Tiles &copy; Esri', maxZoom: 19, noWrap: true
   });
 
   {% assign vkey = site.vworld_api_key | default: '' %}
   {% if vkey != '' %}
   // VWorld Base 레이어 native maxZoom = 19 (WMTSCapabilities 확인)
   var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
-    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19
+    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19, noWrap: true
   });
   vworldBase.addTo(map);
   var currentTile = vworldBase;
@@ -197,14 +212,31 @@ permalink: /map/
     currentTile = next;
   }
 
-  // viewport 가 VWorld 가 커버하는 한국 영역 안인지.
-  // 사용자가 직접 pan/zoom 해서 한국 밖으로 나가면 OSM(Voyager) 로 자동 전환되도록.
-  var KR_BOUNDS = { latMin: 33.0, latMax: 39.5, lngMin: 124.0, lngMax: 132.0 };
+  // 국가/그룹별 viewport boundary.
+  // 두 가지 용도:
+  //   1) 한국 영역 안일 때만 VWorld 타일 자동 swap
+  //   2) 선택된 country 의 영역 밖으로 pan 하면 country 셀렉터만 '전체' 로 자동 reset
+  var COUNTRY_BOUNDS = {
+    kr:    { latMin: 33.0, latMax: 39.5, lngMin: 124.0, lngMax: 132.0 },
+    jp:    { latMin: 24.0, latMax: 46.0, lngMin: 122.0, lngMax: 146.0 },
+    hk:    { latMin: 22.1, latMax: 22.6, lngMin: 113.8, lngMax: 114.5 },
+    mo:    { latMin: 22.0, latMax: 22.3, lngMin: 113.4, lngMax: 113.7 },
+    hk_mo: { latMin: 22.0, latMax: 22.6, lngMin: 113.4, lngMax: 114.5 },
+    tw:    { latMin: 21.8, latMax: 25.4, lngMin: 119.5, lngMax: 122.1 },
+    us:    { latMin: 24.5, latMax: 49.5, lngMin: 235.0, lngMax: 293.5 },
+    cn:    { latMin: 18.0, latMax: 53.6, lngMin: 73.5, lngMax: 135.0 },
+    th:    { latMin: 5.6,  latMax: 20.5, lngMin: 97.3,  lngMax: 105.6 },
+    fr:    { latMin: 41.3, latMax: 51.1, lngMin: -5.2, lngMax: 9.6 },
+    it:    { latMin: 35.5, latMax: 47.1, lngMin: 6.6, lngMax: 18.5 },
+    gb:    { latMin: 49.8, latMax: 60.9, lngMin: -8.6, lngMax: 1.8 }
+  };
+  function inBounds(b, c) {
+    return c.lat >= b.latMin && c.lat <= b.latMax &&
+           c.lng >= b.lngMin && c.lng <= b.lngMax;
+  }
   function inKoreaView() {
-    if (map.getZoom() < 6) return false;  // 너무 줌아웃이면 VWorld 의미 없음
-    var c = map.getCenter();
-    return c.lat >= KR_BOUNDS.latMin && c.lat <= KR_BOUNDS.latMax &&
-           c.lng >= KR_BOUNDS.lngMin && c.lng <= KR_BOUNDS.lngMax;
+    if (map.getZoom() < 6) return false;
+    return inBounds(COUNTRY_BOUNDS.kr, map.getCenter());
   }
 
   // map move/zoom 끝날 때마다 viewport 기준 자동 타일 swap.
@@ -224,6 +256,22 @@ permalink: /map/
   map.on('moveend', autoSwapTileByViewport);
   // 사용자가 레이어 컨트롤로 직접 베이스 레이어 바꾸면 currentTile 갱신
   map.on('baselayerchange', function (e) { currentTile = e.layer; });
+
+  // 선택된 country 의 영역 밖으로 pan/zoom 하면 country 셀렉터만 '전체' 로 reset.
+  // region/category/tag/member/ended 등 다른 필터는 그대로 유지.
+  function autoResetCountryOnExit() {
+    var cc = countrySel.value;
+    if (!cc) return;                                  // 이미 전체면 할 일 없음
+    var b = COUNTRY_BOUNDS[cc];
+    if (!b) return;                                   // boundary 정의 없으면 패스
+    if (inBounds(b, map.getCenter())) return;         // 아직 영역 안
+
+    countrySel.value = '';
+    skipFitBoundsOnce = true;                         // 다른 필터 fitBounds 트리거 방지
+    rebuildOptions();
+    render();
+  }
+  map.on('moveend', autoResetCountryOnExit);
 
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
@@ -264,7 +312,7 @@ permalink: /map/
     kr:    { center: [36.5, 127.8], zoom: 7 },
     jp:    { center: [36.0, 138.0], zoom: 5 },
     tw:    { center: [23.7, 121.0], zoom: 7 },
-    us:    { center: [39.0, -98.0], zoom: 4 },
+    us:    { center: [39.0, 262.0], zoom: 4 },
     cn:    { center: [35.0, 105.0], zoom: 4 },
     th:    { center: [13.7, 100.5], zoom: 6 },
     hk:    { center: [22.32, 114.17], zoom: 11 },
@@ -498,7 +546,7 @@ permalink: /map/
       return true;
     });
     filtered.forEach(function (p) {
-      var marker = L.marker([p.lat, p.lng], { icon: markerIcon(p) }).bindPopup(popupHtml(p));
+      var marker = L.marker([p.lat, wrapLng(p.lng)], { icon: markerIcon(p) }).bindPopup(popupHtml(p));
       cluster.addLayer(marker);
     });
     var msg = filtered.length + ' / ' + ALL.length + ' 장소';
@@ -507,7 +555,7 @@ permalink: /map/
 
     if (filtered.length > 0 && !skipFitBoundsOnce) {
       try {
-        var bounds = L.latLngBounds(filtered.map(function (p) { return [p.lat, p.lng]; }));
+        var bounds = L.latLngBounds(filtered.map(function (p) { return [p.lat, wrapLng(p.lng)]; }));
         map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
       } catch (e) {}
     }
