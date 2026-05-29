@@ -1,6 +1,9 @@
 <head>
   <meta charset="UTF-8">
 
+  <!-- 다크모드: 페인트 전에 저장된 테마 적용 (FOUC 방지) -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +17,8 @@
   {% if og_image_src contains '://' %}
     {% assign og_image_url = og_image_src %}
   {% else %}
+    {% assign og_image_first = og_image_src | slice: 0 %}
+    {% if og_image_first != '/' %}{% assign og_image_src = og_image_src | prepend: '/' %}{% endif %}
     {% assign og_image_url = site.url | append: site.baseurl | append: og_image_src %}
   {% endif %}
 

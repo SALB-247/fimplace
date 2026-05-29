@@ -9,6 +9,40 @@ $border-radius: 4px;
 $font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
   sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 
+/* ---------- 테마 토큰 (라이트 기본값) ---------- */
+:root {
+  --bg: #ffffff;
+  --text: #{$color-text};
+  --subtext: #{$color-subtext};
+  --primary: #{$color-primary};
+  --border: #{$color-border};
+  --box-bg: #{$color-box-background};
+  --code-bg: #f5f5f5;
+  --input-bg: #fafafa;
+  --link-hover: #fffaf1;
+  --focus-bg: #ffe8bc;
+}
+
+/* 다크 테마 토큰 */
+@mixin fim-dark {
+  --bg: #16161c;
+  --text: #d6d6db;
+  --subtext: #a2a2ab;
+  --primary: #ececf0;
+  --border: #34343c;
+  --box-bg: #1f1f27;
+  --code-bg: #26262e;
+  --input-bg: #1f1f27;
+  --link-hover: #2a2a33;
+  --focus-bg: #5a4a1e;
+}
+/* 시스템 다크 선호 시 자동 적용 (단, 사용자가 라이트로 명시 고정하면 제외) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include fim-dark; }
+}
+/* 수동 토글로 다크 고정 */
+:root[data-theme="dark"] { @include fim-dark; }
+
 body {
   box-sizing: content-box;
   font-family: $font-family;
@@ -16,7 +50,9 @@ body {
   line-height: 1.7;
   padding: 4vh 6vw;
   overflow-x: hidden;
-  color: $color-text;
+  color: var(--text);
+  background: var(--bg);
+  transition: background 0.2s ease, color 0.2s ease;
   font-size: 1rem;
   max-width: 63em;
 
@@ -27,14 +63,14 @@ body {
 
 time {
   display: block;
-  color: $color-subtext;
+  color: var(--subtext);
   margin: 0.5em 0 1em;
 }
 
 footer {
   margin: 2em 0;
   font-size: 0.8em;
-  color: color.mix($color-text, white, 80%);
+  color: var(--subtext);
   padding-top: 1em;
 }
 
@@ -50,7 +86,7 @@ blockquote {
   padding: 1.5em;
   margin: 0;
   font-size: 0.88em;
-  background: $color-box-background;
+  background: var(--box-bg);
   border-radius: $border-radius;
 
   p {
@@ -63,7 +99,7 @@ hr {
   border: 0;
   height: 1px;
   margin: 1.5em 0;
-  background: $color-border;
+  background: var(--border);
 }
 
 h1,
@@ -81,11 +117,11 @@ a {
   transition: background 300ms;
   padding: 0 0.1em;
   text-decoration: none;
-  border-bottom: 1px solid $color-border;
-  color: $color-primary;
+  border-bottom: 1px solid var(--border);
+  color: var(--primary);
   &:hover {
-    color: black !important;
-    background: #fffaf1;
+    color: var(--primary) !important;
+    background: var(--link-hover);
   }
   &:after {
     position: relative;
@@ -102,8 +138,8 @@ a {
 }
 
 *:focus {
-  background: #ffe8bc !important;
-  color: black !important;
+  background: var(--focus-bg) !important;
+  color: var(--primary) !important;
 }
 
 nav {
@@ -124,13 +160,13 @@ nav {
 }
 
 .backlink-box {
-  background: $color-box-background;
+  background: var(--box-bg);
   padding: 1em;
   border-radius: $border-radius;
 }
 
 code {
-  background: #f5f5f5;
+  background: var(--code-bg);
   padding: 0.1em 0.2em;
   border-radius: 4px;
 }
@@ -194,10 +230,10 @@ content iframe[src*="instagram.com"] {
   display: inline-block;
   padding: 0.2em 0.7em;
   font-size: 0.78em;
-  background: $color-box-background;
+  background: var(--box-bg);
   border-radius: 999px;
   border-bottom: none !important;
-  color: $color-subtext;
+  color: var(--subtext);
   text-decoration: none;
 
   &:after {
@@ -243,10 +279,10 @@ content iframe[src*="instagram.com"] {
 .nav-links a {
   border-bottom: none;
   font-size: 0.9em;
-  color: $color-subtext;
+  color: var(--subtext);
 
   &:after { content: "" !important; }
-  &:hover { color: $color-primary !important; }
+  &:hover { color: var(--primary) !important; }
 }
 
 .search-box {
@@ -257,17 +293,18 @@ content iframe[src*="instagram.com"] {
     width: 100%;
     padding: 0.5em 0.9em;
     font-size: 16px; /* iOS 자동 줌 방지 */
-    border: 1px solid $color-border;
+    border: 1px solid var(--border);
     border-radius: 999px;
     font-size: 0.9em;
     font-family: inherit;
-    background: #fafafa;
+    background: var(--input-bg);
+    color: var(--text);
 
     &:focus {
       outline: none;
-      border-color: $color-subtext;
-      background: white !important;
-      color: $color-text !important;
+      border-color: var(--subtext);
+      background: var(--input-bg) !important;
+      color: var(--text) !important;
     }
   }
 }
@@ -280,12 +317,12 @@ content iframe[src*="instagram.com"] {
 
 .result-list li {
   padding: 0.6em 0;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--border);
 }
 
 .result-list li .excerpt {
   font-size: 0.85em;
-  color: $color-subtext;
+  color: var(--subtext);
   margin-top: 0.2em;
 }
 
@@ -345,3 +382,22 @@ content iframe[src*="instagram.com"] {
 }
 
 /* ---------- 지도 facade ---------- */
+
+/* ---------- 지도(Leaflet) 내부 요소 ----------
+   타일은 항상 라이트 → 다크모드에서도 팝업·컨트롤·클러스터는 라이트 그대로 유지.
+   팝업 내부에서 테마 토큰을 라이트값으로 고정 (popupHtml 의 var(--text) 등이 자동으로 라이트색 해석).
+   컨트롤(줌·레이어)·맵 배경·클러스터는 다크 오버라이드를 제거해 Leaflet 기본(라이트)로 둠.
+   + 시인성 위해 팝업 글자·클러스터 숫자는 굵게. */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip { background: #fff; }
+.leaflet-popup-content-wrapper,
+.leaflet-popup-content {
+  --text: #333; --primary: #1a1a1a; --subtext: #4d4d4d;
+  --border: #d9d9d9; --box-bg: #f6f6f6; --link-hover: #fffaf1; --focus-bg: #ffe8bc;
+  color: #333;
+}
+.leaflet-popup-content { font-weight: 600; }
+/* 지도 내부 텍스트(클러스터 숫자·attribution 등)는 라이트 타일 위 → 다크모드에서도 항상 진한색.
+   (안 그러면 body 의 라이트 텍스트색을 상속해 흰 글씨가 됨) */
+.leaflet-container { color: #1a1a1a; }
+.marker-cluster span { font-weight: 700; color: #1a1a1a; }

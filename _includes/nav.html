@@ -1,13 +1,39 @@
 <div class="nav-row">
   <div class="nav-links">
-    <a class="internal-link" href="{{ site.baseurl }}/" style="font-weight: bold; color: hsl(0,0%,10%);">{{ site.title }}</a>
+    <a class="internal-link" href="{{ site.baseurl }}/" style="font-weight: bold; color: var(--primary);">{{ site.title }}</a>
     <a class="internal-link" href="{{ site.baseurl }}/map/">지도</a>
     <a class="internal-link" href="{{ site.baseurl }}/tags/">태그</a>
     <a class="internal-link" href="{{ site.baseurl }}/search/">검색</a>
     <a class="internal-link" href="{{ site.baseurl }}/about">소개</a>
+    <button id="theme-toggle" type="button" aria-label="다크 모드 전환" title="테마 전환"
+            style="border:0; background:transparent; cursor:pointer; font-size:1.1em; line-height:1; padding:0.1em 0.3em;">🌙</button>
   </div>
 
   <form class="search-box" action="{{ site.baseurl }}/search/" method="get" role="search">
     <input type="search" name="q" placeholder="장소 검색..." aria-label="검색" />
   </form>
 </div>
+
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function current() {
+    return document.documentElement.getAttribute('data-theme')
+      || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function setIcon() { btn.textContent = current() === 'dark' ? '☀️' : '🌙'; }
+  setIcon();
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    setIcon();
+    // giscus 댓글 테마 동기화
+    var f = document.querySelector('iframe.giscus-frame');
+    if (f && f.contentWindow) {
+      f.contentWindow.postMessage({ giscus: { setConfig: { theme: next } } }, 'https://giscus.app');
+    }
+  });
+})();
+</script>

@@ -236,6 +236,32 @@ module PlacesGenerator
     nil
   end
 
+  # 리스트 '최신순' 정렬용 날짜 추출.
+  # 우선순위: frontmatter date → 제목의 YYMMDD(이벤트) → 본문 메모줄 'YYMMDD ...' 의 YYMMDD
+  def self.extract_date(note, content)
+    v = note.data['date']
+    if v
+      begin
+        return v.is_a?(Date) ? v : Date.parse(v.to_s)
+      rescue ArgumentError
+        # invalid, fall through
+      end
+    end
+    title = note.data['title'].to_s
+    if (m = title.match(/(\d{6})/))
+      d = parse_yymmdd(m[1])
+      return d if d
+    end
+    content.to_s.each_line do |line|
+      s = line.strip
+      if (m = s.match(/\A(\d{6})\b/))
+        d = parse_yymmdd(m[1])
+        return d if d
+      end
+    end
+    nil
+  end
+
   # 이벤트 모음/목차 페이지 자동 감지
   # 핵심 기준: "위치/상호명 섹션이 없는데 내부 링크가 다수" — 단일 장소가 아닌 인덱스
   # 보조 기준: 총집편, 또는 "이벤트" + 모음 키워드, 또는 "이벤트"인데 날짜범위 없음
@@ -480,6 +506,7 @@ module PlacesGenerator
         region = PlacesGenerator.region_from_address(addr, country) ||
                  PlacesGenerator.region_from_tags(tags, country)
         ended = PlacesGenerator.detect_ended(note, today)
+        date = PlacesGenerator.extract_date(note, content)
         places << {
           'title' => title, 'url' => "#{site.baseurl}#{note.url}",
           'lat' => coords['lat'], 'lng' => coords['lng'], 'source' => coords['source'],
@@ -489,6 +516,7 @@ module PlacesGenerator
           'country' => country,
           'region' => region,
           'ended' => ended,
+          'date' => (date ? date.strftime('%Y-%m-%d') : nil),
           'tags' => tags, 'members' => Array(note.data['members']).map(&:to_s), 'categories' => categories
         }
       end

@@ -1,7 +1,7 @@
 ---
 title: Crescendo
 tags:
-  - 외부콘텐츠
+  - 외부컨텐츠
   - 카페
   - 도쿄
   - 일본

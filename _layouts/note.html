@@ -2,6 +2,22 @@
 layout: default
 ---
 
+{% if page.coords.size == 2 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": {{ page.title | jsonify }},
+  "url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ page.coords[0] }},
+    "longitude": {{ page.coords[1] }}
+  }
+}
+</script>
+{% endif %}
+
 <article>
   <div>
     <h1>{{ page.title }}</h1>
@@ -74,6 +90,7 @@ layout: default
 
 <hr>
 
-<p>전체 노트 연결 그래프</p>
-
-{% include notes_graph.html %}
+<details id="graph-details">
+  <summary style="cursor:pointer; font-size:0.95em; color:var(--subtext);">전체 노트 연결 그래프 (펼치기)</summary>
+  {% include notes_graph.html %}
+</details>

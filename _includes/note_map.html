@@ -40,16 +40,16 @@
         document.getElementById('note-map-count').textContent =
           matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)';
 
-        var map = L.map('note-map', { maxZoom: 18, minZoom: 5 });
+        var map = L.map('note-map', { maxZoom: 19, minZoom: 5 });
 
         {% assign vkey2 = site.vworld_api_key | default: '' %}
         {% if vkey2 != '' %}
         L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey2 }}/Base/{z}/{y}/{x}.png', {
-          maxZoom: 18, attribution: '&copy; VWorld'
+          maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; VWorld'
         }).addTo(map);
         {% else %}
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-          subdomains: 'abcd', maxZoom: 18, attribution: '&copy; OSM &copy; CARTO'
+          subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; OSM &copy; CARTO'
 
         }).addTo(map);
         {% endif %}
@@ -59,7 +59,7 @@
         map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
 
         matched.forEach(function (p) {
-          var addr = p.address ? '<div style="font-size:0.8em; color:#666; margin-top:0.2em;">' + escapeHtml(p.address) + '</div>' : '';
+          var addr = p.address ? '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.2em;">' + escapeHtml(p.address) + '</div>' : '';
           L.marker([p.lat, p.lng])
             .bindPopup('<strong><a href="' + p.url + '">' + escapeHtml(p.title) + '</a></strong>' + addr)
             .addTo(map);
