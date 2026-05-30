@@ -51,12 +51,13 @@ layout: default
     {% endif %}
   </div>
 
-  <div id="notes-entry-container">
+  <div id="notes-entry-container"{% if page.hide_backlinks %} class="no-side"{% endif %}>
     <content>
       {{ content }}
 
     </content>
 
+    {% unless page.hide_backlinks %}
     <side style="font-size: 0.9em">
       <h3 style="margin-bottom: 1em">이 노트를 언급한 노트</h3>
       {% if page.backlinks.size > 0 %}
@@ -77,8 +78,11 @@ layout: default
       </div>
       {% endif %}
     </side>
+    {% endunless %}
   </div>
 </article>
+
+{% include collection-table.html %}
 
 {% include share_buttons.html %}
 

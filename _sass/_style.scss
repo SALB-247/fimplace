@@ -161,6 +161,12 @@ nav {
   }
 }
 
+/* 모음 페이지: 백링크(side) 숨김 → 본문 전체 폭 */
+#notes-entry-container.no-side {
+  grid-template-columns: 1fr;
+  grid-template-areas: "content";
+}
+
 .backlink-box {
   background: var(--box-bg);
   padding: 1em;
@@ -403,3 +409,66 @@ content iframe[src*="instagram.com"] {
    (안 그러면 body 의 라이트 텍스트색을 상속해 흰 글씨가 됨) */
 .leaflet-container { color: #1a1a1a; }
 .marker-cluster span { font-weight: 700; color: #1a1a1a; }
+
+/* ---------- 모음 페이지 표 ---------- */
+content table { width: 100%; border-collapse: collapse; margin: 1.2em 0; font-size: 0.9em; }
+content table th, content table td { text-align: left; }
+content thead th {
+  position: sticky; top: 0; z-index: 1; background: var(--box-bg);
+  padding: 0.5em 0.7em; color: var(--subtext); font-size: 0.8em;
+  border-bottom: 2px solid var(--border); white-space: nowrap;
+}
+content tbody td { padding: 0.5em 0.7em; border-bottom: 1px solid var(--border); vertical-align: top; }
+content tbody tr:nth-child(even) { background: var(--box-bg); }
+content tbody tr:hover { background: var(--link-hover); }
+content tbody td:nth-child(2) { white-space: nowrap; color: var(--subtext); }
+
+content table.collection-enhanced thead th { cursor: pointer; user-select: none; }
+content table.collection-enhanced thead th:hover { color: var(--text); }
+.sort-ind { opacity: 0.35; font-size: 0.85em; margin-left: 0.25em; font-weight: normal; }
+
+.table-search {
+  display: block; width: 100%; max-width: 300px; margin: 0.4em 0 0.7em;
+  padding: 0.45em 0.85em; font-size: 16px; border: 1px solid var(--border);
+  border-radius: 999px; background: var(--input-bg); color: var(--text); font-family: inherit;
+}
+.table-search:focus { outline: none; border-color: var(--subtext); }
+.table-empty { font-size: 0.88em; color: var(--subtext); padding: 0.6em 0; }
+
+/* 콘텐츠/카테고리 뱃지 (고정색 — 라이트·다크 공통) */
+.ctag {
+  display: inline-block; padding: 0.12em 0.62em; border-radius: 999px;
+  font-size: 0.9em; font-weight: 600; white-space: nowrap;
+  background: #ecebf5; color: #3a3a5c; border: 1px solid #d6d4ec;
+}
+.ctag[data-c*="르니버스"]  { background:#efe7fb; color:#5b32a8; border-color:#d6c2f3; }
+.ctag[data-c*="FIM"]      { background:#fdeede; color:#955012; border-color:#f3cf9b; }
+.ctag[data-c*="진즈하여행"] { background:#e4f3ec; color:#1d6b48; border-color:#aeddc6; }
+.ctag[data-c*="DAY"]      { background:#e8eef9; color:#2a4f8a; border-color:#bcccea; }
+.ctag[data-c*="EPISODE"]  { background:#fde9ef; color:#9a2c50; border-color:#f4bcce; }
+.ctag[data-c*="SPECIAL"]  { background:#fff2da; color:#8a5b00; border-color:#f3dca0; }
+.ctag[data-c*="인스타"]    { background:#fdeaf3; color:#9c2f6e; border-color:#f4c2dd; }
+.ctag[data-c*="DM"]       { background:#e7eef7; color:#2f5a8a; border-color:#bcd2ea; }
+.ctag[data-c*="역조공"]    { background:#fdeede; color:#955012; border-color:#f3cf9b; }
+
+/* 모바일: 행을 카드로 적층 → 칸 좁아짐/줄넘침 해결 (지도 리스트와 동일 900px 기준) */
+@media (max-width: 900px) {
+  content table.collection-mobile,
+  content table.collection-mobile tbody,
+  content table.collection-mobile tr,
+  content table.collection-mobile td { display: block; width: 100%; }
+  content table.collection-mobile thead { display: none; }
+  content table.collection-mobile tr {
+    border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 0.6em; padding: 0.35em 0.7em; background: var(--bg) !important;
+  }
+  content table.collection-mobile td {
+    border: 0 !important; padding: 0.32em 0; display: flex; gap: 0.7em;
+    white-space: normal !important; align-items: baseline;
+  }
+  content table.collection-mobile td::before {
+    content: attr(data-label); flex: 0 0 4em; color: var(--subtext);
+    font-size: 0.8em; font-weight: 600;
+  }
+  content table.collection-mobile td:empty { display: none; }
+}

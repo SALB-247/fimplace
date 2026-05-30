@@ -1,0 +1,102 @@
+<!-- 모음 페이지 표: 모바일 카드(data-label) + 콘텐츠 뱃지 + (큰 표) 검색·정렬 -->
+<script>
+(function () {
+  var tables = document.querySelectorAll('content table');
+  if (!tables.length) return;
+
+  function esc(s) {
+    return (s || '').replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  Array.prototype.forEach.call(tables, function (table) {
+    var thead = table.querySelector('thead');
+    var tbody = table.querySelector('tbody');
+    if (!thead || !tbody) return;
+    var headRow = thead.querySelector('tr');
+    if (!headRow) return;
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+    if (rows.length === 0) return;
+
+    var headers = Array.prototype.slice.call(headRow.children).map(function (th) {
+      return th.textContent.trim();
+    });
+
+    // 모든 모음 표: 모바일 카드 적층
+    table.classList.add('collection-mobile');
+
+    // 뱃지 대상 열 (콘텐츠/SNS/카테고리/분류 중 첫 매칭)
+    var badgeCol = -1;
+    ['콘텐츠', 'SNS', '카테고리', '분류'].some(function (key) {
+      var idx = headers.indexOf(key);
+      if (idx !== -1) { badgeCol = idx; return true; }
+      return false;
+    });
+
+    // 각 셀에 data-label(모바일 카드 라벨) + 콘텐츠 뱃지
+    rows.forEach(function (tr) {
+      Array.prototype.forEach.call(tr.children, function (td, i) {
+        td.setAttribute('data-label', headers[i] || '');
+        if (i === badgeCol) {
+          var v = td.textContent.trim();
+          if (v && v !== '-') {
+            td.innerHTML = '<span class="ctag" data-c="' + esc(v) + '">' + esc(v) + '</span>';
+          }
+        }
+      });
+    });
+
+    // 큰 표(8행 이상)만 검색·정렬
+    if (rows.length < 8) return;
+    table.classList.add('collection-enhanced');
+
+    // 검색창
+    var search = document.createElement('input');
+    search.type = 'search';
+    search.className = 'table-search';
+    search.placeholder = '이 표에서 검색…';
+    search.setAttribute('aria-label', '표 검색');
+    table.parentNode.insertBefore(search, table);
+    var empty = document.createElement('div');
+    empty.className = 'table-empty';
+    empty.style.display = 'none';
+    empty.textContent = '검색 결과가 없습니다.';
+    table.parentNode.insertBefore(empty, table.nextSibling);
+    search.addEventListener('input', function () {
+      var q = search.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function (tr) {
+        var ok = !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+        tr.style.display = ok ? '' : 'none';
+        if (ok) shown++;
+      });
+      empty.style.display = shown ? 'none' : '';
+    });
+
+    // 정렬 (헤더 클릭 토글)
+    var state = {};
+    Array.prototype.forEach.call(headRow.children, function (th, idx) {
+      var ind = document.createElement('span');
+      ind.className = 'sort-ind';
+      ind.textContent = '⇅';
+      th.appendChild(ind);
+      th.addEventListener('click', function () {
+        var asc = state[idx] = !state[idx];
+        rows.sort(function (a, b) {
+          var x = a.children[idx] ? a.children[idx].textContent.trim() : '';
+          var y = b.children[idx] ? b.children[idx].textContent.trim() : '';
+          return asc ? x.localeCompare(y, 'ko', { numeric: true })
+                     : y.localeCompare(x, 'ko', { numeric: true });
+        });
+        rows.forEach(function (r) { tbody.appendChild(r); });
+        Array.prototype.forEach.call(headRow.querySelectorAll('.sort-ind'), function (s) {
+          s.textContent = '⇅'; s.style.opacity = '';
+        });
+        ind.textContent = asc ? '↑' : '↓';
+        ind.style.opacity = '1';
+      });
+    });
+  });
+})();
+</script>
