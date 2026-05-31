@@ -648,14 +648,14 @@ permalink: /map/
     visible.forEach(function (p) {
       var row = document.createElement('div');
       row.className = 'map-list-item';
-      var dateStr = p.date ? p.date.slice(2).replace(/-/g, '.') : '';   // YY.MM.DD
-      var sub = dateStr || p.region || (p.categories && p.categories[0]) || '';
-      var subClass = dateStr ? 'mli-date' : 'mli-sub';
+      // 장소 유형 태그(카페/음식점/관광지/팝업스토어…)만 추출 — 섹션명 아님
+      var typeTags = CATEGORY_TAGS['장소 유형'] || [];
+      var cat = (p.tags || []).filter(function (t) { return typeTags.indexOf(t) !== -1; }).join(' / ');
       var endedTag = isEnded(p) ? ' <span style="color:var(--subtext);font-size:0.85em;">(종료)</span>' : '';
       row.innerHTML =
         '<span class="mli-emoji">' + placeEmoji(p) + '</span>' +
         '<span class="mli-title">' + escapeHtmlMap(p.title) + endedTag + '</span>' +
-        (sub ? '<span class="' + subClass + '">' + escapeHtmlMap(sub) + '</span>' : '');
+        (cat ? '<span class="mli-sub">' + escapeHtmlMap(cat) + '</span>' : '');
       row.addEventListener('click', function () {
         var mk = p.__marker;
         if (!mk) return;

@@ -63,3 +63,8 @@
   lng: 127.0572645
   source: nominatim:cleaned
   matched: "코엑스 인터콘티넨탈 호텔 서울"
+"부산광역시 부산진구 동성로25번길 6":
+  lat: 35.1527149
+  lng: 129.067289
+  source: nominatim
+  matched: "동성로25번길, 전포동, 전포1동, 부산진구, 부산광역시, 47305, 대한민국"
