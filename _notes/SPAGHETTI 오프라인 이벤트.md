@@ -1,5 +1,6 @@
 ---
 title: SPAGETTI 오프라인 이벤트
+ended: true
 tags:
   - spaghetti
   - 팝업스토어

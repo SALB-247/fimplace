@@ -1,5 +1,6 @@
 ---
 title: LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
+ended: true
 tags:
   - 팝업스토어
   - HOT

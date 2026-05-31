@@ -207,6 +207,8 @@ module PlacesGenerator
   # 3) 파일명 또는 title 에서 YYMMDD[-_~]MMDD 패턴 (시작의 YY 차용)
   # 매칭이 하나도 안 잡히면 nil (판정 불가 — 클라이언트 fallback)
   def self.detect_ended(note, today)
+    # frontmatter 명시적 종료 플래그 (ended: true) 최우선
+    return true if note.data['ended'] == true
     %w[end_date valid_until ended_at].each do |k|
       v = note.data[k]
       next if v.nil? || v.to_s.empty?
@@ -447,6 +449,11 @@ module PlacesGenerator
       source_counter = Hash.new(0)
 
       site.collections['notes'].docs.each do |note|
+        # 모음/인덱스 페이지(hide_backlinks)는 실제 장소가 아니므로 지도에서 제외
+        if note.data['hide_backlinks']
+          skipped << note.data['title'].to_s
+          next
+        end
         content = note.content.to_s
         tags = Array(note.data['tags']).map(&:to_s)
         tags.each { |t| all_tags_counter[t] += 1 }
