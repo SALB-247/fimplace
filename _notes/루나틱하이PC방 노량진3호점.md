@@ -5,6 +5,7 @@ tags:
   - 겁도없꾸라
   - 꾸라
   - 액티비티
+coords: 37.510709, 126.944768
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/85uATsLB19A?si=5rQ4Wg7W9nby8mFu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/85uATsLB19A?si=RW7qkRZZG_ix5Hs-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
