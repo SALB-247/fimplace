@@ -385,7 +385,9 @@ permalink: /map/
   // 없으면 제목의 YYMMDD-YYMMDD 패턴 fallback.
   var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
   function isEnded(p) {
-    if (p && typeof p.ended === 'boolean') return p.ended;
+    // 서버가 '과거 종료'로 확정한 것(true)만 신뢰. false(빌드 시점엔 미래였음)·null(날짜 없음)은
+    // 아래에서 제목의 종료일로 '현재 시각' 기준 재평가 → 빌드 이후 끝난 이벤트도 즉시 종료 반영.
+    if (p && p.ended === true) return true;
     var title = (p && typeof p === 'object') ? p.title : p;
     if (!title) return false;
     var m = title.match(/(\d{6})[-_~]?(\d{4,6})?(?=[^\d]|$)/);
