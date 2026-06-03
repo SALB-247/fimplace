@@ -548,7 +548,11 @@ module PlacesGenerator
       categorized = raw_cats.values.flatten.map(&:to_s).to_set
       uncategorized = all_tags_counter.keys.reject { |t| categorized.include?(t) }
                                            .sort_by { |t| -all_tags_counter[t] }
-      cats_with_tags['기타'] = uncategorized unless uncategorized.empty?
+      # yml 에 정의된 '기타' 태그와 자동 감지 미분류 태그를 병합 (덮어쓰기 방지)
+      unless uncategorized.empty?
+        existing = cats_with_tags['기타'] || []
+        cats_with_tags['기타'] = (existing + uncategorized).uniq
+      end
       site.data['category_tags'] = cats_with_tags
     end
   end

@@ -4,6 +4,7 @@ tags:
   - 자체컨텐츠_촬영지
   - 르니버스
   - 액티비티
+coords: 37.57067397646135, 126.9815218641656
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tR0MHz7dhgo?si=JvbxD9ypnNlVJfIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_i-CvQVgnqA?si=3jHvP-bac133vITr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
