@@ -324,6 +324,72 @@ permalink: /map/
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
 
+  // ─── '내 위치' 컨트롤 (Geolocation) ───
+  // 줌 컨트롤 아래에 📍 버튼 추가. 누르면 권한 요청 → 위치 마커 + 정확도 원 표시 + 그 위치로 이동.
+  // 두 번째 클릭은 마커를 토글(끄기)한다.
+  var locMarker = null, locCircle = null, locWatching = false;
+  var locBtn = null;
+  function showLocBusy(busy) {
+    if (!locBtn) return;
+    locBtn.innerHTML = busy ? '⏳' : (locMarker ? '🎯' : '📍');
+    locBtn.disabled = !!busy;
+  }
+  L.Control.MyLocation = L.Control.extend({
+    options: { position: 'topleft' },
+    onAdd: function () {
+      var bar = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      var a = L.DomUtil.create('a', '', bar);
+      a.href = '#'; a.title = '내 위치 표시'; a.setAttribute('role', 'button');
+      a.style.fontSize = '18px'; a.style.lineHeight = '30px';
+      a.style.textAlign = 'center'; a.style.textDecoration = 'none';
+      a.innerHTML = '📍';
+      locBtn = a;
+      L.DomEvent.disableClickPropagation(bar);
+      L.DomEvent.on(a, 'click', function (e) {
+        L.DomEvent.preventDefault(e);
+        if (locMarker) {
+          // 토글: 두 번째 클릭 시 마커 끄기
+          map.removeLayer(locMarker); map.removeLayer(locCircle);
+          locMarker = null; locCircle = null;
+          showLocBusy(false);
+          return;
+        }
+        if (!('geolocation' in navigator)) {
+          alert('이 브라우저는 위치 기능을 지원하지 않습니다.');
+          return;
+        }
+        showLocBusy(true);
+        map.locate({ setView: true, maxZoom: 15, enableHighAccuracy: true, timeout: 10000 });
+      });
+      return bar;
+    }
+  });
+  (new L.Control.MyLocation()).addTo(map);
+
+  map.on('locationfound', function (e) {
+    if (locMarker) { map.removeLayer(locMarker); map.removeLayer(locCircle); }
+    var ll = [e.latlng.lat, wrapLng(e.latlng.lng)];
+    locMarker = L.marker(ll, {
+      icon: L.divIcon({
+        className: 'fim-mylocation',
+        html: '<div style="width:18px;height:18px;border-radius:50%;background:#4285F4;border:3px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,0.3),0 2px 6px rgba(0,0,0,0.4);"></div>',
+        iconSize: [18, 18], iconAnchor: [9, 9]
+      })
+    }).addTo(map).bindPopup('현재 위치 (±' + Math.round(e.accuracy) + 'm)');
+    locCircle = L.circle(ll, {
+      radius: e.accuracy, color: '#4285F4', weight: 1,
+      fillColor: '#4285F4', fillOpacity: 0.12
+    }).addTo(map);
+    showLocBusy(false);
+  });
+  map.on('locationerror', function (e) {
+    showLocBusy(false);
+    var msg = '위치를 가져올 수 없습니다.';
+    if (e.code === 1) msg = '위치 권한이 거부되었습니다. 브라우저 주소창의 자물쇠 아이콘에서 권한을 허용해 주세요.';
+    else if (e.code === 3) msg = '위치 요청 시간이 초과되었습니다.';
+    alert(msg);
+  });
+
   var countrySel  = document.getElementById('filter-country');
   var regionSel   = document.getElementById('filter-region');
   var categorySel = document.getElementById('filter-category');
