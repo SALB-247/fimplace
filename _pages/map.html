@@ -330,7 +330,7 @@ permalink: /map/
   var locMarker = null, locCircle = null, locWatching = false;
   var locBtn = null;
   // C: 타깃/크로스헤어 SVG (idle = 빈 원, active = 채워진 원)
-  var SVG_LOC_IDLE = '<svg viewBox="0 0 24 24" width="20" height="20" style="display:block;margin:5px auto;">' +
+  var SVG_LOC_IDLE = '<svg viewBox="0 0 24 24" width="20" height="20" style="display:block;">' +
     '<circle cx="12" cy="12" r="7" stroke="#333" stroke-width="2.2" fill="none"/>' +
     '<circle cx="12" cy="12" r="2.5" fill="#333"/>' +
     '<line x1="12" y1="2"  x2="12" y2="5"  stroke="#333" stroke-width="2.2" stroke-linecap="round"/>' +
@@ -338,7 +338,7 @@ permalink: /map/
     '<line x1="2"  y1="12" x2="5"  y2="12" stroke="#333" stroke-width="2.2" stroke-linecap="round"/>' +
     '<line x1="19" y1="12" x2="22" y2="12" stroke="#333" stroke-width="2.2" stroke-linecap="round"/>' +
     '</svg>';
-  var SVG_LOC_ACTIVE = '<svg viewBox="0 0 24 24" width="20" height="20" style="display:block;margin:5px auto;">' +
+  var SVG_LOC_ACTIVE = '<svg viewBox="0 0 24 24" width="20" height="20" style="display:block;">' +
     '<circle cx="12" cy="12" r="7" stroke="#4285F4" stroke-width="2.2" fill="rgba(66,133,244,0.18)"/>' +
     '<circle cx="12" cy="12" r="2.5" fill="#4285F4"/>' +
     '<line x1="12" y1="2"  x2="12" y2="5"  stroke="#4285F4" stroke-width="2.2" stroke-linecap="round"/>' +
@@ -348,7 +348,7 @@ permalink: /map/
     '</svg>';
   function showLocBusy(busy) {
     if (!locBtn) return;
-    if (busy) { locBtn.innerHTML = '<span style="display:block;line-height:30px;">⏳</span>'; }
+    if (busy) { locBtn.innerHTML = '⏳'; }
     else { locBtn.innerHTML = locMarker ? SVG_LOC_ACTIVE : SVG_LOC_IDLE; }
     locBtn.style.opacity = busy ? '0.55' : '1';
   }
@@ -358,7 +358,11 @@ permalink: /map/
       var bar = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
       var a = L.DomUtil.create('a', '', bar);
       a.href = '#'; a.title = '내 위치 표시'; a.setAttribute('role', 'button');
-      a.style.textAlign = 'center'; a.style.textDecoration = 'none';
+      // flexbox 로 정중앙 강제 (Leaflet line-height 영향 회피)
+      a.style.display = 'flex';
+      a.style.alignItems = 'center';
+      a.style.justifyContent = 'center';
+      a.style.textDecoration = 'none';
       a.innerHTML = SVG_LOC_IDLE;
       locBtn = a;
       L.DomEvent.disableClickPropagation(bar);
