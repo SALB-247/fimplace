@@ -1,5 +1,6 @@
 ---
 title: Kokorogi
+shortid: 83kf7
 tags:
   - 자체컨텐츠_촬영지
   - 음식점

@@ -1,5 +1,6 @@
 ---
 title: Weverse Lucky Store (PUREFLOW_pt1)
+shortid: k4n5l
 tags:
   - PUREFLOW_pt1_이벤트
   - 팝업스토어

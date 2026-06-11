@@ -1,5 +1,6 @@
 ---
 title: Vince
+shortid: 4n0s7
 tags:
   - 인스타
   - 윤진

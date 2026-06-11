@@ -1,5 +1,6 @@
 ---
 title: ITALIAN＆BAKERY MACARONI CLUB
+shortid: 7eqh1
 tags:
   - 자체컨텐츠_촬영지
   - DAY-OFF

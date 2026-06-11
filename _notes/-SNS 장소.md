@@ -1,5 +1,6 @@
 ---
 title: SNS 장소
+shortid: elug1
 hide_backlinks: true
 ---
 SNS(위버스, DM, 인스타 등)장소를 저장하는 곳입니다.

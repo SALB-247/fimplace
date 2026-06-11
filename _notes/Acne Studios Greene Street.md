@@ -1,5 +1,6 @@
 ---
 title: Acne Studios Greene Street
+shortid: lmwu3
 tags:
   - 자체컨텐츠_촬영지
   - 유튜브

@@ -1,5 +1,6 @@
 ---
 title: NewsBar Café
+shortid: rqo91
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

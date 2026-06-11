@@ -1,5 +1,6 @@
 ---
 title: 1979 LP LIVE PUB 2호점
+shortid: 27fws
 tags:
   - 위버스라이브
   - 꾸라

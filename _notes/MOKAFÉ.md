@@ -1,5 +1,6 @@
 ---
 title: MOKAFÉ
+shortid: nzypf
 tags:
   - DM
   - 윤진

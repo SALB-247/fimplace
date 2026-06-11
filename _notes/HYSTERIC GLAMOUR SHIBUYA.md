@@ -1,5 +1,6 @@
 ---
 title: HYSTERIC GLAMOUR SHIBUYA
+shortid: dwo09
 tags:
   - 인스타
   - 즈하

@@ -1,5 +1,6 @@
 ---
 title: 케이타운포유 Special Store (PUREFLOW_pt1_260523-260528)
+shortid: qp7nq
 tags:
   - PUREFLOW_pt1_이벤트
   - 강남

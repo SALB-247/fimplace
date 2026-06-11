@@ -1,5 +1,6 @@
 ---
 title: STUSSY Harajuku Chapter
+shortid: ffanj
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

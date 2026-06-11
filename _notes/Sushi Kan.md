@@ -1,5 +1,6 @@
 ---
 title: Sushi Kan
+shortid: almcy
 tags:
   - 인스타
   - 채원

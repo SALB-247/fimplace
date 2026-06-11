@@ -1,5 +1,6 @@
 ---
 title: Takoyaki Dotonbori Kukuru
+shortid: 8is02
 tags:
   - 음식점
   - 오사카

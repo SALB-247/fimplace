@@ -1,5 +1,6 @@
 ---
 title: Ess-a-Bagel
+shortid: 2qdb7
 tags:
   - 위버스
   - 윤진

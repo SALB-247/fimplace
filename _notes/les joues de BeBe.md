@@ -1,5 +1,6 @@
 ---
 title: les joues de BeBe
+shortid: 1qxd7
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

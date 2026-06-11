@@ -1,5 +1,6 @@
 ---
 title: HIDE AND SEEK 홍대점
+shortid: 4dc38
 tags:
   - 자체컨텐츠_촬영지
   - 르니버스

@@ -1,5 +1,6 @@
 ---
 title: SPAGETTI 오프라인 이벤트
+shortid: 7urt0
 ended: true
 tags:
   - spaghetti

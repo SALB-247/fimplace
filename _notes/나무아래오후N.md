@@ -1,5 +1,6 @@
 ---
 title: 나무아래오후N
+shortid: fydit
 tags:
   - 자체컨텐츠_촬영지
   - DAY-OFF

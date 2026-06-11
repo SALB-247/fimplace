@@ -1,5 +1,6 @@
 ---
 title: Terry Black's Barbecue
+shortid: podxo
 tags:
   - 음식점
   - 댈러스

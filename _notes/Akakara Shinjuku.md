@@ -1,5 +1,6 @@
 ---
 title: Akakara Shinjuku
+shortid: pwr1h
 tags:
   - 음식점
   - 도쿄

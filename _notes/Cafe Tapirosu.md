@@ -1,5 +1,6 @@
 ---
 title: Cafe Tapirosu
+shortid: pbu21
 tags:
   - 인스타
   - 채원

@@ -1,5 +1,6 @@
 ---
 title: Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko)
+shortid: 2eaqs
 tags:
   - 자체컨텐츠_촬영지
   - DAY-OFF

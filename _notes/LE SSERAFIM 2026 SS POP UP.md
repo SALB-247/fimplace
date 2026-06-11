@@ -1,5 +1,6 @@
 ---
 title: LE SSERAFIM 2026 SS POP UP
+shortid: qyxyh
 tags:
   - PUREFLOW_pt1_이벤트
   - 용산

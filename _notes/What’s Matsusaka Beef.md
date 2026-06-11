@@ -1,5 +1,6 @@
 ---
 title: Matsusaka Beef WHAT’S (B1)
+shortid: 681tw
 tags:
   - 오사카
   - 나고야

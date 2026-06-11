@@ -1,5 +1,6 @@
 ---
 title: Disney Explorers Lodge
+shortid: tkqwr
 tags:
   - 자체컨텐츠_촬영지
   - 숙박시설

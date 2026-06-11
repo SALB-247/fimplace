@@ -1,5 +1,6 @@
 ---
 title: 해여림빌리지A캠핑존
+shortid: efwys
 tags:
   - 외부컨텐츠
   - 출장십오야

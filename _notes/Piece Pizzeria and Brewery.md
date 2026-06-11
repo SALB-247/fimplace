@@ -1,5 +1,6 @@
 ---
 title: Piece Pizzeria and Brewery
+shortid: 5e6ic
 tags:
   - 음식점
   - 시카고

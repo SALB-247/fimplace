@@ -1,5 +1,6 @@
 ---
 title: Blue Willow 夜来湘
+shortid: g2p2l
 tags:
   - 자체컨텐츠_촬영지
   - 음식점

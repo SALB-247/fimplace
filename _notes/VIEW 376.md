@@ -1,5 +1,6 @@
 ---
 title: VIEW 376
+shortid: l40k5
 tags:
   - 자체컨텐츠_촬영지
   - 은채

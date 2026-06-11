@@ -1,5 +1,6 @@
 ---
 title: Santa Monica Crepes
+shortid: k9kz7
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

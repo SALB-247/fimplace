@@ -1,5 +1,6 @@
 ---
 title: Ernest Klein & Co's Gourmet Food
+shortid: 1ctsy
 tags:
   - 자체컨텐츠_촬영지
   - 뉴욕

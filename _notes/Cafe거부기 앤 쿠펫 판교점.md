@@ -1,5 +1,6 @@
 ---
 title: Cafe거부기 앤 쿠펫 판교점
+shortid: ffwjd
 tags:
   - 외부컨텐츠
   - 겁도없꾸라

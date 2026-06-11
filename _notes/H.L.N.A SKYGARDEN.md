@@ -1,5 +1,6 @@
 ---
 title: H.L.N.A SKYGARDEN
+shortid: rwdnw
 tags:
   - MV_촬영지
   - 오다이바

@@ -1,5 +1,6 @@
 ---
 title: Kitsuneya
+shortid: o1a8u
 tags:
   - 음식점
   - 도쿄

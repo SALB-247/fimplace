@@ -1,5 +1,6 @@
 ---
 title: Ginan
+shortid: qc8cs
 tags:
   - 채원
   - DM

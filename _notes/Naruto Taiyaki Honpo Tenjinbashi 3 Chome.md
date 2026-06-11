@@ -1,5 +1,6 @@
 ---
 title: Naruto Taiyaki Honpo Tenjinbashi 3 Chome
+shortid: e390l
 tags:
   - 음식점
   - 오사카

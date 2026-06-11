@@ -1,5 +1,6 @@
 ---
 title: M+ Museum
+shortid: qfx2b
 tags:
   - 자체컨텐츠_촬영지
   - DM

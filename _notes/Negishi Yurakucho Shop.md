@@ -1,5 +1,6 @@
 ---
 title: Negishi Yurakucho Shop
+shortid: 3hz80
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

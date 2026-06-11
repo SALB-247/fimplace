@@ -1,5 +1,6 @@
 ---
 title: Kanekichien
+shortid: ecepg
 tags:
   - MV_촬영지
   - 도쿄

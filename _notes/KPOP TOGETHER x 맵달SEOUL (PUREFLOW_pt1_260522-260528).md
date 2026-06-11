@@ -1,5 +1,6 @@
 ---
 title: KPOP TOGETHER x 맵달SEOUL (PUREFLOW_pt1_260522-260528)
+shortid: 4dtc9
 tags:
   - PUREFLOW_pt1_이벤트
   - 성수

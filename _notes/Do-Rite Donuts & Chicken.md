@@ -1,5 +1,6 @@
 ---
 title: Do-Rite Donuts & Chicken
+shortid: chb0j
 tags:
   - 인스타
   - 즈하

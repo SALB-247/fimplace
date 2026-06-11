@@ -1,5 +1,6 @@
 ---
 title: Furaibo Fukiage
+shortid: ta4dn
 tags:
   - DM
   - 꾸라

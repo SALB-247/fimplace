@@ -1,5 +1,6 @@
 ---
 title: 흠커피 HCR
+shortid: na3q1
 tags:
   - 외부컨텐츠
   - 겁도없꾸라

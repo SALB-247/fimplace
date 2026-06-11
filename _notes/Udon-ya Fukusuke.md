@@ -1,5 +1,6 @@
 ---
 title: Udon-ya Fukusuke
+shortid: 49h9m
 tags:
   - 인스타
   - 꾸라

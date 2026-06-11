@@ -1,5 +1,6 @@
 ---
 title: SHARI SHARI Kakigori House (Central)
+shortid: 7pto6
 tags:
   - 자체컨텐츠_촬영지
   - 카페

@@ -1,5 +1,6 @@
 ---
 title: 호루탄야 (Horutanya)
+shortid: a7uhq
 tags:
   - 위버스
   - 윤진

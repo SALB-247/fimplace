@@ -1,5 +1,6 @@
 ---
 title: Delicius
+shortid: 7jz3t
 tags:
   - 인스타
   - 윤진

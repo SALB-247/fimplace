@@ -1,5 +1,6 @@
 ---
 title: Federales Tacos & Tequila - Fulton Market, Chicago
+shortid: 2y0ar
 tags:
   - 자체컨텐츠_촬영지
   - 음식점

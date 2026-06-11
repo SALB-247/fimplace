@@ -1,5 +1,6 @@
 ---
 title: Crescendo
+shortid: lbkg4
 tags:
   - 외부컨텐츠
   - 카페

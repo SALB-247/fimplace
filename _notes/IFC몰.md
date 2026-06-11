@@ -1,5 +1,6 @@
 ---
 title: IFC몰
+shortid: 5lk6w
 tags:
   - FIM-LOG
   - 채원

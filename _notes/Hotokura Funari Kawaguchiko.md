@@ -1,5 +1,6 @@
 ---
 title: Hotokura Funari Kawaguchiko
+shortid: aa6lq
 tags:
   - 자체컨텐츠_촬영지
   - DAY-OFF

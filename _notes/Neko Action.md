@@ -1,5 +1,6 @@
 ---
 title: Neko Action
+shortid: qn2im
 tags:
   - MV_촬영지
   - 자체컨텐츠_촬영지

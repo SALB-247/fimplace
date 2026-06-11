@@ -1,5 +1,6 @@
 ---
 title: Chiikawa Land Nagoya PARCO
+shortid: m3kd6
 tags:
   - 위버스
   - 나고야

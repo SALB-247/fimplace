@@ -1,5 +1,6 @@
 ---
 title: Cheese & Doria
+shortid: fi5zb
 tags:
   - 자체컨텐츠_촬영지
   - 음식점

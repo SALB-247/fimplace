@@ -1,5 +1,6 @@
 ---
 title: Akanoren Ramen
+shortid: hx0o4
 tags:
   - 음식점
   - 도쿄

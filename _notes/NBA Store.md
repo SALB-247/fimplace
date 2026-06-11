@@ -1,5 +1,6 @@
 ---
 title: NBA Store
+shortid: e4up5
 tags:
   - 자체컨텐츠_촬영지
   - EPISODE

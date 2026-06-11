@@ -1,5 +1,6 @@
 ---
 title: Odaiba Beach
+shortid: it1nl
 tags:
   - MV_촬영지
   - 도쿄

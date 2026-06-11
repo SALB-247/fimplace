@@ -1,5 +1,6 @@
 ---
 title: Hong Kong Old Restaurant (Central)
+shortid: 5eo3o
 tags:
   - 자체컨텐츠_촬영지
   - 음식점

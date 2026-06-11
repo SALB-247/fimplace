@@ -1,5 +1,6 @@
 ---
 title: gelato pique cafe bio concept 表参道ヒルズ店
+shortid: 4l2ew
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

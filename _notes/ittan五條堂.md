@@ -1,5 +1,6 @@
 ---
 title: ittan五條堂
+shortid: 3nlmq
 tags:
   - 오사카
   - 나고야

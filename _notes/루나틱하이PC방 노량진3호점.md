@@ -1,5 +1,6 @@
 ---
 title: 루나틱하이PC방 노량진3호점
+shortid: not5y
 tags:
   - 외부컨텐츠
   - 겁도없꾸라

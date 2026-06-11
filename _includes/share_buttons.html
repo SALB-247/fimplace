@@ -1,27 +1,40 @@
+{%- assign share_url = site.url | append: site.baseurl | append: page.url -%}
+{%- if page.shortid -%}
+  {%- assign short_url = site.url | append: site.baseurl | append: "/s/" | append: page.shortid -%}
+{%- else -%}
+  {%- assign short_url = share_url -%}
+{%- endif -%}
 <div class="share-buttons" style="display:flex; gap:0.5em; flex-wrap:wrap; margin: 1.5em 0 0.5em; font-size: 0.9em;">
-  <span style="color: hsl(0,0%,30%); align-self:center;">공유:</span>
-  <button type="button" class="share-btn" data-share="copy"
-          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid hsl(0,0%,85%); background:white; cursor:pointer; font-family:inherit;">
-    🔗 URL 복사
+  <span style="color: var(--subtext); align-self:center;">공유:</span>
+  <button type="button" class="share-btn" data-share="copy-short"
+          title="한글 깨짐 없는 단축 링크 (권장)"
+          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); cursor:pointer; font-family:inherit;">
+    🔗 단축 링크 복사
+  </button>
+  <button type="button" class="share-btn" data-share="copy-full"
+          title="원본 한글 URL"
+          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); cursor:pointer; font-family:inherit; font-size:0.85em;">
+    한글 URL
   </button>
   <a class="share-btn" data-share="twitter"
-     href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+     href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ short_url | url_encode }}"
      target="_blank" rel="noopener"
-     style="padding:0.4em 0.9em; border-radius:999px; border:1px solid hsl(0,0%,85%); background:white; text-decoration:none; color:inherit;">
+     style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); text-decoration:none;">
     𝕏 트위터
   </a>
   <button type="button" class="share-btn" data-share="webshare"
-          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid hsl(0,0%,85%); background:white; cursor:pointer; font-family:inherit;">
+          style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); cursor:pointer; font-family:inherit;">
     📤 공유…
   </button>
-  <span id="share-toast" style="display:none; padding:0.4em 0.9em; background:#222; color:white; border-radius:999px; font-size:0.85em;">URL 복사됨!</span>
+  <span id="share-toast" style="display:none; padding:0.4em 0.9em; background:#222; color:white; border-radius:999px; font-size:0.85em;">복사됨!</span>
 </div>
 
 <script>
 (function () {
   var btns = document.querySelectorAll('.share-btn');
   var toast = document.getElementById('share-toast');
-  var url = '{{ site.url }}{{ site.baseurl }}{{ page.url }}';
+  var fullUrl = '{{ share_url }}';
+  var shortUrl = '{{ short_url }}';
   var title = '{{ page.title | escape }}';
 
   function showToast(msg) {
@@ -31,27 +44,33 @@
     setTimeout(function () { toast.style.display = 'none'; }, 1800);
   }
 
+  function doCopy(text, msg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(
+        function () { showToast(msg); },
+        function () { fallbackCopy(text, msg); }
+      );
+    } else {
+      fallbackCopy(text, msg);
+    }
+  }
+  function fallbackCopy(text, msg) {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    showToast(msg);
+  }
+
   btns.forEach(function (b) {
     var kind = b.getAttribute('data-share');
-    if (kind === 'copy') {
-      b.addEventListener('click', function () {
-        navigator.clipboard.writeText(url).then(function () {
-          showToast('🔗 URL 복사됨!');
-        }, function () {
-          // Fallback
-          var ta = document.createElement('textarea');
-          ta.value = url; document.body.appendChild(ta);
-          ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-          showToast('🔗 URL 복사됨!');
-        });
-      });
+    if (kind === 'copy-short') {
+      b.addEventListener('click', function () { doCopy(shortUrl, '🔗 단축 링크 복사됨!'); });
+    } else if (kind === 'copy-full') {
+      b.addEventListener('click', function () { doCopy(fullUrl, '한글 URL 복사됨'); });
     } else if (kind === 'webshare') {
-      if (!navigator.share) {
-        b.style.display = 'none';  // 미지원 시 숨김
-        return;
-      }
+      if (!navigator.share) { b.style.display = 'none'; return; }
       b.addEventListener('click', function () {
-        navigator.share({ title: title, url: url }).catch(function () {});
+        navigator.share({ title: title, url: shortUrl }).catch(function () {});
       });
     }
   });

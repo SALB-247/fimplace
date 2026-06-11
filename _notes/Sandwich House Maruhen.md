@@ -1,5 +1,6 @@
 ---
 title: Sandwich House Maruhen
+shortid: cykzg
 tags:
   - 음식점
   - 도쿄

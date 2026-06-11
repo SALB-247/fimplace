@@ -1,5 +1,6 @@
 ---
 title: 하바스MMA 주짓수&킥복싱
+shortid: 904qt
 tags:
   - 외부컨텐츠
   - 겁도없꾸라

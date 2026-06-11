@@ -1,5 +1,6 @@
 ---
 title: Empire Steak House Times Square
+shortid: we6k6
 tags:
   - 음식점
   - 뉴욕

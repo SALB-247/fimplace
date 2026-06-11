@@ -1,5 +1,6 @@
 ---
 title: Tenjinbashisuji
+shortid: exkc7
 tags:
   - 오사카
   - 일본

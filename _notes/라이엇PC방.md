@@ -1,5 +1,6 @@
 ---
 title: 라이엇PC방
+shortid: jfcw6
 tags:
   - 자체컨텐츠_촬영지
   - 르니버스

@@ -1,5 +1,6 @@
 ---
 title: The Shops
+shortid: by627
 tags:
   - 자체컨텐츠_촬영지
   - FIM-LOG

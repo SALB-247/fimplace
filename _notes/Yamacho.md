@@ -1,5 +1,6 @@
 ---
 title: Yamacho
+shortid: g2a7c
 tags:
   - 음식점
   - 도쿄
