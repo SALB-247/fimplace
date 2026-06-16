@@ -3,12 +3,12 @@ title: Metropolis Vintage
 shortid: 88i98
 tags:
   - 인스타
-  - 사쿠라
   - 뉴욕
   - 미국
   - 상점
   - 자체컨텐츠_촬영지
   - FIM-LOG
+  - 꾸라
 coords:
   - 40.7328
   - -73.9914
