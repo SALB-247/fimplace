@@ -425,12 +425,15 @@ permalink: /map/
   var CATEGORY_TAGS = {};
   // 이 country 들만 지도에 노출 (빈 배열이면 모두 표시).
   // 향후 노트 검수 끝나면 'tw','fr','it' 등 추가 또는 배열 비우기.
-  var VISIBLE_COUNTRIES = ['kr', 'jp', 'hk', 'mo', 'us'];
+  var VISIBLE_COUNTRIES = ['kr', 'jp', 'hk', 'mo', 'us', 'tw', 'th', 'sg', 'id', 'ph', 'mx', 'nl', 'fr', 'dk', 'de', 'gb', 'it', 'ch', 'vn', 'cn'];
   var COUNTRY_LABEL = {
     kr: '🇰🇷 한국', jp: '🇯🇵 일본', tw: '🇹🇼 대만',
     us: '🇺🇸 미국', cn: '🇨🇳 중국', th: '🇹🇭 태국',
     hk: '🇭🇰 홍콩', mo: '🇲🇴 마카오',
-    fr: '🇫🇷 프랑스', it: '🇮🇹 이탈리아', gb: '🇬🇧 영국'
+    fr: '🇫🇷 프랑스', it: '🇮🇹 이탈리아', gb: '🇬🇧 영국',
+    nl: '🇳🇱 네덜란드', dk: '🇩🇰 덴마크', de: '🇩🇪 독일', ch: '🇨🇭 스위스',
+    sg: '🇸🇬 싱가포르', id: '🇮🇩 인도네시아', ph: '🇵🇭 필리핀',
+    vn: '🇻🇳 베트남', mx: '🇲🇽 멕시코'
   };
   // 여러 country 를 셀렉터에서 한 옵션으로 묶기 위한 그룹.
   // members 의 country 들은 그룹 ID 로 합쳐서 카운트·필터·setView 처리됨.
@@ -456,7 +459,16 @@ permalink: /map/
     hk_mo: { center: [22.28, 113.95], zoom: 10 },
     fr:    { center: [48.86, 2.35], zoom: 6 },
     it:    { center: [42.0, 12.5], zoom: 6 },
-    gb:    { center: [51.5, -0.12], zoom: 6 }
+    gb:    { center: [51.5, -0.12], zoom: 6 },
+    nl:    { center: [52.2, 5.3], zoom: 7 },
+    dk:    { center: [56.0, 10.0], zoom: 7 },
+    de:    { center: [51.2, 10.4], zoom: 6 },
+    ch:    { center: [46.8, 8.2], zoom: 8 },
+    sg:    { center: [1.32, 103.85], zoom: 11 },
+    id:    { center: [-2.5, 118.0], zoom: 5 },
+    ph:    { center: [12.5, 122.0], zoom: 6 },
+    vn:    { center: [16.0, 107.5], zoom: 6 },
+    mx:    { center: [23.5, 258.0], zoom: 5 }
   };
   // 그룹 ID 선택 시 매칭 헬퍼 (render·rebuildOptions 공용)
   function countryMatches(p, cc) {
