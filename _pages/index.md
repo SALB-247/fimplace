@@ -19,7 +19,7 @@ permalink: /
 <!--<img src="assets/jqstsowdwl.jpg">-->
 <img src="assets/26007631_p.gif">
 
-[[_notes/2026 LE SSERAFIM TOUR 'PUREFLOW'|2026 LE SSERAFIM TOUR 'PUREFLOW']]
+[[2026 LE SSERAFIM TOUR 'PUREFLOW']]
 
 
 <strong>둘러보기</strong>
