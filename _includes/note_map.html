@@ -40,27 +40,45 @@
         document.getElementById('note-map-count').textContent =
           matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)';
 
-        var map = L.map('note-map', { maxZoom: 19, minZoom: 5 });
+        // 경도 -30~330 정규화 (map.html 과 동일 — 미국·유럽 혼재 시 태평양 중심으로 연속 배치)
+        function wrapLng(lng) {
+          if (lng < -30)  return lng + 360;
+          if (lng >= 330) return lng - 360;
+          return lng;
+        }
 
+        var map = L.map('note-map', {
+          maxZoom: 19, minZoom: 2,
+          maxBounds: L.latLngBounds([-85.0511, -30], [85.0511, 330]),
+          maxBoundsViscosity: 1.0,
+          worldCopyJump: false
+        });
+
+        // VWorld 는 한국 주변 타일만 제공 → 장소가 전부 한국일 때만 VWorld, 아니면 CARTO
+        var allKr = matched.every(function (p) { return p.country === 'kr'; });
+        var tileUrl, tileOpts;
         {% assign vkey2 = site.vworld_api_key | default: '' %}
         {% if vkey2 != '' %}
-        L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey2 }}/Base/{z}/{y}/{x}.png', {
-          maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; VWorld'
-        }).addTo(map);
+        if (allKr) {
+          tileUrl  = 'https://api.vworld.kr/req/wmts/1.0.0/{{ vkey2 }}/Base/{z}/{y}/{x}.png';
+          tileOpts = { maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; VWorld' };
+        } else {
+          tileUrl  = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png';
+          tileOpts = { subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; OSM &copy; CARTO' };
+        }
         {% else %}
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-          subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; OSM &copy; CARTO'
-
-        }).addTo(map);
+        tileUrl  = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png';
+        tileOpts = { subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; OSM &copy; CARTO' };
         {% endif %}
+        L.tileLayer(tileUrl, tileOpts).addTo(map);
 
-        var latlngs = matched.map(function (p) { return [p.lat, p.lng]; });
+        var latlngs = matched.map(function (p) { return [p.lat, wrapLng(p.lng)]; });
         var bounds = L.latLngBounds(latlngs);
         map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
 
         matched.forEach(function (p) {
           var addr = p.address ? '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.2em;">' + escapeHtml(p.address) + '</div>' : '';
-          L.marker([p.lat, p.lng])
+          L.marker([p.lat, wrapLng(p.lng)])
             .bindPopup('<strong><a href="' + p.url + '">' + escapeHtml(p.title) + '</a></strong>' + addr)
             .addTo(map);
         });
