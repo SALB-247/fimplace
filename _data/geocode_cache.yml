@@ -68,3 +68,8 @@
   lng: 129.067289
   source: nominatim
   matched: "동성로25번길, 전포동, 전포1동, 부산진구, 부산광역시, 47305, 대한민국"
+"서울 지하철 4호선":
+  lat: 37.5330286
+  lng: 126.6430228
+  source: nominatim
+  matched: "서울 지하철 7호선"
