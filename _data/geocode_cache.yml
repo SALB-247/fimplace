@@ -73,3 +73,21 @@
   lng: 126.6430228
   source: nominatim
   matched: "서울 지하철 7호선"
+"롱브르378":
+  failed: true
+"롱브르378 서울":
+  failed: true
+"서울 용산구 한강대로 10길 11-54":
+  lat: 37.52453697193302
+  lng: 126.9622257127639
+  source: manual
+  note: "nominatim 이 '한강대로54길'(1.3km 오차)로 오매칭 → 롱브르378 Maps embed(pb !2d!3d) 좌표로 교정"
+"타임슬래시":
+  failed: true
+"타임슬래시 부산":
+  failed: true
+"부산 부산진구 황령대로 64번길 25-1 1층":
+  lat: 35.14850465893755
+  lng: 129.06466071331508
+  source: manual
+  note: "nominatim 이 'GS25'(388m 오차)로 오매칭 → 타임슬래시 Maps embed(pb !2d!3d) 좌표로 교정"
