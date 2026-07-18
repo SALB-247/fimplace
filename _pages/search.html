@@ -112,9 +112,10 @@ permalink: /search/
           return '<span class="tag-chip" style="margin-right:0.3em">#' + escapeHtml(t) + '</span>';
         }).join('');
         var addr = i.address ? '<div class="excerpt">📍 ' + escapeHtml(i.address) + '</div>' : '';
+        var dateBadge = i.date ? '<span style="font-size:0.78em; color:var(--subtext); margin-right:0.4em;">📅 ' + escapeHtml(i.date) + '</span>' : '';
         return '<li>' +
           '<a class="internal-link" href="' + i.url + '">' + escapeHtml(i.title) + '</a> ' +
-          tagHtml +
+          dateBadge + tagHtml +
           addr +
           '</li>';
       }).join('');

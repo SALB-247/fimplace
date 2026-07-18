@@ -97,9 +97,43 @@ permalink: /map/
   }
   .fim-marker.mono { background: #f5f5f5; border-color: #555; }
   .fim-marker.mono span { font-size: 16px; }
+  /* 멤버 미기재(전체 공통)·전 멤버: 르세라핌 로고 심볼 pill */
+  .fim-marker.logo {
+    width: 50px; height: 22px; border-radius: 999px;
+    border-width: 2px; background: #fff; border-color: #222;
+  }
 
   /* 이모지별 시각 중심 보정 (글리프 비대칭 흡수) */
   .fim-marker[data-member="허윤진"] span { transform: translateX(-1px); }
+
+  /* ---------- 현재 핌둥이들 위치: 멤버 5명이 원형으로 뭉친 마커 ---------- */
+  .fim-crew-wrap { background: transparent !important; border: 0 !important; }
+  .fim-crew { position: relative; width: 92px; height: 92px; }
+  .fim-crew .crew-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,24,74,0.16) 0%, rgba(201,24,74,0.05) 60%, transparent 72%);
+  }
+  .fim-crew .crew-pulse {
+    position: absolute; left: 50%; top: 50%; width: 34px; height: 34px;
+    margin: -17px 0 0 -17px; border-radius: 50%;
+    background: rgba(201,24,74,0.45);
+    animation: crew-pulse 2s ease-out infinite;
+  }
+  @keyframes crew-pulse {
+    0%   { transform: scale(0.6); opacity: 0.75; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+  .fim-crew .crew-logo {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 84px; padding: 7px 10px; border-radius: 999px;
+    border: 2px solid #c9184a; background: #fff; box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.6);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fim-crew .crew-logo img { width: 100%; display: block; }
+  .fim-crew:hover { cursor: pointer; }
+  .fim-crew:hover .crew-logo { transform: translate(-50%, -50%) scale(1.07); transition: transform 0.12s; }
+  @media (prefers-reduced-motion: reduce) { .fim-crew .crew-pulse { animation: none; } }
 
   /* ---------- 장소 리스트 패널 (D2) ---------- */
   #map-layout { display: flex; gap: 0.8em; align-items: stretch; }
@@ -175,8 +209,112 @@ permalink: /map/
 
 <div id="map-legend" style="display:flex; flex-wrap:wrap; gap:0.7em; margin-top:0.6em; font-size:0.82em; color:var(--subtext);">
   <span>🌸 사쿠라</span> <span>🐯 김채원</span> <span>🐍 허윤진</span>
-  <span>🦢 카즈하</span> <span>🐥 홍은채</span> <span>📍 공통</span>
+  <span>🦢 카즈하</span> <span>🐥 홍은채</span>
+  <span><span style="display:inline-flex; align-items:center; background:#fff; border:1.5px solid #222; border-radius:999px; padding:2px 6px; vertical-align:middle;"><img src="{{ site.baseurl }}/assets/LE_SSERAFIM_symbol.svg" alt="LE SSERAFIM" style="width:22px; height:auto; display:block;"></span> 공통</span>
 </div>
+
+<div id="timeline-bar" style="margin-top:0.7em; padding:0.6em 0.8em; border:1px solid var(--box-border,#ddd); border-radius:8px;">
+  <div style="display:flex; align-items:center; gap:0.7em; flex-wrap:wrap;">
+    <label style="font-weight:700; cursor:pointer; white-space:nowrap;">
+      <input type="checkbox" id="tl-on"> 🕒 타임라인
+    </label>
+    <input type="date" id="tl-from" disabled style="padding:0.2em 0.4em;">
+    <span>~</span>
+    <input type="date" id="tl-to" disabled style="padding:0.2em 0.4em;">
+    <span id="tl-info" style="font-size:0.8em; color:var(--subtext);"></span>
+  </div>
+  <div class="tl-range" id="tl-range" style="display:none;">
+    <div class="tl-bubble" id="tl-bubble-from"></div>
+    <div class="tl-bubble" id="tl-bubble-to"></div>
+    <div class="tl-histo" id="tl-histo" aria-hidden="true"></div>
+    <div class="tl-track"></div>
+    <div class="tl-fill" id="tl-fill"></div>
+    <input type="range" id="tl-s-from" min="0" max="1000" value="0" aria-label="시작일 슬라이더">
+    <input type="range" id="tl-s-to" min="0" max="1000" value="1000" aria-label="종료일 슬라이더">
+    <div class="tl-years" id="tl-years" aria-hidden="true"></div>
+  </div>
+  <div id="tl-hint" style="display:none; font-size:0.72em; color:var(--subtext); margin-top:0.3em;">
+    ※ 날짜(방문일·게시일·이벤트 기간)가 있는 장소만 필터됩니다. 공연장은 투어 일정 페이지 참고.
+  </div>
+</div>
+
+<style>
+  /* 타임라인 스크러버: 월별 활동 히스토그램 + 멤버 5색 그라데이션 구간 + 날짜 말풍선 */
+  .tl-range { position: relative; height: 88px; margin-top: 1.6em; }
+
+  /* 월별 활동량 막대 (선택 구간 안 = 컬러, 밖 = 회색) */
+  .tl-histo {
+    position: absolute; left: 8px; right: 8px; top: 0; height: 38px;
+    display: flex; align-items: flex-end; gap: 1px;
+  }
+  .tl-histo .b {
+    flex: 1 1 0; min-width: 1px; border-radius: 2px 2px 0 0;
+    background: var(--box-border, #d5d5d5);
+    transition: background 0.15s, opacity 0.15s;
+    opacity: 0.55;
+  }
+  .tl-histo .b.in {
+    background: linear-gradient(180deg, #c9184a 0%, #f0728f 100%);
+    opacity: 1;
+  }
+
+  .tl-range .tl-track {
+    position: absolute; left: 8px; right: 8px; top: 46px; height: 8px;
+    background: var(--box-border, #ddd); border-radius: 4px;
+  }
+  /* 선택 구간: 멤버 5색 그라데이션 */
+  .tl-range .tl-fill {
+    position: absolute; top: 46px; height: 8px; border-radius: 4px;
+    background: linear-gradient(90deg, #f0a8cf, #aeb7c2, #44b5a3, #5f9fd6, #f4857f);
+    box-shadow: 0 0 6px rgba(201,24,74,0.35);
+  }
+
+  .tl-range input[type=range] {
+    position: absolute; left: 0; right: 0; top: 36px; width: 100%; height: 28px;
+    margin: 0; background: none; -webkit-appearance: none; appearance: none;
+    pointer-events: none; outline: none;
+  }
+  .tl-range input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127 22.4"><path d="M 71.768,0 70.615,3.167 62.571,4.731 55.453,0.283 52.963,4.269 49.319,0.222 46.066,3.151 35.222,0.1 34.571,2.418 19.718,0.1 19.272,2.95 1.07,0.1 0.2,5.639 l 31.952,5 L 0,16.893 1.071,22.4 16.9,19.325 l 0.637,3.076 13.457,-2.787 0.5,2.4 13.732,-2.869 0.536,2.681 13.1,-2.618 2.528,2.807 3.878,-3.492 5.056,1.84 1.237,-3.4 8.7,5.434 2.025,-3.241 11.528,3.244 0.566,-2.015 12.865,2.015 0.446,-2.85 18.2,2.85 0.868,-5.544 L 95.3,11.931 126.993,5.6 125.893,0.1 109.664,3.338 108.987,0.095 98.039,2.382 97.566,0.1 85.387,2.619 84.952,0.38 77.039,1.918 Z" fill="%23c9184a"/></svg>') center / 16px auto no-repeat;
+    border: 2.5px solid #c9184a;
+    cursor: grab; pointer-events: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.35);
+    transition: transform 0.1s;
+  }
+  .tl-range input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.18); }
+  .tl-range input[type=range]::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.18); }
+  .tl-range input[type=range]::-moz-range-thumb {
+    width: 17px; height: 17px; border-radius: 50%;
+    background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127 22.4"><path d="M 71.768,0 70.615,3.167 62.571,4.731 55.453,0.283 52.963,4.269 49.319,0.222 46.066,3.151 35.222,0.1 34.571,2.418 19.718,0.1 19.272,2.95 1.07,0.1 0.2,5.639 l 31.952,5 L 0,16.893 1.071,22.4 16.9,19.325 l 0.637,3.076 13.457,-2.787 0.5,2.4 13.732,-2.869 0.536,2.681 13.1,-2.618 2.528,2.807 3.878,-3.492 5.056,1.84 1.237,-3.4 8.7,5.434 2.025,-3.241 11.528,3.244 0.566,-2.015 12.865,2.015 0.446,-2.85 18.2,2.85 0.868,-5.544 L 95.3,11.931 126.993,5.6 125.893,0.1 109.664,3.338 108.987,0.095 98.039,2.382 97.566,0.1 85.387,2.619 84.952,0.38 77.039,1.918 Z" fill="%23c9184a"/></svg>') center / 13px auto no-repeat;
+    border: 2.5px solid #c9184a; cursor: grab; pointer-events: auto;
+  }
+  .tl-range input[type=range]::-moz-range-track { background: none; }
+
+  /* 핸들 위 날짜 말풍선 */
+  .tl-bubble {
+    position: absolute; top: -14px; transform: translateX(-50%);
+    background: #c9184a; color: #fff; font-size: 0.72em; font-weight: 700;
+    padding: 0.15em 0.55em; border-radius: 999px; white-space: nowrap;
+    pointer-events: none; z-index: 3;
+  }
+  .tl-bubble::after {
+    content: ''; position: absolute; left: 50%; bottom: -4px; transform: translateX(-50%);
+    border: 4px solid transparent; border-top-color: #c9184a; border-bottom: 0;
+  }
+
+  /* 연도 눈금 */
+  .tl-years {
+    position: absolute; left: 8px; right: 8px; top: 62px; height: 16px;
+    font-size: 0.68em; color: var(--subtext, #888);
+  }
+  .tl-years span { position: absolute; transform: translateX(-50%); }
+  .tl-years span::before {
+    content: ''; position: absolute; left: 50%; top: -7px;
+    width: 1px; height: 5px; background: var(--subtext, #aaa);
+  }
+</style>
 
 <p style="font-size:0.8em; color:var(--subtext); margin-top:0.5em;">
   좌표가 있는 장소 수: <strong>{{ site.data.places_count | default: 0 }}</strong>
@@ -411,6 +549,127 @@ permalink: /map/
     alert(msg);
   });
 
+  // ================= 현재 핌둥이들 위치 =================
+  // tour_schedule.json (투어 노트의 일정 표에서 자동 생성) 을 읽어
+  // '오늘 공연' 또는 '다음 공연' 위치에 멤버 5명이 원형으로 뭉친 마커를 찍는다.
+  // 판정은 브라우저의 new Date() 로 하므로 빌드 후 날짜가 지나도 자동 갱신됨.
+  var CREW = ['사쿠라', '김채원', '허윤진', '카즈하', '홍은채'];
+  var crewMarker = null, crewShow = null, crewBtn = null, crewLoaded = false;
+
+  function todayYmd() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function crewIcon() {
+    // ⚠️ img 인라인 width 필수 — Leaflet 의 `.leaflet-marker-pane img { width:auto }` 가
+    //    클래스 셀렉터를 이겨서 CSS 만으로는 SVG 가 원본 크기(800px)로 터짐
+    var html = '<div class="fim-crew"><div class="crew-ring"></div><div class="crew-pulse"></div>' +
+      '<div class="crew-logo" title="르세라핌"><img src="{{ site.baseurl }}/assets/LE_SSERAFIM_logo.svg" alt="LE SSERAFIM" style="width:100%;height:auto;display:block;"></div></div>';
+    return L.divIcon({ className: 'fim-crew-wrap', html: html, iconSize: [92, 92], iconAnchor: [46, 46] });
+  }
+
+  // 오늘 공연 → 없으면 다음 공연 → 없으면 마지막 공연
+  // ⚠️ 반드시 '개별 공연일(dates)' 기준으로 비교할 것.
+  //    공연 묶음의 start/end 로 비교하면 '2026.07.30, 08.01–02' 처럼 사이가 빈 일정에서
+  //    7/31 에 바로 다음날(8/1) 공연을 놓치고 엉뚱한 도시를 가리킨다.
+  function pickCrewShow(shows) {
+    var t = todayYmd();
+    var usable = shows.filter(function (s) {
+      return !s.cancelled && s.lat != null && s.dates && s.dates.length;
+    });
+
+    var live = usable.filter(function (s) { return s.dates.indexOf(t) !== -1; });
+    if (live.length) return { show: live[0], state: 'live', date: t };
+
+    var nextShow = null, nextDate = null;
+    usable.forEach(function (s) {
+      s.dates.forEach(function (d) {
+        if (d > t && (nextDate === null || d < nextDate)) { nextDate = d; nextShow = s; }
+      });
+    });
+    if (nextShow) return { show: nextShow, state: 'next', date: nextDate };
+
+    var lastShow = null, lastDate = null;
+    usable.forEach(function (s) {
+      s.dates.forEach(function (d) {
+        if (d < t && (lastDate === null || d > lastDate)) { lastDate = d; lastShow = s; }
+      });
+    });
+    return lastShow ? { show: lastShow, state: 'last', date: lastDate } : null;
+  }
+
+  function crewPopup(pick) {
+    var s = pick.show, t = todayYmd(), head, when;
+    if (pick.state === 'live') {
+      head = '<span style="background:#c9184a;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">🔴 오늘 공연 중</span>';
+      when = s.date_raw;
+    } else if (pick.state === 'next') {
+      var dd = Math.round((new Date(pick.date + 'T00:00:00') - new Date(t + 'T00:00:00')) / 86400000);
+      head = '<span style="background:#1a56c4;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">다음 공연 D-' + dd + '</span>';
+      when = s.date_raw;
+    } else {
+      head = '<span style="background:#888;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">최근 공연</span>';
+      when = s.date_raw;
+    }
+    var venue = s.venue_url
+      ? '<a href="{{ site.baseurl }}' + s.venue_url + '">' + escapeHtmlMap(s.venue) + '</a>'
+      : escapeHtmlMap(s.venue || '미정');
+    return '<div style="min-width:210px">' + head +
+      '<div style="margin-top:0.45em; font-size:1.05em;"><strong>' + (s.flag || '') + ' ' + escapeHtmlMap(s.city || '') + '</strong></div>' +
+      '<div style="margin-top:0.15em;">' + venue + '</div>' +
+      '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.3em;">📅 ' + escapeHtmlMap(when) + '</div>' +
+      '<div style="font-size:0.82em; margin-top:0.4em;"><a href="{{ site.baseurl }}' + s.tour_url + '">' + escapeHtmlMap(s.tour) + '</a></div>' +
+      '<div style="font-size:0.72em; color:var(--subtext); margin-top:0.5em;">' + CREW.map(function (m) { return MEMBER_EMOJI[m]; }).join(' ') + ' 멤버 전원 참여</div>' +
+      '</div>';
+  }
+
+  function toggleCrew() {
+    if (crewMarker) {
+      map.removeLayer(crewMarker); crewMarker = null;
+      if (crewBtn) crewBtn.style.background = '';
+      return;
+    }
+    if (!crewShow) { alert('투어 일정 데이터를 불러오지 못했습니다.'); return; }
+    crewMarker = L.marker([crewShow.show.lat, wrapLng(crewShow.show.lng)], {
+      icon: crewIcon(), zIndexOffset: 1000
+    }).addTo(map).bindPopup(crewPopup(crewShow));
+    if (crewBtn) crewBtn.style.background = '#ffe8ee';
+    map.setView([crewShow.show.lat, wrapLng(crewShow.show.lng)], Math.max(map.getZoom(), 6));
+    crewMarker.openPopup();
+  }
+
+  L.Control.CrewLocation = L.Control.extend({
+    options: { position: 'topleft' },
+    onAdd: function () {
+      var bar = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      var a = L.DomUtil.create('a', '', bar);
+      a.href = '#'; a.title = '현재 핌둥이들 위치!'; a.setAttribute('role', 'button');
+      a.style.display = 'flex'; a.style.alignItems = 'center'; a.style.justifyContent = 'center';
+      a.style.textDecoration = 'none'; a.style.fontSize = '15px';
+      a.innerHTML = '<span style="font-family:\'Apple Color Emoji\',\'Segoe UI Emoji\',\'Noto Color Emoji\',sans-serif;">👯</span>';
+      crewBtn = a;
+      L.DomEvent.disableClickPropagation(bar);
+      L.DomEvent.on(a, 'click', function (e) { L.DomEvent.preventDefault(e); toggleCrew(); });
+      return bar;
+    }
+  });
+  (new L.Control.CrewLocation()).addTo(map);
+
+  fetch('{{ site.baseurl }}/tour_schedule.json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      crewShow = pickCrewShow((d && d.shows) || []);
+      crewLoaded = true;
+      if (!crewShow) { if (crewBtn) { crewBtn.style.opacity = '0.4'; crewBtn.title = '투어 일정 없음'; } return; }
+      var st = crewShow.state;
+      if (crewBtn) crewBtn.title = (st === 'live' ? '🔴 오늘 공연 중! ' : st === 'next' ? '다음 공연 ' : '최근 공연 ') +
+        (crewShow.show.flag || '') + ' ' + crewShow.show.city;
+      if (st === 'live') toggleCrew();   // 공연 당일이면 자동으로 표시
+    })
+    .catch(function () { if (crewBtn) { crewBtn.style.opacity = '0.4'; crewBtn.title = '투어 일정 로드 실패'; } });
+  // ============== /현재 핌둥이들 위치 ==============
+
   var countrySel  = document.getElementById('filter-country');
   var regionSel   = document.getElementById('filter-region');
   var categorySel = document.getElementById('filter-category');
@@ -485,8 +744,13 @@ permalink: /map/
   var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
   function isEnded(p) {
     // 서버가 '과거 종료'로 확정한 것(true)만 신뢰. false(빌드 시점엔 미래였음)·null(날짜 없음)은
-    // 아래에서 제목의 종료일로 '현재 시각' 기준 재평가 → 빌드 이후 끝난 이벤트도 즉시 종료 반영.
+    // 현재 시각 기준 재평가 → 빌드 이후 끝난 이벤트도 즉시 종료 반영.
     if (p && p.ended === true) return true;
+    // 통합 기간 필드(end = 기간섹션·제목·frontmatter 를 서버에서 일원화한 종료일) 우선
+    if (p && p.end) {
+      var em = p.end.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (em) return new Date(+em[1], +em[2] - 1, +em[3]) < TODAY;
+    }
     var title = (p && typeof p === 'object') ? p.title : p;
     if (!title) return false;
     var m = title.match(/(\d{6})[-_~]?(\d{4,6})?(?=[^\d]|$)/);
@@ -522,6 +786,163 @@ permalink: /map/
     if (endedCheck.checked) return arr;
     return arr.filter(function (p) { return !isEnded(p); });
   }
+
+  // ================= 타임라인 (기간 필터) =================
+  // 통합 날짜 DB(p.date / p.start~end / p.visits[])를 기간 [from, to] 와 대조.
+  var TL = { on: false, from: 0, to: 0, min: 0, max: 0 };
+  var tlOn    = document.getElementById('tl-on');
+  var tlFrom  = document.getElementById('tl-from');
+  var tlTo    = document.getElementById('tl-to');
+  var tlSFrom = document.getElementById('tl-s-from');
+  var tlSTo   = document.getElementById('tl-s-to');
+  var tlFill  = document.getElementById('tl-fill');
+  var tlInfo  = document.getElementById('tl-info');
+
+  function tlMs(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || '');
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]).getTime() : null;
+  }
+  function tlYmd(ms) {
+    var d = new Date(ms);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function placeInTimeline(p) {
+    // 이벤트 기간(start~end)은 구간 겹침으로 판정
+    var s = tlMs(p.start), e = tlMs(p.end);
+    if (s !== null || e !== null) {
+      var a = (s !== null ? s : e), b = (e !== null ? e : s);
+      if (a <= TL.to && b >= TL.from) return true;
+    }
+    var d = tlMs(p.date);
+    if (d !== null && d >= TL.from && d <= TL.to) return true;
+    var vs = p.visits || [];
+    for (var i = 0; i < vs.length; i++) {
+      var vd = tlMs(vs[i].date);
+      if (vd !== null && vd >= TL.from && vd <= TL.to) return true;
+    }
+    return false;
+  }
+
+  function tlSyncUI(fromSlider) {
+    if (fromSlider) {
+      var v1 = Math.min(+tlSFrom.value, +tlSTo.value);
+      var v2 = Math.max(+tlSFrom.value, +tlSTo.value);
+      TL.from = TL.min + (TL.max - TL.min) * v1 / 1000;
+      TL.to   = TL.min + (TL.max - TL.min) * v2 / 1000;
+      tlFrom.value = tlYmd(TL.from);
+      tlTo.value   = tlYmd(TL.to);
+    } else {
+      var f = tlMs(tlFrom.value), t = tlMs(tlTo.value);
+      if (f !== null) TL.from = f;
+      if (t !== null) TL.to = t + 86399999; // 종료일 그날 포함
+      if (TL.from > TL.to) { var tmp = TL.from; TL.from = TL.to; TL.to = tmp; }
+      tlSFrom.value = Math.round((TL.from - TL.min) / (TL.max - TL.min) * 1000);
+      tlSTo.value   = Math.round((TL.to   - TL.min) / (TL.max - TL.min) * 1000);
+    }
+    var f1 = Math.min(+tlSFrom.value, +tlSTo.value) / 1000;
+    var f2 = Math.max(+tlSFrom.value, +tlSTo.value) / 1000;
+    // 트랙 패딩(양쪽 8px + 핸들 반경) 감안한 정확한 위치
+    tlFill.style.left  = 'calc(8px + ' + f1 + ' * (100% - 16px))';
+    tlFill.style.width = 'calc(' + (f2 - f1) + ' * (100% - 16px))';
+
+    // 날짜 말풍선
+    var bF = document.getElementById('tl-bubble-from');
+    var bT = document.getElementById('tl-bubble-to');
+    bF.textContent = tlYmd(TL.from).replace(/-/g, '.');
+    bT.textContent = tlYmd(TL.to).replace(/-/g, '.');
+    bF.style.left = 'calc(8px + ' + f1 + ' * (100% - 16px))';
+    bT.style.left = 'calc(8px + ' + f2 + ' * (100% - 16px))';
+    // 두 말풍선이 겹치면 위아래로 벌리기
+    bT.style.top = (f2 - f1 < 0.13) ? '-30px' : '-14px';
+
+    // 히스토그램 막대: 선택 구간 안이면 컬러
+    var bars = document.querySelectorAll('#tl-histo .b');
+    for (var bi = 0; bi < bars.length; bi++) {
+      var s = +bars[bi].getAttribute('data-s'), e = +bars[bi].getAttribute('data-e');
+      bars[bi].className = (s <= TL.to && e >= TL.from) ? 'b in' : 'b';
+    }
+  }
+
+  var tlTimer = null;
+  function tlRender() {
+    clearTimeout(tlTimer);
+    // 타임라인 조작은 '보고 있는 위치'를 유지해야 함 — render 의 자동 fitBounds 스킵
+    tlTimer = setTimeout(function () { skipFitBoundsOnce = true; render(); }, 120);
+  }
+
+  function initTimeline(places) {
+    var lo = null, hi = null;
+    places.forEach(function (p) {
+      [tlMs(p.date), tlMs(p.start), tlMs(p.end)].concat((p.visits || []).map(function (v) { return tlMs(v.date); }))
+        .forEach(function (ms) {
+          if (ms === null) return;
+          if (lo === null || ms < lo) lo = ms;
+          if (hi === null || ms > hi) hi = ms;
+        });
+    });
+    if (lo === null) { document.getElementById('timeline-bar').style.display = 'none'; return; }
+    // 브라우저 폼 상태 복원(새로고침 시 checkbox 등)이 JS 상태와 어긋나지 않게 명시 초기화
+    tlOn.checked = false; TL.on = false;
+    tlFrom.disabled = tlTo.disabled = true;
+    document.getElementById('tl-range').style.display = 'none';
+    document.getElementById('tl-hint').style.display = 'none';
+    TL.min = lo; TL.max = hi + 86399999;
+    TL.from = TL.min; TL.to = TL.max;
+    tlFrom.min = tlTo.min = tlYmd(TL.min);
+    tlFrom.max = tlTo.max = tlYmd(TL.max);
+    tlFrom.value = tlYmd(TL.min);
+    tlTo.value   = tlYmd(TL.max);
+
+    // ── 월별 활동 히스토그램 (place 당 같은 달 1회 카운트) ──
+    var counts = {};
+    places.forEach(function (p) {
+      var seen = {};
+      [tlMs(p.date), tlMs(p.start), tlMs(p.end)].concat((p.visits || []).map(function (v) { return tlMs(v.date); }))
+        .forEach(function (ms) {
+          if (ms === null) return;
+          var d = new Date(ms), k = d.getFullYear() * 12 + d.getMonth();
+          if (!seen[k]) { seen[k] = 1; counts[k] = (counts[k] || 0) + 1; }
+        });
+    });
+    var kLo = new Date(TL.min).getFullYear() * 12 + new Date(TL.min).getMonth();
+    var kHi = new Date(TL.max).getFullYear() * 12 + new Date(TL.max).getMonth();
+    var maxC = 1;
+    for (var k = kLo; k <= kHi; k++) if ((counts[k] || 0) > maxC) maxC = counts[k];
+    var hh = '';
+    var yy = '';
+    for (var k2 = kLo; k2 <= kHi; k2++) {
+      var y = Math.floor(k2 / 12), mo = k2 % 12;
+      var mStart = new Date(y, mo, 1).getTime();
+      var mEnd = new Date(y, mo + 1, 0).getTime() + 86399999;
+      var c = counts[k2] || 0;
+      var hpx = c ? Math.max(3, Math.round(c / maxC * 38)) : 1;
+      hh += '<div class="b in" data-s="' + mStart + '" data-e="' + mEnd + '" style="height:' + hpx + 'px" title="' + y + '.' + String(mo + 1).padStart(2, '0') + ' · ' + c + '곳"></div>';
+      // 연도 눈금 (1월 위치)
+      if (mo === 0 || k2 === kLo) {
+        var frac = (k2 - kLo) / Math.max(1, kHi - kLo);
+        yy += '<span style="left:' + (frac * 100).toFixed(1) + '%">' + y + '</span>';
+      }
+    }
+    document.getElementById('tl-histo').innerHTML = hh;
+    document.getElementById('tl-years').innerHTML = yy;
+
+    tlSyncUI(false);
+  }
+
+  tlOn.addEventListener('change', function () {
+    TL.on = tlOn.checked;
+    tlFrom.disabled = tlTo.disabled = !TL.on;
+    document.getElementById('tl-range').style.display = TL.on ? '' : 'none';
+    document.getElementById('tl-hint').style.display = TL.on ? '' : 'none';
+    skipFitBoundsOnce = true;   // 켜고 끌 때도 지도 위치 유지
+    render();
+  });
+  tlSFrom.addEventListener('input', function () { tlSyncUI(true); tlRender(); });
+  tlSTo.addEventListener('input',   function () { tlSyncUI(true); tlRender(); });
+  tlFrom.addEventListener('change', function () { tlSyncUI(false); tlRender(); });
+  tlTo.addEventListener('change',   function () { tlSyncUI(false); tlRender(); });
+  // ================= /타임라인 =================
 
   // 한 select 의 옵션을 카운트와 함께 재구성. count 0 옵션은 제외.
   // currentValue 가 새 옵션에 없으면 빈 값으로 reset.
@@ -633,9 +1054,12 @@ permalink: /map/
   function markerIcon(p) {
     var members = p.members || [];
     var html, size, isMulti = members.length > 1;
-    if (members.length === 0) {
-      html = '<div class="fim-marker mono"><span>📍</span></div>';
-      size = [34, 34];
+    if (members.length === 0 || members.length >= 5) {
+      // 멤버 미기재(전체 공통) 또는 전 멤버 → 로고 심볼만 (텍스트 없는 지그재그)
+      // ⚠️ img 인라인 width 필수 — Leaflet 의 .leaflet-marker-pane img { width:auto } 가 이김
+      html = '<div class="fim-marker logo"' + (members.length >= 5 ? ' title="멤버 전원"' : '') + '>' +
+        '<img src="{{ site.baseurl }}/assets/LE_SSERAFIM_symbol.svg" alt="LE SSERAFIM" style="width:40px;height:auto;display:block;"></div>';
+      size = [50, 22];
     } else if (isMulti) {
       var emojis = members.map(function (m) { return MEMBER_EMOJI[m] || '·'; }).join('');
       html = '<div class="fim-marker multi" style="background:#fff;border-color:#222;"><span>' + emojis + '</span></div>';
@@ -794,6 +1218,8 @@ permalink: /map/
       if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
       // 멤버 미기재(빈 배열) 노트는 "전체 공통"으로 항상 표시
       if (m && p.members && p.members.length > 0 && p.members.indexOf(m) === -1) return false;
+      // 타임라인 ON 이면 기간 내 날짜가 있는 장소만
+      if (TL.on && !placeInTimeline(p)) return false;
       return true;
     });
     filtered.forEach(function (p) {
@@ -853,6 +1279,7 @@ permalink: /map/
         : raw;
       CATEGORY_TAGS = (data && data.category_tags) || {};
       buildStaticFilters(ALL);
+      initTimeline(ALL);
       applyURLState();   // URL 쿼리 있으면 기본값(한국) 대신 복원
       render();
       // 리스트 패널(flex) 레이아웃 확정 후 지도 크기 재계산 (사이드패널로 인한 너비 변화 대응)

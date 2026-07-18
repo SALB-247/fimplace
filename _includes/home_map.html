@@ -1,0 +1,100 @@
+<!-- 메인 페이지 미니 지도: 필터 없음, 정사각형, 전체 장소 점 + 현재 핌둥이들 위치 -->
+<div id="home-map-wrap" style="position:relative; width:100%; margin:0.5em 0 1em;">
+  <div id="home-map" style="width:100%; aspect-ratio:1/1; border-radius:10px; border:1px solid var(--box-border,#ddd); background:#eef4f8;"></div>
+  <a href="{{ site.baseurl }}/map/" style="position:absolute; right:10px; bottom:10px; z-index:800; background:rgba(255,255,255,0.92); border:1px solid #ccc; border-radius:999px; padding:0.3em 0.9em; font-size:0.82em; font-weight:700; text-decoration:none; color:#333; box-shadow:0 1px 4px rgba(0,0,0,0.15);">🗺️ 전체 지도 →</a>
+</div>
+
+<style>
+  .fim-crew-mini { position:relative; width:80px; height:44px; }
+  .fim-crew-mini .pulse { position:absolute; left:50%; top:50%; width:26px; height:26px; margin:-13px 0 0 -13px; border-radius:50%; background:rgba(201,24,74,0.45); animation:home-crew-pulse 2s ease-out infinite; }
+  @keyframes home-crew-pulse { 0% { transform:scale(0.6); opacity:0.8; } 100% { transform:scale(2.6); opacity:0; } }
+  .fim-crew-mini .badge { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:76px; padding:6px 9px; border-radius:999px; border:2px solid #c9184a; background:#fff; box-sizing:border-box; box-shadow:0 2px 5px rgba(0,0,0,0.3); }
+  .fim-crew-mini .badge img { width:100%; display:block; }
+  @media (prefers-reduced-motion: reduce) { .fim-crew-mini .pulse { animation:none; } }
+</style>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script>
+(function () {
+  function wrapLng(lng) {
+    if (lng < -30)  return lng + 360;
+    if (lng >= 330) return lng - 360;
+    return lng;
+  }
+  var map = L.map('home-map', {
+    zoomControl: false, attributionControl: false,
+    maxZoom: 19, minZoom: 2,
+    maxBounds: L.latLngBounds([-85.0511, -30], [85.0511, 330]),
+    maxBoundsViscosity: 1.0, worldCopyJump: false,
+    scrollWheelZoom: false   // 스크롤 중 지도에 잡히지 않게 (클릭 후 +/- 또는 더블클릭 줌)
+  }).setView([33.5, 132.0], 3);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+    { subdomains: 'abcd', maxZoom: 19 }).addTo(map);
+  map.on('focus click', function () { map.scrollWheelZoom.enable(); });
+  map.on('blur', function () { map.scrollWheelZoom.disable(); });
+
+  // 전체 장소 점
+  fetch('{{ site.baseurl }}/places.json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      ((d && d.places) || []).forEach(function (p) {
+        if (p.lat == null || p.lng == null) return;
+        L.circleMarker([p.lat, wrapLng(p.lng)], {
+          radius: 3, weight: 1, color: '#c9184a', fillColor: '#f0728f', fillOpacity: 0.55
+        }).addTo(map).bindPopup('<a href="{{ site.baseurl }}' + p.url + '">' + (p.title || '') + '</a>');
+      });
+    })
+    .catch(function () {});
+
+  // 현재 핌둥이들 위치 (오늘 공연 → 다음 공연 → 최근 공연)
+  function ymd(d) {
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+
+  fetch('{{ site.baseurl }}/tour_schedule.json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var shows = ((d && d.shows) || []).filter(function (s) {
+        return !s.cancelled && s.lat != null && s.dates && s.dates.length;
+      });
+      if (!shows.length) return;
+      var t = ymd(new Date());
+      var pick = null, pickDate = null, state = null;
+
+      shows.forEach(function (s) {
+        if (s.dates.indexOf(t) !== -1) { pick = s; pickDate = t; state = 'live'; }
+      });
+      if (!pick) shows.forEach(function (s) {
+        s.dates.forEach(function (dd) {
+          if (dd > t && (pickDate === null || dd < pickDate)) { pickDate = dd; pick = s; state = 'next'; }
+        });
+      });
+      if (!pick) shows.forEach(function (s) {
+        s.dates.forEach(function (dd) {
+          if (dd < t && (pickDate === null || dd > pickDate)) { pickDate = dd; pick = s; state = 'last'; }
+        });
+      });
+      if (!pick) return;
+
+      // ⚠️ img 는 인라인 width 필수 — Leaflet 의 `.leaflet-marker-pane img { width:auto }` 가
+      //    외부 CSS 셀렉터보다 구체성이 높아 클래스 규칙으로는 못 이김 (SVG 원본 800px 로 터짐)
+      var html = '<div class="fim-crew-mini"><div class="pulse"></div>' +
+        '<div class="badge"><img src="{{ site.baseurl }}/assets/LE_SSERAFIM_logo.svg" alt="LE SSERAFIM" style="width:100%;height:auto;display:block;"></div></div>';
+
+      var head = state === 'live' ? '🔴 오늘 공연!' : state === 'next' ? '다음 공연' : '최근 공연';
+      var ll = [pick.lat, wrapLng(pick.lng)];
+      L.marker(ll, { icon: L.divIcon({ className: '', html: html, iconSize: [80,44], iconAnchor: [40,22] }), zIndexOffset: 1000 })
+        .addTo(map)
+        .bindPopup('<strong>' + head + '</strong><br>' + (pick.flag||'') + ' ' + (pick.city||'') +
+          (pick.venue_url ? '<br><a href="{{ site.baseurl }}' + pick.venue_url + '">' + pick.venue + '</a>' : '') +
+          '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + '</span>',
+          { autoClose: false, closeOnClick: false })
+        .openPopup();
+      map.setView(ll, 5);
+    })
+    .catch(function () {});
+})();
+</script>

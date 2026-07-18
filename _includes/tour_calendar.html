@@ -1,0 +1,171 @@
+{%- assign my_shows = site.data.tour_shows | where: "tour", page.title -%}
+{%- if my_shows.size > 0 -%}
+<div id="tour-cal" style="margin-top:2em;">
+  <h3 style="margin-bottom:0.2em;">투어 달력</h3>
+  <div id="tour-cal-status" style="margin:0 0 0.8em;"></div>
+  <div id="tour-cal-nav" style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.6em;">
+    <button id="tc-prev" class="tc-nav-btn" aria-label="이전 달">◀</button>
+    <span id="tc-nav-label" style="font-weight:700; min-width:11em; text-align:center;"></span>
+    <button id="tc-next" class="tc-nav-btn" aria-label="다음 달">▶</button>
+    <button id="tc-today" class="tc-nav-btn" style="font-size:0.78em; padding:0.3em 0.7em;">처음으로</button>
+  </div>
+  <div id="tour-cal-months"></div>
+  <p style="font-size:0.78em; color:var(--subtext); margin-top:0.6em;">
+    ※ 지난/예정 표시는 <strong>보는 시점</strong> 기준으로 자동 갱신됩니다.
+  </p>
+</div>
+
+<style>
+  #tour-cal .tc-grid { display:grid; grid-template-columns:repeat(2, minmax(230px,1fr)); gap:0.9em; max-width:560px; }
+  #tour-cal .tc-nav-btn { border:1px solid var(--box-border,#ccc); background:var(--box-bg,#fafafa); color:var(--text,#333); border-radius:6px; padding:0.25em 0.8em; cursor:pointer; font-size:0.9em; }
+  #tour-cal .tc-nav-btn:disabled { opacity:0.35; cursor:default; }
+  #tour-cal .tc-nav-btn:not(:disabled):hover { background:var(--box-border,#eee); }
+  #tour-cal .tc-month { border:1px solid var(--box-border, #ddd); border-radius:8px; padding:0.6em 0.7em 0.7em; background:var(--box-bg, #fafafa); }
+  #tour-cal .tc-mtitle { font-weight:700; font-size:0.92em; margin-bottom:0.45em; }
+  #tour-cal .tc-days { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+  #tour-cal .tc-dow { font-size:0.68em; color:var(--subtext,#888); text-align:center; padding-bottom:2px; }
+  #tour-cal .tc-cell { aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; font-size:0.75em; border-radius:5px; color:var(--subtext,#999); }
+  #tour-cal .tc-cell.has { font-weight:700; cursor:pointer; text-decoration:none; }
+  /* 예정 */
+  #tour-cal .tc-cell.upcoming { background:#e8f0fe; color:#1a56c4; border:1px solid #b9cdf5; }
+  /* 오늘 공연 */
+  #tour-cal .tc-cell.today { background:#c9184a; color:#fff; border:1px solid #c9184a; box-shadow:0 0 0 2px rgba(201,24,74,.25); }
+  /* 지난 공연 */
+  #tour-cal .tc-cell.past { background:var(--box-border,#e3e3e3); color:var(--subtext,#888); text-decoration:line-through; }
+  /* 취소 */
+  #tour-cal .tc-cell.cancelled { background:transparent; color:#c00; text-decoration:line-through; border:1px dashed #e0a0a0; }
+  #tour-cal .tc-badge { display:inline-block; padding:0.25em 0.7em; border-radius:999px; font-size:0.85em; font-weight:700; }
+  #tour-cal .tc-legend { font-size:0.72em; color:var(--subtext,#888); margin-top:0.5em; display:flex; gap:0.8em; flex-wrap:wrap; }
+  #tour-cal .tc-legend i { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:3px; vertical-align:middle; }
+  @media (max-width:600px){ #tour-cal .tc-grid { grid-template-columns:1fr 1fr; } }
+</style>
+
+<script>
+(function () {
+  var SHOWS = {{ my_shows | jsonify }};
+  if (!SHOWS || !SHOWS.length) return;
+
+  // 로컬 기준 오늘 (YYYY-MM-DD) — 브라우저 시각이라 빌드 후에도 정확
+  function ymd(d) {
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+  var TODAY = ymd(new Date());
+
+  // 날짜 -> 공연 (하루에 한 공연 가정; 겹치면 첫 건)
+  var byDate = {};
+  SHOWS.forEach(function (s) {
+    (s.dates || []).forEach(function (d) { if (!byDate[d]) byDate[d] = s; });
+  });
+  var allDates = Object.keys(byDate).sort();
+  if (!allDates.length) return;
+
+  function state(d) {
+    if (byDate[d].cancelled) return 'cancelled';
+    if (d === TODAY) return 'today';
+    return d < TODAY ? 'past' : 'upcoming';
+  }
+
+  // ── 상태 배지
+  var live = allDates.filter(function (d) { return d === TODAY && !byDate[d].cancelled; });
+  var next = allDates.filter(function (d) { return d > TODAY && !byDate[d].cancelled; })[0];
+  var doneCnt = allDates.filter(function (d) { return d < TODAY && !byDate[d].cancelled; }).length;
+  var totalCnt = allDates.filter(function (d) { return !byDate[d].cancelled; }).length;
+
+  var badge, sub = '';
+  if (live.length) {
+    var s = byDate[live[0]];
+    badge = '<span class="tc-badge" style="background:#c9184a;color:#fff;">🔴 오늘 공연</span>';
+    sub = (s.flag||'') + ' ' + (s.city||'') + (s.venue ? ' · ' + s.venue : '');
+  } else if (next) {
+    var n = byDate[next];
+    var dd = Math.round((new Date(next+'T00:00:00') - new Date(TODAY+'T00:00:00')) / 86400000);
+    badge = '<span class="tc-badge" style="background:#1a56c4;color:#fff;">다음 공연 D-' + dd + '</span>';
+    sub = next + ' · ' + (n.flag||'') + ' ' + (n.city||'') + (n.venue ? ' · ' + n.venue : '');
+  } else {
+    badge = '<span class="tc-badge" style="background:#888;color:#fff;">투어 종료</span>';
+    sub = allDates[0] + ' ~ ' + allDates[allDates.length-1];
+  }
+  document.getElementById('tour-cal-status').innerHTML =
+    badge + ' <span style="font-size:0.85em; color:var(--subtext);">' + sub + '</span>' +
+    '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.35em;">진행 ' + doneCnt + ' / ' + totalCnt + '회</div>';
+
+  // ── 페이지네이션: 한 번에 2개월 (viewStart 부터), ◀▶ 로 이동
+  //    범위: 투어 시작 월 ~ 마지막 공연 월. 디폴트 = 진행/예정 투어면 오늘 월, 종료 투어면 시작 월.
+  function monthKey(y, m) { return y + '-' + String(m).padStart(2, '0'); }
+  function addMonth(mk, n) {
+    var y = +mk.slice(0,4), m = +mk.slice(5,7) - 1 + n;
+    return monthKey(new Date(y, m, 1).getFullYear(), new Date(y, m, 1).getMonth() + 1);
+  }
+  var firstMonth = allDates[0].slice(0,7);
+  var lastMonth  = allDates[allDates.length-1].slice(0,7);
+  var todayMonth = TODAY.slice(0,7);
+  var tourOver   = allDates[allDates.length-1] < TODAY;
+  // 디폴트 시작 월: 종료 투어 → 투어 시작 월 / 진행·예정 → 오늘 월 (투어 범위로 클램프)
+  var viewStart  = tourOver ? firstMonth
+                 : (todayMonth < firstMonth ? firstMonth
+                 : (todayMonth > lastMonth ? lastMonth : todayMonth));
+  var defaultStart = viewStart;
+  // 2개월 창이 범위 끝을 넘지 않게: 마지막 유효 시작점은 lastMonth 의 한 달 전 (단, 범위가 1개월뿐이면 그대로)
+  var maxStart = addMonth(lastMonth, -1);
+  if (maxStart < firstMonth) maxStart = firstMonth;
+  if (viewStart > maxStart) viewStart = maxStart;
+
+  var DOW = ['일','월','화','수','목','금','토'];
+
+  function renderMonth(mk) {
+    var y = +mk.slice(0,4), m = +mk.slice(5,7);
+    var first = new Date(y, m-1, 1), last = new Date(y, m, 0);
+    var showCnt = allDates.filter(function (d) { return d.slice(0,7) === mk; }).length;
+    var html = '<div class="tc-month"><div class="tc-mtitle">' + y + '년 ' + m + '월' +
+      (showCnt ? ' <span style="font-weight:400;font-size:0.82em;color:var(--subtext);">· ' + showCnt + '일</span>' : '') +
+      '</div><div class="tc-days">';
+    DOW.forEach(function (w) { html += '<div class="tc-dow">' + w + '</div>'; });
+    for (var i = 0; i < first.getDay(); i++) html += '<div></div>';
+    for (var day = 1; day <= last.getDate(); day++) {
+      var ds = y + '-' + String(m).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+      var s = byDate[ds];
+      if (!s) { html += '<div class="tc-cell">' + day + '</div>'; continue; }
+      var st = state(ds);
+      var label = (s.flag||'') + ' ' + (s.city||'') + (s.venue ? '\n' + s.venue : '') + (s.cancelled ? '\n(취소)' : '');
+      var tag = s.venue_url ? 'a' : 'div';
+      var href = s.venue_url ? ' href="{{ site.baseurl }}' + s.venue_url + '"' : '';
+      html += '<' + tag + ' class="tc-cell has ' + st + '"' + href + ' title="' + label.replace(/"/g,'&quot;') + '">' + day + '</' + tag + '>';
+    }
+    return html + '</div></div>';
+  }
+
+  var LEGEND = '<div class="tc-legend">' +
+      '<span><i style="background:#c9184a"></i>오늘</span>' +
+      '<span><i style="background:#e8f0fe;border:1px solid #b9cdf5"></i>예정</span>' +
+      '<span><i style="background:#e3e3e3"></i>지난</span>' +
+      '<span><i style="border:1px dashed #e0a0a0"></i>취소</span>' +
+      '<span style="color:var(--subtext)">날짜 클릭 → 공연장 노트</span>' +
+    '</div>';
+
+  var prevBtn = document.getElementById('tc-prev');
+  var nextBtn = document.getElementById('tc-next');
+  var homeBtn = document.getElementById('tc-today');
+  var navLbl  = document.getElementById('tc-nav-label');
+
+  function draw() {
+    var second = addMonth(viewStart, 1);
+    var showSecond = second <= lastMonth;
+    var html = '<div class="tc-grid">' + renderMonth(viewStart) + (showSecond ? renderMonth(second) : '') + '</div>' + LEGEND;
+    document.getElementById('tour-cal-months').innerHTML = html;
+    navLbl.textContent = (+viewStart.slice(0,4)) + '년 ' + (+viewStart.slice(5,7)) + '월' +
+      (showSecond ? ' – ' + (+second.slice(0,4)) + '년 ' + (+second.slice(5,7)) + '월' : '');
+    prevBtn.disabled = viewStart <= firstMonth;
+    nextBtn.disabled = viewStart >= maxStart;
+    homeBtn.style.display = viewStart === defaultStart ? 'none' : '';
+  }
+  prevBtn.addEventListener('click', function () {
+    if (viewStart > firstMonth) { viewStart = addMonth(viewStart, -1); draw(); }
+  });
+  nextBtn.addEventListener('click', function () {
+    if (viewStart < maxStart) { viewStart = addMonth(viewStart, 1); draw(); }
+  });
+  homeBtn.addEventListener('click', function () { viewStart = defaultStart; draw(); });
+  draw();
+})();
+</script>
+{%- endif -%}

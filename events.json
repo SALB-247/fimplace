@@ -1,0 +1,8 @@
+---
+layout: null
+permalink: /events.json
+sitemap: false
+---
+{
+  "events": {{ site.data.events | default: empty | jsonify }}
+}

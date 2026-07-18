@@ -81,7 +81,6 @@
   lat: 37.52453697193302
   lng: 126.9622257127639
   source: manual
-  note: "nominatim 이 '한강대로54길'(1.3km 오차)로 오매칭 → 롱브르378 Maps embed(pb !2d!3d) 좌표로 교정"
 "타임슬래시":
   failed: true
 "타임슬래시 부산":
@@ -90,4 +89,10 @@
   lat: 35.14850465893755
   lng: 129.06466071331508
   source: manual
-  note: "nominatim 이 'GS25'(388m 오차)로 오매칭 → 타임슬래시 Maps embed(pb !2d!3d) 좌표로 교정"
+"얼짱사진샵 숙대입구점":
+  failed: true
+"얼짱사진샵 숙대입구점 서울":
+  lat: 37.5451337
+  lng: 126.9719573
+  source: nominatim:cleaned
+  matched: "숙대입구"

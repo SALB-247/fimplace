@@ -8,6 +8,8 @@ tags:
   - 기타장소
   - 영등포
 ---
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kwt68qY6nAM?si=jhL8bJmnTWY-T2Fe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <img src="assets/250603_7.png">
 <img src="assets/250603_8.jpg">
 

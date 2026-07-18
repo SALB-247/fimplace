@@ -13,11 +13,20 @@ permalink: /
 
 문의는 fim.hlight@gmail.com으로 부탁드립니다.
 
+<!-- font-size:0 = 링크 장식(↗)·공백 텍스트 노드가 이미지 아래 빈 줄을 만드는 것 방지 -->
+<a href="{{ site.baseurl }}/2026-le-sserafim-tour-pureflow" style="display:block; position:relative; border-radius:12px; overflow:hidden; margin:1em 0 1.2em; width:100%; font-size:0; line-height:0;">
+  <img src="assets/pureflow_banner.jpg" alt="2026 LE SSERAFIM TOUR 'PUREFLOW'" style="width:100%; display:block;">
+  <span class="banner-cta" style="position:absolute; right:3%; bottom:8%; background:rgba(0,0,0,0.45); color:#fff; padding:0.35em 0.9em; border-radius:999px; font-size:13px; line-height:1.2; font-weight:700;">투어 일정 보기 →</span>
+</a>
+<style>
+  /* 좁은 화면: CTA pill 이 PUREFLOW 타이틀을 가리므로 숨김 (배너 전체가 링크) */
+  @media (max-width: 520px) { .banner-cta { display: none; } }
+</style>
+
+{% include home_map.html %}
 
 <strong>High-lighted list</strong>
 
-<!--<img src="assets/jqstsowdwl.jpg">-->
-<img src="assets/26007631_p.gif">
 ## [[2026 LE SSERAFIM TOUR 'PUREFLOW']]
 
 ## 🐯[[2026_채원_생일_이벤트]]

@@ -209,6 +209,10 @@ module PlacesGenerator
   def self.detect_ended(note, today)
     # frontmatter 명시적 종료 플래그 (ended: true) 최우선
     return true if note.data['ended'] == true
+    # 통합 기간 해석 결과 (event_period_generator 가 :normal 에서 주입 — 기간섹션·제목·frontmatter 통합)
+    if (ev_end = note.data['event_end'])
+      return ev_end < today
+    end
     %w[end_date valid_until ended_at].each do |k|
       v = note.data[k]
       next if v.nil? || v.to_s.empty?
@@ -261,7 +265,11 @@ module PlacesGenerator
         return d if d
       end
     end
-    nil
+    # 방문 기록 (메모줄·허브표 — event_period_generator 주입) 첫 날짜
+    fv = Array(note.data['visit_dates']).first
+    return fv['date'] if fv && fv['date']
+    # 최후 fallback: 컨텐츠 게시일 (IG shortcode 디코드 / YouTube 업로드일 캐시)
+    note.data['content_date']
   end
 
   # 이벤트 모음/목차 페이지 자동 감지
@@ -524,6 +532,9 @@ module PlacesGenerator
           'region' => region,
           'ended' => ended,
           'date' => (date ? date.strftime('%Y-%m-%d') : nil),
+          'start' => (note.data['event_start'] ? note.data['event_start'].strftime('%Y-%m-%d') : nil),
+          'end' => (note.data['event_end'] ? note.data['event_end'].strftime('%Y-%m-%d') : nil),
+          'visits' => Array(note.data['visit_dates']).map { |v| { 'date' => v['date'].strftime('%Y-%m-%d'), 'label' => v['label'] } },
           'tags' => tags, 'members' => Array(note.data['members']).map(&:to_s), 'categories' => categories
         }
       end

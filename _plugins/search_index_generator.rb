@@ -12,13 +12,17 @@ module SearchIndexer
       items = site.collections['notes'].docs.filter_map do |note|
         title = note.data['title'].to_s.strip
         next nil if title.empty?
+        # 대표 날짜: 방문기록 → 이벤트 시작일 → 컨텐츠 게시일 (event_period_generator 주입값)
+        first_visit = Array(note.data['visit_dates']).first
+        rep_date = (first_visit && first_visit['date']) || note.data['event_start'] || note.data['content_date']
         {
           'title'   => title,
           'url'     => "#{site.baseurl}#{note.url}",
           'tags'    => Array(note.data['tags']).map(&:to_s),
           'members' => Array(note.data['members']).map(&:to_s),
           'address' => extract_address_line(note.content.to_s),
-          'excerpt' => clean_excerpt(note.content.to_s, 300)
+          'date'    => (rep_date ? rep_date.strftime('%Y-%m-%d') : nil),
+          'excerpt' => clean_excerpt(note.content.to_s, 500)
         }
       end
       site.data['search_index'] = items

@@ -1,0 +1,150 @@
+---
+layout: page
+title: 방문 계획
+permalink: /planner/
+---
+
+<p style="color:var(--subtext); font-size:0.9em;">
+  가고 싶은 장소를 골라 나만의 코스를 만들어 보세요. 선택한 순서대로 경로가 이어지고,
+  <strong>구글맵 길찾기</strong>로 바로 열 수 있습니다. <span style="font-size:0.85em;">(β 프로토타입)</span>
+</p>
+
+<div style="display:flex; gap:0.5em; flex-wrap:wrap; margin-bottom:0.6em;">
+  <select id="pl-country" style="padding:0.4em;"><option value="">🌏 국가 전체</option></select>
+  <input id="pl-search" type="search" placeholder="장소 이름 검색..." style="flex:1; min-width:160px; padding:0.4em;">
+</div>
+
+<div id="pl-layout" style="display:flex; gap:0.8em; align-items:stretch;">
+  <div id="pl-list" style="flex:0 0 260px; max-height:520px; overflow-y:auto; border:1px solid var(--box-border,#ddd); border-radius:8px; padding:0.4em;"></div>
+  <div style="flex:1; min-width:0;">
+    <div id="pl-map" style="width:100%; height:520px; border-radius:8px; border:1px solid var(--box-border,#ddd);"></div>
+  </div>
+</div>
+
+<div id="pl-plan" style="margin-top:0.8em;">
+  <strong>내 코스</strong> <span id="pl-count" style="color:var(--subtext); font-size:0.85em;"></span>
+  <ol id="pl-route" style="margin:0.4em 0;"></ol>
+  <div style="display:flex; gap:0.6em; flex-wrap:wrap;">
+    <a id="pl-gmap" href="#" target="_blank" rel="noopener" style="display:none; background:#1a73e8; color:#fff; padding:0.4em 1em; border-radius:6px; text-decoration:none; font-weight:700;">🗺️ 구글맵 길찾기 열기</a>
+    <button id="pl-clear" style="padding:0.4em 1em; border:1px solid var(--box-border,#ccc); border-radius:6px; background:var(--box-bg,#fafafa); cursor:pointer;">초기화</button>
+  </div>
+  <p style="font-size:0.75em; color:var(--subtext); margin-top:0.5em;">※ 구글맵 길찾기는 경유지 최대 9곳까지 지원됩니다 (출발+경유+도착 = 11곳).</p>
+</div>
+
+<style>
+  #pl-list label { display:flex; gap:0.4em; align-items:flex-start; padding:0.25em 0.3em; border-radius:5px; cursor:pointer; font-size:0.85em; line-height:1.3; }
+  #pl-list label:hover { background:var(--box-bg,#f4f4f4); }
+  #pl-list input { margin-top:0.15em; }
+  #pl-route li { font-size:0.88em; margin-bottom:0.15em; }
+  .pl-num-icon { background:#c9184a; color:#fff; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.4); }
+  @media (max-width:700px){ #pl-layout { flex-direction:column; } #pl-list { flex:none; max-height:220px; } }
+</style>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script>
+(function () {
+  function wrapLng(lng) { return lng < -30 ? lng + 360 : (lng >= 330 ? lng - 360 : lng); }
+  var LABELS = { kr:'🇰🇷 한국', jp:'🇯🇵 일본', tw:'🇹🇼 대만', us:'🇺🇸 미국', cn:'🇨🇳 중국', th:'🇹🇭 태국',
+    hk:'🇭🇰 홍콩', mo:'🇲🇴 마카오', fr:'🇫🇷 프랑스', it:'🇮🇹 이탈리아', gb:'🇬🇧 영국', nl:'🇳🇱 네덜란드',
+    dk:'🇩🇰 덴마크', de:'🇩🇪 독일', ch:'🇨🇭 스위스', sg:'🇸🇬 싱가포르', id:'🇮🇩 인도네시아',
+    ph:'🇵🇭 필리핀', vn:'🇻🇳 베트남', mx:'🇲🇽 멕시코' };
+
+  var map = L.map('pl-map', {
+    maxZoom: 19, minZoom: 2,
+    maxBounds: L.latLngBounds([-85.0511, -30], [85.0511, 330]),
+    maxBoundsViscosity: 1.0, worldCopyJump: false
+  }).setView([36.5, 127.8], 7);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+    { subdomains: 'abcd', maxZoom: 19, attribution: '&copy; OSM &copy; CARTO' }).addTo(map);
+
+  var ALL = [], plan = [], markers = [], line = null;
+  var listEl = document.getElementById('pl-list');
+  var routeEl = document.getElementById('pl-route');
+  var gmapBtn = document.getElementById('pl-gmap');
+  var countrySel = document.getElementById('pl-country');
+  var searchEl = document.getElementById('pl-search');
+
+  function renderList() {
+    var cc = countrySel.value, q = (searchEl.value || '').toLowerCase();
+    var pool = ALL.filter(function (p) {
+      if (cc && p.country !== cc) return false;
+      if (q && p.title.toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    }).slice(0, 300);
+    listEl.innerHTML = pool.map(function (p) {
+      var checked = plan.indexOf(p) !== -1 ? ' checked' : '';
+      return '<label><input type="checkbox" data-url="' + p.url + '"' + checked + '><span>' + p.title +
+        (p.region ? ' <span style="color:var(--subtext); font-size:0.85em;">(' + p.region + ')</span>' : '') + '</span></label>';
+    }).join('');
+  }
+
+  function renderPlan() {
+    document.getElementById('pl-count').textContent = plan.length ? plan.length + '곳' : '';
+    routeEl.innerHTML = plan.map(function (p, i) {
+      return '<li><a class="internal-link" href="' + p.url + '">' + p.title + '</a>' +
+        ' <button data-i="' + i + '" class="pl-rm" style="border:0;background:none;cursor:pointer;color:#c00;">✕</button></li>';
+    }).join('');
+    markers.forEach(function (m) { map.removeLayer(m); });
+    markers = [];
+    if (line) { map.removeLayer(line); line = null; }
+    var lls = [];
+    plan.forEach(function (p, i) {
+      var ll = [p.lat, wrapLng(p.lng)];
+      lls.push(ll);
+      markers.push(L.marker(ll, {
+        icon: L.divIcon({ className: '', html: '<div class="pl-num-icon">' + (i + 1) + '</div>', iconSize: [26, 26], iconAnchor: [13, 13] })
+      }).addTo(map).bindPopup('<strong>' + (i + 1) + '. ' + p.title + '</strong>'));
+    });
+    if (lls.length > 1) {
+      line = L.polyline(lls, { color: '#c9184a', weight: 3, dashArray: '6 6', opacity: 0.8 }).addTo(map);
+    }
+    if (lls.length) map.fitBounds(L.latLngBounds(lls), { padding: [40, 40], maxZoom: 14 });
+
+    // 구글맵 길찾기 URL (원본 경도 사용 — 구글은 wrap 불필요)
+    if (plan.length >= 2) {
+      var pts = plan.map(function (p) { return p.lat + ',' + p.lng; });
+      var url = 'https://www.google.com/maps/dir/?api=1' +
+        '&origin=' + pts[0] + '&destination=' + pts[pts.length - 1];
+      if (pts.length > 2) url += '&waypoints=' + pts.slice(1, -1).slice(0, 9).join('|');
+      gmapBtn.href = url;
+      gmapBtn.style.display = '';
+    } else {
+      gmapBtn.style.display = 'none';
+    }
+  }
+
+  listEl.addEventListener('change', function (e) {
+    var url = e.target.getAttribute('data-url');
+    if (!url) return;
+    var p = ALL.find(function (x) { return x.url === url; });
+    if (e.target.checked) { if (plan.indexOf(p) === -1) plan.push(p); }
+    else { plan = plan.filter(function (x) { return x !== p; }); }
+    renderPlan();
+  });
+  routeEl.addEventListener('click', function (e) {
+    if (!e.target.classList.contains('pl-rm')) return;
+    plan.splice(+e.target.getAttribute('data-i'), 1);
+    renderPlan(); renderList();
+  });
+  document.getElementById('pl-clear').addEventListener('click', function () {
+    plan = []; renderPlan(); renderList();
+  });
+  countrySel.addEventListener('change', renderList);
+  searchEl.addEventListener('input', renderList);
+
+  fetch('{{ site.baseurl }}/places.json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      ALL = (d.places || []).filter(function (p) { return p.lat != null; });
+      var ccs = {};
+      ALL.forEach(function (p) { if (p.country) ccs[p.country] = (ccs[p.country] || 0) + 1; });
+      Object.keys(ccs).sort().forEach(function (c) {
+        countrySel.add(new Option((LABELS[c] || c) + ' (' + ccs[c] + ')', c));
+      });
+      renderList();
+    });
+})();
+</script>

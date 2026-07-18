@@ -1014,6 +1014,10 @@
   lat: 37.545355
   lng: 126.98494210000001
   source: iframe
+"얼짱사진샵 숙대입구점":
+  lat: 37.5451337
+  lng: 126.9719573
+  source: nominatim:cleaned
 "여의도공원":
   lat: 37.5255357
   lng: 126.9215857
@@ -1043,7 +1047,7 @@
   lat: 37.57939657203516
   lng: 126.9820165777821
   source: iframe
-"오설록 콜라보_260522-260521":
+"오설록 콜라보_260522-260621":
   skipped: true
   reason: "resolver returned nil"
 "오설록 티하우스 북촌점":

@@ -1,0 +1,8 @@
+---
+layout: null
+permalink: /tour_schedule.json
+sitemap: false
+---
+{
+  "shows": {{ site.data.tour_shows | default: empty | jsonify }}
+}

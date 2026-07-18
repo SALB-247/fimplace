@@ -1,0 +1,122 @@
+# 모바일 변형 이미지 매니페스트 (scripts/make_mobile_images.py 생성)
+# responsive_images.rb 가 읽어 <img src="assets/원본"> 을 srcset 으로 치환
+"250603_7.png":
+  m: "m/250603_7.webp"
+  w: 2219
+"251125-1.png":
+  m: "m/251125-1.webp"
+  w: 2097
+"251226_1.png":
+  m: "m/251226_1.webp"
+  w: 2250
+"260423_2.png":
+  m: "m/260423_2.webp"
+  w: 2223
+"FEARNADA_2024_SS_Poster_29.webp":
+  m: "m/FEARNADA_2024_SS_Poster_29.webp"
+  w: 6014
+"FsDYlu7agAE7_QP.jpg":
+  m: "m/FsDYlu7agAE7_QP.webp"
+  w: 2048
+"G2PrW6oboAAA3Hl.jpg":
+  m: "m/G2PrW6oboAAA3Hl.webp"
+  w: 3672
+"GlZuy5XbcAADgAw.jpg":
+  m: "m/GlZuy5XbcAADgAw.webp"
+  w: 2621
+"GwI6aSNX0AAYsyw.jpg":
+  m: "m/GwI6aSNX0AAYsyw.webp"
+  w: 2480
+"GwtiE4pbgAAQhxb.jpg":
+  m: "m/GwtiE4pbgAAQhxb.webp"
+  w: 2480
+"GwtiIaRasAAllW9.jpg":
+  m: "m/GwtiIaRasAAllW9.webp"
+  w: 2480
+"Gwtj6gubgAUn0FS.jpg":
+  m: "m/Gwtj6gubgAUn0FS.webp"
+  w: 2480
+"HEX-0zrbEAAp_vZ.jpg":
+  m: "m/HEX-0zrbEAAp_vZ.webp"
+  w: 3072
+"HI4yyyobUAAr268.jpg":
+  m: "m/HI4yyyobUAAr268.webp"
+  w: 3277
+"HMTHTkKawAA6rxu.jpg":
+  m: "m/HMTHTkKawAA6rxu.webp"
+  w: 2480
+"HMTHTkKbwAARt3M.jpg":
+  m: "m/HMTHTkKbwAARt3M.webp"
+  w: 2480
+"HMYPztxaIAAiPZg.jpg":
+  m: "m/HMYPztxaIAAiPZg.webp"
+  w: 2480
+"HMYPzuCbYAAvAkV.jpg":
+  m: "m/HMYPzuCbYAAvAkV.webp"
+  w: 2480
+"HMzYiBgboAACid3.jpg":
+  m: "m/HMzYiBgboAACid3.webp"
+  w: 2504
+"HMzYim_aEAAVsq3.jpg":
+  m: "m/HMzYim_aEAAVsq3.webp"
+  w: 2504
+"Screenshot_39.png":
+  m: "m/Screenshot_39.webp"
+  w: 2415
+"msr2.png":
+  m: "m/msr2.webp"
+  w: 3090
+"videoframe_108316.png":
+  m: "m/videoframe_108316.webp"
+  w: 3840
+"videoframe_114270.png":
+  m: "m/videoframe_114270.webp"
+  w: 3840
+"videoframe_1576588.png":
+  m: "m/videoframe_1576588.webp"
+  w: 2304
+"videoframe_87125.png":
+  m: "m/videoframe_87125.webp"
+  w: 3840
+"weverse_1-265279357.jpg":
+  m: "m/weverse_1-265279357.webp"
+  w: 2100
+"weverse_1-265281622.jpg":
+  m: "m/weverse_1-265281622.webp"
+  w: 2032
+"weverse_1-265281623.jpg":
+  m: "m/weverse_1-265281623.webp"
+  w: 2835
+"weverse_1-272433630.jpg":
+  m: "m/weverse_1-272433630.webp"
+  w: 3024
+"weverse_1-272464739.jpg":
+  m: "m/weverse_1-272464739.webp"
+  w: 3024
+"weverse_2-271841120.jpg":
+  m: "m/weverse_2-271841120.webp"
+  w: 2919
+"weverse_2-286488685.jpg":
+  m: "m/weverse_2-286488685.webp"
+  w: 3000
+"weverse_2-303120349.jpeg":
+  m: "m/weverse_2-303120349.webp"
+  w: 3622
+"weverse_3-257707511.jpg":
+  m: "m/weverse_3-257707511.webp"
+  w: 3024
+"weverse_4-257663597.jpg":
+  m: "m/weverse_4-257663597.webp"
+  w: 3024
+"weverse_4-258610674.jpg":
+  m: "m/weverse_4-258610674.webp"
+  w: 3024
+"weverse_4-271091022.jpg":
+  m: "m/weverse_4-271091022.webp"
+  w: 3024
+"weverse_4-298790796.jpg":
+  m: "m/weverse_4-298790796.webp"
+  w: 2250
+"weverse_4-317494141.jpg":
+  m: "m/weverse_4-317494141.webp"
+  w: 3000
