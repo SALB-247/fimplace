@@ -215,8 +215,10 @@ permalink: /map/
 
 <div id="timeline-bar" style="margin-top:0.7em; padding:0.6em 0.8em; border:1px solid var(--box-border,#ddd); border-radius:8px;">
   <div style="display:flex; align-items:center; gap:0.7em; flex-wrap:wrap;">
-    <label style="font-weight:700; cursor:pointer; white-space:nowrap;">
-      <input type="checkbox" id="tl-on"> 🕒 타임라인
+    <label class="tl-switch" style="white-space:nowrap;">
+      <input type="checkbox" id="tl-on">
+      <span class="tl-knob" aria-hidden="true"></span>
+      🕒 특정 시기로 필터링
     </label>
     <input type="date" id="tl-from" disabled style="padding:0.2em 0.4em;">
     <span>~</span>
@@ -239,6 +241,22 @@ permalink: /map/
 </div>
 
 <style>
+  /* 타임라인 토글 스위치 */
+  .tl-switch { display:inline-flex; align-items:center; gap:0.5em; cursor:pointer; font-weight:700; user-select:none; }
+  .tl-switch input { position:absolute; opacity:0; width:0; height:0; }
+  .tl-switch .tl-knob {
+    width:40px; height:22px; border-radius:999px; flex:0 0 auto;
+    background: var(--box-border, #ccc); position:relative; transition: background 0.18s;
+  }
+  .tl-switch .tl-knob::after {
+    content:''; position:absolute; top:2px; left:2px; width:18px; height:18px;
+    border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.35);
+    transition: left 0.18s;
+  }
+  .tl-switch input:checked + .tl-knob { background:#c9184a; }
+  .tl-switch input:checked + .tl-knob::after { left:20px; }
+  .tl-switch input:focus-visible + .tl-knob { box-shadow:0 0 0 3px rgba(201,24,74,0.3); }
+
   /* 타임라인 스크러버: 월별 활동 히스토그램 + 멤버 5색 그라데이션 구간 + 날짜 말풍선 */
   .tl-range { position: relative; height: 88px; margin-top: 1.6em; }
 
@@ -274,6 +292,11 @@ permalink: /map/
     margin: 0; background: none; -webkit-appearance: none; appearance: none;
     pointer-events: none; outline: none;
   }
+  /* 클릭/포커스 시 브라우저 기본 트랙·아웃라인(주황 바) 제거 */
+  .tl-range input[type=range]:focus,
+  .tl-range input[type=range]:focus-visible { outline: none; box-shadow: none; }
+  .tl-range input[type=range]::-webkit-slider-runnable-track { background: transparent; border: 0; }
+  .tl-range input[type=range]::-moz-focus-outer { border: 0; }
   .tl-range input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none; appearance: none;
     width: 22px; height: 22px; border-radius: 50%;

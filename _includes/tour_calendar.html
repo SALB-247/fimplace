@@ -17,6 +17,7 @@
 
 <style>
   #tour-cal .tc-grid { display:grid; grid-template-columns:repeat(2, minmax(230px,1fr)); gap:0.9em; max-width:560px; }
+  #tour-cal .tc-month, #tour-cal .tc-days { min-width:0; }
   #tour-cal .tc-nav-btn { border:1px solid var(--box-border,#ccc); background:var(--box-bg,#fafafa); color:var(--text,#333); border-radius:6px; padding:0.25em 0.8em; cursor:pointer; font-size:0.9em; }
   #tour-cal .tc-nav-btn:disabled { opacity:0.35; cursor:default; }
   #tour-cal .tc-nav-btn:not(:disabled):hover { background:var(--box-border,#eee); }
@@ -37,7 +38,8 @@
   #tour-cal .tc-badge { display:inline-block; padding:0.25em 0.7em; border-radius:999px; font-size:0.85em; font-weight:700; }
   #tour-cal .tc-legend { font-size:0.72em; color:var(--subtext,#888); margin-top:0.5em; display:flex; gap:0.8em; flex-wrap:wrap; }
   #tour-cal .tc-legend i { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:3px; vertical-align:middle; }
-  @media (max-width:600px){ #tour-cal .tc-grid { grid-template-columns:1fr 1fr; } }
+  /* 좁은 화면: 두 달을 나란히 두면 셀이 카드 밖으로 넘침 → 한 달씩 세로 스택 */
+  @media (max-width:640px){ #tour-cal .tc-grid { grid-template-columns:1fr; max-width:360px; } }
 </style>
 
 <script>
