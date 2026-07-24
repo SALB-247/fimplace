@@ -147,36 +147,46 @@ module EventPeriod
     nil
   end
 
+  # 6자리 YYMMDD 또는 8자리 YYYYMMDD → Date
+  def parse_date_token(tok)
+    return parse_yymmdd(tok) if tok.length == 6
+    return nil unless tok.length == 8 && tok =~ /\A\d{8}\z/
+    Date.new(tok[0, 4].to_i, tok[4, 2].to_i, tok[6, 2].to_i)
+  rescue ArgumentError
+    nil
+  end
+
   # 본문 메모줄에서 방문 기록 추출: [{'date'=>Date,'label'=>String}, ...]
+  # 허용 형식: "260614 허윤진 인스타" / "20250505_채원 DM" / "260724_SPECIAL_..." / "251125_윤진 DM"
+  #   날짜(6 또는 8자리) 뒤 구분자는 공백 또는 언더스코어. '/' 로 한 줄에 복수 기록도 지원.
   def memo_visits(content)
     out = []
     content.to_s.each_line do |line|
       s = line.strip
       next if s.empty? || s.start_with?('<', '#', '[', '!', '|', '-')
       s.split(%r{\s*/\s*}).each do |seg|
-        m = seg.strip.match(/\A(2\d[01]\d[0-3]\d)\s+(.+)\z/)
+        m = seg.strip.match(/\A(\d{8}|\d{6})[_\s]+(.+)\z/)
         next unless m
-        d = parse_yymmdd(m[1])
-        out << { 'date' => d, 'label' => m[2].strip[0, 40] } if d
+        d = parse_date_token(m[1])
+        out << { 'date' => d, 'label' => m[2].strip.gsub('_', ' ')[0, 40] } if d
       end
     end
     out
   end
 
-  # 컨텐츠 게시일 fallback: IG shortcode → YouTube 업로드일 (여러 개면 가장 이른 것)
-  def content_date(content, video_dates)
-    dates = []
+  # 컨텐츠 게시일 목록: IG shortcode(게시일) + YouTube 업로드일 — 전부 반환 (중복 제거)
+  #   ⚠️ fallback 이 아니라 '방문 날짜'와 별개의 독립 날짜로 취급 → 본문 날짜와 영상 날짜가 둘 다 DB 에 남음
+  def content_dates(content, video_dates)
+    out = []
     content.to_s.scan(%r{instagram\.com/(?:p|reel)/([A-Za-z0-9_-]{8,})/embed}) do |(code)|
       d = ig_code_date(code)
-      dates << d if d
+      out << { 'date' => d, 'label' => 'IG 게시' } if d
     end
     content.to_s.scan(%r{youtube(?:-nocookie)?\.com/embed/([A-Za-z0-9_-]{11})}) do |(vid)|
       v = video_dates[vid]
-      dates << Date.parse(v) if v
+      out << { 'date' => Date.parse(v), 'label' => '영상 업로드' } if v
     end
-    dates.min
-  rescue StandardError
-    dates&.min
+    out
   end
 
   # ── 허브 표 날짜 레이어 ──
@@ -245,28 +255,29 @@ module EventPeriod
           n += 1
         end
 
-        # 방문 기록 우선순위: 노트 자체 메모줄 → 허브 표 (-SNS 장소 등)
+        # 날짜 소스를 모두 합침 (한 장소가 여러 번 방문·촬영되면 전부 DB 화):
+        #   ① 본문 메모줄  ② 허브 표(-SNS 장소 등)  ③ 컨텐츠 게시일(IG·YouTube)
+        #   ⚠️ 본문 날짜와 영상 업로드일이 둘 다 있으면 둘 다 남긴다 (사용자 요청).
         visits = EventPeriod.memo_visits(note.content)
-        if visits.empty? && (h = hub_dates[note.data['title'].to_s])
-          visits = [h]
+        if (h = hub_dates[note.data['title'].to_s])
+          visits << h
           hubbed += 1
         end
-        unless visits.empty?
-          note.data['visit_dates'] = visits
-          visited += 1
-        end
+        cds = EventPeriod.content_dates(note.content, video_dates)
+        contented += 1 unless cds.empty?
+        visits.concat(cds)
 
-        # 컨텐츠 게시일 (IG shortcode / YouTube 업로드일) — 다른 날짜 소스 없을 때의 구원투수
-        if visits.empty? && r.nil?
-          cd = EventPeriod.content_date(note.content, video_dates)
-          if cd
-            note.data['content_date'] = cd
-            contented += 1
-          end
+        # 같은 날짜 중복 제거 (라벨은 먼저 잡힌 것 우선), 날짜순 정렬
+        uniq = {}
+        visits.each { |v| next unless v['date']; k = v['date'].to_s; uniq[k] ||= v }
+        merged = uniq.values.sort_by { |v| v['date'] }
+        unless merged.empty?
+          note.data['visit_dates'] = merged
+          visited += 1
         end
       end
       Jekyll.logger.info('EventPeriod',
-        "기간 #{n} / 방문 #{visited} (허브표 #{hubbed}) / 컨텐츠날짜(IG·YT) #{contented}")
+        "기간 #{n} / 날짜있는노트 #{visited} (허브표 #{hubbed}, 컨텐츠 #{contented})")
     end
   end
 

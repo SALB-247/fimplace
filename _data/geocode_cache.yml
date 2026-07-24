@@ -96,3 +96,36 @@
   lng: 126.9719573
   source: nominatim:cleaned
   matched: "숙대입구"
+"서울특별시 용산구 한강대로10길 11-42":
+  lat: 37.524391
+  lng: 126.9645722
+  source: nominatim
+  matched: "한강대로10길, 한강로3가, 한강로동, 용산구, 서울특별시, 04389, 대한민국"
+"서울특별시 용산구 한강대로10길 11-44":
+  lat: 37.524391
+  lng: 126.9645722
+  source: nominatim
+  matched: "한강대로10길, 한강로3가, 한강로동, 용산구, 서울특별시, 04389, 대한민국"
+"차지 용산 아이파크몰점":
+  lat: 37.528916
+  lng: 126.964108
+  source: nominatim
+  matched: "아이파크몰 용산점 리빙파크"
+"키드문 kidmoon":
+  failed: true
+"키드문 kidmoon 서울":
+  failed: true
+"서울 용산구 한강대로 10길 11-50":
+  lat: 37.5318478
+  lng: 126.9719545
+  source: nominatim
+  matched: "한강대로50길"
+"키드문 kidmoon 부산":
+  failed: true
+"부산 부산진구 황령대로64번길 12 2층":
+  failed: true
+"부산 부산진구 황령대로64번길 12":
+  lat: 35.1487698
+  lng: 129.0668959
+  source: nominatim:cleaned
+  matched: "황령대로64번길, 전포동, 전포1동, 부산진구, 부산광역시, 48400, 대한민국"

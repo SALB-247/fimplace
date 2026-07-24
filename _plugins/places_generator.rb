@@ -265,11 +265,11 @@ module PlacesGenerator
         return d if d
       end
     end
-    # 방문 기록 (메모줄·허브표 — event_period_generator 주입) 첫 날짜
-    fv = Array(note.data['visit_dates']).first
-    return fv['date'] if fv && fv['date']
-    # 최후 fallback: 컨텐츠 게시일 (IG shortcode 디코드 / YouTube 업로드일 캐시)
-    note.data['content_date']
+    # 방문 기록 (메모줄·허브표·영상/IG 게시일 — event_period_generator 가 통합 주입).
+    # 대표 date 는 '최신순' 정렬용이므로 가장 최근 날짜. 재방문 장소는 최근 방문으로 랭크됨.
+    dates = Array(note.data['visit_dates']).map { |v| v['date'] }.compact
+    return dates.max unless dates.empty?
+    nil
   end
 
   # 이벤트 모음/목차 페이지 자동 감지

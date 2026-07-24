@@ -5,7 +5,7 @@ hide_backlinks: true
 tags:
   - PUREFLOW_pt1_이벤트
 ---
-<img src="assets/weverse_2-303120349.jpeg">
+<img src="assets/HNt1J1PacAAmrW3.jpg">
 
 
 

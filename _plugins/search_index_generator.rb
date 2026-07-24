@@ -12,9 +12,9 @@ module SearchIndexer
       items = site.collections['notes'].docs.filter_map do |note|
         title = note.data['title'].to_s.strip
         next nil if title.empty?
-        # 대표 날짜: 방문기록 → 이벤트 시작일 → 컨텐츠 게시일 (event_period_generator 주입값)
-        first_visit = Array(note.data['visit_dates']).first
-        rep_date = (first_visit && first_visit['date']) || note.data['event_start'] || note.data['content_date']
+        # 대표 날짜: 방문기록(최신) → 이벤트 시작일 (event_period_generator 주입값)
+        vdates = Array(note.data['visit_dates']).map { |v| v['date'] }.compact
+        rep_date = (vdates.max) || note.data['event_start']
         {
           'title'   => title,
           'url'     => "#{site.baseurl}#{note.url}",
