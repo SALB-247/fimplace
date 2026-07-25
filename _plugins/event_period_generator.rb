@@ -164,11 +164,14 @@ module EventPeriod
     content.to_s.each_line do |line|
       s = line.strip
       next if s.empty? || s.start_with?('<', '#', '[', '!', '|', '-')
-      s.split(%r{\s*/\s*}).each do |seg|
+      # 복수 기록 구분자는 공백 있는 ' / ' 만 (URL 내부 '/' 는 분리하지 않음)
+      s.split(%r{\s+/\s+}).each do |seg|
         m = seg.strip.match(/\A(\d{8}|\d{6})[_\s]+(.+)\z/)
         next unless m
         d = parse_date_token(m[1])
-        out << { 'date' => d, 'label' => m[2].strip.gsub('_', ' ')[0, 40] } if d
+        next unless d
+        label = m[2].strip.gsub(/\[([^\]]+)\]\([^)]*\)/, '\1').gsub('_', ' ')  # 마크다운 링크 → 텍스트만
+        out << { 'date' => d, 'label' => label.strip[0, 40] }
       end
     end
     out
