@@ -11,13 +11,11 @@ coords: 35.660658549958086, 139.72920112722525
 country: jp
 ---
 
-<iframe src="https://www.instagram.com/p/DbiRJLiE2MF/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
-
 <img src="assets/keyaki.jpg">
 
 <iframe src="https://maps.google.com/maps?q=35.660658549958086,139.72920112722525&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-260802 꾸라 인스타
+260802 [꾸라 인스타](https://www.instagram.com/p/DbiRJLiE2MF)  
 
 ## 상호명
 手打ち蕎麦 けやき (Teuchi Soba Keyaki)
