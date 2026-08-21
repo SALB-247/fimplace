@@ -10,8 +10,8 @@ tags:
 coords: [34.69625745783287, 135.49915641178686]
 country: jp
 ---
-<img src="assets/kiraku1.png">
-<img src="assets/kiraku2.png">
+<img src="assets/kiraku1.jpg">
+<img src="assets/kiraku2.jpg">
 
 <iframe src="https://maps.google.com/maps?q=34.69625745783287,135.49915641178686&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 

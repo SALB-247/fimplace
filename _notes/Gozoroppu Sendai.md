@@ -7,10 +7,14 @@ tags:
   - 미야기현
   - 일본
   - 음식점
-coords: [38.26349855247436, 140.87006581976974]
+  - 채원
+  - 은채
+coords:
+  - 38.26349855247436
+  - 140.87006581976974
 country: jp
 ---
-<img src="assets/gozoroppu1.png">
+<img src="assets/gozoroppu1.jpg">
 <img src="assets/gozoroppu2.png">
 
 <iframe src="https://maps.google.com/maps?q=38.26349855247436,140.87006581976974&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
