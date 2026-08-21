@@ -103,4 +103,32 @@ SNS(위버스, DM, 인스타 등)장소를 저장하는 곳입니다.
 | [[올라이트 서촌점]]             | 서울시 종로구  | 2024-06-07 | 꾸라         | 인스타            |
 | [[카페마마스 코엑스점]]           | 서울시 강남구  | 2023-03-25 | 윤진, 즈하     | 트위터            |
 
+## 해외
 
+<p style="font-size:0.85em; color:var(--subtext); margin-top:-0.3em;">
+  ※ 아래 표는 노트 데이터에서 <strong>자동 생성</strong>됩니다. 해외 SNS 노트를 만들면 자동으로 나타나므로 수동 추가가 필요 없습니다.
+</p>
+
+{%- assign SNS_TAGS = "인스타,위버스,DM,멤트,틱톡,공트,위버스라이브" | split: "," -%}
+{%- assign COUNTRIES = site.data.tag_categories["국가 (라벨)"] -%}
+{%- assign overseas = site.data.places | where_exp: "p", "p.country != 'kr'" | sort: "date" | reverse -%}
+<table>
+<thead><tr><th>Location</th><th>위치</th><th>날짜</th><th>멤버</th><th>SNS</th></tr></thead>
+<tbody>
+{%- for p in overseas -%}
+{%- assign is_sns = false -%}
+{%- assign sns_list = "" -%}
+{%- for t in p.tags -%}
+{%- if SNS_TAGS contains t -%}
+{%- assign is_sns = true -%}
+{%- if sns_list == "" -%}{%- assign sns_list = t -%}{%- else -%}{%- assign sns_list = sns_list | append: ", " | append: t -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if is_sns -%}
+{%- assign cname = "" -%}
+{%- for t in p.tags -%}{%- if COUNTRIES contains t -%}{%- assign cname = t -%}{%- endif -%}{%- endfor -%}
+<tr><td><a class="internal-link" href="{{ p.url }}">{{ p.title }}</a></td><td>{{ cname }}{% if p.region %} {{ p.region }}{% endif %}</td><td>{{ p.date }}</td><td>{{ p.members | join: ", " }}</td><td>{{ sns_list }}</td></tr>
+{%- endif -%}
+{%- endfor -%}
+</tbody>
+</table>

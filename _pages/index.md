@@ -29,7 +29,7 @@ permalink: /
 
 ## [[2026 LE SSERAFIM TOUR 'PUREFLOW']]
 
-## 🐯[[2026_채원_생일_이벤트]]
+## [[❤️FIM'S SECRET LAB POP UP❤️]]
 
 
 <strong>둘러보기</strong>
@@ -47,7 +47,6 @@ permalink: /
 [[-외부 컨텐츠 촬영지]]
 
 [[-SNS 장소]]
-
 
 
 <strong>최근 일정 노트</strong>

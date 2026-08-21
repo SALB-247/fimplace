@@ -10,7 +10,11 @@
   @keyframes home-crew-pulse { 0% { transform:scale(0.6); opacity:0.8; } 100% { transform:scale(2.6); opacity:0; } }
   .fim-crew-mini .badge { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:76px; padding:6px 9px; border-radius:999px; border:2px solid #c9184a; background:#fff; box-sizing:border-box; box-shadow:0 2px 5px rgba(0,0,0,0.3); }
   .fim-crew-mini .badge img { width:100%; display:block; }
-  @media (prefers-reduced-motion: reduce) { .fim-crew-mini .pulse { animation:none; } }
+  /* 팝업스토어 마커 (공연=크림슨 로고 / 팝업=보라 🛍️ 로 구분) */
+  .fim-pop-mini { position:relative; width:44px; height:44px; }
+  .fim-pop-mini .pulse { position:absolute; left:50%; top:50%; width:24px; height:24px; margin:-12px 0 0 -12px; border-radius:50%; background:rgba(109,40,217,0.45); animation:home-crew-pulse 2s ease-out infinite; }
+  .fim-pop-mini .badge { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; border:2px solid #6d28d9; background:#fff; box-sizing:border-box; box-shadow:0 2px 5px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; font-size:17px; line-height:1; font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
+  @media (prefers-reduced-motion: reduce) { .fim-crew-mini .pulse, .fim-pop-mini .pulse { animation:none; } }
 </style>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -54,47 +58,89 @@
     return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
   }
 
-  fetch('{{ site.baseurl }}/tour_schedule.json')
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
-      var shows = ((d && d.shows) || []).filter(function (s) {
-        return !s.cancelled && s.lat != null && s.dates && s.dates.length;
-      });
-      if (!shows.length) return;
-      var t = ymd(new Date());
-      var pick = null, pickDate = null, state = null;
+  // 공연(tour_schedule) + 팝업스토어(events) 를 함께 표시.
+  // 판정은 브라우저 new Date() 기준이라 빌드 후 날짜가 지나도 자동 갱신됨.
+  Promise.all([
+    fetch('{{ site.baseurl }}/tour_schedule.json').then(function (r) { return r.json(); }).catch(function () { return { shows: [] }; }),
+    fetch('{{ site.baseurl }}/events.json').then(function (r) { return r.json(); }).catch(function () { return { events: [] }; })
+  ]).then(function (res) {
+    var t = ymd(new Date());
+    var pts = [], autoCand = [];
 
-      shows.forEach(function (s) {
-        if (s.dates.indexOf(t) !== -1) { pick = s; pickDate = t; state = 'live'; }
+    // ── 공연: 오늘 → 다음 → 최근 ──
+    var shows = ((res[0] && res[0].shows) || []).filter(function (s) {
+      return !s.cancelled && s.lat != null && s.dates && s.dates.length;
+    });
+    var pick = null, pickDate = null, state = null;
+    shows.forEach(function (s) {
+      if (s.dates.indexOf(t) !== -1) { pick = s; pickDate = t; state = 'live'; }
+    });
+    if (!pick) shows.forEach(function (s) {
+      s.dates.forEach(function (dd) {
+        if (dd > t && (pickDate === null || dd < pickDate)) { pickDate = dd; pick = s; state = 'next'; }
       });
-      if (!pick) shows.forEach(function (s) {
-        s.dates.forEach(function (dd) {
-          if (dd > t && (pickDate === null || dd < pickDate)) { pickDate = dd; pick = s; state = 'next'; }
-        });
+    });
+    if (!pick) shows.forEach(function (s) {
+      s.dates.forEach(function (dd) {
+        if (dd < t && (pickDate === null || dd > pickDate)) { pickDate = dd; pick = s; state = 'last'; }
       });
-      if (!pick) shows.forEach(function (s) {
-        s.dates.forEach(function (dd) {
-          if (dd < t && (pickDate === null || dd > pickDate)) { pickDate = dd; pick = s; state = 'last'; }
-        });
-      });
-      if (!pick) return;
+    });
 
+    if (pick) {
       // ⚠️ img 는 인라인 width 필수 — Leaflet 의 `.leaflet-marker-pane img { width:auto }` 가
       //    외부 CSS 셀렉터보다 구체성이 높아 클래스 규칙으로는 못 이김 (SVG 원본 800px 로 터짐)
       var html = '<div class="fim-crew-mini"><div class="pulse"></div>' +
         '<div class="badge"><img src="{{ site.baseurl }}/assets/LE_SSERAFIM_logo.svg" alt="LE SSERAFIM" style="width:100%;height:auto;display:block;"></div></div>';
-
       var head = state === 'live' ? '🔴 오늘 공연!' : state === 'next' ? '다음 공연' : '최근 공연';
       var ll = [pick.lat, wrapLng(pick.lng)];
-      L.marker(ll, { icon: L.divIcon({ className: '', html: html, iconSize: [80,44], iconAnchor: [40,22] }), zIndexOffset: 1000 })
+      var m = L.marker(ll, { icon: L.divIcon({ className: '', html: html, iconSize: [80,44], iconAnchor: [40,22] }), zIndexOffset: 1000 })
         .addTo(map)
         .bindPopup('<strong>' + head + '</strong><br>' + (pick.flag||'') + ' ' + (pick.city||'') +
           (pick.venue_url ? '<br><a href="{{ site.baseurl }}' + pick.venue_url + '">' + pick.venue + '</a>' : '') +
           '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + '</span>',
-          { autoClose: false, closeOnClick: false })
-        .openPopup();
-      map.setView(ll, 5);
-    })
-    .catch(function () {});
+          { autoClose: false, closeOnClick: false });
+      pts.push(ll);
+      autoCand.push({ marker: m, rank: state === 'live' ? 0 : 1,
+                      gap: Math.abs((new Date(pickDate) - new Date(t)) / 86400000) });
+    }
+
+    // ── 팝업스토어: 진행 중 전부 → 없으면 가장 가까운 예정 1곳 ──
+    //    (종료된 팝업은 이제 갈 수 없으므로 표시하지 않음)
+    var pops = ((res[1] && res[1].events) || []).filter(function (e) {
+      return e.type === '팝업' && e.lat != null && e.start;
+    });
+    var live = pops.filter(function (e) { return e.start <= t && t <= e.end; });
+    var chosen = live;
+    if (!chosen.length) {
+      var up = pops.filter(function (e) { return e.start > t; })
+                   .sort(function (a, b) { return a.start < b.start ? -1 : 1; });
+      if (up.length) chosen = [up[0]];
+    }
+    chosen.forEach(function (e) {
+      var isLive = e.start <= t && t <= e.end;
+      var dday = Math.round((new Date(e.start) - new Date(t)) / 86400000);
+      var head = isLive ? '🛍️ 팝업 진행 중' : '🛍️ 팝업 D-' + dday;
+      var ll = [e.lat, wrapLng(e.lng)];
+      var m = L.marker(ll, {
+        icon: L.divIcon({ className: '', html: '<div class="fim-pop-mini"><div class="pulse"></div><div class="badge">🛍️</div></div>',
+                          iconSize: [44,44], iconAnchor: [22,22] }), zIndexOffset: 900 })
+        .addTo(map)
+        .bindPopup('<strong>' + head + '</strong><br><a href="' + e.url + '">' + e.title + '</a>' +
+          '<br><span style="font-size:0.85em;color:#888;">📅 ' + e.start + ' ~ ' + e.end + '</span>',
+          { autoClose: false, closeOnClick: false });
+      pts.push(ll);
+      autoCand.push({ marker: m, rank: isLive ? 0 : 1, gap: Math.abs(dday) });
+    });
+
+    // ── 뷰 + 팝업 자동 열기 (가장 임박한 것 1개만 열어 말풍선 겹침 방지) ──
+    if (pts.length === 1) map.setView(pts[0], 5);
+    else if (pts.length > 1) {
+      try { map.fitBounds(L.latLngBounds(pts), { padding: [70,70], maxZoom: 6 }); }
+      catch (err) { map.setView(pts[0], 5); }
+    }
+    autoCand.sort(function (a, b) { return a.rank - b.rank || a.gap - b.gap; });
+    if (autoCand.length) autoCand[0].marker.openPopup();
+  })
+  .catch(function () {});
 })();
 </script>

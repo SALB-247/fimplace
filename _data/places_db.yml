@@ -82,6 +82,9 @@
   lat: 34.70266189491034
   lng: 135.49661333558387
   source: frontmatter
+"FIM'S SECRET LAB POP UP":
+  skipped: true
+  reason: "resolver returned nil"
 "Furaibo Fukiage":
   lat: 35.1594967131762
   lng: 136.92833209981816
