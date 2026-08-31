@@ -63,12 +63,12 @@
           tileUrl  = 'https://api.vworld.kr/req/wmts/1.0.0/{{ vkey2 }}/Base/{z}/{y}/{x}.png';
           tileOpts = { maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; VWorld' };
         } else {
-          tileUrl  = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png';
-          tileOpts = { subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; OSM &copy; CARTO' };
+          tileUrl  = 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={{ site.carto_api_key }}';
+          tileOpts = { maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' };
         }
         {% else %}
-        tileUrl  = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png';
-        tileOpts = { subdomains: 'abcd', maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; OSM &copy; CARTO' };
+        tileUrl  = 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={{ site.carto_api_key }}';
+        tileOpts = { maxZoom: 19, maxNativeZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' };
         {% endif %}
         L.tileLayer(tileUrl, tileOpts).addTo(map);
 

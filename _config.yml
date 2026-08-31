@@ -10,6 +10,13 @@ default_og_image:    /assets/image.jpg
 #  - 발급된 키를 아래에 따옴표 안에 입력
 # 키가 비어있으면 VWorld 레이어 비활성화 (다른 타일은 정상 작동)
 vworld_api_key:      'B7673B36-0A29-3557-9C44-13AA8FEE8D8A'
+
+# CARTO Basemaps API 키 (해외 지도 타일)
+# 발급: https://carto.com/basemaps/apikey/  (무료, fair use 한도 내)
+#  - 2026-08 부터 키 없이 요청하면 타일 이미지에 'API KEY REQUIRED' 워터마크가 새겨져 나옴
+#  - 파라미터명은 api_key 가 아니라 ?key= 임
+# 키가 비어있으면 OSM 기본 타일로 자동 대체 (지도는 정상 작동)
+carto_api_key:       'cb1_2lvy_1_c887146d3808c102d018b22e'
 include:             ['_pages']
 exclude:
   - _includes/notes_graph.json

@@ -35,8 +35,8 @@
     maxBoundsViscosity: 1.0, worldCopyJump: false,
     scrollWheelZoom: false   // 스크롤 중 지도에 잡히지 않게 (클릭 후 +/- 또는 더블클릭 줌)
   }).setView([33.5, 132.0], 3);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-    { subdomains: 'abcd', maxZoom: 19 }).addTo(map);
+  L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={{ site.carto_api_key }}',
+    { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(map);
   map.on('focus click', function () { map.scrollWheelZoom.enable(); });
   map.on('blur', function () { map.scrollWheelZoom.disable(); });
 
