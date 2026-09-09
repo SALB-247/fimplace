@@ -343,6 +343,7 @@ permalink: /map/
   좌표가 있는 장소 수: <strong>{{ site.data.places_count | default: 0 }}</strong>
 </p>
 
+{% include map_tiles.html %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
@@ -353,62 +354,17 @@ permalink: /map/
   var mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  // 좌우 무한 wrap 차단 + 양 끝이 대서양 한가운데(lng=-30 / +330)가 되도록.
-  // lng 범위 [-30, 330] 사용 → 한·일(127~138)은 화면 왼쪽 1/3, 태평양이 자연스러운 중앙,
-  // 미국(wrap된 235~293)은 화면 오른쪽, 유럽(-8~18)은 화면 왼쪽 끝, 양 끝은 대서양 가운데.
-  var WORLD_BOUNDS = L.latLngBounds([-85.0511, -30], [85.0511, 330]);
-  // lng 를 -30 ~ +330 범위로 정규화 (대서양 가운데 기준 wrap)
-  function wrapLng(lng) {
-    if (lng < -30)  return lng + 360;
-    if (lng >= 330) return lng - 360;
-    return lng;
-  }
-  var map = L.map('map', {
-    maxZoom: 19, minZoom: 2,
-    maxBounds: WORLD_BOUNDS,
-    maxBoundsViscosity: 1.0,   // 1.0 = 경계 밖으로 끌어도 단단히 막힘
-    worldCopyJump: false
-  }).setView([36.5, 127.8], 7);
-
-  // noWrap=false (기본): maxBounds 안에서 자동으로 타일이 wrap 되어 lng>180 영역(미국 등)에도 그려짐.
-  // 무한 wrap 은 maxBounds + maxBoundsViscosity=1 로 차단.
-  // 해외 기본 타일 (CARTO Voyager). 2026-08 부터 키 없이 쓰면 타일에 'API KEY REQUIRED'
-  //  워터마크가 새겨지므로 ?key= 필수. 키는 _config.yml 의 carto_api_key.
-  var voyager = L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={{ site.carto_api_key }}', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 19, maxNativeZoom: 19
-  });
-  var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
-  });
-  var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri', maxZoom: 19
-  });
-
-  {% assign vkey = site.vworld_api_key | default: '' %}
-  {% if vkey != '' %}
-  // VWorld Base 레이어 native maxZoom = 19 (WMTSCapabilities 확인). 한국 외엔 회색이지만 wrap 자체는 허용.
-  var vworldBase = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/{{ vkey }}/Base/{z}/{y}/{x}.png', {
-    attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19
-  });
-  vworldBase.addTo(map);
-  var currentTile = vworldBase;
-  L.control.layers({
-    '🇰🇷 VWorld 한국': vworldBase,
-    '깔끔 (Voyager)': voyager,
-    '기본 (OSM)': osm,
-    '위성 (Esri)': satellite
-  }, null, { position: 'topright', collapsed: true }).addTo(map);
-  {% else %}
-  voyager.addTo(map);
-  var vworldBase = null;
-  var currentTile = voyager;
-  L.control.layers({
-    '깔끔 (Voyager)': voyager,
-    '기본 (OSM)': osm,
-    '위성 (Esri)': satellite
-  }, null, { position: 'topright', collapsed: true }).addTo(map);
-  {% endif %}
+  // 타일·경도 wrap·공통 옵션은 _includes/map_tiles.html (window.FimMap) 한 곳에서 관리.
+  // lng 범위 [-30, 330] → 한·일은 화면 왼쪽 1/3, 태평양 중앙, 미국(wrap 235~293) 오른쪽, 유럽 왼쪽 끝.
+  var WORLD_BOUNDS = FimMap.bounds(L);
+  var wrapLng = FimMap.wrapLng;
+  var map = L.map('map', FimMap.mapOptions(L)).setView([36.5, 127.8], 7);
+  var TILES = FimMap.tiles(L);
+  var voyager = TILES.voyager;
+  var vworldBase = TILES.vworld;           // VWorld 키 없으면 null → 한국 자동 swap 비활성
+  var currentTile = vworldBase || voyager;
+  currentTile.addTo(map);
+  L.control.layers(FimMap.baseLayers(TILES), null, { position: 'topright', collapsed: true }).addTo(map);
 
   // country 변경 시 자동 타일 전환: 한국=VWorld(있을 때), 그 외=Voyager
   function setTileForCountry(country) {
@@ -486,6 +442,8 @@ permalink: /map/
 
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
+  // 디버그용 핸들 (콘솔에서 __fimMap.getSize() / __fimCluster.getLayers().length 등 확인)
+  window.__fimMap = map; window.__fimCluster = cluster;
 
   // ─── '내 위치' 컨트롤 (Geolocation) ───
   // 줌 컨트롤 아래에 📍 버튼 추가. 누르면 권한 요청 → 위치 마커 + 정확도 원 표시 + 그 위치로 이동.

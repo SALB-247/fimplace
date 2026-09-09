@@ -5,8 +5,6 @@ _site/
 .sass-cache/
 
 # === 자동 생성 (커밋 X) ===
-# bidirectional_links_generator 가 매 빌드마다 갱신
-_includes/notes_graph.json
 # fill_addresses.py (로컬 임포트 스크립트) 의 Nominatim/Photon 캐시
 _data/address_cache.yml
 *.tmp

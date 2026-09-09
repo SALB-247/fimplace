@@ -19,7 +19,7 @@ vworld_api_key:      'B7673B36-0A29-3557-9C44-13AA8FEE8D8A'
 carto_api_key:       'cb1_2lvy_1_c887146d3808c102d018b22e'
 include:             ['_pages']
 exclude:
-  - _includes/notes_graph.json
+  - CLAUDE.md          # 로컬 작업 가이드 (gitignore) — _site 로 복사되지 않게
   - .github/
   - .obsidian/
   - _notes/.obsidian/
@@ -58,7 +58,6 @@ permalink:           pretty
 relative_permalinks: false
 
 plugins:
-  - jekyll-last-modified-at
   - jekyll-sitemap
 
 sass:
@@ -70,12 +69,16 @@ collections:
     output: true
     permalink: /:slug
 
+# ⚠️ scope.path 에 glob("**/*") 을 쓰면 Jekyll 이 frontmatter 기본값을 찾을 때마다
+#    Dir.glob 결과(파일 1,000+개)를 페이지마다 다시 순회한다 (페이지당 ~46ms → 사이트맵 단계 24초).
+#    빈 path + type 스코프는 즉시 매칭되므로 같은 효과를 비용 없이 낸다.
 defaults:
   - scope:
-      path: "**/*"
+      path: ""
     values:
       layout: "default"
   - scope:
-      path: "_notes/**/*.md"
+      path: ""
+      type: "notes"
     values:
       layout: "note"

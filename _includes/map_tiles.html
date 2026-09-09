@@ -1,0 +1,62 @@
+{%- comment -%}
+  지도 4곳(_pages/map.html · _includes/home_map.html · _includes/note_map.html · _pages/planner.html) 공용 타일·옵션 정의.
+  타일 URL·API 키·attribution 은 여기 한 곳에서만 관리한다 (키는 _config.yml 의 vworld_api_key / carto_api_key).
+  Leaflet 은 각 페이지가 알아서 로드하므로 여기선 L 을 인자로 받는다 (note_map 은 지연 로드).
+{%- endcomment -%}
+<script>
+window.FimMap = window.FimMap || (function () {
+  var VWORLD_KEY = '{{ site.vworld_api_key | default: "" }}';
+  var CARTO_KEY  = '{{ site.carto_api_key  | default: "" }}';
+
+  // 경도를 -30 ~ +330 으로 정규화 (대서양 가운데 기준 wrap → 한·일 왼쪽, 태평양 중앙, 미국 오른쪽)
+  function wrapLng(lng) {
+    if (lng < -30)  return lng + 360;
+    if (lng >= 330) return lng - 360;
+    return lng;
+  }
+  function bounds(L) { return L.latLngBounds([-85.0511, -30], [85.0511, 330]); }
+  // L.map 공통 옵션 (무한 wrap 차단). extra 로 페이지별 옵션 덮어쓰기.
+  function mapOptions(L, extra) {
+    var o = { maxZoom: 19, minZoom: 2, maxBounds: bounds(L), maxBoundsViscosity: 1.0, worldCopyJump: false };
+    for (var k in (extra || {})) o[k] = extra[k];
+    return o;
+  }
+  function tiles(L) {
+    var osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>';
+    var t = {
+      // 해외 기본. 2026-08 부터 CARTO 래스터는 ?key= 없으면 'API KEY REQUIRED' 워터마크 → 키 없으면 OSM 으로 대체
+      voyager: CARTO_KEY
+        ? L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=' + CARTO_KEY,
+            { attribution: osmAttr + ' &copy; <a href="https://carto.com/attributions">CARTO</a>', maxZoom: 19, maxNativeZoom: 19 })
+        : L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: osmAttr, maxZoom: 19 }),
+      osm: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: osmAttr, maxZoom: 19 }),
+      satellite: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                   { attribution: 'Tiles &copy; Esri', maxZoom: 19 }),
+      vworld: null   // 한국 전용 (키 없으면 null → 호출측이 voyager 로 대체)
+    };
+    if (VWORLD_KEY) {
+      t.vworld = L.tileLayer('https://api.vworld.kr/req/wmts/1.0.0/' + VWORLD_KEY + '/Base/{z}/{y}/{x}.png',
+                   { attribution: '&copy; <a href="https://www.vworld.kr">VWorld</a>', maxZoom: 19, maxNativeZoom: 19 });
+    }
+    return t;
+  }
+  // 레이어 컨트롤용 { 라벨: 레이어 }
+  function baseLayers(t) {
+    var b = {};
+    if (t.vworld) b['🇰🇷 VWorld 한국'] = t.vworld;
+    b['깔끔 (Voyager)'] = t.voyager;
+    b['기본 (OSM)'] = t.osm;
+    b['위성 (Esri)'] = t.satellite;
+    return b;
+  }
+  // places.json 은 페이지당 1회만 fetch (note_map · nearby_places 등이 공유)
+  var placesPromise = null;
+  function places() {
+    if (!placesPromise) {
+      placesPromise = fetch('{{ site.baseurl }}/places.json').then(function (r) { return r.json(); });
+    }
+    return placesPromise;
+  }
+  return { wrapLng: wrapLng, bounds: bounds, mapOptions: mapOptions, tiles: tiles, baseLayers: baseLayers, places: places };
+})();
+</script>

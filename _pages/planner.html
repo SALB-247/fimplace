@@ -40,25 +40,21 @@ permalink: /planner/
   @media (max-width:700px){ #pl-layout { flex-direction:column; } #pl-list { flex:none; max-height:220px; } }
 </style>
 
+{% include map_tiles.html %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script>
 (function () {
-  function wrapLng(lng) { return lng < -30 ? lng + 360 : (lng >= 330 ? lng - 360 : lng); }
+  var wrapLng = FimMap.wrapLng;   // 타일·옵션 정의: _includes/map_tiles.html
   var LABELS = { kr:'🇰🇷 한국', jp:'🇯🇵 일본', tw:'🇹🇼 대만', us:'🇺🇸 미국', cn:'🇨🇳 중국', th:'🇹🇭 태국',
     hk:'🇭🇰 홍콩', mo:'🇲🇴 마카오', fr:'🇫🇷 프랑스', it:'🇮🇹 이탈리아', gb:'🇬🇧 영국', nl:'🇳🇱 네덜란드',
     dk:'🇩🇰 덴마크', de:'🇩🇪 독일', ch:'🇨🇭 스위스', sg:'🇸🇬 싱가포르', id:'🇮🇩 인도네시아',
     ph:'🇵🇭 필리핀', vn:'🇻🇳 베트남', mx:'🇲🇽 멕시코' };
 
-  var map = L.map('pl-map', {
-    maxZoom: 19, minZoom: 2,
-    maxBounds: L.latLngBounds([-85.0511, -30], [85.0511, 330]),
-    maxBoundsViscosity: 1.0, worldCopyJump: false
-  }).setView([36.5, 127.8], 7);
-  L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={{ site.carto_api_key }}',
-    { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(map);
+  var map = L.map('pl-map', FimMap.mapOptions(L)).setView([36.5, 127.8], 7);
+  FimMap.tiles(L).voyager.addTo(map);
 
   var ALL = [], plan = [], markers = [], line = null;
   var listEl = document.getElementById('pl-list');

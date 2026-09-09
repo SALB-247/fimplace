@@ -39,8 +39,16 @@
     <meta property="og:type" content="website">
   {% endif %}
 
-  {% if page.date %}
-    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {%- comment -%}
+    published = 최초 git 커밋일 (git_last_modified.rb 가 date 로 주입; front matter date 가 있으면 그것),
+    modified  = 최종 git 커밋일. 예전엔 date 가 Jekyll 기본값(빌드 시각)이라 published_time 이 빌드마다 바뀌었다.
+  {%- endcomment -%}
+  {% assign published_at = page.created_at | default: page.date %}
+  {% if published_at %}
+    <meta property="article:published_time" content="{{ published_at | date_to_xmlschema }}">
+    {% if page.last_modified_at %}
+    <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
+    {% endif %}
     <meta property="article:author" content="{{ site.url }}/">
   {% endif %}
 
@@ -50,9 +58,15 @@
   <meta name="twitter:description" content="{{ og_description }}">
   <meta name="twitter:image" content="{{ og_image_url }}">
 
-  <!-- 카카오톡은 og:image:width / og:image:height 를 보면 큰 카드로 렌더링 -->
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <!-- 카카오톡은 og:image:width / og:image:height 를 보면 큰 카드로 렌더링.
+       값은 og_image_generator.rb 가 실제 파일 헤더에서 읽은 픽셀 크기 (없으면 사이트 기본 이미지 크기) -->
+  {% if page.image_width and page.image_height %}
+  <meta property="og:image:width" content="{{ page.image_width }}">
+  <meta property="og:image:height" content="{{ page.image_height }}">
+  {% elsif site.data.og_default_size %}
+  <meta property="og:image:width" content="{{ site.data.og_default_size.w }}">
+  <meta property="og:image:height" content="{{ site.data.og_default_size.h }}">
+  {% endif %}
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%238b88e6'/%3E%3Ctext x='50%25' y='54%25' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EF%3C/text%3E%3C/svg%3E">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}/feed.xml">

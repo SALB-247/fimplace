@@ -60,7 +60,9 @@
       oScript.integrity =
         "sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg==";
       document.body.appendChild(oScript);
-      oScript.onload = () => {
+      // 그래프 데이터는 /notes_graph.json 을 펼칠 때 1회 fetch (페이지에 인라인하지 않음)
+      var GRAPH_URL = '{{ site.baseurl }}/notes_graph.json';
+      oScript.onload = () => fetch(GRAPH_URL).then(function (r) { return r.json(); }).then(function (graphData) {
         const MINIMAL_NODE_SIZE = 8;
         const MAX_NODE_SIZE = 12;
         const ACTIVE_RADIUS_FACTOR = 1.5;
@@ -70,7 +72,6 @@
         const FONT_BASELINE = 40;
         const MAX_LABEL_LENGTH = 50;
 
-        const graphData = {% include notes_graph.json %}
         let nodesData = graphData.nodes;
         let linksData = graphData.edges;
 
@@ -315,7 +316,7 @@
           if (str.length <= maxLen) return str;
           return str.substr(0, str.lastIndexOf(separator, maxLen)) + '...';
         }
-      }
+      }).catch(function (e) { console.warn('notes graph load failed', e); });
     }
   </script>
 </div>

@@ -99,14 +99,19 @@ class BidirectionalLinksGenerator < Jekyll::Generator
       end
     end
 
-    # 내용 변경됐을 때만 write (Jekyll watch 무한 루프 방지)
-    new_content = JSON.dump(edges: graph_edges, nodes: graph_nodes)
-    graph_file = '_includes/notes_graph.json'
-    existing = File.exist?(graph_file) ? File.read(graph_file) : nil
-    File.write(graph_file, new_content) if existing != new_content
+    # /notes_graph.json 으로 1회 출력. (예전엔 _includes/notes_graph.json 에 써서 노트 525개 페이지마다
+    # 173KB 씩 인라인됐다 → 페이지당 -173KB, 전체 -89MB. notes_graph.html 이 <details> 펼칠 때 fetch.)
+    page = Jekyll::PageWithoutAFile.new(site, site.source, '', 'notes_graph.json')
+    page.content = JSON.dump(edges: graph_edges, nodes: graph_nodes)
+    page.data['layout'] = nil
+    page.data['sitemap'] = false
+    page.data['render_with_liquid'] = false
+    site.pages << page
   end
 
+  # 노드 ID: 제목 바이트 나열(60자+) 대신 URL 별 순번 정수 (JSON 크기 절감)
   def note_id_from_note(note)
-    note.data['title'].bytes.join
+    @graph_ids ||= {}
+    @graph_ids[note.url] ||= @graph_ids.size
   end
 end

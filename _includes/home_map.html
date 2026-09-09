@@ -17,26 +17,19 @@
   @media (prefers-reduced-motion: reduce) { .fim-crew-mini .pulse, .fim-pop-mini .pulse { animation:none; } }
 </style>
 
+{% include map_tiles.html %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script>
 (function () {
-  function wrapLng(lng) {
-    if (lng < -30)  return lng + 360;
-    if (lng >= 330) return lng - 360;
-    return lng;
-  }
-  var map = L.map('home-map', {
+  var wrapLng = FimMap.wrapLng;   // 타일·옵션 정의: _includes/map_tiles.html
+  var map = L.map('home-map', FimMap.mapOptions(L, {
     zoomControl: false, attributionControl: false,
-    maxZoom: 19, minZoom: 2,
-    maxBounds: L.latLngBounds([-85.0511, -30], [85.0511, 330]),
-    maxBoundsViscosity: 1.0, worldCopyJump: false,
     scrollWheelZoom: false   // 스크롤 중 지도에 잡히지 않게 (클릭 후 +/- 또는 더블클릭 줌)
-  }).setView([33.5, 132.0], 3);
-  L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={{ site.carto_api_key }}',
-    { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(map);
+  })).setView([33.5, 132.0], 3);
+  FimMap.tiles(L).voyager.addTo(map);
   map.on('focus click', function () { map.scrollWheelZoom.enable(); });
   map.on('blur', function () { map.scrollWheelZoom.disable(); });
 
