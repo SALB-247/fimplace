@@ -38,6 +38,41 @@ permalink: /map/
   }
   #filter-reset:hover { background: var(--link-hover); }
   #result-count { font-size: 0.85em; color: var(--subtext); margin-left: auto; }
+  /* C: 지도 전용 이름 검색 (헤더 검색창은 /search/ 로 떠나므로 별도) */
+  #map-search {
+    flex: 1 1 190px; max-width: 280px; padding: 0.55em 0.8em;
+    border-radius: 6px; border: 1px solid var(--border);
+    background: var(--input-bg); color: var(--text);
+    font-family: inherit; font-size: 16px; min-height: 40px; box-sizing: border-box;
+  }
+  #map-search::-webkit-search-cancel-button { cursor: pointer; }
+  /* 검색 중 '지금 걸린 필터' 안내 */
+  #search-note {
+    display: flex; gap: 0.6em; align-items: center; flex-wrap: wrap;
+    margin: 0 0 0.6em; padding: 0.5em 0.75em;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: var(--box-bg); color: var(--text); font-size: 0.85em; line-height: 1.5;
+  }
+  #search-note[hidden] { display: none !important; }
+  #search-note b { font-weight: 600; }
+  #search-note button {
+    padding: 0.35em 0.7em; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--input-bg); color: var(--text); cursor: pointer;
+    font-family: inherit; font-size: 0.95em; white-space: nowrap;
+  }
+  #search-note button:hover { background: var(--link-hover); }
+  /* I: 범례를 지도 위 오버레이로 (Leaflet control 로 붙임) */
+  .fim-legend {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.3em 0.55em; font-size: 0.76em; color: var(--subtext);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+  }
+  .fim-legend button {
+    all: unset; cursor: pointer; color: var(--subtext); font-size: 1em;
+    font-family: inherit; padding: 0.1em 0.2em;
+  }
+  .fim-legend .fim-legend-items { display: flex; flex-wrap: wrap; gap: 0.5em; align-items: center; }
+  .fim-legend[data-open="0"] .fim-legend-items { display: none; }
   @media (max-width: 600px) {
     #map-filters { grid-template-columns: 1fr 1fr; gap: 0.4em; }
     #map { height: 60vh !important; min-height: 360px !important; }
@@ -163,6 +198,11 @@ permalink: /map/
   }
   .map-list-item:last-child { border-bottom: 0; }
   .map-list-item:hover { background: var(--link-hover); }
+  /* F: 행이 진짜 링크 — 새 탭(Ctrl/가운데 클릭)·키보드 Tab·스크린리더용 */
+  a.map-list-item { text-decoration: none; color: inherit; }
+  /* 사이트 공통 링크 스타일이 붙이는 ↗ 는 리스트에선 군더더기라 끈다 */
+  a.map-list-item::after { content: none !important; }
+  a.map-list-item:focus-visible { outline: 2px solid var(--link, #4ea1ff); outline-offset: -2px; }
   .map-list-item .mli-emoji { flex: 0 0 auto; font-size: 1em; }
   .map-list-item .mli-title { flex: 1 1 auto; font-size: 0.86em; color: var(--text); word-break: break-word; }
   .map-list-item .mli-sub,
@@ -188,12 +228,15 @@ permalink: /map/
   <select id="filter-tag" aria-label="세부 카테고리 필터" disabled>
     <option value="">📂 세부 카테고리 (카테고리 먼저)</option>
   </select>
-  <select id="filter-member" aria-label="멤버 필터">
+  <select id="filter-member" aria-label="멤버 필터"
+          title="멤버 태그가 없는 장소는 '전원 출연'으로 보고 모든 멤버에 포함됩니다">
     <option value="">👥 멤버 (전체)</option>
   </select>
 </div>
 
 <div id="filter-controls">
+  <input type="search" id="map-search" placeholder="🔎 이 지도에서 이름 검색"
+         aria-label="지도 안에서 장소 이름 검색" autocomplete="off">
   <button id="filter-reset" type="button">필터 초기화</button>
   <label style="display:inline-flex; align-items:center; gap:0.3em; font-size:0.9em; color:var(--subtext); cursor:pointer;">
     <input type="checkbox" id="filter-include-ended" style="width:18px; height:18px;">
@@ -202,12 +245,15 @@ permalink: /map/
   <span id="result-count"></span>
 </div>
 
+<div id="search-note" role="status" hidden></div>
+
 <div id="map-layout">
   <div id="map" style="width:100%; height:70vh; min-height:480px; border-radius:8px; border:1px solid var(--border);"></div>
   <aside id="map-list" aria-label="현재 표시 중인 장소 목록"></aside>
 </div>
 
-<div id="map-legend" style="display:flex; flex-wrap:wrap; gap:0.7em; margin-top:0.6em; font-size:0.82em; color:var(--subtext);">
+<!-- I: 내용만 빌려와 지도 위 Leaflet control 로 옮긴다 (에셋 경로 때문에 템플릿에 남겨둠) -->
+<div id="map-legend-src" hidden>
   <span>🌸 사쿠라</span> <span>🐯 김채원</span> <span>🐍 허윤진</span>
   <span>🦢 카즈하</span> <span>🐥 홍은채</span>
   <span><span style="display:inline-flex; align-items:center; background:#fff; border:1.5px solid #222; border-radius:999px; padding:2px 6px; vertical-align:middle;"><img src="{{ site.baseurl }}/assets/LE_SSERAFIM_symbol.svg" alt="LE SSERAFIM" style="width:22px; height:auto; display:block;"></span> 공통</span>
@@ -440,6 +486,33 @@ permalink: /map/
   // 뷰포트 이동/줌 시 리스트를 '보이는 장소'로 갱신 (updateList 는 hoisting 됨)
   map.on('moveend', function () { updateList(); });
 
+  // I: 멤버 이모지 범례를 지도 위로 올린다. 문서 맨 아래에 있으면 마커 뜻을 모르는 채로 지도를 보게 된다.
+  //    (에셋 경로가 Liquid 라 마크업은 #map-legend-src 에 남겨두고 내용만 가져온다)
+  (function mountLegend() {
+    var src = document.getElementById('map-legend-src');
+    if (!src || !L.control) return;
+    var ctl = L.control({ position: 'bottomleft' });
+    ctl.onAdd = function () {
+      var open = window.innerWidth > 700;   // 좁은 화면은 접어서 지도를 가리지 않게
+      var box = L.DomUtil.create('div', 'fim-legend');
+      box.setAttribute('data-open', open ? '1' : '0');
+      box.innerHTML =
+        '<button type="button" aria-expanded="' + open + '">마커 보는 법 ' + (open ? '▴' : '▾') + '</button>' +
+        '<div class="fim-legend-items">' + src.innerHTML + '</div>';
+      var btn = box.querySelector('button');
+      btn.addEventListener('click', function () {
+        var nowOpen = box.getAttribute('data-open') !== '1';
+        box.setAttribute('data-open', nowOpen ? '1' : '0');
+        btn.setAttribute('aria-expanded', String(nowOpen));
+        btn.textContent = '마커 보는 법 ' + (nowOpen ? '▴' : '▾');
+      });
+      L.DomEvent.disableClickPropagation(box);
+      L.DomEvent.disableScrollPropagation(box);
+      return box;
+    };
+    ctl.addTo(map);
+  })();
+
   var cluster = L.markerClusterGroup();
   map.addLayer(cluster);
   // 디버그용 핸들 (콘솔에서 __fimMap.getSize() / __fimCluster.getLayers().length 등 확인)
@@ -658,6 +731,18 @@ permalink: /map/
   var categorySel = document.getElementById('filter-category');
   var tagSel      = document.getElementById('filter-tag');
   var memberSel   = document.getElementById('filter-member');
+  // C: 헤더 검색창은 /search/ 로 떠나버리므로 지도 전용 이름 검색을 따로 둔다.
+  var searchInput = document.getElementById('map-search');
+  var searchQ = '';
+  function normQuery(v) { return (v || '').toLowerCase().replace(/\s+/g, ''); }
+  function matchesQuery(p, q) {
+    if (normQuery(p.title).indexOf(q) !== -1) return true;
+    if (normQuery(p.business).indexOf(q) !== -1) return true;
+    if (normQuery(p.address).indexOf(q) !== -1) return true;
+    var tags = p.tags || [];
+    for (var i = 0; i < tags.length; i++) if (normQuery(tags[i]).indexOf(q) !== -1) return true;
+    return false;
+  }
   var endedCheck  = document.getElementById('filter-include-ended');
   var resetBtn    = document.getElementById('filter-reset');
   var countEl     = document.getElementById('result-count');
@@ -665,6 +750,17 @@ permalink: /map/
   var ALL = [];
   var currentFiltered = [];   // 현재 필터 통과 장소 (리스트는 이 중 뷰포트에 보이는 것만 표시)
   var CATEGORY_TAGS = {};
+  // H: 지역·멤버·국가 섹션은 옆에 전용 셀렉터가 이미 있어 카테고리에서 뺀다 (같은 걸 두 군데서 거르지 않도록).
+  //    '해외 (지역)' 은 places_generator 가 region 을 안 만들어 주는 국가들의 유일한 지역 정보라
+  //    버리지 않고 아래 placeRegion() 으로 지역 셀렉터에 흡수시킨다.
+  var CATEGORY_HIDDEN = ['서울 (구별)', '경기', '광역 지역', '일본 (지역)', '해외 (지역)', '국가 (라벨)', '멤버 (태그)'];
+  var OVERSEAS_REGION = {};   // 해외 지역 태그 → true
+  function placeRegion(p) {
+    if (p.region) return p.region;
+    var tags = p.tags || [];
+    for (var i = 0; i < tags.length; i++) if (OVERSEAS_REGION[tags[i]]) return tags[i];
+    return null;
+  }
   // 이 country 들만 지도에 노출 (빈 배열이면 모두 표시).
   // 향후 노트 검수 끝나면 'tw','fr','it' 등 추가 또는 배열 비우기.
   var VISIBLE_COUNTRIES = ['kr', 'jp', 'hk', 'mo', 'us', 'tw', 'th', 'sg', 'id', 'ph', 'mx', 'nl', 'fr', 'dk', 'de', 'gb', 'it', 'ch', 'vn', 'cn'];
@@ -946,9 +1042,12 @@ permalink: /map/
   function rebuildOptions() {
     var cc = countrySel.value, r = regionSel.value, c = categorySel.value, t = tagSel.value;
 
+    // ⚠️ 검색어(searchQ)는 여기 넣지 말 것. 풀이 줄면 rebuildSelect 가 '현재 선택값이 옵션에 없다'고
+    //    판단해 country/region/category 선택을 ''로 되돌려 버린다 (검색 한 번에 필터가 통째로 날아감).
+    //    검색은 render() 단계에서만 걸러 '보이는 결과'만 좁힌다.
     var basePool     = applyEnded(ALL);
     var afterCountry = basePool.filter(function (p) { return countryMatches(p, cc); });
-    var afterRegion  = afterCountry.filter(function (p) { return !r  || p.region  === r;  });
+    var afterRegion  = afterCountry.filter(function (p) { return !r  || placeRegion(p) === r; });
     var afterCategory= afterRegion.filter(function (p) { return !c || (p.categories || []).indexOf(c) !== -1; });
     var afterTag     = afterCategory.filter(function (p) { return !t || (p.tags       || []).indexOf(t) !== -1; });
 
@@ -968,7 +1067,10 @@ permalink: /map/
 
     // region: country 적용 후 풀 (null region 은 옵션에서 제외)
     var regionCounts = {};
-    afterCountry.forEach(function (p) { if (p.region) regionCounts[p.region] = (regionCounts[p.region] || 0) + 1; });
+    afterCountry.forEach(function (p) {
+      var rg = placeRegion(p);
+      if (rg) regionCounts[rg] = (regionCounts[rg] || 0) + 1;
+    });
     var regionItems = Object.keys(regionCounts).sort().map(function (k) { return { value: k, count: regionCounts[k] }; });
     if (regionItems.length === 0) {
       while (regionSel.options.length > 1) regionSel.remove(1);
@@ -986,7 +1088,9 @@ permalink: /map/
     afterRegion.forEach(function (p) {
       (p.categories || []).forEach(function (cat) { categoryCounts[cat] = (categoryCounts[cat] || 0) + 1; });
     });
-    var categoryItems = Object.keys(CATEGORY_TAGS).map(function (cat) { return { value: cat, count: categoryCounts[cat] || 0 }; });
+    var categoryItems = Object.keys(CATEGORY_TAGS)
+      .filter(function (cat) { return CATEGORY_HIDDEN.indexOf(cat) === -1; })
+      .map(function (cat) { return { value: cat, count: categoryCounts[cat] || 0 }; });
     rebuildSelect(categorySel, categoryItems, c,
       function (v, n) { return v + ' (' + n + ')'; },
       '🏷️ 카테고리 전체');
@@ -1011,12 +1115,20 @@ permalink: /map/
         '📂 ' + c + ' 전체');
     }
 
-    // member: tag 적용 후 풀 (멤버 미기재 노트는 개별 멤버 카운트에 포함하지 않음)
+    // member: tag 적용 후 풀.
+    // ⚠️ 멤버 태그가 없는 노트는 '전원 출연' 규칙에 따라 render() 의 멤버 필터를 **그냥 통과한다**
+    //    (아래 `p.members.length > 0` 조건). 그래서 명시 태그 수만 세면 라벨과 실제 결과가 어긋난다
+    //    — 예전엔 '허윤진 (62)' 를 골라도 118곳이 나왔다. 여기서도 같은 규칙으로 세어 숫자를 맞춘다.
     var memberCounts = {};
+    var memberlessCount = 0;
     afterTag.forEach(function (p) {
-      (p.members || []).forEach(function (mm) { memberCounts[mm] = (memberCounts[mm] || 0) + 1; });
+      var ms = p.members || [];
+      if (ms.length === 0) { memberlessCount++; return; }
+      ms.forEach(function (mm) { memberCounts[mm] = (memberCounts[mm] || 0) + 1; });
     });
-    var memberItems = Object.keys(memberCounts).sort().map(function (k) { return { value: k, count: memberCounts[k] }; });
+    var memberItems = Object.keys(memberCounts).sort().map(function (k) {
+      return { value: k, count: memberCounts[k] + memberlessCount, tagged: memberCounts[k] };
+    });
     rebuildSelect(memberSel, memberItems, memberSel.value,
       function (v, n) { return v + ' (' + n + ')'; },
       '👥 멤버 전체');
@@ -1061,6 +1173,21 @@ permalink: /map/
     });
   }
 
+  // E: places.json 의 source 는 내부 토큰(frontmatter·nominatim:cleaned·known:하이브 사옥 …)이라
+  //    그대로 노출하지 않는다. 건물 단위로 특정된 좌표는 아무 말도 하지 않고,
+  //    주소 검색·지도 임베드·역 기준처럼 근사한 좌표만 '대략 위치' 로 알린다.
+  function coordAccuracyBadge(src) {
+    if (!src) return '';
+    if (src === 'frontmatter' || src === 'manual' || src === 'gmaps') return '';
+    var why = src.indexOf('known:') === 0 ? src.slice(6) + ' 기준 대략 위치'
+            : src.indexOf('nominatim') === 0 ? '주소 검색으로 찾은 대략 위치'
+            : src === 'iframe' ? '지도 임베드 기준 대략 위치'
+            : '대략 위치';
+    return '<span title="' + escapeHtmlMap(why) + '" style="font-size:0.7em; color:var(--subtext); '
+         + 'border:1px solid var(--border); border-radius:999px; padding:0.05em 0.4em; margin-left:0.25em; '
+         + 'white-space:nowrap;">📍 대략 위치</span>';
+  }
+
   function popupHtml(p) {
     var tagHtml = (p.tags || []).slice(0, 6).map(function (t) {
       return '<span style="display:inline-block; padding:0.05em 0.4em; margin-right:0.2em; background:var(--box-bg); border-radius:999px; font-size:0.78em;">#' + t + '</span>';
@@ -1068,7 +1195,7 @@ permalink: /map/
     var extLinks = [];
     if (p.kakao_url) extLinks.push('<a href="' + p.kakao_url + '" target="_blank" rel="noopener">카카오</a>');
     if (p.naver_url) extLinks.push('<a href="' + p.naver_url + '" target="_blank" rel="noopener">네이버</a>');
-    var srcBadge = p.source ? '<span style="font-size:0.7em; color:var(--subtext);">[' + p.source + ']</span>' : '';
+    var srcBadge = coordAccuracyBadge(p.source);
     var endedBadge = isEnded(p) ? '<span style="font-size:0.7em; color:#fff; background:#999; padding:0.1em 0.4em; border-radius:999px; margin-left:0.3em;">' + (p.closed ? '폐업' : '종료') + '</span>' : '';
     return '<div style="min-width:200px">' +
       '<strong><a href="' + p.url + '">' + p.title + '</a></strong> ' + srcBadge + endedBadge +
@@ -1091,6 +1218,67 @@ permalink: /map/
     return ms.map(function (m) { return MEMBER_EMOJI[m] || '·'; }).join('');
   }
 
+  // 검색 결과를 볼 때 '지금 어떤 필터가 걸려 있는지' 를 숨기지 않는다.
+  // (필터가 걸린 줄 모르면 0곳을 '그런 장소가 없다' 로 오해한다)
+  function activeFilterLabels() {
+    var out = [];
+    if (countrySel.value) {
+      out.push((COUNTRY_GROUPS[countrySel.value] && COUNTRY_GROUPS[countrySel.value].label)
+               || COUNTRY_LABEL[countrySel.value] || countrySel.value.toUpperCase());
+    }
+    if (regionSel.value)   out.push(regionSel.value);
+    if (categorySel.value) out.push(categorySel.value);
+    if (tagSel.value)      out.push('#' + tagSel.value);
+    if (memberSel.value)   out.push(memberSel.value);
+    if (TL.on)             out.push('기간');
+    return out;
+  }
+
+  function clearFiltersKeepSearch() {
+    if (TL.on) { tlOn.checked = false; tlOn.dispatchEvent(new Event('change')); }
+    countrySel.value = ''; regionSel.value = '';
+    categorySel.value = ''; tagSel.value = ''; memberSel.value = '';
+    setTileForCountry('');
+    skipFitBoundsOnce = false;   // 새 결과 전체가 보이게
+    rebuildOptions();
+    render();
+    if (searchInput) searchInput.focus();
+  }
+
+  function updateSearchNote(shownCount) {
+    var el = document.getElementById('search-note');
+    if (!el || !searchInput) return;
+    if (!searchQ) { el.hidden = true; return; }
+    var term = searchInput.value.trim();
+    var labels = activeFilterLabels();
+    // 필터만 없앴을 때 이 검색어로 몇 곳이 나오는지 (종료 표시 설정은 그대로 존중)
+    var qAll = applyEnded(ALL).filter(function (p) { return matchesQuery(p, searchQ); }).length;
+    var msg;
+    if (!labels.length) {
+      if (shownCount > 0) { el.hidden = true; return; }
+      msg = '‘' + escapeHtmlMap(term) + '’ 검색 결과가 없습니다.';
+    } else {
+      var f = '<b>' + labels.map(escapeHtmlMap).join(' · ') + '</b>';
+      if (shownCount === 0) {
+        msg = '‘' + escapeHtmlMap(term) + '’ — ' + f + ' 필터 안에는 결과가 없습니다.';
+        if (qAll > 0) msg += ' 필터 밖에는 ' + qAll + '곳 있습니다.';
+      } else if (qAll > shownCount) {
+        msg = f + ' 필터가 걸려 있어 ' + (qAll - shownCount) + '곳이 더 가려져 있습니다.';
+      } else {
+        msg = f + ' 필터 안에서 찾은 결과입니다.';
+      }
+    }
+    el.innerHTML = '<span>' + msg + '</span>';
+    if (labels.length && qAll > shownCount) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = '필터 해제하고 ' + qAll + '곳 보기';
+      b.addEventListener('click', clearFiltersKeepSearch);
+      el.appendChild(b);
+    }
+    el.hidden = false;
+  }
+
   // D1: 현재 필터 상태를 URL 쿼리에 반영 (공유·북마크·새로고침 보존). history 오염 방지 위해 replaceState.
   var listEl = document.getElementById('map-list');
   function updateURL() {
@@ -1101,13 +1289,14 @@ permalink: /map/
     if (tagSel.value)       p.set('tag', tagSel.value);
     if (memberSel.value)    p.set('member', memberSel.value);
     if (endedCheck.checked) p.set('ended', '1');
+    if (searchQ)            p.set('q', searchInput.value.trim());
     var qs = p.toString();
     try { history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '')); } catch (e) {}
   }
   // D1: 로드 시 URL 쿼리 → 필터 복원. 파라미터 없으면 false (기본값 유지).
   function applyURLState() {
     var p = new URLSearchParams(location.search);
-    var keys = ['country', 'region', 'category', 'tag', 'member', 'ended'];
+    var keys = ['country', 'region', 'category', 'tag', 'member', 'ended', 'q'];
     if (!keys.some(function (k) { return p.has(k); })) return false;
     endedCheck.checked = p.get('ended') === '1';
     var cc = p.get('country') || '';
@@ -1115,12 +1304,28 @@ permalink: /map/
     regionSel.value   = p.get('region')   || '';
     categorySel.value = p.get('category') || '';
     tagSel.value      = p.get('tag')      || '';
+    // 해외 지역은 카테고리(해외 (지역)) → 지역 셀렉터로 옮겼다. 예전 링크(?category=해외 (지역)&tag=뉴욕)가
+    // 지역 선택을 잃지 않도록 옮겨 담는다. 단 '뉴욕' 옵션은 rebuildOptions 가 만들기 전이라 값을 바로
+    // 넣으면 무시된다 → 아래에서 rebuildOptions 뒤에 적용한다.
+    //  ※ tagSel 은 아직 disabled + 옵션이 없어 value 가 안 들어가므로 URL 파라미터를 직접 본다.
+    var rawTag = p.get('tag') || '';
+    var pendingRegion = '';
+    if (rawTag && OVERSEAS_REGION[rawTag]) {
+      pendingRegion = rawTag;
+      categorySel.value = ''; tagSel.value = '';
+    }
     memberSel.value   = p.get('member')   || '';
+    if (searchInput) { searchInput.value = p.get('q') || ''; searchQ = normQuery(searchInput.value); }
     setTileForCountry(cc === 'kr' ? 'kr' : '');
     rebuildOptions();  // 옵션 재구성 + 풀에 없는 선택은 자동으로 ''로 정리
-    var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
-    map.setView(v.center, v.zoom);
-    skipFitBoundsOnce = true;
+    if (pendingRegion) { regionSel.value = pendingRegion; rebuildOptions(); }
+    if (cc === '') {
+      skipFitBoundsOnce = false;   // G: 국가 지정이 없으면 전 지점에 맞춘다
+    } else {
+      var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
+      map.setView(v.center, v.zoom);
+      skipFitBoundsOnce = true;
+    }
     return true;
   }
 
@@ -1154,8 +1359,10 @@ permalink: /map/
       return;
     }
     visible.forEach(function (p) {
-      var row = document.createElement('div');
+      // F: div 대신 a — 새 탭(Ctrl/⌘/가운데 클릭)·키보드 Tab·스크린리더가 전부 살아난다.
+      var row = document.createElement('a');
       row.className = 'map-list-item';
+      row.href = p.url;
       // 장소 유형 태그(카페/음식점/관광지/팝업스토어…)만 추출 — 섹션명 아님
       var typeTags = CATEGORY_TAGS['장소 유형'] || [];
       var cat = (p.tags || []).filter(function (t) { return typeTags.indexOf(t) !== -1; }).join(' / ');
@@ -1164,7 +1371,10 @@ permalink: /map/
         '<span class="mli-emoji">' + placeEmoji(p) + '</span>' +
         '<span class="mli-title">' + escapeHtmlMap(p.title) + endedTag + '</span>' +
         (cat ? '<span class="mli-sub">' + escapeHtmlMap(cat) + '</span>' : '');
-      row.addEventListener('click', function () {
+      row.addEventListener('click', function (ev) {
+        // 새 탭으로 열려는 조작은 브라우저에 그대로 넘긴다
+        if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
+        ev.preventDefault();
         var mk = p.__marker;
         if (!mk) return;
         if (cluster.zoomToShowLayer) {
@@ -1196,9 +1406,10 @@ permalink: /map/
         if (!includeEnded) return false;
       }
       if (!countryMatches(p, cc)) return false;
-      if (r && p.region !== r) return false;
+      if (r && placeRegion(p) !== r) return false;
       if (c && (!p.categories || p.categories.indexOf(c) === -1)) return false;
       if (t && (!p.tags || p.tags.indexOf(t) === -1)) return false;
+      if (searchQ && !matchesQuery(p, searchQ)) return false;
       // 멤버 미기재(빈 배열) 노트는 "전체 공통"으로 항상 표시
       if (m && p.members && p.members.length > 0 && p.members.indexOf(m) === -1) return false;
       // 타임라인 ON 이면 기간 내 날짜가 있는 장소만
@@ -1224,15 +1435,22 @@ permalink: /map/
     }
     skipFitBoundsOnce = false;
     updateList();
+    updateSearchNote(filtered.length);
     updateURL();
   }
 
   countrySel.addEventListener('change', function () {
     var cc = countrySel.value;
     setTileForCountry(cc);
-    var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
-    map.setView(v.center, v.zoom);
-    skipFitBoundsOnce = true;
+    // G: '전체' 를 고정 뷰(동아시아 zoom 5)로 보내면 미국·유럽 등이 화면 밖에 남는다.
+    //    이때만 render 의 자동 fitBounds 에 맡겨 전 지점이 들어오게 한다.
+    if (cc === '') {
+      skipFitBoundsOnce = false;
+    } else {
+      var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
+      map.setView(v.center, v.zoom);
+      skipFitBoundsOnce = true;
+    }
     rebuildOptions();
     render();
   });
@@ -1241,14 +1459,25 @@ permalink: /map/
   tagSel.addEventListener('change',      function () { rebuildOptions(); render(); });
   endedCheck.addEventListener('change',  function () { rebuildOptions(); render(); });
   memberSel.addEventListener('change', render);
+  if (searchInput) {
+    var searchTimer = null;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        searchQ = normQuery(searchInput.value);
+        render();   // rebuildOptions 는 부르지 않는다 (위 주석 참고)
+      }, 180);
+    });
+    // 엔터로 폼 제출되어 페이지가 떠나는 것 방지
+    searchInput.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') ev.preventDefault(); });
+  }
   resetBtn.addEventListener('click', function () {
     countrySel.value = '';
     regionSel.value = ''; categorySel.value = ''; memberSel.value = '';
     endedCheck.checked = false;
+    if (searchInput) { searchInput.value = ''; searchQ = ''; }
     setTileForCountry('');
-    var v = COUNTRY_VIEW[''];
-    map.setView(v.center, v.zoom);
-    skipFitBoundsOnce = true;
+    skipFitBoundsOnce = false;   // G: 초기화 후에도 전 지점이 보이게
     rebuildOptions();
     render();
   });
@@ -1261,6 +1490,7 @@ permalink: /map/
         ? raw.filter(function (p) { return VISIBLE_COUNTRIES.indexOf(p.country) !== -1; })
         : raw;
       CATEGORY_TAGS = (data && data.category_tags) || {};
+      (CATEGORY_TAGS['해외 (지역)'] || []).forEach(function (t) { OVERSEAS_REGION[t] = true; });
       buildStaticFilters(ALL);
       initTimeline(ALL);
       applyURLState();   // URL 쿼리 있으면 기본값(한국) 대신 복원
