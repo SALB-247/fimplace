@@ -62,17 +62,33 @@ permalink: /map/
   }
   #search-note button:hover { background: var(--link-hover); }
   /* I: 범례를 지도 위 오버레이로 (Leaflet control 로 붙임) */
+  /* ⚠️ 폰트 크기를 em 으로 주면 안 된다 — Leaflet 컨테이너 기본이 12px 이라
+     0.76em 이면 9px 로 쪼그라든다 (2026-09-11 수정). px 로 못박는다. */
   .fim-legend {
     background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-    padding: 0.3em 0.55em; font-size: 0.76em; color: var(--subtext);
-    box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+    padding: 0.5em 0.75em; font-size: 14px; line-height: 1.45; color: var(--text);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.28);
   }
   .fim-legend button {
-    all: unset; cursor: pointer; color: var(--subtext); font-size: 1em;
-    font-family: inherit; padding: 0.1em 0.2em;
+    all: unset; cursor: pointer; color: var(--subtext); font-size: 13px; font-weight: 600;
+    font-family: inherit; padding: 0.15em 0.1em; white-space: nowrap;
   }
-  .fim-legend .fim-legend-items { display: flex; flex-wrap: wrap; gap: 0.5em; align-items: center; }
+  .fim-legend button:hover { color: var(--text); }
+  .fim-legend .fim-legend-items {
+    display: flex; flex-wrap: wrap; gap: 0.35em 0.85em; align-items: center;
+    margin-top: 0.35em;
+  }
+  .fim-legend .fim-legend-items > span {
+    display: inline-flex; align-items: center; gap: 0.28em; white-space: nowrap;
+  }
+  .fim-legend .fim-legend-items img { width: 18px !important; }
   .fim-legend[data-open="0"] .fim-legend-items { display: none; }
+  .fim-legend[data-open="0"] { padding: 0.35em 0.6em; }
+  @media (max-width: 700px) {
+    .fim-legend { font-size: 12px; padding: 0.4em 0.6em; }
+    .fim-legend button { font-size: 12px; }
+    .fim-legend .fim-legend-items { gap: 0.3em 0.6em; }
+  }
   @media (max-width: 600px) {
     #map-filters { grid-template-columns: 1fr 1fr; gap: 0.4em; }
     #map { height: 60vh !important; min-height: 360px !important; }

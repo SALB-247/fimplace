@@ -59,9 +59,9 @@
   lng: 139.7320823435513
   source: frontmatter
 "Cafe거부기 앤 쿠펫 판교점":
-  lat: 37.41348157196217
-  lng: 127.09549951184967
-  source: iframe
+  lat: 37.4134816
+  lng: 127.0980798
+  source: gmaps
 "Cheese & Doria":
   lat: 35.70614180858677
   lng: 139.7539765568532
@@ -98,9 +98,9 @@
   lng: 139.77467065302824
   source: frontmatter
 "HIDE AND SEEK 홍대점":
-  lat: 37.55814857192415
-  lng: 126.91766811185558
-  source: iframe
+  lat: 37.5581486
+  lng: 126.9202484
+  source: gmaps
 "HYSTERIC GLAMOUR SHIBUYA":
   lat: 35.66521269479718
   lng: 139.70260454751397
@@ -114,9 +114,9 @@
   lng: 138.7608169183054
   source: frontmatter
 "IFC몰":
-  lat: 37.5250873
-  lng: 126.9253994
-  source: nominatim
+  lat: 37.5250243
+  lng: 126.9258867
+  source: gmaps
 "ITALIAN＆BAKERY MACARONI CLUB":
   lat: 35.48435623189231
   lng: 138.77807930000588
@@ -138,9 +138,9 @@
   lng: 138.77840684257362
   source: frontmatter
 "LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE":
-  lat: 37.540550925498316
-  lng: 127.0580919133534
-  source: iframe
+  lat: 37.5405467
+  lng: 127.0606722
+  source: gmaps
 "LE SSERAFIM 2026 SS POP UP":
   lat: 37.5246532
   lng: 126.9641564
@@ -281,13 +281,13 @@
   lng: 127.02768
   source: known:강남
 "강릉짬뽕순두부 동화가든 본점":
-  lat: 37.79117177186443
-  lng: 128.9120484118652
-  source: iframe
+  lat: 37.7911718
+  lng: 128.9146287
+  source: gmaps
 "건담베이스 아이파크점":
-  lat: 37.52971327204825
-  lng: 126.96217787778062
-  source: iframe
+  lat: 37.5297133
+  lng: 126.9647528
+  source: gmaps
 "건대입구역_CM보드 광고_250801-250815":
   lat: 37.54029
   lng: 127.06973
@@ -297,46 +297,46 @@
   lng: 127.06973
   source: known:건대입구역
 "경기미래교육 파주캠퍼스 (파주영어마을)":
-  lat: 37.7942002
-  lng: 126.6984439
-  source: nominatim
+  lat: 37.7858075
+  lng: 126.699668
+  source: gmaps
 "경주십원빵 영종을왕리점":
-  lat: 37.4481397
-  lng: 126.3727702
-  source: nominatim
+  lat: 37.4458652
+  lng: 126.3748977
+  source: gmaps
 "고귀한 식탁 강남점":
   lat: 37.4987464
   lng: 127.03169
   source: gmaps
 "고속터미널역 파미에 스테이션_3월 중":
-  lat: 37.5031077
-  lng: 127.0043901
-  source: nominatim
+  lat: 37.5031765
+  lng: 127.0046549
+  source: gmaps
 "고양이가있는액자가게":
   lat: 37.5608615
   lng: 126.9259885
-  source: iframe
+  source: gmaps
 "곤파치 오다이바":
   lat: 35.62818271917383
   lng: 139.77369532883571
   source: frontmatter
 "골든피스":
-  lat: 37.537864471929474
-  lng: 127.00065011335336
-  source: iframe
+  lat: 37.5378645
+  lng: 127.0032304
+  source: gmaps
 "곳":
-  lat: 37.7719261
-  lng: 128.7977237
-  source: nominatim:cleaned
+  lat: 37.8430346
+  lng: 128.8730041
+  source: gmaps
 "공항철도 전광판 광고_250314-250320":
   lat: 37.55715
   lng: 126.92369
   source: manual
   note: "홍대 태그 + 공항철도 노선 → 홍대입구역 추정"
 "광명동굴":
-  lat: 37.4268147
-  lng: 126.8655162
-  source: nominatim
+  lat: 37.4265971
+  lng: 126.8659723
+  source: gmaps
 "광안리신라횟집":
   lat: 35.15524825857151
   lng: 129.12191771331683
@@ -346,29 +346,29 @@
   lng: 126.9057225
   source: nominatim
 "구위 브런치바":
-  lat: 37.54007677192897
-  lng: 126.95966161335328
-  source: iframe
+  lat: 37.5400768
+  lng: 126.9622419
+  source: gmaps
 "국립중앙박물관":
-  lat: 37.523953
-  lng: 126.9803196
-  source: nominatim
+  lat: 37.5238506
+  lng: 126.9804702
+  source: gmaps
 "국립현대미술관_론뮤익展":
   lat: 37.5795533
   lng: 126.9804352
   source: nominatim
 "국일따로국밥":
-  lat: 35.871111119402364
-  lng: 128.59059251332775
-  source: iframe
+  lat: 35.8711068
+  lng: 128.5931728
+  source: gmaps
 "규카츠 쿄토 카츠규 시부야 도겐자카점":
   lat: 35.6573008934384
   lng: 139.69619329999998
   source: frontmatter
 "귤의정원 바령":
-  lat: 33.505281873256855
-  lng: 126.70349621169616
-  source: iframe
+  lat: 33.5052819
+  lng: 126.7060765
+  source: gmaps
 "그릭커 성수":
   lat: 37.55113617192602
   lng: 127.04477841185522
@@ -387,113 +387,113 @@
   lng: 127.05743373497607
   source: iframe
 "김녕요트투어":
-  lat: 33.5582309
-  lng: 126.7372461
-  source: nominatim
+  lat: 33.5582381
+  lng: 126.7372137
+  source: gmaps
 "김포공항_250315-250321":
   lat: 37.55864
   lng: 126.79059
   source: known:김포국제공항
 "나무아래오후N":
-  lat: 37.760561739883606
-  lng: 127.35105440577645
-  source: iframe
+  lat: 37.7503059
+  lng: 127.363451
+  source: gmaps
 "나무향기 한증막":
-  lat: 37.86975570668106
-  lng: 127.70322587715945
-  source: iframe
+  lat: 37.8697515
+  lng: 127.7058008
+  source: gmaps
 "나아하":
-  lat: 37.75032461344798
-  lng: 127.36070961335683
-  source: iframe
+  lat: 37.7503204
+  lng: 127.3632899
+  source: gmaps
 "나폴리회관 강남역점":
-  lat: 37.5016549
-  lng: 127.0294192
-  source: nominatim:cleaned
+  lat: 37.5002218
+  lng: 127.029133
+  source: gmaps
 "난지한강공원":
-  lat: 37.5664459
-  lng: 126.8768605
-  source: nominatim
+  lat: 37.5667873
+  lng: 126.8780119
+  source: gmaps
 "남도예담 담양본점":
-  lat: 35.3351656
-  lng: 126.96191
-  source: nominatim
+  lat: 35.3339516
+  lng: 126.9657172
+  source: gmaps
 "낫베드커피 한남":
   lat: 37.539666768744
   lng: 126.98486602548965
   source: iframe
 "네이처스케이프 플러스":
-  lat: 37.16688757202878
-  lng: 127.10255851183962
-  source: iframe
+  lat: 37.1668876
+  lng: 127.1051388
+  source: gmaps
 "넥스트짐 처인구청점":
-  lat: 37.2352287
-  lng: 127.2059905
-  source: nominatim
+  lat: 37.2350529
+  lng: 127.2059977
+  source: gmaps
 "녹양 향촌점":
-  lat: 35.872548619322934
-  lng: 128.5914938633277
-  source: iframe
+  lat: 35.8725558
+  lng: 128.5941141
+  source: gmaps
 "달쥬과일상점":
   lat: 37.5385336
   lng: 126.9703017
   source: manual
 "닭한마리감자탕 신사본점":
-  lat: 37.5171531
-  lng: 127.0206989
-  source: nominatim:cleaned
+  lat: 37.5171576
+  lng: 127.0206762
+  source: gmaps
 "담설":
-  lat: 35.32320014944121
-  lng: 126.98193031331951
-  source: iframe
+  lat: 35.3231958
+  lng: 126.9845106
+  source: gmaps
 "담양국수거리":
-  lat: 35.32421164938652
-  lng: 126.98166621331957
-  source: iframe
+  lat: 35.3242073
+  lng: 126.9842465
+  source: gmaps
 "대길한정식":
-  lat: 37.5109152719364
-  lng: 127.63137431185368
-  source: iframe
+  lat: 37.5109153
+  lng: 127.6339546
+  source: gmaps
 "댄스댄스댄스 한남점":
-  lat: 37.5338519
-  lng: 127.008182
-  source: nominatim:cleaned
+  lat: 37.5338317
+  lng: 127.0081297
+  source: gmaps
 "댕로홀":
-  lat: 37.581859
-  lng: 127.0037183
-  source: nominatim
+  lat: 37.5818195
+  lng: 127.0037098
+  source: gmaps
 "더맛있는족발보쌈 원효로점":
-  lat: 37.5343485
-  lng: 126.9570678
-  source: nominatim:cleaned
+  lat: 37.5342842
+  lng: 126.9568481
+  source: gmaps
 "더피제리아마켓 해방촌":
   lat: 37.54096885330106
   lng: 126.98240922982843
   source: iframe
 "델룰루_250317-250319":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244351
+  lng: 126.9646722
+  source: gmaps
 "델룰루_250730-250802":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244351
+  lng: 126.9646722
+  source: gmaps
 "델룰루_251007-251009":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244351
+  lng: 126.9646722
+  source: gmaps
 "델룰루_260316-260319":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244351
+  lng: 126.9646722
+  source: gmaps
 "델룰루_260726-260729":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244351
+  lng: 126.9646722
+  source: gmaps
 "도덕산 출렁다리":
-  lat: 37.46720400025496
-  lng: 126.85479775222419
-  source: iframe
+  lat: 37.4672164
+  lng: 126.8596562
+  source: gmaps
 "도큐 플라자 하라주쿠 하라카도":
   lat: 35.6683891419183
   lng: 139.70471992883571
@@ -511,29 +511,29 @@
   lng: 139.5514141
   source: frontmatter
 "동기간":
-  lat: 37.85525050740018
-  lng: 127.5464749133587
-  source: iframe
+  lat: 37.8553615
+  lng: 127.5491071
+  source: gmaps
 "동백섬":
-  lat: 35.1540639
-  lng: 129.1520862
-  source: nominatim
+  lat: 35.1545312
+  lng: 129.1525517
+  source: gmaps
 "동복뚝배기 함덕":
-  lat: 33.542335573242106
-  lng: 126.6678298116977
-  source: iframe
+  lat: 33.5423356
+  lng: 126.6704101
+  source: gmaps
 "동진호":
-  lat: 35.1629386
-  lng: 129.139332
-  source: nominatim
+  lat: 35.1622853
+  lng: 129.1359848
+  source: gmaps
 "두건쓴형제 수영직영점":
-  lat: 35.1678838
-  lng: 129.1190608
-  source: nominatim:cleaned
+  lat: 35.1679533
+  lng: 129.1190431
+  source: gmaps
 "뚝배기라면":
-  lat: 37.5252935
-  lng: 126.9646204
-  source: nominatim
+  lat: 37.525404
+  lng: 126.9646362
+  source: gmaps
 "라뜰리에 한남점":
   lat: 37.53878158019312
   lng: 127.00200841921608
@@ -543,13 +543,13 @@
   lng: 126.97893311185605
   source: iframe
 "레전드무역":
-  lat: 37.68912131696956
-  lng: 126.81480941335589
-  source: iframe
+  lat: 37.6891171
+  lng: 126.8173897
+  source: gmaps
 "로만바스":
-  lat: 37.2358577
-  lng: 127.1563281
-  source: nominatim
+  lat: 37.2330907
+  lng: 127.1570032
+  source: gmaps
 "롱브르378":
   lat: 37.52453697193302
   lng: 126.9622257127639
@@ -571,38 +571,38 @@
   lng: 127.04359021335321
   source: iframe
 "루트에브리데이 한남점":
-  lat: 37.5373545
-  lng: 126.9999547
-  source: nominatim:cleaned
+  lat: 37.5373106
+  lng: 126.999946
+  source: gmaps
 "리얼샷사격양궁장 홍대점":
-  lat: 37.55158587192583
-  lng: 126.9190536118553
-  source: iframe
+  lat: 37.5515859
+  lng: 126.9216339
+  source: gmaps
 "리틀파머스한남 by 유성카페":
-  lat: 37.536172425866425
-  lng: 126.99674927715145
-  source: iframe
+  lat: 37.5361682
+  lng: 126.9993242
+  source: gmaps
 "마린커피_250317-250319":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244908
+  lng: 126.9647788
+  source: gmaps
 "마린커피_251109-251110":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244908
+  lng: 126.9647788
+  source: gmaps
 "마린커피_260316-260319":
-  lat: 37.524391
-  lng: 126.9645722
-  source: nominatim
+  lat: 37.5244908
+  lng: 126.9647788
+  source: gmaps
 "만미정":
   lat: 37.52461
   lng: 126.96264
   source: manual
   note: "서울 용산구 한강대로14길 20 (iframe 좌표 사용) - 이전 경기 좌표 수정"
 "망원시장":
-  lat: 37.5566206
-  lng: 126.9060503
-  source: nominatim
+  lat: 37.5559018
+  lng: 126.9062854
+  source: gmaps
 "메르시쿠키_250317-250319":
   lat: 37.524391
   lng: 126.9645722
@@ -624,25 +624,25 @@
   lng: 126.98558
   source: known:명동역
 "명지전문대학교":
-  lat: 37.5844294
-  lng: 126.9251456
-  source: nominatim
+  lat: 37.5846465
+  lng: 126.9251874
+  source: gmaps
 "모노맨션 연남 2호점":
-  lat: 37.56140872430239
-  lng: 126.92188341335414
-  source: iframe
+  lat: 37.5614045
+  lng: 126.9244637
+  source: gmaps
 "모모스커피 마린시티점":
   lat: 35.154483758612876
   lng: 129.14175431331714
   source: iframe
 "목장카페 밭디":
-  lat: 33.40786267329551
-  lng: 126.77004301169245
-  source: iframe
+  lat: 33.4078627
+  lng: 126.7726233
+  source: gmaps
 "묵정":
-  lat: 37.5612
-  lng: 127.00019
-  source: nominatim
+  lat: 37.5613475
+  lng: 127.0005628
+  source: gmaps
 "뮤직코리아 (PURELFOW_pt1)_260522-260531":
   lat: 37.5656978
   lng: 126.9778244
@@ -652,119 +652,119 @@
   lng: 126.96939481335433
   source: iframe
 "바늘이야기 연희점":
-  lat: 37.567444523956226
-  lng: 126.92648581335382
-  source: iframe
+  lat: 37.5674403
+  lng: 126.9290661
+  source: gmaps
 "바다정원":
   lat: 38.2078
   lng: 128.5944
   source: manual
   note: "강원 고성군 토성면 (속초 인근) - 이전 전남 좌표 수정"
 "바인더스튜디오":
-  lat: 37.55103888923496
-  lng: 126.9211095416418
-  source: iframe
+  lat: 37.5501805
+  lng: 126.9232392
+  source: gmaps
 "바쿠스스튜디오":
-  lat: 37.80166467197855
-  lng: 126.72619777588477
-  source: iframe
+  lat: 37.8016647
+  lng: 126.7287727
+  source: gmaps
 "반얀트리 클럽 앤 스파 서울":
-  lat: 37.5500945
-  lng: 127.0003194
-  source: nominatim
+  lat: 37.5499721
+  lng: 127.0007308
+  source: gmaps
 "방이옥":
   lat: 37.5695016
   lng: 126.9847485
   source: nominatim
 "벌툰 파리지앵 강남본점":
-  lat: 37.5002397
-  lng: 127.0253113
-  source: nominatim:cleaned
+  lat: 37.5002212
+  lng: 127.0253161
+  source: gmaps
 "베이크샵하벳":
   lat: 37.554654171925094
   lng: 126.90490701185541
   source: iframe
 "베통 청담":
-  lat: 37.523383
-  lng: 127.0442763
-  source: nominatim:cleaned
+  lat: 37.5233934
+  lng: 127.0436578
+  source: gmaps
 "별마당 도서관":
-  lat: 37.5118705
-  lng: 127.058713
-  source: nominatim
+  lat: 37.5100586
+  lng: 127.0601188
+  source: gmaps
 "보문사":
-  lat: 37.6882523
-  lng: 126.3215578
-  source: nominatim
+  lat: 37.6887462
+  lng: 126.3214884
+  source: gmaps
 "볼베어파크 롯데몰 은평점":
-  lat: 37.6383993
-  lng: 126.9181167
-  source: nominatim
+  lat: 37.6375688
+  lng: 126.9181915
+  source: gmaps
 "볼하우스 한남":
-  lat: 37.5323243
-  lng: 127.0071084
-  source: nominatim
+  lat: 37.5323346
+  lng: 127.0070488
+  source: gmaps
 "봄날플라워카페_250318-250322":
-  lat: 37.524168071933
-  lng: 126.96201331349982
-  source: iframe
+  lat: 37.5241681
+  lng: 126.9645936
+  source: gmaps
 "봄날플라워카페_250731-250803":
-  lat: 37.524168071933
-  lng: 126.96201331349982
-  source: iframe
+  lat: 37.5241681
+  lng: 126.9645936
+  source: gmaps
 "봄마켓_250317-250319":
-  lat: 37.52449422641836
-  lng: 126.96214481335335
-  source: iframe
+  lat: 37.52449
+  lng: 126.9647251
+  source: gmaps
 "봄마켓_250731-250802":
-  lat: 37.52449422641836
-  lng: 126.96214481335335
-  source: iframe
+  lat: 37.52449
+  lng: 126.9647251
+  source: gmaps
 "부엉이일기장_250308-250322":
-  lat: 37.54993632495999
-  lng: 126.91863771335404
-  source: iframe
+  lat: 37.5499321
+  lng: 126.921218
+  source: gmaps
 "브라더스마운틴":
   lat: 37.4488953
   lng: 127.0983963
   source: manual
 "브루잉 세레모니":
   lat: 37.543267
-  lng: 127.05514409999999
-  source: iframe
+  lng: 127.0551441
+  source: gmaps
 "블리스플라워":
-  lat: 37.54618208556605
-  lng: 126.9764165105515
-  source: iframe
+  lat: 37.5450668
+  lng: 126.985047
+  source: gmaps
 "비바살롱 신흥시장 2호점":
   lat: 37.5449615
   lng: 126.9851638
   source: manual
   note: "해방촌 신흥시장 내 (해방촌 소월로20길 35)"
 "비파티세리":
-  lat: 37.5485808
-  lng: 126.9551182
-  source: nominatim
+  lat: 37.5485911
+  lng: 126.9550704
+  source: gmaps
 "비피엠 파이엔타르트":
-  lat: 37.5661628
-  lng: 126.9317732
-  source: nominatim
+  lat: 37.5661011
+  lng: 126.9318035
+  source: gmaps
 "비학산칼국수 해운대본점":
   lat: 35.16286062846492
   lng: 129.14675205945971
   source: iframe
 "뺑스톡":
-  lat: 37.54538272522222
-  lng: 126.94660966272059
-  source: iframe
+  lat: 37.5456175
+  lng: 126.9487941
+  source: gmaps
 "사운드웨이브 럭키드로우  & 현장 이벤트":
-  lat: 37.5172094
-  lng: 126.9040371
-  source: nominatim
+  lat: 37.5170751
+  lng: 126.9033411
+  source: gmaps
 "사유원":
-  lat: 36.0899049
-  lng: 128.6845156
-  source: nominatim
+  lat: 36.0909429
+  lng: 128.6829506
+  source: gmaps
 "산리오 퓨로랜드":
   lat: 35.62449019761734
   lng: 139.42927154232862
@@ -774,17 +774,17 @@
   lng: 126.99485201057385
   source: iframe
 "상상오리 삼겹 용산점":
-  lat: 37.551661
-  lng: 126.9769176
-  source: nominatim
+  lat: 37.5513257
+  lng: 126.9762545
+  source: gmaps
 "샐러드셀러":
   lat: 37.5328305
   lng: 126.9925167
   source: manual
 "생생딸기체험농장":
-  lat: 37.51423877193563
-  lng: 127.64909531185396
-  source: iframe
+  lat: 37.5142388
+  lng: 127.6516756
+  source: gmaps
 "샤부겐":
   lat: 35.676466211798825
   lng: 139.736947
@@ -808,16 +808,16 @@
   lng: 126.89702717587154
   source: iframe
 "서울승마클럽":
-  lat: 37.70610961599255
-  lng: 127.05913981335624
-  source: iframe
+  lat: 37.7061054
+  lng: 127.0617201
+  source: gmaps
 "서울시내버스광고_251001-251031":
   skipped: true
   reason: "서울 시내 전 노선 운행 광고 - 단일 위치 없음 (2025 윤진 생일)"
 "서해랑 제부도해상케이블카":
-  lat: 37.1790448
-  lng: 126.6396693
-  source: nominatim
+  lat: 37.1840641
+  lng: 126.650302
+  source: gmaps
 "석암생소금구이 용산점":
   lat: 37.5255719
   lng: 126.9640355
@@ -844,9 +844,9 @@
   source: manual
   note: "서울 용산구 한강대로 50 (하이브 사옥 옆)"
 "세연콩국":
-  lat: 35.85704772017789
-  lng: 128.5865642133275
-  source: iframe
+  lat: 35.8570434
+  lng: 128.5891445
+  source: gmaps
 "센트레 더 베이커리":
   lat: 35.67554647307421
   lng: 139.76659519999998
@@ -856,37 +856,37 @@
   lng: 127.044548
   source: manual
 "손문 갈매기 2호점":
-  lat: 37.5315491
-  lng: 126.968447
-  source: nominatim:cleaned
+  lat: 37.5305735
+  lng: 126.9679719
+  source: gmaps
 "수미마을딸기송어축제":
-  lat: 37.51450517193568
-  lng: 127.65481661185385
-  source: iframe
+  lat: 37.5145052
+  lng: 127.6573969
+  source: gmaps
 "수복찜갈비":
-  lat: 35.871509419380565
-  lng: 128.60286221332626
-  source: iframe
+  lat: 35.8714962
+  lng: 128.6053627
+  source: gmaps
 "수상한발효실 수국":
   lat: 37.537708371929504
   lng: 127.07228551185474
   source: iframe
 "숲속한방랜드":
-  lat: 37.5702341
-  lng: 126.9457213
-  source: nominatim
+  lat: 37.5702503
+  lng: 126.9457016
+  source: gmaps
 "숲이야캠핑장":
-  lat: 37.64686601939892
-  lng: 127.37297691272293
-  source: iframe
+  lat: 37.6468618
+  lng: 127.3755572
+  source: gmaps
 "슈필라움 글램핑 & 카페":
-  lat: 37.17431760053473
-  lng: 126.62207635214341
-  source: iframe
+  lat: 37.1743177
+  lng: 126.6269419
+  source: gmaps
 "스카이라인루지 부산":
-  lat: 35.1941296
-  lng: 129.2191333
-  source: nominatim
+  lat: 35.1940567
+  lng: 129.2186386
+  source: gmaps
 "스쿨랜드":
   lat: 37.5497
   lng: 126.9165
@@ -901,17 +901,17 @@
   lng: 126.96077387587198
   source: iframe
 "스튜디오 사파리":
-  lat: 37.57177547192069
-  lng: 126.92635921185618
-  source: iframe
+  lat: 37.5717755
+  lng: 126.9289395
+  source: gmaps
 "스튜디오블랭크":
   lat: 37.555308700172894
   lng: 126.90036565224855
   source: iframe
 "스튜디오콜트":
-  lat: 37.5104372719367
-  lng: 126.95578511185366
-  source: iframe
+  lat: 37.5104373
+  lng: 126.9583654
+  source: gmaps
 "시부야 스시 진난":
   lat: 35.66174305844474
   lng: 139.7001656711643
@@ -954,33 +954,33 @@
   lng: 126.93672
   source: known:신촌역
 "쏘쏘한 베이킹":
-  lat: 37.5421403
-  lng: 127.0615505
-  source: nominatim:cleaned
+  lat: 37.5419902
+  lng: 127.061655
+  source: gmaps
 "아라시야마 치쿠린":
   lat: 35.01681430662937
   lng: 135.6712905711643
   source: frontmatter
 "아르떼뮤지엄 강릉":
-  lat: 37.7916054
-  lng: 128.9073854
-  source: nominatim
+  lat: 37.7917805
+  lng: 128.90719
+  source: gmaps
 "아리마온센":
   lat: 34.79925938095472
   lng: 135.24628091795554
   source: frontmatter
 "아스테리카 바이 더체어":
-  lat: 37.23416347201036
-  lng: 127.29005081184242
-  source: iframe
+  lat: 37.2341635
+  lng: 127.2926311
+  source: gmaps
 "아이스 오우카":
   lat: 35.647728127863125
   lng: 139.71085026883966
   source: frontmatter
 "아침고요수목원":
-  lat: 37.7417282
-  lng: 127.3520162
-  source: nominatim
+  lat: 37.7439678
+  lng: 127.3524864
+  source: gmaps
 "아카사카 코미깡":
   lat: 33.58608694009183
   lng: 130.39148497245168
@@ -990,17 +990,17 @@
   lng: 136.72350232698582
   source: frontmatter
 "안지랑곱창막창 앞산 본점":
-  lat: 35.83754001787236
-  lng: 128.57262802416506
-  source: iframe
+  lat: 35.8370975
+  lng: 128.5747901
+  source: gmaps
 "압구정 나들목":
   lat: 37.5305937
   lng: 127.0416351
   source: gmaps
 "앙뜨":
-  lat: 37.4913091
-  lng: 127.0324917
-  source: nominatim
+  lat: 37.5490904
+  lng: 127.0481922
+  source: gmaps
 "애플뮤직 (PUREFLOW_pt1_260522-260531":
   lat: 37.5566933
   lng: 126.9367277
@@ -1018,21 +1018,21 @@
   lng: 126.837073
   source: iframe
 "어라운드에잇":
-  lat: 37.85725560728453
-  lng: 126.8932539133571
-  source: iframe
+  lat: 37.857091
+  lng: 126.8965728
+  source: gmaps
 "언프레임 해방촌점":
   lat: 37.545355
-  lng: 126.98494210000001
-  source: iframe
+  lng: 126.9849421
+  source: gmaps
 "얼짱사진샵 숙대입구점":
   lat: 37.5451337
   lng: 126.9719573
   source: nominatim:cleaned
 "여의도공원":
-  lat: 37.5255357
-  lng: 126.9215857
-  source: nominatim
+  lat: 37.5262751
+  lng: 126.9228132
+  source: gmaps
 "연타발 압구정본점":
   lat: 37.52139517205024
   lng: 127.02956347587168
@@ -1071,9 +1071,9 @@
   source: manual
   note: "서울 용산구 한강로3가 999 (하이브/신용산역 인근)"
 "오아시스 한남점":
-  lat: 37.535900039302476
-  lng: 126.99003998813646
-  source: iframe
+  lat: 37.5366062
+  lng: 126.9979686
+  source: gmaps
 "오이시 공원 카페":
   lat: 35.52294763273339
   lng: 138.74576292650843
@@ -1097,9 +1097,9 @@
   source: manual
   note: "서울 종로구 자하문로 5가길 41 (서촌, 통의동 일대) - 이전 제주도 좌표 수정"
 "와글아이 일산차움라이프센터점":
-  lat: 37.6541371
-  lng: 126.7757724
-  source: nominatim:cleaned
+  lat: 37.6542154
+  lng: 126.7759541
+  source: gmaps
 "와라야키 미깡":
   lat: 34.79541864022743
   lng: 135.4132364803413
@@ -1109,9 +1109,9 @@
   lng: 126.98034939784421
   source: iframe
 "왓어브레드 용산점":
-  lat: 37.5253536
-  lng: 126.9628212
-  source: nominatim
+  lat: 37.5253297
+  lng: 126.9627627
+  source: gmaps
 "왕십리역 CM보드_250308-250322":
   lat: 37.56168
   lng: 127.03788
@@ -1120,21 +1120,21 @@
   skipped: true
   reason: "모음/목차 페이지 (단일 위치 없음)"
 "용산마루":
-  lat: 37.5261609
-  lng: 126.9633618
-  source: nominatim:cleaned
+  lat: 37.5254327
+  lng: 126.9626145
+  source: gmaps
 "원안1리 마을회관&싱싱하우스":
-  lat: 37.10557537843094
-  lng: 126.77180743403818
-  source: iframe
+  lat: 37.1055712
+  lng: 126.7766837
+  source: gmaps
 "원조북성로우동불고기":
-  lat: 35.872766119310725
-  lng: 128.58578421332632
-  source: iframe
+  lat: 35.8727618
+  lng: 128.5883645
+  source: gmaps
 "위드키즈 키즈카페":
-  lat: 37.51147672675132
-  lng: 127.10284450379183
-  source: iframe
+  lat: 37.510711
+  lng: 127.116513
+  source: gmaps
 "유니버설 스튜디오 재팬":
   lat: 34.66569003645751
   lng: 135.4323077711643
@@ -1144,13 +1144,13 @@
   lng: 139.7670756711643
   source: frontmatter
 "육담온 이태원점":
-  lat: 37.53473102594937
-  lng: 126.99270397715155
-  source: iframe
+  lat: 37.53467
+  lng: 126.9920898
+  source: gmaps
 "이연공방":
-  lat: 37.53223542597412
-  lng: 126.98969901335155
-  source: iframe
+  lat: 37.5322312
+  lng: 126.9922793
+  source: gmaps
 "이와":
   lat: 35.15648266144684
   lng: 129.137055184671
@@ -1165,9 +1165,9 @@
   lng: 126.44071
   source: known:인천공항 T1
 "인천회조개구이":
-  lat: 37.4481397
-  lng: 126.3727702
-  source: nominatim
+  lat: 37.4465673
+  lng: 126.3735017
+  source: gmaps
 "자체 컨텐츠 촬영지":
   skipped: true
   reason: "모음/목차 페이지 (단일 위치 없음)"
@@ -1181,9 +1181,9 @@
   lng: 126.98403251272043
   source: iframe
 "전곡항":
-  lat: 37.1876956
-  lng: 126.65076
-  source: nominatim
+  lat: 37.1869636
+  lng: 126.6522902
+  source: gmaps
 "전율미궁":
   lat: 35.48743467515755
   lng: 138.7837124719319
@@ -1193,42 +1193,42 @@
   lng: 127.0254824
   source: nominatim
 "제주라프":
-  lat: 33.48683837326403
-  lng: 126.70443271169542
-  source: iframe
+  lat: 33.4868384
+  lng: 126.707013
+  source: gmaps
 "젠제로":
   lat: 37.5151
   lng: 127.0428
   source: manual
   note: "서울 강남구 선릉로126길 14"
 "젠한방단식원":
-  lat: 37.64211177190233
-  lng: 127.62313621185902
-  source: iframe
+  lat: 37.6421118
+  lng: 127.6257165
+  source: gmaps
 "조개대표 을왕리직영점":
-  lat: 37.44581007195345
-  lng: 126.37244001335127
-  source: iframe
+  lat: 37.4458101
+  lng: 126.3750203
+  source: gmaps
 "조앤더주스 더현대서울점":
-  lat: 37.5259638
-  lng: 126.9284184
-  source: nominatim
+  lat: 37.526056
+  lng: 126.9283112
+  source: gmaps
 "조조엔 록본기점":
   lat: 35.66389222501808
   lng: 139.73130563557532
   source: frontmatter
 "종로계림닭도리탕원조마포점":
-  lat: 37.539599272045535
-  lng: 126.94481417587248
-  source: iframe
+  lat: 37.5395993
+  lng: 126.9473891
+  source: gmaps
 "종로떡집":
-  lat: 37.6126132
-  lng: 127.0281827
-  source: nominatim
+  lat: 37.4901067
+  lng: 126.8870089
+  source: gmaps
 "죽녹원":
-  lat: 35.3286267
-  lng: 126.9855593
-  source: nominatim
+  lat: 35.3266303
+  lng: 126.9853868
+  source: gmaps
 "진즈하여행 총집편":
   skipped: true
   reason: "모음/목차 페이지 (단일 위치 없음)"
@@ -1237,33 +1237,33 @@
   lng: 126.99064
   source: known:용산
 "차지 용산 아이파크몰점":
-  lat: 37.528916
-  lng: 126.964108
-  source: nominatim
+  lat: 37.5297043
+  lng: 126.9646936
+  source: gmaps
 "차품집_250317-250319":
-  lat: 37.524470426419555
-  lng: 126.96220591335181
-  source: iframe
+  lat: 37.5244662
+  lng: 126.9647862
+  source: gmaps
 "차품집_250731-250803":
-  lat: 37.524470426419555
-  lng: 126.96220591335181
-  source: iframe
+  lat: 37.5244662
+  lng: 126.9647862
+  source: gmaps
 "차품집_251007-251009":
-  lat: 37.524470426419555
-  lng: 126.96220591335181
-  source: iframe
+  lat: 37.5244662
+  lng: 126.9647862
+  source: gmaps
 "차품집_260319":
-  lat: 37.524470426419555
-  lng: 126.96220591335181
-  source: iframe
+  lat: 37.5244662
+  lng: 126.9647862
+  source: gmaps
 "참숯꺼먹돼지":
   lat: 37.437552771955765
   lng: 126.84344371185071
   source: iframe
 "충남서산집":
-  lat: 37.70074087788364
-  lng: 126.39455698454505
-  source: iframe
+  lat: 37.7047097
+  lng: 126.391933
+  source: gmaps
 "츠키시마몬자 오코게 시부야":
   lat: 35.660427507420785
   lng: 139.6993698134929
@@ -1273,33 +1273,33 @@
   lng: 138.74556879720942
   source: frontmatter
 "카페 시아 아틀리에_250730-250802":
-  lat: 37.525110999999995
+  lat: 37.525111
   lng: 126.969145
-  source: iframe
+  source: gmaps
 "카페레이어드 연남점":
-  lat: 37.564979624215226
-  lng: 126.92160727715213
-  source: iframe
+  lat: 37.5649754
+  lng: 126.9241822
+  source: gmaps
 "카페마마스 광화문점":
   lat: 37.5745442720365
   lng: 126.97644057778191
   source: iframe
 "카페마마스 코엑스점":
-  lat: 37.51378527193576
-  lng: 127.05688041185388
-  source: iframe
+  lat: 37.5137853
+  lng: 127.0594607
+  source: gmaps
 "카페모임 마포상암":
-  lat: 37.5772475
-  lng: 126.8939958
-  source: nominatim:cleaned
+  lat: 37.5772579
+  lng: 126.8939539
+  source: gmaps
 "카페별하_250731-250802":
   lat: 35.1527149
   lng: 129.067289
   source: nominatim
 "카페아워_250801-250802":
-  lat: 35.1527149
-  lng: 129.067289
-  source: nominatim
+  lat: 35.1527904
+  lng: 129.0680362
+  source: gmaps
 "카페희다 삼성점":
   lat: 37.5086628
   lng: 127.0581768
@@ -1309,9 +1309,9 @@
   lng: 126.98111271185627
   source: iframe
 "케이타운포유 SPECIAL STORE_250319-250325":
-  lat: 37.50940729301328
-  lng: 127.05870498928158
-  source: iframe
+  lat: 37.5100538
+  lng: 127.061476
+  source: gmaps
 "케이타운포유 Special Store (PUREFLOW_pt1_260523-260528)":
   lat: 37.5128251
   lng: 127.0572645
@@ -1321,29 +1321,29 @@
   lng: 135.49774670270247
   source: frontmatter
 "코이크":
-  lat: 37.562267324370914
-  lng: 126.92129687715205
-  source: iframe
+  lat: 37.5622631
+  lng: 126.9238718
+  source: gmaps
 "콜린":
-  lat: 37.54933153475944
-  lng: 126.91759575208236
-  source: iframe
+  lat: 37.5491841
+  lng: 126.9203972
+  source: gmaps
 "쿠시카츠 다루마 도톤보리점":
   lat: 34.66883951198686
   lng: 135.5026406822117
   source: frontmatter
 "쿨키즈 쿠키 용산점":
-  lat: 37.531684
-  lng: 126.9718384
-  source: nominatim:cleaned
+  lat: 37.5313952
+  lng: 126.972421
+  source: gmaps
 "키드문_250317-250319":
-  lat: 37.52456552641411
-  lng: 126.96242611335165
-  source: iframe
+  lat: 37.5245613
+  lng: 126.9650064
+  source: gmaps
 "키드문_250731-250803":
-  lat: 37.52456552641411
-  lng: 126.96242611335165
-  source: iframe
+  lat: 37.5245613
+  lng: 126.9650064
+  source: gmaps
 "키드문_260729-260801":
   lat: 37.5318478
   lng: 126.9719545
@@ -1358,13 +1358,13 @@
   lng: 127.004695
   source: gmaps
 "타임슬래시_250319":
-  lat: 35.14850465893755
-  lng: 129.06466071331508
-  source: iframe
+  lat: 35.1485003
+  lng: 129.067241
+  source: gmaps
 "타임슬래시_250730-250801":
-  lat: 35.14850465893755
-  lng: 129.06466071331508
-  source: iframe
+  lat: 35.1485003
+  lng: 129.067241
+  source: gmaps
 "타임슬래시_260730-260731":
   lat: 35.14850465893755
   lng: 129.06466071331508
@@ -1383,17 +1383,17 @@
   lng: 126.96901061335254
   source: iframe
 "톤앤매너_250729-250802":
-  lat: 37.55422497204181
-  lng: 126.9260928758732
-  source: iframe
+  lat: 37.554225
+  lng: 126.9286678
+  source: gmaps
 "톤앤매너_251008-251009":
-  lat: 37.55422497204181
-  lng: 126.9260928758732
-  source: iframe
+  lat: 37.554225
+  lng: 126.9286678
+  source: gmaps
 "톤앤무드스튜디오":
-  lat: 37.6977355
-  lng: 126.7294045
-  source: nominatim
+  lat: 37.6985424
+  lng: 126.7313574
+  source: gmaps
 "투떰즈업":
   lat: 37.5184679
   lng: 127.0260551
@@ -1407,17 +1407,17 @@
   lng: 128.98993744863284
   source: iframe
 "파라다이스 호텔 부산":
-  lat: 35.1602041
-  lng: 129.1652071
-  source: nominatim
+  lat: 35.1601338
+  lng: 129.1646875
+  source: gmaps
 "파리미키 시부야점":
   lat: 35.66194987530108
   lng: 139.7005953288357
   source: frontmatter
 "파차마마베이커리":
-  lat: 37.5334386
-  lng: 126.9740959
-  source: nominatim
+  lat: 37.5333492
+  lng: 126.9740953
+  source: gmaps
 "파티셰리 몽쉐르 도지마 본점":
   lat: 34.6948174893997
   lng: 135.4954685288357
@@ -1427,9 +1427,9 @@
   lng: 139.7705129423286
   source: frontmatter
 "페스타 바이 민구":
-  lat: 37.55012347192626
-  lng: 126.99958811185526
-  source: iframe
+  lat: 37.5501235
+  lng: 127.0021684
+  source: gmaps
 "포토이즘박스 성수점":
   lat: 37.5471197
   lng: 127.0407371
@@ -1439,9 +1439,9 @@
   lng: 127.0588489
   source: nominatim:cleaned
 "프랑스루브르바게트":
-  lat: 37.53864238745271
-  lng: 126.94888071273543
-  source: iframe
+  lat: 37.546432
+  lng: 126.9445656
+  source: gmaps
 "프레드므아 논현":
   lat: 37.522869626511266
   lng: 127.04119751335156
@@ -1453,23 +1453,23 @@
 "프루티에 연남":
   lat: 37.5640254
   lng: 126.9215753
-  source: iframe
+  source: gmaps
 "플라잉카우":
-  lat: 37.7882428
-  lng: 126.6961797
-  source: nominatim
+  lat: 37.788245
+  lng: 126.696205
+  source: gmaps
 "플로라운지_250317-250319":
-  lat: 37.556837852377015
-  lng: 126.92108863409352
-  source: iframe
+  lat: 37.5568337
+  lng: 126.9259649
+  source: gmaps
 "피에르 마르코리니 긴자본점":
   lat: 35.671136280418345
   lng: 139.76353841285862
   source: frontmatter
 "하도세미":
-  lat: 33.521034673250554
-  lng: 126.88639081169671
-  source: iframe
+  lat: 33.5210347
+  lng: 126.8889711
+  source: gmaps
 "하바스MMA 주짓수&킥복싱":
   lat: 37.50685680397394
   lng: 126.98779887271508
@@ -1529,9 +1529,9 @@
   lng: 126.98479771276429
   source: iframe
 "한국콘텐츠진흥원":
-  lat: 35.0197491
-  lng: 126.781814
-  source: nominatim
+  lat: 35.0194657
+  lng: 126.7817793
+  source: gmaps
 "한일관":
   lat: 34.67468895914544
   lng: 135.50508091779184
@@ -1545,37 +1545,37 @@
   lng: 126.91349
   source: known:합정역
 "핫쿨즈 스페셜 카페 250524-250525":
-  lat: 37.55493767204154
-  lng: 126.92414627587323
-  source: iframe
+  lat: 37.5549377
+  lng: 126.9267212
+  source: gmaps
 "해여림빌리지A캠핑존":
-  lat: 37.390586
-  lng: 127.437107
-  source: nominatim
+  lat: 37.3918445
+  lng: 127.4376616
+  source: gmaps
 "해운대 블루라인 파크":
-  lat: 35.16171586518307
-  lng: 129.1879665721494
-  source: iframe
+  lat: 35.1613733
+  lng: 129.1918758
+  source: gmaps
 "해운대 수민이네":
-  lat: 35.160620372646136
-  lng: 129.1884466117594
-  source: iframe
+  lat: 35.1606204
+  lng: 129.1910269
+  source: gmaps
 "허니비치카페":
-  lat: 37.2876962
-  lng: 126.5750333
-  source: nominatim
+  lat: 37.2875898
+  lng: 126.5748835
+  source: gmaps
 "허대구통닭 대봉점":
-  lat: 35.8586914200873
-  lng: 128.59862711332605
-  source: iframe
+  lat: 35.8586871
+  lng: 128.6012074
+  source: gmaps
 "현대백화점 신촌점 DID 스크린_260316-260324":
   lat: 37.55563
   lng: 126.938
   source: known:현대백화점 신촌
 "호랑이젤라떡":
-  lat: 35.158584972646956
-  lng: 129.1683114117592
-  source: iframe
+  lat: 35.15849
+  lng: 129.1711889
+  source: gmaps
 "호루탄야 (Horutanya)":
   lat: 35.16799190337118
   lng: 136.9037556134929
@@ -1593,13 +1593,13 @@
   lng: 126.9231535
   source: nominatim
 "홍대 스칼렛 빌딩_250319":
-  lat: 37.5450038
-  lng: 126.9061487
-  source: nominatim
+  lat: 37.5555736
+  lng: 126.9225937
+  source: gmaps
 "홍대24시불가마사우나":
-  lat: 37.55881607192395
-  lng: 126.92483341185557
-  source: iframe
+  lat: 37.5588161
+  lng: 126.9274137
+  source: gmaps
 "홍대역 2.7m DS LED 스크린_250314-250320":
   lat: 37.55715
   lng: 126.92369
@@ -1618,21 +1618,21 @@
   source: manual
   note: "서울 강남구 도산대로 176 (iframe 좌표) - 이전 분당 좌표 수정"
 "화실 심미나 아트":
-  lat: 37.51934717193428
-  lng: 126.97243311185397
-  source: iframe
+  lat: 37.5193472
+  lng: 126.9750134
+  source: gmaps
 "후지큐 하이랜드":
   lat: 35.48694233203442
   lng: 138.7805618288357
   source: frontmatter
 "후지필름 하우스오브포토그래피서울":
-  lat: 37.53473102594937
-  lng: 126.99270397715155
-  source: iframe
+  lat: 37.5347268
+  lng: 126.9952789
+  source: gmaps
 "흠커피 HCR":
-  lat: 37.5201192
-  lng: 127.185197
-  source: nominatim
+  lat: 37.52009
+  lng: 127.185139
+  source: gmaps
 "히미츠도":
   lat: 35.72733091552948
   lng: 139.76661303104703
