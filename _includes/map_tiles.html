@@ -40,13 +40,18 @@ window.FimMap = window.FimMap || (function () {
     }
     return t;
   }
+  // 한국 자동 타일 — VWorld 는 라벨이 한국어뿐이라 영어 UI 에선 Voyager 를 쓴다
+  // (레이어 컨트롤에는 VWorld 가 그대로 남아 있어 원하면 직접 고를 수 있다)
+  function krTile(t) { return (window.FimLang === 'en') ? null : t.vworld; }
+
   // 레이어 컨트롤용 { 라벨: 레이어 }
   function baseLayers(t) {
     var b = {};
-    if (t.vworld) b['🇰🇷 VWorld 한국'] = t.vworld;
-    b['깔끔 (Voyager)'] = t.voyager;
-    b['기본 (OSM)'] = t.osm;
-    b['위성 (Esri)'] = t.satellite;
+    var T = window.FimT || function (k, f) { return f; };
+    if (t.vworld) b[T('layer_vworld', '🇰🇷 VWorld 한국')] = t.vworld;
+    b[T('layer_voyager', '깔끔 (Voyager)')] = t.voyager;
+    b[T('layer_osm', '기본 (OSM)')] = t.osm;
+    b[T('layer_satellite', '위성 (Esri)')] = t.satellite;
     return b;
   }
   // places.json 은 페이지당 1회만 fetch (note_map · nearby_places 등이 공유)
@@ -76,6 +81,7 @@ window.FimMap = window.FimMap || (function () {
     }
     return leafletPromise;
   }
-  return { wrapLng: wrapLng, bounds: bounds, mapOptions: mapOptions, tiles: tiles, baseLayers: baseLayers, places: places, loadLeaflet: loadLeaflet };
+  return { wrapLng: wrapLng, bounds: bounds, mapOptions: mapOptions, tiles: tiles, krTile: krTile,
+           baseLayers: baseLayers, places: places, loadLeaflet: loadLeaflet };
 })();
 </script>

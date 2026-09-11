@@ -28,4 +28,3 @@ Pasta Sisters
 3343 W Pico Blvd, Arlington Heights, Los Angeles, CA 90019, USA
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=17449788018272531782)
-

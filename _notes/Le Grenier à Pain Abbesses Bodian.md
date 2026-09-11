@@ -31,7 +31,3 @@ Le Grenier à Pain Abbesses Bodian
 38 Rue des Abbesses, 75018 Paris, France
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=3885520951969930312)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DAXLlHETLaT/ (첨부 사진은 이 포스트에서)
--->

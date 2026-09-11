@@ -28,7 +28,3 @@ His Majesty's Theatre
 57 Haymarket, London SW1Y 4QL, UK
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=2641541697210462127)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DAcTpjayHfX/ (첨부 사진은 이 포스트에서)
--->

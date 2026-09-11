@@ -29,5 +29,3 @@ Blue Willow 夜来湘
 40 W 56th St, New York, NY 10019, USA
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/Ydfz16SdU7strbAR7)
-
-

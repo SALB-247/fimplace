@@ -28,9 +28,5 @@ MOKAFÉ
 ## [🗺️ 구글맵](https://maps.app.goo.gl/z6P7GfAPCJ1PBc4Z8)
 
 <!-- TODO
-□ ⚠️ 미국 아님 — 벨기에 브뤼셀로 추정 (MED, LSRFM 방문 출처 미확인). usa/east 폴더에서 이동 필요
 □ 르세라핌 방문 사실/지점 확인 (검색 캡차로 직접 확인 실패) — DM 이라 영구 URL 없음, 캡쳐로 보존
-□ country: be 가 지도에 표시되려면 map.html VISIBLE_COUNTRIES/COUNTRY_VIEW 추가 필요
-□ (해결) 지도 embed 는 이미 정식 pb= 형식이다 (체크만 누락돼 있었음) (2026-09-11)
-□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

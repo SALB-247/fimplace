@@ -28,7 +28,3 @@ Santorini The Greek Grill by Panos
 G/F, The Elgin, 51 Elgin St, 伊利近街51號 伊利閣, 蘇豪 SoHo, 中環 Central, Hong Kong
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=15079893796812350789)
-
-<!-- TODO
-※ 멤버 태그 없음 = 전원 출연 (사용자 규칙 2026-09-11) — 추가 작업 없음
--->

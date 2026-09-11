@@ -30,7 +30,3 @@ The Parallel
 G/F, Ho Fook Building, 9 Old Bailey St, 奧卑利街9號何福大廈地下, 蘇豪 SoHo, 中環 Central, Hong Kong
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=6368031031751725811)
-
-<!-- TODO
-※ 멤버 태그 없음 = 전원 출연 (사용자 규칙 2026-09-11) — 추가 작업 없음
--->

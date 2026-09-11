@@ -30,4 +30,3 @@ Terry Black's Barbecue
 3025 Main St, Dallas, TX 75226, USA
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/wexsQqnk2SFTJwA87)
-

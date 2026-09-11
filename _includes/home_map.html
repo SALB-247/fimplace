@@ -1,7 +1,7 @@
 <!-- 메인 페이지 미니 지도: 필터 없음, 정사각형, 전체 장소 점 + 현재 핌둥이들 위치 -->
 <div id="home-map-wrap" style="position:relative; width:100%; margin:0.5em 0 1em;">
   <div id="home-map" style="width:100%; aspect-ratio:1/1; border-radius:10px; border:1px solid var(--box-border,#ddd); background:#eef4f8;"></div>
-  <a href="{{ site.baseurl }}/map/" style="position:absolute; right:10px; bottom:10px; z-index:800; background:rgba(255,255,255,0.92); border:1px solid #ccc; border-radius:999px; padding:0.3em 0.9em; font-size:0.82em; font-weight:700; text-decoration:none; color:#333; box-shadow:0 1px 4px rgba(0,0,0,0.15);">🗺️ 전체 지도 →</a>
+  <a href="{{ site.baseurl }}/map/" style="position:absolute; right:10px; bottom:10px; z-index:800; background:rgba(255,255,255,0.92); border:1px solid #ccc; border-radius:999px; padding:0.3em 0.9em; font-size:0.82em; font-weight:700; text-decoration:none; color:#333; box-shadow:0 1px 4px rgba(0,0,0,0.15);" data-i18n="home_map_all">🗺️ 전체 지도 →</a>
 </div>
 
 <style>
@@ -84,11 +84,13 @@
       //    외부 CSS 셀렉터보다 구체성이 높아 클래스 규칙으로는 못 이김 (SVG 원본 800px 로 터짐)
       var html = '<div class="fim-crew-mini"><div class="pulse"></div>' +
         '<div class="badge"><img src="{{ site.baseurl }}/assets/LE_SSERAFIM_logo.svg" alt="LE SSERAFIM" style="width:100%;height:auto;display:block;"></div></div>';
-      var head = state === 'live' ? '🔴 오늘 공연!' : state === 'next' ? '다음 공연' : '최근 공연';
+      var head = state === 'live' ? FimT('home_show_today', '🔴 오늘 공연!')
+               : state === 'next' ? FimT('home_show_next', '다음 공연')
+               : FimT('home_show_recent', '최근 공연');
       var ll = [pick.lat, wrapLng(pick.lng)];
       var m = L.marker(ll, { icon: L.divIcon({ className: '', html: html, iconSize: [80,44], iconAnchor: [40,22] }), zIndexOffset: 1000 })
         .addTo(map)
-        .bindPopup('<strong>' + head + '</strong><br>' + (pick.flag||'') + ' ' + (pick.city||'') +
+        .bindPopup('<strong>' + head + '</strong><br>' + (pick.flag||'') + ' ' + FimTag(pick.city||'') +
           (pick.venue_url ? '<br><a href="{{ site.baseurl }}' + pick.venue_url + '">' + pick.venue + '</a>' : '') +
           '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + '</span>',
           { autoClose: false, closeOnClick: false });
@@ -112,7 +114,9 @@
     chosen.forEach(function (e) {
       var isLive = e.start <= t && t <= e.end;
       var dday = Math.round((new Date(e.start) - new Date(t)) / 86400000);
-      var head = isLive ? '🛍️ 팝업 진행 중' : '🛍️ 팝업 D-' + dday;
+      var head = isLive ? FimT('home_popup_live', '🛍️ 팝업 진행 중')
+               : (FimLang === 'en' ? FimFmt(FimT('home_popup_dday', ''), [dday])
+                                   : '🛍️ 팝업 D-' + dday);
       var ll = [e.lat, wrapLng(e.lng)];
       var m = L.marker(ll, {
         icon: L.divIcon({ className: '', html: '<div class="fim-pop-mini"><div class="pulse"></div><div class="badge">🛍️</div></div>',

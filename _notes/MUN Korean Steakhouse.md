@@ -34,5 +34,4 @@ MUN Korean Steakhouse
 ✔ 포스트 확정: https://www.instagram.com/p/DPKm-zWEtc3/ (첨부 사진은 이 포스트에서)
 □ 10번(한식 그릴 테이블)을 이 가게로 판단. DPJn7SsEivn 은 밈 3장이라 제외
 □ Yelp/Infatuation 리뷰에 '르세라핌 목격' 언급이 있으나 멤버·날짜 특정 불가 → 근거로 채택 안 함
-
 -->

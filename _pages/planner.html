@@ -5,13 +5,14 @@ permalink: /planner/
 ---
 
 <p style="color:var(--subtext); font-size:0.9em;">
-  가고 싶은 장소를 골라 나만의 코스를 만들어 보세요. 선택한 순서대로 경로가 이어지고,
-  <strong>구글맵 길찾기</strong>로 바로 열 수 있습니다. <span style="font-size:0.85em;">(β 프로토타입)</span>
+  <span data-i18n="plan_intro_1">가고 싶은 장소를 골라 나만의 코스를 만들어 보세요. 선택한 순서대로 경로가 이어지고,</span>
+  <strong data-i18n="plan_gmaps_label">구글맵 길찾기</strong><span data-i18n="plan_gmaps_suffix">로 바로 열 수 있습니다.</span>
+  <span style="font-size:0.85em;" data-i18n="plan_beta">(β 프로토타입)</span>
 </p>
 
 <div style="display:flex; gap:0.5em; flex-wrap:wrap; margin-bottom:0.6em;">
-  <select id="pl-country" style="padding:0.4em;"><option value="">🌏 국가 전체</option></select>
-  <input id="pl-search" type="search" placeholder="장소 이름 검색..." style="flex:1; min-width:160px; padding:0.4em;">
+  <select id="pl-country" style="padding:0.4em;"><option value="" data-i18n="plan_country_all">🌏 국가 전체</option></select>
+  <input id="pl-search" type="search" placeholder="장소 이름 검색..." data-i18n-ph="plan_search_ph" style="flex:1; min-width:160px; padding:0.4em;">
 </div>
 
 <div id="pl-layout" style="display:flex; gap:0.8em; align-items:stretch;">
@@ -22,13 +23,13 @@ permalink: /planner/
 </div>
 
 <div id="pl-plan" style="margin-top:0.8em;">
-  <strong>내 코스</strong> <span id="pl-count" style="color:var(--subtext); font-size:0.85em;"></span>
+  <strong data-i18n="plan_my_route">내 코스</strong> <span id="pl-count" style="color:var(--subtext); font-size:0.85em;"></span>
   <ol id="pl-route" style="margin:0.4em 0;"></ol>
   <div style="display:flex; gap:0.6em; flex-wrap:wrap;">
-    <a id="pl-gmap" href="#" target="_blank" rel="noopener" style="display:none; background:#1a73e8; color:#fff; padding:0.4em 1em; border-radius:6px; text-decoration:none; font-weight:700;">🗺️ 구글맵 길찾기 열기</a>
-    <button id="pl-clear" style="padding:0.4em 1em; border:1px solid var(--box-border,#ccc); border-radius:6px; background:var(--box-bg,#fafafa); cursor:pointer;">초기화</button>
+    <a id="pl-gmap" href="#" target="_blank" rel="noopener" style="display:none; background:#1a73e8; color:#fff; padding:0.4em 1em; border-radius:6px; text-decoration:none; font-weight:700;" data-i18n="plan_open_gmaps">🗺️ 구글맵 길찾기 열기</a>
+    <button id="pl-clear" style="padding:0.4em 1em; border:1px solid var(--box-border,#ccc); border-radius:6px; background:var(--box-bg,#fafafa); cursor:pointer;" data-i18n="plan_clear">초기화</button>
   </div>
-  <p style="font-size:0.75em; color:var(--subtext); margin-top:0.5em;">※ 구글맵 길찾기는 경유지 최대 9곳까지 지원됩니다 (출발+경유+도착 = 11곳).</p>
+  <p style="font-size:0.75em; color:var(--subtext); margin-top:0.5em;" data-i18n="plan_limit_hint">※ 구글맵 길찾기는 경유지 최대 9곳까지 지원됩니다 (출발+경유+도착 = 11곳).</p>
 </div>
 
 <style>
@@ -48,6 +49,7 @@ permalink: /planner/
 <script>
 (function () {
   var wrapLng = FimMap.wrapLng;   // 타일·옵션 정의: _includes/map_tiles.html
+  // 국가 라벨은 FimCountryLabel 이 뒷부분(나라 이름)만 갈아끼운다
   var LABELS = { kr:'🇰🇷 한국', jp:'🇯🇵 일본', tw:'🇹🇼 대만', us:'🇺🇸 미국', cn:'🇨🇳 중국', th:'🇹🇭 태국',
     hk:'🇭🇰 홍콩', mo:'🇲🇴 마카오', fr:'🇫🇷 프랑스', it:'🇮🇹 이탈리아', gb:'🇬🇧 영국', nl:'🇳🇱 네덜란드',
     dk:'🇩🇰 덴마크', de:'🇩🇪 독일', ch:'🇨🇭 스위스', sg:'🇸🇬 싱가포르', id:'🇮🇩 인도네시아',
@@ -73,12 +75,12 @@ permalink: /planner/
     listEl.innerHTML = pool.map(function (p) {
       var checked = plan.indexOf(p) !== -1 ? ' checked' : '';
       return '<label><input type="checkbox" data-url="' + p.url + '"' + checked + '><span>' + p.title +
-        (p.region ? ' <span style="color:var(--subtext); font-size:0.85em;">(' + p.region + ')</span>' : '') + '</span></label>';
+        (p.region ? ' <span style="color:var(--subtext); font-size:0.85em;">(' + FimTag(p.region) + ')</span>' : '') + '</span></label>';
     }).join('');
   }
 
   function renderPlan() {
-    document.getElementById('pl-count').textContent = plan.length ? plan.length + '곳' : '';
+    document.getElementById('pl-count').textContent = plan.length ? (window.FimLang === 'en' ? FimPlural(plan.length, 'place') : plan.length + '곳') : '';
     routeEl.innerHTML = plan.map(function (p, i) {
       return '<li><a class="internal-link" href="' + p.url + '">' + p.title + '</a>' +
         ' <button data-i="' + i + '" class="pl-rm" style="border:0;background:none;cursor:pointer;color:#c00;">✕</button></li>';
@@ -138,7 +140,7 @@ permalink: /planner/
       var ccs = {};
       ALL.forEach(function (p) { if (p.country) ccs[p.country] = (ccs[p.country] || 0) + 1; });
       Object.keys(ccs).sort().forEach(function (c) {
-        countrySel.add(new Option((LABELS[c] || c) + ' (' + ccs[c] + ')', c));
+        countrySel.add(new Option(FimCountryLabel(LABELS[c] || c) + ' (' + ccs[c] + ')', c));
       });
       renderList();
     });

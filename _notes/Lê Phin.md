@@ -29,11 +29,11 @@ Lê Phin
 ## [🗺️ 구글맵](https://maps.google.com/?cid=1173281705050019322)
 
 <!-- TODO
-□ IG C1nozB_Pfuc 10장 전부 미술관(유리 조형) 사진 — 카페 사진 없음. 출처는 NYLON 기사 쪽이 맞음
+□ (종결) 2026-09-12 캐러셀 10장을 다시 받아 전수 확인했다 — 유리 조형·설치미술 8장 + 셀카 1장 + 영상 1장.
+   카페 내부·외관·음료 사진은 한 장도 없다. **IG 로는 사진 보충 불가** — 사용자 캐처 외 방법 없음.
 □ 확인된 출처는 NYLON 기사 (대면 인터뷰를 이 카페에서 진행, 인용문: "Sipping a Vietnamese iced coffee at Lê Phin, a quaint cafe in the heart of the East Village")
    → 메모/태그가 '인스타' 인데 검증 가능한 출처는 외부 매체. 태그를 외부컨텐츠로 볼지 검수 필요
 
 □ 240103 윤진 포스트 = jenaissante · 캡션 "재회🫧" · 그날 유일한 피드 포스트 (근거: https://www.instagram.com/p/C1nozB_Pfuc/ · 출처 ptkorea)
    → 캐러셀 중 이 카페 사진 포함 여부는 미확정. NYLON 기사(위 링크)가 이 카페에서 진행한 대면 인터뷰로 더 확실한 근거
 -->
-

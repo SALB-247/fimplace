@@ -30,7 +30,3 @@ SimBIOsi Organic Cafe &Lovely Bistro
 Via de' Ginori 64r, 50123 Firenze, Italy
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=7479265662477389108)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DVV1iTdkQcq/ (첨부 사진은 이 포스트에서)
--->

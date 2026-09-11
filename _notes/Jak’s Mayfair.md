@@ -29,7 +29,3 @@ Jak’s Mayfair
 43 South Molton St, Mayfair, London W1K 5RS, UK
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=10825142033922047503)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DAS_ruqSU54/ (첨부 사진은 이 포스트에서)
--->

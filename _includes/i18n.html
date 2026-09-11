@@ -1,0 +1,166 @@
+<!-- 영어 UI (Tier 1+2) — 껍데기 문자열과 태그 라벨만 바꾼다. 노트 본문은 원문 그대로.
+     페이지를 복제하지 않고 한 벌로 운영하려고 클라이언트에서 치환한다. -->
+<script>
+(function () {
+  var DICT = {{ site.data.i18n | jsonify }};
+
+  // 언어를 '고른 것'과 '추정한 것' 을 구분한다 — 추정으로 영어가 된 사람에게만 한국어 안내를 띄운다
+  var AUTO = false;
+
+  function pickLang() {
+    try {
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q === 'en' || q === 'ko') { localStorage.setItem('fimLang', q); return q; }
+      var saved = localStorage.getItem('fimLang');
+      if (saved === 'en' || saved === 'ko') return saved;
+      // 저장된 선택이 없으면 브라우저 언어로 한 번만 추정
+      AUTO = true;
+      return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+    } catch (e) { return 'ko'; }
+  }
+
+  var LANG = pickLang();
+  window.FimLang = LANG;
+  document.documentElement.setAttribute('lang', LANG);
+
+  // 영어일 때만 사전을 태운다. 한국어는 템플릿 원문이 그대로 정답.
+  function t(key, fallback) {
+    if (LANG !== 'en') return fallback;
+    var v = DICT.ui && DICT.ui[key];
+    return (v === undefined || v === null || v === '') ? fallback : v;
+  }
+  function mapOf(group) { return (DICT[group] || {}); }
+  function tr(group, value) {
+    if (LANG !== 'en' || value == null) return value;
+    var v = mapOf(group)[value];
+    return v === undefined ? value : v;
+  }
+
+  window.FimT       = t;                                   // UI 문자열
+  window.FimTag     = function (v) { return tr('tags', v); };
+  window.FimSection = function (v) { return tr('sections', v); };
+  window.FimMember  = function (v) { return tr('members', v); };
+  window.FimCountry = function (v) { return tr('countries', v); };
+  // "🇰🇷 한국" 처럼 이모지가 앞에 붙은 라벨도 뒷부분만 갈아끼운다
+  window.FimCountryLabel = function (label) {
+    if (LANG !== 'en' || !label) return label;
+    var m = String(label).match(/^(\S*\s*)(.+)$/);
+    if (!m) return label;
+    var body = mapOf('countries')[m[2]];
+    return body ? m[1] + body : label;
+  };
+
+  window.FimTr = tr;   // 임의 그룹 조회 (via 등)
+
+  // ISO 날짜 → 영어 표기. 한국어면 null 을 돌려 템플릿 원문을 그대로 두게 한다.
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  window.FimDate = function (iso) {
+    if (LANG !== 'en' || !iso) return null;
+    var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(iso));
+    if (!m) return null;
+    var mon = MON[+m[2] - 1];
+    return m[3] ? mon + ' ' + (+m[3]) + ', ' + m[1] : mon + ' ' + m[1];
+  };
+
+  // 단복수 — FimPlural(1,'place') = '1 place', FimPlural(3,'place') = '3 places'
+  window.FimPlural = function (n, one, many) {
+    return n + ' ' + (Number(n) === 1 ? one : (many || one + 's'));
+  };
+
+  // sprintf 대용 — %s / %d 를 순서대로 채운다
+  window.FimFmt = function (tpl, args) {
+    var i = 0;
+    return String(tpl).replace(/%[sd]/g, function () { return args[i++]; });
+  };
+
+  // data-i18n 속성이 붙은 정적 문자열 일괄 치환
+  function sweep(root) {
+    if (LANG !== 'en') return;
+    (root || document).querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n'), null);
+      if (v !== null && v !== undefined) el.textContent = v;
+    });
+    [['data-i18n-ph', 'placeholder'], ['data-i18n-title', 'title'], ['data-i18n-aria', 'aria-label']]
+      .forEach(function (pair) {
+        (root || document).querySelectorAll('[' + pair[0] + ']').forEach(function (el) {
+          var v = t(el.getAttribute(pair[0]), null);
+          if (v !== null && v !== undefined) el.setAttribute(pair[1], v);
+        });
+      });
+  }
+  // UI 페이지 제목 — "지도 — Fimplace" 의 앞부분만 갈아끼운다
+  function sweepTitle() {
+    if (LANG !== 'en') return;
+    var parts = String(document.title || '').split('—');
+    if (parts.length !== 2) return;
+    var raw = parts[0].trim();
+    var head = mapOf('titles')[raw];
+    if (!head && raw.charAt(0) === '#') {
+      var tg = mapOf('tags')[raw.slice(1)];
+      if (tg) head = '#' + tg;
+    }
+    if (!head) {
+      var mb = mapOf('members')[raw];
+      if (mb) head = mb;
+    }
+    if (head) document.title = head + ' — ' + parts[1].trim();
+  }
+  // ── 한국어로 돌아가는 길 ────────────────────────────────
+  // 브라우저 언어 추정만으로 영어가 된 사람은 내비의 작은 '한국어' 버튼을 못 볼 수 있다.
+  // 한국어를 읽는 사람이 바로 알아보도록 상단에 한 줄 띠를 띄우고, 닫으면 다시 안 띄운다.
+  function koBanner() {
+    if (LANG !== 'en' || !AUTO) return;
+    try { if (localStorage.getItem('fimLangHintClosed') === '1') return; } catch (e) {}
+
+    var bar = document.createElement('div');
+    bar.id = 'fim-lang-hint';
+    bar.setAttribute('role', 'note');
+    bar.style.cssText =
+      'display:flex; align-items:center; justify-content:center; gap:0.7em; flex-wrap:wrap;' +
+      'padding:0.5em 1em; background:var(--box-bg,#f3f4f6); border-bottom:1px solid var(--border,#e5e5e5);' +
+      'font-size:0.85em; line-height:1.4; color:var(--text,#222);';
+
+    var a = document.createElement('a');
+    a.href = '#';
+    a.className = 'internal-link';   // 공통 스타일의 ↗ 를 끈다 (_sass/_style.scss)
+    a.textContent = '한국어로 보기';      // 한국어로 보기
+    a.style.cssText = 'font-weight:700; color:var(--primary,#c9184a); text-decoration:underline;';
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      try { localStorage.setItem('fimLang', 'ko'); } catch (e2) {}
+      var u = new URL(location.href);
+      u.searchParams.set('lang', 'ko');
+      location.href = u.toString();
+    });
+
+    var msg = document.createElement('span');
+    msg.style.color = 'var(--subtext,#666)';
+    msg.textContent = 'This site is also available in Korean ·';
+
+    var x = document.createElement('button');
+    x.type = 'button';
+    x.textContent = '×';
+    x.setAttribute('aria-label', 'Dismiss');
+    x.style.cssText = 'border:0; background:transparent; cursor:pointer; color:var(--subtext,#666);' +
+                      'font-size:1.2em; line-height:1; padding:0 0.2em;';
+    x.addEventListener('click', function () {
+      try { localStorage.setItem('fimLangHintClosed', '1'); } catch (e2) {}
+      bar.remove();
+    });
+
+    bar.appendChild(msg);
+    bar.appendChild(a);
+    bar.appendChild(x);
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+
+  window.FimSweep = sweep;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { sweep(); sweepTitle(); koBanner(); });
+  } else {
+    sweep();
+    sweepTitle();
+    koBanner();
+  }
+})();
+</script>

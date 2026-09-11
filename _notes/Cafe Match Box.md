@@ -30,7 +30,3 @@ Cafe Match Box
 Shop C & D, G/F, Fashion Walk, 57 Paterson St, 百德新街 57號 時尚廊, 銅鑼灣 Causeway Bay, Hong Kong
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=2898139876959735308)
-
-<!-- TODO
-※ 멤버 태그 없음 = 전원 출연 (사용자 규칙 2026-09-11) — 추가 작업 없음
--->

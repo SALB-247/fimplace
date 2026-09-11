@@ -1,17 +1,17 @@
 {%- assign my_shows = site.data.tour_shows | where: "tour", page.title -%}
 {%- if my_shows.size > 0 -%}
 <div id="tour-cal" style="margin-top:2em;">
-  <h3 style="margin-bottom:0.2em;">투어 달력</h3>
+  <h3 style="margin-bottom:0.2em;" data-i18n="cal_title">투어 달력</h3>
   <div id="tour-cal-status" style="margin:0 0 0.8em;"></div>
   <div id="tour-cal-nav" style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.6em;">
-    <button id="tc-prev" class="tc-nav-btn" aria-label="이전 달">◀</button>
+    <button id="tc-prev" class="tc-nav-btn" aria-label="이전 달" data-i18n-aria="cal_prev">◀</button>
     <span id="tc-nav-label" style="font-weight:700; min-width:11em; text-align:center;"></span>
-    <button id="tc-next" class="tc-nav-btn" aria-label="다음 달">▶</button>
-    <button id="tc-today" class="tc-nav-btn" style="font-size:0.78em; padding:0.3em 0.7em;">처음으로</button>
+    <button id="tc-next" class="tc-nav-btn" aria-label="다음 달" data-i18n-aria="cal_next">▶</button>
+    <button id="tc-today" class="tc-nav-btn" style="font-size:0.78em; padding:0.3em 0.7em;" data-i18n="cal_reset">처음으로</button>
   </div>
   <div id="tour-cal-months"></div>
   <p style="font-size:0.78em; color:var(--subtext); margin-top:0.6em;">
-    ※ 지난/예정 표시는 <strong>보는 시점</strong> 기준으로 자동 갱신됩니다.
+    <span data-i18n="cal_hint">※ 지난/예정 표시는 <strong>보는 시점</strong> 기준으로 자동 갱신됩니다.</span>
   </p>
 </div>
 
@@ -76,20 +76,23 @@
   var badge, sub = '';
   if (live.length) {
     var s = byDate[live[0]];
-    badge = '<span class="tc-badge" style="background:#c9184a;color:#fff;">🔴 오늘 공연</span>';
-    sub = (s.flag||'') + ' ' + (s.city||'') + (s.venue ? ' · ' + s.venue : '');
+    badge = '<span class="tc-badge" style="background:#c9184a;color:#fff;">' + FimT('cal_today', '🔴 오늘 공연') + '</span>';
+    sub = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? ' · ' + s.venue : '');
   } else if (next) {
     var n = byDate[next];
     var dd = Math.round((new Date(next+'T00:00:00') - new Date(TODAY+'T00:00:00')) / 86400000);
-    badge = '<span class="tc-badge" style="background:#1a56c4;color:#fff;">다음 공연 D-' + dd + '</span>';
-    sub = next + ' · ' + (n.flag||'') + ' ' + (n.city||'') + (n.venue ? ' · ' + n.venue : '');
+    badge = '<span class="tc-badge" style="background:#1a56c4;color:#fff;">' + (FimLang === 'en' ? FimFmt(FimT('cal_next_dday', ''), [dd])
+                                       : '다음 공연 D-' + dd) + '</span>';
+    sub = next + ' · ' + (n.flag||'') + ' ' + FimTag(n.city||'') + (n.venue ? ' · ' + n.venue : '');
   } else {
-    badge = '<span class="tc-badge" style="background:#888;color:#fff;">투어 종료</span>';
+    badge = '<span class="tc-badge" style="background:#888;color:#fff;">' + FimT('cal_finished', '투어 종료') + '</span>';
     sub = allDates[0] + ' ~ ' + allDates[allDates.length-1];
   }
   document.getElementById('tour-cal-status').innerHTML =
     badge + ' <span style="font-size:0.85em; color:var(--subtext);">' + sub + '</span>' +
-    '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.35em;">진행 ' + doneCnt + ' / ' + totalCnt + '회</div>';
+    '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.35em;">' + (FimLang === 'en'
+        ? FimFmt(FimT('cal_progress', ''), [doneCnt, totalCnt])
+        : '진행 ' + doneCnt + ' / ' + totalCnt + '회') + '</div>';
 
   // ── 페이지네이션: 한 번에 2개월 (viewStart 부터), ◀▶ 로 이동
   //    범위: 투어 시작 월 ~ 마지막 공연 월. 디폴트 = 진행/예정 투어면 오늘 월, 종료 투어면 시작 월.
@@ -112,14 +115,23 @@
   if (maxStart < firstMonth) maxStart = firstMonth;
   if (viewStart > maxStart) viewStart = maxStart;
 
-  var DOW = ['일','월','화','수','목','금','토'];
+  var DOW = (window.FimLang === 'en')
+    ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+    : ['일','월','화','수','목','금','토'];
+  var MON_EN = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
+  function ymLabel(y, m) {
+    return (window.FimLang === 'en') ? MON_EN[m - 1] + ' ' + y : y + '년 ' + m + '월';
+  }
 
   function renderMonth(mk) {
     var y = +mk.slice(0,4), m = +mk.slice(5,7);
     var first = new Date(y, m-1, 1), last = new Date(y, m, 0);
     var showCnt = allDates.filter(function (d) { return d.slice(0,7) === mk; }).length;
-    var html = '<div class="tc-month"><div class="tc-mtitle">' + y + '년 ' + m + '월' +
-      (showCnt ? ' <span style="font-weight:400;font-size:0.82em;color:var(--subtext);">· ' + showCnt + '일</span>' : '') +
+    var html = '<div class="tc-month"><div class="tc-mtitle">' + ymLabel(y, m) +
+      (showCnt ? ' <span style="font-weight:400;font-size:0.82em;color:var(--subtext);">· ' +
+                 (FimLang === 'en' ? FimFmt(FimT('cal_day_count', ''), [showCnt]) : showCnt + '일') +
+                 '</span>' : '') +
       '</div><div class="tc-days">';
     DOW.forEach(function (w) { html += '<div class="tc-dow">' + w + '</div>'; });
     for (var i = 0; i < first.getDay(); i++) html += '<div></div>';
@@ -128,7 +140,8 @@
       var s = byDate[ds];
       if (!s) { html += '<div class="tc-cell">' + day + '</div>'; continue; }
       var st = state(ds);
-      var label = (s.flag||'') + ' ' + (s.city||'') + (s.venue ? '\n' + s.venue : '') + (s.cancelled ? '\n(취소)' : '');
+      var label = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? '\n' + s.venue : '') +
+                  (s.cancelled ? '\n' + FimT('cal_cancelled', '(취소)') : '');
       var tag = s.venue_url ? 'a' : 'div';
       var href = s.venue_url ? ' href="{{ site.baseurl }}' + s.venue_url + '"' : '';
       html += '<' + tag + ' class="tc-cell has ' + st + '"' + href + ' title="' + label.replace(/"/g,'&quot;') + '">' + day + '</' + tag + '>';
@@ -137,11 +150,11 @@
   }
 
   var LEGEND = '<div class="tc-legend">' +
-      '<span><i style="background:#c9184a"></i>오늘</span>' +
-      '<span><i style="background:#e8f0fe;border:1px solid #b9cdf5"></i>예정</span>' +
-      '<span><i style="background:#e3e3e3"></i>지난</span>' +
-      '<span><i style="border:1px dashed #e0a0a0"></i>취소</span>' +
-      '<span style="color:var(--subtext)">날짜 클릭 → 공연장 노트</span>' +
+      '<span><i style="background:#c9184a"></i>' + FimT('cal_legend_today', '오늘') + '</span>' +
+      '<span><i style="background:#e8f0fe;border:1px solid #b9cdf5"></i>' + FimT('cal_legend_upcoming', '예정') + '</span>' +
+      '<span><i style="background:#e3e3e3"></i>' + FimT('cal_legend_past', '지난') + '</span>' +
+      '<span><i style="border:1px dashed #e0a0a0"></i>' + FimT('cal_legend_cancelled', '취소') + '</span>' +
+      '<span style="color:var(--subtext)">' + FimT('cal_legend_hint', '날짜 클릭 → 공연장 노트') + '</span>' +
     '</div>';
 
   var prevBtn = document.getElementById('tc-prev');
@@ -154,8 +167,8 @@
     var showSecond = second <= lastMonth;
     var html = '<div class="tc-grid">' + renderMonth(viewStart) + (showSecond ? renderMonth(second) : '') + '</div>' + LEGEND;
     document.getElementById('tour-cal-months').innerHTML = html;
-    navLbl.textContent = (+viewStart.slice(0,4)) + '년 ' + (+viewStart.slice(5,7)) + '월' +
-      (showSecond ? ' – ' + (+second.slice(0,4)) + '년 ' + (+second.slice(5,7)) + '월' : '');
+    navLbl.textContent = ymLabel(+viewStart.slice(0,4), +viewStart.slice(5,7)) +
+      (showSecond ? ' – ' + ymLabel(+second.slice(0,4), +second.slice(5,7)) : '');
     prevBtn.disabled = viewStart <= firstMonth;
     nextBtn.disabled = viewStart >= maxStart;
     homeBtn.style.display = viewStart === defaultStart ? 'none' : '';

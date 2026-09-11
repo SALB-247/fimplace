@@ -32,5 +32,4 @@ Piece Pizzeria and Brewery
 
 <!-- TODO
 □ 공식 틱톡(@le_sserafim)·공식 X(@le_sserafim) 250906 시카고 게시물 URL 확보 후 [공트](URL)/[틱톡](URL) 추가 (인덱싱됨, 검색 가능)
-□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

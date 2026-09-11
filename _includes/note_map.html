@@ -1,7 +1,7 @@
 {% include map_tiles.html %}
 <!-- 본문에 internal-link 가 3개 이상이고 그 중 좌표 매칭되는 게 2개 이상이면 미니 지도 표시 -->
 <div id="note-map-container" hidden style="margin-top: 2em;">
-  <h3 style="margin-bottom: 0.5em;">이 노트에 등장하는 장소</h3>
+  <h3 style="margin-bottom: 0.5em;" data-i18n="note_map_title">이 노트에 등장하는 장소</h3>
   <p style="font-size:0.85em; color:hsl(0,0%,30%); margin: 0 0 0.5em;">
     <span id="note-map-count"></span>
   </p>
@@ -38,7 +38,9 @@
         var container = document.getElementById('note-map-container');
         container.hidden = false;
         document.getElementById('note-map-count').textContent =
-          matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)';
+          (window.FimLang === 'en'
+            ? FimFmt(FimT('note_map_count', ''), [matched.length, unique.length])
+            : matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)');
 
         var wrapLng = FimMap.wrapLng;   // 타일·옵션 정의: _includes/map_tiles.html
         var map = L.map('note-map', FimMap.mapOptions(L));
@@ -46,7 +48,7 @@
         // VWorld 는 한국 주변 타일만 제공 → 장소가 전부 한국일 때만 VWorld, 아니면 Voyager
         var allKr = matched.every(function (p) { return p.country === 'kr'; });
         var T = FimMap.tiles(L);
-        ((allKr && T.vworld) ? T.vworld : T.voyager).addTo(map);
+        ((allKr && FimMap.krTile(T)) ? T.vworld : T.voyager).addTo(map);
 
         var latlngs = matched.map(function (p) { return [p.lat, wrapLng(p.lng)]; });
         var bounds = L.latLngBounds(latlngs);

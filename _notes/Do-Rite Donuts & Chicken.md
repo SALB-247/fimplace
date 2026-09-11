@@ -31,4 +31,3 @@ Do-Rite Donuts & Chicken
 W Jackson Blvd, Loop, Chicago, IL 60606, USA
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/MN3SpqmNBUXX9yJx6)
-

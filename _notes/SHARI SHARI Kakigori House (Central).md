@@ -33,4 +33,3 @@ SHARI SHARI Kakigori House (Central)
 11 Old Bailey St, Central, 홍콩
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/rGZAoCm1VpZJeQq4A)
-

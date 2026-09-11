@@ -29,7 +29,3 @@ Melrose Vintage Ginori
 Via de' Ginori 18r, 50129 Firenze, Italy
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=14135121387060870849)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DVV1iTdkQcq/ (첨부 사진은 이 포스트에서)
--->

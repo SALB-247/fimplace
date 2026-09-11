@@ -29,7 +29,3 @@ Casa Musicale G. Ceccherini
 Via de' Ginori 31R, 50123 Firenze, Italy
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=12331003259946099136)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DVV1iTdkQcq/ (첨부 사진은 이 포스트에서)
--->

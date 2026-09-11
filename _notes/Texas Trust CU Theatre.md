@@ -42,4 +42,3 @@ Texas Trust CU Theatre at Grand Prairie (텍사스 트러스트 CU 시어터)
 1001 Performance Place, Grand Prairie, TX 75050, USA
 
 ## [🗺️ 구글맵](https://www.google.com/maps/search/?api=1&query=32.7667,-96.9822)
-

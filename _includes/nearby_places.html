@@ -9,12 +9,12 @@
 {% include map_tiles.html %}
 <section id="nearby-places" class="fim-card" hidden style="margin-top:1.8em;">
   <div class="fim-card-head">
-    <h3>📍 근처 장소</h3>
+    <h3 data-i18n="note_nearby">📍 근처 장소</h3>
     <span class="fim-pill" id="nearby-radius"></span>
-    <span class="fim-sub">현재 장소 기준 · 거리순</span>
+    <span class="fim-sub" data-i18n="note_nearby_from_here">현재 장소 기준 · 거리순</span>
   </div>
   <div id="nearby-body">
-    <div id="nearby-map" aria-label="근처 장소 지도"></div>
+    <div id="nearby-map" aria-label="근처 장소 지도" data-i18n-aria="note_nearby_map_aria"></div>
     <ul id="nearby-list" class="fim-list"></ul>
   </div>
 </section>
@@ -49,7 +49,9 @@
   var sec = document.getElementById('nearby-places');
   if (!sec || !window.FimMap || !FimMap.places) return;
   var EMOJI = { '사쿠라':'🌸', '김채원':'🐯', '허윤진':'🐍', '카즈하':'🦢', '홍은채':'🐥' };
-  var DIRS = ['북', '북동', '동', '남동', '남', '남서', '서', '북서'];
+  var DIRS = (window.FimLang === 'en')
+    ? ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+    : ['북', '북동', '동', '남동', '남', '남서', '서', '북서'];
   var LIMIT = 6, R1 = 1500, R2 = 5000;
 
   function nfc(s) { try { return decodeURIComponent(s).normalize('NFC'); } catch (e) { return s; } }
@@ -104,7 +106,8 @@
     var ul = document.getElementById('nearby-list');
     ul.innerHTML = near.map(function (c, i) {
       var p = c.p;
-      var cat = (p.tags || []).filter(function (x) { return typeTags.indexOf(x) !== -1; }).join(' / ');
+      var cat = (p.tags || []).filter(function (x) { return typeTags.indexOf(x) !== -1; })
+                              .map(window.FimTag || String).join(' / ');
       var dir = DIRS[Math.round(c.b / 45) % 8];
       return '<li data-i="' + i + '">' +
         '<span class="fim-num">' + (i + 1) + '</span>' +
@@ -114,7 +117,9 @@
         '<span class="fim-meta"><span class="fim-dir" style="transform:rotate(' + Math.round(c.b) + 'deg)" aria-hidden="true">↑</span>' +
         dir + ' ' + fmt(c.d) + '</span></li>';
     }).join('');
-    document.getElementById('nearby-radius').textContent = '반경 ' + fmt(radius) + ' · ' + near.length + '곳';
+    document.getElementById('nearby-radius').textContent = (window.FimLang === 'en')
+      ? FimFmt(FimT('note_nearby_radius', ''), [fmt(radius), FimPlural(near.length, 'place')])
+      : '반경 ' + fmt(radius) + ' · ' + near.length + '곳';
     sec.hidden = false;
 
     // ── 지도 ──
@@ -122,7 +127,7 @@
       var wrap = FimMap.wrapLng;
       var map = L.map('nearby-map', FimMap.mapOptions(L, { scrollWheelZoom: false, zoomControl: true }));
       var T = FimMap.tiles(L);
-      ((me.country === 'kr' && T.vworld) ? T.vworld : T.voyager).addTo(map);
+      ((me.country === 'kr' && FimMap.krTile(T)) ? T.vworld : T.voyager).addTo(map);
       map.on('focus click', function () { map.scrollWheelZoom.enable(); });
       map.on('blur', function () { map.scrollWheelZoom.disable(); });
 

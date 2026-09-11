@@ -6,27 +6,41 @@
 {%- assign groups = page.related_by_source | group_by: "via" -%}
 <section id="related-places" class="fim-card" style="margin-top:1.4em;">
   <div class="fim-card-head">
-    <h3>🔗 함께 나온 장소</h3>
-    <span class="fim-pill">{{ page.related_by_source_total }}곳</span>
-    <span class="fim-sub">같은 게시물·영상에 등장</span>
+    <h3 data-i18n="note_related">🔗 함께 나온 장소</h3>
+    <span class="fim-pill i18n-count" data-n="{{ page.related_by_source_total }}">{{ page.related_by_source_total }}곳</span>
+    <span class="fim-sub" data-i18n="note_related_sub">같은 게시물·영상에 등장</span>
   </div>
   <ul class="fim-list">
   {%- for g in groups %}
-    {%- if groups.size > 1 %}<li class="fim-group-label" style="border-bottom:0; padding-bottom:0; cursor:default; background:none;">{{ g.name }}</li>{% endif %}
+    {%- if groups.size > 1 %}<li class="fim-group-label" style="border-bottom:0; padding-bottom:0; cursor:default; background:none;" data-via="{{ g.name }}">{{ g.name }}</li>{% endif %}
     {%- for r in g.items %}
     <li>
       <span class="fim-emoji">{{ r.emoji }}</span>
       <a class="fim-title internal-link" href="{{ site.baseurl }}{{ r.url }}">{{ r.title }}</a>
-      {%- if groups.size == 1 %}<span class="fim-cat">{{ r.via }}</span>{% endif %}
+      {%- if groups.size == 1 %}<span class="fim-cat" data-via="{{ r.via }}">{{ r.via }}</span>{% endif %}
     </li>
     {%- endfor %}
   {%- endfor %}
   </ul>
   {%- if page.related_by_source_total > page.related_by_source.size %}
-  <p style="font-size:0.8em; color:var(--subtext); margin:0 0.95em 0.7em;">외 {{ page.related_by_source_total | minus: page.related_by_source.size }}곳</p>
+  <p style="font-size:0.8em; color:var(--subtext); margin:0 0.95em 0.7em;" class="i18n-more" data-n="{{ page.related_by_source_total | minus: page.related_by_source.size }}">외 {{ page.related_by_source_total | minus: page.related_by_source.size }}곳</p>
   {%- endif %}
 </section>
 <style>
   {% include note_cards.css %}
 </style>
+<script>
+// 출처 종류·개수를 영어로 (i18n.html 사전)
+(function () {
+  if (window.FimLang !== 'en') return;
+  document.querySelectorAll('#related-places [data-via]').forEach(function (el) {
+    el.textContent = el.getAttribute('data-via').split(' · ')
+      .map(function (v) { return FimTr('via', v); }).join(' · ');
+  });
+  var c = document.querySelector('#related-places .i18n-count');
+  if (c) c.textContent = FimPlural(+c.getAttribute('data-n'), 'place');
+  var m = document.querySelector('#related-places .i18n-more');
+  if (m) m.textContent = FimFmt(FimT('note_related_more', ''), [m.getAttribute('data-n')]);
+})();
+</script>
 {%- endif -%}

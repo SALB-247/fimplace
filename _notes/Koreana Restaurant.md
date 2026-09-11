@@ -34,7 +34,3 @@ Koreana Restaurant
 Kings House, 40A King St W, Manchester M3 2WY, UK
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=16182368057868598656)
-
-<!-- TODO
-※ 멤버 태그 없음 = 전원 출연 (사용자 규칙 2026-09-11) — 추가 작업 없음
--->

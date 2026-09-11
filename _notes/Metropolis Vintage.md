@@ -35,4 +35,3 @@ Metropolis Vintage
 803 Broadway, New York, NY 10003, USA
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/N4EDVNucWrXCQkMZA)
-

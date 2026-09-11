@@ -4,10 +4,10 @@ title: 태그
 permalink: /tags/
 ---
 
-<h1>모든 태그</h1>
+<h1 data-i18n="tags_title">모든 태그</h1>
 
 <p style="color: hsl(0,0%,30%); font-size: 0.9em;">
-  카테고리별로 그룹화된 태그 목록입니다. 태그를 클릭하면 해당 장소들을 볼 수 있습니다.
+  <span data-i18n="tags_intro">카테고리별로 그룹화된 태그 목록입니다. 태그를 클릭하면 해당 장소들을 볼 수 있습니다.</span>
 </p>
 
 <style>
@@ -23,13 +23,13 @@ permalink: /tags/
     {% assign cat_tags = cat[1] %}
     {% if cat_tags and cat_tags.size > 0 %}
     <section class="tag-cat-section">
-      <h2>{{ cat_name }} <span style="font-weight:normal; color:hsl(0,0%,50%); font-size:0.85em;">({{ cat_tags.size }})</span></h2>
+      <h2><span class="i18n-section" data-sec="{{ cat_name }}">{{ cat_name }}</span> <span style="font-weight:normal; color:hsl(0,0%,50%); font-size:0.85em;">({{ cat_tags.size }})</span></h2>
       <div class="tag-cloud">
         {% for t in cat_tags %}
           {% if cat_name contains '멤버' %}
-            <a class="member-chip member-{{ t | downcase }}" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/">{{ t }}</a>
+            <a class="member-chip member-{{ t | downcase }}" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/"><span class="i18n-tag" data-tag="{{ t }}">{{ t }}</span></a>
           {% else %}
-            <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/">#{{ t }}</a>
+            <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ t | url_encode }}/">#<span class="i18n-tag" data-tag="{{ t }}">{{ t }}</span></a>
           {% endif %}
         {% endfor %}
       </div>
@@ -37,22 +37,38 @@ permalink: /tags/
     {% endif %}
   {% endfor %}
 {% else %}
-  <p>카테고리 데이터가 아직 빌드되지 않았습니다.</p>
+  <p data-i18n="tags_not_built">카테고리 데이터가 아직 빌드되지 않았습니다.</p>
 {% endif %}
 
-<h2 id="members" style="margin-top: 2em;">멤버별 인덱스</h2>
+<h2 id="members" style="margin-top: 2em;" data-i18n="members_index">멤버별 인덱스</h2>
 <p style="font-size:0.9em; color:hsl(0,0%,30%);">
-  태그에서 자동 추출된 멤버. 클릭 시 해당 멤버 등장 노트 목록으로 이동합니다.
+  <span data-i18n="members_index_sub">태그에서 자동 추출된 멤버. 클릭 시 해당 멤버 등장 노트 목록으로 이동합니다.</span>
 </p>
 
 <div class="tag-cloud">
   {% if site.data.all_members %}
     {% for m in site.data.all_members %}
       <a class="member-chip member-{{ m.name | downcase }}" href="{{ site.baseurl }}/member/{{ m.name | downcase | url_encode }}/">
-        {{ m.name }} <span style="opacity: 0.6">({{ m.count }})</span>
+        <span class="i18n-member" data-m="{{ m.name }}">{{ m.name }}</span> <span style="opacity: 0.6">({{ m.count }})</span>
       </a>
     {% endfor %}
   {% else %}
-    <p style="color: hsl(0,0%,30%); font-size: 0.85em;">멤버 정보가 등록된 노트가 없습니다.</p>
+    <p style="color: hsl(0,0%,30%); font-size: 0.85em;" data-i18n="members_none">멤버 정보가 등록된 노트가 없습니다.</p>
   {% endif %}
 </div>
+
+<script>
+// 태그·섹션 이름을 영어로 (i18n.html 의 사전 사용)
+(function () {
+  if (!window.FimLang || window.FimLang !== 'en') return;
+  document.querySelectorAll('.i18n-tag').forEach(function (el) {
+    el.textContent = window.FimTag(el.getAttribute('data-tag'));
+  });
+  document.querySelectorAll('.i18n-section').forEach(function (el) {
+    el.textContent = window.FimSection(el.getAttribute('data-sec'));
+  });
+  document.querySelectorAll('.i18n-member').forEach(function (el) {
+    el.textContent = window.FimMember(el.getAttribute('data-m'));
+  });
+})();
+</script>

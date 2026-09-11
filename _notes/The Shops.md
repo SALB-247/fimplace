@@ -30,4 +30,3 @@ The Shops
 33 Hudson Yards, New York, NY 10001
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/KqkchE2Q6grCBEhy8)
-

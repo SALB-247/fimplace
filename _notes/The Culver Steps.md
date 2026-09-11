@@ -27,4 +27,3 @@ The Culver Steps
 9300 Culver Blvd, Culver City, CA 90232, USA
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/ody5uhZi7NgCwojP8)
-

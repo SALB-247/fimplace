@@ -21,16 +21,16 @@ layout: default
 <article>
   <div>
     <h1>{{ page.title }}</h1>
-    {% if page.closed %}<div class="closed-badge" style="display:inline-block; margin:0.2em 0 0.4em; padding:0.2em 0.7em; border-radius:999px; background:#c9184a; color:#fff; font-size:0.85em; font-weight:600;">🚫 폐업{% if page.closed != true %} · {{ page.closed | date: "%Y년 %-m월" }} 확인{% endif %}</div>{% endif %}
+    {% if page.closed %}<div class="closed-badge" style="display:inline-block; margin:0.2em 0 0.4em; padding:0.2em 0.7em; border-radius:999px; background:#c9184a; color:#fff; font-size:0.85em; font-weight:600;"><span data-i18n="note_closed_badge">🚫 폐업</span>{% if page.closed != true %}<span class="i18n-closed" data-ym="{{ page.closed | date: "%Y-%m" }}"> · {{ page.closed | date: "%Y년 %-m월" }} 확인</span>{% endif %}</div>{% endif %}
     <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{% if page.type != 'pages' %}
-      마지막 업데이트 {{ page.last_modified_at | date: "%Y년 %-m월 %-d일" }}
+      <span class="i18n-updated" data-d="{{ page.last_modified_at | date: '%Y-%m-%d' }}">마지막 업데이트 {{ page.last_modified_at | date: "%Y년 %-m월 %-d일" }}</span>
       {% endif %}
     </time>
 
     {% if page.tags and page.tags.size > 0 %}
     <div class="note-tags">
       {% for tag in page.tags %}
-        <a class="tag-chip" href="{{ site.baseurl }}/tag/{{ tag | url_encode }}/">#{{ tag }}</a>
+        <a class="tag-chip i18n-tagchip" data-tag="{{ tag }}" href="{{ site.baseurl }}/tag/{{ tag | url_encode }}/">#{{ tag }}</a>
       {% endfor %}
     </div>
     {% endif %}
@@ -46,7 +46,7 @@ layout: default
           {% when '카즈하' %}{% assign emoji = '🦢' %}
           {% when '홍은채' %}{% assign emoji = '🐥' %}
         {% endcase %}
-        <a class="member-chip member-{{ member | downcase }}" href="{{ site.baseurl }}/member/{{ member | downcase | url_encode }}/">{{ emoji }} {{ member }}</a>
+        <a class="member-chip member-{{ member | downcase }}" href="{{ site.baseurl }}/member/{{ member | downcase | url_encode }}/">{{ emoji }} <span class="i18n-member" data-m="{{ member }}">{{ member }}</span></a>
       {% endfor %}
     </div>
     {% endif %}
@@ -60,7 +60,7 @@ layout: default
 
     {% unless page.hide_backlinks %}
     <side style="font-size: 0.9em">
-      <h3 style="margin-bottom: 1em">이 노트를 언급한 노트</h3>
+      <h3 style="margin-bottom: 1em" data-i18n="note_backlinks">이 노트를 언급한 노트</h3>
       {% if page.backlinks.size > 0 %}
       <div style="display: grid; grid-gap: 1em; grid-template-columns: repeat(1fr);">
       {% for backlink in page.backlinks %}
@@ -73,7 +73,7 @@ layout: default
       {% else %}
 
       <div style="font-size: 0.9em">
-        <p>
+        <p data-i18n="note_no_backlinks">
           이 노트로 연결된 노트가 아직 없습니다.
         </p>
       </div>
@@ -102,6 +102,29 @@ layout: default
 <hr>
 
 <details id="graph-details">
-  <summary style="cursor:pointer; font-size:0.95em; color:var(--subtext);">전체 노트 연결 그래프 (펼치기)</summary>
+  <summary style="cursor:pointer; font-size:0.95em; color:var(--subtext);" data-i18n="note_graph_toggle">전체 노트 연결 그래프 (펼치기)</summary>
   {% include notes_graph.html %}
 </details>
+
+<script>
+// 태그·멤버·날짜를 영어로 (i18n.html 사전)
+(function () {
+  if (window.FimLang !== 'en') return;
+  document.querySelectorAll('.i18n-tagchip').forEach(function (el) {
+    el.textContent = '#' + FimTag(el.getAttribute('data-tag'));
+  });
+  document.querySelectorAll('.i18n-member').forEach(function (el) {
+    el.textContent = FimMember(el.getAttribute('data-m'));
+  });
+  var u = document.querySelector('.i18n-updated');
+  if (u) {
+    var d = FimDate(u.getAttribute('data-d'));
+    if (d) u.textContent = FimFmt(FimT('note_updated', ''), [d]);
+  }
+  var c = document.querySelector('.i18n-closed');
+  if (c) {
+    var cd = FimDate(c.getAttribute('data-ym'));
+    if (cd) c.textContent = FimFmt(FimT('note_closed_confirmed', ''), [cd]);
+  }
+})();
+</script>

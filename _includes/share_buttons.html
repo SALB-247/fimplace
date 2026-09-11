@@ -5,28 +5,28 @@
   {%- assign short_url = share_url -%}
 {%- endif -%}
 <div class="share-buttons" style="display:flex; gap:0.5em; flex-wrap:wrap; margin: 1.5em 0 0.5em; font-size: 0.9em;">
-  <span style="color: var(--subtext); align-self:center;">공유:</span>
+  <span style="color: var(--subtext); align-self:center;" data-i18n="share_label">공유:</span>
   <button type="button" class="share-btn" data-share="copy-short"
-          title="한글 깨짐 없는 단축 링크 (권장)"
+          title="한글 깨짐 없는 단축 링크 (권장)" data-i18n-title="share_copy_short_hint"
           style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); cursor:pointer; font-family:inherit;">
-    🔗 단축 링크 복사
+    <span data-i18n="share_copy_short">🔗 단축 링크 복사</span>
   </button>
   <button type="button" class="share-btn" data-share="copy-full"
-          title="원본 한글 URL"
+          title="원본 한글 URL" data-i18n-title="share_copy_full_hint"
           style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); cursor:pointer; font-family:inherit; font-size:0.85em;">
-    한글 URL
+    <span data-i18n="share_copy_full">한글 URL</span>
   </button>
   <a class="share-btn" data-share="twitter"
      href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ short_url | url_encode }}"
      target="_blank" rel="noopener"
      style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); text-decoration:none;">
-    𝕏 트위터
+    <span data-i18n="share_twitter">𝕏 트위터</span>
   </a>
   <button type="button" class="share-btn" data-share="webshare"
           style="padding:0.4em 0.9em; border-radius:999px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); cursor:pointer; font-family:inherit;">
-    📤 공유…
+    <span data-i18n="share_webshare">📤 공유…</span>
   </button>
-  <span id="share-toast" style="display:none; padding:0.4em 0.9em; background:#222; color:white; border-radius:999px; font-size:0.85em;">복사됨!</span>
+  <span id="share-toast" style="display:none; padding:0.4em 0.9em; background:#222; color:white; border-radius:999px; font-size:0.85em;" data-i18n="share_toast">복사됨!</span>
 </div>
 
 <script>
@@ -64,9 +64,9 @@
   btns.forEach(function (b) {
     var kind = b.getAttribute('data-share');
     if (kind === 'copy-short') {
-      b.addEventListener('click', function () { doCopy(shortUrl, '🔗 단축 링크 복사됨!'); });
+      b.addEventListener('click', function () { doCopy(shortUrl, FimT('share_toast_short', '🔗 단축 링크 복사됨!')); });
     } else if (kind === 'copy-full') {
-      b.addEventListener('click', function () { doCopy(fullUrl, '한글 URL 복사됨'); });
+      b.addEventListener('click', function () { doCopy(fullUrl, FimT('share_toast_full', '한글 URL 복사됨')); });
     } else if (kind === 'webshare') {
       if (!navigator.share) { b.style.display = 'none'; return; }
       b.addEventListener('click', function () {

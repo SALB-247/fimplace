@@ -30,7 +30,3 @@ Matsumoto Shave Ice
 66-111 Kamehameha Hwy, Ste 605, Haleʻiwa, HI 96712, USA
 
 ## [🗺️ 구글맵](https://maps.google.com/?cid=4035416486816141681)
-
-<!-- TODO
-✔ 포스트 확정: https://www.instagram.com/p/DATNrQSTLhp/ (첨부 사진은 이 포스트에서)
--->

@@ -9,14 +9,14 @@ permalink: /
 
 🐯🌸🐍🦢🐥
 
-핌플레이스는 르세라핌 관련 장소를 기록하는 보관소입니다.
+<span data-i18n="home_intro">핌플레이스는 르세라핌 관련 장소를 기록하는 보관소입니다.</span>
 
-문의는 fim.hlight@gmail.com으로 부탁드립니다.
+<span data-i18n="home_contact">문의는 fim.hlight@gmail.com으로 부탁드립니다.</span>
 
 <!-- font-size:0 = 링크 장식(↗)·공백 텍스트 노드가 이미지 아래 빈 줄을 만드는 것 방지 -->
 <a href="{{ site.baseurl }}/2026-le-sserafim-tour-pureflow" style="display:block; position:relative; border-radius:12px; overflow:hidden; margin:1em 0 1.2em; width:100%; font-size:0; line-height:0;">
   <img src="assets/pureflow_banner.jpg" alt="2026 LE SSERAFIM TOUR 'PUREFLOW'" style="width:100%; display:block;">
-  <span class="banner-cta" style="position:absolute; right:3%; bottom:8%; background:rgba(0,0,0,0.45); color:#fff; padding:0.35em 0.9em; border-radius:999px; font-size:13px; line-height:1.2; font-weight:700;">투어 일정 보기 →</span>
+  <span class="banner-cta" style="position:absolute; right:3%; bottom:8%; background:rgba(0,0,0,0.45); color:#fff; padding:0.35em 0.9em; border-radius:999px; font-size:13px; line-height:1.2; font-weight:700;" data-i18n="home_banner_cta">투어 일정 보기 →</span>
 </a>
 <style>
   /* 좁은 화면: CTA pill 이 PUREFLOW 타이틀을 가리므로 숨김 (배너 전체가 링크) */
@@ -25,22 +25,22 @@ permalink: /
 
 {% include home_map.html %}
 
-<strong>High-lighted list</strong>
+<strong data-i18n="home_highlighted">High-lighted list</strong>
 
 ## [[2026 LE SSERAFIM TOUR 'PUREFLOW']]
 
 
 
 
-<strong>둘러보기</strong>
+<strong data-i18n="home_browse">둘러보기</strong>
 
-🗺️ [전체 지도 보기](/map/) — 모든 장소를 한눈에
+🗺️ [<span data-i18n="home_link_map">전체 지도 보기</span>](/map/) — <span data-i18n="home_link_map_sub">모든 장소를 한눈에</span>
 
-🔍 [장소 검색](/search/) — 이름·태그·멤버로 검색
+🔍 [<span data-i18n="home_link_search">장소 검색</span>](/search/) — <span data-i18n="home_link_search_sub">이름·태그·멤버로 검색</span>
 
-🏷️ [모든 태그](/tags/) — 카테고리 / 멤버별 인덱스
+🏷️ [<span data-i18n="home_link_tags">모든 태그</span>](/tags/) — <span data-i18n="home_link_tags_sub">카테고리 / 멤버별 인덱스</span>
 
-<strong>Fimplace list</strong>
+<strong data-i18n="home_list">Fimplace list</strong>
 
 [[-자체 컨텐츠 촬영지]]
 
@@ -49,9 +49,9 @@ permalink: /
 [[-SNS 장소]]
 
 
-<strong>최근 일정 노트</strong>
+<strong data-i18n="home_recent">최근 일정 노트</strong>
 
-<ul id="upcoming-events"><li style="color:var(--subtext);">일정 불러오는 중...</li></ul>
+<ul id="upcoming-events"><li style="color:var(--subtext);" data-i18n="home_loading">일정 불러오는 중...</li></ul>
 
 <script>
 (function () {
@@ -63,6 +63,12 @@ permalink: /
   }
   var DAY = 86400000;
   var now = new Date(); now.setHours(0, 0, 0, 0);
+  // 종류 라벨은 한국어 원문을 키로 쓰고 표시할 때만 갈아끼운다
+  var KIND = { '기간': 'home_kind_period', '방문': 'home_kind_visit',
+               '업로드': 'home_kind_upload', '공연': 'home_kind_show' };
+  function kindLabel(k) {
+    return (window.FimLang === 'en' && KIND[k]) ? window.FimT(KIND[k], k) : k;
+  }
   var today = now.getTime();
 
   Promise.all([
@@ -102,7 +108,7 @@ permalink: /
       var s = ms(sh.start), e = ms(sh.end) || s;
       if (s === null) return;
       var diff = today < s ? s - today : (today > e ? today - e : 0);
-      items.push({ title: (sh.flag || '') + ' ' + sh.city + ' — ' + sh.venue,
+      items.push({ title: (sh.flag || '') + ' ' + (window.FimTag ? FimTag(sh.city) : sh.city) + ' — ' + sh.venue,
                    url: sh.venue_url || sh.tour_url, date: s, endDate: e, diff: diff, kind: '공연', evt: true });
     });
 
@@ -134,12 +140,15 @@ permalink: /
     var html = picked.map(function (it) {
       var when = ymd(it.date) + (it.endDate !== it.date ? ' ~ ' + ymd(it.endDate) : '');
       var live = it.evt && it.date <= today && today <= it.endDate + DAY - 1;
-      var badge = live ? '<span style="display:inline-block;background:#c9184a;color:#fff;padding:0.05em 0.5em;border-radius:999px;font-size:0.72em;font-weight:700;margin-right:0.4em;">진행 중</span>' : '';
+      var badge = live ? '<span style="display:inline-block;background:#c9184a;color:#fff;padding:0.05em 0.5em;border-radius:999px;font-size:0.72em;font-weight:700;margin-right:0.4em;">' +
+        (window.FimLang === 'en' ? window.FimT('home_live', 'LIVE NOW') : '진행 중') +
+        '</span>' : '';
       return '<li style="margin-bottom:0.25em;">' + badge +
         '<a class="internal-link" href="' + it.url + '">' + it.title + '</a>' +
-        ' <span style="font-size:0.78em;color:var(--subtext);">(' + when + ' ' + it.kind + ')</span></li>';
+        ' <span style="font-size:0.78em;color:var(--subtext);">(' + when + ' ' + kindLabel(it.kind) + ')</span></li>';
     }).join('');
-    document.getElementById('upcoming-events').innerHTML = html || '<li>표시할 일정이 없습니다.</li>';
+    document.getElementById('upcoming-events').innerHTML = html || ('<li>' +
+      (window.FimLang === 'en' ? window.FimT('home_no_events', '') : '표시할 일정이 없습니다.') + '</li>');
   });
 })();
 </script>
