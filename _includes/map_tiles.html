@@ -57,6 +57,25 @@ window.FimMap = window.FimMap || (function () {
     }
     return placesPromise;
   }
-  return { wrapLng: wrapLng, bounds: bounds, mapOptions: mapOptions, tiles: tiles, baseLayers: baseLayers, places: places };
+  // Leaflet 지연 로드 (note_map · nearby_places 공유). 이미 있으면 즉시 resolve.
+  var leafletPromise = null;
+  function loadLeaflet() {
+    if (window.L) return Promise.resolve(window.L);
+    if (!leafletPromise) {
+      leafletPromise = new Promise(function (resolve, reject) {
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(css);
+        var js = document.createElement('script');
+        js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        js.onload = function () { resolve(window.L); };
+        js.onerror = reject;
+        document.body.appendChild(js);
+      });
+    }
+    return leafletPromise;
+  }
+  return { wrapLng: wrapLng, bounds: bounds, mapOptions: mapOptions, tiles: tiles, baseLayers: baseLayers, places: places, loadLeaflet: loadLeaflet };
 })();
 </script>

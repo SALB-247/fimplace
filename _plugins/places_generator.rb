@@ -526,6 +526,9 @@ module PlacesGenerator
         region = PlacesGenerator.region_from_address(addr, country) ||
                  PlacesGenerator.region_from_tags(tags, country)
         ended = PlacesGenerator.detect_ended(note, today)
+        closed = note.data['closed']
+        closed = !(closed.nil? || closed == false)   # frontmatter closed: true | YYYY-MM-DD (폐업 확인일)
+        ended = true if closed
         date = PlacesGenerator.extract_date(note, content)
         places << {
           'title' => title, 'url' => "#{site.baseurl}#{note.url}",
@@ -535,7 +538,7 @@ module PlacesGenerator
           'naver_url' => ext_urls['naver'].to_s,
           'country' => country,
           'region' => region,
-          'ended' => ended,
+          'ended' => ended, 'closed' => closed,
           'date' => (date ? date.strftime('%Y-%m-%d') : nil),
           'start' => (note.data['event_start'] ? note.data['event_start'].strftime('%Y-%m-%d') : nil),
           'end' => (note.data['event_end'] ? note.data['event_end'].strftime('%Y-%m-%d') : nil),

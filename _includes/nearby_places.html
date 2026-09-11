@@ -1,32 +1,55 @@
 {%- comment -%}
-  근처 장소: 현재 노트의 좌표(places.json 에서 URL 로 조회)를 기준으로 반경 안 장소를 거리순으로 보여준다.
-  - 좌표가 없는 노트(허브·이벤트 모음 등)는 섹션이 자동으로 숨겨짐
-  - 종료된 이벤트(생일카페·팝업 기간 지남)는 제외
-  - 1.5km 안에 3곳 미만이면 5km 까지 넓혀서 찾음. 최대 6곳
-  - places.json 은 FimMap.places() 로 1회만 fetch (note_map 과 공유)
+  근처 장소: 현재 노트 좌표(places.json 에서 URL 로 조회) 기준 반경 안 장소를 **지도 + 목록** 으로.
+  - 지도: 현재 장소 = 크림슨 점(펄스), 근처 = 번호 핀 (목록 번호와 일치). 목록 행 클릭 → 해당 핀 팝업
+  - 목록: 이모지 · 이름 · 유형 · 방위(화살표+북동 등) · 거리
+  - 1.5km 안에 3곳 미만이면 5km 까지, 최대 6곳. 종료된 이벤트 제외. 좌표 없는 노트(허브 등)는 숨김
+  - places.json / Leaflet 은 FimMap 이 페이지당 1회만 로드 (note_map 과 공유)
 {%- endcomment -%}
 {% unless page.hide_backlinks %}
 {% include map_tiles.html %}
-<section id="nearby-places" hidden style="margin-top:1.8em;">
-  <h3 style="margin-bottom:0.4em;">📍 근처 장소
-    <span id="nearby-radius" style="font-size:0.7em; font-weight:normal; color:var(--subtext);"></span>
-  </h3>
-  <ul id="nearby-list" style="list-style:none; padding:0; margin:0;"></ul>
+<section id="nearby-places" class="fim-card" hidden style="margin-top:1.8em;">
+  <div class="fim-card-head">
+    <h3>📍 근처 장소</h3>
+    <span class="fim-pill" id="nearby-radius"></span>
+    <span class="fim-sub">현재 장소 기준 · 거리순</span>
+  </div>
+  <div id="nearby-body">
+    <div id="nearby-map" aria-label="근처 장소 지도"></div>
+    <ul id="nearby-list" class="fim-list"></ul>
+  </div>
 </section>
 <style>
-  #nearby-list li { display:flex; align-items:baseline; gap:0.5em; padding:0.42em 0.2em;
-                    border-bottom:1px solid var(--border, #e5e5e5); font-size:0.92em; line-height:1.35; }
-  #nearby-list li:last-child { border-bottom:0; }
-  #nearby-list .nb-emoji { flex:0 0 auto; }
-  #nearby-list .nb-title { flex:1 1 auto; word-break:break-word; }
-  #nearby-list .nb-cat, #nearby-list .nb-dist { flex:0 0 auto; font-size:0.85em; color:var(--subtext); white-space:nowrap; }
-  #nearby-list .nb-dist { font-variant-numeric:tabular-nums; min-width:4.2em; text-align:right; }
+  {% include note_cards.css %}
+  #nearby-body { display:grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  #nearby-map { min-height:280px; background:var(--box-bg, #eef0f3); border-right:1px solid var(--border, #e5e5e5); }
+  #nearby-list li { cursor:pointer; }
+  #nearby-list .fim-dir { display:inline-block; transform-origin:50% 55%; font-size:1.05em; line-height:1; margin-right:0.15em; color:#c9184a; }
+  #nearby-list .fim-meta { min-width:5.6em; }
+  @media (max-width: 700px) {
+    #nearby-body { grid-template-columns: 1fr; }
+    #nearby-map { min-height:220px; border-right:0; border-bottom:1px solid var(--border, #e5e5e5); }
+  }
+  /* 지도 핀 */
+  .nb-pin { width:26px; height:26px; border-radius:50%; background:#fff; border:2.5px solid #c9184a; color:#c9184a;
+            font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 1px 4px rgba(0,0,0,0.35); transition:transform 0.12s; }
+  .nb-pin.active, .nb-pin:hover { transform:scale(1.2); background:#c9184a; color:#fff; }
+  .nb-here { position:relative; width:30px; height:30px; }
+  .nb-here .dot { position:absolute; left:50%; top:50%; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%;
+                  background:#c9184a; border:3px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.4); }
+  .nb-here .pulse { position:absolute; left:50%; top:50%; width:30px; height:30px; margin:-15px 0 0 -15px; border-radius:50%;
+                    background:rgba(201,24,74,0.35); animation:nb-pulse 2s ease-out infinite; }
+  @keyframes nb-pulse { 0% { transform:scale(0.5); opacity:0.8; } 100% { transform:scale(1.9); opacity:0; } }
+  @media (prefers-reduced-motion: reduce) { .nb-here .pulse { animation:none; } }
+  #nearby-map .leaflet-popup-content { margin:8px 12px; font-size:13px; line-height:1.4; }
+  #nearby-map .leaflet-control-attribution { font-size:9px; }
 </style>
 <script>
 (function () {
   var sec = document.getElementById('nearby-places');
   if (!sec || !window.FimMap || !FimMap.places) return;
   var EMOJI = { '사쿠라':'🌸', '김채원':'🐯', '허윤진':'🐍', '카즈하':'🦢', '홍은채':'🐥' };
+  var DIRS = ['북', '북동', '동', '남동', '남', '남서', '서', '북서'];
   var LIMIT = 6, R1 = 1500, R2 = 5000;
 
   function nfc(s) { try { return decodeURIComponent(s).normalize('NFC'); } catch (e) { return s; } }
@@ -37,15 +60,22 @@
             Math.cos(a.lat * toR) * Math.cos(b.lat * toR) * Math.pow(Math.sin(dLng / 2), 2);
     return 2 * R * Math.asin(Math.sqrt(s));
   }
+  function bearing(a, b) {
+    var toR = Math.PI / 180, dL = (b.lng - a.lng) * toR;
+    var y = Math.sin(dL) * Math.cos(b.lat * toR);
+    var x = Math.cos(a.lat * toR) * Math.sin(b.lat * toR) - Math.sin(a.lat * toR) * Math.cos(b.lat * toR) * Math.cos(dL);
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
   function fmt(m) { return m < 1000 ? Math.round(m) + 'm' : (m / 1000).toFixed(1) + 'km'; }
   function esc(s) { return (s || '').replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
   function today() {
     var d = new Date();
     return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   }
-  function isEnded(p, t) {
-    if (p.ended === true) return true;
-    return !!(p.end && p.end < t);
+  function isEnded(p, t) { return p.ended === true || !!(p.end && p.end < t); }
+  function emojiOf(p) {
+    var ms = p.members || [];
+    return ms.length ? ms.map(function (m) { return EMOJI[m] || '·'; }).join('') : '📍';
   }
 
   FimMap.places().then(function (data) {
@@ -58,33 +88,85 @@
     }
     if (!me || me.lat == null || me.lng == null) return;
 
-    var t = today();
-    var cands = [];
+    var t = today(), cands = [];
     all.forEach(function (p) {
-      if (p === me || p.lat == null || p.lng == null) return;
-      if (isEnded(p, t)) return;
+      if (p === me || p.lat == null || p.lng == null || isEnded(p, t)) return;
       var d = distM(me, p);
-      if (d <= R2) cands.push({ p: p, d: d });
+      if (d <= R2) cands.push({ p: p, d: d, b: bearing(me, p) });
     });
     cands.sort(function (a, b) { return a.d - b.d; });
-    var near = cands.filter(function (c) { return c.d <= R1; });
-    var radius = R1;
+    var near = cands.filter(function (c) { return c.d <= R1; }), radius = R1;
     if (near.length < 3) { near = cands; radius = R2; }
     near = near.slice(0, LIMIT);
     if (!near.length) return;
 
+    // ── 목록 ──
     var ul = document.getElementById('nearby-list');
-    ul.innerHTML = near.map(function (c) {
-      var p = c.p, ms = p.members || [];
-      var emoji = ms.length === 0 ? '📍' : ms.map(function (m) { return EMOJI[m] || '·'; }).join('');
+    ul.innerHTML = near.map(function (c, i) {
+      var p = c.p;
       var cat = (p.tags || []).filter(function (x) { return typeTags.indexOf(x) !== -1; }).join(' / ');
-      return '<li><span class="nb-emoji">' + emoji + '</span>' +
-        '<a class="nb-title internal-link" href="' + p.url + '">' + esc(p.title) + '</a>' +
-        (cat ? '<span class="nb-cat">' + esc(cat) + '</span>' : '') +
-        '<span class="nb-dist">' + fmt(c.d) + '</span></li>';
+      var dir = DIRS[Math.round(c.b / 45) % 8];
+      return '<li data-i="' + i + '">' +
+        '<span class="fim-num">' + (i + 1) + '</span>' +
+        '<span class="fim-emoji">' + emojiOf(p) + '</span>' +
+        '<a class="fim-title internal-link" href="' + p.url + '">' + esc(p.title) + '</a>' +
+        (cat ? '<span class="fim-cat">' + esc(cat) + '</span>' : '') +
+        '<span class="fim-meta"><span class="fim-dir" style="transform:rotate(' + Math.round(c.b) + 'deg)" aria-hidden="true">↑</span>' +
+        dir + ' ' + fmt(c.d) + '</span></li>';
     }).join('');
-    document.getElementById('nearby-radius').textContent = '반경 ' + fmt(radius) + ' · 거리순';
+    document.getElementById('nearby-radius').textContent = '반경 ' + fmt(radius) + ' · ' + near.length + '곳';
     sec.hidden = false;
+
+    // ── 지도 ──
+    FimMap.loadLeaflet().then(function (L) {
+      var wrap = FimMap.wrapLng;
+      var map = L.map('nearby-map', FimMap.mapOptions(L, { scrollWheelZoom: false, zoomControl: true }));
+      var T = FimMap.tiles(L);
+      ((me.country === 'kr' && T.vworld) ? T.vworld : T.voyager).addTo(map);
+      map.on('focus click', function () { map.scrollWheelZoom.enable(); });
+      map.on('blur', function () { map.scrollWheelZoom.disable(); });
+
+      var center = [me.lat, wrap(me.lng)];
+      L.marker(center, {
+        icon: L.divIcon({ className: '', html: '<div class="nb-here"><div class="pulse"></div><div class="dot"></div></div>', iconSize: [30, 30], iconAnchor: [15, 15] }),
+        zIndexOffset: 1000, interactive: false
+      }).addTo(map);
+      L.circle(center, { radius: radius, color: '#c9184a', weight: 1, opacity: 0.35, fillColor: '#c9184a', fillOpacity: 0.04, interactive: false }).addTo(map);
+
+      var markers = [];
+      near.forEach(function (c, i) {
+        var p = c.p, ll = [p.lat, wrap(p.lng)];
+        var m = L.marker(ll, {
+          icon: L.divIcon({ className: '', html: '<div class="nb-pin" id="nb-pin-' + i + '">' + (i + 1) + '</div>', iconSize: [26, 26], iconAnchor: [13, 13] })
+        }).addTo(map).bindPopup(
+          '<strong><a href="' + p.url + '">' + esc(p.title) + '</a></strong><br>' +
+          '<span style="color:var(--subtext)">' + DIRS[Math.round(c.b / 45) % 8] + ' ' + fmt(c.d) + '</span>'
+        );
+        markers.push(m);
+      });
+      var pts = [center].concat(near.map(function (c) { return [c.p.lat, wrap(c.p.lng)]; }));
+      map.fitBounds(L.latLngBounds(pts), { padding: [28, 28], maxZoom: 16 });
+      setTimeout(function () { try { map.invalidateSize(); map.fitBounds(L.latLngBounds(pts), { padding: [28, 28], maxZoom: 16 }); } catch (e) {} }, 250);
+
+      // 목록 ↔ 지도 연결: 행(링크 제외) 클릭/호버 → 핀 강조 + 팝업
+      function focusPin(i, open) {
+        var el = document.getElementById('nb-pin-' + i);
+        Array.prototype.forEach.call(document.querySelectorAll('.nb-pin.active'), function (x) { x.classList.remove('active'); });
+        if (el) el.classList.add('active');
+        if (open && markers[i]) { markers[i].openPopup(); }
+      }
+      ul.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        var li = e.target.closest('li'); if (!li) return;
+        var i = +li.getAttribute('data-i');
+        focusPin(i, true);
+        map.panTo(markers[i].getLatLng());
+      });
+      ul.addEventListener('mouseover', function (e) {
+        var li = e.target.closest('li'); if (!li) return;
+        focusPin(+li.getAttribute('data-i'), false);
+      });
+    }).catch(function () { /* 지도 실패해도 목록은 유지 */ });
   }).catch(function () { /* fail silent */ });
 })();
 </script>

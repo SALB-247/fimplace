@@ -21,6 +21,7 @@ layout: default
 <article>
   <div>
     <h1>{{ page.title }}</h1>
+    {% if page.closed %}<div class="closed-badge" style="display:inline-block; margin:0.2em 0 0.4em; padding:0.2em 0.7em; border-radius:999px; background:#c9184a; color:#fff; font-size:0.85em; font-weight:600;">🚫 폐업{% if page.closed != true %} · {{ page.closed | date: "%Y년 %-m월" }} 확인{% endif %}</div>{% endif %}
     <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{% if page.type != 'pages' %}
       마지막 업데이트 {{ page.last_modified_at | date: "%Y년 %-m월 %-d일" }}
       {% endif %}
@@ -87,6 +88,8 @@ layout: default
 {% include tour_calendar.html %}
 
 {% include nearby_places.html %}
+
+{% include related_places.html %}
 
 {% include share_buttons.html %}
 

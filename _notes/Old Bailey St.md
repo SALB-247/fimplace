@@ -12,8 +12,11 @@ coords:
 country: hk
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3pXLk1N-w2U" title="LENIVERSE EP.28 핌비디 바비디 부 1편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3pXLk1N-w2U?start=1440" title="LENIVERSE EP.28 핌비디 바비디 부 1편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+<img src="assets/vf_3pXLk1N-w2U_1450.jpg">
+<img src="assets/vf_3pXLk1N-w2U_1487.jpg">
+<img src="assets/vf_3pXLk1N-w2U_1560.jpg">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.910262207936!2d114.1535083!3d22.2813889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404007b04e56e09%3A0x9da2928805eb5588!2zT2xkIEJhaWxleSBTdCwg7ZmN7L2p!5e0!3m2!1sko!2sus!4v1779953012214!5m2!1sko!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 르니버스 EP.28 핌둥이 말하는대로 ★ 핌비디 바비디 부 1편 사진 spot
@@ -28,4 +31,6 @@ Old Bailey Street (奧卑利街)
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/rap8J9EJzZw1ZWFT7)
 
-
+<!-- TODO
+□ 캡쳐 = 르니버스 24:10 'THE PARALLEL' 앞 그래피티 벽, 24:47 거리 전경, 26:00 벽화 — Old Bailey St 사진 스팟
+-->

@@ -1,0 +1,32 @@
+{%- comment -%}
+  함께 나온 장소: 같은 인스타 게시물·YouTube 영상·위버스 포스트를 쓴 다른 노트.
+  데이터는 _plugins/related_by_source.rb 가 빌드 때 주입 (page.related_by_source). 소스 종류별로 묶어 표시. JS 없음.
+{%- endcomment -%}
+{%- if page.related_by_source and page.related_by_source.size > 0 -%}
+{%- assign groups = page.related_by_source | group_by: "via" -%}
+<section id="related-places" class="fim-card" style="margin-top:1.4em;">
+  <div class="fim-card-head">
+    <h3>🔗 함께 나온 장소</h3>
+    <span class="fim-pill">{{ page.related_by_source_total }}곳</span>
+    <span class="fim-sub">같은 게시물·영상에 등장</span>
+  </div>
+  <ul class="fim-list">
+  {%- for g in groups %}
+    {%- if groups.size > 1 %}<li class="fim-group-label" style="border-bottom:0; padding-bottom:0; cursor:default; background:none;">{{ g.name }}</li>{% endif %}
+    {%- for r in g.items %}
+    <li>
+      <span class="fim-emoji">{{ r.emoji }}</span>
+      <a class="fim-title internal-link" href="{{ site.baseurl }}{{ r.url }}">{{ r.title }}</a>
+      {%- if groups.size == 1 %}<span class="fim-cat">{{ r.via }}</span>{% endif %}
+    </li>
+    {%- endfor %}
+  {%- endfor %}
+  </ul>
+  {%- if page.related_by_source_total > page.related_by_source.size %}
+  <p style="font-size:0.8em; color:var(--subtext); margin:0 0.95em 0.7em;">외 {{ page.related_by_source_total | minus: page.related_by_source.size }}곳</p>
+  {%- endif %}
+</section>
+<style>
+  {% include note_cards.css %}
+</style>
+{%- endif -%}

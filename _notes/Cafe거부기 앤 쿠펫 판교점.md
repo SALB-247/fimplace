@@ -8,8 +8,11 @@ tags:
   - 카페
   - 액티비티
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/J2GD80Oxf24?si=MJmubqTz3LiyM4QF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J2GD80Oxf24?start=495" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+<img src="assets/vf_J2GD80Oxf24_504.jpg">
+<img src="assets/vf_J2GD80Oxf24_731.jpg">
+<img src="assets/vf_J2GD80Oxf24_1412.jpg">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.9997174891046!2d127.09549951184967!3d37.41348157196217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca7315340abe7%3A0x225a8a4df2528fe4!2zQ2FmZeqxsOu2gOq4sCDslaQg7L-g7Y6rIO2MkOq1kOygkA!5e0!3m2!1sko!2skr!4v1741405044092!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 ## 상호명
 Cafe거부기 앤 쿠펫 판교점
@@ -23,3 +26,7 @@ Cafe거부기 앤 쿠펫 판교점
 ## [🅽네이버지도](https://naver.me/5oE5hLHl)
 
 ## [🅚카카오 지도](https://place.map.kakao.com/908965519)
+
+<!-- TODO
+□ 캡쳐 = 겁도없꾸라 8:24 거북이 사육장, 12:11 그린트리 모니터, 23:32 테라리움 벽 + 체험 테이블
+-->

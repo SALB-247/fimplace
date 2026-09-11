@@ -14,10 +14,12 @@ country: jp
 ---
 
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9TRgJahEEDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9TRgJahEEDc?start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hYoByDW1ZAI?si=j0CBsjmQXYGLzX5K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+<img src="assets/vf_9TRgJahEEDc_70.jpg">
+<img src="assets/vf_9TRgJahEEDc_30.jpg">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12971.346242881604!2d139.77741749999998!3d35.631755500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601889f42f85a84b%3A0x3e860ae7a181b465!2sOdaiba%20Beach!5e0!3m2!1sko!2sus!4v1779347231275!5m2!1sko!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 LE SSERAFIM (르세라핌) 'Kawaii (Prod. Gen Hoshino)' FILM - Another Take 촬영지
@@ -29,3 +31,7 @@ Odaiba Beach
 일본 〒135-0091 Tokyo, Minato City, Daiba, 1 Chome−4−1
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/rMKtv2dEF7WfmQks5)
+
+<!-- TODO
+□ 캡쳐 = Kawaii Another Take 0:20~1:10 오다이바 해변 (1:10 레인보우 브리지 배경 단체 컷)
+-->

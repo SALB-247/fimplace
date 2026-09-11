@@ -26,4 +26,4 @@ Santa Monica Crepes
 ## 위치
 일본 〒150-0001 Tokyo, Shibuya, Jingumae, 1 Chome−8−5 Marron Bldg., ２Ｆ
 
-## [🗺️ 구글맵](https://maps.app.goo.gl/VJmrhgtNZ5awQwBFA)
+## [🗺️ 구글맵](https://maps.google.com/?cid=16238760776117713773)

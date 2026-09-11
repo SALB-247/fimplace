@@ -12,8 +12,11 @@ coords:
 country: hk
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DMzO3bC5xcs?si=DCNaP7PCkZylQIv1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DMzO3bC5xcs?start=90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+<img src="assets/vf_DMzO3bC5xcs_100.jpg">
+<img src="assets/vf_DMzO3bC5xcs_300.jpg">
+<img src="assets/vf_DMzO3bC5xcs_700.jpg">
 <iframe src="https://maps.google.com/maps?q=22.3082725,114.0387158&z=17&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 르니버스 EP.30 핌비디 바비디 부 3편 — 디즈니랜드 숙소
@@ -27,3 +30,6 @@ Disney Explorers Lodge, 神奇道 Magic Road, Hong Kong Disneyland Resort, 大�
 
 ## [🗺️ 구글맵](https://www.google.com/maps/search/?api=1&query=Disney+Explorers+Lodge+Hong+Kong)
 
+<!-- TODO
+□ 캡쳐 = 르니버스 EP.30 1:40 'Disney EXPLORERS LODGE' 간판 · 5:00 객실 · 11:40 객실
+-->

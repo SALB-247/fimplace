@@ -28,10 +28,9 @@ Piece Pizzeria and Brewery
 ## 위치
 1927 W North Ave, Chicago, IL 60622, USA
 
-## [🗺️ 구글맵](https://maps.app.goo.gl/Ue2sH8YnJ5pQittV8y)
+## [🗺️ 구글맵](https://maps.google.com/?cid=5536911991698015060)
 
 <!-- TODO
 □ 공식 틱톡(@le_sserafim)·공식 X(@le_sserafim) 250906 시카고 게시물 URL 확보 후 [공트](URL)/[틱톡](URL) 추가 (인덱싱됨, 검색 가능)
-□ Maps iframe → 정식 "지도 퍼가기" embed (pb=...) 로 교체
 □ ## 구글맵 → 단축링크 (https://maps.app.goo.gl/XXX) 로 교체
 -->
