@@ -8,7 +8,8 @@
 # - Naver/Kakao 등 기타 iframe -> loading="lazy" 만 보강
 
 module IframeFacade
-  YT_REGEX = /<iframe[^>]*src="https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_\-]{6,})([^"]*)"[^>]*>\s*<\/iframe>/i
+  # 도메인(youtube / youtube-nocookie)을 캡쳐해 둔다 — 노트가 고른 도메인을 그대로 살려야 한다.
+  YT_REGEX = /<iframe[^>]*src="https?:\/\/(?:www\.)?(youtube-nocookie|youtube)\.com\/embed\/([A-Za-z0-9_\-]{6,})([^"]*)"[^>]*>\s*<\/iframe>/i
   MAP_REGEX = /<iframe([^>]*?)src="(https?:\/\/www\.google\.com\/maps\/embed[^"]+)"([^>]*)>\s*<\/iframe>/i
   GENERIC_IFRAME_REGEX = /<iframe(?![^>]*\bloading=)([^>]*)>/i
 
@@ -17,9 +18,10 @@ module IframeFacade
 
     # 1) YouTube
     html = html.gsub(YT_REGEX) do
-      video_id = Regexp.last_match(1)
-      query    = Regexp.last_match(2).to_s
-      src = "https://www.youtube.com/embed/#{video_id}#{query.empty? ? '?' : query + '&'}autoplay=1"
+      host     = Regexp.last_match(1)          # youtube-nocookie 를 www.youtube 로 바꾸면 프라이버시 설정이 무의미해진다
+      video_id = Regexp.last_match(2)
+      query    = Regexp.last_match(3).to_s
+      src = "https://www.#{host}.com/embed/#{video_id}#{query.empty? ? '?' : query + '&'}autoplay=1"
       thumb = "https://i.ytimg.com/vi/#{video_id}/hqdefault.jpg"
       %(<div class="yt-facade" role="button" tabindex="0" aria-label="YouTube 영상 재생" data-yt-src="#{src}"><img loading="lazy" src="#{thumb}" alt="YouTube thumbnail"></div>)
     end

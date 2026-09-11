@@ -5,8 +5,8 @@
 # - 키는 알파벳 순 정렬
 
 "1979 LP LIVE PUB 2호점":
-  lat: 37.5375
-  lng: 126.968
+  lat: 37.530793
+  lng: 126.9674459
   source: manual
   note: "서울 용산구 새창로 213-9 (용산 한강로) - 이전 대전 좌표 수정"
 "2025 데뷔 3주년 이벤트":
@@ -305,9 +305,9 @@
   lng: 126.3727702
   source: nominatim
 "고귀한 식탁 강남점":
-  lat: 37.4988767
-  lng: 127.0312924
-  source: nominatim:cleaned
+  lat: 37.4987464
+  lng: 127.03169
+  source: gmaps
 "고속터미널역 파미에 스테이션_3월 중":
   lat: 37.5031077
   lng: 127.0043901
@@ -435,9 +435,9 @@
   lng: 128.5914938633277
   source: iframe
 "달쥬과일상점":
-  lat: 37.5335564
-  lng: 126.9652689
-  source: nominatim:cleaned
+  lat: 37.5385336
+  lng: 126.9703017
+  source: manual
 "닭한마리감자탕 신사본점":
   lat: 37.5171531
   lng: 127.0206989
@@ -737,8 +737,8 @@
   lng: 126.9764165105515
   source: iframe
 "비바살롱 신흥시장 2호점":
-  lat: 37.5421
-  lng: 126.9853
+  lat: 37.5449615
+  lng: 126.9851638
   source: manual
   note: "해방촌 신흥시장 내 (해방촌 소월로20길 35)"
 "비파티세리":
@@ -778,9 +778,9 @@
   lng: 126.9769176
   source: nominatim
 "샐러드셀러":
-  lat: 37.5354444
-  lng: 127.0003937
-  source: nominatim
+  lat: 37.5328305
+  lng: 126.9925167
+  source: manual
 "생생딸기체험농장":
   lat: 37.51423877193563
   lng: 127.64909531185396
@@ -819,13 +819,13 @@
   lng: 126.6396693
   source: nominatim
 "석암생소금구이 용산점":
-  lat: 37.5221453
-  lng: 126.9617584
-  source: nominatim:cleaned
+  lat: 37.5255719
+  lng: 126.9640355
+  source: manual
 "선진서바이벌":
-  lat: 37.6792218
-  lng: 126.8687244
-  source: nominatim
+  lat: 37.6823584
+  lng: 126.8649592
+  source: manual
 "설봄":
   lat: 37.5182313
   lng: 126.88445
@@ -852,9 +852,9 @@
   lng: 139.76659519999998
   source: frontmatter
 "소인수서울 성수":
-  lat: 37.5456157
-  lng: 127.0447497
-  source: nominatim:cleaned
+  lat: 37.549707
+  lng: 127.044548
+  source: manual
 "손문 갈매기 2호점":
   lat: 37.5315491
   lng: 126.968447
@@ -921,8 +921,8 @@
   lng: 141.3282578862878
   source: frontmatter
 "식물원김밥 용산점":
-  lat: 37.524
-  lng: 126.992
+  lat: 37.52691
+  lng: 126.96657
   source: manual
   note: "서울 용산구 서빙고로 17 (용산공원/국립중앙박물관 인근)"
 "신드롬_250801-250803":
@@ -994,9 +994,9 @@
   lng: 128.57262802416506
   source: iframe
 "압구정 나들목":
-  lat: 37.5300432
-  lng: 127.0313346
-  source: nominatim
+  lat: 37.5305937
+  lng: 127.0416351
+  source: gmaps
 "앙뜨":
   lat: 37.4913091
   lng: 127.0324917
@@ -1038,9 +1038,9 @@
   lng: 127.02956347587168
   source: iframe
 "오거트 아현점":
-  lat: 37.5560156
-  lng: 126.9400137
-  source: nominatim:cleaned
+  lat: 37.5568613
+  lng: 126.9511622
+  source: manual
 "오네스타키친":
   lat: 37.51993497205062
   lng: 126.92647907587161
@@ -1083,8 +1083,8 @@
   lng: 141.0021068711643
   source: frontmatter
 "오토김밥 본점":
-  lat: 37.5358
-  lng: 126.993
+  lat: 37.5315713
+  lng: 126.99468
   source: manual
   note: "서울 용산구 녹사평대로26길 93 (오토김밥 이태원 본점) - 이전 동대문 좌표 수정"
 "오트밀 쿠킹 스튜디오":
@@ -1349,14 +1349,14 @@
   lng: 126.9719545
   source: nominatim
 "타르데마 1942 등촌":
-  lat: 37.5616
-  lng: 126.8252
+  lat: 37.5628941
+  lng: 126.8510376
   source: manual
   note: "서울 강서구 양천로 452"
 "타마린드":
-  lat: 37.5348425
-  lng: 127.0008599
-  source: nominatim
+  lat: 37.50451
+  lng: 127.004695
+  source: gmaps
 "타임슬래시_250319":
   lat: 35.14850465893755
   lng: 129.06466071331508
@@ -1431,9 +1431,9 @@
   lng: 126.99958811185526
   source: iframe
 "포토이즘박스 성수점":
-  lat: 37.5467275
-  lng: 127.0420646
-  source: nominatim:cleaned
+  lat: 37.5471197
+  lng: 127.0407371
+  source: gmaps
 "포토이즘컬러드 코엑스몰점":
   lat: 37.5125275
   lng: 127.0588489
@@ -1447,9 +1447,9 @@
   lng: 127.04119751335156
   source: iframe
 "프레퍼스다이어트푸드용산점":
-  lat: 37.53227
-  lng: 126.99064
-  source: known:용산
+  lat: 37.527275
+  lng: 126.9652809
+  source: manual
 "프루티에 연남":
   lat: 37.5640254
   lng: 126.9215753

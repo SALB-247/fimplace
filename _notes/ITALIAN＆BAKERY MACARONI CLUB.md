@@ -11,7 +11,7 @@ coords: [35.48435623189231, 138.77807930000588]
 country: jp
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ub-g_wuBlD8?si=rWRmGkwwHrhkl4Oq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ub-g_wuBlD8?si=rWRmGkwwHrhkl4Oq&start=688" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/marcoroni.png">
 

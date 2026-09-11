@@ -16,7 +16,7 @@ coords:
 country: us
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2T_G7gPO8HY?si=J59Mov7_9wMdij8I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2T_G7gPO8HY?si=J59Mov7_9wMdij8I&start=494" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_633456.png">
 
@@ -33,9 +33,9 @@ NewsBar Café
 ## [🗺️ 구글맵](https://maps.app.goo.gl/tsdqS8JU27mYnxbM9)
 
 <!-- TODO
-□ 영상에서 이 장소 등장 시점 확인 → embed src 끝에 ?start=<초> 추가 (예: ...iX2agxp8LJU?start=120)
+□ (해결) 식사 장면은 8:14~12:15 (자막 "[세로캠으로 등장한 썸머즈]" 8:14 → "[후식까지 맛있게 먹고]" 12:15) (2026-09-11)
 □ FIM-LOG 영상 일치 확인 (메모 "조각 모음집" — 별도 편집본일 가능성)
-□ 영상 속 등장 멤버 확인 (현재 전원 태그)
-□ Maps iframe → 정식 "지도 퍼가기" embed (pb=...) 로 교체
-□ ## 구글맵 → 단축링크 (https://maps.app.goo.gl/XXX) 로 교체
+□ (해결) 출연 멤버 확인 — 현행 채원·즈하 유지가 맞음 — 이 식사 장면(8:14~12:15)의 자막 유닛명이 "썸머즈" 이고 11:24 "(카즈하) 언니 생일이에요", 11:25 "(김채원) 저희 생일입니다" 로 두 사람이 직접 표기된다 (2026-09-11)
+□ (해결) 지도 embed 는 이미 정식 pb= 형식이다 (체크만 누락돼 있었음) (2026-09-11)
+□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

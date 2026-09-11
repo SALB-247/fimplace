@@ -27,6 +27,6 @@ Carbone New York
 
 <!-- TODO
 □ DM 은 영구 공개 URL 없음 → 캡쳐 이미지를 assets/ 에 저장 후 <img>로 첨부
-□ Maps iframe → 정식 "지도 퍼가기" embed (pb=...) 로 교체
-□ ## 구글맵 → 단축링크 (https://maps.app.goo.gl/XXX) 로 교체
+□ (해결) 지도 embed 는 이미 정식 pb= 형식이다 (체크만 누락돼 있었음) (2026-09-11)
+□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

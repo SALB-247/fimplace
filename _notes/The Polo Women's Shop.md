@@ -12,7 +12,7 @@ coords: [35.66561668955773, 139.70477149999326]
 country: jp
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1nk-c9oeOBU?si=gsVXZVmVQ-DChLM4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1nk-c9oeOBU?si=gsVXZVmVQ-DChLM4&start=1132" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_1137531.png">
 

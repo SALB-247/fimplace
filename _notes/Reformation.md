@@ -34,6 +34,6 @@ Reformation
 <!-- TODO
 □ NYC 매장 여러 곳 — 방문 지점 확인 (소호 62 Greene St 추정 / 89 Mercer St / 833 Washington St 외)
 □ 원본 IG URL 자동확보 실패 — kpopping.com/kpics/260103-kazuha-instagram-update (갤러리만, Reformation 특정 미확인; 1월 NYC 체류 정황 있음) 에서 식별 후 원본 IG에서 URL 확보 → [카즈하 인스타](URL)
-□ Maps iframe → 정식 "지도 퍼가기" embed (pb=...) 로 교체
-□ ## 구글맵 → 단축링크 (https://maps.app.goo.gl/XXX) 로 교체
+□ (해결) 지도 embed 는 이미 정식 pb= 형식이다 (체크만 누락돼 있었음) (2026-09-11)
+□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

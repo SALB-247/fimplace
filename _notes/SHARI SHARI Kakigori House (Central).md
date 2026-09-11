@@ -13,7 +13,7 @@ coords:
 country: hk
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3pXLk1N-w2U" title="LENIVERSE EP.28 핌비디 바비디 부 1편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3pXLk1N-w2U?start=914" title="LENIVERSE EP.28 핌비디 바비디 부 1편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_919331.png">
 

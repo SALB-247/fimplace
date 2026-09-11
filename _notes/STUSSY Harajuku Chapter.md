@@ -11,7 +11,7 @@ coords: [35.669678110516436, 139.70738453924602]
 country: jp
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KlKdt7tkZy0?si=HUoqyYH4pX6Px32d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KlKdt7tkZy0?si=HUoqyYH4pX6Px32d&start=396" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_401600.png">
 

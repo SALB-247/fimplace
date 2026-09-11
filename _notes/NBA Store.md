@@ -4,6 +4,10 @@ shortid: e4up5
 tags:
   - 자체컨텐츠_촬영지
   - EPISODE
+  - 사쿠라
+  - 윤진
+  - 즈하
+  - 은채
   - 뉴욕
   - 미국
   - 상점
@@ -13,7 +17,8 @@ coords:
 country: us
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NOH9_RCOHRc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NOH9_RCOHRc?start=444" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<img src="assets/vf_NOH9_RCOHRc_452.jpg">
 
 <img src="assets/videoframe_445832.png">
 
@@ -32,8 +37,8 @@ NBA Store
 ## [🗺️ 구글맵](https://maps.app.goo.gl/4faPRBx1r6Rrw2jL6)
 
 <!-- TODO
-□ 영상에서 이 장소 등장 시점 확인 → embed src 끝에 ?start=<초> 추가 (예: ...NOH9_RCOHRc?start=120)
-□ 영상 속 등장 멤버 확인 (현재 전원 태그)
-□ Maps iframe → 정식 "지도 퍼가기" embed (pb=...) 로 교체
-□ ## 구글맵 → 단축링크 (https://maps.app.goo.gl/XXX) 로 교체
+□ (해결) NBA 스토어 구간은 7:24~8:52 (자막 "[NBA 스토어로 이동한 핌둥이들]" 7:24). 7:29 매장 입구 4인, 7:32 저지 진열대 (2026-09-11)
+□ (해결) 출연 멤버 = 사쿠라 · 윤진 · 즈하 · 은채. NBA 스토어 구간 7:24~8:52 자막에 꾸라(8:10·8:18)·윤진(7:52·8:20)·즈하(7:43·8:23)·만채(8:03·8:37·8:41) 가 각각 호명되고 8:50 에 "[쇼핑하고 왕 신난 ♡꾸라은즈♡]". 화면에도 4명뿐이고 직전 6:31 에 "다음엔 5인으로 돌아오겠습니다 / 완전체!" 라 채원은 이 일정에 없었다 (**사용자 확인: 이 기간 채원은 아파서 동행하지 않았음**) (2026-09-11)
+□ (해결) 지도 embed 는 이미 정식 pb= 형식이다 (체크만 누락돼 있었음) (2026-09-11)
+□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

@@ -13,7 +13,7 @@ coords:
 country: us
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rA9e1UVdzw8?si=SrGf2AxyKLVP8zbV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rA9e1UVdzw8?si=SrGf2AxyKLVP8zbV&start=1701" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_1706948.png">
 

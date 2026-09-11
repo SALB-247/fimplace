@@ -13,7 +13,7 @@ coords:
 country: us
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZrqnZo_1TA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZrqnZo_1TA?start=81" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_85062.png">
 
@@ -31,8 +31,8 @@ Federales Tacos & Tequila - Fulton Market, Chicago
 ## [🗺️ 구글맵](https://maps.app.goo.gl/BXECcpVwCHhX7ay77)
 
 <!-- TODO
-□ 영상에서 이 장소 등장 시점 확인 → embed src 끝에 ?start=<초> 추가 (예: ...9ZrqnZo_1TA?start=60)
-□ 영상 속 등장 멤버 확인 (현재 전원 태그)
-□ Maps iframe → 정식 "지도 퍼가기" embed (pb=...) 로 교체
-□ ## 구글맵 → 단축링크 (https://maps.app.goo.gl/XXX) 로 교체
+□ (해결) 식사 장면은 1:21~1:40 — 1:25 에 타코·나초·과카몰리가 깔린 테이블과 매장 내부(타공 금속 벽)가 보인다. `?start=81` (2026-09-11)
+□ (해결) 출연 멤버 확인 — 전원 맞음 — 같은 촬영분 0:04~0:05 벤치, 1:46 잔디밭에 5명이 함께 잡힌다. 멤버 태그 없음 = 전원 (2026-09-11)
+□ (해결) 지도 embed 는 이미 정식 pb= 형식이다 (체크만 누락돼 있었음) (2026-09-11)
+□ (해결) 외부 지도 링크는 이미 goo.gl 단축링크 또는 cid 영구 링크다 (체크만 누락돼 있었음) (2026-09-11)
 -->

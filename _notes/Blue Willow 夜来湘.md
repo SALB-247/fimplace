@@ -3,6 +3,7 @@ title: Blue Willow 夜来湘
 shortid: g2p2l
 tags:
   - 자체컨텐츠_촬영지
+  - 유튜브
   - 음식점
   - 뉴욕
   - 미국
@@ -12,7 +13,7 @@ coords:
 country: us
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1jxP-NudvKk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1jxP-NudvKk?start=571" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/videoframe_576910.png">
 
