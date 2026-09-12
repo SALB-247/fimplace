@@ -46,16 +46,23 @@ module SearchIndexer
     end
 
     KR_REGION = %w[서울 부산 대구 인천 광주 대전 울산 세종 경기 강원 충북 충남 전북 전남 경북 경남 제주]
-    ADDR_REGEX = /(?:#{KR_REGION.join('|')})(?:특별시|광역시|특별자치도|도)?\s+\S.+/
+    # ⚠️ 공백을 \s+ 로 두면 개행까지 먹어 다음 줄(허브 노트의 표)을 통째로 빨아들인다 → [ \t]+ 로 못박는다
+    ADDR_REGEX = /(?:#{KR_REGION.join('|')})(?:특별시|광역시|특별자치도|도)?[ \t]+\S[^\n]*/
+
+    # 이 시점의 content 는 bidirectional_links 가 [[위키링크]] 를 <a class='internal-link'> 로
+    # 바꾼 뒤라 HTML 이 섞여 있다. 태그를 떼고 공백을 눌러서 돌려준다.
+    def clean_addr(s)
+      s.to_s.gsub(/<[^>]+>/, ' ').gsub(/\s+/, ' ').strip
+    end
 
     def extract_address_line(content)
       # 1) ## 위치 / ## 주소 헤딩 다음 줄
       m = content.match(/##\s*(?:위치|주소|주\s*소|위\s*치|location|address)\s*\n+([^\n#]+)/i)
-      return m[1].to_s.strip.gsub(/<[^>]+>/, '').strip if m
+      return clean_addr(m[1]) if m
 
       # 2) 본문에서 한국 도/시 prefix 패턴 첫 라인
       m = content.match(ADDR_REGEX)
-      return m[0].to_s.strip if m
+      return clean_addr(m[0]) if m
 
       ''
     end

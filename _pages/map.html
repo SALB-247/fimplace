@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 지도
+description: 르세라핌 관련 장소를 한 지도에서. 국가 → 지역 → 카테고리 → 멤버 순으로 좁혀 볼 수 있습니다.
 permalink: /map/
 ---
 
@@ -89,8 +90,26 @@ permalink: /map/
     .fim-legend button { font-size: 12px; }
     .fim-legend .fim-legend-items { gap: 0.3em 0.6em; }
   }
+  /* 모바일: 필터 5개가 세 줄을 잡아먹어 지도가 한참 아래로 밀린다.
+     기본은 접어두고 토글로 펼친다. 검색창·결과수는 접어도 계속 보이게 남긴다. */
+  #filter-toggle { display: none; }
   @media (max-width: 600px) {
-    #map-filters { grid-template-columns: 1fr 1fr; gap: 0.4em; }
+    #map-filters { grid-template-columns: 1fr 1fr; gap: 0.4em; margin: 0.5em 0; }
+    #map-filters[hidden] { display: none; }
+    #map-filters select { min-height: 40px; padding: 0.45em 0.6em; }
+    #filter-toggle {
+      display: inline-flex; align-items: center; gap: 0.4em;
+      margin: 0.8em 0 0; padding: 0.5em 0.9em;
+      border: 1px solid var(--border); border-radius: 999px;
+      background: var(--input-bg); color: var(--text);
+      font-family: inherit; font-size: 0.9em; cursor: pointer; min-height: 40px;
+    }
+    #filter-toggle .cnt {
+      background: var(--primary, #c9184a); color: #fff; border-radius: 999px;
+      font-size: 0.78em; font-weight: 700; padding: 0.05em 0.5em;
+    }
+    #filter-controls { gap: 0.4em; margin-bottom: 0.4em; }
+    #map-search { max-width: none; }
     #map { height: 60vh !important; min-height: 360px !important; }
     #result-count { width: 100%; margin-left: 0; text-align: right; }
   }
@@ -231,6 +250,7 @@ permalink: /map/
   }
 </style>
 
+<button id="filter-toggle" type="button" aria-expanded="false" aria-controls="map-filters"></button>
 <div id="map-filters">
   <select id="filter-country" aria-label="국가 필터" data-i18n-aria="aria_country">
     <option value="">🌏 전체</option>
@@ -263,6 +283,49 @@ permalink: /map/
 </div>
 
 <div id="search-note" role="status" hidden></div>
+
+<script>
+// 모바일 필터 접기 — 지도를 한 화면 위로 끌어올린다.
+// 데스크톱에서는 버튼이 CSS 로 숨겨져 있고 필터도 항상 펼쳐진 상태다.
+(function () {
+  var btn = document.getElementById('filter-toggle');
+  var box = document.getElementById('map-filters');
+  if (!btn || !box) return;
+  var MOBILE = window.matchMedia('(max-width: 600px)');
+
+  function activeCount() {
+    return ['filter-country', 'filter-region', 'filter-category', 'filter-tag', 'filter-member']
+      .filter(function (id) { var el = document.getElementById(id); return el && el.value; }).length;
+  }
+  function label() {
+    var n = activeCount();
+    var open = box.hidden === false;
+    var word = (window.FimLang === 'en') ? 'Filters' : '필터';
+    btn.innerHTML = '\u2699\ufe0f ' + word +
+      (n ? ' <span class="cnt">' + n + '</span>' : '') + ' ' + (open ? '\u25b4' : '\u25be');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function apply(forceOpen) {
+    if (!MOBILE.matches) { box.hidden = false; label(); return; }
+    // 필터가 이미 걸려 있으면 숨기지 않는다 — 뭐가 걸렸는지 안 보이면 더 헷갈린다
+    box.hidden = forceOpen === undefined ? activeCount() === 0 : !forceOpen;
+    label();
+  }
+
+  btn.addEventListener('click', function () { apply(box.hidden); });
+  MOBILE.addEventListener('change', function () { apply(); });
+  ['filter-country', 'filter-region', 'filter-category', 'filter-tag', 'filter-member']
+    .forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('change', label);
+    });
+  var reset = document.getElementById('filter-reset');
+  if (reset) reset.addEventListener('click', function () { setTimeout(label, 0); });
+
+  // 지도 스크립트가 URL 필터를 복원한 뒤에 판단해야 한다
+  setTimeout(function () { apply(); }, 0);
+})();
+</script>
 
 <div id="map-layout">
   <div id="map" style="width:100%; height:70vh; min-height:480px; border-radius:8px; border:1px solid var(--border);"></div>

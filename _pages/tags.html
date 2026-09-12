@@ -1,20 +1,21 @@
 ---
 layout: page
 title: 태그
+description: 카테고리별 태그와 멤버 인덱스. 태그를 누르면 그 태그가 붙은 장소 목록으로 갑니다.
 permalink: /tags/
 ---
 
 <h1 data-i18n="tags_title">모든 태그</h1>
 
-<p style="color: hsl(0,0%,30%); font-size: 0.9em;">
+<p style="color: var(--subtext); font-size: 0.9em;">
   <span data-i18n="tags_intro">카테고리별로 그룹화된 태그 목록입니다. 태그를 클릭하면 해당 장소들을 볼 수 있습니다.</span>
 </p>
 
 <style>
   .tag-cat-section { margin: 1.5em 0; }
-  .tag-cat-section h2 { margin-bottom: 0.4em; font-size: 1.05em; color: hsl(0,0%,15%); border-bottom: 1px solid hsl(0,0%,90%); padding-bottom: 0.2em; }
+  .tag-cat-section h2 { margin-bottom: 0.4em; font-size: 1.05em; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.2em; }
   .tag-cat-section .tag-cloud { margin-top: 0.4em; }
-  .tag-cat-section .empty { font-size: 0.85em; color: hsl(0,0%,50%); }
+  .tag-cat-section .empty { font-size: 0.85em; color: var(--subtext); }
 </style>
 
 {% if site.data.category_tags %}
@@ -23,7 +24,7 @@ permalink: /tags/
     {% assign cat_tags = cat[1] %}
     {% if cat_tags and cat_tags.size > 0 %}
     <section class="tag-cat-section">
-      <h2><span class="i18n-section" data-sec="{{ cat_name }}">{{ cat_name }}</span> <span style="font-weight:normal; color:hsl(0,0%,50%); font-size:0.85em;">({{ cat_tags.size }})</span></h2>
+      <h2><span class="i18n-section" data-sec="{{ cat_name }}">{{ cat_name }}</span> <span style="font-weight:normal; color:var(--subtext); font-size:0.85em;">({{ cat_tags.size }})</span></h2>
       <div class="tag-cloud">
         {% for t in cat_tags %}
           {% if cat_name contains '멤버' %}
@@ -41,7 +42,7 @@ permalink: /tags/
 {% endif %}
 
 <h2 id="members" style="margin-top: 2em;" data-i18n="members_index">멤버별 인덱스</h2>
-<p style="font-size:0.9em; color:hsl(0,0%,30%);">
+<p style="font-size:0.9em; color:var(--subtext);">
   <span data-i18n="members_index_sub">태그에서 자동 추출된 멤버. 클릭 시 해당 멤버 등장 노트 목록으로 이동합니다.</span>
 </p>
 
@@ -53,7 +54,7 @@ permalink: /tags/
       </a>
     {% endfor %}
   {% else %}
-    <p style="color: hsl(0,0%,30%); font-size: 0.85em;" data-i18n="members_none">멤버 정보가 등록된 노트가 없습니다.</p>
+    <p style="color: var(--subtext); font-size: 0.85em;" data-i18n="members_none">멤버 정보가 등록된 노트가 없습니다.</p>
   {% endif %}
 </div>
 

@@ -8,7 +8,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {% assign og_description = page.excerpt | default: site.description | default: site.title | strip_html | strip_newlines | truncate: 160 %}
+  {% comment %}페이지가 description 을 직접 주면 그걸 쓴다 — 검색·지도처럼 본문이 거의 없는 페이지는
+     excerpt 가 비어 사이트 공통 설명으로 떨어져서 공유 미리보기가 다 똑같이 나왔다.{% endcomment %}
+  {% assign og_description = page.description | default: page.excerpt | default: site.description | default: site.title | strip_html | strip_newlines | truncate: 160 %}
   {% if page.image %}
     {% assign og_image_src = page.image %}
   {% else %}

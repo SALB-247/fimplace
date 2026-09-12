@@ -12,11 +12,6 @@ tags:
   - 로스앤젤레스
   - 미국
   - MV_촬영지
-  - 꾸라
-  - 채원
-  - 윤진
-  - 즈하
-  - 은채
 ---
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rQSDEVfYFnE?start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

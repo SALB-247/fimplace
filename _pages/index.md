@@ -25,20 +25,44 @@ permalink: /
 
 {% include home_map.html %}
 
+<!-- 장소 찾기: 홈에서 제일 먼저 눌리길 바라는 세 갈래. 지도 바로 아래에 카드로 둔다. -->
+<style>
+  .fim-find { display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+              gap:0.6em; margin:1.1em 0 1.6em; }
+  .fim-find a { display:flex; align-items:flex-start; gap:0.6em; padding:0.85em 1em;
+                border:1px solid var(--border); border-radius:10px; background:var(--box-bg);
+                color:var(--text); text-decoration:none; line-height:1.35; transition:border-color .12s, background .12s; }
+  .fim-find a:hover { background:var(--link-hover); border-color:var(--primary); }
+  .fim-find a::after { content:none !important; }   /* 사이트 공통 링크 ↗ 끄기 */
+  .fim-find .ico { font-size:1.45em; line-height:1; flex:0 0 auto; }
+  .fim-find .ttl { font-weight:700; display:block; }
+  .fim-find .sub { font-size:0.82em; color:var(--subtext); display:block; margin-top:0.15em; }
+  .fim-find a.primary { border-color:var(--primary); background:var(--input-bg); }
+</style>
+<div class="fim-find">
+  <a class="internal-link primary" href="{{ site.baseurl }}/map/">
+    <span class="ico">🗺️</span><span>
+      <span class="ttl" data-i18n="home_link_map">전체 지도 보기</span>
+      <span class="sub" data-i18n="home_link_map_sub">모든 장소를 한눈에</span></span>
+  </a>
+  <a class="internal-link" href="{{ site.baseurl }}/search/">
+    <span class="ico">🔍</span><span>
+      <span class="ttl" data-i18n="home_link_search">장소 검색</span>
+      <span class="sub" data-i18n="home_link_search_sub">이름·태그·멤버로 검색</span></span>
+  </a>
+  <a class="internal-link" href="{{ site.baseurl }}/tags/">
+    <span class="ico">🏷️</span><span>
+      <span class="ttl" data-i18n="home_link_tags">모든 태그</span>
+      <span class="sub" data-i18n="home_link_tags_sub">카테고리 / 멤버별 인덱스</span></span>
+  </a>
+</div>
+
 <strong data-i18n="home_highlighted">High-lighted list</strong>
 
 ## [[2026 LE SSERAFIM TOUR 'PUREFLOW']]
 
 
 
-
-<strong data-i18n="home_browse">둘러보기</strong>
-
-🗺️ [<span data-i18n="home_link_map">전체 지도 보기</span>](/map/) — <span data-i18n="home_link_map_sub">모든 장소를 한눈에</span>
-
-🔍 [<span data-i18n="home_link_search">장소 검색</span>](/search/) — <span data-i18n="home_link_search_sub">이름·태그·멤버로 검색</span>
-
-🏷️ [<span data-i18n="home_link_tags">모든 태그</span>](/tags/) — <span data-i18n="home_link_tags_sub">카테고리 / 멤버별 인덱스</span>
 
 <strong data-i18n="home_list">Fimplace list</strong>
 

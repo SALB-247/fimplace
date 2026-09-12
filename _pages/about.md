@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 소개
+description: 핌플레이스가 무엇이고 어떻게 쓰는지 — 검색·지도·태그 안내.
 permalink: /about
 ---
 
