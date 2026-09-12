@@ -11,7 +11,7 @@ coords: [34.462363133471264, 136.72314821725044]
 country: jp
 ---
 
-<img src="568585490_18391073326126458_4537643436920202203_n.webp">
+<img src="assets/568585490_18391073326126458_4537643436920202203_n.webp">
 
 <iframe src="https://www.instagram.com/p/DQEeO3Vk81d/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 
