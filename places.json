@@ -5,5 +5,6 @@ sitemap: false
 ---
 {
   "places":        {{ site.data.places        | default: empty | jsonify }},
-  "category_tags": {{ site.data.category_tags | default: empty | jsonify }}
+  "category_tags": {{ site.data.category_tags | default: empty | jsonify }},
+  "region_alias": {{ site.data.region_alias | default: empty | jsonify }}
 }

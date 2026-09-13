@@ -68,15 +68,59 @@ module PlacesGenerator
     '북촌'     => '서울 종로구', '익선동'   => '서울 종로구'
   }
 
+  # 미국 광역 단위 (주). 주소 끝의 ", CA 90038" 처럼 **주 약자 + 우편번호** 로 잡는다.
+  # 도시명 매핑표를 따로 안 두는 이유: _notes 의 미국 주소가 이 형식으로 100% 일관돼서
+  # (2026-09-13 전수 확인, 누락 0) 주소만으로 충분하고 새 도시가 생겨도 손댈 일이 없다.
+  US_STATE = {
+    'AL' => '앨라배마', 'AK' => '알래스카', 'AZ' => '애리조나', 'AR' => '아칸소',
+    'CA' => '캘리포니아', 'CO' => '콜로라도', 'CT' => '코네티컷', 'DE' => '델라웨어',
+    'FL' => '플로리다', 'GA' => '조지아', 'HI' => '하와이주', 'ID' => '아이다호',
+    'IL' => '일리노이', 'IN' => '인디애나', 'IA' => '아이오와', 'KS' => '캔자스',
+    'KY' => '켄터키', 'LA' => '루이지애나', 'ME' => '메인', 'MD' => '메릴랜드',
+    'MA' => '매사추세츠', 'MI' => '미시간', 'MN' => '미네소타', 'MS' => '미시시피',
+    'MO' => '미주리', 'MT' => '몬태나', 'NE' => '네브래스카', 'NV' => '네바다',
+    'NH' => '뉴햄프셔', 'NJ' => '뉴저지', 'NM' => '뉴멕시코', 'NY' => '뉴욕주',
+    'NC' => '노스캐롤라이나', 'ND' => '노스다코타', 'OH' => '오하이오', 'OK' => '오클라호마',
+    'OR' => '오리건', 'PA' => '펜실베이니아', 'RI' => '로드아일랜드', 'SC' => '사우스캐롤라이나',
+    'SD' => '사우스다코타', 'TN' => '테네시', 'TX' => '텍사스', 'UT' => '유타',
+    'VT' => '버몬트', 'VA' => '버지니아', 'WA' => '워싱턴주', 'WV' => '웨스트버지니아',
+    'WI' => '위스콘신', 'WY' => '와이오밍', 'DC' => '워싱턴 D.C.'
+  }
+  # ", XX 12345" / ", XX," / 끝의 ", XX" 만 인정한다. 그냥 대문자 두 글자를 잡으면
+  # "IN"·"OR"·"ME" 같은 영어 단어가 걸린다.
+  US_STATE_REGEX = /,\s*([A-Z]{2})(?=\s+\d{5}|\s*,|\s*$)/
+
   def self.region_from_address(addr, country = nil)
     return nil if addr.nil? || addr.empty?
+    if country == 'us'
+      m = addr.scan(US_STATE_REGEX).flatten.reverse.find { |c| US_STATE.key?(c) }
+      return US_STATE[m] if m
+      return nil
+    end
     return nil if country && country != 'kr'
     DOMINANT_REGIONS.each { |prefix| return prefix if addr.include?(prefix) }
     nil
   end
 
+  # 주소 파서가 "6922 Hollywood Blvd" 처럼 도시·주를 잘라버리는 노트가 있어서(#108 같은 유닛 표기 때문)
+  # 도시 태그로도 주를 찾을 수 있게 폴백을 둔다. 일본이 JP_REGION_ALIAS 로 하는 것과 같은 방식.
+  US_REGION_ALIAS = {
+    '로스앤젤레스' => '캘리포니아', '샌프란시스코' => '캘리포니아',
+    '산호세' => '캘리포니아', '애너하임' => '캘리포니아',
+    '뉴욕' => '뉴욕주', '뉴어크' => '뉴저지',
+    '시애틀' => '워싱턴주', '타코마' => '워싱턴주',
+    '시카고' => '일리노이',
+    '댈러스' => '텍사스', '포트워스' => '텍사스', '그랜드프레리' => '텍사스',
+    '라스베가스' => '네바다', '피닉스' => '애리조나', '올랜도' => '플로리다',
+    '하와이' => '하와이주', '워싱턴DC' => '워싱턴 D.C.'
+  }
+
   def self.region_from_tags(tags, country = nil)
     arr = Array(tags).map(&:to_s)
+    if country == 'us'
+      arr.each { |t| return US_REGION_ALIAS[t] if US_REGION_ALIAS.key?(t) }
+      return nil
+    end
     if country == 'jp'
       arr.each do |t|
         JP_REGION_KEYS_SORTED.each { |k| return JP_REGION_ALIAS[k] if t.include?(k) }
@@ -573,6 +617,9 @@ module PlacesGenerator
         cats_with_tags['기타'] = (existing + uncategorized).uniq
       end
       site.data['category_tags'] = cats_with_tags
+      # 예전 링크(?category=해외 (지역)&tag=뉴욕)를 지금의 지역(주) 선택으로 옮기려면
+      # 지도 쪽에도 도시→주 표가 필요하다. JS 에 또 적지 않고 여기서 내보낸다.
+      site.data['region_alias'] = US_REGION_ALIAS
     end
   end
 end

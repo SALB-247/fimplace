@@ -374,6 +374,7 @@ tags:
   댈러스: Dallas
   시애틀: Seattle
   로스앤젤레스: Los Angeles
+  애너하임: Anaheim
   샌프란시스코: San Francisco
   산호세: San Jose
   라스베가스: Las Vegas
@@ -416,6 +417,58 @@ tags:
   워싱턴 D.C.: Washington D.C.
   마닐라 (파사이): Manila (Pasay)
   방콕 (므앙텅타니): Bangkok (Muang Thong Thani)
+
+  # 미국 주 (region 값 — places_generator 가 주소/도시태그에서 뽑는다)
+  캘리포니아: California
+  뉴욕주: New York State
+  워싱턴주: Washington State
+  일리노이: Illinois
+  텍사스: Texas
+  하와이주: Hawaii
+  네바다: Nevada
+  플로리다: Florida
+  애리조나: Arizona
+  뉴저지: New Jersey
+  앨라배마: Alabama
+  알래스카: Alaska
+  아칸소: Arkansas
+  콜로라도: Colorado
+  코네티컷: Connecticut
+  델라웨어: Delaware
+  조지아: Georgia
+  아이다호: Idaho
+  인디애나: Indiana
+  아이오와: Iowa
+  캔자스: Kansas
+  켄터키: Kentucky
+  루이지애나: Louisiana
+  메인: Maine
+  메릴랜드: Maryland
+  매사추세츠: Massachusetts
+  미시간: Michigan
+  미네소타: Minnesota
+  미시시피: Mississippi
+  미주리: Missouri
+  몬태나: Montana
+  네브래스카: Nebraska
+  뉴햄프셔: New Hampshire
+  뉴멕시코: New Mexico
+  노스캐롤라이나: North Carolina
+  노스다코타: North Dakota
+  오하이오: Ohio
+  오클라호마: Oklahoma
+  오리건: Oregon
+  펜실베이니아: Pennsylvania
+  로드아일랜드: Rhode Island
+  사우스캐롤라이나: South Carolina
+  사우스다코타: South Dakota
+  테네시: Tennessee
+  유타: Utah
+  버몬트: Vermont
+  버지니아: Virginia
+  웨스트버지니아: West Virginia
+  위스콘신: Wisconsin
+  와이오밍: Wyoming
 
   # 국가 (라벨)
   일본: Japan
