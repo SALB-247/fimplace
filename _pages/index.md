@@ -61,7 +61,7 @@ permalink: /
 
 ## [[2026 LE SSERAFIM TOUR 'PUREFLOW']]
 
-
+## [[Made My Night_오프라인 이벤트 모음]]
 
 
 <strong data-i18n="home_list">Fimplace list</strong>
