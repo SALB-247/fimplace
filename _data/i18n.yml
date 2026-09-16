@@ -112,7 +112,7 @@ ui:
   note_nearby_from_here: from here · by distance
   note_nearby_map_aria: Map of nearby places
   note_related: 🔗 Seen together
-  note_related_sub: appeared in the same post or video
+  note_related_sub: appeared in the same post, video or broadcast
   note_related_more: "+%d more"
   note_backlinks: Notes that mention this one
   note_no_backlinks: No notes link here yet.
@@ -507,6 +507,11 @@ via:
   같은 인스타 게시물: same Instagram post
   같은 영상: same video
   같은 위버스 포스트: same Weverse post
+  같은 X 게시물: same X post
+  같은 방송: same broadcast
+  같은 날 DM: same-day DM
+  같은 날 스토리: same-day story
+  같은 출처: same source
 
 # 멤버 풀네임 (places.json 의 members 값 — 지도 필터·범례에서 사용)
 members:

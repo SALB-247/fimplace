@@ -1,5 +1,5 @@
 {%- comment -%}
-  함께 나온 장소: 같은 인스타 게시물·YouTube 영상·위버스 포스트를 쓴 다른 노트.
+  함께 나온 장소: 같은 인스타 게시물·YouTube 영상·위버스 포스트·X 게시물, 또는 같은 메모 줄(방송·DM·인스스)을 쓴 다른 노트.
   데이터는 _plugins/related_by_source.rb 가 빌드 때 주입 (page.related_by_source). 소스 종류별로 묶어 표시. JS 없음.
 {%- endcomment -%}
 {%- if page.related_by_source and page.related_by_source.size > 0 -%}
@@ -8,7 +8,7 @@
   <div class="fim-card-head">
     <h3 data-i18n="note_related">🔗 함께 나온 장소</h3>
     <span class="fim-pill i18n-count" data-n="{{ page.related_by_source_total }}">{{ page.related_by_source_total }}곳</span>
-    <span class="fim-sub" data-i18n="note_related_sub">같은 게시물·영상에 등장</span>
+    <span class="fim-sub" data-i18n="note_related_sub">같은 게시물·영상·방송에 등장</span>
   </div>
   <ul class="fim-list">
   {%- for g in groups %}
