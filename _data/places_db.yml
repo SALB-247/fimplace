@@ -31,9 +31,8 @@
   skipped: true
   reason: "모음/목차 페이지 (단일 위치 없음)"
 "2026_채원_생일_이벤트":
-  lat: 37.54935
-  lng: 126.91349
-  source: known:합정역
+  skipped: true
+  reason: "모음/목차 페이지 (단일 위치 없음)"
 "251023-251122_하이브 택시쉘터":
   lat: 37.52327
   lng: 126.96486
@@ -166,9 +165,8 @@
   lng: 139.77533818002368
   source: frontmatter
 "PUREFLOW_pt1_오프라인 이벤트 모음":
-  lat: 37.49797
-  lng: 127.02768
-  source: known:강남역
+  skipped: true
+  reason: "모음/목차 페이지 (단일 위치 없음)"
 "SNS 장소":
   skipped: true
   reason: "모음/목차 페이지 (단일 위치 없음)"
