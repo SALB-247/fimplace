@@ -11,12 +11,16 @@ coords:
   - -118.34167
 country: us
 ---
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4_aviiWqB04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <img src="https://thekiaforum.com/wp-content/uploads/2023/11/New-Forum.jpg">
 <img src="https://thekiaforum.com/wp-content/uploads/2023/11/New-Forum-2.jpg">
 
 <iframe src="https://maps.google.com/maps?q=33.95833,-118.34167&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 2025 EASY CRAZY HOT LA권 공연장 (잉글우드)
+
+영상: [Hot and fun girls meet❤️‍🔥 | LE PLAY](https://youtu.be/4_aviiWqB04) — 설명란 "Kia Forum, Inglewood, California", 백스테이지에서 KATSEYE 와 만남
 
 ## 상호명
 Kia Forum (기아 포럼) — 'Fabulous Forum'으로 불려온 LA 랜드마크

@@ -2,6 +2,7 @@
 title: NTSU 아레나
 shortid: s9jy5
 tags:
+  - 2026_PUREFLOW_TOUR
   - 2025_EASY_CRAZY_HOT_TOUR
   - 공연장
   - 타오위안
@@ -37,6 +38,7 @@ NTSU 아레나 (NTSU Arena / 國立體育大學綜合體育館, 린커우 체육
 
 | 날짜            | 공연                                         |
 | ------------- | ------------------------------------------ |
+| 2026.11.14–15 | [[2026 LE SSERAFIM TOUR 'PUREFLOW']] |
 | 2025.07.19–20 | [[2025 LE SSERAFIM TOUR 'EASY CRAZY HOT']] |
 
 ## 위치

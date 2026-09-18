@@ -7,9 +7,12 @@ tags:
   - 음식점
   - 뉴욕
   - 미국
+  - 즈하
 coords: [40.7562183, -73.9702486]
 country: us
 ---
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NbhwH2DzDG4?start=922" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 <img src="assets/weverse_4-317494141.jpg">
 
@@ -20,6 +23,8 @@ country: us
 250901 허윤진 위버스 포스트
 
 베이글 전문점
+
+영상: [뉴욕 패션위크 카즈하 브이로그](https://youtu.be/NbhwH2DzDG4?t=922) — 11:07 "예전에 멤버들이랑 먹은 베이글", 15:25~15:34 압착 틴 천장·원목 벽·'Hand-Rolled Bagels' 필기체 간판 (즈하, 2026-02)
 
 ## 상호명
 Ess-a-Bagel

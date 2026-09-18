@@ -2,6 +2,7 @@
 title: SM 몰 오브 아시아 아레나
 shortid: b8jgr
 tags:
+  - 2026_PUREFLOW_TOUR
   - 2025_EASY_CRAZY_HOT_TOUR
   - 공연장
   - 마닐라
@@ -37,6 +38,7 @@ SM 몰 오브 아시아 아레나 (SM Mall of Asia Arena) — 파사이 MOA 콤�
 
 | 날짜         | 공연                                         |
 | ---------- | ------------------------------------------ |
+| 2026.12.05–06 | [[2026 LE SSERAFIM TOUR 'PUREFLOW']] — 투어 최종 공연 |
 | 2025.08.02 | [[2025 LE SSERAFIM TOUR 'EASY CRAZY HOT']] |
 
 ## 위치
