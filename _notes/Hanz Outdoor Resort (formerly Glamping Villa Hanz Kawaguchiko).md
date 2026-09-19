@@ -22,7 +22,7 @@ country: jp
 
 LE SSERAFIM's DAY OFF Season 4 in JAPAN
 
-영상: [[DAYOFF] Season 4 in Japan EP.03](https://youtu.be/adEgbTc4LXE?t=14) — 0:14 숲속 숙소 항공 컷, 17:00 "후지산(근처)에서 맞이하는 생일". 28:00 원목 다이닝·좌식 테이블이 노트 캡쳐의 공간.
+영상: [[DAYOFF] Season 4 in Japan EP.03](https://youtu.be/adEgbTc4LXE?t=14) — 0:14 숲속 숙소 항공 컷, 17:00 생일 파티, 28:00 원목 다이닝·좌식 테이블.
 
 ## 상호명
 Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko)
@@ -33,5 +33,6 @@ Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko)
 ## [🗺️ 구글맵](https://maps.app.goo.gl/XKPdVUDmb8UU7YSLA)
 
 <!-- TODO
+□ 영상 28:00 의 원목 다이닝·좌식 테이블이 노트 캡쳐와 같은 공간
 □ 캡쳐 = DAY OFF 8:06 돔 텐트 내부, 15:25 야간 돔 텐트 외관, 22:44 원목 다이닝 — 글램핑 리조트
 -->

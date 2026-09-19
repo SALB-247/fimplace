@@ -21,7 +21,7 @@ country: mo
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d113.5515332!3d22.1183396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3401700940c0e393%3A0x78b3c7839ba57353!2sEspa%C3%A7o%20Lisboa!5e0!3m2!1sko!2skr!4v1789800000005!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-르니버스 EP.32 핌둥이 말하는대로 ★ 핌비디 바비디 부 5편 (18:33 마카오 마지막 저녁) / 231108 사쿠라 인스타 (7번) / 231109 허윤진 인스타 (3·4번) / 231120 김채원 인스타 (1·6~8번)
+르니버스 EP.32 핌둥이 말하는대로 ★ 핌비디 바비디 부 5편 (18:33 마카오 마지막 저녁) / 231108 사쿠라 인스타 / 231109 허윤진 인스타 / 231120 김채원 인스타
 
 포르투갈 음식점 — 콜로안 빌리지의 옛 저택을 개조한 마카오 대표 포르투갈 레스토랑. 르니버스 홍콩·마카오 편 마지막 식사 자리(판넬 발표)
 

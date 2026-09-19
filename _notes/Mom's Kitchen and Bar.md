@@ -20,7 +20,7 @@ tags:
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-73.990017!3d40.7624552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258513ee7c61f%3A0x4555537fd3694b2c!2sMom%27s%20Kitchen%20and%20Bar!5e0!3m2!1sko!2skr!4v1789800000015!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-250901 김채원 인스스 (즈하 동행) / 250903 카즈하 인스타 (5번)
+250901 김채원 인스스 (즈하 동행) / 250903 카즈하 인스타
 
 올데이 브런치 다이너. 헬스키친 9th Ave (W 48th St). 뉴욕 도착 다음 날 아침에 아보카도 토스트(수란)와 치킨&와플.
 ## 상호명

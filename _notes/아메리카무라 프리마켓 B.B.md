@@ -17,7 +17,7 @@ country: jp
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d135.497667!3d34.6727347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e779f25a474f%3A0x7b8fc33480fbbdd3!2z44Ki44Oh44Oq44Kr5p2R44OV44Oq44O844Oe44O844Kx44OD44OIQi5C!5e0!3m2!1sko!2skr!4v1789800000013!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-240703 사쿠라 인스타 (タイムスリップ🕰️ 4·7~9번)
+240703 사쿠라 인스타
 
 빈티지 잡화점. 아메리카무라의 레트로 토이·카메라·시계·가라케(피처폰) 만물상. 헬로키티 인형, 게임보이 카트리지, 데코덴 가라케 코너.
 

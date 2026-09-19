@@ -113,9 +113,7 @@ SNS(위버스·DM·인스타 등)에 올라온 장소 모음.
 
 ## 해외
 
-<p style="font-size:0.85em; color:var(--subtext); margin-top:-0.3em;">
-  ※ 아래 표는 노트 데이터에서 <strong>자동 생성</strong>됩니다. 해외 SNS 노트를 만들면 자동으로 나타나므로 수동 추가가 필요 없습니다.
-</p>
+<!-- 아래 표는 노트 데이터에서 자동 생성된다. 해외 SNS 노트를 만들면 자동으로 나타나므로 수동 추가가 필요 없다. -->
 
 {%- assign SNS_TAGS = "인스타,위버스,DM,멤트,틱톡,공트,위버스라이브" | split: "," -%}
 {%- assign COUNTRIES = site.data.tag_categories["국가 (라벨)"] -%}

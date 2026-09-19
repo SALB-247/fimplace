@@ -23,7 +23,7 @@ country: us
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.9446546750796!2d-73.97799619999999!3d40.763242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f9edbc1e5f%3A0x9bf1f8903ca566d9!2sErnest%20Klein%20%26%20Co&#39;s%20Gourmet%20Food!5e0!3m2!1sko!2sus!4v1780463088201!5m2!1sko!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-JEN TOUR Part.1 \| LE SSERAFIM in New York / 231223 허윤진 인스타 (1·2번, 가게 앞 꽃 매대)
+JEN TOUR Part.1 \| LE SSERAFIM in New York / 231223 허윤진 인스타
 마트털이이 식료품점
 
 ## 상호명

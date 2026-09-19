@@ -24,7 +24,7 @@ country: us
 
 베이글 전문점
 
-영상: [뉴욕 패션위크 카즈하 브이로그](https://youtu.be/NbhwH2DzDG4?t=922) — 11:07 "예전에 멤버들이랑 먹은 베이글". 15:25 압착 틴 천장·원목 벽·'Hand-Rolled Bagels' 간판. (즈하, 2026-02)
+영상: [뉴욕 패션위크 카즈하 브이로그](https://youtu.be/NbhwH2DzDG4?t=922) — 11:07 베이글 이야기, 15:25 압착 틴 천장·원목 벽·'Hand-Rolled Bagels' 간판. (즈하, 2026-02)
 
 ## 상호명
 Ess-a-Bagel

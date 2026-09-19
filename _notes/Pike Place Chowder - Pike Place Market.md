@@ -27,7 +27,7 @@ tags:
 
 250917 허윤진 인스스 / 250922 사쿠라 인스타
 
-영상: [북미 투어 조각 모음집 3 \| FIM-LOG](https://youtu.be/z0r-67R-eck?t=486) — 8:06 "'Pike Place Chowder' 여기"(줄 선 외관). 9:13 랍스터롤과 실내의 수상 기념 접시. (만채·제니퍼)
+영상: [북미 투어 조각 모음집 3 \| FIM-LOG](https://youtu.be/z0r-67R-eck?t=486) — 8:06 줄 선 외관, 9:13 랍스터롤과 실내의 수상 기념 접시. (만채·제니퍼)
 
 ## 상호명
 Pike Place Chowder - Pike Place Market

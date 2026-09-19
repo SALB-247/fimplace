@@ -21,7 +21,7 @@ country: us
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-118.2943194!3d34.0611702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c77c145ca395%3A0xd77661ed9bbaa0b8!2sImmanuel%20Presbyterian%20Church!5e0!3m2!1sko!2skr!4v1789800000011!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-LE SSERAFIM (르세라핌) 'EASY' OFFICIAL MV (240219) / 240219 사쿠라 인스타 (MAKE IT LOOK EASY 6~7번) / 240220 허윤진 인스타 (1~10번)
+LE SSERAFIM (르세라핌) 'EASY' OFFICIAL MV (240219) / 240219 사쿠라 인스타 / 240220 허윤진 인스타
 
 'EASY' MV 촬영지 — 0:16~0:40 교회 본당(네온 눈·초승달 제단, 스테인드글라스). 1928년 고딕 리바이벌 양식 장로교회, 영화·MV 로케이션으로 자주 쓰임
 

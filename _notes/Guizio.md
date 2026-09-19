@@ -24,7 +24,7 @@ tags:
 
 250902 LE_SSERAFIM 공스타
 
-영상: [Thank you for coming! 🤗 \| LE PLAY](https://youtu.be/kn4g2Nobhc4) — 0:00 '[뉴욕에서 만나는 LE SSERAFIM × GUIZIO]', 돌출 간판 'GUIZIO'. 2:30 의 꽃무늬 소파가 노트 사진의 그 소파다.
+영상: [Thank you for coming! 🤗 \| LE PLAY](https://youtu.be/kn4g2Nobhc4) — 0:00 '[뉴욕에서 만나는 LE SSERAFIM × GUIZIO]', 돌출 간판 'GUIZIO'. 2:30 꽃무늬 소파.
 
 ## 상호명
 Guizio
@@ -35,6 +35,7 @@ Guizio
 ## [🗺️ 구글맵](https://maps.google.com/?cid=15919492813194162945)
 
 <!-- TODO
+□ 영상 2:30 의 꽃무늬 소파 = 노트 사진의 소파
 □ 사진 = 250902 르세라핌 공식 인스타 스토리 아카이브 (ptkorea.com/488614): 81 Greene St 매장 앞 단체·매장 안 진열
 □ IG DOEGVVXDfGU 는 브랜드 룩북 11장 — 매장 사진 없음
 □ 출처 '250902 공스타' = 르세라핌 공식 인스타 **스토리** → 영구 URL 없음. 캡쳐 이미지를 assets/ 에 저장 후 <img> 첨부 필요
