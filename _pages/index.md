@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Home
+og_title: Fimplace | 르세라핌 장소 아카이브
+description: 르세라핌 멤버들이 다녀간 카페·음식점·촬영지·팝업을 지도와 노트로 기록하는 팬 아카이브. 국가·지역·멤버별로 장소를 찾고 관련 게시물을 확인하세요.
 id: home
 permalink: /
 ---

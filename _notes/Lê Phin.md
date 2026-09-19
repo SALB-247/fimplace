@@ -21,7 +21,7 @@ tags:
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-73.9834905!3d40.7285073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2594aea54fb53%3A0x1048557e92f895fa!2sL%C3%AA%20Phin!5e0!3m2!1sko!2skr!4v1789031183113!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 240103 허윤진 인스타
-베트남식 커피 (이스트빌리지) — [NYLON 인터뷰](https://www.nylon.com/entertainment/huh-yunjin-le-sserafim-songwriting-sza) 를 이 카페에서 진행 (2024-01-02 EST 게재)
+이스트빌리지의 베트남식 커피집. [NYLON 인터뷰](https://www.nylon.com/entertainment/huh-yunjin-le-sserafim-songwriting-sza)를 이 카페에서 했다 (2024-01-02 게재).
 
 ## 상호명
 Lê Phin

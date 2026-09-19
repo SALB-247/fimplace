@@ -24,7 +24,7 @@ tags:
 260610 사쿠라 인스타 / 260917 사쿠라 인스타
 
 ## 상호명
-ecco un poco | Natural Italian Gelato
+ecco un poco \| Natural Italian Gelato
 
 ## 위치
 8318 W 3rd St, Los Angeles, CA 90048, USA

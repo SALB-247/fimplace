@@ -26,3 +26,7 @@ Akanoren Ramen
 일본 〒106-0031 Tokyo, Minato City, Nishiazabu, 3 Chome−21−24 第五中岡ビル
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/9mw7fCCK75eRge8G7)
+
+<!-- TODO
+□ 같은 게시물(CwrSDuqvvsX) 4·6·7번 에스컬레이터 = [[국립신미술관]] (2026-09-19 등재 — 함께 보기). 9번 牛たん定食은 상호 미특정.
+-->

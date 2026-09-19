@@ -20,7 +20,7 @@ country: us
 
 260916 허윤진 인스타
 
-미술관 — 서도호 〈Jagyeong Hall, Gyeongbok Palace〉(2026, 데이비드 게펜 갤러리) · 크리스 버든 〈Urban Light〉
+미술관. 서도호 〈Jagyeong Hall, Gyeongbok Palace〉(2026, 데이비드 게펜 갤러리)와 크리스 버든 〈Urban Light〉.
 
 ## 상호명
 로스앤젤레스 카운티 미술관 (Los Angeles County Museum of Art, LACMA)

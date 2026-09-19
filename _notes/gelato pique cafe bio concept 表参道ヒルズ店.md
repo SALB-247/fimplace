@@ -18,7 +18,7 @@ country: jp
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.4094287449275!2d139.7093146!3d35.6669194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d529fbb4e13%3A0xbc26d25f96aad17f!2zZ2VsYXRvIHBpcXVlIGNhZmUg6KGo5Y-C6YGT44OS44Or44K65bqX!5e0!3m2!1sko!2sus!4v1779340629437!5m2!1sko!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-[FIM-LOG] in Japan 😎 | 유니버셜 스튜디오 재팬도 가고 쇼핑도 하고 🎢🛍️ | 행복했던 순간들 모음 💕
+[FIM-LOG] in Japan 😎 \| 유니버셜 스튜디오 재팬도 가고 쇼핑도 하고 🎢🛍️ \| 행복했던 순간들 모음 💕
 
 젤라토피케 매장 및 카페
 ## 상호명

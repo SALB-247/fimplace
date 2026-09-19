@@ -17,9 +17,9 @@ country: gb
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-2.991948!3d53.3993788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b210e4f525e15%3A0xa8aae9eb9b247b65!2sLunyalita!5e0!3m2!1sko!2skr!4v1789761000000!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-[FIM-LOG] in United Kingdom🇬🇧 | 맨체스터 유나이티드 홈구장 — 22:00~24:56
+[FIM-LOG] in United Kingdom🇬🇧 \| 맨체스터 유나이티드 홈구장 — 22:00~24:56
 
-리버풀 앨버트 독의 카탈루냐/스페인 타파스 식당 — 은채 생일 자정을 맞아 깜짝 위버스 라이브를 켜고 타파스와 파에야로 저녁. 같은 건물 [[비틀즈 스토리]] 로 바로 이동
+리버풀 앨버트 독의 스페인·카탈루냐 타파스 식당. 은채 생일 자정에 깜짝 위버스 라이브를 켜고 타파스와 파에야로 저녁을 먹었다. 같은 건물의 [[비틀즈 스토리]] 로 바로 이동.
 
 ## 상호명
 Lunyalita (루냐리타) — Lunya 계열 카탈루냐 레스토랑·델리

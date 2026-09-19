@@ -26,3 +26,7 @@ Kitsuneya
 4 Chome-9-12 Tsukiji, Chuo City, Tokyo 104-0045 일본
 
 ## [🗺️ 구글맵](https://maps.app.goo.gl/2nqqtnwraQ3ExEGSA)
+
+<!-- TODO
+□ 원본 게시물 = 사쿠라 231128 IG `C0MduVRydLT` (가족여행☺️). 같은 게시물 1·2번 = [[다이칸야마 츠타야 서점]] (2026-09-19 등재 — 함께 보기).
+-->

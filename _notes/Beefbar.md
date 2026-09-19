@@ -24,7 +24,7 @@ tags:
 
 260305 홍은채 인스타
 
-파리에서 1박 3일 🥐 EUNCHAE FW26 Paris Fashion Week Vlog | with courreges (9:15~)
+파리에서 1박 3일 🥐 EUNCHAE FW26 Paris Fashion Week Vlog \| with courreges (9:15~)
 ## 상호명
 Beefbar Paris
 

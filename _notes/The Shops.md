@@ -19,7 +19,7 @@ country: us
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7794.265874267192!2d-74.00793962977474!3d40.750840087717684!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259005ca10cc9%3A0xa7d59db90e349c94!2sThe%20Shops!5e0!3m2!1sko!2sus!4v1780467863863!5m2!1sko!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-Long time no see NY!!!!!!!! ✈️ | 북미 투어 르세라핌 조각 모음집 🫶 | FIM-LOG
+Long time no see NY!!!!!!!! ✈️ \| 북미 투어 르세라핌 조각 모음집 🫶 \| FIM-LOG
 
 쇼핑 (콜럼버스 서클 쇼핑몰)
 

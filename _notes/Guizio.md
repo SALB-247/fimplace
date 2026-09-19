@@ -24,7 +24,7 @@ tags:
 
 250902 LE_SSERAFIM 공스타
 
-영상: [Thank you for coming! 🤗 | LE PLAY](https://youtu.be/kn4g2Nobhc4) — 0:00 '[뉴욕에서 만나는 LE SSERAFIM × GUIZIO]', 돌출 간판 'GUIZIO', 2:30 꽃무늬 소파 = 노트 사진 소파
+영상: [Thank you for coming! 🤗 \| LE PLAY](https://youtu.be/kn4g2Nobhc4) — 0:00 '[뉴욕에서 만나는 LE SSERAFIM × GUIZIO]', 돌출 간판 'GUIZIO'. 2:30 의 꽃무늬 소파가 노트 사진의 그 소파다.
 
 ## 상호명
 Guizio

@@ -33,12 +33,14 @@
   <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
   <meta property="og:image" content="{{ og_image_url }}">
 
-  {% if page.title %}
-    <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:type" content="article">
-  {% else %}
-    <meta property="og:title" content="{{ site.title }}">
+  {% comment %}og_title: 페이지가 공유 제목을 따로 주면(홈 = "Fimplace | 르세라핌 장소 아카이브") 그걸 쓴다. 노트는 제목 그대로.{% endcomment %}
+  {% assign og_title = page.og_title | default: page.title | default: site.title %}
+  {% if page.id == "home" or page.title == nil %}
+    <meta property="og:title" content="{{ og_title }}">
     <meta property="og:type" content="website">
+  {% else %}
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:type" content="article">
   {% endif %}
 
   {%- comment -%}
@@ -56,7 +58,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:title" content="{{ og_title }}">
   <meta name="twitter:description" content="{{ og_description }}">
   <meta name="twitter:image" content="{{ og_image_url }}">
 
@@ -79,7 +81,7 @@
 
   <title>
     {% if page.id == "home" %}
-      {{ site.title }}
+      {{ og_title }}
     {% else %}
       {{ page.title }} &mdash; {{ site.title }}
     {% endif %}

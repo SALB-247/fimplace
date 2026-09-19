@@ -18,7 +18,7 @@ country: us
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-73.9819629!3d40.7466662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590793d5e1cb%3A0xd689287d3cdf4955!2sWolfgang%27s%20Steakhouse%20Park%20Avenue!5e0!3m2!1sko!2skr!4v1789760000000!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-모든 순간이 아름다운 뉴욕 패션위크 카즈하✨ 26F/W New York Fashion Week Vlog | with KHAITE (260331)
+모든 순간이 아름다운 뉴욕 패션위크 카즈하✨ 26F/W New York Fashion Week Vlog \| with KHAITE (260331)
 
 스테이크하우스 — 뉴욕 패션위크 중 즈하의 스테이크 저녁 (식전 빵, 스테이크, 후추 대신 소금 쓰는 팁)
 

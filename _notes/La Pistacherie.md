@@ -25,7 +25,7 @@ tags:
 
 260305 홍은채 인스타
 
-파리에서 1박 3일 🥐 EUNCHAE FW26 Paris Fashion Week Vlog | with courreges (10:40~)
+파리에서 1박 3일 🥐 EUNCHAE FW26 Paris Fashion Week Vlog \| with courreges (10:40~)
 ## 상호명
 La Pistacherie
 

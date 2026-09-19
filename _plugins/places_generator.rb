@@ -50,6 +50,7 @@ module PlacesGenerator
     '센다이'     => '미야기현',
     '사이타마현' => '사이타마현',
     '시즈오카현' => '시즈오카현',
+    '지바현'     => '지바현',
     '요코하마'   => '카나가와현'
   }
   JP_REGION_KEYS_SORTED = JP_REGION_ALIAS.keys.sort_by { |k| -k.length }

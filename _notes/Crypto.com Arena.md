@@ -11,11 +11,19 @@ coords:
   - -118.267222
 country: us
 ---
+<iframe src="https://www.instagram.com/p/DdYQ54rFIA2/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
+<iframe src="https://www.instagram.com/p/DdYcqOeG-rv/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
+<iframe src="https://www.instagram.com/p/Ddbqno0m1Pf/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
+
+<img src="assets/ig_DdYQ54rFIA2_01.jpg">
+<img src="assets/ig_DdYQ54rFIA2_02.jpg">
 <img src="https://www.cryptoarena.com/assets/img/CA_Default_Thumbnail-4e702259d7.jpg">
 
 <iframe src="https://maps.google.com/maps?q=34.043056,-118.267222&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-2026 LE SSERAFIM TOUR 'PUREFLOW' 북미 레그 개막 공연장
+260917 허윤진 인스타 / 260917 카즈하 인스타 / 260918 김채원 인스타
+
+2026 LE SSERAFIM TOUR 'PUREFLOW' 북미 레그 개막 공연장. 공연 다음 날 멤버들이 전광판 앞 사진과 레이커스 유니폼 단체컷을 올렸다.
 
 ## 상호명
 Crypto.com Arena (크립토닷컴 아레나)

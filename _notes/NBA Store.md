@@ -22,11 +22,14 @@ country: us
 
 <img src="assets/videoframe_445832.png">
 
+<iframe src="https://www.instagram.com/p/CzFmgbzNUIl/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
+<img src="assets/ig_CzFmgbzNUIl_01.jpg">
+
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48356.92469938937!2d-74.03244309634907!3d40.75525455762209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fe256904cd%3A0x810f9421c5190411!2sNBA%20Store!5e0!3m2!1sko!2sus!4v1780466346161!5m2!1sko!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 EPISODE LE SSERAFIM Perfect Night 북미 활동 Behind
 
-NBA 공식 스토어 방문
+NBA 공식 스토어 방문 / 231101 사쿠라 인스타 (Let’s play gaaaaaame — @nbastore 태그, 저지 벽·농구공 벽 앞)
 
 ## 상호명
 NBA Store

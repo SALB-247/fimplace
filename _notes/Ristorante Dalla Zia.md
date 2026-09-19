@@ -18,9 +18,9 @@ country: it
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d9.1980917!3d45.4827083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6ce5185a4f9%3A0x6e0f414e12e32b!2sDalla%20Zia!5e0!3m2!1sko!2skr!4v1789774000000!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-굿모닝 밀라노🎵 HUH YUNJIN 26F/W Milan Fashion Week Vlog | with FENDI (260427) — 12:37~14:50
+굿모닝 밀라노🎵 HUH YUNJIN 26F/W Milan Fashion Week Vlog \| with FENDI (260427) — 12:37~14:50
 
-토스카나 요리 트라토리아(1968년 개업, 가족 운영) — 밀라노 도착 첫 식사(2026-02-24, FENDI 쇼 전날): 크로스티니·타르타르, 호박 프리텔레, 파스타, 레어 스테이크, 티라미수, 크렘 브륄레. 밀라노 중앙역 남서쪽 약 450m
+토스카나 요리 트라토리아 (1968년 개업, 가족 운영). 밀라노에 도착한 날 저녁 (2026-02-24, FENDI 쇼 전날). 크로스티니·타르타르, 호박 프리텔레, 파스타, 스테이크, 티라미수, 크렘 브륄레. 밀라노 중앙역에서 남서쪽으로 약 450m.
 
 같은 영상: [[밀라노 대성당]] · [[Ristorante Stendhal Brera]] (은채와의 저녁, 23:36~)
 

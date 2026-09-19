@@ -23,9 +23,9 @@ tags:
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d121.5190324!3d25.0552929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a920425f48c7%3A0xb592247fe9737860!2sLazyDer%E6%87%B6%E5%BE%97%E9%81%B8%E7%89%A9%2FLZD%20Vintage%20%26%20Used%20Select%20Shop!5e0!3m2!1sko!2skr!4v1789031183079!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-공주의 변신! 궁금하면 어서 와~ 💞 | Makeup Swap
+공주의 변신! 궁금하면 어서 와~ 💞 \| Makeup Swap
 
-시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ | Ximending Date (5:45~)
+시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ \| Ximending Date (5:45~)
 ## 상호명
 LazyDer懶得選物/LZD Vintage & Used Select Shop｜古著、二手、選物
 

@@ -21,7 +21,7 @@ tags:
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d121.5188856!3d25.0554109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a90001a0e375%3A0x9e63927e13f0ce00!2sTart%20Club%20%E8%9B%8B%E5%A1%94%E4%BF%B1%E6%A8%82%E9%83%A8!5e0!3m2!1sko!2skr!4v1789031183082!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ | Ximending Date
+시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ \| Ximending Date
 
 ## 상호명
 Tart Club 蛋塔俱樂部

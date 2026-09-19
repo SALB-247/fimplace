@@ -10,7 +10,7 @@ country: sg
 ---
 <iframe src="https://maps.google.com/maps?q=1.3326758,103.9568927&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-2026 LE SSERAFIM TOUR 'PUREFLOW' 싱가포르 공연장 — 2025년 [[싱가포르 실내경기장]] 과는 **다른 장소**
+2026 LE SSERAFIM TOUR 'PUREFLOW' 싱가포르 공연장. 2025년의 [[싱가포르 실내경기장]] 과는 **다른 곳**이다.
 
 ## 상호명
 Apex @ EXPO — 싱가포르 엑스포(Singapore EXPO) 1홀에 새로 만든 상설 공연장

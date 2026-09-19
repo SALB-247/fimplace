@@ -25,7 +25,7 @@ tags:
 
 251001 카즈하 인스타
 
-영상: [알차게 즐긴 마지막 day off 모아옴 | 북미 투어 조각 모음집 3 | FIM-LOG](https://youtu.be/z0r-67R-eck?t=13) — 썸머즈(채원·즈하) 식사, 파라솔·간판 'SEASIDE' (1:18·1:38)
+영상: [알차게 즐긴 마지막 day off 모아옴 \| 북미 투어 조각 모음집 3 \| FIM-LOG](https://youtu.be/z0r-67R-eck?t=13) — 채원·즈하의 식사. 1:18·1:38 에 파라솔과 'SEASIDE' 간판.
 
 ## 상호명
 Seaside on the Pier

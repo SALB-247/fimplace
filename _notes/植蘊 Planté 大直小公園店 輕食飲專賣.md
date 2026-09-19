@@ -19,7 +19,7 @@ tags:
 <img src="assets/vf_BDCIizloBKg_228.jpg">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d121.5570901!3d25.0818537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ad2db212f1bd%3A0x2dd0e2a7f29e6aa4!2s%E6%A4%8D%E8%98%8A%20Plant%C3%A9%20%E5%A4%A7%E7%9B%B4%E5%B0%8F%E5%85%AC%E5%9C%92%E5%BA%97%20%E8%BC%95%E9%A3%9F%E9%A3%B2%E5%B0%88%E8%B3%A3!5e0!3m2!1sko!2skr!4v1789031183085!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-타이베이 지우펀 여행, 싱가포르 블랙페퍼 크랩👀 미라클 모닝까지 갓생 투어 보여준다🔥 | 아시아 투어 르세라핌 조각 모음집🫶 | FIM-LOG
+타이베이 지우펀 여행, 싱가포르 블랙페퍼 크랩👀 미라클 모닝까지 갓생 투어 보여준다🔥 \| 아시아 투어 르세라핌 조각 모음집🫶 \| FIM-LOG
 
 ## 상호명
 植蘊 Planté 大直小公園店 輕食飲專賣

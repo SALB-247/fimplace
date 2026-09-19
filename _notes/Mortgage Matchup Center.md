@@ -23,7 +23,7 @@ Mortgage Matchup Center (모기지 매치업 센터, 구 Footprint Center)
 
 ## 공연장 정보
 - 수용 규모: 콘서트(인더라운드) 최대 약 17,716석 (농구 17,071석) — NBA 피닉스 선즈 홈구장
-- 개관: 1992년 6월 — 명칭 변천 잦음: America West Arena(1992) → US Airways Center(2006) → Talking Stick Resort Arena(2015) → Phoenix Suns Arena(2020) → Footprint Center(2021) → **Mortgage Matchup Center(2025.10–)**
+- 개관: 1992년 6월. 이름이 자주 바뀌었다 — America West Arena(1992) → US Airways Center(2006) → Talking Stick Resort Arena(2015) → Phoenix Suns Arena(2020) → Footprint Center(2021) → **Mortgage Matchup Center(2025.10~)**
 - 운영: Phoenix Arena Development L.P. (소유: 피닉스시)
 
 ## 교통

@@ -20,7 +20,7 @@ country: us
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-122.3411747!3d47.6088785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906b4d6df0ebcb%3A0x80c2d2f97a7f77fa!2sTiny%27s%20Organic!5e0!3m2!1sko!2skr!4v1789760000000!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-알차게 즐긴 마지막 day off 모아옴 😆 | 북미 투어 조각 모음집 3 🫶 | FIM-LOG (260129)
+알차게 즐긴 마지막 day off 모아옴 😆 \| 북미 투어 조각 모음집 3 🫶 \| FIM-LOG (260129)
 
 애플 사이다 가판 (파이크 플레이스 마켓 정문 앞 빨간 천막) — 치즈가 품절되자 사이다를 마시러 감. 윤진 라벤더, 사쿠라·은채도 한 잔, 사쿠라 블루베리 추가
 

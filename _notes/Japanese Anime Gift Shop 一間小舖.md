@@ -19,7 +19,7 @@ tags:
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d121.8433844!3d25.1092002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x345d4579632d7cc3%3A0x6f136d263bb7b2c8!2sJapanese%20Anime%20Gift%20Shop%20%E4%B8%80%E9%96%93%E5%B0%8F%E8%88%96!5e0!3m2!1sko!2skr!4v1789031183079!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-타이베이 지우펀 여행, 싱가포르 블랙페퍼 크랩👀 미라클 모닝까지 갓생 투어 보여준다🔥 | 아시아 투어 르세라핌 조각 모음집🫶 | FIM-LOG
+타이베이 지우펀 여행, 싱가포르 블랙페퍼 크랩👀 미라클 모닝까지 갓생 투어 보여준다🔥 \| 아시아 투어 르세라핌 조각 모음집🫶 \| FIM-LOG
 
 ## 상호명
 Japanese Anime Gift Shop 一間小舖

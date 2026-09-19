@@ -17,7 +17,7 @@ LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE
 <img src="assets/1741658799.jpg">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gghmhzwB6sU?si=35cUX255zdepnvMh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-영상: [[LE▶️PLAY] LE SSERAFIM in THE HOT HOUSE](https://youtu.be/IQl0OzbUguo) — 0:00 "[이곳은 LE SSERAFIM 2025 S/S POP UP - 'THE HOT HOUSE']", 성수 팝업 방문 후기 (전원)
+영상: [[LE▶️PLAY] LE SSERAFIM in THE HOT HOUSE](https://youtu.be/IQl0OzbUguo) — 0:00 "[이곳은 LE SSERAFIM 2025 S/S POP UP - 'THE HOT HOUSE']". 성수 팝업 방문 후기. (전원)
 
 ## **LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE**  
 
