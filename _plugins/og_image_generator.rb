@@ -9,6 +9,8 @@
 #   4) 기본 OG 이미지로 fallback
 #   + og:image:width/height 를 실제 픽셀값으로 (image_width / image_height 주입)
 
+require 'cgi'
+
 module OgImage
   IMG_MD_REGEX  = /!\[[^\]]*\]\(([^)\s]+)/
   IMG_HTML_REGEX = /<img[^>]*src=["']([^"']+)/i
@@ -69,6 +71,18 @@ module OgImage
     return nil if img.nil? || img.include?('://')
     File.join(site.source, img.sub(%r{^/}, ''))
   end
+
+  # 큰 원본은 og:image 로 못 쓴다 (카톡·X 스크래퍼는 5MB 안팎이 한도). _data/web_images.yml 에
+  # og 변형(≤1200px jpg)이 있으면 그 경로와 크기를 돌려준다. 없으면 원본 그대로.
+  def self.og_variant(site, img)
+    return [img, nil] if img.nil? || img.include?('://')
+    name = img.sub(%r{^/?assets/}, '')
+    return [img, nil] if name == img
+    manifest = site.data['web_images'] || {}
+    info = manifest[name] || manifest[CGI.unescape(name)]
+    return [img, nil] unless info && info['og']
+    ["assets/#{info['og']}", [info['ogw'], info['ogh']]]
+  end
 end
 
 Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
@@ -79,9 +93,13 @@ Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
   end
   img = doc.data['image']
   next unless img
+  img, vdim = OgImage.og_variant(site, img)
+  doc.data['image'] = img
   # 로컬 파일이면 실제 픽셀 크기, YouTube hqdefault 는 480x360 고정
   if img.include?('i.ytimg.com/vi/')
     doc.data['image_width'], doc.data['image_height'] = 480, 360
+  elsif vdim
+    doc.data['image_width'], doc.data['image_height'] = vdim
   elsif (dim = OgImage.dimensions(OgImage.local_path(site, img)))
     doc.data['image_width'], doc.data['image_height'] = dim
     # 공백 등이 든 파일명은 og:image URL 에서 깨지므로 인코딩 (head.html 은 값을 그대로 씀)

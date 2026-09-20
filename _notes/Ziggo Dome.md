@@ -26,7 +26,7 @@ Ziggo Dome (지고 돔)
 - 소유: Black Box Real Estate
 
 ## 교통
-- ✈️ 스히폴 공항: NS 기차 직행 → **Amsterdam Bijlmer ArenA역** 약 13–16분 → 도보 약 5분 (공식 안내: "스히폴에서 빠르게 도달")
+- ✈️ 스히폴 공항: NS 기차 직행 → **Amsterdam Bijlmer ArenA역** 약 13–16분 → 도보 약 5분
 - 🚉 **Amsterdam Bijlmer ArenA역** (NS 기차 + 메트로 50·54호선 + 버스) — 도보 약 5분
 
 ### 🚶 약도 — Bijlmer ArenA역 → Ziggo Dome (도보 약 5분)

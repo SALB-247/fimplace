@@ -15,7 +15,7 @@ country: jp
 <img src="assets/vf_hYoByDW1ZAI_604.jpg">
 <img src="assets/vf_hYoByDW1ZAI_613.jpg">
 
-<iframe src="https://maps.google.com/maps?q=35.7279929,139.7647764&z=18&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d139.7647764!3d35.7279929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188dd198c64aed%3A0x42eca924b943f0be!2sYANESEN%20Tourist%20Information%20%26%20Culture%20Center!5e0!3m2!1sko!2skr!4v1789909236367!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 [FIM-LOG] 여름이었다…☀️ 청량 르세라핌의 하루 몰아보기 — 7:54~10:20
 

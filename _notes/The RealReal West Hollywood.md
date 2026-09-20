@@ -19,7 +19,7 @@ country: us
 
 260919 허윤진 인스타
 
-멜로즈 애비뉴의 명품 리세일 매장. 윤진은 여기서 피어나를 만났다고 썼다("i met a fearnot here it was a cool encounter").
+멜로즈 애비뉴의 명품 리세일 매장. 윤진은 여기서 피어나를 만났다.
 
 ## 상호명
 The RealReal (West Hollywood)

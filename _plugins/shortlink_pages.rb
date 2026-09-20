@@ -49,7 +49,12 @@ module Shortlinks
         target_abs  = "#{site_url}#{target_path}"       # 절대 URL (canonical/og:url 용)
         title       = note.data['title'].to_s.gsub('"', '&quot;')
         img_src     = note.data['image'] || Shortlinks.pick_image(note.content) || default_og
-        og_img_url  = Shortlinks.absolutize(img_src, site)
+        og_w, og_h  = 1200, 630
+        if defined?(OgImage) && OgImage.respond_to?(:og_variant)
+          img_src, vdim = OgImage.og_variant(site, img_src)   # 큰 원본 → og 변형 (jpg)
+          og_w, og_h = vdim if vdim
+        end
+        og_img_url  = Shortlinks.absolutize(img_src.gsub(' ', '%20'), site)
 
         # safe JS string-literal escape: 백슬래시 → 작은따옴표 순서로
         js_target = target_path.gsub('\\', '\\\\').gsub("'", "\\'")
@@ -65,8 +70,8 @@ module Shortlinks
           <meta property="og:type" content="article">
           <meta property="og:url" content="#{target_abs}">
           <meta property="og:image" content="#{og_img_url}">
-          <meta property="og:image:width" content="1200">
-          <meta property="og:image:height" content="630">
+          <meta property="og:image:width" content="#{og_w}">
+          <meta property="og:image:height" content="#{og_h}">
           <meta property="og:locale" content="ko_KR">
           <meta property="og:site_name" content="#{site.config['title']}">
           <meta name="twitter:card" content="summary_large_image">

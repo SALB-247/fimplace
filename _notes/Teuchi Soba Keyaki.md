@@ -7,13 +7,13 @@ tags:
   - 도쿄
   - 일본
   - 꾸라
-coords: 35.660658549958086, 139.72920112722525
+coords: [35.6606612, 139.7292024]
 country: jp
 ---
 
 <img src="assets/keyaki.jpg">
 
-<iframe src="https://maps.google.com/maps?q=35.660658549958086,139.72920112722525&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d139.7292024!3d35.6606612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b6e7e1f65d1%3A0x690468e5f4ed8b43!2sTeuchi%20Soba%20Keyaki!5e0!3m2!1sko!2skr!4v1789909236367!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 260802 [꾸라 인스타](https://www.instagram.com/p/DbiRJLiE2MF)  
 

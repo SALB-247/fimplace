@@ -1,0 +1,1967 @@
+# 웹용 변형 이미지 매니페스트 (scripts/make_web_images.py 생성 — 손으로 고치지 말 것)
+# responsive_images.rb 가 <img src="assets/원본"> 을 d/m 변형으로, og_image_generator.rb 가 og:image 를 og 변형으로 바꾼다
+"1741095433 (2).jpg":
+  d: "m/1741095433_2_4c80f3_1600.webp"
+  dw: 591
+  dh: 1600
+  m: "m/1741095433_2_4c80f3_1200.webp"
+  mw: 443
+  mh: 1200
+"1741108756.webp":
+  d: "m/1741108756_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/1741108756_1200.webp"
+  mw: 960
+  mh: 1200
+"1741658799.jpg":
+  d: "m/1741658799_1600.webp"
+  dw: 583
+  dh: 1600
+  m: "m/1741658799_1200.webp"
+  mw: 437
+  mh: 1200
+"1741677954 (1).jpg":
+  d: "m/1741677954_1_25fc67_1600.webp"
+  dw: 406
+  dh: 1600
+  m: "m/1741677954_1_25fc67_1200.webp"
+  mw: 304
+  mh: 1200
+"1741677954.jpg":
+  d: "m/1741677954_1600.webp"
+  dw: 476
+  dh: 1600
+  m: "m/1741677954_1200.webp"
+  mw: 357
+  mh: 1200
+"1746194860 (1).png":
+  d: "m/1746194860_1_9636ac_1600.webp"
+  dw: 850
+  dh: 443
+"1752490125 (2).jpg":
+  d: "m/1752490125_2_b204b6_1600.webp"
+  dw: 436
+  dh: 1600
+  m: "m/1752490125_2_b204b6_1200.webp"
+  mw: 327
+  mh: 1200
+"1755695828.png":
+  d: "m/1755695828_1600.webp"
+  dw: 850
+  dh: 443
+"1759629100.gif":
+  v: "m/1759629100.mp4"
+  poster: "m/1759629100_poster.jpg"
+  vw: 1080
+  vh: 1080
+  og: "m/1759629100_poster.jpg"
+  ogw: 1080
+  ogh: 1080
+"1761730055.png":
+  d: "m/1761730055_1600.webp"
+  dw: 850
+  dh: 478
+"1769180048-1.png":
+  d: "m/1769180048-1_1600.webp"
+  dw: 651
+  dh: 1173
+"1773320284.jpg":
+  d: "m/1773320284_1600.webp"
+  dw: 360
+  dh: 1600
+  m: "m/1773320284_1200.webp"
+  mw: 270
+  mh: 1200
+"1774104493.png":
+  d: "m/1774104493_1600.webp"
+  dw: 868
+  dh: 875
+"1776338787.png":
+  d: "m/1776338787_1600.webp"
+  dw: 850
+  dh: 548
+"1779179453.jpg":
+  d: "m/1779179453_1600.webp"
+  dw: 1024
+  dh: 1365
+  m: "m/1779179453_1200.webp"
+  mw: 900
+  mh: 1200
+"1784373990.png":
+  d: "m/1784373990_1600.webp"
+  dw: 850
+  dh: 523
+"1784373991.png":
+  d: "m/1784373991_1600.webp"
+  dw: 850
+  dh: 892
+"250413_GEB.png":
+  d: "m/250413_GEB_1600.webp"
+  dw: 899
+  dh: 1600
+  m: "m/250413_GEB_1200.webp"
+  mw: 674
+  mh: 1200
+  og: "m/250413_GEB_og.jpg"
+  ogw: 674
+  ogh: 1200
+"250603_1.png":
+  d: "m/250603_1_1600.webp"
+  dw: 1600
+  dh: 1448
+  m: "m/250603_1_1200.webp"
+  mw: 1200
+  mh: 1086
+"250603_5.png":
+  d: "m/250603_5_1600.webp"
+  dw: 1257
+  dh: 562
+  m: "m/250603_5_1200.webp"
+  mw: 1200
+  mh: 537
+"250603_6.png":
+  d: "m/250603_6_1600.webp"
+  dw: 1255
+  dh: 977
+  m: "m/250603_6_1200.webp"
+  mw: 1200
+  mh: 934
+"250603_7.png":
+  d: "m/250603_7_1600.webp"
+  dw: 1600
+  dh: 1204
+  m: "m/250603_7_1200.webp"
+  mw: 1200
+  mh: 903
+  og: "m/250603_7_og.jpg"
+  ogw: 1200
+  ogh: 903
+"250617_1.png":
+  d: "m/250617_1_1600.webp"
+  dw: 1600
+  dh: 843
+  m: "m/250617_1_1200.webp"
+  mw: 1200
+  mh: 632
+  og: "m/250617_1_og.jpg"
+  ogw: 1200
+  ogh: 632
+"250617_2.png":
+  d: "m/250617_2_1600.webp"
+  dw: 1600
+  dh: 950
+  m: "m/250617_2_1200.webp"
+  mw: 1200
+  mh: 712
+  og: "m/250617_2_og.jpg"
+  ogw: 1200
+  ogh: 712
+"250617_4.png":
+  d: "m/250617_4_1600.webp"
+  dw: 1600
+  dh: 836
+  m: "m/250617_4_1200.webp"
+  mw: 1200
+  mh: 627
+"250617_5.png":
+  d: "m/250617_5_1600.webp"
+  dw: 1600
+  dh: 851
+  m: "m/250617_5_1200.webp"
+  mw: 1200
+  mh: 638
+"250617_6.png":
+  d: "m/250617_6_1600.webp"
+  dw: 696
+  dh: 1366
+  m: "m/250617_6_1200.webp"
+  mw: 611
+  mh: 1200
+"250708_.png":
+  d: "m/250708_8017fc_1600.webp"
+  dw: 942
+  dh: 1239
+  m: "m/250708_8017fc_1200.webp"
+  mw: 912
+  mh: 1200
+  og: "m/250708_8017fc_og.jpg"
+  ogw: 912
+  ogh: 1200
+"250710.png":
+  d: "m/250710_1600.webp"
+  dw: 757
+  dh: 930
+"251018.png":
+  d: "m/251018_1600.webp"
+  dw: 826
+  dh: 611
+"251125-1.png":
+  d: "m/251125-1_1600.webp"
+  dw: 1600
+  dh: 864
+  m: "m/251125-1_1200.webp"
+  mw: 1200
+  mh: 648
+"251125.png":
+  d: "m/251125_1600.webp"
+  dw: 1269
+  dh: 1128
+  m: "m/251125_1200.webp"
+  mw: 1200
+  mh: 1067
+"251226.png":
+  d: "m/251226_1600.webp"
+  dw: 868
+  dh: 1171
+  og: "m/251226_og.jpg"
+  ogw: 868
+  ogh: 1171
+"251226_1.png":
+  d: "m/251226_1_1600.webp"
+  dw: 1600
+  dh: 883
+  m: "m/251226_1_1200.webp"
+  mw: 1200
+  mh: 662
+"260124-1.png":
+  d: "m/260124-1_1600.webp"
+  dw: 1014
+  dh: 1261
+  m: "m/260124-1_1200.webp"
+  mw: 965
+  mh: 1200
+"260124-3.png":
+  d: "m/260124-3_1600.webp"
+  dw: 614
+  dh: 457
+"260222_c1.png":
+  d: "m/260222_c1_1600.webp"
+  dw: 1522
+  dh: 875
+  m: "m/260222_c1_1200.webp"
+  mw: 1200
+  mh: 690
+"260222_c2.png":
+  d: "m/260222_c2_1600.webp"
+  dw: 1522
+  dh: 875
+  m: "m/260222_c2_1200.webp"
+  mw: 1200
+  mh: 690
+"260222_c3.png":
+  d: "m/260222_c3_1600.webp"
+  dw: 1522
+  dh: 875
+  m: "m/260222_c3_1200.webp"
+  mw: 1200
+  mh: 690
+"260222_c4.png":
+  d: "m/260222_c4_1600.webp"
+  dw: 1522
+  dh: 875
+  m: "m/260222_c4_1200.webp"
+  mw: 1200
+  mh: 690
+  og: "m/260222_c4_og.jpg"
+  ogw: 1200
+  ogh: 690
+"260422_1.png":
+  d: "m/260422_1_1600.webp"
+  dw: 1481
+  dh: 1358
+  m: "m/260422_1_1200.webp"
+  mw: 1200
+  mh: 1100
+  og: "m/260422_1_og.jpg"
+  ogw: 1200
+  ogh: 1100
+"260422_2.png":
+  d: "m/260422_2_1600.webp"
+  dw: 889
+  dh: 880
+"260423_1.png":
+  d: "m/260423_1_1600.webp"
+  dw: 1481
+  dh: 1358
+  m: "m/260423_1_1200.webp"
+  mw: 1200
+  mh: 1100
+  og: "m/260423_1_og.jpg"
+  ogw: 1200
+  ogh: 1100
+"260423_2.png":
+  d: "m/260423_2_1600.webp"
+  dw: 1600
+  dh: 1110
+  m: "m/260423_2_1200.webp"
+  mw: 1200
+  mh: 832
+"260424-1.png":
+  d: "m/260424-1_1600.webp"
+  dw: 1116
+  dh: 852
+"260424-2.png":
+  d: "m/260424-2_1600.webp"
+  dw: 1216
+  dh: 1373
+  m: "m/260424-2_1200.webp"
+  mw: 1063
+  mh: 1200
+"260424-3.png":
+  d: "m/260424-3_1600.webp"
+  dw: 1167
+  dh: 1511
+  m: "m/260424-3_1200.webp"
+  mw: 927
+  mh: 1200
+"260427_2.png":
+  d: "m/260427_2_1600.webp"
+  dw: 967
+  dh: 1117
+"260430_4.png":
+  d: "m/260430_4_1600.webp"
+  dw: 675
+  dh: 572
+"260514_1.png":
+  d: "m/260514_1_1600.webp"
+  dw: 1328
+  dh: 1090
+  m: "m/260514_1_1200.webp"
+  mw: 1200
+  mh: 985
+  og: "m/260514_1_og.jpg"
+  ogw: 1200
+  ogh: 985
+"260531.png":
+  d: "m/260531_1600.webp"
+  dw: 1600
+  dh: 1017
+  m: "m/260531_1200.webp"
+  mw: 1200
+  mh: 763
+"260603.png":
+  d: "m/260603_1600.webp"
+  dw: 1600
+  dh: 1306
+  m: "m/260603_1200.webp"
+  mw: 1200
+  mh: 979
+  og: "m/260603_og.jpg"
+  ogw: 1200
+  ogh: 979
+"FEARNADA_2024_SS_Poster_29.webp":
+  d: "m/FEARNADA_2024_SS_Poster_29_1600.webp"
+  dw: 1130
+  dh: 1600
+  m: "m/FEARNADA_2024_SS_Poster_29_1200.webp"
+  mw: 848
+  mh: 1200
+  og: "m/FEARNADA_2024_SS_Poster_29_og.jpg"
+  ogw: 848
+  ogh: 1200
+"FSL_Card.jpeg":
+  d: "m/FSL_Card_1600.webp"
+  dw: 692
+  dh: 1600
+  m: "m/FSL_Card_1200.webp"
+  mw: 519
+  mh: 1200
+"FoQEnb3aAAI7zgb.jpg":
+  d: "m/FoQEnb3aAAI7zgb_1600.webp"
+  dw: 1201
+  dh: 1600
+  m: "m/FoQEnb3aAAI7zgb_1200.webp"
+  mw: 900
+  mh: 1200
+"FsDYlu7agAE7_QP.jpg":
+  d: "m/FsDYlu7agAE7_QP_1600.webp"
+  dw: 1600
+  dh: 1067
+  m: "m/FsDYlu7agAE7_QP_1200.webp"
+  mw: 1200
+  mh: 800
+"G0KJRFebMAAckIJ.jpg":
+  d: "m/G0KJRFebMAAckIJ_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0KJRFebMAAckIJ_1200.webp"
+  mw: 848
+  mh: 1200
+"G0S_SmRbkAA3mpz.jpg":
+  d: "m/G0S_SmRbkAA3mpz_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0S_SmRbkAA3mpz_1200.webp"
+  mw: 848
+  mh: 1200
+"G0S_SnkbYAAF-oQ.jpg":
+  d: "m/G0S_SnkbYAAF-oQ_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0S_SnkbYAAF-oQ_1200.webp"
+  mw: 848
+  mh: 1200
+"G0U49AZbgAAZF0r.jpg":
+  d: "m/G0U49AZbgAAZF0r_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0U49AZbgAAZF0r_1200.webp"
+  mw: 848
+  mh: 1200
+"G0U6QR6aMAIQHVs.jpg":
+  d: "m/G0U6QR6aMAIQHVs_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0U6QR6aMAIQHVs_1200.webp"
+  mw: 848
+  mh: 1200
+"G0jtieYaMAEU9zs.jpg":
+  d: "m/G0jtieYaMAEU9zs_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0jtieYaMAEU9zs_1200.webp"
+  mw: 848
+  mh: 1200
+"G0jtienbgAAUZA5.jpg":
+  d: "m/G0jtienbgAAUZA5_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/G0jtienbgAAUZA5_1200.webp"
+  mw: 848
+  mh: 1200
+"G2PrW6oboAAA3Hl.jpg":
+  d: "m/G2PrW6oboAAA3Hl_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/G2PrW6oboAAA3Hl_1200.webp"
+  mw: 1200
+  mh: 675
+"G4KF0FTWgAAM4cs.jpg":
+  d: "m/G4KF0FTWgAAM4cs_1600.webp"
+  dw: 366
+  dh: 1600
+  m: "m/G4KF0FTWgAAM4cs_1200.webp"
+  mw: 274
+  mh: 1200
+"Ginan1.png":
+  d: "m/Ginan1_1600.webp"
+  dw: 992
+  dh: 775
+"Ginan2.png":
+  d: "m/Ginan2_1600.webp"
+  dw: 992
+  dh: 775
+"GlZuy5XbcAADgAw.jpg":
+  d: "m/GlZuy5XbcAADgAw_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/GlZuy5XbcAADgAw_1200.webp"
+  mw: 960
+  mh: 1200
+  og: "m/GlZuy5XbcAADgAw_og.jpg"
+  ogw: 960
+  ogh: 1200
+"GmN5Mh8bMAADcr0.png":
+  d: "m/GmN5Mh8bMAADcr0_1600.webp"
+  dw: 330
+  dh: 1600
+  m: "m/GmN5Mh8bMAADcr0_1200.webp"
+  mw: 247
+  mh: 1200
+"GmN5NnsakAAsoUF.jpg":
+  d: "m/GmN5NnsakAAsoUF_1600.webp"
+  dw: 756
+  dh: 1600
+  m: "m/GmN5NnsakAAsoUF_1200.webp"
+  mw: 567
+  mh: 1200
+"Gv-qUb0XcAEpUCn (1).jpg":
+  d: "m/Gv-qUb0XcAEpUCn_1_511ba5_1600.webp"
+  dw: 167
+  dh: 1600
+  m: "m/Gv-qUb0XcAEpUCn_1_511ba5_1200.webp"
+  mw: 125
+  mh: 1200
+"GwDxOHCWUAAGxuX.jpg":
+  d: "m/GwDxOHCWUAAGxuX_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/GwDxOHCWUAAGxuX_1200.webp"
+  mw: 900
+  mh: 1200
+"GwI6aN_XkAEFday.jpg":
+  d: "m/GwI6aN_XkAEFday_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/GwI6aN_XkAEFday_1200.webp"
+  mw: 848
+  mh: 1200
+"GwI6aSNX0AAYsyw.jpg":
+  d: "m/GwI6aSNX0AAYsyw_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/GwI6aSNX0AAYsyw_1200.webp"
+  mw: 848
+  mh: 1200
+"GwZD3eRbAAAfT-9.jpg":
+  d: "m/GwZD3eRbAAAfT-9_1600.webp"
+  dw: 1130
+  dh: 1600
+  m: "m/GwZD3eRbAAAfT-9_1200.webp"
+  mw: 848
+  mh: 1200
+"GwZD3fRa0AAYKvd.jpg":
+  d: "m/GwZD3fRa0AAYKvd_1600.webp"
+  dw: 1130
+  dh: 1600
+  m: "m/GwZD3fRa0AAYKvd_1200.webp"
+  mw: 848
+  mh: 1200
+"GwjJZDNaAAAFiOR.jpg":
+  d: "m/GwjJZDNaAAAFiOR_1600.webp"
+  dw: 317
+  dh: 1600
+  m: "m/GwjJZDNaAAAFiOR_1200.webp"
+  mw: 238
+  mh: 1200
+"GwtiE4pbgAAQhxb.jpg":
+  d: "m/GwtiE4pbgAAQhxb_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/GwtiE4pbgAAQhxb_1200.webp"
+  mw: 848
+  mh: 1200
+  og: "m/GwtiE4pbgAAQhxb_og.jpg"
+  ogw: 848
+  ogh: 1200
+"GwtiIaRasAAllW9.jpg":
+  d: "m/GwtiIaRasAAllW9_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/GwtiIaRasAAllW9_1200.webp"
+  mw: 848
+  mh: 1200
+"Gwtj6gubgAUn0FS.jpg":
+  d: "m/Gwtj6gubgAUn0FS_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/Gwtj6gubgAUn0FS_1200.webp"
+  mw: 848
+  mh: 1200
+"GwvvWIqbgAQW6Mz.jpg":
+  d: "m/GwvvWIqbgAQW6Mz_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/GwvvWIqbgAQW6Mz_1200.webp"
+  mw: 848
+  mh: 1200
+"GwvvWJzbgAElLjR.jpg":
+  d: "m/GwvvWJzbgAElLjR_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/GwvvWJzbgAElLjR_1200.webp"
+  mw: 848
+  mh: 1200
+"HB7WbdZawAAz5hf.jpg":
+  d: "m/HB7WbdZawAAz5hf_1600.webp"
+  dw: 1067
+  dh: 1600
+  m: "m/HB7WbdZawAAz5hf_1200.webp"
+  mw: 800
+  mh: 1200
+"HB7WbdbbUAAjU6F.jpg":
+  d: "m/HB7WbdbbUAAjU6F_1600.webp"
+  dw: 1067
+  dh: 1600
+  m: "m/HB7WbdbbUAAjU6F_1200.webp"
+  mw: 800
+  mh: 1200
+"HCOWgJUbEAENh8G.jpg":
+  d: "m/HCOWgJUbEAENh8G_1600.webp"
+  dw: 1112
+  dh: 1600
+  m: "m/HCOWgJUbEAENh8G_1200.webp"
+  mw: 834
+  mh: 1200
+"HCnyZHBbQAAuyDl.jpg":
+  d: "m/HCnyZHBbQAAuyDl_1600.webp"
+  dw: 934
+  dh: 1600
+  m: "m/HCnyZHBbQAAuyDl_1200.webp"
+  mw: 700
+  mh: 1200
+"HEX-0zrbEAAp_vZ.jpg":
+  d: "m/HEX-0zrbEAAp_vZ_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/HEX-0zrbEAAp_vZ_1200.webp"
+  mw: 900
+  mh: 1200
+"HI4yyyobUAAr268.jpg":
+  d: "m/HI4yyyobUAAr268_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/HI4yyyobUAAr268_1200.webp"
+  mw: 960
+  mh: 1200
+"HMTHTkKawAA6rxu.jpg":
+  d: "m/HMTHTkKawAA6rxu_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HMTHTkKawAA6rxu_1200.webp"
+  mw: 848
+  mh: 1200
+"HMTHTkKbwAARt3M.jpg":
+  d: "m/HMTHTkKbwAARt3M_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HMTHTkKbwAARt3M_1200.webp"
+  mw: 848
+  mh: 1200
+"HMYPztxaIAAiPZg.jpg":
+  d: "m/HMYPztxaIAAiPZg_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HMYPztxaIAAiPZg_1200.webp"
+  mw: 848
+  mh: 1200
+"HMYPzuCbYAAvAkV.jpg":
+  d: "m/HMYPzuCbYAAvAkV_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HMYPzuCbYAAvAkV_1200.webp"
+  mw: 848
+  mh: 1200
+"HMzYiBgboAACid3.jpg":
+  d: "m/HMzYiBgboAACid3_1600.webp"
+  dw: 1135
+  dh: 1600
+  m: "m/HMzYiBgboAACid3_1200.webp"
+  mw: 851
+  mh: 1200
+"HMzYim_aEAAVsq3.jpg":
+  d: "m/HMzYim_aEAAVsq3_1600.webp"
+  dw: 1135
+  dh: 1600
+  m: "m/HMzYim_aEAAVsq3_1200.webp"
+  mw: 851
+  mh: 1200
+"HN0HZSJbgAA6Gqv.jpg":
+  d: "m/HN0HZSJbgAA6Gqv_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HN0HZSJbgAA6Gqv_1200.webp"
+  mw: 848
+  mh: 1200
+"HN0HZVQbIAAzd2Z.jpg":
+  d: "m/HN0HZVQbIAAzd2Z_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HN0HZVQbIAAzd2Z_1200.webp"
+  mw: 848
+  mh: 1200
+"HN4BdRiaQAAgvkJ.jpg":
+  d: "m/HN4BdRiaQAAgvkJ_1600.webp"
+  dw: 533
+  dh: 1600
+  m: "m/HN4BdRiaQAAgvkJ_1200.webp"
+  mw: 400
+  mh: 1200
+"HN6IdB4aYAAQUZU.jpg":
+  d: "m/HN6IdB4aYAAQUZU_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HN6IdB4aYAAQUZU_1200.webp"
+  mw: 848
+  mh: 1200
+"HN6IdB5bsAADI4n.jpg":
+  d: "m/HN6IdB5bsAADI4n_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HN6IdB5bsAADI4n_1200.webp"
+  mw: 848
+  mh: 1200
+"HNF9FsLbcAAD31l.jpg":
+  d: "m/HNF9FsLbcAAD31l_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HNF9FsLbcAAD31l_1200.webp"
+  mw: 848
+  mh: 1200
+"HNF9FswbEAAfGFt.jpg":
+  d: "m/HNF9FswbEAAfGFt_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HNF9FswbEAAfGFt_1200.webp"
+  mw: 848
+  mh: 1200
+"HNGprBkbAAAHRmX.jpg":
+  d: "m/HNGprBkbAAAHRmX_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HNGprBkbAAAHRmX_1200.webp"
+  mw: 848
+  mh: 1200
+"HNGprBsaQAAHXSC.jpg":
+  d: "m/HNGprBsaQAAHXSC_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HNGprBsaQAAHXSC_1200.webp"
+  mw: 848
+  mh: 1200
+"HNUU5LgboAAzMTq.jpg":
+  d: "m/HNUU5LgboAAzMTq_1600.webp"
+  dw: 1067
+  dh: 1600
+  m: "m/HNUU5LgboAAzMTq_1200.webp"
+  mw: 800
+  mh: 1200
+"HN_PkHkbQAA3scz.jpg":
+  d: "m/HN_PkHkbQAA3scz_1600.webp"
+  dw: 1130
+  dh: 1600
+  m: "m/HN_PkHkbQAA3scz_1200.webp"
+  mw: 848
+  mh: 1200
+"HN_PkKjbMAACfxx.jpg":
+  d: "m/HN_PkKjbMAACfxx_1600.webp"
+  dw: 1130
+  dh: 1600
+  m: "m/HN_PkKjbMAACfxx_1200.webp"
+  mw: 848
+  mh: 1200
+"HNbMJ_iaUAA8D4f.jpg":
+  d: "m/HNbMJ_iaUAA8D4f_1600.webp"
+  dw: 1134
+  dh: 1600
+  m: "m/HNbMJ_iaUAA8D4f_1200.webp"
+  mw: 851
+  mh: 1200
+"HNbMJizakAA5V2h.jpg":
+  d: "m/HNbMJizakAA5V2h_1600.webp"
+  dw: 1134
+  dh: 1600
+  m: "m/HNbMJizakAA5V2h_1200.webp"
+  mw: 851
+  mh: 1200
+"HNgVqxRagAASnuY.jpg":
+  d: "m/HNgVqxRagAASnuY_1600.webp"
+  dw: 1066
+  dh: 1600
+  m: "m/HNgVqxRagAASnuY_1200.webp"
+  mw: 800
+  mh: 1200
+"HNqNR8YbUAAv87F.jpg":
+  d: "m/HNqNR8YbUAAv87F_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HNqNR8YbUAAv87F_1200.webp"
+  mw: 848
+  mh: 1200
+"HNqNR8aa4AAaCku.jpg":
+  d: "m/HNqNR8aa4AAaCku_1600.webp"
+  dw: 1131
+  dh: 1600
+  m: "m/HNqNR8aa4AAaCku_1200.webp"
+  mw: 848
+  mh: 1200
+"IMG_7925.jpeg":
+  d: "m/IMG_7925_1600.webp"
+  dw: 250
+  dh: 1600
+  m: "m/IMG_7925_1200.webp"
+  mw: 187
+  mh: 1200
+"KT4U_SPA.png":
+  d: "m/KT4U_SPA_1600.webp"
+  dw: 447
+  dh: 1600
+  m: "m/KT4U_SPA_1200.webp"
+  mw: 335
+  mh: 1200
+"OY_SPA.png":
+  d: "m/OY_SPA_1600.webp"
+  dw: 624
+  dh: 1600
+  m: "m/OY_SPA_1200.webp"
+  mw: 468
+  mh: 1200
+"Screenshot_108.png":
+  d: "m/Screenshot_108_1600.webp"
+  dw: 809
+  dh: 1159
+  og: "m/Screenshot_108_og.jpg"
+  ogw: 809
+  ogh: 1159
+"Screenshot_113.png":
+  d: "m/Screenshot_113_1600.webp"
+  dw: 1224
+  dh: 684
+  m: "m/Screenshot_113_1200.webp"
+  mw: 1200
+  mh: 671
+"Screenshot_120.png":
+  d: "m/Screenshot_120_1600.webp"
+  dw: 868
+  dh: 866
+"Screenshot_121.png":
+  d: "m/Screenshot_121_1600.webp"
+  dw: 876
+  dh: 868
+  og: "m/Screenshot_121_og.jpg"
+  ogw: 876
+  ogh: 868
+"Screenshot_122.png":
+  d: "m/Screenshot_122_1600.webp"
+  dw: 870
+  dh: 865
+"Screenshot_130.png":
+  d: "m/Screenshot_130_1600.webp"
+  dw: 1417
+  dh: 741
+  m: "m/Screenshot_130_1200.webp"
+  mw: 1200
+  mh: 628
+"Screenshot_131.png":
+  d: "m/Screenshot_131_1600.webp"
+  dw: 1417
+  dh: 798
+  m: "m/Screenshot_131_1200.webp"
+  mw: 1200
+  mh: 676
+  og: "m/Screenshot_131_og.jpg"
+  ogw: 1200
+  ogh: 676
+"Screenshot_140.png":
+  d: "m/Screenshot_140_1600.webp"
+  dw: 694
+  dh: 528
+"Screenshot_141.png":
+  d: "m/Screenshot_141_1600.webp"
+  dw: 1405
+  dh: 912
+  m: "m/Screenshot_141_1200.webp"
+  mw: 1200
+  mh: 779
+"Screenshot_178.png":
+  d: "m/Screenshot_178_1600.webp"
+  dw: 1600
+  dh: 1266
+  m: "m/Screenshot_178_1200.webp"
+  mw: 1200
+  mh: 950
+  og: "m/Screenshot_178_og.jpg"
+  ogw: 1200
+  ogh: 950
+"Screenshot_201.png":
+  d: "m/Screenshot_201_1600.webp"
+  dw: 585
+  dh: 954
+"Screenshot_226.png":
+  d: "m/Screenshot_226_1600.webp"
+  dw: 1072
+  dh: 1463
+  m: "m/Screenshot_226_1200.webp"
+  mw: 879
+  mh: 1200
+  og: "m/Screenshot_226_og.jpg"
+  ogw: 879
+  ogh: 1200
+"Screenshot_282.png":
+  d: "m/Screenshot_282_1600.webp"
+  dw: 1095
+  dh: 630
+"Screenshot_29.png":
+  d: "m/Screenshot_29_1600.webp"
+  dw: 1399
+  dh: 786
+  m: "m/Screenshot_29_1200.webp"
+  mw: 1200
+  mh: 674
+"Screenshot_39.png":
+  d: "m/Screenshot_39_1600.webp"
+  dw: 1600
+  dh: 889
+  m: "m/Screenshot_39_1200.webp"
+  mw: 1200
+  mh: 667
+  og: "m/Screenshot_39_og.jpg"
+  ogw: 1200
+  ogh: 667
+"Screenshot_44.png":
+  d: "m/Screenshot_44_1600.webp"
+  dw: 983
+  dh: 1488
+  m: "m/Screenshot_44_1200.webp"
+  mw: 793
+  mh: 1200
+"Screenshot_70.png":
+  d: "m/Screenshot_70_1600.webp"
+  dw: 1600
+  dh: 907
+  m: "m/Screenshot_70_1200.webp"
+  mw: 1200
+  mh: 680
+"WM_SPA.jpg":
+  d: "m/WM_SPA_1600.webp"
+  dw: 523
+  dh: 1600
+  m: "m/WM_SPA_1200.webp"
+  mw: 392
+  mh: 1200
+"alrkd.png":
+  d: "m/alrkd_1600.webp"
+  dw: 1018
+  dh: 970
+"apmpf.png":
+  d: "m/apmpf_1600.webp"
+  dw: 1161
+  dh: 780
+"b8jgr.webp":
+  d: "m/b8jgr_1600.webp"
+  dw: 1360
+  dh: 712
+  m: "m/b8jgr_1200.webp"
+  mw: 1200
+  mh: 628
+"bebe.png":
+  d: "m/bebe_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/bebe_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/bebe_og.jpg"
+  ogw: 1200
+  ogh: 675
+"delicius.png":
+  d: "m/delicius_1600.webp"
+  dw: 980
+  dh: 896
+"diskzkrlswk.png":
+  d: "m/diskzkrlswk_1600.webp"
+  dw: 730
+  dh: 1600
+  m: "m/diskzkrlswk_1200.webp"
+  mw: 547
+  mh: 1200
+  og: "m/diskzkrlswk_og.jpg"
+  ogw: 547
+  ogh: 1200
+"dkfktldiak.png":
+  d: "m/dkfktldiak_1600.webp"
+  dw: 1600
+  dh: 896
+  m: "m/dkfktldiak_1200.webp"
+  mw: 1200
+  mh: 672
+  og: "m/dkfktldiak_og.jpg"
+  ogw: 1200
+  ogh: 672
+"dkzkgnzn.png":
+  d: "m/dkzkgnzn_1600.webp"
+  dw: 1051
+  dh: 1079
+"dnfhdck.png":
+  d: "m/dnfhdck_1600.webp"
+  dw: 1600
+  dh: 920
+  m: "m/dnfhdck_1200.webp"
+  mw: 1200
+  mh: 690
+  og: "m/dnfhdck_og.jpg"
+  ogw: 1200
+  ogh: 690
+"fims_secret_lab_0727_resized.jpg":
+  d: "m/fims_secret_lab_0727_resized_1600.webp"
+  dw: 1281
+  dh: 1600
+  m: "m/fims_secret_lab_0727_resized_1200.webp"
+  mw: 961
+  mh: 1200
+"gozoroppu1.jpg":
+  d: "m/gozoroppu1_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/gozoroppu1_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/gozoroppu1_og.jpg"
+  ogw: 900
+  ogh: 1200
+"gozoroppu2.png":
+  d: "m/gozoroppu2_1600.webp"
+  dw: 1600
+  dh: 1043
+  m: "m/gozoroppu2_1200.webp"
+  mw: 1200
+  mh: 782
+"hysteric.png":
+  d: "m/hysteric_1600.webp"
+  dw: 992
+  dh: 775
+"ig_C0L6H_IP5DH_01.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_C1LT90tSXxE_02.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_C1LT90tSXxE_06.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_C5pX2rJyOcp_01.jpg":
+  d: "m/ig_C5pX2rJyOcp_01_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/ig_C5pX2rJyOcp_01_1200.webp"
+  mw: 960
+  mh: 1200
+"ig_C5pX2rJyOcp_03.jpg":
+  d: "m/ig_C5pX2rJyOcp_03_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/ig_C5pX2rJyOcp_03_1200.webp"
+  mw: 960
+  mh: 1200
+"ig_C9TUfhASfDf_01.jpg":
+  d: "m/ig_C9TUfhASfDf_01_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/ig_C9TUfhASfDf_01_1200.webp"
+  mw: 960
+  mh: 1200
+"ig_C9kaG_uPAGA_06.jpg":
+  d: "m/ig_C9kaG_uPAGA_06_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/ig_C9kaG_uPAGA_06_1200.webp"
+  mw: 960
+  mh: 1200
+"ig_Cy6HQE6g5L5_06.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_CzC19x-ytpU_04.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DATMk9wTRfT_04.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DAVTEnJvQOD_05.jpg":
+  d: "m/ig_DAVTEnJvQOD_05_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/ig_DAVTEnJvQOD_05_1200.webp"
+  mw: 960
+  mh: 1200
+"ig_DAXLlHETLaT_05.jpg":
+  d: "m/ig_DAXLlHETLaT_05_1600.webp"
+  dw: 1280
+  dh: 1600
+  m: "m/ig_DAXLlHETLaT_05_1200.webp"
+  mw: 960
+  mh: 1200
+"ig_DMX1hYuzWIQ_03.jpg":
+  d: "m/ig_DMX1hYuzWIQ_03_1600.webp"
+  dw: 1203
+  dh: 1600
+  m: "m/ig_DMX1hYuzWIQ_03_1200.webp"
+  mw: 902
+  mh: 1200
+"ig_DMX1hYuzWIQ_07.jpg":
+  d: "m/ig_DMX1hYuzWIQ_07_1600.webp"
+  dw: 1203
+  dh: 1600
+  m: "m/ig_DMX1hYuzWIQ_07_1200.webp"
+  mw: 902
+  mh: 1200
+"ig_DMX1hYuzWIQ_12.jpg":
+  d: "m/ig_DMX1hYuzWIQ_12_1600.webp"
+  dw: 1204
+  dh: 1600
+  m: "m/ig_DMX1hYuzWIQ_12_1200.webp"
+  mw: 903
+  mh: 1200
+"ig_DMf6UvQThRT_10.jpg":
+  d: "m/ig_DMf6UvQThRT_10_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/ig_DMf6UvQThRT_10_1200.webp"
+  mw: 900
+  mh: 1200
+"ig_DOa1ZGikdjr_02.jpg":
+  d: "m/ig_DOa1ZGikdjr_02_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/ig_DOa1ZGikdjr_02_1200.webp"
+  mw: 900
+  mh: 1200
+"ig_DTePoWykq_V_02.jpg":
+  d: "m/ig_DTePoWykq_V_02_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/ig_DTePoWykq_V_02_1200.webp"
+  mw: 900
+  mh: 1200
+"ig_DVYLggVkaig_11.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DVgO7RZks5q_09.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DVgmLSvE-zt_06.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DdWdjWkFLz4_01.jpg":
+  d: "m/ig_DdWdjWkFLz4_01_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/ig_DdWdjWkFLz4_01_1200.webp"
+  mw: 900
+  mh: 1200
+"ig_DddZar-lH0P_01.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DddZar-lH0P_06.jpg":
+  d: "m/ig_DddZar-lH0P_06_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/ig_DddZar-lH0P_06_1200.webp"
+  mw: 900
+  mh: 1200
+"image.jpg":
+  d: "m/image_1600.webp"
+  dw: 1600
+  dh: 1067
+  m: "m/image_1200.webp"
+  mw: 1200
+  mh: 800
+"ittan.png":
+  d: "m/ittan_1600.webp"
+  dw: 1036
+  dh: 1377
+  m: "m/ittan_1200.webp"
+  mw: 903
+  mh: 1200
+"kanekichien.png":
+  d: "m/kanekichien_1600.webp"
+  dw: 1053
+  dh: 640
+"kawagu.png":
+  d: "m/kawagu_1600.webp"
+  dw: 1600
+  dh: 863
+  m: "m/kawagu_1200.webp"
+  mw: 1200
+  mh: 647
+  og: "m/kawagu_og.jpg"
+  ogw: 1200
+  ogh: 647
+"kawagu2.png":
+  d: "m/kawagu2_1600.webp"
+  dw: 1456
+  dh: 893
+  m: "m/kawagu2_1200.webp"
+  mw: 1200
+  mh: 736
+"kiraku1.jpg":
+  d: "m/kiraku1_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/kiraku1_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/kiraku1_og.jpg"
+  ogw: 900
+  ogh: 1200
+"lucys2.png":
+  d: "m/lucys2_1600.webp"
+  dw: 850
+  dh: 604
+"marcoroni.png":
+  d: "m/marcoroni_1600.webp"
+  dw: 1069
+  dh: 625
+"mkpf.png":
+  d: "m/mkpf_1600.webp"
+  dw: 1187
+  dh: 760
+"mmn_popup_merch.jpg":
+  d: "m/mmn_popup_merch_1600.webp"
+  dw: 431
+  dh: 1600
+  m: "m/mmn_popup_merch_1200.webp"
+  mw: 323
+  mh: 1200
+"mokafe.png":
+  d: "m/mokafe_1600.webp"
+  dw: 1043
+  dh: 1324
+  m: "m/mokafe_1200.webp"
+  mw: 945
+  mh: 1200
+  og: "m/mokafe_og.jpg"
+  ogw: 945
+  ogh: 1200
+"msr.png":
+  d: "m/msr_1600.webp"
+  dw: 1600
+  dh: 806
+  m: "m/msr_1200.webp"
+  mw: 1200
+  mh: 605
+  og: "m/msr_og.jpg"
+  ogw: 1200
+  ogh: 605
+"msr2.png":
+  d: "m/msr2_1600.webp"
+  dw: 1600
+  dh: 902
+  m: "m/msr2_1200.webp"
+  mw: 1200
+  mh: 677
+"osl.png":
+  d: "m/osl_1600.webp"
+  dw: 1066
+  dh: 1301
+  m: "m/osl_1200.webp"
+  mw: 983
+  mh: 1200
+"qcwfy7ldco8b1.jpg":
+  d: "m/qcwfy7ldco8b1_1600.webp"
+  dw: 1120
+  dh: 1600
+  m: "m/qcwfy7ldco8b1_1200.webp"
+  mw: 840
+  mh: 1200
+"rikuro.png":
+  d: "m/rikuro_1600.webp"
+  dw: 1600
+  dh: 817
+  m: "m/rikuro_1200.webp"
+  mw: 1200
+  mh: 613
+  og: "m/rikuro_og.jpg"
+  ogw: 1200
+  ogh: 613
+"rikuro2.png":
+  d: "m/rikuro2_1600.webp"
+  dw: 1174
+  dh: 1312
+  m: "m/rikuro2_1200.webp"
+  mw: 1074
+  mh: 1200
+"samcheong_hotteok1.png":
+  d: "m/samcheong_hotteok1_1600.webp"
+  dw: 1215
+  dh: 1600
+  m: "m/samcheong_hotteok1_1200.webp"
+  mw: 911
+  mh: 1200
+  og: "m/samcheong_hotteok1_og.jpg"
+  ogw: 911
+  ogh: 1200
+"samcheong_hotteok2.png":
+  d: "m/samcheong_hotteok2_1600.webp"
+  dw: 718
+  dh: 740
+"sharishari.png":
+  d: "m/sharishari_1600.webp"
+  dw: 1011
+  dh: 939
+"st_yunjin_251008_2.jpg":
+  d: "m/st_yunjin_251008_2_1600.webp"
+  dw: 900
+  dh: 1600
+  m: "m/st_yunjin_251008_2_1200.webp"
+  mw: 675
+  mh: 1200
+"stdbun.jpg":
+  d: "m/stdbun_1600.webp"
+  dw: 1280
+  dh: 1280
+  m: "m/stdbun_1200.webp"
+  mw: 1200
+  mh: 1200
+"stussy.png":
+  d: "m/stussy_1600.webp"
+  dw: 1044
+  dh: 857
+"taiyaki.png":
+  d: "m/taiyaki_1600.webp"
+  dw: 968
+  dh: 632
+"tenchomon2.png":
+  d: "m/tenchomon2_1600.webp"
+  dw: 850
+  dh: 445
+"tkadid.png":
+  d: "m/tkadid_1600.webp"
+  dw: 1266
+  dh: 1114
+  m: "m/tkadid_1200.webp"
+  mw: 1200
+  mh: 1056
+"tkdbdnjs.png":
+  d: "m/tkdbdnjs_1600.webp"
+  dw: 1547
+  dh: 998
+  m: "m/tkdbdnjs_1200.webp"
+  mw: 1200
+  mh: 774
+  og: "m/tkdbdnjs_og.jpg"
+  ogw: 1200
+  ogh: 774
+"tlpt.png":
+  d: "m/tlpt_1600.webp"
+  dw: 994
+  dh: 743
+  og: "m/tlpt_og.jpg"
+  ogw: 994
+  ogh: 743
+"tpsxmfp.png":
+  d: "m/tpsxmfp_1600.webp"
+  dw: 1600
+  dh: 920
+  m: "m/tpsxmfp_1200.webp"
+  mw: 1200
+  mh: 690
+"tpzlrncl.png":
+  d: "m/tpzlrncl_1600.webp"
+  dw: 827
+  dh: 645
+"tv_260916_oukan_01.png":
+  d: "m/tv_260916_oukan_01_1600.webp"
+  dw: 1600
+  dh: 898
+  m: "m/tv_260916_oukan_01_1200.webp"
+  mw: 1200
+  mh: 674
+  og: "m/tv_260916_oukan_01_og.jpg"
+  ogw: 1200
+  ogh: 674
+"tv_260916_photoobjet_01.png":
+  d: "m/tv_260916_photoobjet_01_1600.webp"
+  dw: 1600
+  dh: 898
+  m: "m/tv_260916_photoobjet_01_1200.webp"
+  mw: 1200
+  mh: 674
+  og: "m/tv_260916_photoobjet_01_og.jpg"
+  ogw: 1200
+  ogh: 674
+"tv_260916_woosun_01.png":
+  d: "m/tv_260916_woosun_01_1600.webp"
+  dw: 1600
+  dh: 898
+  m: "m/tv_260916_woosun_01_1200.webp"
+  mw: 1200
+  mh: 674
+  og: "m/tv_260916_woosun_01_og.jpg"
+  ogw: 1200
+  ogh: 674
+"videoframe_1011688.png":
+  d: "m/videoframe_1011688_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1011688_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_1011688_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_1037049.png":
+  d: "m/videoframe_1037049_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1037049_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_108316.png":
+  d: "m/videoframe_108316_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_108316_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_1123571.png":
+  d: "m/videoframe_1123571_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1123571_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_1123571_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_1134583.png":
+  d: "m/videoframe_1134583_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1134583_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_1134583_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_1137531.png":
+  d: "m/videoframe_1137531_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1137531_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_1137531_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_114270.png":
+  d: "m/videoframe_114270_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_114270_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_114270_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_1145185.png":
+  d: "m/videoframe_1145185_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1145185_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_1145185_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_125661.png":
+  d: "m/videoframe_125661_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_125661_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_125661_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_157236.png":
+  d: "m/videoframe_157236_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_157236_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_157236_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_1576588.png":
+  d: "m/videoframe_1576588_1600.webp"
+  dw: 1600
+  dh: 800
+  m: "m/videoframe_1576588_1200.webp"
+  mw: 1200
+  mh: 600
+  og: "m/videoframe_1576588_og.jpg"
+  ogw: 1200
+  ogh: 600
+"videoframe_1706948.png":
+  d: "m/videoframe_1706948_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_1706948_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_1706948_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_190204.png":
+  d: "m/videoframe_190204_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_190204_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_190204_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_236679.png":
+  d: "m/videoframe_236679_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_236679_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_236679_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_274901.png":
+  d: "m/videoframe_274901_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_274901_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_274901_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_300343.png":
+  d: "m/videoframe_300343_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_300343_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_300343_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_346634.png":
+  d: "m/videoframe_346634_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_346634_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_383239.png":
+  d: "m/videoframe_383239_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_383239_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_383239_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_401600.png":
+  d: "m/videoframe_401600_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_401600_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_401600_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_422610.png":
+  d: "m/videoframe_422610_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_422610_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_422610_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_445832.png":
+  d: "m/videoframe_445832_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_445832_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_476419.png":
+  d: "m/videoframe_476419_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_476419_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_476419_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_5048.png":
+  d: "m/videoframe_5048_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_5048_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_576910.png":
+  d: "m/videoframe_576910_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_576910_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_576910_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_608892.png":
+  d: "m/videoframe_608892_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_608892_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_608892_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_620571.png":
+  d: "m/videoframe_620571_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_620571_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_633456.png":
+  d: "m/videoframe_633456_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_633456_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_644485.png":
+  d: "m/videoframe_644485_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_644485_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_644485_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_666077.png":
+  d: "m/videoframe_666077_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_666077_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_679922.png":
+  d: "m/videoframe_679922_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_679922_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_679922_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_693233.png":
+  d: "m/videoframe_693233_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_693233_1200.webp"
+  mw: 1200
+  mh: 675
+"videoframe_775516.png":
+  d: "m/videoframe_775516_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_775516_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_775516_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_832166.png":
+  d: "m/videoframe_832166_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_832166_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_832166_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_85062.png":
+  d: "m/videoframe_85062_1600.webp"
+  dw: 1600
+  dh: 1173
+  m: "m/videoframe_85062_1200.webp"
+  mw: 1200
+  mh: 880
+  og: "m/videoframe_85062_og.jpg"
+  ogw: 1200
+  ogh: 880
+"videoframe_852214.png":
+  d: "m/videoframe_852214_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_852214_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_852214_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_87125.png":
+  d: "m/videoframe_87125_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_87125_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_87125_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_873470.png":
+  d: "m/videoframe_873470_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_873470_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_873470_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_906651.png":
+  d: "m/videoframe_906651_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_906651_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_906651_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_919331.png":
+  d: "m/videoframe_919331_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_919331_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_919331_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_965655.png":
+  d: "m/videoframe_965655_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_965655_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_965655_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_970772.png":
+  d: "m/videoframe_970772_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_970772_1200.webp"
+  mw: 1200
+  mh: 675
+  og: "m/videoframe_970772_og.jpg"
+  ogw: 1200
+  ogh: 675
+"videoframe_998106.png":
+  d: "m/videoframe_998106_1600.webp"
+  dw: 1600
+  dh: 900
+  m: "m/videoframe_998106_1200.webp"
+  mw: 1200
+  mh: 675
+"weverse_0-264655604.png":
+  d: "m/weverse_0-264655604_1600.webp"
+  dw: 1600
+  dh: 1130
+  m: "m/weverse_0-264655604_1200.webp"
+  mw: 1200
+  mh: 847
+  og: "m/weverse_0-264655604_og.jpg"
+  ogw: 1200
+  ogh: 847
+"weverse_0-303869630.jpg":
+  d: "m/weverse_0-303869630_1600.webp"
+  dw: 369
+  dh: 1600
+  m: "m/weverse_0-303869630_1200.webp"
+  mw: 277
+  mh: 1200
+  og: "m/weverse_0-303869630_og.jpg"
+  ogw: 277
+  ogh: 1200
+"weverse_1-265279357.jpg":
+  d: "m/weverse_1-265279357_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_1-265279357_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_1-265279357_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_1-265281622.jpg":
+  d: "m/weverse_1-265281622_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_1-265281622_1200.webp"
+  mw: 900
+  mh: 1200
+"weverse_1-265281623.jpg":
+  d: "m/weverse_1-265281623_1600.webp"
+  dw: 1397
+  dh: 1600
+  m: "m/weverse_1-265281623_1200.webp"
+  mw: 1047
+  mh: 1200
+  og: "m/weverse_1-265281623_og.jpg"
+  ogw: 1047
+  ogh: 1200
+"weverse_1-272433630.jpg":
+  d: "m/weverse_1-272433630_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_1-272433630_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_1-272433630_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_1-272464739.jpg":
+  d: "m/weverse_1-272464739_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_1-272464739_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_1-272464739_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_2-271841120.jpg":
+  d: "m/weverse_2-271841120_1600.webp"
+  dw: 1476
+  dh: 1600
+  m: "m/weverse_2-271841120_1200.webp"
+  mw: 1107
+  mh: 1200
+  og: "m/weverse_2-271841120_og.jpg"
+  ogw: 1107
+  ogh: 1200
+"weverse_2-286488685.jpg":
+  d: "m/weverse_2-286488685_1600.webp"
+  dw: 1459
+  dh: 1600
+  m: "m/weverse_2-286488685_1200.webp"
+  mw: 1095
+  mh: 1200
+  og: "m/weverse_2-286488685_og.jpg"
+  ogw: 1095
+  ogh: 1200
+"weverse_3-257707511.jpg":
+  d: "m/weverse_3-257707511_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_3-257707511_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_3-257707511_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_3-336848678.jpg":
+  d: "m/weverse_3-336848678_1600.webp"
+  dw: 363
+  dh: 1600
+  m: "m/weverse_3-336848678_1200.webp"
+  mw: 273
+  mh: 1200
+"weverse_4-257663597.jpg":
+  d: "m/weverse_4-257663597_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_4-257663597_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_4-257663597_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_4-258610674.jpg":
+  d: "m/weverse_4-258610674_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_4-258610674_1200.webp"
+  mw: 900
+  mh: 1200
+"weverse_4-271091022.jpg":
+  d: "m/weverse_4-271091022_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_4-271091022_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_4-271091022_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_4-298771545.jpg":
+  d: "m/weverse_4-298771545_1600.webp"
+  dw: 1434
+  dh: 1600
+  m: "m/weverse_4-298771545_1200.webp"
+  mw: 1076
+  mh: 1200
+"weverse_4-298790796.jpg":
+  d: "m/weverse_4-298790796_1600.webp"
+  dw: 1600
+  dh: 1600
+  m: "m/weverse_4-298790796_1200.webp"
+  mw: 1200
+  mh: 1200
+"weverse_4-317494141.jpg":
+  d: "m/weverse_4-317494141_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/weverse_4-317494141_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/weverse_4-317494141_og.jpg"
+  ogw: 900
+  ogh: 1200
+"weverse_4-332381908.jpg":
+  d: "m/weverse_4-332381908_1600.webp"
+  dw: 490
+  dh: 1600
+  m: "m/weverse_4-332381908_1200.webp"
+  mw: 367
+  mh: 1200
+"weverse_4-334049935.jpg":
+  d: "m/weverse_4-334049935_1600.webp"
+  dw: 1600
+  dh: 1200
+  m: "m/weverse_4-334049935_1200.webp"
+  mw: 1200
+  mh: 900
+  og: "m/weverse_4-334049935_og.jpg"
+  ogw: 1200
+  ogh: 900
+"wpstlrekd.png":
+  d: "m/wpstlrekd_1600.webp"
+  dw: 902
+  dh: 721
+"wv_golden_apple_01.jpg":
+  d: "m/wv_golden_apple_01_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/wv_golden_apple_01_1200.webp"
+  mw: 900
+  mh: 1200
+  og: "m/wv_golden_apple_01_og.jpg"
+  ogw: 900
+  ogh: 1200
+"x_1965599311145959594_1.jpg":
+  d: "m/x_1965599311145959594_1_1600.webp"
+  dw: 1600
+  dh: 1066
+  m: "m/x_1965599311145959594_1_1200.webp"
+  mw: 1200
+  mh: 800
+"x_1965599311145959594_2.jpg":
+  d: "m/x_1965599311145959594_2_1600.webp"
+  dw: 1600
+  dh: 1066
+  m: "m/x_1965599311145959594_2_1200.webp"
+  mw: 1200
+  mh: 800
+"x_1965599311145959594_4.jpg":
+  d: "m/x_1965599311145959594_4_1600.webp"
+  dw: 1600
+  dh: 1066
+  m: "m/x_1965599311145959594_4_1200.webp"
+  mw: 1200
+  mh: 800
+"xpqktkzl.png":
+  d: "m/xpqktkzl_1600.webp"
+  dw: 1107
+  dh: 790
+  og: "m/xpqktkzl_og.jpg"
+  ogw: 1107
+  ogh: 790
+"yokohamamuseum2.png":
+  d: "m/yokohamamuseum2_1600.webp"
+  dw: 850
+  dh: 678
+"zldhkaldi.png":
+  d: "m/zldhkaldi_1600.webp"
+  dw: 1507
+  dh: 904
+  m: "m/zldhkaldi_1200.webp"
+  mw: 1200
+  mh: 720

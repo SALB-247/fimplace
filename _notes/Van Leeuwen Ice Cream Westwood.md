@@ -19,7 +19,7 @@ country: us
 
 260916 허윤진 인스타
 
-아이스크림 가게 — 캡션 "여기 얼그레이랑 민초 강추"
+아이스크림 가게 — 얼그레이·민초 추천
 
 ## 상호명
 Van Leeuwen Ice Cream (Westwood)

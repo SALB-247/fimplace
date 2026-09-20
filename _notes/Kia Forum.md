@@ -20,7 +20,7 @@ country: us
 
 2025 EASY CRAZY HOT LA권 공연장 (잉글우드)
 
-영상: [Hot and fun girls meet❤️‍🔥 \| LE PLAY](https://youtu.be/4_aviiWqB04) — 설명란에 "Kia Forum, Inglewood, California". 백스테이지에서 KATSEYE 와 만났다.
+영상: [Hot and fun girls meet❤️‍🔥 \| LE PLAY](https://youtu.be/4_aviiWqB04) — 백스테이지에서 KATSEYE 와 만났다.
 
 ## 상호명
 Kia Forum (기아 포럼) — 'Fabulous Forum'으로 불려온 LA 랜드마크
