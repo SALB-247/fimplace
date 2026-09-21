@@ -4,6 +4,7 @@ shortid: efogj
 tags:
   - 2026_PUREFLOW_TOUR
   - 공연장
+  - 위버스
   - 로스앤젤레스
   - 미국
 coords:
@@ -18,12 +19,13 @@ country: us
 <img src="assets/ig_DdYQ54rFIA2_01.jpg">
 <img src="assets/ig_DdYQ54rFIA2_02.jpg">
 <img src="https://www.cryptoarena.com/assets/img/CA_Default_Thumbnail-4e702259d7.jpg">
+<img src="assets/wv_3-138881221_00.jpg">
 
 <iframe src="https://maps.google.com/maps?q=34.043056,-118.267222&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-260917 허윤진 인스타 / 260917 카즈하 인스타 / 260918 김채원 인스타
+260917 허윤진 인스타 / 260917 카즈하 인스타 / 260918 김채원 인스타 / [위버스 포스트1](https://weverse.io/lesserafim/artist/4-241383459) (260916 홍은채) / [위버스 포스트2](https://weverse.io/lesserafim/artist/1-180379987) (260917 김채원) / [위버스 포스트3](https://weverse.io/lesserafim/artist/3-138881221) (231104 김채원)
 
-2026 LE SSERAFIM TOUR 'PUREFLOW' 북미 레그 개막 공연장. 공연 다음 날 멤버들이 전광판 앞 사진과 레이커스 유니폼 단체컷을 올렸다.
+2026 LE SSERAFIM TOUR 'PUREFLOW' 북미 레그 개막 공연장. 공연 다음 날 멤버들이 전광판 앞 사진과 레이커스 유니폼 단체컷을 올렸고, 은채·채원은 위버스에 아레나 입구 전광판 앞 사진을 올렸다. 2023년 11월 LA 일정 때는 채원이 레이커스 홈경기 코트 사이드에서 등번호 81 유니폼을 입고 사진을 남겼다.
 
 ## 상호명
 Crypto.com Arena (크립토닷컴 아레나)
@@ -50,3 +52,7 @@ Crypto.com Arena (크립토닷컴 아레나)
 1111 S. Figueroa Street, Los Angeles, CA 90015, USA
 
 ## [🗺️ 구글맵](https://www.google.com/maps/search/?api=1&query=34.043056,-118.267222)
+
+<!-- TODO
+□ 위버스 3-138881221 (2023-11-04 KST, 채원) = 레이커스 홈코트(은퇴 배너 30·16·18·99·20·4·23, crypto.com 전광판, 코트 로고) — 2023-11-03(현지) 레이커스 경기 관람. 같은 글의 2번은 호텔 복도 거울 셀피
+-->

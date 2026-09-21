@@ -13,15 +13,20 @@ tags:
   - 유튜브
   - 채원
   - 윤진
+  - 즈하
+  - 위버스
 ---
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZA0OOwWR0kM?start=300" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <img src="assets/vf_ZA0OOwWR0kM_320.jpg">
+<img src="assets/wv_4-218504616_00.jpg">
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d121.5188856!3d25.0554109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a90001a0e375%3A0x9e63927e13f0ce00!2sTart%20Club%20%E8%9B%8B%E5%A1%94%E4%BF%B1%E6%A8%82%E9%83%A8!5e0!3m2!1sko!2skr!4v1789031183082!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ \| Ximending Date
+시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ \| Ximending Date / [위버스 포스트](https://weverse.io/lesserafim/artist/4-218504616) (260117 김채원)
+
+에그타르트 전문점 — 채원·즈하가 창가 자리에서 타르트를 먹었다.
 
 ## 상호명
 Tart Club 蛋塔俱樂部
@@ -32,6 +37,7 @@ No. 13, Lane 53, Sec. 2, Chengde Rd, 承德路二段53巷13號, 大同區 Datong
 ## [🗺️ 구글맵](https://maps.google.com/?cid=11413126950885051904)
 
 <!-- TODO
+□ 위버스 4-218504616 (260117 채원, 2장+2장): 창가 카운터의 'TART CLUB' 오렌지 안내문·'Grab and Go' 타르트 캐릭터 포스터가 가게 IG(tartclub_tw)와 일치. 게시일 1/17 은 윤진 이타미 DM 날이라 촬영은 골든디스크(1/10) 타이베이 일정으로 보임. 같은 포스트 4번째 사진(꽃집 앞 '1948' 간판)은 다른 곳 — 미확인
 □ 시리즈는 `유튜브`(단발 공식 영상)로 태그함 — 영상 제목이 "시먼딩에서 먹고 먹고 또 먹고 👯‍♀️ | Ximending Date" (https://www.youtube.com/watch?v=ZA0OOwWR0kM). 기존 시리즈 목록에 'Ximending Date' 없음 → 출연 멤버 태그 검수 필요
 □ (확정) 주소는 中山역 인근 大同區 承德路二段53巷13號 가 맞다 — 메모의 '시먼딩' 은 그날 일정 전체를 가리킨 말이고
    가게 위치와는 별개다. 영상 등장 여부는 더 파지 않는다 (2026-09-12 사용자 승인).

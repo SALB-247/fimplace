@@ -37,8 +37,8 @@ K-아레나 요코하마 (K-Arena Yokohama / Kアリーナ横浜)
 | 날짜                   | 공연                                   | 비고          |
 | -------------------- | ------------------------------------ | ----------- |
 | 2025.03.08           | CDTV Live! Live! Thanks Fes 2025     | TBS 페스티벌 출연 |
-| 2025.06.18           | Mrs. GREEN APPLE presents [CEREMONY] | 게스트 출연      |
-| 2025.10.13           | ZOZOFES 2025                         | 페스티벌 출연     |
+| 2025.06.18           | Mrs. GREEN APPLE presents [CEREMONY] | 게스트 출연 · [카펫 취재](https://youtu.be/QpZQYj4Lz9k) · [인터뷰](https://youtu.be/p6PQJRTfJOg) |
+| 2025.10.13           | ZOZOFES 2025                         | 페스티벌 출연 · [취재회](https://youtu.be/AH2EBFhzgRk) |
 | 2026.07.30, 08.01–02 | [[2026 LE SSERAFIM TOUR 'PUREFLOW']] |             |
 
 ## 위치

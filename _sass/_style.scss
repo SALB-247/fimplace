@@ -225,6 +225,19 @@ content iframe[src*="instagram.com"] {
   }
 }
 
+/* ---------- 외국인용 요약 줄 · 영어 주소 (영어 모드에서만 hidden 이 풀린다 — note.html) ---------- */
+.note-summary-en {
+  margin: 0.3em 0 0.6em;
+  color: var(--subtext);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+content .addr-en {
+  margin-top: -0.4em;
+  color: var(--subtext);
+  font-size: 0.95em;
+}
+
 /* ---------- 태그 / 멤버 칩 ---------- */
 .note-tags,
 .note-members {
@@ -292,6 +305,54 @@ content iframe[src*="instagram.com"] {
 
   &:after { content: "" !important; }
   &:hover { color: var(--primary) !important; }
+}
+
+/* 상단 '모음' 드롭다운 (details/summary) */
+.nav-menu {
+  position: relative;
+  font-size: 0.9em;
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--subtext);
+    user-select: none;
+    &::-webkit-details-marker { display: none; }
+    &:hover { color: var(--primary); }
+  }
+  .nav-menu-list {
+    position: absolute;
+    top: 1.7em;
+    left: 0;
+    z-index: 1200;
+    min-width: 15em;
+    padding: 0.4em 0;
+    background: var(--bg, #fff);
+    border: 1px solid var(--border, #e5e5e5);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  .nav-menu-list a {
+    display: block;
+    padding: 0.4em 1em;
+    font-size: 0.95em;
+    white-space: nowrap;
+    color: var(--text);
+    &:hover { background: var(--box-bg, #f3f4f6); color: var(--primary) !important; }
+  }
+  .nav-menu-group {
+    padding: 0.5em 1em 0.15em;
+    font-size: 0.75em;
+    color: var(--subtext);
+    border-top: 1px solid var(--border, #e5e5e5);
+    margin-top: 0.3em;
+  }
+}
+/* 좁은 화면: 요약 버튼 기준(오른쪽 정렬)이면 왼쪽으로 잘린다 → nav-row 전체 폭 아래로 펼친다 */
+.nav-row { position: relative; }
+@media (max-width: 640px) {
+  .nav-menu { position: static; }
+  .nav-menu .nav-menu-list { top: 100%; left: 0; right: 0; min-width: 0; margin-top: 0.3em; }
 }
 
 .search-box {
@@ -486,14 +547,18 @@ content table.collection-enhanced thead th:hover { color: var(--text); }
   content table.collection-mobile tr {
     border: 1px solid var(--border); border-radius: 8px;
     margin-bottom: 0.6em; padding: 0.35em 0.7em; background: var(--bg) !important;
+    box-sizing: border-box;   /* padding·테두리가 폭에 더해져 카드가 22px 넘치던 것 (2026-09-22) */
   }
+  /* 셀을 flex 로 두면 텍스트 조각·<span data-en> 이 각각 flex 아이템이 되어 '사쿠라' 가 '사쿠/라' 로 쪼개진다 (2026-09-22)
+     → 셀은 보통 블록, 라벨(::before)만 왼쪽에 절대배치 */
   content table.collection-mobile td {
-    border: 0 !important; padding: 0.32em 0; display: flex; gap: 0.7em;
-    white-space: normal !important; align-items: baseline;
+    border: 0 !important; padding: 0.32em 0 0.32em 4.7em; display: block; position: relative;
+    white-space: normal !important; box-sizing: border-box; min-height: 1.6em;
+    word-break: keep-all; overflow-wrap: anywhere;
   }
   content table.collection-mobile td::before {
-    content: attr(data-label); flex: 0 0 4em; color: var(--subtext);
-    font-size: 0.8em; font-weight: 600;
+    content: attr(data-label); position: absolute; left: 0; top: 0.32em; width: 4em;
+    color: var(--subtext); font-size: 0.8em; font-weight: 600; line-height: 1.9;
   }
   content table.collection-mobile td:empty { display: none; }
 }

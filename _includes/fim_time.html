@@ -1,0 +1,134 @@
+<!-- 현지 시간 모듈 (2026-09-22) — window.FimTime
+     공연장 '현지 날짜' 로 지난/오늘/예정을 판정하고, 확정된 시작 시각만 현지·사용자 시간대로 이중 표시한다.
+     · 날짜만 아는 일정(kind: date-only)은 자정 시작으로 보지 않는다 → 변환 시각·카운트다운 없음
+     · 시간대(IANA)는 tour_schedule.json / places.json / events.json 의 time_zone (원본 _data/timezones.yml). 없으면 기기 날짜로 판정하고 tzKnown:false
+     · 사용자 시간대: 저장된 선택(localStorage fimTz) → 기기 시간대 → Asia/Seoul. 언어 설정과 무관.
+     · 고정 시차를 쓰지 않는다 — Intl 이 그 날짜의 서머타임 규칙을 적용한다. 홈·달력·지도·상세가 모두 이 모듈을 쓴다. -->
+<script>
+(function () {
+  var DEFAULT_TZ = 'Asia/Seoul';
+  var tzCache = {};
+
+  function isValidTz(tz) {
+    if (!tz || typeof tz !== 'string') return false;
+    if (tz in tzCache) return tzCache[tz];
+    try { new Intl.DateTimeFormat('en-US', { timeZone: tz }); tzCache[tz] = true; }
+    catch (e) { tzCache[tz] = false; }
+    return tzCache[tz];
+  }
+  function deviceTz() {
+    try { var tz = Intl.DateTimeFormat().resolvedOptions().timeZone; return isValidTz(tz) ? tz : null; }
+    catch (e) { return null; }
+  }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function ymdLocal(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parts(inst, tz, extra) {
+    var f = new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: tz, hourCycle: 'h23',
+      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }, extra || {}));
+    var o = {};
+    f.formatToParts(inst).forEach(function (p) { o[p.type] = p.value; });
+    return o;
+  }
+
+  // now 의 'YYYY-MM-DD' (tz 기준). tz 를 모르면 기기 날짜.
+  function todayIn(tz, now) {
+    now = now || new Date();
+    if (isValidTz(tz)) {
+      try { var o = parts(now, tz); return o.year + '-' + o.month + '-' + o.day; } catch (e) {}
+    }
+    return ymdLocal(now);
+  }
+  // 달력 날짜 차이 (b - a), 둘 다 'YYYY-MM-DD'. 24시간 덧셈이 아니라 UTC 날짜 산술
+  function dayDiff(a, b) {
+    var pa = a.split('-').map(Number), pb = b.split('-').map(Number);
+    return Math.round((Date.UTC(pb[0], pb[1] - 1, pb[2]) - Date.UTC(pa[0], pa[1] - 1, pa[2])) / 86400000);
+  }
+  // 날짜만 아는 하루 일정의 상태
+  function dateState(date, tz, now) {
+    var t = todayIn(tz, now);
+    return { state: date === t ? 'today' : (date < t ? 'past' : 'upcoming'), today: t, tzKnown: isValidTz(tz), days: dayDiff(t, date) };
+  }
+  // 기간 일정 (start ≤ 현지 오늘 ≤ endInclusive)
+  function rangeState(start, endIncl, tz, now) {
+    var t = todayIn(tz, now), e = endIncl || start;
+    var st = t < start ? 'upcoming' : (t > e ? 'past' : 'live');
+    return { state: st, today: t, tzKnown: isValidTz(tz), daysToStart: dayDiff(t, start), daysPastEnd: dayDiff(e, t) };
+  }
+  // 그 순간의 tz 오프셋(분, UTC 기준 동쪽 +)
+  function offsetAt(inst, tz) {
+    var o = parts(inst, tz);
+    var asUtc = Date.UTC(+o.year, +o.month - 1, +o.day, (+o.hour) % 24, +o.minute, +o.second);
+    return Math.round((asUtc - inst.getTime()) / 60000);
+  }
+  // 현지 'YYYY-MM-DD' + 'HH:MM' → 그 순간(Date). tz 를 모르면 null. 서머타임 빈 구간은 근사값
+  function localToInstant(date, time, tz) {
+    if (!isValidTz(tz) || !date || !time) return null;
+    var d = date.split('-').map(Number), tm = time.split(':').map(Number);
+    var base = Date.UTC(d[0], d[1] - 1, d[2], tm[0], tm[1]);
+    var guess = base;
+    for (var i = 0; i < 3; i++) {
+      var next = base - offsetAt(new Date(guess), tz) * 60000;
+      if (next === guess) break;
+      guess = next;
+    }
+    return new Date(guess);
+  }
+  function locale() { return window.FimLang === 'en' ? 'en-US' : 'ko-KR'; }
+  // 'YYYY-MM-DD' → '9월 20일 (일)' / 'Sep 20 (Sun)'
+  function fmtDate(date, opts) {
+    var p = date.split('-').map(Number);
+    var f = new Intl.DateTimeFormat(locale(), Object.assign({ timeZone: 'UTC', month: 'short', day: 'numeric', weekday: 'short' }, opts || {}));
+    return f.format(new Date(Date.UTC(p[0], p[1] - 1, p[2])));
+  }
+  var TZ_ABBR = { 'Asia/Seoul': 'KST', 'Asia/Tokyo': 'JST', 'Asia/Taipei': 'TST', 'Asia/Hong_Kong': 'HKT', 'Asia/Macau': 'MST', 'Asia/Singapore': 'SGT',
+                  'Asia/Bangkok': 'ICT', 'Asia/Manila': 'PHT', 'Asia/Jakarta': 'WIB', 'Asia/Shanghai': 'CST', 'Asia/Ho_Chi_Minh': 'ICT' };
+  function tzShort(tz, inst) {
+    try {
+      var o = parts(inst || new Date(), tz, { timeZoneName: 'short' });
+      var s = o.timeZoneName || tz;
+      if (/^GMT[+-]/.test(s) && TZ_ABBR[tz]) return TZ_ABBR[tz];   // Intl 이 'GMT+9' 로만 주는 지역
+      return s;
+    } catch (e) { return TZ_ABBR[tz] || tz; }
+  }
+  // 순간을 tz 기준으로 '9월 21일 (월) 11:00 KST'
+  function fmtInstant(inst, tz, withTz) {
+    var f = new Intl.DateTimeFormat(locale(), { timeZone: tz, month: 'short', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+    return f.format(inst) + (withTz === false ? '' : ' ' + tzShort(tz, inst));
+  }
+  function dateIn(inst, tz) { var o = parts(inst, tz); return o.year + '-' + o.month + '-' + o.day; }
+
+  // 사용자 시간대: 저장된 선택 → 기기 → Asia/Seoul
+  function viewerTz() {
+    var saved = null;
+    try { saved = localStorage.getItem('fimTz'); } catch (e) {}
+    if (saved && saved !== 'device' && isValidTz(saved)) return saved;
+    return deviceTz() || DEFAULT_TZ;
+  }
+  function viewerTzChoice() {
+    try { return localStorage.getItem('fimTz') || 'device'; } catch (e) { return 'device'; }
+  }
+  function setViewerTz(v) {
+    try { if (!v || v === 'device') localStorage.setItem('fimTz', 'device'); else if (isValidTz(v)) localStorage.setItem('fimTz', v); } catch (e) {}
+  }
+
+  // 확정 시각의 이중 표시. show: {time_zone, start_time}, date: 'YYYY-MM-DD'
+  //   → { inst, local: '9월 20일 (일) 19:00 PDT', viewer: '9월 21일 (월) 11:00 KST', dayLabel: '다음 날' | '' , sameTz }
+  function dual(show, date) {
+    var tz = show.time_zone, inst = localToInstant(date, show.start_time, tz);
+    if (!inst) return null;
+    var vtz = viewerTz();
+    var diff = dayDiff(date, dateIn(inst, vtz));
+    var dayLabel = diff === 0 ? '' : (window.FimLang === 'en'
+      ? (diff === 1 ? 'next day' : diff === -1 ? 'previous day' : (diff > 0 ? '+' + diff + ' days' : diff + ' days'))
+      : (diff === 1 ? '다음 날' : diff === -1 ? '전날' : (diff > 0 ? diff + '일 뒤' : (-diff) + '일 전')));
+    return { inst: inst, local: fmtInstant(inst, tz), viewer: fmtInstant(inst, vtz), dayLabel: dayLabel, sameTz: offsetAt(inst, tz) === offsetAt(inst, vtz), viewerTz: vtz };
+  }
+
+  window.FimTime = {
+    isValidTz: isValidTz, deviceTz: deviceTz, viewerTz: viewerTz, viewerTzChoice: viewerTzChoice, setViewerTz: setViewerTz,
+    todayIn: todayIn, dayDiff: dayDiff, dateState: dateState, rangeState: rangeState,
+    localToInstant: localToInstant, offsetAt: offsetAt, fmtDate: fmtDate, fmtInstant: fmtInstant, tzShort: tzShort, dual: dual,
+    DEFAULT_TZ: DEFAULT_TZ
+  };
+})();
+</script>

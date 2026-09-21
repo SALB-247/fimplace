@@ -50,6 +50,8 @@
   {% assign published_at = page.created_at | default: page.date %}
   {% if published_at %}
     <meta property="article:published_time" content="{{ published_at | date_to_xmlschema }}">
+    {% if page.en_url %}<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ page.en_url }}"><link rel="alternate" hreflang="ko" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">{% endif %}
+    {% if page.ko_url %}<link rel="alternate" hreflang="ko" href="{{ site.url }}{{ site.baseurl }}{{ page.ko_url }}"><link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">{% endif %}
     {% if page.last_modified_at %}
     <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
     {% endif %}
@@ -78,6 +80,7 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
 
   {% include i18n.html %}
+{% include fim_time.html %}
 
   <title>
     {% if page.id == "home" %}

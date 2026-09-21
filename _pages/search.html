@@ -39,12 +39,12 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
         INDEX = (data || []).map(function (item) {
           return {
             raw:       item,
-            titleN:    normalize(item.title),
+            titleN:    normalize(item.title) + ' ' + normalize(item.name_en || ''),
             tagsN:     normalize((item.tags || []).join(' ')) +
                        (window.FimLang === 'en'
                          ? normalize((item.tags || []).map(FimTag).join(' ')) : ''),
             membersN:  normalize((item.members || []).join(' ')),
-            addressN:  normalize(item.address || ''),
+            addressN:  normalize(item.address || '') + ' ' + normalize(item.address_en || ''),
             bodyN:     normalize(item.excerpt || '')
           };
         });
@@ -111,7 +111,7 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
       hits = hits.slice(0, 100);
 
       meta.textContent = window.FimLang === 'en'
-        ? FimFmt(FimT('search_count', ''), [hits.length, idx.length])
+        ? FimFmt(FimT(hits.length === 1 ? 'search_count_one' : 'search_count', ''), [hits.length, idx.length])
         : hits.length + '개 결과 (전체 ' + idx.length + '개 노트 중)';
 
       ul.innerHTML = hits.map(function (h) {
@@ -119,10 +119,15 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
         var tagHtml = (i.tags || []).slice(0, 6).map(function (t) {
           return '<span class="tag-chip" style="margin-right:0.3em">#' + escapeHtml(FimTag(t)) + '</span>';
         }).join('');
-        var addr = i.address ? '<div class="excerpt">📍 ' + escapeHtml(i.address) + '</div>' : '';
+        var addrTxt = (window.FimLang === 'en' && i.address_en) ? i.address_en : i.address;
+        var addr = addrTxt ? '<div class="excerpt">📍 ' + escapeHtml(addrTxt) + '</div>' : '';
+        var titleTxt = i.title;
+        if (window.FimLang === 'en' && i.name_en) {
+          if (normalize(i.name_en) !== normalize(i.title)) titleTxt = i.name_en + ' (' + i.title + ')';
+        }
         var dateBadge = i.date ? '<span style="font-size:0.78em; color:var(--subtext); margin-right:0.4em;">📅 ' + escapeHtml(i.date) + '</span>' : '';
         return '<li>' +
-          '<a class="internal-link" href="' + i.url + '">' + escapeHtml(i.title) + '</a> ' +
+          '<a class="internal-link" href="' + i.url + '">' + escapeHtml(titleTxt) + '</a> ' +
           dateBadge + tagHtml +
           addr +
           '</li>';

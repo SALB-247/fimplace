@@ -1,0 +1,132 @@
+# 공연장·도시 시간대 (IANA ID) — 현지 시간 모듈의 원본 (2026-09-22)
+#
+# 우선순위 (_plugins/timezones.rb FimTz.resolve):
+#   1. 공연장 노트 frontmatter `timezone:`            (검증된 값을 노트에 직접)
+#   2. venues:   노트 제목 → 시간대
+#   3. cities:   도시 태그·투어 표의 도시 셀 → 시간대  (미국처럼 시간대가 여럿인 나라는 반드시 여기로)
+#   4. countries: 국가 코드 → 시간대  (⚠️ 시간대가 하나뿐인 나라만. us·mx·id·ca·au·br·ru 는 넣지 않는다)
+# 하나도 못 찾으면 null → 화면은 '시간대 확인 필요' 로 두고 자동 판정을 보류한다.
+# 고정 시차(+16h 등)는 쓰지 않는다 — 브라우저 Intl 이 그 날짜의 서머타임 규칙을 적용한다.
+
+venues:
+  Tacoma Dome: America/Los_Angeles
+  Crypto.com Arena: America/Los_Angeles
+  SAP Center: America/Los_Angeles
+  Mortgage Matchup Center: America/Phoenix
+  Dickies Arena: America/Chicago
+  United Center: America/Chicago
+  Prudential Center: America/New_York
+  Kia Center: America/New_York
+  Capital One Arena: America/New_York
+  Arena CDMX: America/Mexico_City
+  Kia Forum: America/Los_Angeles
+  Bill Graham Civic Auditorium: America/Los_Angeles
+  Climate Pledge Arena: America/Los_Angeles
+  Apex @ EXPO: Asia/Singapore
+
+cities:
+  # 한국
+  서울: Asia/Seoul
+  인천: Asia/Seoul
+  고양: Asia/Seoul
+  부산: Asia/Seoul
+  대구: Asia/Seoul
+  # 일본
+  도쿄: Asia/Tokyo
+  오다이바: Asia/Tokyo
+  오사카: Asia/Tokyo
+  교토: Asia/Tokyo
+  고베: Asia/Tokyo
+  나고야: Asia/Tokyo
+  아이치현: Asia/Tokyo
+  지바: Asia/Tokyo
+  지바현: Asia/Tokyo
+  사이타마: Asia/Tokyo
+  사이타마현: Asia/Tokyo
+  가나가와: Asia/Tokyo
+  카나가와현: Asia/Tokyo
+  요코하마: Asia/Tokyo
+  시즈오카: Asia/Tokyo
+  시즈오카현: Asia/Tokyo
+  미야기: Asia/Tokyo
+  미야기현: Asia/Tokyo
+  후쿠오카: Asia/Tokyo
+  기타큐슈: Asia/Tokyo
+  홋카이도: Asia/Tokyo
+  야마나시현: Asia/Tokyo
+  미에현: Asia/Tokyo
+  효고현: Asia/Tokyo
+  # 미국 서부
+  로스앤젤레스: America/Los_Angeles
+  LA: America/Los_Angeles
+  애너하임: America/Los_Angeles
+  잉글우드: America/Los_Angeles
+  패서디나: America/Los_Angeles
+  인디오: America/Los_Angeles
+  샌프란시스코: America/Los_Angeles
+  산호세: America/Los_Angeles
+  시애틀: America/Los_Angeles
+  타코마: America/Los_Angeles
+  라스베가스: America/Los_Angeles
+  # 미국 산악 (애리조나는 서머타임 없음)
+  피닉스: America/Phoenix
+  # 미국 중부
+  시카고: America/Chicago
+  댈러스: America/Chicago
+  포트워스: America/Chicago
+  그랜드프레리: America/Chicago
+  # 미국 동부
+  뉴욕: America/New_York
+  뉴어크: America/New_York
+  올랜도: America/New_York
+  워싱턴 D.C.: America/New_York
+  워싱턴DC: America/New_York
+  # 하와이
+  하와이: Pacific/Honolulu
+  호놀룰루: Pacific/Honolulu
+  # 멕시코
+  멕시코시티: America/Mexico_City
+  # 유럽
+  런던: Europe/London
+  맨체스터: Europe/London
+  리버풀: Europe/London
+  파리: Europe/Paris
+  암스테르담: Europe/Amsterdam
+  코펜하겐: Europe/Copenhagen
+  베를린: Europe/Berlin
+  밀라노: Europe/Rome
+  로마: Europe/Rome
+  피렌체: Europe/Rome
+  # 아시아
+  타이베이: Asia/Taipei
+  가오슝: Asia/Taipei
+  타오위안: Asia/Taipei
+  홍콩: Asia/Hong_Kong
+  마카오: Asia/Macau
+  싱가포르: Asia/Singapore
+  방콕: Asia/Bangkok
+  논타부리: Asia/Bangkok
+  마닐라: Asia/Manila
+  불라칸: Asia/Manila
+  자카르타: Asia/Jakarta
+  상하이: Asia/Shanghai
+  나트랑: Asia/Ho_Chi_Minh
+
+countries:
+  kr: Asia/Seoul
+  jp: Asia/Tokyo
+  tw: Asia/Taipei
+  hk: Asia/Hong_Kong
+  mo: Asia/Macau
+  sg: Asia/Singapore
+  th: Asia/Bangkok
+  ph: Asia/Manila
+  vn: Asia/Ho_Chi_Minh
+  cn: Asia/Shanghai
+  gb: Europe/London
+  fr: Europe/Paris
+  nl: Europe/Amsterdam
+  dk: Europe/Copenhagen
+  de: Europe/Berlin
+  it: Europe/Rome
+  ch: Europe/Zurich

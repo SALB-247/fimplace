@@ -1,5 +1,7 @@
 ---
 title: Made My Night_오프라인 이벤트 모음
+title_en: "Made My Night — Offline Events"
+intro_en: "Offline events for the 2nd single album 'Made My Night' — pop-up store, lucky draws and special stores."
 shortid: 1ywrg
 hide_backlinks: true
 tags:
@@ -8,6 +10,7 @@ tags:
 <img src="assets/mmn_album.jpg">
 
 LE SSERAFIM 2nd Single Album **'Made My Night'** 관련 오프라인 이벤트 모음.
+{: .hub-intro}
 
 # LE SSERAFIM 2026 F/W POP UP
 

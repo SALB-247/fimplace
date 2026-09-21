@@ -21,6 +21,7 @@ module SearchIndexer
           'tags'    => Array(note.data['tags']).map(&:to_s),
           'members' => Array(note.data['members']).map(&:to_s),
           'address' => extract_address_line(note.content.to_s),
+          'name_en' => note.data['name_en'].to_s, 'address_en' => note.data['address_en'].to_s,   # places_en.rb
           'date'    => (rep_date ? rep_date.strftime('%Y-%m-%d') : nil),
           'excerpt' => clean_excerpt(note.content.to_s, 500)
         }

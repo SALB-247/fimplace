@@ -2,6 +2,23 @@
   <div class="nav-links">
     <a class="internal-link" href="{{ site.baseurl }}/" style="font-weight: bold; color: var(--primary);">{{ site.title }}</a>
     <a class="internal-link" href="{{ site.baseurl }}/map/" data-i18n="nav_map">지도</a>
+    <details class="nav-menu" id="nav-hubs">
+      <summary data-i18n="nav_hubs">모음 ▾</summary>
+      <div class="nav-menu-list">
+        {%- for item in site.data.hub_menu -%}
+          {%- if item.group -%}
+            <div class="nav-menu-group" data-i18n="nav_group_{{ item.group }}">{{ item.group }}</div>
+          {%- else -%}
+            {%- assign hub = site.notes | where: "title", item.title | first -%}
+            {%- if hub -%}
+            <a class="internal-link" href="{{ site.baseurl }}{{ hub.url }}"
+               {%- if hub.en_url %} data-en-href="{{ site.baseurl }}{{ hub.en_url }}"{% endif -%}
+               {%- if hub.title_en %} data-en="{{ hub.title_en | escape }}"{% endif %}>{{ item.label }}</a>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </details>
     <a class="internal-link" href="{{ site.baseurl }}/tags/" data-i18n="nav_tags">태그</a>
     <a class="internal-link" href="{{ site.baseurl }}/search/" data-i18n="nav_search">검색</a>
     <a class="internal-link" href="{{ site.baseurl }}/about" data-i18n="nav_about">소개</a>
@@ -49,6 +66,16 @@
   // 지구본을 붙여 '언어 전환' 이라는 게 아이콘만으로도 읽히게 한다
   b.textContent = cur === 'en' ? '🌐 한국어' : '🌐 EN';
   b.title = cur === 'en' ? '한국어로 보기' : 'View in English';
+  // 모음 메뉴: 영어면 영어판 주소·제목으로, 바깥 클릭·ESC 로 닫힘
+  var hubs = document.getElementById('nav-hubs');
+  if (hubs) {
+    if (cur === 'en') {
+      hubs.querySelectorAll('a[data-en-href]').forEach(function (a) { a.setAttribute('href', a.getAttribute('data-en-href')); });
+      hubs.querySelectorAll('a[data-en]').forEach(function (a) { a.textContent = a.getAttribute('data-en'); });
+    }
+    document.addEventListener('click', function (e) { if (hubs.open && !hubs.contains(e.target)) hubs.open = false; });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hubs.open = false; });
+  }
   b.addEventListener('click', function () {
     var next = (window.FimLang === 'en') ? 'ko' : 'en';
     try { localStorage.setItem('fimLang', next); } catch (e) {}

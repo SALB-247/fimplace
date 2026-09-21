@@ -708,6 +708,10 @@ permalink: /map/
     var d = new Date();
     return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   }
+  // 공연장 현지 오늘 (FimTime, _includes/fim_time.html) — 시간대를 모르면 기기 날짜
+  function todayAt(tz) {
+    return (window.FimTime && FimTime.isValidTz(tz)) ? FimTime.todayIn(tz) : todayYmd();
+  }
 
   function crewIcon() {
     // ⚠️ img 인라인 width 필수 — Leaflet 의 `.leaflet-marker-pane img { width:auto }` 가
@@ -721,39 +725,41 @@ permalink: /map/
   // ⚠️ 반드시 '개별 공연일(dates)' 기준으로 비교할 것.
   //    공연 묶음의 start/end 로 비교하면 '2026.07.30, 08.01–02' 처럼 사이가 빈 일정에서
   //    7/31 에 바로 다음날(8/1) 공연을 놓치고 엉뚱한 도시를 가리킨다.
+  //    또한 '오늘' 은 각 공연장의 현지 날짜다 (서울이 9/21 새벽이어도 타코마는 9/20 공연 당일).
   function pickCrewShow(shows) {
-    var t = todayYmd();
     var usable = shows.filter(function (s) {
       return !s.cancelled && s.lat != null && s.dates && s.dates.length;
     });
 
-    var live = usable.filter(function (s) { return s.dates.indexOf(t) !== -1; });
-    if (live.length) return { show: live[0], state: 'live', date: t };
+    var live = usable.filter(function (s) { return s.dates.indexOf(todayAt(s.time_zone)) !== -1; });
+    if (live.length) return { show: live[0], state: 'live', date: todayAt(live[0].time_zone), today: todayAt(live[0].time_zone) };
 
-    var nextShow = null, nextDate = null;
+    var nextShow = null, nextDate = null, nextToday = null;
     usable.forEach(function (s) {
+      var t = todayAt(s.time_zone);
       s.dates.forEach(function (d) {
-        if (d > t && (nextDate === null || d < nextDate)) { nextDate = d; nextShow = s; }
+        if (d > t && (nextDate === null || d < nextDate)) { nextDate = d; nextShow = s; nextToday = t; }
       });
     });
-    if (nextShow) return { show: nextShow, state: 'next', date: nextDate };
+    if (nextShow) return { show: nextShow, state: 'next', date: nextDate, today: nextToday };
 
-    var lastShow = null, lastDate = null;
+    var lastShow = null, lastDate = null, lastToday = null;
     usable.forEach(function (s) {
+      var t = todayAt(s.time_zone);
       s.dates.forEach(function (d) {
-        if (d < t && (lastDate === null || d > lastDate)) { lastDate = d; lastShow = s; }
+        if (d < t && (lastDate === null || d > lastDate)) { lastDate = d; lastShow = s; lastToday = t; }
       });
     });
-    return lastShow ? { show: lastShow, state: 'last', date: lastDate } : null;
+    return lastShow ? { show: lastShow, state: 'last', date: lastDate, today: lastToday } : null;
   }
 
   function crewPopup(pick) {
-    var s = pick.show, t = todayYmd(), head, when;
+    var s = pick.show, t = pick.today || todayYmd(), head, when;
     if (pick.state === 'live') {
       head = '<span style="background:#c9184a;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">' + FimT('crew_today', '🔴 오늘 공연 중') + '</span>';
       when = s.date_raw;
     } else if (pick.state === 'next') {
-      var dd = Math.round((new Date(pick.date + 'T00:00:00') - new Date(t + 'T00:00:00')) / 86400000);
+      var dd = window.FimTime ? FimTime.dayDiff(t, pick.date) : Math.round((new Date(pick.date + 'T00:00:00') - new Date(t + 'T00:00:00')) / 86400000);
       head = '<span style="background:#1a56c4;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">' + (FimLang === 'en'
         ? FimFmt(FimT('crew_next_dday', ''), [dd]) : '다음 공연 D-' + dd) + '</span>';
       when = s.date_raw;
@@ -767,7 +773,14 @@ permalink: /map/
     return '<div style="min-width:210px">' + head +
       '<div style="margin-top:0.45em; font-size:1.05em;"><strong>' + (s.flag || '') + ' ' + escapeHtmlMap(FimTag(s.city || '')) + '</strong></div>' +
       '<div style="margin-top:0.15em;">' + venue + '</div>' +
-      '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.3em;">📅 ' + escapeHtmlMap(when) + '</div>' +
+      '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.3em;">📅 ' + escapeHtmlMap(when) + (FimLang === 'en' ? ' (local)' : ' (현지)') + '</div>' +
+      (function () {   // 확정 시각이 있으면 현지·내 시간 이중 표시 (날짜만 아는 공연은 아무것도 안 붙인다)
+        if (!s.start_time || !window.FimTime) return '';
+        var du = FimTime.dual(s, pick.date);
+        if (!du) return '';
+        return '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.2em;">🕒 ' + escapeHtmlMap(du.local) +
+               (du.sameTz ? '' : ' · ' + escapeHtmlMap(du.viewer) + (du.dayLabel ? ' [' + escapeHtmlMap(du.dayLabel) + ']' : '')) + '</div>';
+      })() +
       '<div style="font-size:0.82em; margin-top:0.4em;"><a href="{{ site.baseurl }}' + s.tour_url + '">' + escapeHtmlMap(s.tour) + '</a></div>' +
       '<div style="font-size:0.72em; color:var(--subtext); margin-top:0.5em;">' + CREW.map(function (m) { return MEMBER_EMOJI[m]; }).join(' ') + FimT('crew_all_members', ' 멤버 전원 참여') + '</div>' +
       '</div>';
@@ -831,8 +844,18 @@ permalink: /map/
   var searchInput = document.getElementById('map-search');
   var searchQ = '';
   function normQuery(v) { return (v || '').toLowerCase().replace(/\s+/g, ''); }
+  // 영어 모드: 구글맵 영어 이름·주소 (places_en.rb) — 한글 이름은 현지에서 찾을 때 필요하니 괄호로 남긴다
+  // ⚠️ 한 줄에 '==' 가 두 번 오면 markdown-highlighter 가 ==…== 를 <mark> 로 바꿔 스크립트가 깨진다 → 조건을 줄로 나눈다
+  function placeName(p) {
+    if (window.FimLang !== 'en' || !p.name_en) return p.title;
+    if (normQuery(p.name_en) === normQuery(p.title)) return p.title;
+    return p.name_en + ' (' + p.title + ')';
+  }
+  function placeAddr(p) { return (window.FimLang === 'en' && p.address_en) ? p.address_en : p.address; }
   function matchesQuery(p, q) {
     if (normQuery(p.title).indexOf(q) !== -1) return true;
+    if (normQuery(p.name_en).indexOf(q) !== -1) return true;
+    if (normQuery(p.address_en).indexOf(q) !== -1) return true;
     if (normQuery(p.business).indexOf(q) !== -1) return true;
     if (normQuery(p.address).indexOf(q) !== -1) return true;
     var tags = p.tags || [];
@@ -925,6 +948,8 @@ permalink: /map/
     // 통합 기간 필드(end = 기간섹션·제목·frontmatter 를 서버에서 일원화한 종료일) 우선
     if (p && p.end) {
       var em = p.end.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      // 행사장 현지 날짜로 판정 (해외 팝업이 한국 날짜 기준으로 하루 먼저 끝나 보이지 않게)
+      if (em && window.FimTime && FimTime.isValidTz(p.time_zone)) return p.end < FimTime.todayIn(p.time_zone);
       if (em) return new Date(+em[1], +em[2] - 1, +em[3]) < TODAY;
     }
     var title = (p && typeof p === 'object') ? p.title : p;
@@ -1295,14 +1320,14 @@ permalink: /map/
       return '<span style="display:inline-block; padding:0.05em 0.4em; margin-right:0.2em; background:var(--box-bg); border-radius:999px; font-size:0.78em;">#' + escapeHtmlMap(FimTag(t)) + '</span>';
     }).join('');
     var extLinks = [];
-    if (p.kakao_url) extLinks.push('<a href="' + p.kakao_url + '" target="_blank" rel="noopener">카카오</a>');
-    if (p.naver_url) extLinks.push('<a href="' + p.naver_url + '" target="_blank" rel="noopener">네이버</a>');
+    if (p.kakao_url) extLinks.push('<a href="' + p.kakao_url + '" target="_blank" rel="noopener">' + FimT('map_link_kakao', '카카오') + '</a>');
+    if (p.naver_url) extLinks.push('<a href="' + p.naver_url + '" target="_blank" rel="noopener">' + FimT('map_link_naver', '네이버') + '</a>');
     var srcBadge = coordAccuracyBadge(p.source);
     var endedBadge = isEnded(p) ? '<span style="font-size:0.7em; color:#fff; background:#999; padding:0.1em 0.4em; border-radius:999px; margin-left:0.3em;">' + (p.closed ? FimT('badge_closed', '폐업') : FimT('badge_ended', '종료')) + '</span>' : '';
     return '<div style="min-width:200px">' +
-      '<strong><a href="' + p.url + '">' + p.title + '</a></strong> ' + srcBadge + endedBadge +
+      '<strong><a href="' + p.url + '">' + escapeHtmlMap(placeName(p)) + '</a></strong> ' + srcBadge + endedBadge +
       (p.business && p.business !== p.title ? '<div style="font-size:0.8em; color:var(--text); margin-top:0.2em;">' + p.business + '</div>' : '') +
-      (p.address ? '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.3em;">📍 ' + p.address + '</div>' : '') +
+      (placeAddr(p) ? '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.3em;">📍 ' + escapeHtmlMap(placeAddr(p)) + '</div>' : '') +
       (extLinks.length ? '<div style="margin-top:0.3em; font-size:0.8em;">' + extLinks.join(' &middot; ') + '</div>' : '') +
       (tagHtml ? '<div style="margin-top:0.4em">' + tagHtml + '</div>' : '') +
       '</div>';
@@ -1496,7 +1521,7 @@ permalink: /map/
       var endedTag = isEnded(p) ? ' <span style="color:var(--subtext);font-size:0.85em;">(' + (p.closed ? FimT('badge_closed', '폐업') : FimT('badge_ended', '종료')) + ')</span>' : '';
       row.innerHTML =
         '<span class="mli-emoji">' + placeEmoji(p) + '</span>' +
-        '<span class="mli-title">' + escapeHtmlMap(p.title) + endedTag + '</span>' +
+        '<span class="mli-title">' + escapeHtmlMap(placeName(p)) + endedTag + '</span>' +
         (cat ? '<span class="mli-sub">' + escapeHtmlMap(cat) + '</span>' : '');
       row.addEventListener('click', function (ev) {
         // 새 탭으로 열려는 조작은 브라우저에 그대로 넘긴다

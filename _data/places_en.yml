@@ -1,0 +1,3556 @@
+# 외국인용 영어 장소명·주소 — scripts/places_en.py 가 구글맵(hl=en)에서 채운다. 손으로 고쳐도 된다 (merge 는 기존 값을 덮지 않음).
+# name_en 이 한글이면 구글에 영어 표기가 없는 곳. _plugins/places_en.rb 가 노트·places.json·검색 색인에 주입한다.
+1979 LP LIVE PUB 2호점:
+  address_en: 2-194 Hangangno 2(i)-ga, Yongsan District, Seoul
+  category_en: Bar
+  cid: '16762645515661265632'
+  fetched: '2026-09-21'
+  name_en: 1979 LP LIVE PUB 2호점
+Acne Studios Greene Street:
+  address_en: 33 Greene St, New York, NY 10013, United States
+  category_en: Clothing store
+  cid: '13499281327214658713'
+  fetched: '2026-09-21'
+  name_en: Acne Studios Greene Street
+Ahgassi Gopchang:
+  address_en: 3744 W 6th St, Los Angeles, CA 90005, United States
+  category_en: Korean barbecue restaurant
+  cid: '9379317067686122536'
+  fetched: '2026-09-21'
+  name_en: Ahgassi Gopchang
+Akakara Shinjuku:
+  address_en: Japan, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−21−2 2F
+  cid: '6361014091933046703'
+  fetched: '2026-09-21'
+  name_en: Akakara Shinjuku Kabukicho
+Akanoren Ramen:
+  address_en: Japan, 〒106-0031 Tokyo, Minato City, Nishiazabu, 3 Chome−21−24 第五中岡ビル
+  cid: '18107839456032237824'
+  fetched: '2026-09-21'
+  name_en: Hakata Menbo Akanoren Nishiazabu
+Alfred Coffee:
+  address_en: 8428 Melrose Pl, Los Angeles, CA 90069, United States
+  category_en: Coffee shop
+  cid: '2068265991445915946'
+  fetched: '2026-09-21'
+  name_en: Alfred Coffee
+Amorino:
+  address_en: Galleria Vittorio Emanuele II, 20121 Milano MI, Italy
+  category_en: Ice cream shop
+  cid: '11365220632219229818'
+  fetched: '2026-09-21'
+  name_en: Amorino
+Apex @ EXPO:
+  address_en: 1 Expo Dr, Singapore 486041
+  category_en: Convention center
+  cid: '7217000260839808673'
+  fetched: '2026-09-21'
+  name_en: Apex @ EXPO
+Baekjeong Los Angeles:
+  address_en: '3465 W 6th St #20, Los Angeles, CA 90020, United States'
+  cid: '3216329737770165249'
+  fetched: '2026-09-21'
+  google_closed: true
+  name_en: Kang Ho Dong Baekjeong
+Beecher's Handmade Cheese:
+  address_en: 1600 Pike Pl, Seattle, WA 98101, United States
+  category_en: Cheese shop
+  cid: '3025143101360427001'
+  fetched: '2026-09-21'
+  name_en: Beecher's Handmade Cheese
+Beefbar:
+  address_en: 5 Rue Marbeuf, 75008 Paris, France
+  category_en: Steak house
+  cid: '5910262638085354582'
+  fetched: '2026-09-21'
+  name_en: Beefbar
+Blue Bottle Coffee 1345 Avenue of the Americas:
+  address_en: 1345 6th Ave, New York, NY 10105, United States
+  category_en: Coffee shop
+  cid: '9065966824810670838'
+  fetched: '2026-09-21'
+  name_en: Blue Bottle Coffee
+Blue Willow 夜来湘:
+  address_en: 40 W 56th St, New York, NY 10019, United States
+  category_en: Hunan restaurant
+  cid: '604106950419482758'
+  fetched: '2026-09-21'
+  name_en: Blue Willow 夜来湘
+Cafe Match Box:
+  address_en: 57 Paterson St, Causeway Bay, Hong Kong Island, Hong Kong
+  cid: '2898139876959735308'
+  fetched: '2026-09-21'
+  name_en: Cafe Match Box
+Cafe Tapirosu:
+  address_en: Japan, 〒106-0032 Tokyo, Minato City, Roppongi, 6 Chome−8−28 宮崎 ビル 2F
+  cid: '11631321878359875729'
+  fetched: '2026-09-21'
+  name_en: Cafe Tapirosu
+Cafe거부기 앤 쿠펫 판교점:
+  address_en: PAMEUS MALL, 18 Changeop-ro, Sujeong-gu, Seongnam-si, Gyeonggi-do
+  category_en: Coffee shop
+  cid: '2475443012576120804'
+  fetched: '2026-09-21'
+  name_en: KooPET
+Carasau Pasta Bar:
+  address_en: 8312 W 3rd St, Los Angeles, CA 90048, United States
+  category_en: Italian restaurant
+  cid: '16850314519324598805'
+  fetched: '2026-09-21'
+  name_en: Carasau Pasta Bar
+Carbone New York:
+  address_en: 181 Thompson St, New York, NY 10012, United States
+  category_en: Italian restaurant
+  cid: '6958892335243387212'
+  fetched: '2026-09-21'
+  name_en: Carbone New York
+Casa Musicale G. Ceccherini:
+  address_en: Via de' Ginori, 31r, 50123 Firenze FI, Italy
+  cid: '12331003259946099136'
+  fetched: '2026-09-21'
+  name_en: Casa Musicale G. Ceccherini
+Casco Antiguo:
+  address_en: 2102 7th Ave, Seattle, WA 98121, United States
+  category_en: Mexican restaurant
+  cid: '1674294639961558379'
+  fetched: '2026-09-21'
+  name_en: Casco Antiguo
+Cecconi's West Hollywood:
+  address_en: 8764 Melrose Ave, West Hollywood, CA 90069, United States
+  category_en: Restaurant
+  cid: '2832827539881722547'
+  fetched: '2026-09-21'
+  name_en: Cecconi's West Hollywood
+Ceramica Raku Roma:
+  address_en: Via dei Pastini, 20, 00186 Roma RM, Italy
+  category_en: Pottery store
+  cid: '3143054857546800014'
+  fetched: '2026-09-21'
+  name_en: Ceramica Raku Roma
+Cheese & Doria:
+  address_en: Japan, 〒112-0003 Tokyo, Bunkyo City, Kasuga, 1 Chome−1−1 ラクーア ２F
+  category_en: Western restaurant
+  cid: '8469461393251756084'
+  fetched: '2026-09-21'
+  name_en: Cheese & Doria . sweets Tokyo Dome City LaQua
+Chiikawa Land Nagoya PARCO:
+  address_en: Japan, 〒460-0008 Aichi, Nagoya, Naka Ward, Sakae, 3 Chome−29−1 名古屋 parco 東館 3F
+  category_en: Hobby store
+  cid: '17595688082316822546'
+  fetched: '2026-09-21'
+  name_en: Chiikawa Land Nagoya PARCO
+Chrome Hearts New York:
+  address_en: 755 Washington St, New York, NY 10014, United States
+  category_en: Jewelry store
+  cid: '12948634472767949934'
+  fetched: '2026-09-21'
+  name_en: Chrome Hearts
+Community Goods PDC:
+  address_en: Pacific Design Center, Melrose Ave, Los Angeles, CA 90069, United States
+  category_en: Coffee shop
+  cid: '17284184138666832848'
+  fetched: '2026-09-21'
+  name_en: Community Goods - PDC
+Crescendo:
+  address_en: 5 Chome-20-6 Kameido, Koto City, Tokyo 136-0071, Japan
+  category_en: Coffee shop
+  cid: '6930698495216669112'
+  fetched: '2026-09-21'
+  name_en: Crescendo
+Delicius:
+  address_en: JR大阪駅構内, 3 Chome-1-1 Umeda, Kita Ward, Osaka, 530-0001, Japan
+  category_en: Pastry shop
+  cid: '8128955088235298459'
+  fetched: '2026-09-21'
+  name_en: Delicius
+Disney Explorers Lodge:
+  address_en: Lantau Island, New Territories, Hong Kong
+  category_en: 5-star hotel
+  cid: '11005090861262960995'
+  fetched: '2026-09-21'
+  name_en: Disney Explorers Lodge
+Do-Rite Donuts & Chicken:
+  address_en: 233 S Wacker Dr, Chicago, IL 60606, United States
+  category_en: Donut shop
+  cid: '12884939008260602273'
+  fetched: '2026-09-21'
+  name_en: Do-Rite Donuts & Chicken
+Empire Steak House Times Square:
+  address_en: 233 W 49th St, New York, NY 10019, United States
+  category_en: Steak house
+  cid: '10695779793771436589'
+  fetched: '2026-09-21'
+  name_en: Empire Steak House Times Square
+Erewhon Grove:
+  address_en: 7660 Beverly Blvd A, Los Angeles, CA 90036, United States
+  category_en: Natural goods store
+  cid: '8947719645635217435'
+  fetched: '2026-09-21'
+  name_en: Erewhon Grove
+Ernest Klein & Co's Gourmet Food:
+  address_en: 1366 6th Ave, New York, NY 10019, United States
+  category_en: Gourmet grocery store
+  cid: '11237035843642549977'
+  fetched: '2026-09-21'
+  name_en: Ernest Klein & Co's Gourmet Food
+Espaço Lisboa:
+  address_en: 8 R. das Gaivotas, Macao
+  category_en: Portuguese restaurant
+  cid: '8697514673448514387'
+  fetched: '2026-09-21'
+  name_en: Espaço Lisboa
+Ess-a-Bagel:
+  address_en: 831 3rd Ave, New York, NY 10022, United States
+  category_en: Bagel shop
+  cid: '5939257602523573008'
+  fetched: '2026-09-21'
+  name_en: Ess-a-Bagel
+Federales Tacos & Tequila - Fulton Market, Chicago:
+  address_en: 180 N Morgan St, Chicago, IL 60607, United States
+  category_en: Bar
+  cid: '2442946350811635727'
+  fetched: '2026-09-21'
+  name_en: Federales Tacos & Tequila - Fulton Market, Chicago
+Fresh From Hell:
+  address_en: 676 9th Ave, New York, NY 10036, United States
+  category_en: Health food restaurant
+  cid: '6633440322561246074'
+  fetched: '2026-09-21'
+  name_en: Fresh From Hell
+Furaibo Fukiage:
+  address_en: Japan, 〒464-0856 Aichi, Nagoya, Chikusa Ward, Fukiage, 2 Chome−5−3 ハイツナカエ 1F
+  category_en: Izakaya restaurant
+  cid: '18411734863240979923'
+  fetched: '2026-09-21'
+  name_en: Furaibo Fukiage
+GS25 압구정376점:
+  address_en: 376-1 Apgujeong-dong, Gangnam District, Seoul
+  category_en: Convenience store
+  cid: '9924906686414915929'
+  fetched: '2026-09-21'
+  name_en: GS25 압구정376점
+Ginan:
+  address_en: 5-8 Nanbasennichimae, Chuo Ward, Osaka, 542-0075, Japan
+  category_en: Kushiage and kushikatsu restaurant
+  cid: '12148513487706514280'
+  fetched: '2026-09-21'
+  name_en: Ginan
+Golden Apple Comics:
+  address_en: 7018 Melrose Ave, Los Angeles, CA 90038, United States
+  category_en: Comic book store
+  cid: '2085507027674535923'
+  fetched: '2026-09-21'
+  name_en: Golden Apple Comics
+Gozoroppu Sendai:
+  address_en: 2 Chome-10-3 Kokubuncho, Aoba Ward, Sendai, Miyagi 980-0803, Japan
+  category_en: Yakiniku restaurant
+  cid: '2253597552211363626'
+  fetched: '2026-09-21'
+  name_en: Gozoroppu Sendai
+Grandma Lai's Sweet Taro Balls:
+  address_en: No. 143號, Jishan St, Chongwen Village, Ruifang District, New Taipei City, Taiwan 224
+  category_en: Dessert restaurant
+  cid: '15023463796650302820'
+  fetched: '2026-09-21'
+  name_en: Grandma Lai's Sweet Taro Balls
+Guizio:
+  address_en: 81 Greene St, New York, NY 10012, United States
+  category_en: Women's clothing store
+  cid: '15919492813194162945'
+  fetched: '2026-09-21'
+  name_en: Guizio
+H.L.N.A SKYGARDEN:
+  address_en: 1 Chome-1-10 Aomi, Koto City, Tokyo 135-0064, Japan
+  category_en: Skatepark
+  cid: '6347759226913792197'
+  fetched: '2026-09-21'
+  name_en: H.L.N.A SKYGARDEN
+HEYTEA 갤럭시 마카오점:
+  address_en: Macao, 「澳門銀河」時尚匯購物中心G023
+  category_en: Bubble tea store
+  cid: '3153362839755133591'
+  fetched: '2026-09-21'
+  name_en: heytea (銀河店)
+HIDE AND SEEK 홍대점:
+  cid: '13424946480134679080'
+  fetched: '2026-09-21'
+  name_en: HIDE AND SEEK The Origin - Hongdae
+HYSTERIC GLAMOUR SHIBUYA:
+  address_en: 6 Chome-23-2 Jingumae, Shibuya, Tokyo 150-0001, Japan
+  category_en: Clothes market
+  cid: '5829223830521654053'
+  fetched: '2026-09-21'
+  name_en: HYSTERIC GLAMOUR SHIBUYA
+Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko):
+  address_en: 3283-1 Katsuyama, Fujikawaguchiko, Minamitsuru District, Yamanashi 401-0310, Japan
+  category_en: 4-star hotel
+  cid: '5880612576494262076'
+  fetched: '2026-09-21'
+  name_en: Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko)
+Hellenika Cultured Creamery:
+  address_en: 1920a Pike Pl, Seattle, WA 98101, United States
+  category_en: Dessert shop
+  cid: '4942714231263434742'
+  fetched: '2026-09-21'
+  name_en: Hellenika Cultured Creamery
+His Majesty's Theatre:
+  address_en: Haymarket, London SW1Y 4QL, United Kingdom
+  category_en: Performing arts theater
+  cid: '2641541697210462127'
+  fetched: '2026-09-21'
+  name_en: His Majesty's Theatre
+Hobson's Fish & Chips Charing Cross:
+  address_en: 13-15 Villiers St, London WC2N 6ND, United Kingdom
+  category_en: Fish & chips restaurant
+  cid: '16059438330008906686'
+  fetched: '2026-09-21'
+  name_en: Hobson's Fish & Chips Charing Cross
+Hong Kong Old Restaurant (Central):
+  address_en: Wing Wo St, Hong Kong Island, Hong Kong
+  category_en: Shanghainese restaurant
+  cid: '9765284127365911686'
+  fetched: '2026-09-21'
+  name_en: Hong Kong Old Restaurant (Central)
+Hotokura Funari Kawaguchiko:
+  address_en: 6931 Funatsu, Fujikawaguchiko, Minamitsuru District, Yamanashi 401-0301, Japan
+  category_en: Hoto noodle restaurant
+  cid: '7680160468229157974'
+  fetched: '2026-09-21'
+  name_en: Hotokura Funari Kawaguchiko
+Hy's Steak House:
+  address_en: 2440 Kūhiō Ave., Honolulu, HI 96815, United States
+  category_en: Steak house
+  cid: '10268829922205023026'
+  fetched: '2026-09-21'
+  name_en: Hy's Steak House
+I Camaldoli - Pizza & Cucina:
+  address_en: Piazza del Mercato Centrale, 14r, 50123 Firenze FI, Italy
+  category_en: Pizza restaurant
+  cid: '14100723729454123489'
+  fetched: '2026-09-21'
+  name_en: I Camaldoli - Pizza & Cucina
+IFC몰:
+  address_en: 10 Gukjegeumyung-ro, Yeongdeungpo District, Seoul
+  category_en: Shopping mall
+  cid: '2028915265556733783'
+  fetched: '2026-09-21'
+  name_en: IFC Mall
+ITALIAN＆BAKERY MACARONI CLUB:
+  address_en: Japan, 〒403-0017 Yamanashi, Minamitsuru District, Fujiyoshida, Shinnishihara, 5 Chome−6−1 1F ハイランドリゾートホテル&スパ
+  category_en: Restaurant
+  cid: '18400403653749256407'
+  fetched: '2026-09-21'
+  name_en: ITALIAN＆BAKERY MACARONI CLUB
+Immanuel Presbyterian Church:
+  address_en: 3300 Wilshire Blvd, Los Angeles, CA 90010, United States
+  category_en: Presbyterian church
+  cid: '15525704438554206392'
+  fetched: '2026-09-21'
+  name_en: Immanuel Presbyterian Church
+JR東日本四季劇場 春:
+  address_en: 1 Chome-10-45 Kaigan, Minato City, Tokyo 105-0022, Japan
+  cid: '4018469856069819346'
+  fetched: '2026-09-21'
+  name_en: JR-East Shiki Theatre HARU
+Jak’s Mayfair:
+  address_en: 43 S Molton St, London W1K 5RS, United Kingdom
+  category_en: European restaurant
+  cid: '10825142033922047503'
+  fetched: '2026-09-21'
+  name_en: Jak’s Mayfair
+Japanese Anime Gift Shop 一間小舖:
+  address_en: No. 6號, Shuqi Rd, Ruifang District New Taipei City, Taiwan 224
+  category_en: Store
+  cid: '8003860973745582792'
+  fetched: '2026-09-21'
+  name_en: Japanese Anime Gift Shop 一間小舖
+Jiufen Photo Spot:
+  address_en: Ruifang District, New Taipei City, Taiwan 224
+  category_en: Tourist attraction
+  cid: '10173592946766026023'
+  fetched: '2026-09-21'
+  name_en: Shuqi Road
+K-아레나 요코하마:
+  manual: true
+  name_en: K-Arena Yokohama
+Kanekichien:
+  address_en: 3 Chome-11-10 Yanaka, Taito City, Tokyo 110-0001, Japan
+  category_en: Tea store
+  cid: '17951680025479008713'
+  fetched: '2026-09-21'
+  name_en: Kanekichien
+Kitashinchi Shabu shabu Sukiyaki Kiraku(Osaka):
+  address_en: Japan, 〒530-0003 Osaka, Kita Ward, Dojima, 1 Chome−2−7 パーマリィ・イン B1F
+  category_en: ''
+  cid: '5862147702012200739'
+  fetched: '2026-09-21'
+  name_en: Kitashinchi Shabu shabu Sukiyaki Kiraku(Osaka)
+Kitsuneya:
+  address_en: 4 Chome-9-12 Tsukiji, Chuo City, Tokyo 104-0045, Japan
+  category_en: Donburi restaurant
+  cid: '10762732184996540674'
+  fetched: '2026-09-21'
+  name_en: Kitsuneya
+Kokorogi:
+  address_en: 5 Chome-6-1 Shinnishihara, Fujiyoshida, Minamitsuru District, Yamanashi 403-0017, Japan
+  category_en: Japanese restaurant
+  cid: '387481370037523189'
+  fetched: '2026-09-21'
+  name_en: Japanese cuisine Fumi of the village "Kokorogi"
+Koreana Restaurant:
+  address_en: 40A King St W, Manchester M3 2WY, United Kingdom
+  category_en: Korean restaurant
+  cid: '16182368057868598656'
+  fetched: '2026-09-21'
+  name_en: Koreana Restaurant
+LE SSERAFIM 2024 S/S POP UP:
+  address_en: 173-9 Geumho-dong 4(sa)-ga, Seongdong-gu, Seoul
+  category_en: Cafe
+  cid: '2141251434086556255'
+  fetched: '2026-09-21'
+  name_en: 금호알베르
+LE SSERAFIM 2025 S/S POP UP - THE HOT HOUSE:
+  address_en: 33 Ttukseom-ro 17-gil, Seongdong-gu, Seoul
+  category_en: General store
+  cid: '11631880649655650560'
+  fetched: '2026-09-21'
+  name_en: 플라츠2
+LE SSERAFIM 2026 F/W POP UP (Made My Night):
+  address_en: 42 Hangang-daero, Yongsan District, Seoul
+  category_en: Entertainment agency
+  cid: '13144725326438441994'
+  fetched: '2026-09-21'
+  name_en: Hybe Headquarters
+La Maison d'Isabelle:
+  address_en: 47ter Bd Saint-Germain, 75005 Paris, France
+  category_en: Bakery
+  cid: '13943011342094876664'
+  fetched: '2026-09-21'
+  name_en: La Maison d'Isabelle
+La Piazza:
+  address_en: 189 The Grove Dr, Los Angeles, CA 90036, United States
+  category_en: Italian restaurant
+  cid: '17391175735353442694'
+  fetched: '2026-09-21'
+  name_en: La Piazza
+La Pistacherie:
+  address_en: 5 Pl. de l'Alma, 75008 Paris, France
+  category_en: Dessert shop
+  cid: '13743592206193871560'
+  fetched: '2026-09-21'
+  name_en: La Pistacherie
+La Terrazza:
+  address_en: Piazza della Repùbblica, 4, 50122 Firenze FI, Italy
+  category_en: Cafe
+  cid: '8602846177635530390'
+  fetched: '2026-09-21'
+  name_en: La Terrazza
+LazyDer懶得選物/LZD Vintage & Used Select Shop｜古著、二手、選物:
+  address_en: No. 17號, Lane 53, Section 2, Chengde Rd, Guangneng Village, Datong District, Taipei City, Taiwan 103
+  category_en: Second hand store
+  cid: '13083559999260817504'
+  fetched: '2026-09-21'
+  name_en: LazyDer懶得選物
+Le Grenier à Pain Abbesses Bodian:
+  address_en: 38 Rue des Abbesses, 75018 Paris, France
+  category_en: Bakery
+  cid: '3885520951969930312'
+  fetched: '2026-09-21'
+  name_en: Le Grenier à Pain Abbesses Bodian
+Les Deux Musées:
+  address_en: 5 Rue de Bellechasse, 75007 Paris, France
+  category_en: French restaurant
+  cid: '17936614955469343748'
+  fetched: '2026-09-21'
+  name_en: Les Deux Musées
+Lucky Cross:
+  address_en: 125 S Clark St, Chicago, IL 60603, United States
+  category_en: Food court
+  cid: '15294563426100053834'
+  fetched: '2026-09-21'
+  name_en: Sterling Food Hall
+Lucy’s Bakery:
+  address_en: 11-1 Tsutsujigaoka, Aoba Ward, Yokohama, Kanagawa 227-0055, Japan
+  category_en: Dessert shop
+  cid: '1270737429420902599'
+  fetched: '2026-09-21'
+  name_en: Lucy’s Bakery
+Lunyalita:
+  address_en: Britannia Pavilion, Albert Dock, Liverpool L3 4AD, United Kingdom
+  category_en: Catalonian restaurant
+  cid: '12153783742542150501'
+  fetched: '2026-09-21'
+  name_en: Lunyalita
+Lê Phin:
+  address_en: 259 E 10th St, New York, NY 10009, United States
+  category_en: Coffee shop
+  cid: '1173281705050019322'
+  fetched: '2026-09-21'
+  name_en: Lê Phin
+M+ Museum:
+  address_en: 38號 Museum Dr, West Kowloon, Kowloon, Hong Kong
+  category_en: Museum
+  cid: '15739563810894928908'
+  fetched: '2026-09-21'
+  name_en: M+ Museum
+MOKAFÉ:
+  address_en: 687 8th Ave, New York, NY 10036, United States
+  category_en: Coffee shop
+  cid: '5141838316191844151'
+  fetched: '2026-09-21'
+  name_en: MOKAFÉ
+MUN Korean Steakhouse:
+  address_en: 3519 W 6th St, Los Angeles, CA 90020, United States
+  category_en: Korean barbecue restaurant
+  cid: '11366807038953278815'
+  fetched: '2026-09-21'
+  name_en: MUN Korean Steakhouse
+Madhappy West Hollywood:
+  address_en: 8906 Melrose Ave, West Hollywood, CA 90069, United States
+  category_en: Clothing store
+  cid: '116167654923367329'
+  fetched: '2026-09-21'
+  name_en: Madhappy West Hollywood
+Matsumoto Shave Ice:
+  address_en: '66-111 Kamehameha Hwy #605, Haleiwa, HI 96712, United States'
+  category_en: Ice cream shop
+  cid: '4035416486816141681'
+  fetched: '2026-09-21'
+  name_en: Matsumoto Shave Ice
+Matsusaka Beef WHAT’S (B1):
+  address_en: 477 Eboshiyacho, Nakagyo Ward, Kyoto, 604-8165, Japan
+  category_en: Yakiniku restaurant
+  cid: '10006403280091151531'
+  fetched: '2026-09-21'
+  name_en: What’s Matsusaka Beef
+Max & Helen's:
+  address_en: 127 N Larchmont Blvd, Los Angeles, CA 90004, United States
+  category_en: American restaurant
+  cid: '7333578908953962740'
+  fetched: '2026-09-21'
+  name_en: Max & Helen's
+Melrose Vintage Ginori:
+  address_en: Via de' Ginori, 18r, 50123 Firenze FI, Italy
+  category_en: Clothing store
+  cid: '14135121387060870849'
+  fetched: '2026-09-21'
+  name_en: Melrose Vintage Ginori
+Metropolis Vintage:
+  address_en: 803 Broadway, New York, NY 10003, United States
+  category_en: Vintage clothing store
+  cid: '11877571537811370314'
+  fetched: '2026-09-21'
+  name_en: Metropolis Vintage
+Mom's Kitchen and Bar:
+  address_en: 701 9th Ave, New York, NY 10019, United States
+  category_en: Bar & grill
+  cid: '4995991170110278444'
+  fetched: '2026-09-21'
+  name_en: Mom's Kitchen and Bar
+NBA Store:
+  address_en: 545 5th Ave, New York, NY 10017, United States
+  category_en: Sportswear store
+  cid: '9299814628304946193'
+  fetched: '2026-09-21'
+  name_en: NBA Store
+NTSU 아레나:
+  manual: true
+  name_en: NTSU Arena
+Naruto Taiyaki Honpo Tenjinbashi 3 Chome:
+  address_en: 3 Chome-8-18 Tenjinbashi, Kita Ward, Osaka, 530-0041, Japan
+  category_en: Japanese confectionery shop
+  cid: '3986602895896346590'
+  fetched: '2026-09-21'
+  name_en: Naruto Taiyaki Honpo Tenjinbashi 3 Chome
+Negishi Yurakucho Shop:
+  address_en: 3 Chome-6-1 Marunouchi, Chiyoda City, Tokyo 100-0005, Japan
+  category_en: Tongue restaurant
+  cid: '14036389028915322071'
+  fetched: '2026-09-21'
+  name_en: Negishi Yurakucho Shop
+Neko Action:
+  address_en: 3 Chome-10-5 Nishinippori, Arakawa City, Tokyo 116-0013, Japan
+  category_en: Gift shop
+  cid: '3695785222802228331'
+  fetched: '2026-09-21'
+  name_en: Neko Action
+NewsBar Café:
+  address_en: 107 University Pl, New York, NY 10003, United States
+  category_en: Breakfast restaurant
+  cid: '12678476241956376509'
+  fetched: '2026-09-21'
+  name_en: NewsBar Café
+O" by Cirque du Soleil:
+  address_en: Bellagio Hotel & Casino, 3600 S Las Vegas Blvd, Las Vegas, NV 89109, United States
+  category_en: Circus
+  cid: '3956574173594657444'
+  fetched: '2026-09-22'
+  name_en: '"O" by Cirque du Soleil'
+Odaiba Beach:
+  category_en: Beach
+  cid: '4505300467194115173'
+  fetched: '2026-09-21'
+  name_en: Odaiba Beach
+Old Bailey St:
+  address_en: Hong Kong Island, Hong Kong
+  cid: '11358802323094328712'
+  fetched: '2026-09-21'
+  name_en: Old Bailey St, Hong Kong Island, Hong Kong
+Old Window Oceanview Restaurant:
+  address_en: No. 294-2號, Qingbian Rd, Chongwen Village, Ruifang District, New Taipei City, Taiwan 22448
+  category_en: Restaurant
+  cid: '16664327399363790933'
+  fetched: '2026-09-21'
+  name_en: Old Window Oceanview Restaurant and B&B
+Partisan Café Artisanal:
+  address_en: 36 R. de Turbigo, 75003 Paris, France
+  category_en: Coffee shop
+  cid: '3403590225789894853'
+  fetched: '2026-09-21'
+  name_en: Partisan Café Artisanal
+Pasta Sisters:
+  address_en: 3343 W Pico Blvd, Los Angeles, CA 90019, United States
+  category_en: Italian restaurant
+  cid: '17449788018272531782'
+  fetched: '2026-09-21'
+  name_en: Pasta Sisters
+Piece Pizzeria and Brewery:
+  address_en: 1927 W North Ave, Chicago, IL 60622, United States
+  category_en: Pizza restaurant
+  cid: '5536911991698015060'
+  fetched: '2026-09-21'
+  name_en: Piece Pizzeria and Brewery
+Pike Place Chowder - Pike Place Market:
+  address_en: 1530 Post Alley, Seattle, WA 98101, United States
+  category_en: Seafood restaurant
+  cid: '983461984774551847'
+  fetched: '2026-09-21'
+  name_en: Pike Place Chowder - Pike Place Market
+Pike Place Fish Market:
+  address_en: 86 Pike St, Seattle, WA 98101, United States
+  category_en: Seafood market
+  cid: '13966269589212611346'
+  fetched: '2026-09-21'
+  name_en: Pike Place Fish Market
+QUIKSILVER & ROXY 大直美麗華 (BILLABONG):
+  address_en: No. 20號, Jingye 3rd Rd, Jintai Village, Zhongshan District, Taipei City, Taiwan 10491
+  category_en: Shopping mall
+  cid: '1061890826887085265'
+  fetched: '2026-09-21'
+  name_en: Miramar
+ROLL ICE CREAM FACTORY 하라주쿠점:
+  address_en: Japan, 〒150-0001 Tokyo, Shibuya, Jingumae, 6 Chome−6−6 穏田1st.ビル 1階
+  category_en: Ice cream shop
+  cid: '2103867740547656672'
+  fetched: '2026-09-21'
+  name_en: ロールアイスクリームファクトリー 原宿・表参道店
+Ristorante Dalla Zia:
+  address_en: Via Gustavo Fara, 12, 20124 Milano MI, Italy
+  category_en: Italian restaurant
+  cid: '30979020595323691'
+  fetched: '2026-09-21'
+  name_en: Dalla Zia
+Ristorante Stendhal Brera:
+  address_en: Via Ancona, Via S. Marco, 20121 Milano MI, Italy
+  category_en: Restaurant
+  cid: '11233334211934330638'
+  fetched: '2026-09-21'
+  name_en: Ristorante Stendhal Brera
+Rodeo Dr:
+  cid: '17332104765457656028'
+  fetched: '2026-09-21'
+  name_en: Rodeo Dr, Beverly Hills, CA, USA
+SHARI SHARI Kakigori House (Central):
+  address_en: 11 Old Bailey St, Central, Hong Kong Island, Hong Kong
+  category_en: Dessert shop
+  cid: '18014306004112553294'
+  fetched: '2026-09-21'
+  name_en: SHARI SHARI Kakigori House (Central)
+SM 몰 오브 아시아 아레나:
+  manual: true
+  name_en: SM Mall of Asia Arena
+STAGGER COFFEE:
+  address_en: 3069 1/2 W 8th St, Los Angeles, CA 90005, United States
+  category_en: Coffee shop
+  cid: '5214204777804071314'
+  fetched: '2026-09-21'
+  name_en: STAGGER COFFEE
+STUSSY Harajuku Chapter:
+  address_en: Japan, 〒150-0001 Tokyo, Shibuya, Jingumae, 4 Chome−28−2 ハウストンビル 1F/B1F
+  category_en: Clothing store
+  cid: '13347403090240066832'
+  fetched: '2026-09-21'
+  name_en: Stüssy Harajuku Chapter
+Sabella & La Torre:
+  address_en: 2809 Taylor St, San Francisco, CA 94133, United States
+  category_en: Seafood restaurant
+  cid: '4474928019271900794'
+  fetched: '2026-09-21'
+  name_en: Sabella & La Torre
+Safari Cafe:
+  address_en: 2391 N Stockton Dr, Chicago, IL 60614, United States
+  cid: '2180752976668453077'
+  fetched: '2026-09-21'
+  name_en: Safari Cafe
+Sandwich House Maruhen:
+  address_en: Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 4 Chome−6−16 三越 地下 2階
+  category_en: Sandwich shop
+  cid: '8954985671110186309'
+  fetched: '2026-09-21'
+  name_en: Sandoitchihausu Meruhen Ginzamitsukoshiten
+Santa Monica Crepes:
+  address_en: Japan, 〒150-0001 Tokyo, Shibuya, Jingumae, 1 Chome−8−5 Marron Bldg., ２Ｆ
+  category_en: Creperie
+  cid: '16238760776117713773'
+  fetched: '2026-09-21'
+  name_en: Santa Monica Crepes
+Santorini The Greek Grill by Panos:
+  address_en: Lg/F, 51 Elgin St, Central, Hong Kong Island, Hong Kong
+  category_en: Greek restaurant
+  cid: '15079893796812350789'
+  fetched: '2026-09-21'
+  name_en: Santorini The Greek Grill by Panos
+Seaside on the Pier:
+  address_en: 250 Santa Monica Pier, Santa Monica, CA 90401, United States
+  category_en: American restaurant
+  cid: '6327912947510950029'
+  fetched: '2026-09-21'
+  name_en: Seaside on the Pier
+Shelley St:
+  address_en: Hong Kong Island, Hong Kong
+  cid: '11470967548059249083'
+  fetched: '2026-09-21'
+  name_en: Shelley St, Hong Kong Island, Hong Kong
+SimBIOsi Organic Cafe &Lovely Bistro:
+  address_en: Via de' Ginori, 64r, 50123 Firenze FI, Italy
+  category_en: Coffee shop
+  cid: '7479265662477389108'
+  fetched: '2026-09-21'
+  name_en: SimBIOsi Organic Cafe &Lovely Bistro
+Sushi Kan:
+  address_en: Japan, 〒106-0031 Tokyo, Minato City, Nishiazabu, 1 Chome−4−40 Nishiazabu Shino Bldg, B1F
+  category_en: Sushi restaurant
+  cid: '10472264541016691886'
+  fetched: '2026-09-21'
+  name_en: Sushi Kan
+'Sushi by Scratch Restaurants: Los Angeles':
+  address_en: '16101 Ventura Blvd #100, Encino, CA 91436, United States'
+  category_en: Sushi restaurant
+  cid: '11146698183651340849'
+  fetched: '2026-09-21'
+  name_en: 'Sushi by Scratch Restaurants: Los Angeles'
+Taihodien Restaurant:
+  address_en: No. 315號, Section 4, Xinyi Road, Dunhuang Village, Da’an District, Taipei City, Taiwan 106
+  category_en: Hot pot restaurant
+  cid: '3547852647789781249'
+  fetched: '2026-09-21'
+  name_en: Taihodien Restaurant
+Takoyaki Dotonbori Kukuru:
+  address_en: Japan, 〒542-0071 Osaka, Chuo Ward, Dotonbori, 1 Chome−10−5 白亜ビル １階
+  category_en: Takoyaki restaurant
+  cid: '11387424187282779132'
+  fetched: '2026-09-21'
+  name_en: Dotonbori Kukuru
+Tart Club 蛋塔俱樂部:
+  address_en: No. 13號, Lane 53, Section 2, Chengde Rd, Guangneng Village, Datong District, Taipei City, Taiwan 103
+  category_en: Dessert shop
+  cid: '11413126950885051904'
+  fetched: '2026-09-21'
+  name_en: Tart Club 蛋塔俱樂部
+Tea Fun 茶醺:
+  address_en: Licensed Space No. 4, Art Park, 18 Museum Drive, West Kowloon, Yau Ma Tei, Kowloon, Hong Kong
+  category_en: Fast food restaurant
+  cid: '7703102631495773781'
+  fetched: '2026-09-21'
+  name_en: Tea Fun 茶醺
+TenChoMon:
+  address_en: 136-11 Yamashitacho, Naka Ward, Yokohama, Kanagawa 231-0023, Japan
+  category_en: Tourist attraction
+  cid: '6340925676781878002'
+  fetched: '2026-09-21'
+  name_en: TenChoMon
+Tenjinbashisuji:
+  address_en: 2 Chome-3 Tenjinbashi, Kita Ward, Osaka, 530-0041, Japan
+  category_en: Shopping street
+  cid: '10590307626199221847'
+  fetched: '2026-09-21'
+  name_en: Tenjinbashi-suji Shopping Street
+Terry Black's Barbecue:
+  address_en: 3025 Main St, Dallas, TX 75226, United States
+  category_en: Barbecue restaurant
+  cid: '14205402431883636363'
+  fetched: '2026-09-21'
+  name_en: Terry Black's Barbecue
+Teuchi Soba Keyaki:
+  address_en: Japan, 〒106-6105 Tokyo, Minato City, Roppongi, 6 Chome−10−1 ヒルズ ウェストウォーク 5F
+  category_en: Soba noodle shop
+  cid: '7567288610755283779'
+  fetched: '2026-09-21'
+  name_en: Teuchi Soba Keyaki
+The Boiling Crab Westwood:
+  address_en: 10875 Kinross Ave, Los Angeles, CA 90024, United States
+  category_en: Seafood restaurant
+  cid: '11522904897773057352'
+  fetched: '2026-09-21'
+  name_en: The Boiling Crab
+The Culver Steps:
+  address_en: 9300 Culver Blvd, Culver City, CA 90232, United States
+  category_en: Business center
+  cid: '12129987516143425123'
+  fetched: '2026-09-21'
+  name_en: The Culver Steps
+The Parallel:
+  address_en: 9 Old Bailey St, Central, Hong Kong Island, Hong Kong
+  cid: '6368031031751725811'
+  fetched: '2026-09-21'
+  google_closed: true
+  name_en: The Parallel
+The Polo Women's Shop:
+  address_en: Reveur Jingumae, 5 Chome-17-13 Jingumae, Shibuya, Tokyo 150-0001, Japan
+  category_en: Clothing store
+  cid: '1635600877321419321'
+  fetched: '2026-09-21'
+  name_en: The Polo Women's Shop
+The RealReal West Hollywood:
+  address_en: 8500 Melrose Ave, West Hollywood, CA 90069, United States
+  category_en: Consignment shop
+  cid: '13732221444592425660'
+  fetched: '2026-09-21'
+  name_en: The RealReal
+The Shops:
+  address_en: 33 Hudson Yards, New York, NY 10001, United States
+  category_en: Shopping mall
+  cid: '12093745792506174612'
+  fetched: '2026-09-21'
+  name_en: The Shops
+Tiny's Organic:
+  address_en: 1537 Pike Pl, Seattle, WA 98101, United States
+  category_en: Juice shop
+  cid: '9278210151280506874'
+  fetched: '2026-09-21'
+  name_en: Tiny’s Apple Cider
+Trattoria Zà Zà:
+  address_en: Piazza del Mercato Centrale, 26r, 50123 Firenze FI, Italy
+  category_en: Italian restaurant
+  cid: '9065319688451705659'
+  fetched: '2026-09-21'
+  name_en: Trattoria Zà Zà
+Udon-ya Fukusuke:
+  address_en: 52 Ujinakanokiricho, Ise, Mie 516-8558, Japan
+  category_en: Udon noodle restaurant
+  cid: '8783159083125833346'
+  fetched: '2026-09-21'
+  name_en: Udon-ya Fukusuke
+Unlimited Tire Services:
+  address_en: 3467 Union Pacific Ave, Los Angeles, CA 90023, United States
+  category_en: Tire shop
+  cid: '16135285736154942827'
+  fetched: '2026-09-21'
+  name_en: Unlimited Tire Services
+VIEW 376:
+  address_en: 376-1 Apgujeong-dong, Gangnam District, Seoul
+  category_en: Cafe
+  cid: '10514376315793304287'
+  fetched: '2026-09-21'
+  name_en: VIEW376 카페
+Van Leeuwen Ice Cream Times Square:
+  address_en: 712 7th Ave, New York, NY 10036, United States
+  category_en: Ice cream shop
+  cid: '10179358289050124222'
+  fetched: '2026-09-21'
+  name_en: Van Leeuwen Ice Cream
+Van Leeuwen Ice Cream Westwood:
+  address_en: 10878 Kinross Ave, Los Angeles, CA 90024, United States
+  category_en: Ice cream shop
+  cid: '5793436419968533326'
+  fetched: '2026-09-21'
+  name_en: Van Leeuwen Ice Cream
+Vince:
+  address_en: 89 Mercer St, New York, NY 10012, United States
+  category_en: Clothing store
+  cid: '3949484542613772330'
+  fetched: '2026-09-21'
+  name_en: Vince
+WATERS takeshiba:
+  address_en: 1 Chome-10-30 Kaigan, Minato City, Tokyo 105-0022, Japan
+  category_en: Business park
+  cid: '2588743073834028728'
+  fetched: '2026-09-21'
+  name_en: WATERS takeshiba
+Wolfgang's Steakhouse Park Avenue:
+  address_en: 4 Park Ave, New York, NY 10016, United States
+  category_en: Steak house
+  cid: '15458931714283227477'
+  fetched: '2026-09-21'
+  name_en: Wolfgang's Steakhouse - Park Avenue New York City
+Ximending Walking District:
+  address_en: No. 9, Lane 50, Hanzhong St, Wanshou Village, Wanhua District, Taipei City, Taiwan 108
+  category_en: Tourist attraction
+  cid: '4563348292251684040'
+  fetched: '2026-09-21'
+  name_en: Ximending Walking District
+Xing Fu Tang:
+  address_en: No. 101號, Hanzhong St, Ximen Village, Wanhua District, Taipei City, Taiwan 108
+  category_en: Bubble tea store
+  cid: '17262229347379683805'
+  fetched: '2026-09-21'
+  name_en: Xing Fu Tang
+YABOO Cafe:
+  address_en: No. 26, Lane 41, Yongkang St, Fuzhu Village, Da’an District, Taipei City, Taiwan 106
+  category_en: Cafe
+  cid: '18124426141481399868'
+  fetched: '2026-09-21'
+  name_en: YABOO Cafe
+YANESEN Tourist Information & Culture Center:
+  address_en: 3 Chome-13-7 Yanaka, Taito City, Tokyo 110-0001, Japan
+  category_en: Coffee roastery
+  cid: '4822415276199112894'
+  fetched: '2026-09-22'
+  name_en: YANESEN Tourist Information & Culture Center
+Yamacho:
+  address_en: 4 Chome-10-10 Tsukiji, Chuo City, Tokyo 104-0045, Japan
+  category_en: ''
+  cid: '12120390205030045980'
+  fetched: '2026-09-22'
+  name_en: Tsukiji Yamacho
+YẾN NHI RESTAURANT:
+  address_en: 20 Nguyễn Thị Minh Khai, Nha Trang, Khánh Hòa 650000, Vietnam
+  cid: '16110956705523877271'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: YẾN NHI RESTAURANT
+ZOZO 마린 스타디움:
+  manual: true
+  name_en: ZOZO Marine Stadium
+bar420:
+  address_en: 31-6 Jong-ro 16-gil, Jongno District, Seoul
+  category_en: Wine bar
+  cid: '9191676267742782238'
+  fetched: '2026-09-22'
+  name_en: Bar 420
+ecco un poco | Natural Italian Gelato:
+  address_en: 8318 W 3rd St, Los Angeles, CA 90048, United States
+  category_en: Ice cream shop
+  cid: '18082519295211380475'
+  fetched: '2026-09-22'
+  name_en: ecco un poco | Natural Italian Gelato
+gelato pique cafe bio concept 表参道ヒルズ店:
+  address_en: Japan, 〒150-0001 Tokyo, Shibuya, Jingumae, 4 Chome−12−10 表参道ヒルズ本館 B2F
+  category_en: Creperie
+  cid: '13557755036236960127'
+  fetched: '2026-09-22'
+  name_en: gelato pique cafe 表参道ヒルズ店
+ittan五條堂:
+  address_en: 1 Chome-4-4 Kyomachibori, Nishi Ward, Osaka, 550-0003, Japan
+  category_en: Japanese confectionery shop
+  cid: '3759266478501775000'
+  fetched: '2026-09-22'
+  name_en: ittan五條堂
+les joues de BeBe:
+  address_en: Japan, 〒153-0063 Tokyo, Meguro City, Meguro, 1 Chome−3−15 リードシー目黒ウェストビル 1F
+  category_en: Bakery
+  cid: '3801282418312682259'
+  fetched: '2026-09-22'
+  name_en: les joues de BeBe
+sweetgreen Sunset Strip:
+  address_en: 8570 Sunset Blvd, West Hollywood, CA 90069, United States
+  category_en: Salad shop
+  cid: '3027784590045753438'
+  fetched: '2026-09-22'
+  name_en: sweetgreen - Healthy Salads, Wraps, and Bowls
+くら寿司 グローバル旗艦店 浅草ROX:
+  address_en: Japan, 〒111-0032 Tokyo, Taito City, Asakusa, 1 Chome−25−15 ROX4F
+  cid: '18109923868748812372'
+  fetched: '2026-09-22'
+  name_en: Kura Sushi Global Flagship Store Asakusa
+むっちゃん万十 博多バスターミナル店:
+  address_en: 2-1 Hakataekichuogai, Hakata Ward, Fukuoka, 812-0012, Japan
+  category_en: Deli
+  cid: '9464168311984510284'
+  fetched: '2026-09-22'
+  name_en: むっちゃん万十 博多バスターミナル店
+オザワ洋菓子店:
+  address_en: 3 Chome-22-9 Hongo, Bunkyo City, Tokyo 113-0034, Japan
+  category_en: Pastry shop
+  cid: '14752850310362209818'
+  fetched: '2026-09-22'
+  name_en: オザワ洋菓子店
+カプセル楽局谷中銀座商店街店:
+  address_en: Japan, 〒110-0001 Tokyo, Taito City, Yanaka, 3 Chome−13−3 ＳＧビル １Ｆ
+  category_en: Toy store
+  cid: '17172474421632480830'
+  fetched: '2026-09-22'
+  name_en: カプセル楽局谷中銀座商店街店
+上生·新所(哥倫比亞鄉村俱樂部):
+  address_en: 1262 Yan'an Rd (W), Changning District, Shanghai, China, 201233
+  category_en: Shopping mall
+  cid: '1739658795958752620'
+  fetched: '2026-09-22'
+  name_en: 上生·新所(哥倫比亞鄉村俱樂部)
+九州じゃんがら 芝大門店:
+  address_en: Japan, 〒105-0012 Tokyo, Minato City, Shibadaimon, 2 Chome−2−5 Sudo Building, 1F
+  category_en: ''
+  cid: '9825658139253349623'
+  fetched: '2026-09-22'
+  name_en: Kyushu Jangara Shibadaimon branch
+伊勢器市:
+  address_en: 1-1 Honmachi, Ise, Mie 516-0074, Japan
+  category_en: General store
+  cid: '14883223992825223303'
+  fetched: '2026-09-22'
+  name_en: 伊勢器市
+伊豆榮 梅川亭:
+  address_en: 4-34 Uenokoen, Taito City, Tokyo 110-0007, Japan
+  category_en: ''
+  cid: '12156716961988907616'
+  fetched: '2026-09-22'
+  name_en: Izuei Umekawa-tei
+十分樓仔厝咖啡民宿(Lou-A-Chu):
+  address_en: 226, Taiwan, New Taipei City, Pingxi District, Shifen Village, 十分街74巷3號
+  category_en: Coffee shop
+  cid: '10224681201166932200'
+  fetched: '2026-09-22'
+  name_en: 十分樓仔厝咖啡民宿(Lou-A-Chu)
+吉兆招福亭 おかげ横丁:
+  address_en: 52 Ujinakanokiricho, Ise, Mie 516-8558, Japan
+  category_en: General store
+  cid: '2546177798791289983'
+  fetched: '2026-09-22'
+  name_en: 吉兆招福亭 おかげ横丁
+呑喜屋:
+  address_en: 3 Chome-47-1 Kitazono, Itami, Hyogo 664-0891, Japan
+  category_en: Okonomiyaki restaurant
+  cid: '12165135550390638805'
+  fetched: '2026-09-22'
+  name_en: 呑喜屋
+在来食堂:
+  address_en: Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 3 Chome−12−7 原町ビル 1F
+  category_en: ''
+  cid: '18336570136917606705'
+  fetched: '2026-09-22'
+  name_en: Zairai Shokudo
+家鄉碳烤雞排:
+  address_en: No. 63-1號, Chengdu Rd, Ximen Village, Wanhua District, Taipei City, Taiwan 108
+  category_en: Fried chicken takeaway
+  cid: '8428839008297167084'
+  fetched: '2026-09-22'
+  name_en: 維縈家鄉碳烤雞排(西門成都二店)
+川西屋:
+  address_en: 1 Chome-3-4 Ujiurata, Ise, Mie 516-0026, Japan
+  category_en: Japanese delicatessen
+  cid: '6041451253572954261'
+  fetched: '2026-09-22'
+  name_en: 川西屋
+新宿 北村写真機店:
+  address_en: 3 Chome-26-14 Shinjuku, Shinjuku City, Tokyo 160-0022, Japan
+  category_en: ''
+  cid: '929398163244751189'
+  fetched: '2026-09-22'
+  name_en: Shinjuku Kitamura Camera
+植蘊 Planté 大直小公園店 輕食飲專賣:
+  address_en: 104, Taiwan, Taipei City, Zhongshan District, Jintai Village, Lequn 3rd Rd, 200號2F-01
+  category_en: Health food store
+  cid: '3301387737820457636'
+  fetched: '2026-09-22'
+  name_en: 植蘊 Planté 大直小公園店 輕食飲專賣
+極味や 名古屋パルコ店:
+  address_en: Japan, 〒460-0008 Aichi, Nagoya, Naka Ward, Sakae, 3 Chome−29−1 名古屋パルコ西館 7F
+  category_en: ''
+  cid: '15943634229997931886'
+  fetched: '2026-09-22'
+  name_en: Kiwamiya
+谷中 松野屋:
+  address_en: 3 Chome-14-14 Nishinippori, Arakawa City, Tokyo 116-0013, Japan
+  category_en: ''
+  cid: '11152177580728481046'
+  fetched: '2026-09-22'
+  name_en: Yanaka Matsunoya
+青樓中式餐酒館:
+  address_en: No. 512-1號, Section 4, Bade Rd, Ciyou Village, Songshan District, Taipei City, Taiwan 105047
+  category_en: Chinese restaurant
+  cid: '558267158020688005'
+  fetched: '2026-09-22'
+  name_en: 青樓中式餐酒館
+가와구치 호:
+  category_en: ''
+  cid: '3011696811526290759'
+  fetched: '2026-09-22'
+  name_en: Lake Kawaguchi
+가이유칸:
+  address_en: 1 Chome-1-10 Kaigandori, Minato Ward, Osaka, 552-0022, Japan
+  category_en: ''
+  cid: '8035482904308493516'
+  fetched: '2026-09-22'
+  name_en: Osaka Aquarium Kaiyukan
+강릉짬뽕순두부 동화가든 본점:
+  address_en: 15 Chodangsundubu-gil 77beon-gil, Gangneung-si, Gangwon-do
+  category_en: Tofu restaurant
+  cid: '4843136578337683486'
+  fetched: '2026-09-22'
+  name_en: Donghwa Garden Tofu Restaurant
+건담베이스 아이파크점:
+  address_en: "Seoul, Yongsan District, Hangang-daero 23-gil, 55 I'Park Mall Living Park \x01F"
+  category_en: Toy store
+  cid: '16725032784347314297'
+  fetched: '2026-09-22'
+  name_en: Gundam Base I'Park Mall
+경기미래교육 파주캠퍼스 (파주영어마을):
+  cid: '4901796911002808092'
+  fetched: '2026-09-22'
+  name_en: 파주영어마을
+경주십원빵 영종을왕리점:
+  address_en: 6 Eurwang-ro, Jung-gu, Incheon
+  cid: '18204607319848902653'
+  fetched: '2026-09-22'
+고귀한 식탁 강남점:
+  address_en: 124 Teheran-ro, Gangnam District, Seoul
+  cid: '497515725501213023'
+  fetched: '2026-09-22'
+  name_en: 고귀한 식탁
+고릴라캠핑 가평점:
+  address_en: Gyeonggi-do, Gapyeong-gun, Gyeongchun-ro, 89-1 KR
+  category_en: Camping store
+  cid: '8863253161290464650'
+  fetched: '2026-09-22'
+  name_en: 고릴라캠핑 가평점
+고베 월드기념홀:
+  manual: true
+  name_en: Kobe World Memorial Hall
+고속터미널역 파미에 스테이션_3월 중:
+  address_en: 176 Sinbanpo-ro, Seocho District, Seoul
+  category_en: Food court
+  cid: '13161830552486079934'
+  fetched: '2026-09-22'
+  name_en: Famille Station
+고양이가있는액자가게:
+  address_en: 46 Yeonhui-ro 1-gil, Mapo-gu, Seoul
+  category_en: Store
+  cid: '9954766773437595362'
+  fetched: '2026-09-22'
+  name_en: 고양이가 있는 액자가게
+고우 이태원본점:
+  address_en: 45 Itaewon-ro 27ga-gil, Yongsan District, Seoul
+  category_en: Izakaya restaurant
+  cid: '14194327908075804356'
+  fetched: '2026-09-22'
+  name_en: Gou Yakitori
+곤파치 오다이바:
+  address_en: Japan, 〒135-8718 Tokyo, Minato City, Daiba, 1 Chome−7−1 アクアシティ お台場 4F 401F-A
+  cid: '9827330050366121088'
+  fetched: '2026-09-22'
+  name_en: Gonpachi Odaiba
+골든게이트 교:
+  address_en: Golden Gate Brg, San Francisco, CA, United States
+  category_en: Bridge
+  cid: '14838537888721818889'
+  fetched: '2026-09-22'
+  name_en: Golden Gate Bridge
+골든피스:
+  address_en: 25 Hannam-daero 27-gil, Yongsan District, Seoul
+  category_en: Dessert shop
+  cid: '13908447420655774718'
+  fetched: '2026-09-22'
+  name_en: GOLDEN Piece
+곳:
+  address_en: 143 Jillihaebyeon-gil, Sacheon-myeon, Gangneung-si, Gangwon-do
+  category_en: Cafe
+  cid: '3981278373636135124'
+  fetched: '2026-09-22'
+  name_en: Got
+광명동굴:
+  address_en: 142 Gahak-ro 85beon-gil, Gwangmyeong-si, Gyeonggi-do
+  category_en: Tourist attraction
+  cid: '206806029917566362'
+  fetched: '2026-09-22'
+  name_en: Gwangmyeong Cave
+광안리신라횟집:
+  address_en: Gwanganhaebyeon-ro 278beon-gil, Suyeong-gu, Busan
+  category_en: Restaurant
+  cid: '7215705273637359382'
+  fetched: '2026-09-22'
+  name_en: 광안리 신라횟집
+교세라 돔 오사카:
+  manual: true
+  name_en: Kyocera Dome Osaka
+구미가당:
+  address_en: 75 Poeun-ro, Mapo-gu, Seoul
+  cid: '7538309285911928603'
+  fetched: '2026-09-22'
+구위 브런치바:
+  address_en: 6 Hyochangwon-ro 64-gil, Yongsan District, Seoul
+  category_en: Brunch restaurant
+  cid: '9622682182429343159'
+  fetched: '2026-09-22'
+  name_en: 구위 브런치바
+국립 요요기 경기장 제1체육관:
+  manual: true
+  name_en: Yoyogi National Gymnasium
+국립서양미술관:
+  address_en: 7-7 Uenokoen, Taito City, Tokyo 110-0007, Japan
+  category_en: ''
+  cid: '13484864514866363531'
+  fetched: '2026-09-22'
+  name_en: The National Museum of Western Art
+국립신미술관:
+  address_en: 7 Chome-22-2 Roppongi, Minato City, Tokyo 106-8558, Japan
+  category_en: ''
+  cid: '4622367683473218840'
+  fetched: '2026-09-22'
+  name_en: The National Art Center, Tokyo
+국립중앙박물관:
+  address_en: 137 Seobinggo-ro, Yongsan District, Seoul
+  category_en: National museum
+  cid: '7017319361445515495'
+  fetched: '2026-09-22'
+  name_en: National Museum of Korea
+국립현대미술관 서울:
+  address_en: 30 Samcheong-ro, Jongno District, Seoul
+  category_en: Modern art museum
+  cid: '18118236120373634053'
+  fetched: '2026-09-22'
+  name_en: National Museum of Modern and Contemporary Art, Seoul
+국일따로국밥:
+  address_en: 571 Gukchaebosang-ro, Jung-gu, Daegu
+  category_en: Korean restaurant
+  cid: '14660597967931042680'
+  fetched: '2026-09-22'
+  name_en: Gukil Ttaro Gukbob
+국제갤러리:
+  address_en: 54 Samcheong-ro, Jongno District, Seoul
+  category_en: Art gallery
+  cid: '11430488003591782875'
+  fetched: '2026-09-22'
+  name_en: Kukje Gallery
+궁평항:
+  address_en: 1049-24 Gungpyeonghang-ro, Hwaseong-si, Gyeonggi-do
+  category_en: Restaurant
+  cid: '7175920330043865557'
+  fetched: '2026-09-22'
+  name_en: 궁평항민성호
+규카츠 쿄토 카츠규 시부야 도겐자카점:
+  address_en: Japan, 〒150-0043 Tokyo, Shibuya, Dogenzaka, 1 Chome−19−14 センチュリー渋谷 Ｂ１Ｆ
+  category_en: ''
+  cid: '11439916912159261095'
+  fetched: '2026-09-22'
+  name_en: GYUKATSU Kyoto Katsugyu Shibuya Dogenzaka
+귤의정원 바령:
+  category_en: Farm
+  cid: '14719611542177968747'
+  fetched: '2026-09-22'
+  name_en: Jeju Organic Tangerine Farm
+그릭커 성수:
+  address_en: "Seoul, Seongdong-gu, Sangwon-gil, 81 \x01F"
+  category_en: Cafe
+  cid: '11803310058305082813'
+  fetched: '2026-09-22'
+  name_en: 그릭커 성수 Greeker seongsu
+그린델발트:
+  cid: '13810952427896516453'
+  fetched: '2026-09-22'
+글리코사인:
+  address_en: 1 Chome-10-3 Dotonbori, Chuo Ward, Osaka, 542-0071, Japan
+  category_en: ''
+  cid: '6582327784679221695'
+  fetched: '2026-09-22'
+  name_en: Glico Sign Dotonbori
+금수복국 해운대본점:
+  address_en: 23 Jungdong 1-ro 43beon-gil, Haeundae-gu, Busan
+  category_en: Fugu restaurant
+  cid: '6694047481179348409'
+  fetched: '2026-09-22'
+  name_en: Geumsubokguk, Haeundae Headstore
+금은방:
+  address_en: "Seoul, Seongdong-gu, Songjeong-dong, 73-976 \x01F"
+  category_en: Coffee shop
+  cid: '14489705354820687314'
+  fetched: '2026-09-22'
+  name_en: 카페 금은방
+김녕요트투어:
+  address_en: 229-16 Gujwahaean-ro, Gujwa-eup, Jeju-si, Jeju-do
+  category_en: Tourist attraction
+  cid: '17362941906654177658'
+  fetched: '2026-09-22'
+  name_en: Gimnyeong Yacht Tour
+꽁티드툴레아:
+  address_en: 39 Dosan-daero 49-gil, Gangnam District, Seoul
+  category_en: Brunch restaurant
+  cid: '16769120633240419428'
+  fetched: '2026-09-22'
+  name_en: Conte de Tulear
+나무아래오후N:
+  address_en: 254 Imchobamangol-ro, Sang-myeon, Gapyeong-gun, Gyeonggi-do
+  category_en: Cafe
+  cid: '13643905721798554366'
+  fetched: '2026-09-22'
+  name_en: 나무아래오후
+나무향기 한증막:
+  address_en: Gangwon-do, Chuncheon-si, Samcheon-dong, 37-1 KR
+  category_en: Thermal baths
+  cid: '4742792669860774499'
+  fetched: '2026-09-22'
+  name_en: 나무향기한증막
+나아하:
+  address_en: 254 Imchobamangol-ro, Sang-myeon, Gapyeong-gun, Gyeonggi-do
+  category_en: Villa
+  cid: '13175690458053200234'
+  fetched: '2026-09-22'
+  name_en: Naaha
+나트랑야시장:
+  address_en: Trần Phú, Nha Trang, Khánh Hòa 650000, Vietnam
+  category_en: Chợ Đêm Nha Trang
+  cid: '7686629254322174969'
+  fetched: '2026-09-22'
+  name_en: Night Market Nha Trang
+나폴리회관 강남역점:
+  address_en: 24 Teheran-ro 5-gil, Gangnam District, Seoul
+  category_en: Italian restaurant
+  cid: '10514275614415734818'
+  fetched: '2026-09-22'
+  name_en: Cucina Napolitan
+난지한강공원:
+  address_en: 162 Hangangnanji-ro, Mapo-gu, Seoul
+  category_en: Park
+  cid: '2448808955119799000'
+  fetched: '2026-09-22'
+  name_en: Nanji Hangang Park
+남도예담 담양본점:
+  address_en: 143 Damjang-ro, Wolsan-myeon, Damyang-gun, Jeollanam-do
+  category_en: Tteokgalbi restaurant
+  cid: '7521108720966179247'
+  fetched: '2026-09-22'
+  name_en: Namdoyedam
+낫베드커피 한남:
+  address_en: 744-19 Hannam-dong, Yongsan District, Seoul
+  category_en: Coffee shop
+  cid: '4497065661460420041'
+  fetched: '2026-09-22'
+  name_en: Not Bad Coffee
+내셔널 갤러리:
+  address_en: Trafalgar Square, London WC2N 5DN, United Kingdom
+  category_en: Art museum
+  cid: '4805205997576757428'
+  fetched: '2026-09-22'
+  name_en: The National Gallery
+네이처스케이프 플러스:
+  address_en: Gyeonggi-do, Hwaseong-si, Dongtan-daero 5-gil, 21, Lakeumong, 4F
+  category_en: Theme park
+  cid: '8276061706351689904'
+  fetched: '2026-09-22'
+  name_en: 네이처스케이프 플러스
+넥스트짐 처인구청점:
+  address_en: 86 Geumnyeong-ro, Cheoin-gu, Yongin-si, Gyeonggi-do
+  cid: '9721479656871826336'
+  fetched: '2026-09-22'
+녹양 향촌점:
+  address_en: 46-11 Jung-gu, Daegu
+  category_en: Restaurant
+  cid: '6653850668619738538'
+  fetched: '2026-09-22'
+  name_en: 녹양 향촌점
+닛폰가이시홀:
+  manual: true
+  name_en: Nippon Gaishi Hall
+다이칸야마 츠타야 서점:
+  address_en: Japan, 〒150-0033 Tokyo, Shibuya, Sarugakucho, 17−5 代官山Ｔ－ＳＩＴＥ １号館～３号館 １階～２階
+  category_en: ''
+  cid: '15490653164204088489'
+  fetched: '2026-09-22'
+  name_en: Tsutaya Books Daikanyama
+다저 스타디움:
+  address_en: 1000 Vin Scully Ave, Los Angeles, CA 90012, United States
+  category_en: Stadium
+  cid: '11426851954544609759'
+  fetched: '2026-09-22'
+  name_en: Dodger Stadium
+달쥬과일상점:
+  address_en: Seoul, Yongsan District, Munbae-dong, 1F 3-3, Iaan Yongsan Premier
+  cid: '3284048646486580673'
+  fetched: '2026-09-22'
+  name_en: 달쥬과일상점용산7호점
+닭한마리감자탕 신사본점:
+  address_en: 14 Gangnam-daero 152-gil, Gangnam District, Seoul
+  category_en: Chicken restaurant
+  cid: '2754604446019074911'
+  fetched: '2026-09-22'
+  name_en: Dakhanmari Gamjatang
+담설:
+  address_en: Jeollanam-do, Damyang-gun, Damyang-eup, Gaeksa 4-gil, 38-6 KR
+  category_en: Cafe
+  cid: '11351611959860393247'
+  fetched: '2026-09-22'
+  name_en: 담설카페
+담양국수거리:
+  address_en: Gaeksa-ri, Damyang-eup, Damyang-gun, Jeollanam-do
+  category_en: Tourist attraction
+  cid: '11820664696914794924'
+  fetched: '2026-09-22'
+  name_en: 담양국수거리
+대길한정식:
+  category_en: Korean restaurant
+  cid: '4275185381921963482'
+  fetched: '2026-09-22'
+  name_en: 대길한정식
+댄스댄스댄스 한남점:
+  address_en: 67 Dokseodang-ro, Yongsan District, Seoul
+  category_en: Sandwich shop
+  cid: '6656294448546263240'
+  fetched: '2026-09-22'
+  name_en: 댄스댄스댄스
+댈러스 동물원:
+  address_en: 650 S R.L. Thornton Fwy, Dallas, TX 75203, United States
+  category_en: Zoo
+  cid: '16225131918522501330'
+  fetched: '2026-09-22'
+  name_en: Dallas Zoo
+댈러스 미술관:
+  address_en: 1717 N Harwood St, Dallas, TX 75201, United States
+  category_en: Art museum
+  cid: '500356134714668464'
+  fetched: '2026-09-22'
+  name_en: Dallas Museum of Art
+댕로홀:
+  address_en: 50 Daehak-ro 12-gil, Jongno District, Seoul
+  category_en: Performing arts theater
+  cid: '11276831540319722449'
+  fetched: '2026-09-22'
+  name_en: Daengro Hall
+더 게티:
+  address_en: 1200 Getty Center Dr, Los Angeles, CA 90049, United States
+  category_en: Art museum
+  cid: '15742414248244587045'
+  fetched: '2026-09-22'
+  name_en: The Getty
+더 그로브:
+  address_en: 189 The Grove Dr, Los Angeles, CA 90036, United States
+  category_en: Shopping mall
+  cid: '14091885898300447598'
+  fetched: '2026-09-22'
+  name_en: The Grove
+더 카할라 호텔 & 리조트:
+  address_en: 'Kahala Resort, 5000 Kahala Ave #5000, Honolulu, HI 96816, United States'
+  category_en: 4-star hotel
+  cid: '743303887662059246'
+  fetched: '2026-09-22'
+  name_en: The Kahala Hotel & Resort
+더맛있는족발보쌈 원효로점:
+  address_en: 23 Wonhyo-ro 41ga-gil, Yongsan District, Seoul
+  category_en: Restaurant
+  cid: '9646485948057314498'
+  fetched: '2026-09-22'
+  name_en: 더맛있는족발보쌈 원효로점
+더피제리아마켓 해방촌:
+  address_en: 30 Sinheung-ro, yongsan-dong 2(i)-ga, Yongsan District, Seoul
+  category_en: Restaurant
+  cid: '5943982420146816023'
+  fetched: '2026-09-22'
+  name_en: TPM 해방촌
+덴쉐이러우 화이닝지점:
+  address_en: No. 64號, Huaining St, Liming Village, Zhongzheng District, Taipei City, Taiwan 100
+  category_en: ''
+  cid: '7677210871517579921'
+  fetched: '2026-09-22'
+  name_en: Dian Shui Lou
+델룰루_250317-250319:
+  address_en: 11-42 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '4185430391072727199'
+  fetched: '2026-09-22'
+델룰루_250730-250802:
+  address_en: 11-42 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '4185430391072727199'
+  fetched: '2026-09-22'
+델룰루_251007-251009:
+  address_en: 11-42 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '4185430391072727199'
+  fetched: '2026-09-22'
+델룰루_260316-260319:
+  address_en: 11-42 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '4185430391072727199'
+  fetched: '2026-09-22'
+델룰루_260726-260729:
+  address_en: 11-42 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '4185430391072727199'
+  fetched: '2026-09-22'
+도덕산 출렁다리:
+  address_en: 86 Dodeok-ro, Gwangmyeong-si, Gyeonggi-do
+  category_en: Hiking area
+  cid: '16379420843226563356'
+  fetched: '2026-09-22'
+  name_en: 도덕산 출렁다리
+도쿄국립근대미술관:
+  address_en: 3-1 Kitanomarukoen, Chiyoda City, Tokyo 102-0091, Japan
+  category_en: ''
+  cid: '7379105784401690154'
+  fetched: '2026-09-22'
+  name_en: The National Museum of Modern Art, Tokyo
+도쿄돔:
+  manual: true
+  name_en: Tokyo Dome
+도큐 플라자 하라주쿠 하라카도:
+  address_en: Japan, 〒150-0001 Tokyo, Shibuya, Jingumae, 6 Chome−31−21 原宿スクエア内 東急プラザ 原宿「ハラカド」
+  category_en: ''
+  cid: '8567568301111815145'
+  fetched: '2026-09-22'
+  name_en: Tokyu Plaza Harajuku “Harakado”
+도토리캐리커쳐 망원점:
+  address_en: 85 Poeun-ro, Mapo-gu, Seoul
+  cid: '8726052844888949935'
+  fetched: '2026-09-22'
+동구리 공화국 가마쿠라점:
+  address_en: Japan, 〒248-0006 Kanagawa, Kamakura, Komachi, 1 Chome−5−6 松秀ビル 1階・2階
+  category_en: ''
+  cid: '16397504386145014941'
+  fetched: '2026-09-22'
+  name_en: Donguri Kyowakoku (Ghibli Store)
+동기간:
+  address_en: 459-158 Bonap-ro, Gapyeong-eup, Gapyeong-gun, Gyeonggi-do
+  category_en: Restaurant
+  cid: '8769077801882064686'
+  fetched: '2026-09-22'
+  name_en: Dong-Gigan
+동백섬:
+  category_en: Island
+  cid: '8001571271295677143'
+  fetched: '2026-09-22'
+  name_en: Dongbaekseom
+동복뚝배기 함덕:
+  category_en: Korean restaurant
+  cid: '13854990751916985589'
+  fetched: '2026-09-22'
+  name_en: 함덕뚝배기
+동진호:
+  address_en: 20 Haeundaehaebyeon-ro, Haeundae-gu, Busan
+  cid: '5283235620876153649'
+  fetched: '2026-09-22'
+두건쓴형제 수영직영점:
+  address_en: Busan, Suyeong-gu, Gwangan-dong, 44-48 1F
+  category_en: Meat dish restaurant
+  cid: '8926921709149264598'
+  fetched: '2026-09-22'
+  name_en: 두건쓴형제 수영직영점
+두물머리연핫도그:
+  address_en: 103-8 Dumulmeori-gil, Yangseo-myeon, Yangpyeong-gun, Gyeonggi-do
+  category_en: Hot dog stand
+  cid: '1991267324828514847'
+  fetched: '2026-09-22'
+  name_en: Dumulmeori Lotus Hotdog
+두오모 광장:
+  category_en: Plaza
+  cid: '10174960430973719214'
+  fetched: '2026-09-22'
+  name_en: Piazza del Duomo
+디즈니 스토어:
+  address_en: 1540 Broadway, New York, NY 10036, United States
+  category_en: Toy store
+  cid: '12130080758545888369'
+  fetched: '2026-09-22'
+  name_en: Disney Store
+딤딤섬 신의점:
+  category_en: ''
+  cid: '13387368021916162519'
+  fetched: '2026-09-22'
+  name_en: Dim Dim Sum Breeze Xinyi Branch
+뚝배기라면:
+  address_en: 61-1 Hangangno 3(sam)-ga, Yongsan District, Seoul
+  category_en: Restaurant
+  cid: '16032299421546176495'
+  fetched: '2026-09-22'
+  name_en: Ttukbaegi Ramyun
+라뜰리에 한남점:
+  address_en: Seoul, Yongsan District, Hannam-dong, Itaewon-ro, 272 2F
+  category_en: Brunch restaurant
+  cid: '7084622717376078957'
+  fetched: '2026-09-22'
+  name_en: 라뜰리에 한남
+라이엇PC방:
+  address_en: 33 Jong-ro, Cheongjin-dong, Jongno District, Seoul
+  category_en: Internet cafe
+  cid: '6857547450402121207'
+  fetched: '2026-09-22'
+  name_en: Riot PC cafe
+런연 캐년 공원:
+  address_en: 2000 N Fuller Ave, Los Angeles, CA 90046, United States
+  category_en: Park
+  cid: '13348376717587831872'
+  fetched: '2026-09-22'
+  name_en: Runyon Canyon Park
+레고스토어 아이파크몰 용산점:
+  address_en: Seoul, Yongsan District, I'Park Mall Living Park 6F
+  category_en: Toy store
+  cid: '1774666465849728809'
+  fetched: '2026-09-22'
+  name_en: Lego Store I-Park Mall Yongsan
+레이크프런트 공원:
+  address_en: E Ohio St, Chicago, IL 60611, United States
+  category_en: Monument
+  cid: '8328857204895023361'
+  fetched: '2026-09-22'
+  name_en: Milton Lee Olive, III Monument
+레전드무역:
+  address_en: Gyeonggi-do, Goyang-si, Ilsandong-gu, Siksa-dong, 288-45
+  cid: '9316920049795420659'
+  fetched: '2026-09-22'
+  name_en: 레전드무역
+레푸블리카 광장:
+  address_en: Piazza della Repùbblica, 50123 Firenze FI, Italy
+  category_en: Tourist attraction
+  cid: '15989292249276289091'
+  fetched: '2026-09-22'
+  name_en: Piazza della Repubblica
+로만바스:
+  address_en: 424-2 Samga-dong, Cheoin-gu, Yongin-si, Gyeonggi-do
+  category_en: Spa
+  cid: '5466052975512513871'
+  fetched: '2026-09-22'
+  name_en: Roman Bath (Korean Spa)
+로스앤젤레스 카운티 미술관 (LACMA):
+  address_en: 5905 Wilshire Blvd, Los Angeles, CA 90036, United States
+  category_en: Art museum
+  cid: '43656234719264311'
+  fetched: '2026-09-22'
+  name_en: Los Angeles County Museum of Art
+로열 앨버트 독:
+  address_en: Liverpool L3 4AD, United Kingdom
+  category_en: Historical landmark
+  cid: '18109242209606127017'
+  fetched: '2026-09-22'
+  name_en: Royal Albert Dock Liverpool
+롱브르378:
+  address_en: 11-54 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '11905197249402400780'
+  fetched: '2026-09-22'
+  name_en: 롱브르378
+롱브르378_250730-250802:
+  address_en: 11-54 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '11905197249402400780'
+  fetched: '2026-09-22'
+  name_en: 롱브르378
+롱브르378_260727-260801:
+  address_en: 11-54 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '11905197249402400780'
+  fetched: '2026-09-22'
+  name_en: 롱브르378
+루나틱하이PC방 노량진3호점:
+  address_en: Seoul, Dongjak District, Noryangjin-dong, 330 B1
+  category_en: Internet cafe
+  cid: '10763452187272467832'
+  fetched: '2026-09-22'
+  name_en: 루나틱하이PC방 노량진3호점
+루이비통 메종 서울:
+  address_en: 454 Apgujeong-ro, Gangnam District, Seoul
+  category_en: Leather goods store
+  cid: '17643602460950960723'
+  fetched: '2026-09-22'
+  name_en: Louis Vuitton Maison Seoul MJ
+루트에브리데이 한남점:
+  address_en: 26-4 Itaewon-ro 55ga-gil, Yongsan District, Seoul
+  category_en: Brunch restaurant
+  cid: '1392747034437306990'
+  fetched: '2026-09-22'
+  name_en: Root Everyday
+리얼샷사격양궁장 홍대점:
+  address_en: Seoul, Mapo-gu, Seogyo-dong, Eoulmadang-ro, 74 4F
+  category_en: Archery club
+  cid: '5762569274434527464'
+  fetched: '2026-09-22'
+  name_en: RealShot Shooting & Archery Range
+리쿠로 오지상노 미세 난바 본점:
+  address_en: 3 Chome-2-28 Namba, Chuo Ward, Osaka, 542-0076, Japan
+  category_en: ''
+  cid: '9250892613011960260'
+  fetched: '2026-09-22'
+  name_en: Rikuro’s Namba Japanese Cheese Cake
+리틀파머스한남 by 유성카페:
+  address_en: 738-16 Hannam-dong, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13171420750935728401'
+  fetched: '2026-09-22'
+  name_en: Yusung
+마리나 그린:
+  address_en: San Francisco, CA 94123, United States
+  category_en: Park
+  cid: '8180902621696521186'
+  fetched: '2026-09-22'
+  name_en: Marina Green
+마리나 베이 샌즈 싱가포르:
+  address_en: 10 Bayfront Ave, Singapore 018956
+  category_en: 5-star hotel
+  cid: '174684905472875991'
+  fetched: '2026-09-22'
+  name_en: Marina Bay Sands Singapore
+마린멧세 후쿠오카:
+  manual: true
+  name_en: Marine Messe Fukuoka
+마린커피_250317-250319:
+  address_en: 11-48 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '16869240309902038081'
+  fetched: '2026-09-22'
+마린커피_251109-251110:
+  address_en: 11-48 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '16869240309902038081'
+  fetched: '2026-09-22'
+마린커피_260316-260319:
+  address_en: 11-48 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '16869240309902038081'
+  fetched: '2026-09-22'
+마카오 타워:
+  category_en: ''
+  cid: '3749908237214096560'
+  fetched: '2026-09-22'
+  name_en: Macau Tower Convention and Entertainment Center
+만미정:
+  address_en: 20 Hangang-daero 14-gil, Yongsan District, Seoul
+  category_en: Korean restaurant
+  cid: '8282348451855447245'
+  fetched: '2026-09-22'
+  name_en: 만미정
+망원시장:
+  address_en: 27 Poeun-ro 6-gil, Mapo-gu, Seoul
+  category_en: Traditional market
+  cid: '17784676563566721318'
+  fetched: '2026-09-22'
+  name_en: Mangwon Market
+메르시쿠키_250317-250319:
+  address_en: 11-44 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '1003768038739568949'
+  fetched: '2026-09-22'
+메르시쿠키_250731-250802:
+  address_en: 11-44 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '1003768038739568949'
+  fetched: '2026-09-22'
+메르시쿠키_251006-251008:
+  address_en: 11-44 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '1003768038739568949'
+  fetched: '2026-09-22'
+메르시쿠키_260727-260729:
+  address_en: 11-44 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '1003768038739568949'
+  fetched: '2026-09-22'
+메이지진구 가이엔 은행나무길:
+  address_en: 2 Chome-7-付近 Kita-Aoyama, Minato City, Tokyo 107-0061, Japan
+  category_en: ''
+  cid: '16114120031656484864'
+  fetched: '2026-09-22'
+  name_en: Meiji Jingu Gaien Ginkgo Avenue
+명지전문대학교:
+  address_en: 134 Gajwa-ro, Seodaemun-gu, Seoul
+  category_en: College
+  cid: '10716372077929475275'
+  fetched: '2026-09-22'
+  name_en: Myongji College
+모노맨션 연남 2호점:
+  address_en: 242 Donggyo-ro, Mapo-gu, Seoul
+  cid: '13228590575048501510'
+  fetched: '2026-09-22'
+  name_en: 모노맨션 연남2호점
+모리 아츠 센터 갤러리 (키스 해링展):
+  address_en: Roppongi Hills Mori Tower, 6 Chome-10-1 Roppongi, Minato City, Tokyo 106-0032, Japan
+  category_en: ''
+  cid: '7355727243716993508'
+  fetched: '2026-09-22'
+  name_en: Mori Arts Center Gallery
+모모스커피 마린시티점:
+  address_en: Busan, Haeundae-gu, Marine city 1-ro, 91 1F
+  category_en: Cafe
+  cid: '3985984005231788003'
+  fetched: '2026-09-22'
+  name_en: Momos Coffee
+목장카페 밭디:
+  address_en: 2486 Beonyeong-ro, Pyoseon-myeon, Seogwipo-si, Jeju-do
+  category_en: Coffee shop
+  cid: '16460284399717866655'
+  fetched: '2026-09-22'
+  name_en: Cafe Batti
+무봉리 순대 라스베가스:
+  address_en: 3385 S Decatur Blvd, Las Vegas, NV 89102, United States
+  category_en: Korean restaurant
+  cid: '4722962007270379042'
+  fetched: '2026-09-22'
+  name_en: Moobongri Soondae | Korean Cuisine
+묵정:
+  cid: '1289607198394737189'
+  fetched: '2026-09-22'
+  name_en: Mukjeong-dong, Jung District, Seoul
+문화비축기지:
+  address_en: 87 Jeungsan-ro, Mapo-gu, Seoul
+  category_en: Cultural center
+  cid: '310923706661295745'
+  fetched: '2026-09-22'
+  name_en: Oil Tank Culture Park
+미라벨 오에프알:
+  address_en: 11-14 Jahamun-ro 12-gil, Cheongunhyoja-dong, Jongno District, Seoul
+  category_en: Gift shop
+  cid: '12713257581989035886'
+  fetched: '2026-09-22'
+  name_en: 미라벨 - mirabelle seoul
+밀라노 대성당:
+  address_en: P.za del Duomo, 20122 Milano MI, Italy
+  category_en: Catholic church
+  cid: '12357681832208772627'
+  fetched: '2026-09-22'
+  name_en: Duomo di Milano
+바늘이야기 연희점:
+  address_en: 15 Yeonhui-ro 11ga-gil, Seodaemun-gu, Seoul
+  category_en: Knit shop
+  cid: '1896660019616694700'
+  fetched: '2026-09-22'
+  name_en: Banul Story
+바다정원:
+  address_en: 23 Beorikkae-gil, Toseong-myeon, Goseong-gun, Gangwon-do
+  category_en: Cafe
+  cid: '3513832089665568103'
+  fetched: '2026-09-22'
+  name_en: Seaside Garden
+바인더스튜디오:
+  address_en: Seoul, Mapo-gu, Sangsu-dong, 4F 86-22
+  cid: '16064989949225500840'
+  fetched: '2026-09-22'
+  name_en: 바인더스튜디오
+바쿠스스튜디오:
+  address_en: Gyeonggi-do, Paju-si, Tanhyeon-myeon, Chukhyeon-ri, 320-27 KR
+  category_en: Photography studio
+  cid: '8913708495476567374'
+  fetched: '2026-09-22'
+  name_en: 바쿠스스튜디오
+바티칸 미술관:
+  category_en: Musei Vaticani
+  cid: '14979232533955483318'
+  fetched: '2026-09-22'
+  name_en: Vatican Museums
+반얀트리 클럽 앤 스파 서울:
+  manual: true
+  name_en: Banyan Tree Club & Spa Seoul
+방이옥:
+  address_en: Seoul Yongsan District, Daesagwan-ro 31-gil, 7-2 1F
+  category_en: Korean restaurant
+  cid: '322968018047313399'
+  fetched: '2026-09-22'
+  name_en: 방이옥 한남점
+벌툰 파리지앵 강남본점:
+  address_en: 1307-18 Seocho-dong, Seocho District, Seoul
+  category_en: Comic cafe
+  cid: '14162779829090648908'
+  fetched: '2026-09-22'
+  name_en: 벌툰 파리지앵 강남본점
+베키오 다리:
+  address_en: Ponte Vecchio, 50125 Firenze FI, Italy
+  category_en: Bridge
+  cid: '4625490284655346408'
+  fetched: '2026-09-22'
+  name_en: Ponte Vecchio
+베통 청담:
+  address_en: Seoul, Gangnam District, Dosan-daero, 442 B1
+  category_en: Cafe
+  cid: '9260638520285515964'
+  fetched: '2026-09-22'
+  name_en: 베통 청담
+별마당 도서관:
+  address_en: Seoul, Gangnam District, Yeongdong-daero, 513 B1
+  category_en: Library
+  cid: '3143025846765073303'
+  fetched: '2026-09-22'
+  name_en: Starfield Library
+보문사:
+  category_en: Buddhist temple
+  cid: '9655041507335040981'
+  fetched: '2026-09-22'
+  name_en: Bomunsa
+보보상점:
+  address_en: 103, Taiwan, Taipei City, Datong District, Guangneng Village, Lane 49, Chifeng St, 2號2樓
+  category_en: ''
+  cid: '13959990392697350075'
+  fetched: '2026-09-22'
+  name_en: bog tea house buubu
+볼베어파크 롯데몰 은평점:
+  address_en: Seoul, Eunpyeong District, Tongil-ro, 1050 3F 3F
+  category_en: Amusement park
+  cid: '16087111582041165917'
+  fetched: '2026-09-22'
+  name_en: Ball Bear Park Eunpyeong
+볼하우스 한남:
+  address_en: B2, 46 Dokseodang-ro, Yongsan District, Seoul
+  category_en: Bowling alley
+  cid: '14683931250780888461'
+  fetched: '2026-09-22'
+  name_en: Bowlhouse Hannam
+봄날플라워카페_250318-250322:
+  address_en: Seoul, Yongsan District, Hangang-daero 10-gil, 11-18 1F
+  category_en: Cafe
+  cid: '933386598400549678'
+  fetched: '2026-09-22'
+  name_en: 봄날 플라워 카페
+봄날플라워카페_250731-250803:
+  address_en: Seoul, Yongsan District, Hangang-daero 10-gil, 11-18 1F
+  category_en: Cafe
+  cid: '933386598400549678'
+  fetched: '2026-09-22'
+  name_en: 봄날 플라워 카페
+봄날플라워카페_260726-260729:
+  address_en: Seoul, Yongsan District, Hangang-daero 10-gil, 11-18 1F
+  category_en: Cafe
+  cid: '933386598400549678'
+  fetched: '2026-09-22'
+  name_en: 봄날 플라워 카페
+봄마켓_250317-250319:
+  address_en: 11-46 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '10427993113716358450'
+  fetched: '2026-09-22'
+  name_en: Bommakes
+봄마켓_250731-250802:
+  address_en: 11-46 Hangang-daero 10-gil, Yongsan District, Seoul
+  cid: '10427993113716358450'
+  fetched: '2026-09-22'
+  name_en: Bommakes
+부엉이일기장_250308-250322:
+  address_en: 56 Eoulmadang-ro, Mapo-gu, Seoul
+  cid: '9729190605547428768'
+  fetched: '2026-09-22'
+  name_en: 부엉이일기장
+브라더스마운틴:
+  address_en: 31 Simgok-ro 37beon-gil, Sujeong-gu, Seongnam-si, Gyeonggi-do
+  cid: '13503744800176013267'
+  fetched: '2026-09-22'
+브라이언트 파크 윈터 빌리지:
+  address_en: 42nd Street and, 6th Ave, New York, NY 10018, United States
+  category_en: Park
+  cid: '17217838491629189348'
+  fetched: '2026-09-22'
+  name_en: Bryant Park Winter Village
+브루잉 세레모니:
+  address_en: 315-27 Seongsu-dong 2(i)-ga, Seongdong-gu, Seoul
+  category_en: Cafe
+  cid: '113351586431260632'
+  fetched: '2026-09-22'
+  name_en: Brewing Ceremony
+블리스플라워:
+  category_en: Florist
+  cid: '1664157455974201860'
+  fetched: '2026-09-22'
+  name_en: 블리스풀라워 Blissfulower
+비바살롱 신흥시장 2호점:
+  address_en: 1-58 yongsan-dong 2(i)-ga, Yongsan District, Seoul
+  cid: '11534681307566474047'
+  fetched: '2026-09-22'
+  name_en: 비바쌀롱 3호점
+비토리오 에마누엘레 2세 갤러리아:
+  address_en: 20123 Milan, Metropolitan City of Milan, Italy
+  category_en: Shopping mall
+  cid: '2813514643363451926'
+  fetched: '2026-09-22'
+  name_en: Galleria Vittorio Emanuele II
+비트로드 (Made My Night):
+  address_en: Seoul, Mapo-gu, Seogyo-dong, 369-7 3F
+  category_en: Music store
+  cid: '8628982449456884590'
+  fetched: '2026-09-22'
+  name_en: Beat Road
+비틀즈 스토리:
+  address_en: Britannia Vaults, Royal Albert Dock, Liverpool L3 4AD, United Kingdom
+  category_en: Museum
+  cid: '6227715220634886527'
+  fetched: '2026-09-22'
+  name_en: The Beatles Story Museum, Liverpool
+비파티세리:
+  address_en: 4 Mapo-daero 14-gil, Gongdeok-dong, Mapo-gu, Seoul
+  category_en: Cafe
+  cid: '10250940518865909175'
+  fetched: '2026-09-22'
+  name_en: B-Patisserie Gongdeok Branch
+비피엠 파이엔타르트:
+  address_en: Seoul Seodaemun-gu, Yeonhui-ro 10-gil, 19 1F
+  category_en: Pie shop
+  cid: '14410255310841461532'
+  fetched: '2026-09-22'
+  name_en: BPM 비피엠 파이엔타르트
+비학산칼국수 해운대본점:
+  address_en: 329-4 Haeundaehaebyeon-ro, Jung-dong, Haeundae-gu, Busan
+  category_en: Korean restaurant
+  cid: '11488322040229804735'
+  fetched: '2026-09-22'
+  name_en: BiHakSan Kalguksu
+빅 벤:
+  address_en: London SW1A 0AA, United Kingdom
+  category_en: Cultural landmark
+  cid: '13226830714359798441'
+  fetched: '2026-09-22'
+  name_en: Big Ben
+뺑스톡:
+  address_en: 7 Baekbeom-ro 31-gil, Mapo-gu, Seoul
+  category_en: Cafe
+  cid: '6525236079833635938'
+  fetched: '2026-09-22'
+  name_en: Pain Stock
+사운드웨이브 럭키드로우  & 현장 이벤트:
+  address_en: 15 Yeongjung-ro, Yeongdeungpo District, Seoul
+  category_en: Shopping mall
+  cid: '9800173846307316497'
+  fetched: '2026-09-22'
+  name_en: Times Square, Seoul
+사유원:
+  address_en: 1176 Chisanhyoryeong-ro, Bugye-myeon, Daegu
+  category_en: Arboretum
+  cid: '6628053637985214382'
+  fetched: '2026-09-22'
+  name_en: Sayuwon
+사이타마 슈퍼 아레나:
+  manual: true
+  name_en: Saitama Super Arena
+사크레쾨르 대성당:
+  manual: true
+  name_en: Sacré-Cœur Basilica
+산리오 퓨로랜드:
+  address_en: 1 Chome-31 Ochiai, Tama, Tokyo 206-8588, Japan
+  category_en: ''
+  cid: '17341861633689413717'
+  fetched: '2026-09-22'
+  name_en: Sanrio Puroland
+산타모니카 피어:
+  address_en: 200 Santa Monica Pier, Santa Monica, CA 90401, United States
+  category_en: Fishing pier
+  cid: '14815172731025329997'
+  fetched: '2026-09-22'
+  name_en: Santa Monica Pier
+삼겹살 전문점 대통령 본점:
+  address_en: Seoul, Jongno District, Daehak-ro 14-gil, 12-1 1F
+  category_en: Meat dish restaurant
+  cid: '8843791614642026797'
+  fetched: '2026-09-22'
+  name_en: Bamboo Pork Belly
+삼악산 호수케이블카:
+  address_en: 245 Sports town-gil, Samcheon-dong, Chuncheon-si, Gangwon-do
+  category_en: Tourist attraction
+  cid: '837145703321362410'
+  fetched: '2026-09-22'
+  name_en: Chuncheon Samaksan Cable Car
+삼청동호떡:
+  address_en: 82-6 Yulgok-ro 3-gil, Jongno District, Seoul
+  category_en: Deli
+  cid: '8063626362359266346'
+  fetched: '2026-09-22'
+  name_en: Samcheongdong Hotteok
+상상오리 삼겹 용산점:
+  address_en: 65 Huam-ro, Yongsan District, Seoul
+  cid: '16658542898127684412'
+  fetched: '2026-09-22'
+샌타모니카 비치:
+  category_en: Beach
+  cid: '992686118561504011'
+  fetched: '2026-09-22'
+  name_en: Santa Monica State Beach
+샐러드셀러:
+  address_en: 36 Itaewon-ro 20-gil, Yongsan District, Seoul
+  category_en: Salad shop
+  cid: '5019746176382273287'
+  fetched: '2026-09-22'
+  name_en: Salad Seller
+생생딸기체험농장:
+  address_en: 659 Bongsang-ri, Danwol-myeon, Yangpyeong-gun, Gyeonggi-do
+  category_en: Farmstay
+  cid: '17658464206490922769'
+  fetched: '2026-09-22'
+  name_en: 생생딸기농장
+샤부겐:
+  address_en: Japan, 〒107-0052 Tokyo, Minato City, Akasaka, 3 Chome−8−1 赤坂アルトビル ５F
+  category_en: ''
+  cid: '17620217851286148279'
+  fetched: '2026-09-22'
+  name_en: Shabu Gen Akasaka
+서면 고메:
+  address_en: Busan, Busanjin District, Seojeon-ro 46beon-gil, 90 gourmet 1F
+  category_en: Cafe
+  cid: '16388829335046810958'
+  fetched: '2026-09-22'
+  name_en: Gome
+서울숲클라이밍 영등포점:
+  address_en: 55-16 Mullae-dong 3(sam)-ga, Yeongdeungpo District, Seoul
+  category_en: Rock climbing gym
+  cid: '11717326976764467115'
+  fetched: '2026-09-22'
+  name_en: 서울숲클라이밍 영등포점
+서울승마클럽:
+  address_en: 28-29 Dongil-ro 192beon-gil, Uijeongbu-si, Gyeonggi-do
+  category_en: Equestrian club
+  cid: '8105309336848208500'
+  fetched: '2026-09-22'
+  name_en: 서울승마클럽
+서일본 종합전시장 신관:
+  manual: true
+  name_en: West Japan General Exhibition Center (New Building)
+서피비치:
+  address_en: 119 Hajodaehaean-gil, Hyeonbuk-myeon, Yangyang-gun, Gangwon-do
+  category_en: Beach pavilion
+  cid: '10400029251151324372'
+  fetched: '2026-09-22'
+  name_en: Yangyang Surfyy Beach
+서해랑 제부도해상케이블카:
+  address_en: 1-10 Jeongokhang-ro, Seosin-myeon, Hwaseong-si, Gyeonggi-do
+  category_en: Mountain cable car
+  cid: '17028087979294672051'
+  fetched: '2026-09-22'
+  name_en: 제부도해상케이블카 서해랑 전곡정류장
+석암생소금구이 용산점:
+  address_en: Seoul, Yongsan District, Hangang-daero, 49 1F
+  category_en: Barbecue restaurant
+  cid: '4415564289958388445'
+  fetched: '2026-09-22'
+  name_en: Korean bbq Seogam Raw Salt Grilled Pork
+선진서바이벌:
+  address_en: 34-1 Wondang-dong, Deogyang-gu, Goyang-si, Gyeonggi-do
+  category_en: Laser tag center
+  cid: '8187532046316989735'
+  fetched: '2026-09-22'
+  name_en: 선진서바이벌게임장
+설봄:
+  address_en: 17 Seonyuseo-ro, Yeongdeungpo District, Seoul
+  cid: '6861087134209557525'
+  fetched: '2026-09-22'
+성 베드로 대성전:
+  address_en: Piazza San Pietro, 00120 Città del Vaticano, Vatican City
+  category_en: Basilica di San Pietro
+  cid: '8235940740917056131'
+  fetched: '2026-09-22'
+  name_en: Saint Peter’s Basilica
+세븐일레븐 NewWave광안리점 (Made My Night):
+  address_en: 209 Gwanganhaebyeon-ro, Suyeong-gu, Busan
+  category_en: Convenience store
+  cid: '17391477245096212188'
+  fetched: '2026-09-22'
+  name_en: 세븐일레븐 NewWave광안리점
+세븐일레븐 NewWave명동점 (Made My Night):
+  address_en: 139 Toegye-ro, Jung District, Seoul
+  category_en: Convenience store
+  cid: '9923028784629745526'
+  fetched: '2026-09-22'
+  name_en: 세븐일레븐 NewWave명동점
+세븐일레븐 챌린지스토어점 (Made My Night):
+  address_en: 269 Olympic-ro, Songpa District, Seoul
+  category_en: Convenience store
+  cid: '3157459876177344557'
+  fetched: '2026-09-22'
+  name_en: 7-Eleven
+세븐일레븐 홍대스타점 (Made My Night):
+  address_en: 74 Eoulmadang-ro, Mapo-gu, Seoul
+  cid: '3507853950088399414'
+  fetched: '2026-09-22'
+  name_en: 세븐일레븐 홍대스타점
+세빛섬:
+  manual: true
+  name_en: Some Sevit (Sevit Islands)
+세연콩국:
+  address_en: 2111-4, Jung-gu, Daegu
+  category_en: Restaurant
+  cid: '10181887119106624766'
+  fetched: '2026-09-22'
+  name_en: 세연콩국
+세키스이하임 슈퍼아레나:
+  manual: true
+  name_en: Sekisui Heim Super Arena
+센트럴 파크:
+  address_en: New York, NY, United States
+  category_en: Park
+  cid: '13393458397880860953'
+  fetched: '2026-09-22'
+  name_en: Central Park
+센트레 더 베이커리:
+  address_en: Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 1 Chome−2−1 紺屋ビル 1F 東京高速道路
+  category_en: ''
+  cid: '8221309088707739891'
+  fetched: '2026-09-22'
+  name_en: Centre The Bakery
+소인수서울 성수:
+  address_en: 136 Wangsimni-ro, Seongdong-gu, Seoul
+  category_en: Offal barbecue restaurant
+  cid: '10471383920646263001'
+  fetched: '2026-09-22'
+  name_en: 소인수서울 본점
+손문 갈매기 2호점:
+  address_en: 213-12 Saechang-ro, Yongsan District, Seoul
+  category_en: Korean barbecue restaurant
+  cid: '4182259304151494742'
+  fetched: '2026-09-22'
+  name_en: 손문갈매기살 용산점
+수미마을딸기송어축제:
+  address_en: 55-2 Gopdani-gil, Danwol-myeon, Yangpyeong-gun, Gyeonggi-do
+  category_en: Farmers cooperative
+  cid: '14603543258137496232'
+  fetched: '2026-09-22'
+  name_en: 영농조합법인 수미마을
+수복찜갈비:
+  address_en: 15 Dongdeok-ro 38-gil, Jung-gu, Daegu
+  category_en: Korean restaurant
+  cid: '14424588246994213800'
+  fetched: '2026-09-22'
+  name_en: 수복찜갈비
+수상한발효실 수국:
+  address_en: Seoul, Gwangjin District, Achasan-ro 38-gil, 17 1F
+  category_en: Cooking class
+  cid: '6761845310104730444'
+  fetched: '2026-09-22'
+  name_en: 수상한발효실 수국SUGUK
+숲속한방랜드:
+  address_en: 75-7 Bongwonsa-gil, Seodaemun-gu, Seoul
+  category_en: Korean dry sauna
+  cid: '1729496197392450567'
+  fetched: '2026-09-22'
+  name_en: Supsok Hanbang Land
+숲이야캠핑장:
+  address_en: 692-16 Su-ip-ri, Seojong-myeon, Yangpyeong-gun, Gyeonggi-do
+  category_en: Campground
+  cid: '5580301121777668924'
+  fetched: '2026-09-22'
+  name_en: 숲이야캠핑장
+슈필라움 글램핑 & 카페:
+  address_en: 468-11 Haean-gil, Seosin-myeon, Hwaseong-si, Gyeonggi-do
+  category_en: Camping cabin
+  cid: '10491207435289035002'
+  fetched: '2026-09-22'
+  name_en: 슈필라움글램핑
+스카이라인루지 부산:
+  address_en: 205 Gijanghaean-ro, Gijang-gun, Busan
+  category_en: Tourist attraction
+  cid: '5698744613970180327'
+  fetched: '2026-09-22'
+  name_en: Skyline Luge Busan
+스쿨랜드:
+  address_en: 35 Jandari-ro 6-gil, Mapo-gu, Seoul
+  category_en: Photography studio
+  cid: '3242176804131305894'
+  fetched: '2026-09-22'
+  name_en: 서울 홍대 스쿨랜드
+스태픽스:
+  address_en: Seoul, Jongno District, Sajik-ro 9-gil, 22
+  category_en: Coffee shop
+  cid: '8742073769086502776'
+  fetched: '2026-09-22'
+  name_en: Staff Picks
+스탠다드번:
+  address_en: Seoul, Yongsan District, Hangang-daero, 37
+  category_en: Cafe
+  cid: '3798259546203146837'
+  fetched: '2026-09-22'
+  name_en: Cafe STANDARD BUN
+스튜디오 사파리:
+  category_en: Photography studio
+  cid: '7376901065415494656'
+  fetched: '2026-09-22'
+  name_en: 스튜디오 사파리
+스튜디오블랭크:
+  address_en: 92 Poeun-ro, Mapo-gu, Seoul
+  category_en: Gift shop
+  cid: '16308497673397250082'
+  fetched: '2026-09-22'
+  name_en: 스튜디오블랭크
+스튜디오콜트:
+  address_en: 71 Heukseok-ro 3-gil, Dongjak District, Seoul
+  category_en: Photography studio
+  cid: '1589479773234587583'
+  fetched: '2026-09-22'
+  name_en: Studio Kolt
+스펀 리우거 닭날개볶음밥:
+  address_en: No. 52號, Shifen St, Shifen Village, Pingxi District, New Taipei City, Taiwan 226
+  category_en: Chicken restaurant
+  cid: '7923387941320550237'
+  fetched: '2026-09-22'
+  name_en: 十分溜哥燒烤雞翅包飯（LiouGou)
+스펀역:
+  address_en: Taiwan, New Taipei City, Pingxi District, 226
+  category_en: ''
+  cid: '8660212055159468226'
+  fetched: '2026-09-22'
+  name_en: Shifen Station
+스피어:
+  address_en: 255 Sands Ave, Las Vegas, NV 89169, United States
+  category_en: Tourist attraction
+  cid: '4810278264660580079'
+  fetched: '2026-09-22'
+  name_en: Sphere
+시뇨리아 광장:
+  address_en: P.za della Signoria, 50122 Firenze FI, Italy
+  category_en: Plaza
+  cid: '11510190685880029293'
+  fetched: '2026-09-22'
+  name_en: Piazza della Signoria
+시먼딩 야시장:
+  address_en: Wanhua District, Taipei City, Taiwan 108
+  category_en: ''
+  cid: '10784439233747801280'
+  fetched: '2026-09-22'
+  name_en: Ximending Shopping District
+시부야 스시 진난:
+  address_en: Japan, 〒150-0041 Tokyo, Shibuya, Jinnan, 1 Chome−20−5 Vort Shibuya Briller, 9F
+  category_en: ''
+  cid: '713203869101344048'
+  fetched: '2026-09-22'
+  name_en: Shibuya Sushi Jinnan
+시코쓰 호:
+  category_en: ''
+  cid: '8924142796909183696'
+  fetched: '2026-09-22'
+  name_en: Lake Shikotsu
+시티10 카페:
+  address_en: 57-1 Gangbyeonbuk-ro 632beon-gil, Suseok-dong, Namyangju-si, Gyeonggi-do
+  cid: '12490915196810733022'
+  fetched: '2026-09-22'
+  name_en: 시티10
+심양 청담본점:
+  address_en: 21 Seolleung-ro 161-gil, Gangnam District, Seoul
+  category_en: Mutton barbecue restaurant
+  cid: '2397462161520403940'
+  fetched: '2026-09-22'
+  name_en: 심양 청담본점 Shimyang BBQ
+싱가포르 실내경기장:
+  manual: true
+  name_en: Singapore Indoor Stadium
+싱가포르 플라이어:
+  address_en: 30 Raffles Ave., Singapore 039803
+  category_en: Ferris wheel
+  cid: '9202232323147137646'
+  fetched: '2026-09-22'
+  name_en: Singapore Flyer
+쌀단호박찐빵:
+  address_en: 399-25 Daeseong-ri, Cheongpyeong-myeon, Gapyeong-gun, Gyeonggi-do
+  category_en: Restaurant
+  cid: '16102150939604231750'
+  fetched: '2026-09-22'
+  name_en: 쌀단호박찐빵
+썬더돔:
+  manual: true
+  name_en: Thunder Dome
+쏘쏘한 베이킹:
+  address_en: 14 Yeonmujang 17-gil, Seongdong-gu, Seoul
+  category_en: Dessert shop
+  cid: '13602230095864720251'
+  fetched: '2026-09-22'
+  name_en: 쏘쏘한 베이킹
+아라시야마 치쿠린:
+  address_en: Sagaogurayama Tabuchiyamacho, Ukyo Ward, Kyoto, 616-8394, Japan
+  category_en: ''
+  cid: '18131488233213033693'
+  fetched: '2026-09-22'
+  name_en: Arashiyama Bamboo Forest
+아란치노 앳 더 카할라:
+  address_en: 'Kahala Resort, 5000 Kahala Ave #5000, Honolulu, HI 96816, United States'
+  category_en: Italian restaurant
+  cid: '4239423334399159778'
+  fetched: '2026-09-22'
+  name_en: Arancino at The Kahala
+아르떼뮤지엄 강릉:
+  address_en: 131 Nanseolheon-ro, Gangneung-si, Gangwon-do
+  category_en: Art museum
+  cid: '12167183461232249187'
+  fetched: '2026-09-22'
+  name_en: Arte Museum Valley Gangneung
+아리마온센:
+  address_en: Japan, 〒651-1401 Hyogo, Kobe, Kita Ward, Arimacho, 字ウツギ谷1297−1
+  category_en: ''
+  cid: '3554386199905583530'
+  fetched: '2026-09-22'
+  name_en: Arimaonsen Station
+아메리카나 앳 브랜드:
+  address_en: 889 Americana Way, Glendale, CA 91210, United States
+  category_en: Shopping mall
+  cid: '12537932621736505420'
+  fetched: '2026-09-22'
+  name_en: The Americana at Brand
+아메리카무라 프리마켓 B.B:
+  address_en: Japan, 〒542-0086 Osaka, Chuo Ward, Nishishinsaibashi, 1 Chome−16−12 ニューアメリカンプラザビル 1階
+  category_en: ''
+  cid: '8903549618604457427'
+  fetched: '2026-09-22'
+  name_en: BB Amemura
+아스테리카 바이 더체어:
+  address_en: 215 Jungbu-daero, Yangji-myeon, Cheoin-gu, Yongin-si, Gyeonggi-do
+  category_en: Coffee shop
+  cid: '18191896825222323108'
+  fetched: '2026-09-22'
+  name_en: 아스테리카 by THE CHAIR
+아시아월드엑스포:
+  manual: true
+  name_en: AsiaWorld-Expo
+아이스 오우카:
+  address_en: 1 Chome-6-6 Ebisu, Shibuya, Tokyo 150-0013, Japan
+  category_en: JAPANESE ICE OUCA
+  cid: '16347760819820039436'
+  fetched: '2026-09-22'
+  name_en: Ouca
+아침고요수목원:
+  address_en: 432 Sumogwon-ro, Sang-myeon, Gapyeong-gun, Gyeonggi-do
+  category_en: Arboretum
+  cid: '6739583600422527885'
+  fetched: '2026-09-22'
+  name_en: Garden of Morning Calm
+아카데미아 미술관:
+  address_en: Via Ricasoli, 58/60, 50129 Firenze FI, Italy
+  category_en: Art museum
+  cid: '7875942179259130567'
+  fetched: '2026-09-22'
+  name_en: Galleria dell’Accademia di Firenze
+아카사카 코미깡:
+  address_en: １Ｆ, 1 Chome-7-10 Daimyo, Chuo Ward, Fukuoka, 810-0041, Japan
+  category_en: ''
+  cid: '7901958240902963816'
+  fetched: '2026-09-22'
+  name_en: Akasaka Komikan
+아카후쿠 본점:
+  address_en: 26-26 Ujinakanokiricho, Ise, Mie 516-0025, Japan
+  category_en: ''
+  cid: '3263105985025266809'
+  fetched: '2026-09-22'
+  name_en: Akafuku honten
+안지랑곱창막창 앞산 본점:
+  address_en: 51 Daemyeong-ro 36-gil, Nam-gu, Daegu
+  category_en: Offal barbecue restaurant
+  cid: '16976014267611737714'
+  fetched: '2026-09-22'
+  name_en: 안지랑곱창막장 앞산본점
+압구정 나들목:
+  address_en: Apgujeong-dong, Gangnam District, Seoul
+  category_en: Park
+  cid: '7534412871055468469'
+  fetched: '2026-09-22'
+  name_en: Apgujeong Underpass
+앙뜨:
+  address_en: 58 Sangwon-gil, Seongsu-dong 1(il)-ga, Seongdong-gu, Seoul
+  cid: '4159483744970834053'
+  fetched: '2026-09-22'
+  name_en: 소품샵 앙뜨
+야나카긴자:
+  address_en: 3 Chome-13-1 Yanaka, Taito City, Tokyo 110-0001, Japan
+  category_en: ''
+  cid: '17238952707303622496'
+  fetched: '2026-09-22'
+  name_en: Yanaka Ginza
+야바톤 야바쵸본점:
+  address_en: 3 Chome-6-18 Osu, Naka Ward, Nagoya, Aichi 460-0011, Japan
+  category_en: ''
+  cid: '998878612653937480'
+  fetched: '2026-09-22'
+  name_en: Misokatsu Yabaton Yabachō Honten
+양평빠지 리멤버:
+  address_en: Gyeonggi-do, Yangpyeong-gun, Seojong-myeon, Su-ip-ri, 41-10 KR
+  category_en: Water ski shop
+  cid: '1942212924511808962'
+  fetched: '2026-09-22'
+  name_en: 리멤버 수상스키
+어나더사이드:
+  address_en: 318 Gangseo-ro, Gangseo-gu, Seoul
+  category_en: Coffee shop
+  cid: '13323048856462642908'
+  fetched: '2026-09-22'
+  name_en: Another Side
+어라운드에잇:
+  address_en: 280 Chorigol-gil, Beobwon-eup, Paju-si, Gyeonggi-do
+  category_en: Cafe
+  cid: '3481468877423231470'
+  fetched: '2026-09-22'
+  name_en: 어라운드8 AROUND 8
+언프레임 해방촌점:
+  address_en: 97-1 Sinheung-ro, Yongsan District, Seoul
+  category_en: Photo booth
+  cid: '12328029745605381035'
+  fetched: '2026-09-22'
+  name_en: 언프레임 해방촌점
+얼짱사진샵 숙대입구점:
+  address_en: 10 Cheongpa-ro 45-gil, Yongsan District, Seoul
+  cid: '13997460324845631126'
+  fetched: '2026-09-22'
+  name_en: 얼짱사진샵 숙대입구점
+에버랜드:
+  address_en: 199 Everland-ro, Pogok-eup, Cheoin-gu, Yongin-si, Gyeonggi-do
+  category_en: Amusement park
+  cid: '2279255401136619672'
+  fetched: '2026-09-22'
+  name_en: Everland
+에코파 아레나:
+  manual: true
+  name_en: Ecopa Arena
+에펠탑:
+  address_en: Av. Gustave Eiffel, 75007 Paris, France
+  category_en: Tour Eiffel
+  cid: '10222232094831998944'
+  fetched: '2026-09-22'
+  name_en: Eiffel Tower
+엠엔에이:
+  address_en: 13-23 Hangangno 1(il)-ga, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '5034788153151931811'
+  fetched: '2026-09-22'
+  name_en: 엠엔에이
+엠파이어 스테이트 빌딩:
+  address_en: 20 W 34th St., New York, NY 10001, United States
+  category_en: Observation deck
+  cid: '15074921902713971043'
+  fetched: '2026-09-22'
+  name_en: Empire State Building
+여의도공원:
+  address_en: 68 Yeouigongwon-ro, Yeongdeungpo District, Seoul
+  category_en: Park
+  cid: '1183578152943201358'
+  fetched: '2026-09-22'
+  name_en: Yeouido Park
+여의도한강공원:
+  manual: true
+  name_en: Yeouido Hangang Park
+연세대학교 중앙도서관:
+  manual: true
+  name_en: Yonsei University Central Library
+연타발 압구정본점:
+  address_en: 231 Dosan-daero, Gangnam District, Seoul
+  category_en: Restaurant
+  cid: '845799640730373191'
+  fetched: '2026-09-22'
+  name_en: 연타발 압구정점
+오거트 아현점:
+  address_en: 347-31 Ahyeon-dong, Mapo-gu, Seoul
+  cid: '10219131284367299620'
+  fetched: '2026-09-22'
+  name_en: 오거트 아현점
+오네스타키친:
+  address_en: 45-15 Yeouido-dong, Yeongdeungpo District, Seoul
+  category_en: Italian restaurant
+  cid: '3817095749251230196'
+  fetched: '2026-09-22'
+  name_en: 오네스타키친
+오디너리아카이브_260731-260802:
+  address_en: Seoul, Mapo-gu, Sinchon-ro 4-gil, 5-18 1F
+  cid: '5609511879822698864'
+  fetched: '2026-09-22'
+  name_en: 오디너리아카이브
+오라운트 로스터리 카페:
+  address_en: 320-4 Yangbeol-ro, Opo-eup, Gwangju-si, Gyeonggi-do
+  category_en: Coffee roastery
+  cid: '11170857870627415503'
+  fetched: '2026-09-22'
+  name_en: Ora \ Und
+오래된 숲 성수:
+  address_en: Seoul, Seongdong-gu, Gwangnaru-ro, 154 1F
+  category_en: Vintage clothing store
+  cid: '15724945907942885913'
+  fetched: '2026-09-22'
+  name_en: Loveoldforest
+오르세 미술관:
+  address_en: Esplanade Valéry Giscard d'Estaing, 75007 Paris, France
+  category_en: Art museum
+  cid: '15019994644224418776'
+  fetched: '2026-09-22'
+  name_en: Musée d'Orsay
+오베이션 할리우드:
+  address_en: 6801 Hollywood Blvd, Hollywood, CA 90028, United States
+  category_en: Shopping mall
+  cid: '16844472207000561938'
+  fetched: '2026-09-22'
+  name_en: Ovation Hollywood
+오브젝트 삼청점:
+  address_en: 11 Jae-dong, Jongno District, Seoul
+  category_en: Souvenir store
+  cid: '11383103926096791241'
+  fetched: '2026-09-22'
+  name_en: Object
+오사카조 홀:
+  manual: true
+  name_en: Osaka-jo Hall
+오설록 티하우스 북촌점:
+  address_en: 45 Bukchon-ro, Jongno District, Seoul
+  category_en: Tea house
+  cid: '5268951878254094670'
+  fetched: '2026-09-22'
+  name_en: Osulloc Tea House Bukchon
+오시오카페 용산점:
+  address_en: Seoul, Yongsan District, Hangangno 3(sam)-ga, 999 40 I'Park Mall Living Park 6F
+  category_en: Bakery
+  cid: '8634379027910416819'
+  fetched: '2026-09-22'
+  name_en: 오시오 카페 by 아카렌카 용산 아이파크몰점
+오아시스 한남점:
+  address_en: 30 Itaewon-ro 45-gil, Yongsan District, Seoul
+  category_en: Brunch restaurant
+  cid: '18027617224047568103'
+  fetched: '2026-09-22'
+  name_en: OASIS Hannam
+오우칸:
+  address_en: Seoul, Seongdong-gu, Yeonmujang-gil, 37-17 1F
+  category_en: Izakaya restaurant
+  cid: '11530899551034177454'
+  fetched: '2026-09-22'
+  name_en: Oukan
+오이시 공원 카페:
+  address_en: 2585 Oishi, Fujikawaguchiko, Minamitsuru District, Yamanashi 401-0305, Japan
+  category_en: Ice cream shop
+  cid: '1158262415968215577'
+  fetched: '2026-09-22'
+  name_en: Oishi Park Cafe
+오타루 운하:
+  address_en: 5 Minatomachi, Otaru, Hokkaido 047-0007, Japan
+  category_en: ''
+  cid: '355229862189438753'
+  fetched: '2026-09-22'
+  name_en: Otaru Canal
+오토김밥 본점:
+  address_en: 93 Noksapyeong-daero 26-gil, Yongsan District, Seoul
+  category_en: Korean restaurant
+  cid: '17964502314183334467'
+  fetched: '2026-09-22'
+  name_en: Otto Kimbab
+오트밀 쿠킹 스튜디오:
+  address_en: 4 Eonnam 17-gil, Seocho District, Seoul
+  category_en: Photography studio
+  cid: '3038619130819646572'
+  fetched: '2026-09-22'
+  name_en: Haute-Meal Cooking Studio
+오페라 가르니에:
+  address_en: Pl. de l'Opéra, 75009 Paris, France
+  category_en: Opera house
+  cid: '12226131816178583399'
+  fetched: '2026-09-22'
+  name_en: Palais Garnier
+온정돈까스 선릉점:
+  address_en: Seoul, Gangnam District, Daechi-dong, 896 45 2F
+  category_en: Tonkatsu restaurant
+  cid: '5324302502159035010'
+  fetched: '2026-09-22'
+  name_en: 온정돈까스 선릉점
+올드 트래포드:
+  address_en: Old Trafford, Stretford, Manchester M16 0RA, United Kingdom
+  category_en: Stadium
+  cid: '7823613018826364414'
+  fetched: '2026-09-22'
+  name_en: Old Trafford
+올라이트 서촌점:
+  address_en: 102 Chebu-dong, Jongno District, Seoul
+  category_en: Art supply store
+  cid: '4972690028517452229'
+  fetched: '2026-09-22'
+  name_en: Allwrite
+올리브영 홍대놀이터점 (Made My Night):
+  address_en: 29 Wausan-ro 21-gil, Mapo-gu, Seoul
+  category_en: Cosmetics store
+  cid: '1025587753857562355'
+  fetched: '2026-09-22'
+  name_en: Olive Young Hongdae Playground Branch
+올림픽공원 88잔디마당:
+  manual: true
+  name_en: 88 Lawn Field, Olympic Park
+올림픽홀:
+  manual: true
+  name_en: Olympic Hall
+옴니바디웍스청담:
+  address_en: Seoul, Gangnam District, Cheongdam-dong, 118-17
+  category_en: Yoga studio
+  cid: '325341969162828684'
+  fetched: '2026-09-22'
+  name_en: 옴니바디웍스청담
+와글아이 일산차움라이프센터점:
+  category_en: Playground
+  cid: '15533097234446813628'
+  fetched: '2026-09-22'
+  name_en: 와글아이 일산차움라이프센터점
+와라야키 미깡:
+  address_en: 2 Chome-12-20 Haruyoshi, Chuo Ward, Fukuoka, 810-0003, Japan
+  category_en: ''
+  cid: '7160071467286266041'
+  fetched: '2026-09-22'
+  name_en: Warayaki Mikan
+와이레스 플래그십 스토어:
+  address_en: 11-4 Gahoe-dong, Jongno District, Seoul
+  category_en: Cosmetics store
+  cid: '16008243577715693867'
+  fetched: '2026-09-22'
+  name_en: 가히 와이레스 북촌
+왓어브레드 용산점:
+  address_en: 19-19 Hangang-daero 15-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '18285558052025746870'
+  fetched: '2026-09-22'
+  name_en: What A Bread
+요고프로즌요거트홍대점_260730-260801:
+  address_en: Wausan-ro 21-gil, Mapo-gu, Seoul
+  category_en: Frozen yogurt shop
+  cid: '13072360063929398845'
+  fetched: '2026-09-22'
+  name_en: Yogurt World
+요코하마 미술관:
+  address_en: Japan, 〒220-0012 Kanagawa, Yokohama, Nishi Ward, Minatomirai, 3 Chome−4−1 横浜美術館 内
+  category_en: ''
+  cid: '16666889440076540934'
+  fetched: '2026-09-22'
+  name_en: Yokohama Museum of Art
+요코하마 아카렌가소코 2호관:
+  address_en: 1 Chome-1-1 Shinko, Naka Ward, Yokohama, Kanagawa 231-0001, Japan
+  category_en: ''
+  cid: '10706320581550947699'
+  fetched: '2026-09-22'
+  name_en: Yokohama Red Brick Warehouse
+용산마루:
+  address_en: 40-461 Hangangno-dong, Yongsan District, Seoul
+  cid: '15081236772335646030'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: 용산마루
+우나기 욘다이메 키쿠카와 고속터미널점:
+  address_en: B1, House of Shinsegae, 176 Sinbanpo-ro, Seocho District, Seoul
+  category_en: Japanese restaurant
+  cid: '3954708698703625287'
+  fetched: '2026-09-22'
+  name_en: Unagi Yondaime Kikukawa – Shinsegae Gangnam
+우선:
+  address_en: 122-9 Cheongdam-dong, Gangnam District, Seoul
+  category_en: Beauty salon
+  cid: '6131321421475562359'
+  fetched: '2026-09-22'
+  name_en: WOOSUN HAIR & MAKEUP
+우에노 공원:
+  address_en: Uenokoen, Taito City, Tokyo 110-0007, Japan
+  category_en: ''
+  cid: '12811393089244390490'
+  fetched: '2026-09-22'
+  name_en: Ueno Park
+우피치 미술관:
+  address_en: Piazzale degli Uffizi, 6, 50122 Firenze FI, Italy
+  category_en: Galleria degli Uffizi
+  cid: '14834496294842582221'
+  fetched: '2026-09-22'
+  name_en: Uffizi Galleries
+원안1리 마을회관&싱싱하우스:
+  address_en: 447-2 Wonan-ri, Ujeong-eup, Hwaseong-si, Gyeonggi-do
+  cid: '1320534692539390002'
+  fetched: '2026-09-22'
+  name_en: 원안1리 마을회관
+원조북성로우동불고기:
+  address_en: 21-11 Seoseong-ro 14-gil, Jung-gu, Daegu
+  category_en: Korean barbecue restaurant
+  cid: '2887596167889668546'
+  fetched: '2026-09-22'
+  name_en: 원조북성로우동불고기
+웨스터 민스터 사원:
+  address_en: Dean's Yard, London SW1P 3PA, United Kingdom
+  category_en: Anglican church
+  cid: '15748806018305053562'
+  fetched: '2026-09-22'
+  name_en: Westminster Abbey
+위드뮤 스퀘어 망원 (Made My Night):
+  address_en: 12 Donggyo-ro 9-gil, Mapo-gu, Seoul
+  category_en: Cafe
+  cid: '1957877920964613020'
+  fetched: '2026-09-22'
+  name_en: 위드뮤 베이커리 카페 & R&D LAB
+위드키즈 키즈카페:
+  address_en: 141-6 Bangi-dong, Songpa District, Seoul
+  category_en: Cafeteria
+  cid: '14583312323472010533'
+  fetched: '2026-09-22'
+  name_en: 위드키즈
+유니버설 스튜디오 재팬:
+  address_en: 2 Chome-1-33 Sakurajima, Konohana Ward, Osaka, 554-0031, Japan
+  category_en: ''
+  cid: '3892796888607511210'
+  fetched: '2026-09-22'
+  name_en: Universal Studios Japan
+유야케 단단:
+  address_en: 3 Chome-14-13 Nishinippori, Arakawa City, Tokyo 116-0013, Japan
+  category_en: ''
+  cid: '13244088032790873243'
+  fetched: '2026-09-22'
+  name_en: Yanaka Ginza Yūyake Dandan
+육담온 이태원점:
+  address_en: Seoul, Yongsan District, Itaewon-ro 19-gil, 1 4F, 5F
+  category_en: Restaurant
+  cid: '2453197227774409214'
+  fetched: '2026-09-22'
+  name_en: Yugdam-On
+융캉 공원:
+  address_en: Yongkang St, Da’an District, Taipei City, Taiwan 106
+  category_en: ''
+  cid: '4393090059744435660'
+  fetched: '2026-09-22'
+  name_en: Yongkang Park
+융프라우 산:
+  address_en: Jungfraujoch, 3801 Jungfraujoch, Switzerland
+  category_en: Tourist attraction
+  cid: '17820145431783239385'
+  fetched: '2026-09-22'
+  name_en: Jungfraujoch - Top of Europe
+이시바시악기 시부야점:
+  address_en: Japan, 〒150-0042 Tokyo, Shibuya, Udagawacho, 31−2 渋谷ＢＥＡＭ ２階
+  category_en: ''
+  cid: '6793353567549122731'
+  fetched: '2026-09-22'
+  name_en: Ishibashi Music - Shibuya
+이연공방:
+  category_en: Craft store
+  cid: '3601907451979390585'
+  fetched: '2026-09-22'
+  name_en: 이연공방
+이와:
+  address_en: 13 Haeundaehaebyeon-ro 209beon-gil, U-dong, Haeundae-gu, Busan
+  category_en: Restaurant
+  cid: '2082861748376630440'
+  fetched: '2026-09-22'
+  name_en: Iwa
+인스파이어 아레나:
+  manual: true
+  name_en: Inspire Arena
+인제 스피디움:
+  address_en: 130 Sanghadap-ro, Girin-myeon, Inje-gun, Gangwon-do
+  category_en: Car racing venue
+  cid: '9612837228797860889'
+  fetched: '2026-09-22'
+  name_en: Inje Speedium
+인천회조개구이:
+  address_en: 24 Eurwang-ro, Jung-gu, Incheon
+  cid: '10454614589640609739'
+  fetched: '2026-09-22'
+자카르타 인터내셔널 엑스포:
+  manual: true
+  name_en: Jakarta International Expo
+잠실실내체육관:
+  manual: true
+  name_en: Jamsil Indoor Stadium
+쟈스민:
+  address_en: Gangwon-do, Chuncheon-si, Umuk-gil 74beon-gil, 14 KR
+  cid: '12604710052610370703'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: 쟈스민
+저스틴 해방촌:
+  address_en: 39-26 yongsan-dong 2(i)-ga, Yongsan District, Seoul
+  cid: '16489512110909458998'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: CAFE JUSTIN
+전곡항:
+  category_en: Harbor
+  cid: '7086475115363307281'
+  fetched: '2026-09-22'
+  name_en: 전곡항
+전율미궁:
+  address_en: Japan, 〒403-0017 Yamanashi, Fujiyoshida, Shinnishihara, 5 Chome−6−1 富士急ハイランド
+  category_en: ''
+  cid: '3205093616219202328'
+  fetched: '2026-09-22'
+  name_en: Senritsu meikyuu
+점보 시푸드 - 리버사이드 포인트:
+  address_en: '30 Merchant Rd, #01-01/02 Riverside Point, Singapore 058282'
+  category_en: Seafood restaurant
+  cid: '15842127738215567666'
+  fetched: '2026-09-22'
+  name_en: JUMBO Seafood - Riverside Point
+제주라프:
+  address_en: Jeju-do, Jeju-si,, Jocheon-eup, Seongyo-ro, 115-1 KR
+  category_en: Theme park
+  cid: '12477781613996383608'
+  fetched: '2026-09-22'
+  name_en: Jeju LAF (Jeju Light Art Festa)
+젠제로:
+  address_en: Seoul, Gangnam District, Seolleung-ro 126-gil, 14 1F
+  category_en: Ice cream shop
+  cid: '13435907092262114729'
+  fetched: '2026-09-22'
+  name_en: ZENZERO
+젠한방단식원:
+  address_en: Gyeonggi-do, Yangpyeong-gun, Danwol-myeon, Seoksan-ri, 10-2 KR
+  category_en: Serviced accommodation
+  cid: '10145652785792938420'
+  fetched: '2026-09-22'
+  name_en: 젠한방단식원
+조개대표 을왕리직영점:
+  category_en: Seafood restaurant
+  cid: '16365437969414651200'
+  fetched: '2026-09-22'
+  name_en: 조개대표 을왕리직영점
+조앤더주스 더현대서울점:
+  address_en: The Hyundai Seoul 1F, 108 Yeoui-daero, Yeongdeungpo District, Seoul
+  category_en: Jewelry store
+  cid: '8683880287155870603'
+  fetched: '2026-09-22'
+  name_en: Tiffany & Co.
+조은뮤직 메세나폴리스 (Made My Night):
+  address_en: 45 Yanghwa-ro, Mapo-gu, Seoul
+  category_en: Music store
+  cid: '12137008277745544642'
+  fetched: '2026-09-22'
+  name_en: Good Music
+조조엔 록본기점:
+  address_en: Japan, 〒106-0032 Tokyo, Minato City, Roppongi, 7 Chome−14−4 レム六本木ビル 2F
+  category_en: ''
+  cid: '8976691265698228077'
+  fetched: '2026-09-22'
+  name_en: Jojoen Roppongi
+종로계림닭도리탕원조마포점:
+  address_en: Seoul, Mapo-gu, Dohwa-dong, 250-11 2F
+  category_en: Chicken restaurant
+  cid: '7623490822478507792'
+  fetched: '2026-09-22'
+  name_en: 종로계림닭도리탕원조 마포점
+종로떡집:
+  category_en: Rice cake shop
+  cid: '8466981465032607850'
+  fetched: '2026-09-22'
+  name_en: 종로떡집
+죽녹원:
+  address_en: 119 Jungnogwon-ro, Damyang-eup, Damyang-gun, Jeollanam-do
+  category_en: Forest resort
+  cid: '1813068197343613101'
+  fetched: '2026-09-22'
+  name_en: Juknokwon
+지우펀:
+  address_en: Jishan St, Ruifang District, New Taipei City, Taiwan 224
+  category_en: ''
+  cid: '6851525733968553938'
+  fetched: '2026-09-22'
+  name_en: Jiufen Old Street
+짱오락실 용산아이파크몰점:
+  address_en: 55 Hangang-daero 23-gil, Yongsan District, Seoul
+  cid: '979501566119498268'
+  fetched: '2026-09-22'
+  name_en: Jjang Arcade Yongsan iPark Mall
+차지 용산 아이파크몰점:
+  address_en: Seoul, Yongsan District, Hangang-daero 23-gil, 55 6F
+  category_en: Coffee shop
+  cid: '11620398536207427132'
+  fetched: '2026-09-22'
+  name_en: 차지 용산 아이파크몰점
+차품집_250317-250319:
+  address_en: 11-50 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13195391114027340714'
+  fetched: '2026-09-22'
+  name_en: Chapumjib
+차품집_250731-250803:
+  address_en: 11-50 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13195391114027340714'
+  fetched: '2026-09-22'
+  name_en: Chapumjib
+차품집_251007-251009:
+  address_en: 11-50 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13195391114027340714'
+  fetched: '2026-09-22'
+  name_en: Chapumjib
+차품집_260319:
+  address_en: 11-50 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13195391114027340714'
+  fetched: '2026-09-22'
+  name_en: Chapumjib
+참숯꺼먹돼지:
+  address_en: 414 Gwangmyeong-ro, Gwangmyeong-si, Gyeonggi-do
+  category_en: Korean barbecue restaurant
+  cid: '17970760025687854575'
+  fetched: '2026-09-22'
+  name_en: 참숯꺼먹돼지
+청량리전통시장:
+  address_en: 821 Cheongnyangni-dong, Dongdaemun District, Seoul
+  category_en: Market
+  cid: '9711328126873122479'
+  fetched: '2026-09-22'
+  name_en: 청량리전통시장
+충남서산집:
+  category_en: Crab house
+  cid: '15988078093356153057'
+  fetched: '2026-09-22'
+  name_en: 충남서산집
+츠키시마몬자 오코게 시부야:
+  address_en: Japan, 〒150-0042 Tokyo, Shibuya, Udagawacho, 24−8 Gintei Bldg., 1F, 2F & 3F
+  category_en: ''
+  cid: '1978719074806591162'
+  fetched: '2026-09-22'
+  name_en: Tsukishima Monja Okoge Shibuya
+카오산로드:
+  cid: '4663227253779965814'
+  fetched: '2026-09-22'
+  name_en: Thanon Khao San, Khwaeng Talat Yot, Khet Phra Nakhon, Krung Thep Maha Nakhon 10200, Thailand
+카와구치코 자연생활관:
+  address_en: 2585 Oishi, 富士河口湖町 Fujikawaguchiko, Minamitsuru District, Yamanashi 401-0305, Japan
+  category_en: ''
+  cid: '18012194907486523615'
+  fetched: '2026-09-22'
+  name_en: Kawaguchiko Natural Living Center
+카페 드 플로르:
+  address_en: 172 Bd Saint-Germain, 75006 Paris, France
+  category_en: Coffee shop
+  cid: '1782201546845549567'
+  fetched: '2026-09-22'
+  name_en: Café de Flore
+카페 시아 아틀리에_250730-250802:
+  address_en: Seoul, Yongsan District, Seobinggo-ro, 35 1F
+  category_en: Cafe
+  cid: '7444348249875827855'
+  fetched: '2026-09-22'
+  name_en: Cafe SIA Atelier
+카페레이어드 연남점:
+  address_en: 161-4 Seongmisan-ro, Mapo-gu, Seoul
+  category_en: Cafe
+  cid: '15769512253428176388'
+  fetched: '2026-09-22'
+  name_en: Layered Yeonnam
+카페마마스 광화문점:
+  address_en: 83-7 Junghak-dong, Jongno District, Seoul
+  category_en: Brunch restaurant
+  cid: '284297489465260004'
+  fetched: '2026-09-22'
+  name_en: Cafe Mamas (Gwanghwamun)
+카페마마스 코엑스점:
+  address_en: 517 Yeongdong-daero, Gangnam District, Seoul
+  cid: '15853187126958016660'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: Cafe Mamas (COEX)
+카페모임 마포상암:
+  address_en: Seoul, Mapo-gu, World Cup buk-ro 50-gil, 16
+  category_en: Coffee shop
+  cid: '2423070985992763178'
+  fetched: '2026-09-22'
+  name_en: Cafe Meeting Bloomingdale (Café Meeting 2nd Branch)
+카페몽글_260730-260801:
+  address_en: 11 Wausan-ro 29ra-gil, Mapo-gu, Seoul
+  category_en: Coffee shop
+  cid: '10220596286841701886'
+  fetched: '2026-09-22'
+  name_en: Cafe Mongle
+카페아워_250801-250802:
+  address_en: 6 Dongseong-ro 25beon-gil, Busanjin District, Busan
+  cid: '8931550058454706326'
+  fetched: '2026-09-22'
+카페희다 삼성점:
+  address_en: 19 Samseong-ro 96-gil, Gangnam District, Seoul
+  cid: '13022686982720342589'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: 카페희다 삼성점
+카피올라니 공원:
+  manual: true
+  name_en: Kapiolani Park
+컬러풀뮤지엄 인사동:
+  manual: true
+  name_en: Colorful Museum Insadong
+케이타운포유 SPECIAL STORE_250319-250325:
+  address_en: 513 Yeongdong-daero, Gangnam District, Seoul
+  category_en: Music store
+  cid: '10501978833505379552'
+  fetched: '2026-09-22'
+  name_en: Ktown4u Coex
+코가류 타코야끼 본점:
+  address_en: 2 Chome-18-4 Nishishinsaibashi, Chuo Ward, Osaka, 542-0086, Japan
+  category_en: ''
+  cid: '11315996375660975209'
+  fetched: '2026-09-22'
+  name_en: Kogaryu Takoyaki
+코게러지:
+  address_en: Gangwon-do, Yangyang-gun, Hyeonbuk-myeon, Donghae-daero, 1269-7 2F
+  category_en: Cafe
+  cid: '2110931430684451755'
+  fetched: '2026-09-22'
+  name_en: Koh Garage
+코이크:
+  address_en: 8 Donggyo-ro 39-gil, Mapo-gu, Seoul
+  category_en: Cafe
+  cid: '4417560472441723367'
+  fetched: '2026-09-22'
+  name_en: Koike
+콜린:
+  address_en: 45-1 Eoulmadang-ro, Mapo-gu, Seoul
+  category_en: Cafe
+  cid: '18153706239170236475'
+  fetched: '2026-09-22'
+  name_en: Colline Brunch Cafe
+쿠시아게와 와인 Ohana 기타하마점:
+  address_en: 2 Chome-2-6 Hiranomachi, Chuo Ward, Osaka, 541-0046, Japan
+  cid: '16161249009533115539'
+  fetched: '2026-09-22'
+  name_en: Kushiage & Wine Ohana Kitahama
+쿠시카츠 다루마 도톤보리점:
+  address_en: Japan, 〒542-0071 Osaka, Chuo Ward, Dotonbori, 1 Chome−6−8 道頓堀だるまビル 1F,B1
+  category_en: ''
+  cid: '13204320496193831615'
+  fetched: '2026-09-22'
+  name_en: Kushikatsu Daruma - Dotombori
+쿨키즈 쿠키 용산점:
+  address_en: Seoul, Yongsan District, Hangang-daero 50-gil, 31 1
+  category_en: Cookie shop
+  cid: '11087261080272701979'
+  fetched: '2026-09-22'
+  name_en: 쿨키즈쿠키 용산점
+키드문_250317-250319:
+  address_en: 11-68 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13530868802612710040'
+  fetched: '2026-09-22'
+  name_en: 키드문 kidmoon
+키드문_250731-250803:
+  address_en: 11-68 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13530868802612710040'
+  fetched: '2026-09-22'
+  name_en: 키드문 kidmoon
+키드문_260729-260801:
+  address_en: 11-68 Hangang-daero 10-gil, Yongsan District, Seoul
+  category_en: Cafe
+  cid: '13530868802612710040'
+  fetched: '2026-09-22'
+  name_en: 키드문 kidmoon
+키키레스토랑 (att 4 fun 지점):
+  address_en: 110, Taiwan, Taipei City, Xinyi District, Xicun Village, Songshou Rd, 12號6樓
+  category_en: Taiwanese restaurant
+  cid: '5926384197357594966'
+  fetched: '2026-09-22'
+  name_en: KiKi餐廳（ATT 4 FUN信義店）
+타르데마 1942 등촌:
+  address_en: Seoul, Gangseo-gu, Yangcheon-ro, 452 1F
+  category_en: Bakery
+  cid: '282288449610069525'
+  fetched: '2026-09-22'
+  name_en: 타르데마1942 등촌
+타마린드:
+  address_en: 19-11 Banpo-dong, Seocho District, Seoul
+  category_en: Restaurant
+  cid: '5847535413766459725'
+  fetched: '2026-09-22'
+  name_en: 타마린드 신세계점
+타임슬래시_250319:
+  address_en: Busan, Busanjin District, Hwangnyeong-daero 64beon-gil, 25-1 1F
+  category_en: Cafe
+  cid: '5676089804580897767'
+  fetched: '2026-09-22'
+  name_en: 타임슬래시
+타임슬래시_250730-250801:
+  address_en: Busan, Busanjin District, Hwangnyeong-daero 64beon-gil, 25-1 1F
+  category_en: Cafe
+  cid: '5676089804580897767'
+  fetched: '2026-09-22'
+  name_en: 타임슬래시
+타임슬래시_260730-260731:
+  address_en: Busan, Busanjin District, Hwangnyeong-daero 64beon-gil, 25-1 1F
+  category_en: Cafe
+  cid: '5676089804580897767'
+  fetched: '2026-09-22'
+  name_en: 타임슬래시
+타임즈 스퀘어:
+  address_en: Manhattan, NY 10036, United States
+  category_en: Plaza
+  cid: '6132018978369701678'
+  fetched: '2026-09-22'
+  name_en: Times Square
+탕탕탕 본점:
+  address_en: '6000 Spring Mountain Rd #1B, Las Vegas, NV 89146, United States'
+  category_en: Korean restaurant
+  cid: '13071599905990700700'
+  fetched: '2026-09-22'
+  name_en: Tang Tang Tang
+테이트 모던:
+  address_en: Bankside, London SE1 9TG, United Kingdom
+  category_en: Art gallery
+  cid: '2304839309186538471'
+  fetched: '2026-09-22'
+  name_en: Tate Modern
+텐푸라 히라오 다이묘점:
+  address_en: 2 Chome-6-20 Daimyo, Chuo Ward, Fukuoka, 810-0041, Japan
+  category_en: ''
+  cid: '18392552247942850334'
+  fetched: '2026-09-22'
+  name_en: Tempura Hirao
+토담골 논현점:
+  category_en: Korean restaurant
+  cid: '10069748302947268250'
+  fetched: '2026-09-22'
+  name_en: Todamgol
+토속촌 삼계탕:
+  address_en: 5 Jahamun-ro 5-gil, Jongno District, Seoul
+  category_en: Samgyetang restaurant
+  cid: '16170311330052992851'
+  fetched: '2026-09-22'
+  name_en: Tosokchon Samgyetang
+톤앤매너_250729-250802:
+  address_en: Seoul, Mapo-gu, Wausan-ro 29ga-gil, 13 2F
+  category_en: Cafe
+  cid: '10596823310431544829'
+  fetched: '2026-09-22'
+  name_en: 톤앤매너
+톤앤매너_251008-251009:
+  address_en: Seoul, Mapo-gu, Wausan-ro 29ga-gil, 13 2F
+  category_en: Cafe
+  cid: '10596823310431544829'
+  fetched: '2026-09-22'
+  name_en: 톤앤매너
+톤앤매너_260729-260801:
+  address_en: Seoul, Mapo-gu, Wausan-ro 29ga-gil, 13 2F
+  category_en: Cafe
+  cid: '10596823310431544829'
+  fetched: '2026-09-22'
+  name_en: 톤앤매너
+톤앤무드스튜디오:
+  address_en: 58-42 Deoksan-ro 243beon-gil, Ilsanseo-gu, Goyang-si, Gyeonggi-do
+  cid: '842389483401697936'
+  fetched: '2026-09-22'
+통나무집닭갈비 3호점:
+  address_en: 663 Sinsaembat-ro, Sinbuk-eup, Chuncheon-si, Gangwon-do
+  category_en: Chicken restaurant
+  cid: '839750734309896205'
+  fetched: '2026-09-22'
+  name_en: Tongnamujip Dakgalbi branch
+투떰즈업:
+  address_en: 53 Huiujeong-ro 16-gil, Mapo-gu, Seoul
+  category_en: Bakery
+  cid: '13792713629447157383'
+  fetched: '2026-09-22'
+  name_en: Two Thumbs Up Bakery
+트라팔가 광장:
+  address_en: Trafalgar Sq, London WC2N 5DS, United Kingdom
+  category_en: Plaza
+  cid: '1896933526482830887'
+  fetched: '2026-09-22'
+  name_en: Trafalgar Square
+트레비 분수:
+  address_en: Piazza di Trevi, 00187 Roma RM, Italy
+  category_en: Fontana di Trevi
+  cid: '17759648132674796470'
+  fetched: '2026-09-22'
+  name_en: Trevi Fountain
+팀랩 플래닛 도쿄:
+  address_en: 6 Chome-1-16 Toyosu, Koto City, Tokyo 135-0061, Japan
+  cid: '7918542870314997282'
+  fetched: '2026-09-22'
+  name_en: teamLab Planets TOKYO DMM
+파니에:
+  address_en: 12 Seojeon-ro 57beon-gil, Busanjin District, Busan
+  category_en: General store
+  cid: '6959814072649072979'
+  fetched: '2026-09-22'
+  name_en: 파니에 panier
+파라다이스 호텔 부산:
+  address_en: 296 Haeundaehaebyeon-ro, Haeundae-gu, Busan
+  category_en: 5-star hotel
+  cid: '10353257385106790333'
+  fetched: '2026-09-22'
+  name_en: Paradise Hotel Busan
+파리미키 시부야점:
+  address_en: Japan, 〒150-0041 Tokyo, Shibuya, Jinnan, 1 Chome−21−1 Nissay Shibuya Bldg., 1F
+  category_en: ''
+  cid: '8012618293764651588'
+  fetched: '2026-09-22'
+  name_en: Paris Miki Shibuya
+파차마마베이커리:
+  address_en: 9 Hangang-daero 62da-gil, Yongsan District, Seoul
+  category_en: Bakery
+  cid: '4758077583560828540'
+  fetched: '2026-09-22'
+  name_en: Pachamama Bakery
+파티셰리 몽쉐르 도지마 본점:
+  address_en: Japan, 〒530-0004 Osaka, Kita Ward, Dojimahama, 2 Chome−1−2 OFFICE 堂島
+  category_en: ''
+  cid: '4853069963913272980'
+  fetched: '2026-09-22'
+  name_en: Pâtisserie Mon cher
+팝마트 아이파크몰 용산점:
+  address_en: 55 Hangang-daero, Hangangno 3(sam)-ga, Yongsan District, Seoul
+  category_en: Toy store
+  cid: '16879190649898668530'
+  fetched: '2026-09-22'
+  name_en: Pop Mart
+팡 메종 긴자점:
+  address_en: Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 2 Chome−14−5 1階
+  cid: '17159700221412295500'
+  fetched: '2026-09-22'
+  name_en: pain･maison Ginza
+페스타 바이 민구:
+  address_en: Seoul, Jung District, Jangchungdan-ro, 60 1F
+  category_en: Restaurant
+  cid: '8090114398513915525'
+  fetched: '2026-09-22'
+  name_en: Festa by Choonghu
+페이스갤러리 서울 (名和晃平 Cosmic Sensibility):
+  address_en: 267 Itaewon-ro, Yongsan District, Seoul
+  category_en: Art gallery
+  cid: '7548294743575130742'
+  fetched: '2026-09-22'
+  name_en: Pace Gallery
+평양면옥:
+  address_en: 207 Jangchungdan-ro, Jangchung-dong, Jung District, Seoul
+  category_en: Cold noodle restaurant
+  cid: '13510300063604983579'
+  fetched: '2026-09-22'
+  name_en: Pyongyang Myeonok
+포린 북 스토어 (이태원 외국서적):
+  address_en: Seoul, Yongsan District, Noksapyeong-daero, 208 1
+  category_en: Itaewon books
+  cid: '18388758612747205563'
+  fetched: '2026-09-22'
+  name_en: Itaewon Foreign Bookstore
+포탈 PC방 강남역점:
+  category_en: Internet cafe
+  cid: '13801214704745697259'
+  fetched: '2026-09-22'
+  name_en: Portal PC
+포토오브제 성수점:
+  address_en: 316-74 Seongsu-dong 2(i)-ga, Seongdong-gu, Seoul
+  category_en: Photo booth
+  cid: '16937936462518814165'
+  fetched: '2026-09-22'
+  name_en: 포토오브제 (photo objet)성수점
+포토이즘박스 성수점:
+  address_en: Seoul, Seongdong-gu, Seoulsup 2-gil, 17-2
+  cid: '5906041173562504999'
+  fetched: '2026-09-22'
+  name_en: 포토이즘박스성수점
+포트멧세 나고야:
+  manual: true
+  name_en: Port Messe Nagoya
+퓨전리조트 깜란:
+  address_en: Lot D10B, Nguyễn Tất Thành, Street Bãi Đông, Cam Lâm, Khánh Hòa 650000, Vietnam
+  category_en: 5-star hotel
+  cid: '8714335418925121468'
+  fetched: '2026-09-22'
+  name_en: Fusion Resort Cam Ranh
+프랑스루브르바게트:
+  address_en: 124 Baekbeom-ro, Mapo-gu, Seoul
+  cid: '13197877270868615183'
+  fetched: '2026-09-22'
+  google_closed: true
+  name_en: 프랑스루브르바게트
+프레드므아 논현:
+  address_en: 27 Eonju-ro 133-gil, Gangnam District, Seoul
+  category_en: Patisserie
+  cid: '17887831779575230769'
+  fetched: '2026-09-22'
+  name_en: 프레드므아
+프레퍼스다이어트푸드용산점:
+  category_en: Salad shop
+  cid: '3383438248085097604'
+  fetched: '2026-09-22'
+  name_en: 프레퍼스 다이어트 푸드 용산점(Preppers Diet Food Yongsan)
+프루티에 연남:
+  address_en: Seoul, Mapo-gu, Seongmisan-ro 23-gil, 10 2F
+  category_en: Fruit parlor
+  cid: '4189592758668275551'
+  fetched: '2026-09-22'
+  name_en: Fruitier
+플라잉카우:
+  category_en: Korean beef restaurant
+  cid: '6448629925654046562'
+  fetched: '2026-09-22'
+  name_en: 플라잉카우
+플로라운지_250317-250319:
+  address_en: 26 Yanghwa-ro 18an-gil, Mapo-gu, Seoul
+  category_en: Florist
+  cid: '16803132470042185655'
+  fetched: '2026-09-22'
+  name_en: 홍대 꽃집 플로라운지 Hongdae Flowershop Flo Lounge 弘大咖啡厅 | 弘大カフェ
+피렌체 대성당:
+  address_en: Piazza del Duomo, 50122 Firenze FI, Italy
+  category_en: Cathedral
+  cid: '6165783601337790965'
+  fetched: '2026-09-22'
+  name_en: Cathedral of Santa Maria del Fiore
+피셔맨스 와프:
+  cid: '15046064061828862058'
+  fetched: '2026-09-22'
+  name_en: Fisherman's Wharf, San Francisco, CA, USA
+피아 아레나 MM:
+  manual: true
+  name_en: Pia Arena MM
+피에르 마르코리니 긴자본점:
+  address_en: 5 Chome-5-8 Ginza, Chuo City, Tokyo 104-0061, Japan
+  category_en: ''
+  cid: '11529630261525190716'
+  fetched: '2026-09-22'
+  name_en: PIERRE MARCOLINI Ginza Store
+피크 플레이스 마켓:
+  address_en: 85 Pike St, Seattle, WA 98101, United States
+  category_en: Market
+  cid: '10660459035763804716'
+  fetched: '2026-09-22'
+  name_en: Pike Place Market
+피터 루거 스테이크 하우스:
+  address_en: 178 Broadway, Brooklyn, NY 11211, United States
+  category_en: Steak house
+  cid: '5087410620311667698'
+  fetched: '2026-09-22'
+  name_en: Peter Luger Steak House
+하남돼지집 본점:
+  category_en: Pork belly barbeque restaurant
+  cid: '7233143447648387830'
+  fetched: '2026-09-22'
+  name_en: Hanam Pig House Poongsan
+하도세미:
+  address_en: 23-36 Munjuran-ro 5-gil, Gujwa-eup, Jeju-si, Jeju-do
+  cid: '10078433380151659364'
+  fetched: '2026-09-22'
+  name_en: 하도세미
+하바스MMA 주짓수&킥복싱:
+  address_en: Seoul, Gangnam District, Dosan-daero 25-gil, 39 B1
+  category_en: Gym
+  cid: '8768587340630949418'
+  fetched: '2026-09-22'
+  name_en: 하바스mma
+하이클래스:
+  address_en: 3-495 Daebunam-dong, Danwon-gu, Ansan-si, Gyeonggi-do
+  category_en: Bed & breakfast
+  cid: '17637286958474382906'
+  fetched: '2026-09-22'
+  name_en: Highclass
+한국술집 안씨막걸리:
+  address_en: 3 Hoenamu-ro, Yongsan District, Seoul
+  category_en: Bistro
+  cid: '8175176985865071436'
+  fetched: '2026-09-22'
+  name_en: Korean Bistro Mr.Ahn's Makgeolli
+한국콘텐츠진흥원:
+  address_en: 35 Gyoyuk-gil, Naju-si, Jeollanam-do
+  category_en: Public works department
+  cid: '16129073635350467327'
+  fetched: '2026-09-22'
+  name_en: Korea Creative Content Agency
+한일관:
+  address_en: Japan, 〒542-0084 Osaka, Chuo Ward, Higashishinsaibashi, 1 Chome−9−23 1F
+  category_en: ''
+  cid: '17040836847519196913'
+  fetched: '2026-09-22'
+  name_en: Kannichikan
+한정선:
+  address_en: Seoul, Seongdong-gu, Yeonmujang-gil, 43 1 1F
+  category_en: Dessert restaurant
+  cid: '7202099055918597671'
+  fetched: '2026-09-22'
+  name_en: HAN JUNG SUN
+한정식소나무 본점:
+  address_en: 100 Sumogwon-ro, Sang-myeon, Gapyeong-gun, Gyeonggi-do
+  category_en: Bar restaurant furniture store
+  cid: '12554313314805354434'
+  fetched: '2026-09-22'
+  name_en: 한정식소나무본점
+할리우드 명예의 거리:
+  address_en: 6925 Hollywood Blvd, Hollywood, CA 90028, United States
+  category_en: Movie theater
+  cid: '17814413679773769723'
+  fetched: '2026-09-22'
+  name_en: TCL Chinese Theatre
+핫쿨즈 스페셜 카페 250524-250525:
+  address_en: Seoul, Mapo-gu, Wausan-ro 29ra-gil, 22 2F
+  cid: '11919246342519247084'
+  fetched: '2026-09-22'
+  name_en: 비데이 홍대점 (B'DAY)
+해여림빌리지A캠핑존:
+  address_en: 78 Haeyeorim-ro, Sanbuk-myeon, Yeoju-si, Gyeonggi-do
+  category_en: Holiday home
+  cid: '6269472726168686806'
+  fetched: '2026-09-22'
+  name_en: Haeyeorim Village
+해운대 블루라인 파크:
+  address_en: Busan, Haeundae-gu, Cheongsapo-ro, 116 2F
+  category_en: Tourist attraction
+  cid: '5330431299439421123'
+  fetched: '2026-09-22'
+  name_en: Haeundae Blueline Park - Cheongsapo Station
+해운대 수민이네:
+  address_en: 118 Cheongsapo-ro 58beon-gil, Haeundae-gu, Busan
+  category_en: Grilled clams restaurant
+  cid: '13220248853950181830'
+  fetched: '2026-09-22'
+  name_en: Suminine
+해운대해수욕장:
+  manual: true
+  name_en: Haeundae Beach
+해피벌스데이_260731-260801:
+  address_en: 2 8 Donggyo-ro 34-gil, Mapo-gu, Seoul
+  cid: '9567696704166845947'
+  fetched: '2026-09-22'
+  name_en: 해피벌스데이
+허니비치카페:
+  address_en: 1493-1 Daebuhwanggeum-ro, Daebubuk-dong, Danwon-gu, Ansan-si, Gyeonggi-do
+  category_en: Cafe
+  cid: '777734228845312285'
+  fetched: '2026-09-22'
+  name_en: 허니비치
+허대구통닭 대봉점:
+  address_en: 100-3 Daebong-dong, Jung-gu, Daegu
+  category_en: Chicken shop
+  cid: '5642076033945827912'
+  fetched: '2026-09-22'
+  name_en: 허대구대구통닭 대봉점
+호랑이젤라떡:
+  address_en: Busan, Haeundae-gu, Dalmaji-gil 62beon-gil, 38 1F
+  category_en: Ice cream shop
+  cid: '11067539819328054506'
+  fetched: '2026-09-22'
+  name_en: Horangi Jella Tteok Rice Cake
+호루탄야 (Horutanya):
+  address_en: Japan, 〒460-0008 Aichi, Nagoya, Naka Ward, Sakae, 3 Chome−2−33 ミートパーク 1F あみやき亭
+  category_en: ''
+  cid: '10308895009000206634'
+  fetched: '2026-09-22'
+  name_en: Horutan-ya Sakae
+호시노 리조트 토마무 운카이 테라스:
+  address_en: Nakatomamu, Shimukappu, Yufutsu District, Hokkaido 079-2204, Japan
+  category_en: ''
+  cid: '14105067874371385855'
+  fetched: '2026-09-22'
+  name_en: Hoshino Resorts Tomamu Unkai Terrace
+혼 세키구치:
+  address_en: 2 Chome-2-7 Sennichimae, Chuo Ward, Osaka, 542-0074, Japan
+  category_en: ''
+  cid: '14348138891456883891'
+  fetched: '2026-09-22'
+  name_en: Hon Sekiguchi - Authentic Kansai-style Sukiyaki
+홍대 스칼렛 빌딩_250319:
+  address_en: 148 Yanghwa-ro, Mapo-gu, Seoul
+  cid: '7976314035061079044'
+  fetched: '2026-09-22'
+홍대24시불가마사우나:
+  category_en: Spa
+  cid: '595302139589920422'
+  fetched: '2026-09-22'
+  name_en: 홍대24시불가마사우나
+홍박사생고기 강남점:
+  address_en: Seoul, Gangnam District, Dosan-daero, 176 1F
+  category_en: Butcher shop restaurant
+  cid: '13080406074996319005'
+  fetched: '2026-09-22'
+  name_en: Korean BBQ Dr Hong
+홍콩 디즈니랜드 리조트:
+  address_en: Lantau Island, New Territories, Hong Kong
+  category_en: ''
+  cid: '3869629387062596613'
+  fetched: '2026-09-22'
+  name_en: Hong Kong Disneyland
+홍콩 마카오페리터미널:
+  address_en: 168 Connaught Rd Central, Sheung Wan, Hong Kong Island, Hong Kong
+  category_en: Marina
+  cid: '14588252168915212766'
+  fetched: '2026-09-22'
+  name_en: 香港澳門客運碼頭
+화실 심미나 아트:
+  cid: '17663367336893280775'
+  fetched: '2026-09-22'
+  name_en: 심미나아트
+후지큐 하이랜드:
+  address_en: 5 Chome-6-1 Shinnishihara, Fujiyoshida, Yamanashi 403-0017, Japan
+  category_en: ''
+  cid: '5173000043195545392'
+  fetched: '2026-09-22'
+  name_en: Fuji-Q Highland
+후지필름 하우스오브포토그래피서울:
+  address_en: Seoul, Yongsan District, Itaewon-ro, 191 1F FUJIFILM
+  category_en: Photo shop
+  cid: '17269583348164479240'
+  fetched: '2026-09-22'
+  name_en: FUJIFILM House of Photography
+흠커피 HCR:
+  address_en: 30 Seohanam-ro 418beon-gil, Hanam-si, Gyeonggi-do
+  category_en: Cafe
+  cid: '1733223319871083659'
+  fetched: '2026-09-22'
+  name_en: hmmcoffee
+히미츠도:
+  address_en: 3 Chome-11-18 Yanaka, Taito City, Tokyo 110-0001, Japan
+  category_en: ''
+  cid: '11482321306331796146'
+  fetched: '2026-09-22'
+  name_en: Himitsudō
+히팅스튜디오:
+  address_en: Seoul, Seongdong-gu, Seongsu-dong 2(i)-ga, 284-22
+  category_en: Shared-use commercial kitchen
+  cid: '16280058322592989687'
+  fetched: '2026-09-22'
+  name_en: 히팅스튜디오

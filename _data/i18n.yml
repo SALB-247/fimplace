@@ -12,6 +12,9 @@ ui:
   nav_tags: Tags
   nav_search: Search
   nav_about: About
+  nav_hubs: Collections ▾
+  nav_group_투어: Tours
+  nav_group_이벤트: Events
   nav_search_placeholder: Search places...
   theme_toggle: Toggle dark mode
 
@@ -65,6 +68,7 @@ ui:
     Search by place name, address, tag, or member.
     Separate multiple words with spaces (all words must match).
   search_count: "%d results (of %d notes)"
+  search_count_one: "%d result (of %d notes)"
   search_index_fail: "Could not load the search index. (%s)"
   members_index: Member index
   members_index_sub: >-
@@ -95,16 +99,18 @@ ui:
   crew_title: Where LE SSERAFIM is right now
   crew_today: 🔴 Show today
   crew_next_dday: Next show D-%d
-  crew_recent: Latest show
+  crew_recent: Last show
   crew_today_short: "🔴 Show today! "
   crew_next_short: "Next show "
-  crew_recent_short: "Latest show "
+  crew_recent_short: "Last show "
   crew_all_members: " all five members"
   crew_no_tour: No tour dates
   crew_tour_load_fail: Could not load the tour schedule
   crew_load_fail: Could not load the tour schedule.
   venue_tba: TBA
   marker_all_members: All members
+  map_link_kakao: Kakao Map
+  map_link_naver: Naver Map
   tl_month_tooltip: "%s · %s"
   note_updated: "Last updated %s"
   note_nearby: 📍 Nearby places
@@ -150,7 +156,8 @@ ui:
   cal_prev: Previous month
   cal_next: Next month
   cal_reset: Back to start
-  cal_hint: "※ Past / upcoming is decided when you view the page, so it stays current."
+  cal_hint: "※ Dates are the venue's local dates; past / today / upcoming is decided by the venue's local date when you view the page."
+  cal_tz_unknown: "(some venues need a time-zone check — shown by your device date)"
   cal_today: 🔴 Show today
   cal_next_dday: Next show D-%d
   cal_finished: Tour finished
@@ -195,20 +202,20 @@ ui:
   home_loading: Loading schedule...
   home_no_events: Nothing to show.
   home_live: LIVE NOW
-  home_kind_period: period
+  home_kind_period: event
   home_kind_visit: visit
-  home_kind_upload: upload
+  home_kind_upload: posted
   home_kind_show: show
   home_map_all: 🗺️ Full map →
   home_show_today: 🔴 Show today!
   home_show_next: Next show
-  home_show_recent: Latest show
+  home_show_recent: Last show
   home_popup_live: 🛍️ Pop-up open now
   home_popup_dday: 🛍️ Pop-up D-%d
   about_title: FimPlace
   about_intro: >-
-    FimPlace is an archive of places connected to LE SSERAFIM — filming locations
-    for their own content, places that showed up on social media, concert venues,
+    FimPlace is an archive of places connected to LE SSERAFIM — places from their
+    own content, places that showed up on social media, concert venues,
     cafes the members visited, and anything else tied to the group.
   about_contact: "Contact: fim.hlight@gmail.com"
   about_howto: How to use this site
@@ -254,7 +261,7 @@ tags:
   팝업스토어: Pop-up store
   관광지: Attraction
   공연장: Venue
-  기타장소: Other place
+  기타장소: Other
 
   # 컨텐츠 (자체)
   자체컨텐츠_촬영지: Official content
@@ -265,9 +272,9 @@ tags:
   르니버스: LENIVERSE
   진즈하여행: JenZuha Trip
   은채의_취미일기: Eunchae's Hobby Diary
-  MV_촬영지: MV location
+  MV_촬영지: Music video place
   DAY-OFF: DAY-OFF
-  위버스라이브: Weverse Live
+  위버스라이브: Weverse LIVE
   다큐멘터리: Documentary
   유튜브: YouTube
   Vlog: Vlog
@@ -316,8 +323,8 @@ tags:
   인스타: Instagram
   DM: Weverse DM
   위버스: Weverse
-  멤트: Member X
-  공트: Official X
+  멤트: Member's X post
+  공트: Official X post
   틱톡: TikTok
 
   # 서울 (구별)
@@ -415,6 +422,21 @@ tags:
   미야기: Miyagi
   시즈오카: Shizuoka
   기타큐슈: Kitakyushu
+  안산: Ansan
+  워싱턴: Washington
+  D.C.: D.C.
+  마카오: Macau
+  지바: Chiba
+  사이타마: Saitama
+  고베: Kobe
+  교토: Kyoto
+  나고야: Nagoya
+  오사카: Osaka
+  도쿄: Tokyo
+  후쿠오카: Fukuoka
+  삿포로: Sapporo
+  홋카이도: Hokkaido
+  요코하마시: Yokohama
   잉글우드: Inglewood
   워싱턴 D.C.: Washington D.C.
   마닐라 (파사이): Manila (Pasay)
@@ -494,7 +516,7 @@ tags:
   중국: China
 
   # 기타
-  역조공: Reverse fan gift
+  역조공: Gift from the members
 
   # 멤버 — 공식 표기 사용
   사쿠라: SAKURA
@@ -554,3 +576,513 @@ countries:
   필리핀: Philippines
   베트남: Vietnam
   멕시코: Mexico
+
+# 모음(허브) 페이지 표의 열 이름 — collection-table.html 이 영어일 때 th 텍스트·모바일 카드 라벨에 씀 (2026-09-20)
+columns:
+  위치: Area
+  날짜: Date
+  멤버: Members
+  분류: Type
+  콘텐츠: Content
+  컨텐츠: Content
+  페이지: Place
+  카테고리: Category
+  도시: City
+  공연장: Venue
+  공연: Show
+  장소: Place
+  비고: Notes
+  회차: Episode
+  내용: Details
+  이벤트: Event
+  조건: Condition
+  혜택: Benefit
+  구매 상품: Purchase
+  참여 기회: Entries
+  스팟: Spot
+  링크: Link
+  장면: Scene
+  증정: Gift
+  시간: Time
+  가격: Price
+  메뉴: Menu
+  특전: Perks
+  사진: Photo
+  가게: Shop
+  주소: Address
+  영상: Video
+  누가 · 언제: Who · When
+  구역: Zone
+
+# 모음 페이지 본문의 소제목 — note.html 이 영어일 때 h1~h3 텍스트가 정확히 일치하면 바꾼다
+headings:
+  목록: List
+  일정: Schedule
+  모음 페이지: Collections
+  함께 보기: See also
+  상세: Details
+  해외: Overseas
+  팝업 스토어: Pop-up Stores
+  진즈하여행 장소 모음: JenZuha Trip — Places
+  르세라핌 이력: LE SSERAFIM History
+  세부사항: Details
+  기간: Dates
+
+# ── 노트 본문의 반복 문구 (2026-09-21) ────────────────────────────────
+# _plugins/body_i18n.rb 가 빌드 때 노트 본문의 소제목·지도 링크·메모 줄 토큰에 data-en 을 달고,
+# note.html 이 영어일 때 텍스트만 바꿔 끼운다. 설명문·상호명·주소는 번역하지 않는다.
+# 점검: python scripts/body_i18n_audit.py (빈도순으로 빠진 문구를 보여준다)
+body:
+  headings:            # h1~h4 텍스트가 정확히 일치할 때 (위 headings: 와 합쳐서 본다)
+    2025년_3주년 광고: 2025 3rd Anniversary ads
+    2025년_3주년 카페: 2025 3rd Anniversary cafes
+    언급된 메뉴: Menu items mentioned
+    업체인스타: Store's Instagram
+    "🧳출장십오야2 x 하이브 재생목록": "🧳 15 Nights Business Trip 2 × HYBE playlist"
+    촬영한 가게: Shops in the video
+    디저트 세트 특전: Dessert set perks
+    가챠: Gacha
+    나온 곳: Where it appears
+    도장이벤트특전: Stamp event perks
+    도장 이벤트 특전: Stamp event perks
+    세트메뉴 특전: Set menu perks
+    포토부스: Photo booth
+    전시 상세정보: Exhibition details
+    상호명: Place name
+    위치: Address
+    주소: Address
+    트위터: X (Twitter)
+    트위터 링크: X post
+    르세라핌 공연 이력: LE SSERAFIM performance history
+    공연장 정보: Venue info
+    교통: Getting there
+    사옥 주변: Around HYBE HQ
+    홍대 주변: Around Hongdae
+    기타서울: Other Seoul
+    서울 기타: Other Seoul
+    홍대: Hongdae
+    용산: Yongsan
+    부산: Busan
+    성수동: Seongsu-dong
+    셀프사진관: Self-photo studios
+    썸머즈 합동: Summers (CHAEWON & KAZUHA) joint events
+    오프라인 판매처 및 판매 항목: Offline stores & items
+    # 이벤트·생일카페 노트
+    특전: Perks
+    기본특전: Basic perks
+    기본 특전: Basic perks
+    선착특전: First-come, first-served perks
+    선착 특전: First-come, first-served perks
+    디저트특전: Dessert perks
+    디저트 특전: Dessert perks
+    생일특전: Birthday perks
+    전체특전: All perks
+    세트특전: Set perks
+    럭키드로우: Lucky draw
+    럭키드로우 有: Lucky draw available
+    오프라인 운영점: Participating stores
+    세븐APP: 7-Eleven app
+    구매자 혜택 — LUCKY DRAW: Buyer benefits — LUCKY DRAW
+    이벤트 내용: Event details
+    참여 방법: How to enter
+    운영 시간: Hours
+    영업시간: Hours
+    메뉴: Menu
+    주의사항: Notes
+    안내: Info
+    블로그: Blog
+    서울기타: Other Seoul
+    사옥 근처: Near HYBE HQ
+    갤러리: Gallery
+    사진: Photos
+    영상: Videos
+    참고: Reference
+  links:               # 링크 라벨 — 앞의 이모지는 그대로 두고 뒤만 바꾼다. '위버스 포스트1' 처럼 숫자가 붙으면 숫자를 남긴다
+    업체인스타: Store's Instagram
+    업체 인스타: Store's Instagram
+    공식 사이트: Official site
+    공식 홈페이지: Official website
+    구글맵: Google Maps
+    카카오 지도: Kakao Map
+    카카오맵: Kakao Map
+    네이버지도: Naver Map
+    네이버 지도: Naver Map
+    네이버: Naver
+    카카오: Kakao
+    위버스 포스트: Weverse post
+    위버스 라이브: Weverse LIVE
+    위버스 DM: Weverse DM
+    위버스: Weverse
+    위버스 공지: Weverse notice
+    공지사항: Notice
+    공지: Notice
+    트위터 링크: X post
+    X 게시물: X post
+    유튜브 링크: YouTube
+    예약하기: Book
+    인터뷰: Interview
+    취재회: Press event
+    카펫 취재: Red carpet coverage
+    네이버 리스트: Naver list
+    LE SSERAFIM JP 공지: LE SSERAFIM JP notice
+    세븐일레븐 공지 (인스타): 7-Eleven notice (Instagram)
+    공식 공지 (Weverse Concerts): Official notice (Weverse Concerts)
+    HYBE MERCH 안내 (X): HYBE MERCH notice (X)
+    꾸라 인스타: Kkura's Instagram
+    채원 위버스: CHAEWON's Weverse
+    윤진 위버스: YUNJIN's Weverse
+  names:               # 메모 줄 'YYMMDD 멤버' 의 멤버 — 풀네임·애칭
+    허윤진: HUH YUNJIN
+    사쿠라: SAKURA
+    김채원: KIM CHAEWON
+    카즈하: KAZUHA
+    홍은채: HONG EUNCHAE
+    윤진: YUNJIN
+    꾸라: Kkura
+    채원: CHAEWON
+    즈하: KAZUHA
+    은채: EUNCHAE
+    르세라핌: LE SSERAFIM
+  platforms:           # 'YYMMDD 멤버 <플랫폼>' 의 플랫폼
+    일공트: Japan official X post
+    인스타그램: Instagram
+    인스타 스토리: Instagram story
+    인스스: Instagram story
+    인스타: Instagram
+    위버스 포스트: Weverse post
+    위버스 DM: Weverse DM
+    위버스 라이브: Weverse LIVE
+    위버스: Weverse
+    DM: Weverse DM
+    라이브: Weverse LIVE
+    위라: Weverse LIVE
+    멤트: member's X post
+    공트: official X post
+    틱톡: TikTok
+    트위터: X
+  units:               # 영상 줄 끝의 (전원)·(꾸라·채원) 괄호
+    전원: all members
+    사쿠라: SAKURA
+    꾸라: Kkura
+    채원: CHAEWON
+    윤진: YUNJIN
+    즈하: KAZUHA
+    은채: EUNCHAE
+    만채: EUNCHAE
+    진즈하: YUNJIN & KAZUHA
+    썸머즈: CHAEWON & KAZUHA
+    맏막즈: SAKURA & EUNCHAE
+    꾸라은즈: SAKURA, EUNCHAE & KAZUHA
+  tokens:              # 그대로 바꿔 끼우는 고정 문구
+    "영상:": "Video:"
+    원본 게시물 삭제됨: Original post deleted
+    ※ 폐업함: ※ Permanently closed
+    ※ 종료: ※ Ended
+  sources:             # '※ 폐업함 (네이버·카카오 2026-09 확인)' 의 출처
+    네이버: Naver
+    카카오: Kakao
+    구글맵: Google Maps
+    구글: Google
+  phrases:             # 괄호 안팎에 반복되는 짧은 문구·고유명사 — 한글 경계 안에서만 바꾼다 ('르세라핌이' 처럼 조사가 붙으면 그대로)
+    사옥 뒤편 카페골목: cafe alley behind HYBE HQ
+    하이브 사옥: HYBE HQ
+    세븐일레븐: 7-Eleven
+    올리브영: Olive Young
+    온라인, 참고: online — for reference
+    참여 시 전원 당첨: everyone who enters wins
+    라스트오더: last order
+    원곡: original song
+    선착순: first come, first served
+    랜덤: random
+    매일: daily
+    전원 당첨: everyone wins
+    2집: 2nd album
+    특전: perks
+    피어나: FEARNOT
+    미야와키 사쿠라: MIYAWAKI SAKURA
+    아침식사: breakfast
+    오프라인 구매 특전: in-store purchase perks
+    오프라인: offline
+    온라인: online
+    일부 매장 제외: some stores excluded
+    판매처별 디자인 다름: design varies by store
+    예약 오픈: reservations open
+    리조트 내부: inside the resort
+    취소: cancelled
+    모노레일: monorail
+    사이타마신토신: Saitama-Shintoshin
+    역 바로 위: right above the station
+    역사 직결: connected to the station
+    육교 직결: connected by footbridge
+    게이트 앞: at the gate
+    환승 없음: no transfer
+    X계정: X account
+    네이버지도: Naver Map
+    카카오맵: Kakao Map
+    길 건너편: across the street
+    중국요리: Chinese cuisine
+    우동: udon
+    선착: first come, first served
+    도보권: walking distance
+    분점: branch
+    포토부스: photo booth
+    무승부: draw
+    어트랙션별: by attraction
+    미공개 셀피 포토카드: unreleased selfie photocard
+    폐업: closed
+    대중교통 권장: public transport recommended
+    공식 안내: official notice
+    매장명 미확인: store name unconfirmed
+    이자카야: izakaya
+    일본식 주점: Japanese pub
+    앨범 버전 무관: any album version
+    조기 마감: may close early
+    북출구: North Exit
+    남출구: South Exit
+    동출구: East Exit
+    서출구: West Exit
+    중앙출구: Central Exit
+    사전녹화: pre-recording
+    뮤직뱅크: Music Bank
+    음악중심: Show! Music Core
+    엠카운트다운: M Countdown
+    인기가요: Inkigayo
+    역조공: gift from the members
+    야외 오프닝: outdoor opening
+    NHK 홍백가합전: NHK Kōhaku Uta Gassen
+    휴무: closed
+  routes:              # 공연장 노트의 약도 소제목('🚶 약도 — X역 → Y (도보 N분)')에서만 쓰는 역·공연장 이름 — 본문 프로즈에는 안 바꾼다 (반쪽 번역 방지)
+    신타카시마: Shin-Takashima
+    체육대학: National Taiwan Sport University
+    시민히로바: Shimin-Hiroba
+    하라주쿠: Harajuku
+    가사데라: Kasadera
+    스이도바시: Suidobashi
+    고후쿠마치: Gofukumachi
+    고쿠라: Kokura
+    리후: Rifu
+    아이노: Aino
+    오사카조코엔: Osakajo-koen
+    올림픽공원: Olympic Park
+    공항화물청사: Airport Cargo Terminal
+    종합운동장: Sports Complex
+    킨조후토: Kinjo-futo
+    미나토미라이: Minatomirai
+    사이타마신토신: Saitama-Shintoshin
+    DFW 공항: DFW Airport
+    CTA 블루: CTA Blue Line
+    K-아레나 요코하마: K-Arena Yokohama
+    NTSU 아레나: NTSU Arena
+    SM MOA 아레나: SM Mall of Asia Arena
+    고베 월드기념홀: Kobe World Memorial Hall
+    요요기 제1체육관: Yoyogi National Gymnasium
+    닛폰가이시홀: Nippon Gaishi Hall
+    도쿄돔: Tokyo Dome
+    마린멧세 후쿠오카: Marine Messe Fukuoka
+    서일본 종합전시장 신관: West Japan General Exhibition Center New Hall
+    세키스이하임 슈퍼아레나: Sekisui Heim Super Arena
+    싱가포르 실내경기장: Singapore Indoor Stadium
+    썬더돔: Thunder Dome
+    아시아월드엑스포: AsiaWorld-Expo
+    에코파 아레나: Ecopa Arena
+    오사카조 홀: Osaka-jo Hall
+    올림픽홀: Olympic Hall
+    인스파이어 아레나: Inspire Arena
+    잠실실내체육관: Jamsil Indoor Stadium
+    포트멧세 나고야 제1전시관: Port Messe Nagoya Hall 1
+    피아 아레나 MM: Pia Arena MM
+    아레나: the arena
+    전시장: the venue
+
+# ── 허브 영어판 (_plugins/hub_en_pages.rb) ─────────────────────────
+# 표의 위치/도시 셀: "서울시 용산구" → "Yongsan, Seoul". 접미어(시·구·군·도)를 뗀 이름으로도 찾고, tags·countries 사전도 함께 본다.
+regions:
+  서울: Seoul
+  부산: Busan
+  대구: Daegu
+  인천: Incheon
+  광주: Gwangju
+  대전: Daejeon
+  울산: Ulsan
+  세종: Sejong
+  경기: Gyeonggi
+  강원: Gangwon
+  충북: North Chungcheong
+  충남: South Chungcheong
+  전북: North Jeolla
+  전남: South Jeolla
+  경북: North Gyeongsang
+  경남: South Gyeongsang
+  제주: Jeju
+  용산: Yongsan
+  종로: Jongno
+  강남: Gangnam
+  마포: Mapo
+  성동: Seongdong
+  서대문: Seodaemun
+  동대문: Dongdaemun
+  중: Jung-gu
+  강서: Gangseo
+  영등포: Yeongdeungpo
+  동작: Dongjak
+  구로: Guro
+  송파: Songpa
+  서초: Seocho
+  광진: Gwangjin
+  성북: Seongbuk
+  은평: Eunpyeong
+  관악: Gwanak
+  노원: Nowon
+  강동: Gangdong
+  금천: Geumcheon
+  양천: Yangcheon
+  도봉: Dobong
+  강북: Gangbuk
+  중랑: Jungnang
+  해운대: Haeundae
+  부산진: Busanjin
+  수영: Suyeong
+  기장: Gijang
+  남: Nam-gu
+  강화: Ganghwa
+  양평: Yangpyeong
+  화성: Hwaseong
+  담양: Damyang
+  강릉: Gangneung
+  춘천: Chuncheon
+  용인: Yongin
+  파주: Paju
+  광명: Gwangmyeong
+  하남: Hanam
+  가평: Gapyeong
+  남양주: Namyangju
+  고양: Goyang
+  나주: Naju
+  성남: Seongnam
+  수원: Suwon
+  양양: Yangyang
+  속초: Sokcho
+  여수: Yeosu
+  전주: Jeonju
+  경주: Gyeongju
+  기타큐슈: Kitakyushu
+  안산: Ansan
+  워싱턴: Washington
+  D.C.: D.C.
+  마카오: Macau
+  지바: Chiba
+  사이타마: Saitama
+  고베: Kobe
+  교토: Kyoto
+  나고야: Nagoya
+  오사카: Osaka
+  도쿄: Tokyo
+  후쿠오카: Fukuoka
+  삿포로: Sapporo
+  홋카이도: Hokkaido
+  요코하마시: Yokohama
+  잉글우드: Inglewood
+  가나가와: Kanagawa
+  시즈오카: Shizuoka
+  미야기: Miyagi
+  요코하마: Yokohama
+  가오슝: Kaohsiung
+  패서디나: Pasadena
+  논타부리: Nonthaburi
+  인디오: Indio
+  불라칸: Bulacan
+  파사이: Pasay
+  므앙텅타니: Muang Thong Thani
+  LA: LA
+  미국: USA
+  일본: Japan
+  캘리포니아: California
+  네바다: Nevada
+  뉴욕주: New York
+  워싱턴주: Washington
+  하와이주: Hawaii
+  일리노이: Illinois
+  텍사스: Texas
+  애리조나: Arizona
+  플로리다: Florida
+  뉴저지: New Jersey
+  홍콩: Hong Kong
+  마카오: Macau
+  대만: Taiwan
+  태국: Thailand
+  싱가포르: Singapore
+  프랑스: France
+  이탈리아: Italy
+  영국: UK
+# 표의 카테고리/콘텐츠 셀 등 (정확히 일치할 때)
+cells:
+  NHK홀: NHK Hall
+  마쿠하리 멧세: Makuhari Messe
+  아리아케 아레나: Ariake Arena
+  미즈호 PayPay 돔 후쿠오카: Mizuho PayPay Dome Fukuoka
+  만박기념공원: Expo '70 Commemorative Park
+  도쿄돔시티홀: Tokyo Dome City Hall
+  장충체육관: Jangchung Arena
+  고려대학교 화정체육관: Korea University Hwajeong Gymnasium
+  롯폰기힐즈 아레나: Roppongi Hills Arena
+  니혼바시 미쓰이홀: Nihonbashi Mitsui Hall
+  코엑스 K-POP 광장: COEX K-POP Square
+  타이베이 돔: Taipei Dome
+  가오슝 국가체육장: Kaohsiung National Stadium
+  필리핀 아레나: Philippine Arena
+  라자망갈라 국립경기장: Rajamangala National Stadium
+  그래미 뮤지엄: GRAMMY Museum
+  갤럭시 아레나 (갤럭시 마카오): Galaxy Arena (Galaxy Macau)
+  냉터뷰: Naengterview
+  골든디스크 어워즈: Golden Disc Awards
+  NHK 홍백가합전: NHK Kōhaku Uta Gassen
+  레코드대상: Record Awards
+  쇼케이스: showcase
+  싱글: single
+  게스트: guest
+  콘서트: concert
+  아이유: IU
+  결과쇼: results show
+  축하공연: congratulatory performance
+  출범식: launch ceremony
+  대중문화교류위원회: Popular Culture Exchange Committee
+  뮤직뱅크 글로벌 페스티벌: Music Bank Global Festival
+  신국립극장: New National Theatre Tokyo
+  무사시노노모리 종합스포츠플라자: Musashino Forest Sport Plaza
+  KINTEX 제2전시장: KINTEX Exhibition Hall 2
+  불명: unknown
+  일본방송: Japanese TV
+  먹방여행: Food trip
+  로컬여행: Local trip
+  핫플레이스여행: Hot-spot trip
+  우정여행: Friendship trip
+  화성: Hwaseong
+  광명: Gwangmyeong
+  총집편: All places
+  예능: Variety show
+  유튜브·예능: YouTube · Variety
+  생일 라이브: Birthday LIVE
+  STAFF 인스스: STAFF Instagram story
+  냉터뷰: Naengterview
+  취소: Cancelled
+  담양: Damyang
+  도자기 만들기: Pottery making
+  그림 그리기: Painting
+  국제경기장: International Stadium
+  고척스카이돔: Gocheok Sky Dome
+  잠실학생체육관: Jamsil Students' Gymnasium
+  잠실 올림픽주경기장: Jamsil Olympic Stadium
+  2022 멜론 뮤직 어워드: 2022 Melon Music Awards
+  2022 K 글로벌 하트 드림 어워즈: 2022 K Global Heart Dream Awards
+  서울페스타 2022 개막공연: Seoul Festa 2022 opening show
+  TikTok 크리에이터나잇: TikTok Creator Night
+  우리은행 WON THE STAGE: Woori Bank WON THE STAGE
+  루이 비통 2023 프리폴 쇼 애프터파티: Louis Vuitton 2023 Pre-Fall show after-party
+  Japan 데뷔 showcase ‘FEARLESS’: Japan debut showcase ‘FEARLESS’
+  특설 스테이지: special stage
+  후지TV 본사 앞: in front of Fuji TV HQ
+  솔로: solo
+  글로벌 페스티벌: Global Festival
+  데뷔: debut
+  88잔디마당: 88 Lawn Field
+  "-": "-"

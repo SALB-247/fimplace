@@ -22,13 +22,21 @@
     var headers = Array.prototype.slice.call(headRow.children).map(function (th) {
       return th.textContent.trim();
     });
+    // 영어면 열 이름을 i18n columns 사전으로 바꾼다 (뱃지 열 판정은 위 한국어 headers 로 먼저 한다)
+    var labels = headers.slice();
+    if (window.FimLang === 'en' && window.FimTr) {
+      Array.prototype.forEach.call(headRow.children, function (th, i) {
+        var tr = FimTr('columns', headers[i]);
+        if (tr && tr !== headers[i]) { th.textContent = tr; labels[i] = tr; }
+      });
+    }
 
     // 모든 모음 표: 모바일 카드 적층
     table.classList.add('collection-mobile');
 
     // 뱃지 대상 열 (콘텐츠/SNS/카테고리/분류 중 첫 매칭)
     var badgeCol = -1;
-    ['콘텐츠', 'SNS', '카테고리', '분류'].some(function (key) {
+    ['콘텐츠', 'SNS', '카테고리', '분류', 'Content', 'Category', 'Type'].some(function (key) {
       var idx = headers.indexOf(key);
       if (idx !== -1) { badgeCol = idx; return true; }
       return false;
@@ -37,7 +45,7 @@
     // 각 셀에 data-label(모바일 카드 라벨) + 콘텐츠 뱃지
     rows.forEach(function (tr) {
       Array.prototype.forEach.call(tr.children, function (td, i) {
-        td.setAttribute('data-label', headers[i] || '');
+        td.setAttribute('data-label', labels[i] || '');
         if (i === badgeCol) {
           var v = td.textContent.trim();
           if (v && v !== '-') {

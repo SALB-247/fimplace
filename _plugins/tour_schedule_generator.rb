@@ -119,6 +119,10 @@ module TourScheduleGenerator
         by_url[p['url'].to_s]     = p
       end
 
+      notes_by_url = {}
+      notes_by_title = {}
+      site.collections['notes'].docs.each { |n| notes_by_url[n.url] = n; notes_by_title[n.data['title'].to_s] = n }
+
       shows = []
       site.collections['notes'].docs.each do |note|
         content = note.content.to_s
@@ -142,6 +146,15 @@ module TourScheduleGenerator
           remark           = cells[3].to_s
 
           place = (venue_url && by_url[venue_url]) || (venue && by_title[venue])
+          venue_note = (venue_url && notes_by_url[venue_url]) || (venue && notes_by_title[venue])
+          country = venue_note && venue_note.data['country'].to_s.downcase
+          country = { '🇰🇷' => 'kr', '🇯🇵' => 'jp', '🇹🇼' => 'tw', '🇭🇰' => 'hk', '🇲🇴' => 'mo', '🇸🇬' => 'sg', '🇹🇭' => 'th',
+                      '🇵🇭' => 'ph', '🇬🇧' => 'gb', '🇫🇷' => 'fr', '🇳🇱' => 'nl', '🇩🇰' => 'dk', '🇩🇪' => 'de', '🇮🇹' => 'it' }[flag] if country.nil? || country.empty?
+          time_zone = FimTz.resolve(site, note: venue_note, venue: venue, cities: [city], country: country)
+          # 비고의 '⏰ 19:00' / '현지 19:00' 가 확정 시작 시각 (없으면 날짜만 아는 일정 — 자정 시작으로 간주하지 않는다)
+          start_time = (remark.match(/(?:⏰|현지)\s*(\d{1,2}):(\d{2})/) || [])[1..2]
+          start_time = start_time && start_time.size == 2 ? format('%02d:%s', start_time[0].to_i, start_time[1]) : nil
+          end_excl = (Date.parse(dates.last) + 1).strftime('%Y-%m-%d') rescue nil
           shows << {
             'tour'       => tour_title,
             'tour_url'   => note.url,
@@ -149,6 +162,10 @@ module TourScheduleGenerator
             'dates'      => dates,
             'start'      => dates.first,
             'end'        => dates.last,
+            'end_exclusive' => end_excl,          # 현지 달력 기준 종료 경계 (마지막 날짜 + 1)
+            'time_zone'  => time_zone,             # IANA. nil 이면 '시간대 확인 필요' — 자동 판정 보류
+            'start_time' => start_time,            # 'HH:MM' 현지, 확정된 경우만 (브라우저가 Intl 로 UTC 환산)
+            'kind'       => (start_time ? 'timed' : 'date-only'),
             'flag'       => flag,
             'city'       => city,
             'venue'      => venue,
@@ -166,7 +183,9 @@ module TourScheduleGenerator
 
       if defined?(Jekyll)
         no_coord = shows.count { |s| s['venue'] && s['lat'].nil? }
-        Jekyll.logger.info('TourSchedule', "공연 #{shows.size}건 파싱 (좌표없음 #{no_coord}, TBA #{shows.count { |s| s['venue'].nil? }})")
+        no_tz = shows.select { |s| s['time_zone'].nil? }
+        Jekyll.logger.info('TourSchedule', "공연 #{shows.size}건 파싱 (좌표없음 #{no_coord}, TBA #{shows.count { |s| s['venue'].nil? }}, 시간대없음 #{no_tz.size})")
+        no_tz.each { |s| Jekyll.logger.warn('TourSchedule', "시간대 확인 필요: #{s['date_raw']} #{s['city']} #{s['venue']} → _data/timezones.yml") }
       end
     end
   end

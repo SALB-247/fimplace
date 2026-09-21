@@ -96,6 +96,11 @@ permalink: /
     return (window.FimLang === 'en' && KIND[k]) ? window.FimT(KIND[k], k) : k;
   }
   var today = now.getTime();
+  // 공연·이벤트는 그 장소의 현지 오늘로 판정한다 (서울에서 볼 때 미국 공연이 하루 먼저 끝나 보이던 문제, 2026-09-22)
+  function todayFor(tz) {
+    if (window.FimTime && window.FimTime.isValidTz(tz)) return ms(window.FimTime.todayIn(tz, now)) || today;
+    return today;
+  }
 
   Promise.all([
     fetch('{{ site.baseurl }}/places.json').then(function (r) { return r.json(); }).catch(function () { return { places: [] }; }),
@@ -109,10 +114,11 @@ permalink: /
       seen[p.url] = 1;
       var s = ms(p.start), e = ms(p.end);
       if (s !== null || e !== null) {
-        // 이벤트(기간): 오늘이 기간 안이면 diff 0, 밖이면 가까운 끝점까지 거리
+        // 이벤트(기간): 현지 오늘이 기간 안이면 diff 0, 밖이면 가까운 끝점까지 거리
         var a = (s !== null ? s : e), b = (e !== null ? e : s);
-        var diff = today < a ? a - today : (today > b ? today - b : 0);
-        items.push({ title: p.title, url: p.url, date: a, endDate: b, diff: diff, kind: '기간', evt: true });
+        var tp = todayFor(p.time_zone);
+        var diff = tp < a ? a - tp : (tp > b ? tp - b : 0);
+        items.push({ title: p.title, url: p.url, date: a, endDate: b, diff: diff, kind: '기간', evt: true, today: tp });
         return;
       }
       // 방문 기록: 오늘과 가장 가까운 방문일 1개
@@ -133,9 +139,10 @@ permalink: /
       if (sh.cancelled || !sh.venue) return;
       var s = ms(sh.start), e = ms(sh.end) || s;
       if (s === null) return;
-      var diff = today < s ? s - today : (today > e ? today - e : 0);
+      var ts = todayFor(sh.time_zone);
+      var diff = ts < s ? s - ts : (ts > e ? ts - e : 0);
       items.push({ title: (sh.flag || '') + ' ' + (window.FimTag ? FimTag(sh.city) : sh.city) + ' — ' + sh.venue,
-                   url: sh.venue_url || sh.tour_url, date: s, endDate: e, diff: diff, kind: '공연', evt: true });
+                   url: sh.venue_url || sh.tour_url, date: s, endDate: e, diff: diff, kind: '공연', evt: true, today: ts });
     });
 
     // 지도에서 스킵된 노트(노선 광고 등)는 places 에 없음 → events 에서 보충 (url dedupe)
@@ -143,8 +150,9 @@ permalink: /
       if (seen[e.url]) return;
       var a = ms(e.start), b = ms(e.end) || a;
       if (a === null) return;
-      var diff = today < a ? a - today : (today > b ? today - b : 0);
-      items.push({ title: e.title, url: e.url, date: a, endDate: b, diff: diff, kind: '기간', evt: true });
+      var te = todayFor(e.time_zone);
+      var diff = te < a ? a - te : (te > b ? te - b : 0);
+      items.push({ title: e.title, url: e.url, date: a, endDate: b, diff: diff, kind: '기간', evt: true, today: te });
     });
 
     // 1) 절대값 정렬 → 15개 선정   2) 선정분을 날짜순 나열
@@ -152,8 +160,9 @@ permalink: /
     //   · 이벤트(생카·팝업·광고·공연): 예정이 곧 정보 → 미래 페널티 없음(×1), 끝나면 ×2 로 빠르게 밀어냄
     //   · 기록(방문·업로드): 과거가 본질 → 미래 ×3 (과거 중심 유지)
     function selKey(it) {
-      if (it.evt) return it.diff * (it.endDate < today ? 2 : 1);
-      return it.diff * (it.date > today ? 3 : 1);
+      var tt = it.today || today;
+      if (it.evt) return it.diff * (it.endDate < tt ? 2 : 1);
+      return it.diff * (it.date > tt ? 3 : 1);
     }
     items.sort(function (a, b) { return selKey(a) - selKey(b) || a.date - b.date; });
     var picked = items.slice(0, 15);
@@ -165,7 +174,8 @@ permalink: /
     }
     var html = picked.map(function (it) {
       var when = ymd(it.date) + (it.endDate !== it.date ? ' ~ ' + ymd(it.endDate) : '');
-      var live = it.evt && it.date <= today && today <= it.endDate + DAY - 1;
+      var tt = it.today || today;
+      var live = it.evt && it.date <= tt && tt <= it.endDate + DAY - 1;
       var badge = live ? '<span style="display:inline-block;background:#c9184a;color:#fff;padding:0.05em 0.5em;border-radius:999px;font-size:0.72em;font-weight:700;margin-right:0.4em;">' +
         (window.FimLang === 'en' ? window.FimT('home_live', 'LIVE NOW') : '진행 중') +
         '</span>' : '';

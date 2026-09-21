@@ -57,25 +57,31 @@
     fetch('{{ site.baseurl }}/tour_schedule.json').then(function (r) { return r.json(); }).catch(function () { return { shows: [] }; }),
     fetch('{{ site.baseurl }}/events.json').then(function (r) { return r.json(); }).catch(function () { return { events: [] }; })
   ]).then(function (res) {
-    var t = ymd(new Date());
+    var NOW = new Date();
+    var t = ymd(NOW);
+    // 공연장·행사장 현지 오늘 (FimTime) — 서울에서 볼 때 미국 공연이 하루 먼저 끝나 보이지 않게
+    function tzToday(tz) { return (window.FimTime && FimTime.isValidTz(tz)) ? FimTime.todayIn(tz, NOW) : t; }
     var pts = [], autoCand = [];
 
-    // ── 공연: 오늘 → 다음 → 최근 ──
+    // ── 공연: 오늘 → 다음 → 최근 (각 공연장의 현지 날짜로) ──
     var shows = ((res[0] && res[0].shows) || []).filter(function (s) {
       return !s.cancelled && s.lat != null && s.dates && s.dates.length;
     });
-    var pick = null, pickDate = null, state = null;
+    var pick = null, pickDate = null, state = null, pickToday = t;
     shows.forEach(function (s) {
-      if (s.dates.indexOf(t) !== -1) { pick = s; pickDate = t; state = 'live'; }
+      var ts = tzToday(s.time_zone);
+      if (s.dates.indexOf(ts) !== -1) { pick = s; pickDate = ts; pickToday = ts; state = 'live'; }
     });
     if (!pick) shows.forEach(function (s) {
+      var ts = tzToday(s.time_zone);
       s.dates.forEach(function (dd) {
-        if (dd > t && (pickDate === null || dd < pickDate)) { pickDate = dd; pick = s; state = 'next'; }
+        if (dd > ts && (pickDate === null || dd < pickDate)) { pickDate = dd; pick = s; pickToday = ts; state = 'next'; }
       });
     });
     if (!pick) shows.forEach(function (s) {
+      var ts = tzToday(s.time_zone);
       s.dates.forEach(function (dd) {
-        if (dd < t && (pickDate === null || dd > pickDate)) { pickDate = dd; pick = s; state = 'last'; }
+        if (dd < ts && (pickDate === null || dd > pickDate)) { pickDate = dd; pick = s; pickToday = ts; state = 'last'; }
       });
     });
 
@@ -92,11 +98,17 @@
         .addTo(map)
         .bindPopup('<strong>' + head + '</strong><br>' + (pick.flag||'') + ' ' + FimTag(pick.city||'') +
           (pick.venue_url ? '<br><a href="{{ site.baseurl }}' + pick.venue_url + '">' + pick.venue + '</a>' : '') +
-          '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + '</span>',
+          '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + (FimLang === 'en' ? ' (local)' : ' (현지)') + '</span>' +
+          (function () {   // 확정 시각이 있으면 현지·내 시간 이중 표시
+            if (!pick.start_time || !window.FimTime) return '';
+            var du = FimTime.dual(pick, pickDate);
+            if (!du) return '';
+            return '<br><span style="font-size:0.8em;color:#888;">🕒 ' + du.local + (du.sameTz ? '' : ' · ' + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '')) + '</span>';
+          })(),
           { autoClose: false, closeOnClick: false });
       pts.push(ll);
       autoCand.push({ marker: m, rank: state === 'live' ? 0 : 1,
-                      gap: Math.abs((new Date(pickDate) - new Date(t)) / 86400000) });
+                      gap: Math.abs(FimTime ? FimTime.dayDiff(pickToday, pickDate) : 0) });
     }
 
     // ── 팝업스토어: 진행 중 전부 → 없으면 가장 가까운 예정 1곳 ──
@@ -104,16 +116,17 @@
     var pops = ((res[1] && res[1].events) || []).filter(function (e) {
       return e.type === '팝업' && e.lat != null && e.start;
     });
-    var live = pops.filter(function (e) { return e.start <= t && t <= e.end; });
+    var live = pops.filter(function (e) { var te = tzToday(e.time_zone); return e.start <= te && te <= e.end; });
     var chosen = live;
     if (!chosen.length) {
-      var up = pops.filter(function (e) { return e.start > t; })
+      var up = pops.filter(function (e) { return e.start > tzToday(e.time_zone); })
                    .sort(function (a, b) { return a.start < b.start ? -1 : 1; });
       if (up.length) chosen = [up[0]];
     }
     chosen.forEach(function (e) {
-      var isLive = e.start <= t && t <= e.end;
-      var dday = Math.round((new Date(e.start) - new Date(t)) / 86400000);
+      var te = tzToday(e.time_zone);
+      var isLive = e.start <= te && te <= e.end;
+      var dday = window.FimTime ? FimTime.dayDiff(te, e.start) : Math.round((new Date(e.start) - new Date(te)) / 86400000);
       var head = isLive ? FimT('home_popup_live', '🛍️ 팝업 진행 중')
                : (FimLang === 'en' ? FimFmt(FimT('home_popup_dday', ''), [dday])
                                    : '🛍️ 팝업 D-' + dday);

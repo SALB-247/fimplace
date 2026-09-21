@@ -11,7 +11,8 @@
   </div>
   <div id="tour-cal-months"></div>
   <p style="font-size:0.78em; color:var(--subtext); margin-top:0.6em;">
-    <span data-i18n="cal_hint">※ 지난/예정 표시는 <strong>보는 시점</strong> 기준으로 자동 갱신됩니다.</span>
+    <span data-i18n="cal_hint">※ 날짜는 공연장 현지 기준이고, 지난/오늘/예정은 보는 시점의 현지 날짜로 판정합니다.</span>
+    <span id="tc-tz-note"></span>
   </p>
 </div>
 
@@ -47,11 +48,10 @@
   var SHOWS = {{ my_shows | jsonify }};
   if (!SHOWS || !SHOWS.length) return;
 
-  // 로컬 기준 오늘 (YYYY-MM-DD) — 브라우저 시각이라 빌드 후에도 정확
-  function ymd(d) {
-    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-  }
-  var TODAY = ymd(new Date());
+  // 공연장 현지 날짜 기준 — window.FimTime (_includes/fim_time.html). 서울이 이미 다음 날이어도 타코마는 아직 공연 당일일 수 있다.
+  var FT = window.FimTime;
+  var NOW = new Date();
+  var TODAY = FT.todayIn(FT.deviceTz(), NOW);   // 달력의 기본 월 위치용 (기기 날짜)
 
   // 날짜 -> 공연 (하루에 한 공연 가정; 겹치면 첫 건)
   var byDate = {};
@@ -61,38 +61,70 @@
   var allDates = Object.keys(byDate).sort();
   if (!allDates.length) return;
 
+  // 각 공연일의 상태를 그 공연장의 현지 오늘로 판정
   function state(d) {
-    if (byDate[d].cancelled) return 'cancelled';
-    if (d === TODAY) return 'today';
-    return d < TODAY ? 'past' : 'upcoming';
+    var s = byDate[d];
+    if (s.cancelled) return 'cancelled';
+    return FT.dateState(d, s.time_zone, NOW).state;
   }
+  var unknownTz = SHOWS.some(function (s) { return !FT.isValidTz(s.time_zone); });
 
   // ── 상태 배지
-  var live = allDates.filter(function (d) { return d === TODAY && !byDate[d].cancelled; });
-  var next = allDates.filter(function (d) { return d > TODAY && !byDate[d].cancelled; })[0];
-  var doneCnt = allDates.filter(function (d) { return d < TODAY && !byDate[d].cancelled; }).length;
+  var live = allDates.filter(function (d) { return state(d) === 'today'; });
+  var next = allDates.filter(function (d) { return state(d) === 'upcoming'; })[0];
+  var doneCnt = allDates.filter(function (d) { return state(d) === 'past'; }).length;
   var totalCnt = allDates.filter(function (d) { return !byDate[d].cancelled; }).length;
 
-  var badge, sub = '';
+  // 확정 시각이 있으면 현지·사용자 시간대 이중 표시, 없으면 아무것도 안 붙인다 (자정 시작으로 간주하지 않음)
+  function timeLine(s, d) {
+    if (!s.start_time) return '';
+    var du = FT.dual(s, d);
+    if (!du) return '';
+    var l1 = (FimLang === 'en' ? 'Local ' : '현지 ') + du.local;
+    var l2 = du.sameTz ? '' : (FimLang === 'en' ? 'Your time ' : '내 시간 ') + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '');
+    return '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.25em;">🕒 ' + l1 + (l2 ? ' · ' + l2 : '') + '</div>';
+  }
+
+  function renderStatus() {
+  var badge, sub = '', extra = '';
   if (live.length) {
     var s = byDate[live[0]];
     badge = '<span class="tc-badge" style="background:#c9184a;color:#fff;">' + FimT('cal_today', '🔴 오늘 공연') + '</span>';
-    sub = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? ' · ' + s.venue : '');
+    sub = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? ' · ' + s.venue : '') +
+          (FimLang === 'en' ? ' · local date' : ' · 현지 날짜');
+    extra = timeLine(s, live[0]);
   } else if (next) {
     var n = byDate[next];
-    var dd = Math.round((new Date(next+'T00:00:00') - new Date(TODAY+'T00:00:00')) / 86400000);
+    var dd = FT.dateState(next, n.time_zone, NOW).days;
     badge = '<span class="tc-badge" style="background:#1a56c4;color:#fff;">' + (FimLang === 'en' ? FimFmt(FimT('cal_next_dday', ''), [dd])
                                        : '다음 공연 D-' + dd) + '</span>';
     sub = next + ' · ' + (n.flag||'') + ' ' + FimTag(n.city||'') + (n.venue ? ' · ' + n.venue : '');
+    extra = timeLine(n, next);
   } else {
     badge = '<span class="tc-badge" style="background:#888;color:#fff;">' + FimT('cal_finished', '투어 종료') + '</span>';
     sub = allDates[0] + ' ~ ' + allDates[allDates.length-1];
   }
   document.getElementById('tour-cal-status').innerHTML =
-    badge + ' <span style="font-size:0.85em; color:var(--subtext);">' + sub + '</span>' +
+    badge + ' <span style="font-size:0.85em; color:var(--subtext);">' + sub + '</span>' + extra +
     '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.35em;">' + (FimLang === 'en'
         ? FimFmt(FimT('cal_progress', ''), [doneCnt, totalCnt])
-        : '진행 ' + doneCnt + ' / ' + totalCnt + '회') + '</div>';
+        : '진행 ' + doneCnt + ' / ' + totalCnt + '회') + '</div>' + tzPicker();
+  var sel = document.getElementById('tc-tz');
+  if (sel) sel.addEventListener('change', function () { FT.setViewerTz(sel.value); renderStatus(); });
+  }
+  // 시간 기준 선택 (내 기기 시간 / 한국 시간 / 다른 시간대) — 확정 시각이 있는 투어에만. 선택은 브라우저에 저장되고 언어와 무관
+  function tzPicker() {
+    if (!SHOWS.some(function (s) { return s.start_time; })) return '';
+    var choice = FT.viewerTzChoice(), dev = FT.deviceTz();
+    var opts = [['device', (FimLang === 'en' ? 'My device time' : '내 기기 시간') + (dev ? ' (' + dev + ')' : '')], ['Asia/Seoul', FimLang === 'en' ? 'Korea time (KST)' : '한국 시간 (KST)']];
+    SHOWS.forEach(function (s) { if (FT.isValidTz(s.time_zone) && !opts.some(function (o) { return o[0] === s.time_zone; })) opts.push([s.time_zone, (FimLang === 'en' ? 'Venue: ' : '공연장: ') + s.time_zone]); });
+    return '<div style="font-size:0.8em; margin-top:0.35em;"><label>' + (FimLang === 'en' ? 'Time basis ' : '시간 기준 ') +
+      '<select id="tc-tz" style="font-size:1em;">' + opts.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === choice ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label></div>';
+  }
+  renderStatus();
+  if (unknownTz) {
+    document.getElementById('tc-tz-note').textContent = ' ' + FimT('cal_tz_unknown', '(일부 공연장은 시간대 확인 필요 — 기기 날짜로 표시)');
+  }
 
   // ── 페이지네이션: 한 번에 2개월 (viewStart 부터), ◀▶ 로 이동
   //    범위: 투어 시작 월 ~ 마지막 공연 월. 디폴트 = 진행/예정 투어면 오늘 월, 종료 투어면 시작 월.
@@ -141,6 +173,7 @@
       if (!s) { html += '<div class="tc-cell">' + day + '</div>'; continue; }
       var st = state(ds);
       var label = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? '\n' + s.venue : '') +
+                  (s.start_time ? '\n' + (FimLang === 'en' ? 'Local ' : '현지 ') + s.start_time : '') +
                   (s.cancelled ? '\n' + FimT('cal_cancelled', '(취소)') : '');
       var tag = s.venue_url ? 'a' : 'div';
       var href = s.venue_url ? ' href="{{ site.baseurl }}' + s.venue_url + '"' : '';

@@ -313,6 +313,7 @@ module EventPeriod
           'lat'     => place && place['lat'],
           'lng'     => place && place['lng'],
           'address' => place && place['address'],
+          'time_zone' => (place && place['time_zone']) || (defined?(FimTz) ? FimTz.resolve(site, note: note, cities: tags, country: note.data['country']) : nil),
           'tags'    => tags,
           'members' => Array(note.data['members']).map(&:to_s)
         }

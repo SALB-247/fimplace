@@ -1,5 +1,7 @@
 ---
 title: PUREFLOW_pt1_오프라인 이벤트 모음
+
+title_en: "PUREFLOW pt.1 — Offline Events"
 shortid: 2xkc0
 hide_backlinks: true
 tags:
