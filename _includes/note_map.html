@@ -38,7 +38,7 @@
         var container = document.getElementById('note-map-container');
         container.hidden = false;
         document.getElementById('note-map-count').textContent =
-          (window.FimLang === 'en'
+          (window.FimLang !== 'ko'
             ? FimFmt(FimT('note_map_count', ''), [matched.length, unique.length])
             : matched.length + '개 장소 표시 중 (전체 ' + unique.length + '개 링크 중)');
 

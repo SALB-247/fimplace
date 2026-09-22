@@ -73,7 +73,7 @@
     }
     return new Date(guess);
   }
-  function locale() { return window.FimLang === 'en' ? 'en-US' : 'ko-KR'; }
+  function locale() { var L = window.FimLang; return L === 'ja' ? 'ja-JP' : (L === 'ko' ? 'ko-KR' : 'en-US'); }
   // 'YYYY-MM-DD' → '9월 20일 (일)' / 'Sep 20 (Sun)'
   function fmtDate(date, opts) {
     var p = date.split('-').map(Number);
@@ -118,7 +118,7 @@
     if (!inst) return null;
     var vtz = viewerTz();
     var diff = dayDiff(date, dateIn(inst, vtz));
-    var dayLabel = diff === 0 ? '' : (window.FimLang === 'en'
+    var dayLabel = diff === 0 ? '' : (window.FimLang !== 'ko'
       ? (diff === 1 ? 'next day' : diff === -1 ? 'previous day' : (diff > 0 ? '+' + diff + ' days' : diff + ' days'))
       : (diff === 1 ? '다음 날' : diff === -1 ? '전날' : (diff > 0 ? diff + '일 뒤' : (-diff) + '일 전')));
     return { inst: inst, local: fmtInstant(inst, tz), viewer: fmtInstant(inst, vtz), dayLabel: dayLabel, sameTz: offsetAt(inst, tz) === offsetAt(inst, vtz), viewerTz: vtz };

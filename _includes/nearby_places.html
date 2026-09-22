@@ -49,7 +49,7 @@
   var sec = document.getElementById('nearby-places');
   if (!sec || !window.FimMap || !FimMap.places) return;
   var EMOJI = { '사쿠라':'🌸', '김채원':'🐯', '허윤진':'🐍', '카즈하':'🦢', '홍은채':'🐥' };
-  var DIRS = (window.FimLang === 'en')
+  var DIRS = (window.FimLang !== 'ko')
     ? ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
     : ['북', '북동', '동', '남동', '남', '남서', '서', '북서'];
   var LIMIT = 6, R1 = 1500, R2 = 5000;
@@ -117,7 +117,7 @@
         '<span class="fim-meta"><span class="fim-dir" style="transform:rotate(' + Math.round(c.b) + 'deg)" aria-hidden="true">↑</span>' +
         dir + ' ' + fmt(c.d) + '</span></li>';
     }).join('');
-    document.getElementById('nearby-radius').textContent = (window.FimLang === 'en')
+    document.getElementById('nearby-radius').textContent = (window.FimLang !== 'ko')
       ? FimFmt(FimT('note_nearby_radius', ''), [fmt(radius), FimPlural(near.length, 'place')])
       : '반경 ' + fmt(radius) + ' · ' + near.length + '곳';
     sec.hidden = false;

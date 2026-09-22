@@ -31,6 +31,13 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
   var ul    = document.getElementById('search-results');
   var INDEX = null;
 
+  // 한 태그·멤버의 모든 언어 표기 + 검색 별칭(일본 팬이 쓰는 한자·가타카나 이름)
+  function allOf(group) {
+    return function (v) {
+      return FimAll(group, v).concat(FimAll('search_alias', v)).join(' ');
+    };
+  }
+
   function loadIndex(cb) {
     if (INDEX) return cb(INDEX);
     fetch('{{ site.baseurl }}/search-index.json')
@@ -39,11 +46,13 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
         INDEX = (data || []).map(function (item) {
           return {
             raw:       item,
-            titleN:    normalize(item.title) + ' ' + normalize(item.name_en || ''),
-            tagsN:     normalize((item.tags || []).join(' ')) +
-                       (window.FimLang === 'en'
-                         ? normalize((item.tags || []).map(FimTag).join(' ')) : ''),
-            membersN:  normalize((item.members || []).join(' ')),
+            // 색인에는 세 언어를 다 넣는다 — 화면 언어가 무엇이든 한국어·영어·일본어 어느 말로 쳐도 찾히도록 (2026-09-22)
+            titleN:    normalize(item.title) + ' ' + normalize(item.name_en || '') + ' ' + normalize(item.name_ja || ''),
+            tagsN:     normalize((item.tags || []).join(' ')) + ' ' +
+                       normalize((item.tags || []).map(allOf('tags')).join(' ')) + ' ' +
+                       normalize((item.cat || []).join(' ')),
+            membersN:  normalize((item.members || []).join(' ')) + ' ' +
+                       normalize((item.members || []).map(allOf('members')).join(' ')),
             addressN:  normalize(item.address || '') + ' ' + normalize(item.address_en || ''),
             bodyN:     normalize(item.excerpt || '')
           };
@@ -51,7 +60,7 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
         cb(INDEX);
       })
       .catch(function (e) {
-        meta.textContent = window.FimLang === 'en'
+        meta.textContent = window.FimLang !== 'ko'
           ? FimFmt(FimT('search_index_fail', ''), [e])
           : '검색 인덱스를 불러올 수 없습니다. (' + e + ')';
       });
@@ -110,7 +119,7 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
       hits.sort(function (a, b) { return b.s - a.s; });
       hits = hits.slice(0, 100);
 
-      meta.textContent = window.FimLang === 'en'
+      meta.textContent = window.FimLang !== 'ko'
         ? FimFmt(FimT(hits.length === 1 ? 'search_count_one' : 'search_count', ''), [hits.length, idx.length])
         : hits.length + '개 결과 (전체 ' + idx.length + '개 노트 중)';
 
@@ -119,11 +128,13 @@ description: 르세라핌이 다녀간 카페·음식점·촬영지를 이름, �
         var tagHtml = (i.tags || []).slice(0, 6).map(function (t) {
           return '<span class="tag-chip" style="margin-right:0.3em">#' + escapeHtml(FimTag(t)) + '</span>';
         }).join('');
-        var addrTxt = (window.FimLang === 'en' && i.address_en) ? i.address_en : i.address;
+        var addrTxt = (window.FimLang !== 'ko' && i.address_en) ? i.address_en : i.address;
         var addr = addrTxt ? '<div class="excerpt">📍 ' + escapeHtml(addrTxt) + '</div>' : '';
         var titleTxt = i.title;
-        if (window.FimLang === 'en' && i.name_en) {
-          if (normalize(i.name_en) !== normalize(i.title)) titleTxt = i.name_en + ' (' + i.title + ')';
+        // 일본어면 일본어 이름을 먼저 (없으면 영어 이름) — 노트 h1·지도 팝업과 같은 규칙
+        var nameTxt = (window.FimLang === 'ja' && i.name_ja) ? i.name_ja : i.name_en;
+        if (window.FimLang !== 'ko' && nameTxt) {
+          if (normalize(nameTxt) !== normalize(i.title)) titleTxt = nameTxt + ' (' + i.title + ')';
         }
         var dateBadge = i.date ? '<span style="font-size:0.78em; color:var(--subtext); margin-right:0.4em;">📅 ' + escapeHtml(i.date) + '</span>' : '';
         return '<li>' +

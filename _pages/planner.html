@@ -80,7 +80,7 @@ permalink: /planner/
   }
 
   function renderPlan() {
-    document.getElementById('pl-count').textContent = plan.length ? (window.FimLang === 'en' ? FimPlural(plan.length, 'place') : plan.length + '곳') : '';
+    document.getElementById('pl-count').textContent = plan.length ? (window.FimLang !== 'ko' ? FimPlural(plan.length, 'place') : plan.length + '곳') : '';
     routeEl.innerHTML = plan.map(function (p, i) {
       return '<li><a class="internal-link" href="' + p.url + '">' + p.title + '</a>' +
         ' <button data-i="' + i + '" class="pl-rm" style="border:0;background:none;cursor:pointer;color:#c00;">✕</button></li>';

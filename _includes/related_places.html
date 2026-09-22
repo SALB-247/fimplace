@@ -32,7 +32,7 @@
 <script>
 // 출처 종류·개수를 영어로 (i18n.html 사전)
 (function () {
-  if (window.FimLang !== 'en') return;
+  if (window.FimLang === 'ko') return;
   document.querySelectorAll('#related-places [data-via]').forEach(function (el) {
     el.textContent = el.getAttribute('data-via').split(' · ')
       .map(function (v) { return FimTr('via', v); }).join(' · ');

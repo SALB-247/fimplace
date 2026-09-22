@@ -1,28 +1,48 @@
-# 상단 메뉴 '모음' 드롭다운 (2026-09-22) — 순서대로 표시. title 은 노트의 frontmatter title 과 정확히 같아야 한다.
-# 영어 모드에서는 노트의 title_en·en_url(hub_en_pages.rb) 로 자동 치환된다. group 은 구분선용.
+# 상단 메뉴 '모음' 드롭다운 + 홈의 '주요 모음/컬렉션' (2026-09-22) — 순서대로 표시.
+# title 은 노트의 frontmatter title 과 정확히 같아야 한다 (site.notes | where: "title").
+# 영어 모드에서는 노트의 title_en·en_url(hub_en_pages.rb) 로 자동 치환, 일본어는 _data/i18n_ja.yml 의 hubs: 로.
+#
+#   group:  드롭다운 구분선. '투어'·'이벤트' 그룹은 홈 '주요 모음' 후보가 된다 (끝나면 홈에서 자동으로 빠짐).
+#   icon:   홈 카드의 로고 (이모지)
+#   home:   collection = 홈 '컬렉션' 카드로 노출 / skip = 홈 '주요 모음'에서 제외 (투어·이벤트만 해당)
 - title: SNS 장소
   label: SNS 장소
+  icon: 📱
+  home: collection
 - title: 자체 컨텐츠 촬영지
   label: 자체 컨텐츠 촬영지
+  icon: 🎬
+  home: collection
 - title: 외부 컨텐츠 촬영지
   label: 외부 컨텐츠 촬영지
+  icon: 📺
+  home: collection
 - title: 공연·시상식·페스티벌 무대
   label: 공연·시상식·페스티벌 무대
+  icon: 🎤
 - title: 진즈하여행 총집편
   label: 진즈하여행 총집편
+  icon: 🧳
 - group: 투어
 - title: 2026 LE SSERAFIM TOUR 'PUREFLOW'
   label: 2026 PUREFLOW
+  icon: 🎫
 - title: 2025 LE SSERAFIM TOUR 'EASY CRAZY HOT'
   label: 2025 EASY CRAZY HOT
+  icon: 🎫
 - title: LE SSERAFIM TOUR 'FLAME RISES'
   label: 2023 FLAME RISES
+  icon: 🎫
 - title: LE SSERAFIM FAN MEETING 'FEARNADA' 2024 SS
   label: FEARNADA 2024 SS
+  icon: 🎫
 - title: LE SSERAFIM FAN MEETING 'FEARNADA' 2023 SS
   label: FEARNADA 2023 SS
+  icon: 🎫
 - group: 이벤트
 - title: Made My Night_오프라인 이벤트 모음
   label: Made My Night 이벤트
+  icon: 🛍️
 - title: PUREFLOW_pt1_오프라인 이벤트 모음
   label: PUREFLOW pt.1 이벤트
+  icon: 🛍️

@@ -21,17 +21,32 @@ module BodyI18n
   module_function
 
   # 사전·정규식은 노트마다 다시 만들지 않는다 (738번 → 1번). --watch 재생성 때는 :site, :after_reset 이 지운다
-  def build(site)
+  def build(site, lang = 'en')
     @dict_cache ||= {}
-    @dict_cache[site.object_id] ||= build_dict(site)
+    (@dict_cache[site.object_id] ||= {})[lang] ||= build_dict(site, lang)
+  end
+
+  # 영어 외 언어는 그 언어 사전을 영어 위에 덮어쓴다 — 빠진 키는 자동으로 영어가 된다
+  def merged(site, lang)
+    base = site.data['i18n'] || {}
+    return base if lang == 'en'
+    extra = site.data["i18n_#{lang}"] || {}
+    base.each_with_object({}) do |(g, v), out|
+      e = extra[g]
+      out[g] = if v.is_a?(Hash) && e.is_a?(Hash)
+                 v.merge(e) { |_k, a, b| a.is_a?(Hash) && b.is_a?(Hash) ? a.merge(b) : b }
+               else
+                 e || v
+               end
+    end
   end
 
   def reset_cache!
     @dict_cache = {}
   end
 
-  def build_dict(site)
-    i18n = site.data['i18n'] || {}
+  def build_dict(site, lang = 'en')
+    i18n = merged(site, lang)
     body = i18n['body'] || {}
     d = {
       headings: (i18n['headings'] || {}).merge(body['headings'] || {}),
@@ -46,6 +61,7 @@ module BodyI18n
       columns:   i18n['columns'] || {},
       tags:      i18n['tags'] || {}
     }
+    d[:lang] = lang
     d[:norm] = {}
     d[:headings].merge(d[:tags]).each { |k, v| d[:norm][k.to_s.gsub(/[\s_]/, '')] = v }
     d[:rules] = text_rules(d)
@@ -87,6 +103,9 @@ module BodyI18n
       rules << [re, lambda { |m|
         parts = m[1].split(/\s*[·,\/]\s*/).map { |p| sources[p] }
         next nil if parts.any?(&:nil?)
+        if d[:lang] == 'ja'
+          next "※ 閉店（#{parts.join('・')} #{m[2]} 確認）"
+        end
         "※ Permanently closed (confirmed on #{parts.join(' · ')}, #{m[2]})"
       }]
     end
@@ -115,46 +134,58 @@ module BodyI18n
       rules << [/(?<![가-힣])(?:#{ph_alt})(?![가-힣0-9])/, lambda { |m| phrases[m[0]] }]
     end
 
+    ja = (d[:lang] == 'ja')
     # 소요 시간 · 요일 · N곳
-    rules << [/도보 약 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| "about #{m[1]}–#{m[2]} min on foot" }]
-    rules << [/도보 약 (\d+)분/, lambda { |m| "about #{m[1]} min on foot" }]
-    rules << [/버스\/차량 약 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| "about #{m[1]}–#{m[2]} min by bus or car" }]
-    rules << [/차량 약 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| "about #{m[1]}–#{m[2]} min by car" }]
-    rules << [/공연일 셔틀 약 (\d+)분/, lambda { |m| "show-day shuttle, about #{m[1]} min" }]
+    rules << [/도보 약 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| ja ? "徒歩約#{m[1]}〜#{m[2]}分" : "about #{m[1]}–#{m[2]} min on foot" }]
+    rules << [/도보 약 (\d+)분/, lambda { |m| ja ? "徒歩約#{m[1]}分" : "about #{m[1]} min on foot" }]
+    rules << [/버스\/차량 약 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| ja ? "バス・車で約#{m[1]}〜#{m[2]}分" : "about #{m[1]}–#{m[2]} min by bus or car" }]
+    rules << [/차량 약 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| ja ? "車で約#{m[1]}〜#{m[2]}分" : "about #{m[1]}–#{m[2]} min by car" }]
+    rules << [/공연일 셔틀 약 (\d+)분/, lambda { |m| ja ? "公演日はシャトルで約#{m[1]}分" : "show-day shuttle, about #{m[1]} min" }]
     # 요일 범위·나열 + 영업시간: '월~금 11:00 ~ 19:00' · '(금·토 ~20:00)'
-    rules << [/(?<![가-힣])([월화수목금토일])~([월화수목금토일])(?![가-힣])/, lambda { |m| "#{WEEKDAY[m[1]]}–#{WEEKDAY[m[2]]}" }]
+    rules << [/(?<![가-힣])([월화수목금토일])~([월화수목금토일])(?![가-힣])/, lambda { |m| ja ? "#{WEEKDAY_JA[m[1]]}〜#{WEEKDAY_JA[m[2]]}" : "#{WEEKDAY[m[1]]}–#{WEEKDAY[m[2]]}" }]
     rules << [/(?<![가-힣])([월화수목금토일](?:·[월화수목금토일])+)(?![가-힣])(\s*~\s*(\d{1,2}:\d{2}))?/, lambda { |m|
+      if ja
+        jl = m[1].split('·').map { |x| WEEKDAY_JA[x] }.join('・')
+        next(m[3] ? "#{jl} #{m[3]} まで" : jl)
+      end
       days = m[1].split('·').map { |x| WEEKDAY[x] }
       list = days.length == 2 ? days.join(' & ') : days[0..-2].join(', ') + ' & ' + days[-1]
       m[3] ? "#{list} until #{m[3]}" : list
     }]
-    rules << [/도보 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| "#{m[1]}–#{m[2]} min on foot" }]
-    rules << [/도보 (\d+)분/, lambda { |m| "#{m[1]} min on foot" }]
-    rules << [/차량 약 (\d+)분/, lambda { |m| "about #{m[1]} min by car" }]
-    rules << [/\((월|화|수|목|금|토|일)\)/, lambda { |m| "(#{WEEKDAY[m[1]]})" }]
-    rules << [/(?<![가-힣])(\d+)곳(?![가-힣])/, lambda { |m| "#{m[1]} places" }]
-    rules << [/\((\d[\d,]*)명\)/, lambda { |m| "(#{m[1]} people)" }]                       # (3명) — 괄호째일 때만
-    rules << [/(?<![가-힣\d])(\d+)\s*[–~-]\s*(\d+)분(?![가-힣])/, lambda { |m| "#{m[1]}–#{m[2]} min" }]   # (45–50분)
-    rules << [/(?<![가-힣])약 (\d+)분(?![가-힣])/, lambda { |m| "about #{m[1]} min" }]
+    rules << [/도보 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| ja ? "徒歩#{m[1]}〜#{m[2]}分" : "#{m[1]}–#{m[2]} min on foot" }]
+    rules << [/도보 (\d+)분/, lambda { |m| ja ? "徒歩#{m[1]}分" : "#{m[1]} min on foot" }]
+    rules << [/차량 약 (\d+)분/, lambda { |m| ja ? "車で約#{m[1]}分" : "about #{m[1]} min by car" }]
+    rules << [/\((월|화|수|목|금|토|일)\)/, lambda { |m| ja ? "（#{WEEKDAY_JA[m[1]]}）" : "(#{WEEKDAY[m[1]]})" }]
+    rules << [/(?<![가-힣])(\d+)곳(?![가-힣])/, lambda { |m| ja ? "#{m[1]}か所" : plural(m[1], 'place', 'places') }]
+    rules << [/(?<![가-힣])(\d+)장(?![가-힣])/, lambda { |m| ja ? "#{m[1]}枚" : plural(m[1], 'copy', 'copies') }]
+    rules << [/\((\d[\d,]*)명\)/, lambda { |m| ja ? "（#{m[1]}名）" : "(#{plural(m[1], 'person', 'people')})" }]                       # (3명) — 괄호째일 때만
+    rules << [/(?<![가-힣\d])(\d+)\s*[–~-]\s*(\d+)분(?![가-힣])/, lambda { |m| ja ? "#{m[1]}〜#{m[2]}分" : "#{m[1]}–#{m[2]} min" }]   # (45–50분)
+    rules << [/(?<![가-힣])약 (\d+)분(?![가-힣])/, lambda { |m| ja ? "約#{m[1]}分" : "about #{m[1]} min" }]
     # 메모 줄 맨 앞의 날짜만 있는 경우('260305 뮤직뱅크 사전녹화') — 연·월·일이 맞는 6자리만 ISO 로
     rules << [/(?<![\d-])(2[0-9])(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?=[ _][^\d])/, lambda { |m| "20#{m[1]}-#{m[2]}-#{m[3]}" }]
-    rules << [/1일 (\d+)명/, lambda { |m| "#{m[1]} people per day" }]
-    rules << [/매일\s*(\d+)명/, lambda { |m| "#{m[1]} people daily" }]
-    rules << [/(\d+)일선착/, lambda { |m| "day #{m[1]}, first come first served" }]
-    rules << [/(\d+)번 출구/, lambda { |m| "Exit #{m[1]}" }]
-    rules << [/(?<![\d.])(\d+)미터(?![가-힣])/, lambda { |m| "#{m[1]} m" }]
-    rules << [/제(\d+)전시관/, lambda { |m| "Hall #{m[1]}" }]
-    rules << [/랜덤\s*(\d+)중\s*(\d+)/, lambda { |m| "random #{m[2]} of #{m[1]}" }]        # 랜덤3중1
-    rules << [/오르막 도보 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| "#{m[1]}–#{m[2]} min uphill on foot" }]
-    rules << [/(?<![가-힣])(\d+)차(?![가-힣])/, lambda { |m| "round #{m[1]}" }]          # LUCKY DRAW 1차
-    rules << [/(\d{1,2}\/\d{1,2}) 휴무/, lambda { |m| "closed #{m[1]}" }]
-    rules << [/~\s*(\d{1,2}\/\d{1,2}) 구매건/, lambda { |m| "purchases through #{m[1]}" }]
-    rules << [/(\d{1,2}\/\d{1,2})\s*~\s*(\d{1,2}\/\d{1,2}) 구매건/, lambda { |m| "purchases #{m[1]}–#{m[2]}" }]
-    rules << [/(\d{1,2}\/\d{1,2}) (월|화|수|목|금|토|일) (\d{1,2}:\d{2})/, lambda { |m| "#{m[1]} (#{WEEKDAY[m[2]]}) #{m[3]}" }]
+    rules << [/1일 (\d+)명/, lambda { |m| ja ? "1日#{m[1]}名" : "#{plural(m[1], 'person', 'people')} per day" }]
+    rules << [/매일\s*(\d+)명/, lambda { |m| ja ? "毎日#{m[1]}名" : "#{plural(m[1], 'person', 'people')} daily" }]
+    rules << [/(\d+)일선착/, lambda { |m| ja ? "#{m[1]}日目・先着順" : "day #{m[1]}, first come first served" }]
+    rules << [/(\d+)번 출구/, lambda { |m| ja ? "#{m[1]}番出口" : "Exit #{m[1]}" }]
+    rules << [/(?<![\d.])(\d+)미터(?![가-힣])/, lambda { |m| ja ? "#{m[1]}m" : "#{m[1]} m" }]
+    rules << [/제(\d+)전시관/, lambda { |m| ja ? "第#{m[1]}展示館" : "Hall #{m[1]}" }]
+    rules << [/랜덤\s*(\d+)중\s*(\d+)/, lambda { |m| ja ? "#{m[1]}種の中からランダム#{m[2]}種" : "random #{m[2]} of #{m[1]}" }]        # 랜덤3중1
+    rules << [/오르막 도보 (\d+)\s*[–~-]\s*(\d+)분/, lambda { |m| ja ? "上り坂を徒歩#{m[1]}〜#{m[2]}分" : "#{m[1]}–#{m[2]} min uphill on foot" }]
+    rules << [/(?<![가-힣])(\d+)차(?![가-힣])/, lambda { |m| ja ? "第#{m[1]}回" : "round #{m[1]}" }]          # LUCKY DRAW 1차
+    rules << [/(\d{1,2}\/\d{1,2}) 휴무/, lambda { |m| ja ? "#{m[1]} 休み" : "closed #{m[1]}" }]
+    rules << [/~\s*(\d{1,2}\/\d{1,2}) 구매건/, lambda { |m| ja ? "#{m[1]} までの購入分" : "purchases through #{m[1]}" }]
+    rules << [/(\d{1,2}\/\d{1,2})\s*~\s*(\d{1,2}\/\d{1,2}) 구매건/, lambda { |m| ja ? "#{m[1]}〜#{m[2]} の購入分" : "purchases #{m[1]}–#{m[2]}" }]
+    rules << [/(\d{1,2}\/\d{1,2}) (월|화|수|목|금|토|일) (\d{1,2}:\d{2})/, lambda { |m| ja ? "#{m[1]}（#{WEEKDAY_JA[m[2]]}）#{m[3]}" : "#{m[1]} (#{WEEKDAY[m[2]]}) #{m[3]}" }]
     rules
   end
 
   WEEKDAY = { '월' => 'Mon', '화' => 'Tue', '수' => 'Wed', '목' => 'Thu', '금' => 'Fri', '토' => 'Sat', '일' => 'Sun' }.freeze
+  WEEKDAY_JA = { '월' => '月', '화' => '火', '수' => '水', '목' => '木', '금' => '金', '토' => '土', '일' => '日' }.freeze
+
+  # 영어 단복수 — "1 copies" 가 나오지 않게 (2026-09-22)
+  def self.plural(n, one, many)
+    n.to_s == '1' ? "1 #{one}" : "#{n} #{many}"
+  end
 
   # 문자열 전체가 규칙으로 덮이면 영어 전체를, 아니면 nil
   def translate_whole(text, d)
@@ -207,7 +238,8 @@ module BodyI18n
       inner = translate_whole(m[4], d)
       from = route_from(m[2].strip, d)
       dest = route_name(m[3].strip, d)
-      return "#{m[1]} Route — #{from} → #{dest} (#{inner})" if inner && from && dest
+      word = (d[:lang] == 'ja') ? 'ルート' : 'Route'
+      return "#{m[1]} #{word} — #{from} → #{dest} (#{inner})" if inner && from && dest
     end
     if (m = t.match(/\A(.+?)\s*\((.+)\)\z/))
       base = d[:headings][m[1]] || d[:tags][m[1]] || d[:norm][m[1].gsub(/[\s_]/, '')]
@@ -229,16 +261,19 @@ module BodyI18n
       return nil unless s
       suffix = " (#{s})"
     end
+    ja = (d[:lang] == 'ja')
     base, stop =
-      if (m = text.match(/\A(.+?)\s*트램역\z/)) then [m[1], 'tram stop']
-      elsif (m = text.match(/\A(.+?)\s*모노레일역\z/)) then [m[1], 'monorail station']
-      elsif (m = text.match(/\A(.+?)역\z/)) then [m[1], 'Station']
-      elsif (m = text.match(/\A(.+?)\s*정류장\z/)) then [m[1], 'stop']
+      if (m = text.match(/\A(.+?)\s*트램역\z/)) then [m[1], ja ? 'トラム停留所' : 'tram stop']
+      elsif (m = text.match(/\A(.+?)\s*모노레일역\z/)) then [m[1], ja ? 'モノレール駅' : 'monorail station']
+      elsif (m = text.match(/\A(.+?)역\z/)) then [m[1], ja ? '駅' : 'Station']
+      elsif (m = text.match(/\A(.+?)\s*정류장\z/)) then [m[1], ja ? '停留所' : 'stop']
       else [text, nil]
       end
     name = route_name(base.strip, d)
     return nil unless name
-    stop ? "#{name} #{stop}#{suffix}" : "#{name}#{suffix}"
+    # 일본어는 '市民広場駅' 처럼 붙여 쓴다
+    joiner = ja ? '' : ' '
+    stop ? "#{name}#{joiner}#{stop}#{suffix}" : "#{name}#{suffix}"
   end
 
   # 약도 소제목의 이름 조각: routes 사전 → 본문 규칙으로 전부 덮이면 그것 → 한글이 없으면 그대로
@@ -286,7 +321,15 @@ module BodyI18n
     zone
   end
 
-  def wrap_text_nodes(frag, d)
+  # 다른 언어의 같은 조각 번역 (없거나 영어와 같으면 안 단다 → 런타임에 data-en 으로 떨어진다)
+  def alt_attrs(node, others, en_value)
+    others.each do |lang, dl|
+      v = yield(dl)
+      node["data-#{lang}"] = v if v && v != en_value
+    end
+  end
+
+  def wrap_text_nodes(frag, d, others = {})
     rules = d[:rules]
     return if rules.empty?
     zone = address_zone_nodes(frag)
@@ -320,7 +363,10 @@ module BodyI18n
         pieces << Nokogiri::XML::Text.new(s[pos...st], doc) if st > pos
         span = Nokogiri::XML::Node.new('span', doc)
         span['data-en'] = tr
-        span.content = s[st...en]
+        piece = s[st...en]
+        # 조각 나누기는 영어 사전 기준으로 한 번만 하고, 다른 언어는 같은 조각을 각자 사전으로 옮긴다
+        alt_attrs(span, others, tr) { |dl| translate_whole(piece, dl) }
+        span.content = piece
         pieces << span
         pos = en
       end
@@ -330,7 +376,7 @@ module BodyI18n
     end
   end
 
-  def transform(html, d)
+  def transform(html, d, others = {})
     return html if html.nil? || html.empty? || html !~ /[가-힣※]/
     frag = Nokogiri::HTML::DocumentFragment.parse(html)
 
@@ -339,32 +385,40 @@ module BodyI18n
       kids = h.element_children
       next unless kids.empty? || kids.all? { |k| %w[em strong span].include?(k.name) }
       tr = translate_heading(h.text, d)
-      h['data-en'] = tr if tr
+      next unless tr
+      h['data-en'] = tr
+      alt_attrs(h, others, tr) { |dl| translate_heading(h.text, dl) }
     end
 
     # 2) 링크 라벨 (소제목 안팎 모두)
     frag.css('a').each do |a|
       next unless a.element_children.empty?
       tr = translate_link(a.text, d)
-      a['data-en'] = tr if tr
+      next unless tr
+      a['data-en'] = tr
+      alt_attrs(a, others, tr) { |dl| translate_link(a.text, dl) }
     end
 
     # 3) 표 머리글 (허브 표는 collection-table.html 이 따로 하지만 같은 값이라 무방)
     frag.css('th').each do |th|
       next unless th.element_children.empty?
       tr = d[:columns][th.text.strip]
-      th['data-en'] = tr if tr
+      next unless tr
+      th['data-en'] = tr
+      alt_attrs(th, others, tr) { |dl| dl[:columns][th.text.strip] }
     end
 
     # 4) 한 단어짜리 카테고리 줄 ('카페' · '음식점' …) — 태그 사전과 정확히 일치할 때만
     frag.css('p').each do |p|
       next unless p.element_children.empty?
       tr = d[:tags][p.text.strip]
-      p['data-en'] = tr if tr
+      next unless tr
+      p['data-en'] = tr
+      alt_attrs(p, others, tr) { |dl| dl[:tags][p.text.strip] }
     end
 
     # 5) 텍스트 조각 — 메모 줄 토큰·(전원)·※ 폐업함 …
-    wrap_text_nodes(frag, d)
+    wrap_text_nodes(frag, d, others)
 
     frag.to_html
   end
@@ -376,5 +430,7 @@ end
 
 Jekyll::Hooks.register [:notes], :post_convert do |doc|
   d = BodyI18n.build(doc.site)
-  doc.content = BodyI18n.transform(doc.content, d)
+  others = {}
+  others['ja'] = BodyI18n.build(doc.site, 'ja') if doc.site.data['i18n_ja']
+  doc.content = BodyI18n.transform(doc.content, d, others)
 end

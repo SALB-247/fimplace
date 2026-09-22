@@ -31,7 +31,7 @@ layout: default
 <script>
 // 태그·멤버 이름과 개수를 영어로 (i18n.html 사전)
 (function () {
-  if (window.FimLang !== 'en') return;
+  if (window.FimLang === 'ko') return;
   var h = document.querySelector('.i18n-term');
   if (h) {
     var v = h.getAttribute('data-v');

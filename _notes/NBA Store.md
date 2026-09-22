@@ -4,7 +4,7 @@ shortid: e4up5
 tags:
   - 자체컨텐츠_촬영지
   - EPISODE
-  - 사쿠라
+  - 꾸라
   - 윤진
   - 즈하
   - 은채

@@ -580,6 +580,7 @@ module PlacesGenerator
           'lat' => coords['lat'], 'lng' => coords['lng'], 'source' => coords['source'],
           'address' => addr.to_s, 'business' => biz.to_s, 'iframe_q' => iframe_q.to_s,
           'name_en' => note.data['name_en'].to_s, 'address_en' => note.data['address_en'].to_s,   # places_en.rb (영어 모드 지도 팝업·목록)
+          'name_ja' => note.data['name_ja'].to_s,
           'time_zone' => (defined?(FimTz) ? FimTz.resolve(site, note: note, venue: title, cities: tags, country: country) : nil),   # 현지 시간 모듈
           'kakao_url' => ext_urls['kakao'] ? "https://place.map.kakao.com/#{ext_urls['kakao']}" : '',
           'naver_url' => ext_urls['naver'].to_s,

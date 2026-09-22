@@ -80,8 +80,8 @@
     if (!s.start_time) return '';
     var du = FT.dual(s, d);
     if (!du) return '';
-    var l1 = (FimLang === 'en' ? 'Local ' : '현지 ') + du.local;
-    var l2 = du.sameTz ? '' : (FimLang === 'en' ? 'Your time ' : '내 시간 ') + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '');
+    var l1 = (FimLang !== 'ko' ? 'Local ' : '현지 ') + du.local;
+    var l2 = du.sameTz ? '' : (FimLang !== 'ko' ? 'Your time ' : '내 시간 ') + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '');
     return '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.25em;">🕒 ' + l1 + (l2 ? ' · ' + l2 : '') + '</div>';
   }
 
@@ -91,12 +91,12 @@
     var s = byDate[live[0]];
     badge = '<span class="tc-badge" style="background:#c9184a;color:#fff;">' + FimT('cal_today', '🔴 오늘 공연') + '</span>';
     sub = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? ' · ' + s.venue : '') +
-          (FimLang === 'en' ? ' · local date' : ' · 현지 날짜');
+          (FimLang !== 'ko' ? ' · local date' : ' · 현지 날짜');
     extra = timeLine(s, live[0]);
   } else if (next) {
     var n = byDate[next];
     var dd = FT.dateState(next, n.time_zone, NOW).days;
-    badge = '<span class="tc-badge" style="background:#1a56c4;color:#fff;">' + (FimLang === 'en' ? FimFmt(FimT('cal_next_dday', ''), [dd])
+    badge = '<span class="tc-badge" style="background:#1a56c4;color:#fff;">' + (FimLang !== 'ko' ? FimFmt(FimT('cal_next_dday', ''), [dd])
                                        : '다음 공연 D-' + dd) + '</span>';
     sub = next + ' · ' + (n.flag||'') + ' ' + FimTag(n.city||'') + (n.venue ? ' · ' + n.venue : '');
     extra = timeLine(n, next);
@@ -106,7 +106,7 @@
   }
   document.getElementById('tour-cal-status').innerHTML =
     badge + ' <span style="font-size:0.85em; color:var(--subtext);">' + sub + '</span>' + extra +
-    '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.35em;">' + (FimLang === 'en'
+    '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.35em;">' + (FimLang !== 'ko'
         ? FimFmt(FimT('cal_progress', ''), [doneCnt, totalCnt])
         : '진행 ' + doneCnt + ' / ' + totalCnt + '회') + '</div>' + tzPicker();
   var sel = document.getElementById('tc-tz');
@@ -116,9 +116,9 @@
   function tzPicker() {
     if (!SHOWS.some(function (s) { return s.start_time; })) return '';
     var choice = FT.viewerTzChoice(), dev = FT.deviceTz();
-    var opts = [['device', (FimLang === 'en' ? 'My device time' : '내 기기 시간') + (dev ? ' (' + dev + ')' : '')], ['Asia/Seoul', FimLang === 'en' ? 'Korea time (KST)' : '한국 시간 (KST)']];
-    SHOWS.forEach(function (s) { if (FT.isValidTz(s.time_zone) && !opts.some(function (o) { return o[0] === s.time_zone; })) opts.push([s.time_zone, (FimLang === 'en' ? 'Venue: ' : '공연장: ') + s.time_zone]); });
-    return '<div style="font-size:0.8em; margin-top:0.35em;"><label>' + (FimLang === 'en' ? 'Time basis ' : '시간 기준 ') +
+    var opts = [['device', (FimLang !== 'ko' ? 'My device time' : '내 기기 시간') + (dev ? ' (' + dev + ')' : '')], ['Asia/Seoul', FimLang !== 'ko' ? 'Korea time (KST)' : '한국 시간 (KST)']];
+    SHOWS.forEach(function (s) { if (FT.isValidTz(s.time_zone) && !opts.some(function (o) { return o[0] === s.time_zone; })) opts.push([s.time_zone, (FimLang !== 'ko' ? 'Venue: ' : '공연장: ') + s.time_zone]); });
+    return '<div style="font-size:0.8em; margin-top:0.35em;"><label>' + (FimLang !== 'ko' ? 'Time basis ' : '시간 기준 ') +
       '<select id="tc-tz" style="font-size:1em;">' + opts.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === choice ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label></div>';
   }
   renderStatus();
@@ -147,13 +147,15 @@
   if (maxStart < firstMonth) maxStart = firstMonth;
   if (viewStart > maxStart) viewStart = maxStart;
 
-  var DOW = (window.FimLang === 'en')
-    ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-    : ['일','월','화','수','목','금','토'];
+  var DOW = (window.FimLang === 'ko') ? ['일','월','화','수','목','금','토']
+          : (window.FimLang === 'ja') ? ['日','月','火','水','木','金','土']
+          : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   var MON_EN = ['January','February','March','April','May','June',
                 'July','August','September','October','November','December'];
   function ymLabel(y, m) {
-    return (window.FimLang === 'en') ? MON_EN[m - 1] + ' ' + y : y + '년 ' + m + '월';
+    if (window.FimLang === 'ko') return y + '년 ' + m + '월';
+    if (window.FimLang === 'ja') return y + '年 ' + m + '月';
+    return MON_EN[m - 1] + ' ' + y;
   }
 
   function renderMonth(mk) {
@@ -162,7 +164,7 @@
     var showCnt = allDates.filter(function (d) { return d.slice(0,7) === mk; }).length;
     var html = '<div class="tc-month"><div class="tc-mtitle">' + ymLabel(y, m) +
       (showCnt ? ' <span style="font-weight:400;font-size:0.82em;color:var(--subtext);">· ' +
-                 (FimLang === 'en' ? FimFmt(FimT('cal_day_count', ''), [showCnt]) : showCnt + '일') +
+                 (FimLang !== 'ko' ? FimFmt(FimT('cal_day_count', ''), [showCnt]) : showCnt + '일') +
                  '</span>' : '') +
       '</div><div class="tc-days">';
     DOW.forEach(function (w) { html += '<div class="tc-dow">' + w + '</div>'; });
@@ -173,7 +175,7 @@
       if (!s) { html += '<div class="tc-cell">' + day + '</div>'; continue; }
       var st = state(ds);
       var label = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? '\n' + s.venue : '') +
-                  (s.start_time ? '\n' + (FimLang === 'en' ? 'Local ' : '현지 ') + s.start_time : '') +
+                  (s.start_time ? '\n' + (FimLang !== 'ko' ? 'Local ' : '현지 ') + s.start_time : '') +
                   (s.cancelled ? '\n' + FimT('cal_cancelled', '(취소)') : '');
       var tag = s.venue_url ? 'a' : 'div';
       var href = s.venue_url ? ' href="{{ site.baseurl }}' + s.venue_url + '"' : '';

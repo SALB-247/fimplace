@@ -61,7 +61,7 @@ permalink: /tags/
 <script>
 // 태그·섹션 이름을 영어로 (i18n.html 의 사전 사용)
 (function () {
-  if (!window.FimLang || window.FimLang !== 'en') return;
+  if (!window.FimLang || window.FimLang === 'ko') return;
   document.querySelectorAll('.i18n-tag').forEach(function (el) {
     el.textContent = window.FimTag(el.getAttribute('data-tag'));
   });

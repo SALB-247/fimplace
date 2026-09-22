@@ -300,7 +300,7 @@ permalink: /map/
   function label() {
     var n = activeCount();
     var open = box.hidden === false;
-    var word = (window.FimLang === 'en') ? 'Filters' : '필터';
+    var word = (window.FimLang !== 'ko') ? 'Filters' : '필터';
     btn.innerHTML = '\u2699\ufe0f ' + word +
       (n ? ' <span class="cnt">' + n + '</span>' : '') + ' ' + (open ? '\u25b4' : '\u25be');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -574,7 +574,7 @@ permalink: /map/
     var LEGEND_LABEL = FimT('legend_toggle', '마커 보는 법');
     // 범례 안의 멤버 이름·'공통' 도 영어로
     var legendHtml = src.innerHTML;
-    if (FimLang === 'en') {
+    if (FimLang !== 'ko') {
       ['사쿠라', '김채원', '허윤진', '카즈하', '홍은채'].forEach(function (m) {
         legendHtml = legendHtml.split('>' + m + '<').join('>' + FimMember(m) + '<')
                                .split(' ' + m + '<').join(' ' + FimMember(m) + '<');
@@ -680,7 +680,7 @@ permalink: /map/
         html: '<div class="fim-mylocation-pulse"></div><div class="fim-mylocation-dot"></div>',
         iconSize: [22, 22], iconAnchor: [11, 11]
       })
-    }).addTo(map).bindPopup(FimLang === 'en'
+    }).addTo(map).bindPopup(FimLang !== 'ko'
       ? FimFmt(FimT('locate_here', ''), [Math.round(e.accuracy)])
       : '현재 위치 (±' + Math.round(e.accuracy) + 'm)');
     locCircle = L.circle(ll, {
@@ -760,7 +760,7 @@ permalink: /map/
       when = s.date_raw;
     } else if (pick.state === 'next') {
       var dd = window.FimTime ? FimTime.dayDiff(t, pick.date) : Math.round((new Date(pick.date + 'T00:00:00') - new Date(t + 'T00:00:00')) / 86400000);
-      head = '<span style="background:#1a56c4;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">' + (FimLang === 'en'
+      head = '<span style="background:#1a56c4;color:#fff;padding:0.15em 0.6em;border-radius:999px;font-size:0.8em;font-weight:700;">' + (FimLang !== 'ko'
         ? FimFmt(FimT('crew_next_dday', ''), [dd]) : '다음 공연 D-' + dd) + '</span>';
       when = s.date_raw;
     } else {
@@ -773,7 +773,7 @@ permalink: /map/
     return '<div style="min-width:210px">' + head +
       '<div style="margin-top:0.45em; font-size:1.05em;"><strong>' + (s.flag || '') + ' ' + escapeHtmlMap(FimTag(s.city || '')) + '</strong></div>' +
       '<div style="margin-top:0.15em;">' + venue + '</div>' +
-      '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.3em;">📅 ' + escapeHtmlMap(when) + (FimLang === 'en' ? ' (local)' : ' (현지)') + '</div>' +
+      '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.3em;">📅 ' + escapeHtmlMap(when) + (FimLang !== 'ko' ? ' (local)' : ' (현지)') + '</div>' +
       (function () {   // 확정 시각이 있으면 현지·내 시간 이중 표시 (날짜만 아는 공연은 아무것도 안 붙인다)
         if (!s.start_time || !window.FimTime) return '';
         var du = FimTime.dual(s, pick.date);
@@ -847,14 +847,17 @@ permalink: /map/
   // 영어 모드: 구글맵 영어 이름·주소 (places_en.rb) — 한글 이름은 현지에서 찾을 때 필요하니 괄호로 남긴다
   // ⚠️ 한 줄에 '==' 가 두 번 오면 markdown-highlighter 가 ==…== 를 <mark> 로 바꿔 스크립트가 깨진다 → 조건을 줄로 나눈다
   function placeName(p) {
-    if (window.FimLang !== 'en' || !p.name_en) return p.title;
-    if (normQuery(p.name_en) === normQuery(p.title)) return p.title;
-    return p.name_en + ' (' + p.title + ')';
+    if (window.FimLang === 'ko') return p.title;
+    var nm = (window.FimLang === 'ja' && p.name_ja) ? p.name_ja : p.name_en;
+    if (!nm) return p.title;
+    if (normQuery(nm) === normQuery(p.title)) return p.title;
+    return nm + ' (' + p.title + ')';
   }
-  function placeAddr(p) { return (window.FimLang === 'en' && p.address_en) ? p.address_en : p.address; }
+  function placeAddr(p) { return (window.FimLang !== 'ko' && p.address_en) ? p.address_en : p.address; }
   function matchesQuery(p, q) {
     if (normQuery(p.title).indexOf(q) !== -1) return true;
     if (normQuery(p.name_en).indexOf(q) !== -1) return true;
+    if (normQuery(p.name_ja).indexOf(q) !== -1) return true;
     if (normQuery(p.address_en).indexOf(q) !== -1) return true;
     if (normQuery(p.business).indexOf(q) !== -1) return true;
     if (normQuery(p.address).indexOf(q) !== -1) return true;
@@ -1118,7 +1121,7 @@ permalink: /map/
       var mEnd = new Date(y, mo + 1, 0).getTime() + 86399999;
       var c = counts[k2] || 0;
       var hpx = c ? Math.max(3, Math.round(c / maxC * 38)) : 1;
-      hh += '<div class="b in" data-s="' + mStart + '" data-e="' + mEnd + '" style="height:' + hpx + 'px" title="' + (FimLang === 'en'
+      hh += '<div class="b in" data-s="' + mStart + '" data-e="' + mEnd + '" style="height:' + hpx + 'px" title="' + (FimLang !== 'ko'
         ? FimFmt(FimT('tl_month_tooltip', ''), [y + '.' + String(mo + 1).padStart(2, '0'), FimPlural(c, 'place')])
         : y + '.' + String(mo + 1).padStart(2, '0') + ' · ' + c + '곳') + '"></div>';
       // 연도 눈금 (1월 위치)
@@ -1236,7 +1239,7 @@ permalink: /map/
       tagSel.disabled = false;
       rebuildSelect(tagSel, tagItems, t,
         function (v, n) { return '#' + FimTag(v) + ' (' + n + ')'; },
-        '📂 ' + FimSection(c) + (FimLang === 'en' ? ' — all' : ' 전체'));
+        '📂 ' + FimSection(c) + (FimLang !== 'ko' ? ' — all' : ' 전체'));
     }
 
     // member: tag 적용 후 풀.
@@ -1304,7 +1307,7 @@ permalink: /map/
     if (!src) return '';
     if (src === 'frontmatter' || src === 'manual' || src === 'gmaps') return '';
     var why = src.indexOf('known:') === 0
-                ? (FimLang === 'en'
+                ? (FimLang !== 'ko'
                     ? FimFmt(FimT('badge_approx_station', '%s 기준 대략 위치'), [src.slice(6)])
                     : src.slice(6) + ' 기준 대략 위치')
             : src.indexOf('nominatim') === 0 ? FimT('badge_approx_geocode', '주소 검색으로 찾은 대략 위치')
@@ -1383,26 +1386,26 @@ permalink: /map/
     var msg;
     if (!labels.length) {
       if (shownCount > 0) { el.hidden = true; return; }
-      msg = FimLang === 'en'
+      msg = FimLang !== 'ko'
         ? FimFmt(FimT('note_no_result', ''), ['‘' + escapeHtmlMap(term) + '’'])
         : '‘' + escapeHtmlMap(term) + '’ 검색 결과가 없습니다.';
     } else {
       var f = '<b>' + labels.map(escapeHtmlMap).join(' · ') + '</b>';
       if (shownCount === 0) {
-        msg = FimLang === 'en'
+        msg = FimLang !== 'ko'
           ? FimFmt(FimT('note_no_result_filtered', ''), ['‘' + escapeHtmlMap(term) + '’', f])
           : '‘' + escapeHtmlMap(term) + '’ — ' + f + ' 필터 안에는 결과가 없습니다.';
         if (qAll > 0) {
-          msg += ' ' + (FimLang === 'en'
+          msg += ' ' + (FimLang !== 'ko'
             ? FimFmt(FimT('note_outside', ''), [qAll])
             : '필터 밖에는 ' + qAll + '곳 있습니다.');
         }
       } else if (qAll > shownCount) {
-        msg = FimLang === 'en'
+        msg = FimLang !== 'ko'
           ? FimFmt(FimT('note_hidden_by_filter', ''), [f, qAll - shownCount])
           : f + ' 필터가 걸려 있어 ' + (qAll - shownCount) + '곳이 더 가려져 있습니다.';
       } else {
-        msg = FimLang === 'en'
+        msg = FimLang !== 'ko'
           ? FimFmt(FimT('note_within_filter', ''), [f])
           : f + ' 필터 안에서 찾은 결과입니다.';
       }
@@ -1411,7 +1414,7 @@ permalink: /map/
     if (labels.length && qAll > shownCount) {
       var b = document.createElement('button');
       b.type = 'button';
-      b.textContent = FimLang === 'en'
+      b.textContent = FimLang !== 'ko'
         ? FimFmt(FimT('note_clear_button', ''), [qAll])
         : '필터 해제하고 ' + qAll + '곳 보기';
       b.addEventListener('click', clearFiltersKeepSearch);
@@ -1497,7 +1500,7 @@ permalink: /map/
     listEl.innerHTML = '';
     var head = document.createElement('div');
     head.id = 'map-list-head';
-    head.textContent = FimLang === 'en'
+    head.textContent = FimLang !== 'ko'
       ? visible.length + ' ' + FimT('list_in_view', '이 화면')
       : '이 화면 ' + visible.length + '곳'
       + (currentFiltered.length > visible.length ? ' · 전체 ' + currentFiltered.length : '');
@@ -1575,11 +1578,11 @@ permalink: /map/
     });
     currentFiltered = filtered;
 
-    var msg = FimLang === 'en'
+    var msg = FimLang !== 'ko'
       ? filtered.length + ' / ' + ALL.length + ' ' + FimT('count_places', '장소')
       : filtered.length + ' / ' + ALL.length + ' 장소';
     if (!includeEnded && totalEnded > 0) {
-      msg += FimLang === 'en'
+      msg += FimLang !== 'ko'
         ? ' (' + totalEnded + ' ' + FimT('count_hidden_ended', '종료 숨김') + ')'
         : ' (종료 ' + totalEnded + '개 숨김)';
     }

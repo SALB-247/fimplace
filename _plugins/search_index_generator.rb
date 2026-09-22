@@ -22,6 +22,9 @@ module SearchIndexer
           'members' => Array(note.data['members']).map(&:to_s),
           'address' => extract_address_line(note.content.to_s),
           'name_en' => note.data['name_en'].to_s, 'address_en' => note.data['address_en'].to_s,   # places_en.rb
+          'name_ja' => note.data['name_ja'].to_s,                                                   # places_en.rb (일본어 이름)
+          # 구글 카테고리 — 'convenience store'·'飲食店' 처럼 업종으로 찾는 사람이 많다
+          'cat' => [note.data['category_en'], note.data['category_ja']].compact.map(&:to_s).reject(&:empty?),
           'date'    => (rep_date ? rep_date.strftime('%Y-%m-%d') : nil),
           'excerpt' => clean_excerpt(note.content.to_s, 500)
         }

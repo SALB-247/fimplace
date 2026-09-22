@@ -190,14 +190,14 @@ ui:
   home_intro: FimPlace is an archive of places connected to LE SSERAFIM.
   home_contact: "Contact: fim.hlight@gmail.com"
   home_banner_cta: See tour dates →
-  home_highlighted: High-lighted list
+  home_highlighted: Highlights
   home_link_map: Full map
   home_link_map_sub: every place at a glance
   home_link_search: Search places
   home_link_search_sub: by name, tag, or member
   home_link_tags: All tags
   home_link_tags_sub: index by category and member
-  home_list: FimPlace list
+  home_list: FimPlace collections
   home_recent: Recent & upcoming
   home_loading: Loading schedule...
   home_no_events: Nothing to show.
@@ -253,7 +253,7 @@ tags:
   # 장소 유형
   카페: Cafe
   음식점: Restaurant
-  숙박시설: Hotel
+  숙박시설: Accommodation
   상점: Shop
   쇼핑: Shopping
   액티비티: Activity
@@ -272,7 +272,7 @@ tags:
   르니버스: LENIVERSE
   진즈하여행: JenZuha Trip
   은채의_취미일기: Eunchae's Hobby Diary
-  MV_촬영지: Music video place
+  MV_촬영지: Music video filming spot
   DAY-OFF: DAY-OFF
   위버스라이브: Weverse LIVE
   다큐멘터리: Documentary
@@ -520,7 +520,7 @@ tags:
 
   # 멤버 — 공식 표기 사용
   사쿠라: SAKURA
-  꾸라: Kkura
+  꾸라: SAKURA
   채원: CHAEWON
   윤진: YUNJIN
   즈하: KAZUHA
@@ -547,6 +547,7 @@ members:
 
 # UI 페이지 제목 (<title> · 노트 제목은 콘텐츠라 그대로 둔다)
 titles:
+  "Fimplace | 르세라핌 장소 아카이브": "Fimplace | LE SSERAFIM place archive"
   지도: Map
   방문 계획: Trip planner
   태그: Tags
@@ -634,6 +635,8 @@ headings:
 # 점검: python scripts/body_i18n_audit.py (빈도순으로 빠진 문구를 보여준다)
 body:
   headings:            # h1~h4 텍스트가 정확히 일치할 때 (위 headings: 와 합쳐서 본다)
+    채원이세트: CHAEWON set
+    여름날세트: Summer Day set
     2025년_3주년 광고: 2025 3rd Anniversary ads
     2025년_3주년 카페: 2025 3rd Anniversary cafes
     언급된 메뉴: Menu items mentioned
@@ -728,7 +731,7 @@ body:
     세븐일레븐 공지 (인스타): 7-Eleven notice (Instagram)
     공식 공지 (Weverse Concerts): Official notice (Weverse Concerts)
     HYBE MERCH 안내 (X): HYBE MERCH notice (X)
-    꾸라 인스타: Kkura's Instagram
+    꾸라 인스타: SAKURA's Instagram
     채원 위버스: CHAEWON's Weverse
     윤진 위버스: YUNJIN's Weverse
   names:               # 메모 줄 'YYMMDD 멤버' 의 멤버 — 풀네임·애칭
@@ -738,7 +741,7 @@ body:
     카즈하: KAZUHA
     홍은채: HONG EUNCHAE
     윤진: YUNJIN
-    꾸라: Kkura
+    꾸라: SAKURA
     채원: CHAEWON
     즈하: KAZUHA
     은채: EUNCHAE
@@ -763,7 +766,7 @@ body:
   units:               # 영상 줄 끝의 (전원)·(꾸라·채원) 괄호
     전원: all members
     사쿠라: SAKURA
-    꾸라: Kkura
+    꾸라: SAKURA
     채원: CHAEWON
     윤진: YUNJIN
     즈하: KAZUHA
@@ -784,6 +787,9 @@ body:
     구글맵: Google Maps
     구글: Google
   phrases:             # 괄호 안팎에 반복되는 짧은 문구·고유명사 — 한글 경계 안에서만 바꾼다 ('르세라핌이' 처럼 조사가 붙으면 그대로)
+    케이크+아이스티: cake + iced tea
+    에이드 2종: 2 ade drinks
+    세트: set
     사옥 뒤편 카페골목: cafe alley behind HYBE HQ
     하이브 사옥: HYBE HQ
     세븐일레븐: 7-Eleven

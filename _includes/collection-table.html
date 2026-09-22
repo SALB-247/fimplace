@@ -24,7 +24,7 @@
     });
     // 영어면 열 이름을 i18n columns 사전으로 바꾼다 (뱃지 열 판정은 위 한국어 headers 로 먼저 한다)
     var labels = headers.slice();
-    if (window.FimLang === 'en' && window.FimTr) {
+    if (window.FimLang !== 'ko' && window.FimTr) {
       Array.prototype.forEach.call(headRow.children, function (th, i) {
         var tr = FimTr('columns', headers[i]);
         if (tr && tr !== headers[i]) { th.textContent = tr; labels[i] = tr; }

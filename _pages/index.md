@@ -59,20 +59,141 @@ permalink: /
   </a>
 </div>
 
-<strong data-i18n="home_highlighted">High-lighted list</strong>
+<script>
+// 홈에서 쓰는 JSON 은 한 번만 받아 공유한다 (모음 카드 + 최근 일정)
+window.FimJson = function (name) {
+  window.__fimJson = window.__fimJson || {};
+  if (!window.__fimJson[name]) {
+    window.__fimJson[name] = fetch('{{ site.baseurl }}/' + name)
+      .then(function (r) { return r.json(); }).catch(function () { return null; });
+  }
+  return window.__fimJson[name];
+};
+</script>
+<!-- 주요 모음 / 컬렉션 — 목록은 _data/hub_menu.yml 한 곳에서 온다 (2026-09-22).
+     · 라벨: 한국어는 템플릿 원문, 영어는 노트의 title_en(+en_url), 일본어는 _data/i18n_ja.yml 의 hubs:
+     · '주요 모음'(투어·이벤트)은 마지막 공연·이벤트가 끝나면 스크립트가 감춘다. 다 끝나면 섹션째 사라진다. -->
+<style>
+  .fim-hubs { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+              gap:0.5em; margin:0.5em 0 1.4em; }
+  .fim-hubs a { display:flex; align-items:center; gap:0.6em; padding:0.7em 0.9em;
+                border:1px solid var(--border); border-radius:10px; background:var(--box-bg);
+                color:var(--text); text-decoration:none; line-height:1.3; font-weight:600;
+                transition:border-color .12s, background .12s; }
+  .fim-hubs a:hover { background:var(--link-hover); border-color:var(--primary); }
+  .fim-hubs a::after { content:none !important; }   /* 사이트 공통 링크 ↗ 끄기 */
+  .fim-hubs .ico { font-size:1.3em; line-height:1; flex:0 0 auto; }
+  .fim-hubs .ttl { min-width:0; word-break:keep-all; overflow-wrap:anywhere; }
+  .fim-hubs a.primary { border-color:var(--primary); background:var(--input-bg); }
+  /* display:flex 가 UA 의 [hidden]{display:none} 보다 우선순위가 높아 끝난 카드가 계속 보였다 (2026-09-22) */
+  .fim-hubs a[hidden] { display:none !important; }
+</style>
 
-## [[2026 LE SSERAFIM TOUR 'PUREFLOW']]
+<section id="home-highlight" hidden>
+<strong data-i18n="home_highlighted">주요 모음</strong>
+<div class="fim-hubs">
+{%- assign cur_group = '' -%}
+{%- for item in site.data.hub_menu -%}
+  {%- if item.group -%}
+    {%- assign cur_group = item.group -%}
+  {%- elsif cur_group != '' and item.home != 'skip' -%}
+    {%- assign hub = site.notes | where: "title", item.title | first -%}
+    {%- if hub -%}
+      {%- assign ja = site.data.i18n_ja.hubs[item.title] -%}
+      {%- if cur_group == '투어' -%}{%- assign kind = 'tour' -%}{%- else -%}{%- assign kind = 'event' -%}{%- endif -%}
+<a class="internal-link primary" href="{{ site.baseurl }}{{ hub.url }}" data-kind="{{ kind }}"
+   {%- if kind == 'tour' %} data-tour-url="{{ hub.url }}"{% else %} data-tag="{{ hub.tags | first }}"{% endif -%}
+   {%- if hub.en_url %} data-en-href="{{ site.baseurl }}{{ hub.en_url }}"{% endif -%}
+   {%- if hub.title_en %} data-en="{{ hub.title_en | escape }}"{% endif -%}
+   {%- if ja %} data-ja="{{ ja | escape }}"{% endif %}>
+  <span class="ico">{{ item.icon | default: '🎫' }}</span><span class="ttl">{{ item.title }}</span></a>
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+</div>
+</section>
 
-## [[Made My Night_오프라인 이벤트 모음]]
+<section id="home-collections">
+<strong data-i18n="home_list">FimPlace 컬렉션</strong>
+<div class="fim-hubs">
+{%- for item in site.data.hub_menu -%}
+  {%- if item.home == 'collection' -%}
+    {%- assign hub = site.notes | where: "title", item.title | first -%}
+    {%- if hub -%}
+      {%- assign ja = site.data.i18n_ja.hubs[item.title] -%}
+<a class="internal-link" href="{{ site.baseurl }}{{ hub.url }}"
+   {%- if hub.en_url %} data-en-href="{{ site.baseurl }}{{ hub.en_url }}"{% endif -%}
+   {%- if hub.title_en %} data-en="{{ hub.title_en | escape }}"{% endif -%}
+   {%- if ja %} data-ja="{{ ja | escape }}"{% endif %}>
+  <span class="ico">{{ item.icon | default: '📁' }}</span><span class="ttl">{{ item.title }}</span></a>
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+</div>
+</section>
 
+<script>
+// 홈 모음 카드: ① 언어별 라벨·주소 ② 끝난 투어·이벤트는 감춘다
+(function () {
+  var LANG = window.FimLang || 'ko';
 
-<strong data-i18n="home_list">Fimplace list</strong>
+  function label(a) {
+    var v = (LANG === 'ko') ? null : (a.getAttribute('data-' + LANG) || a.getAttribute('data-en'));
+    if (v) { var t = a.querySelector('.ttl'); if (t) t.textContent = v; }
+    var href = (LANG === 'ko') ? null : a.getAttribute('data-en-href');   // 영어판 허브는 /en/…
+    if (href && LANG === 'en') a.setAttribute('href', href);
+  }
+  document.querySelectorAll('.fim-hubs a').forEach(label);
 
-[[-자체 컨텐츠 촬영지]]
+  var sec = document.getElementById('home-highlight');
+  if (!sec) return;
+  var cards = [].slice.call(sec.querySelectorAll('a[data-kind]'));
+  if (!cards.length) return;
 
-[[-외부 컨텐츠 촬영지]]
+  function localToday() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  // 공연장·행사장 현지 날짜로 판정 (서울에서 볼 때 미국 공연이 하루 먼저 끝나 보이던 문제와 같은 이유)
+  function todayIn(tz) {
+    if (tz && window.FimTime && window.FimTime.isValidTz(tz)) return window.FimTime.todayIn(tz);
+    return localToday();
+  }
+  function reveal() { sec.hidden = false; }
+  var done = false;
+  var safety = setTimeout(function () { if (!done) reveal(); }, 4000);   // 데이터가 안 와도 섹션이 영영 안 보이는 일은 없게
 
-[[-SNS 장소]]
+  Promise.all([FimJson('tour_schedule.json'), FimJson('events.json')]).then(function (res) {
+    var shows = (res[0] && res[0].shows) || [];
+    var events = (res[1] && res[1].events) || [];
+    // 투어: tour_url 별 마지막 공연 / 이벤트 모음: 같은 태그를 단 이벤트의 마지막 종료일
+    var byTour = {}, byTag = {};
+    function bump(box, key, end, tz) {
+      if (!key || !end) return;
+      if (!box[key] || end > box[key].end) box[key] = { end: end, tz: tz };
+    }
+    shows.forEach(function (sh) {
+      if (sh.cancelled) return;
+      bump(byTour, sh.tour_url, sh.end || sh.start, sh.time_zone);
+    });
+    events.forEach(function (e) {
+      (e.tags || []).forEach(function (tg) { bump(byTag, tg, e.end || e.start, e.time_zone); });
+    });
+
+    var shown = 0;
+    cards.forEach(function (a) {
+      var kind = a.getAttribute('data-kind');
+      var info = (kind === 'tour') ? byTour[a.getAttribute('data-tour-url')] : byTag[a.getAttribute('data-tag')];
+      // 일정을 못 찾으면 감추지 않는다 (아직 일정이 안 올라온 새 투어)
+      if (info && info.end < todayIn(info.tz)) { a.hidden = true; return; }
+      shown++;
+    });
+    done = true;
+    clearTimeout(safety);
+    if (shown) reveal();          // 하나도 안 남으면 제목째 그대로 숨김
+  }).catch(function () { done = true; clearTimeout(safety); reveal(); });
+})();
+</script>
 
 
 <strong data-i18n="home_recent">최근 일정 노트</strong>
@@ -93,7 +214,7 @@ permalink: /
   var KIND = { '기간': 'home_kind_period', '방문': 'home_kind_visit',
                '업로드': 'home_kind_upload', '공연': 'home_kind_show' };
   function kindLabel(k) {
-    return (window.FimLang === 'en' && KIND[k]) ? window.FimT(KIND[k], k) : k;
+    return (window.FimLang !== 'ko' && KIND[k]) ? window.FimT(KIND[k], k) : k;
   }
   var today = now.getTime();
   // 공연·이벤트는 그 장소의 현지 오늘로 판정한다 (서울에서 볼 때 미국 공연이 하루 먼저 끝나 보이던 문제, 2026-09-22)
@@ -102,11 +223,9 @@ permalink: /
     return today;
   }
 
-  Promise.all([
-    fetch('{{ site.baseurl }}/places.json').then(function (r) { return r.json(); }).catch(function () { return { places: [] }; }),
-    fetch('{{ site.baseurl }}/tour_schedule.json').then(function (r) { return r.json(); }).catch(function () { return { shows: [] }; }),
-    fetch('{{ site.baseurl }}/events.json').then(function (r) { return r.json(); }).catch(function () { return { events: [] }; })
-  ]).then(function (res) {
+  Promise.all([FimJson('places.json'), FimJson('tour_schedule.json'), FimJson('events.json')])
+    .then(function (raw) {
+    var res = [raw[0] || { places: [] }, raw[1] || { shows: [] }, raw[2] || { events: [] }];
     var items = [];
     var seen = {};   // url 기준 dedupe (places 와 events 에 같은 노트가 둘 다 있음)
 
@@ -177,14 +296,14 @@ permalink: /
       var tt = it.today || today;
       var live = it.evt && it.date <= tt && tt <= it.endDate + DAY - 1;
       var badge = live ? '<span style="display:inline-block;background:#c9184a;color:#fff;padding:0.05em 0.5em;border-radius:999px;font-size:0.72em;font-weight:700;margin-right:0.4em;">' +
-        (window.FimLang === 'en' ? window.FimT('home_live', 'LIVE NOW') : '진행 중') +
+        (window.FimLang !== 'ko' ? window.FimT('home_live', 'LIVE NOW') : '진행 중') +
         '</span>' : '';
       return '<li style="margin-bottom:0.25em;">' + badge +
         '<a class="internal-link" href="' + it.url + '">' + it.title + '</a>' +
         ' <span style="font-size:0.78em;color:var(--subtext);">(' + when + ' ' + kindLabel(it.kind) + ')</span></li>';
     }).join('');
     document.getElementById('upcoming-events').innerHTML = html || ('<li>' +
-      (window.FimLang === 'en' ? window.FimT('home_no_events', '') : '표시할 일정이 없습니다.') + '</li>');
+      (window.FimLang !== 'ko' ? window.FimT('home_no_events', '') : '표시할 일정이 없습니다.') + '</li>');
   });
 })();
 </script>

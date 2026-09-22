@@ -98,7 +98,7 @@
         .addTo(map)
         .bindPopup('<strong>' + head + '</strong><br>' + (pick.flag||'') + ' ' + FimTag(pick.city||'') +
           (pick.venue_url ? '<br><a href="{{ site.baseurl }}' + pick.venue_url + '">' + pick.venue + '</a>' : '') +
-          '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + (FimLang === 'en' ? ' (local)' : ' (현지)') + '</span>' +
+          '<br><span style="font-size:0.85em;color:#888;">📅 ' + pick.date_raw + (FimLang !== 'ko' ? ' (local)' : ' (현지)') + '</span>' +
           (function () {   // 확정 시각이 있으면 현지·내 시간 이중 표시
             if (!pick.start_time || !window.FimTime) return '';
             var du = FimTime.dual(pick, pickDate);
@@ -128,7 +128,7 @@
       var isLive = e.start <= te && te <= e.end;
       var dday = window.FimTime ? FimTime.dayDiff(te, e.start) : Math.round((new Date(e.start) - new Date(te)) / 86400000);
       var head = isLive ? FimT('home_popup_live', '🛍️ 팝업 진행 중')
-               : (FimLang === 'en' ? FimFmt(FimT('home_popup_dday', ''), [dday])
+               : (FimLang !== 'ko' ? FimFmt(FimT('home_popup_dday', ''), [dday])
                                    : '🛍️ 팝업 D-' + dday);
       var ll = [e.lat, wrapLng(e.lng)];
       var m = L.marker(ll, {

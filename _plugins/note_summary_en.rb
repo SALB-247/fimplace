@@ -21,7 +21,36 @@ module NoteSummaryEn
     names.flat_map { |n| Array(tc[n]).map(&:to_s) }
   end
 
+  # 현재 만들고 있는 요약의 언어 ('en' | 'ja'). generate 가 노트마다 순차로 세팅한다.
+  def lang
+    @lang || 'en'
+  end
+
+  def lang=(v)
+    @lang = v
+  end
+
+  # 주소로 만든 지역 이름은 영어다 ('Jongno', 'Seoul') — 영어 값을 열쇠로 그 언어 이름을 찾는다
+  def region_alt(site, en_name)
+    @region_alt ||= {}
+    @region_alt[lang] ||= begin
+      map = {}
+      %w[regions tags].each do |g|
+        ko_en = ((site.data['i18n'] || {})[g] || {})
+        ko_x  = ((site.data["i18n_#{lang}"] || {})[g] || {})
+        ko_en.each { |ko, en| map[en.to_s] ||= ko_x[ko].to_s if ko_x[ko] }
+      end
+      map
+    end
+    @region_alt[lang][en_name.to_s] || en_name
+  end
+
   def tr(site, group, key)
+    if lang != 'en'
+      dx = (site.data["i18n_#{lang}"] || {})[group] || {}
+      v = dx[key]
+      return v.to_s unless v.nil? || v.to_s.empty?
+    end
     d = (site.data['i18n'] || {})[group] || {}
     v = d[key]
     v.nil? || v.to_s.empty? ? key : v.to_s
@@ -112,7 +141,7 @@ module NoteSummaryEn
           region = ['Seoul']
         end
       end
-      region << 'Korea'
+      region << (lang == 'ja' ? '韓国' : 'Korea')
     else
       cities = section(site, '일본 (지역)', '일본(지역)', '해외 (지역)', '해외(지역)')
       labels = section(site, '국가 (라벨)', '국가(라벨)')
@@ -120,12 +149,16 @@ module NoteSummaryEn
       city = tags.find { |t| cities.include?(t) && t != lab }
       region = [city && tr(site, 'tags', city), lab && tr(site, 'countries', lab)].compact
     end
+    # 'Jung-gu, Busan' 처럼 이미 합쳐진 값도 있어 쉼표로 쪼개 하나씩 옮긴다
+    if lang != 'en'
+      region = region.flat_map { |r| r.to_s.split(/,\s*/) }.map { |r| region_alt(site, r) }
+    end
     parts << region.uniq.join(', ') unless region.empty?
 
     # 3) 멤버
     ms = Array(note.data['members']).map(&:to_s).uniq
     parts << if ms.empty? || ms.size >= 5
-               'all members'
+               (lang == 'ja' ? 'メンバー全員' : 'all members')
              else
                (MEMBER_ORDER.select { |m| ms.include?(m) } + (ms - MEMBER_ORDER)).map { |m| tr(site, 'members', m) }.join(' · ')
              end
@@ -136,17 +169,21 @@ module NoteSummaryEn
     plat_tag = tags.find { |t| SNS_TAGS.include?(t) }
     memo_plat, memo_date = memo_source(note)
     if sr == 'MV_촬영지'
-      parts << 'Music video place'
+      parts << (lang == 'ja' ? 'MV 撮影地' : 'Music video filming spot')
     elsif sr
-      parts << "Featured in #{tr(site, 'tags', sr)}"
+      parts << (lang == 'ja' ? "#{tr(site, 'tags', sr)} に登場" : "Featured in #{tr(site, 'tags', sr)}")
     elsif plat_tag || memo_plat
       plats = ((site.data['i18n'] || {})['body'] || {})['platforms'] || {}
+      if lang != 'en'
+        px = ((site.data["i18n_#{lang}"] || {})['body'] || {})['platforms'] || {}
+        plats = plats.merge(px)
+      end
       p = memo_plat ? (plats[memo_plat] || memo_plat) : tr(site, 'tags', plat_tag)
       parts << (memo_date ? "#{p} (#{memo_date})" : p)
     elsif tags.include?('자체컨텐츠_촬영지')
-      parts << 'Featured in official content'
+      parts << (lang == 'ja' ? '公式コンテンツに登場' : 'Featured in official content')
     elsif tags.include?('외부컨텐츠')
-      parts << 'Featured in external media'
+      parts << (lang == 'ja' ? '外部メディアに登場' : 'Featured in external media')
     elsif !tags.include?('공연장') && (vid = note.content.to_s[%r{(?:youtube(?:-nocookie)?\.com/embed/|youtu\.be/)([A-Za-z0-9_-]{11})}, 1])
       # 대분류 태그도 메모 줄도 없이 영상만 임베드된 오래된 노트 — 업로드일 캐시로 'YouTube (2026-05-27)'
       up = (site.data['video_dates'] || {})[vid]
@@ -155,9 +192,9 @@ module NoteSummaryEn
 
     # 5) 상태
     closed = note.data['closed']
-    parts << 'Permanently closed' if closed && closed != false
+    parts << (lang == 'ja' ? '閉店' : 'Permanently closed') if closed && closed != false
     if note.data['ended'] == true || (note.data['event_end'].respond_to?(:<) && note.data['event_end'] < Date.today)
-      parts << 'Ended'
+      parts << (lang == 'ja' ? '終了' : 'Ended')
     end
     parts.join(' · ')
   end
@@ -174,12 +211,18 @@ module NoteSummaryEn
         # 생일 이벤트 모음처럼 링크 목록만 있는 페이지(상호명 없음 · 내부 링크 5개↑)는 요약이 무의미
         c = note.content.to_s
         next if c !~ /^##\s*상호명/ && c.scan(/internal-link|\[\[/).size >= 5
+        NoteSummaryEn.lang = 'en'
         s = NoteSummaryEn.build(site, note)
         next if s.empty?
         note.data['summary_en'] = s
         n += 1
+        next unless site.data['i18n_ja']
+        NoteSummaryEn.lang = 'ja'
+        sj = NoteSummaryEn.build(site, note)
+        note.data['summary_ja'] = sj if sj != '' && sj != s
       end
-      Jekyll.logger.info('NoteSummaryEn', "영어 요약 #{n}건")
+      NoteSummaryEn.lang = 'en'
+      Jekyll.logger.info('NoteSummaryEn', "요약 #{n}건 (en" + (site.data['i18n_ja'] ? ' + ja' : '') + ')')
     end
   end
 end

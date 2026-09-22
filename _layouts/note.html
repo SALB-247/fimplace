@@ -18,18 +18,18 @@ layout: default
 </script>
 {% endif %}
 
-{% if page.en_url %}<script>if (window.FimLang === 'en') location.replace('{{ site.baseurl }}{{ page.en_url }}' + location.search + location.hash);</script>{% endif %}
-{% if page.ko_url %}<script>if (window.FimLang !== 'en') location.replace('{{ site.baseurl }}{{ page.ko_url }}' + location.search + location.hash);</script>{% endif %}
+{% if page.en_url %}<script>if (window.FimLang !== 'ko') location.replace('{{ site.baseurl }}{{ page.en_url }}' + location.search + location.hash);</script>{% endif %}
+{% if page.ko_url %}<script>if (window.FimLang === 'ko') location.replace('{{ site.baseurl }}{{ page.ko_url }}' + location.search + location.hash);</script>{% endif %}
 <article>
   <div>
-    <h1 class="i18n-title"{% if page.title_en %} data-en="{{ page.title_en | escape }}"{% endif %}{% if page.intro_en %} data-intro-en="{{ page.intro_en | escape }}"{% endif %}>{{ page.title }}</h1>
+    <h1 class="i18n-title"{% if page.title_en %} data-en="{{ page.title_en | escape }}"{% endif %}{% if page.title_ja %} data-ja="{{ page.title_ja | escape }}"{% endif %}{% if page.intro_en %} data-intro-en="{{ page.intro_en | escape }}"{% endif %}>{{ page.title }}</h1>
     {% if page.closed %}<div class="closed-badge" style="display:inline-block; margin:0.2em 0 0.4em; padding:0.2em 0.7em; border-radius:999px; background:#c9184a; color:#fff; font-size:0.85em; font-weight:600;"><span data-i18n="note_closed_badge">🚫 폐업</span>{% if page.closed != true %}<span class="i18n-closed" data-ym="{{ page.closed | date: "%Y-%m" }}"> · {{ page.closed | date: "%Y년 %-m월" }} 확인</span>{% endif %}</div>{% endif %}
     <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{% if page.type != 'pages' %}
       <span class="i18n-updated" data-d="{{ page.last_modified_at | date: '%Y-%m-%d' }}">마지막 업데이트 {{ page.last_modified_at | date: "%Y년 %-m월 %-d일" }}</span>
       {% endif %}
     </time>
 
-    {% if page.summary_en %}<p class="note-summary-en i18n-en-only" hidden>{{ page.summary_en | escape }}</p>{% endif %}
+    {% if page.summary_en %}<p class="note-summary-en i18n-en-only" hidden{% if page.summary_ja %} data-ja="{{ page.summary_ja | escape }}"{% endif %}>{{ page.summary_en | escape }}</p>{% endif %}
 
     {% if page.tags and page.tags.size > 0 %}
     <div class="note-tags">
@@ -113,9 +113,14 @@ layout: default
 <script>
 // 태그·멤버·날짜를 영어로 (i18n.html 사전)
 (function () {
-  if (window.FimLang !== 'en') return;
+  if (window.FimLang === 'ko') return;
+  var LANG = window.FimLang;
   // 영어 모드에서만 보이는 요소 (외국인용 요약 줄·영어 주소) — places_en.rb / note_summary_en.rb
-  document.querySelectorAll('.i18n-en-only').forEach(function (el) { el.hidden = false; });
+  document.querySelectorAll('.i18n-en-only').forEach(function (el) {
+    el.hidden = false;
+    var alt = el.getAttribute('data-' + LANG);          // 요약 줄은 언어별 문장을 따로 만들어 둔다
+    if (alt) el.textContent = alt;
+  });
   document.querySelectorAll('.i18n-tagchip').forEach(function (el) {
     el.textContent = '#' + FimTag(el.getAttribute('data-tag'));
   });
@@ -135,7 +140,7 @@ layout: default
   // 모음(허브) 페이지: front matter 의 title_en / intro_en 과 headings 사전으로 제목·설명·소제목만 영어로 (본문 표는 번역하지 않는다, 2026-09-20)
   var h1 = document.querySelector('h1.i18n-title');
   if (h1) {
-    var ko = h1.textContent, en = h1.getAttribute('data-en');
+    var ko = h1.textContent, en = h1.getAttribute('data-' + LANG) || h1.getAttribute('data-en');
     if (en) {
       h1.textContent = en;
       if (document.title.indexOf(ko) === 0) document.title = en + document.title.slice(ko.length);
@@ -151,7 +156,7 @@ layout: default
   // 본문의 반복 문구 — _plugins/body_i18n.rb 가 빌드 때 data-en 을 달아 둔 요소(소제목·지도 링크·메모 줄 토큰)만 바꿔 끼운다.
   // 자식 요소가 있으면(표 머리글의 정렬 표시 등) 첫 텍스트 노드만 바꾼다.
   document.querySelectorAll('content [data-en]').forEach(function (el) {
-    var en = el.getAttribute('data-en');
+    var en = el.getAttribute('data-' + LANG) || el.getAttribute('data-en');
     if (!en) return;
     if (!el.children.length) { el.textContent = en; return; }
     for (var i = 0; i < el.childNodes.length; i++) {

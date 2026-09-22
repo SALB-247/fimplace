@@ -29,6 +29,23 @@ module PlacesEn
     [m[1], m[3] ? "#{iso.call(m[2])} – #{iso.call(m[3])}" : iso.call(m[2])]
   end
 
+  # 일본어 이름·카테고리 (_data/places_ja.yml — scripts/places_ja.py 가 구글맵 hl=ja 에서 채움).
+  # 주소는 hl=ja 도 로마자라 영어판을 그대로 쓴다.
+  def inject_ja(site, note, title, base, dates)
+    rec = (site.data['places_ja'] || {})[title]
+    return unless rec.is_a?(Hash)
+    note.data['category_ja'] ||= rec['category_ja'].to_s if rec['category_ja'].to_s != ''
+    name = rec['name_ja'].to_s.strip
+    return if name.empty? || title !~ /[가-힣぀-ヿ㐀-鿿]/
+    note.data['name_ja'] ||= name
+    return if norm(name) == norm(base || title)
+    if dates
+      note.data['title_ja'] ||= "#{name} (#{base}) · #{dates}"
+    else
+      note.data['title_ja'] ||= title.include?('(') ? "#{name} — #{title}" : "#{name} (#{title})"
+    end
+  end
+
   def apply(site)
     data = site.data['places_en'] || {}
     n = 0
@@ -52,6 +69,7 @@ module PlacesEn
           end
         end
       end
+      inject_ja(site, note, title, base, dates)
       addr = rec['address_en'].to_s.strip
       note.data['address_en'] ||= addr unless addr.empty?
       note.data['category_en'] ||= rec['category_en'].to_s if rec['category_en'].to_s != ''

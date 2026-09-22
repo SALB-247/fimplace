@@ -348,6 +348,10 @@ content .addr-en {
     margin-top: 0.3em;
   }
 }
+/* 언어 메뉴(#nav-lang)는 버튼처럼 보이게 — summary 에 테두리를 직접 준다 */
+#nav-lang > summary { color: var(--subtext); }
+#nav-lang .nav-menu-list { min-width: 8em; }
+
 /* 좁은 화면: 요약 버튼 기준(오른쪽 정렬)이면 왼쪽으로 잘린다 → nav-row 전체 폭 아래로 펼친다 */
 .nav-row { position: relative; }
 @media (max-width: 640px) {

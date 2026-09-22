@@ -3,36 +3,53 @@
 <script>
 (function () {
   var DICT = {{ site.data.i18n | jsonify }};
+  // 언어별 사전. 한국어는 템플릿 원문이 정답이라 사전이 없다.
+  // 일본어는 아직 UI 껍데기까지만 — 없는 키는 영어로 떨어진다 (tags·regions 등).
+  var DICTS = { en: DICT, ja: {% if site.data.i18n_ja %}{{ site.data.i18n_ja | jsonify }}{% else %}{}{% endif %} };
+  var LANGS = ['ko', 'en', 'ja'];
 
-  // 언어를 '고른 것'과 '추정한 것' 을 구분한다 — 추정으로 영어가 된 사람에게만 한국어 안내를 띄운다
+  // 언어를 '고른 것'과 '추정한 것' 을 구분한다 — 추정으로 외국어가 된 사람에게만 한국어 안내를 띄운다
   var AUTO = false;
 
   function pickLang() {
     try {
       var q = new URLSearchParams(location.search).get('lang');
-      if (q === 'en' || q === 'ko') { localStorage.setItem('fimLang', q); return q; }
+      if (LANGS.indexOf(q) >= 0) { localStorage.setItem('fimLang', q); return q; }
       var saved = localStorage.getItem('fimLang');
-      if (saved === 'en' || saved === 'ko') return saved;
+      if (LANGS.indexOf(saved) >= 0) return saved;
       // 저장된 선택이 없으면 브라우저 언어로 한 번만 추정
       AUTO = true;
-      return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+      var nav = (navigator.language || '').toLowerCase();
+      if (nav.indexOf('ko') === 0) return 'ko';
+      if (nav.indexOf('ja') === 0) return 'ja';
+      return 'en';
     } catch (e) { return 'ko'; }
   }
 
   var LANG = pickLang();
   window.FimLang = LANG;
+  window.FimLangs = LANGS;
   document.documentElement.setAttribute('lang', LANG);
 
-  // 영어일 때만 사전을 태운다. 한국어는 템플릿 원문이 그대로 정답.
-  function t(key, fallback) {
-    if (LANG !== 'en') return fallback;
-    var v = DICT.ui && DICT.ui[key];
-    return (v === undefined || v === null || v === '') ? fallback : v;
+  // 한국어는 템플릿 원문이 그대로 정답. 그 외 언어는 <그 언어> → 영어 → 원문 순으로 찾는다.
+  function look(group, key) {
+    if (LANG === 'ko') return undefined;
+    var order = (LANG === 'en') ? ['en'] : [LANG, 'en'];
+    for (var i = 0; i < order.length; i++) {
+      var d = DICTS[order[i]];
+      var v = d && d[group] && d[group][key];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return undefined;
   }
-  function mapOf(group) { return (DICT[group] || {}); }
+  function t(key, fallback) {
+    var v = look('ui', key);
+    return v === undefined ? fallback : v;
+  }
+  function mapOf(group) { return (DICTS[LANG] && DICTS[LANG][group]) || (DICT[group] || {}); }
   function tr(group, value) {
-    if (LANG !== 'en' || value == null) return value;
-    var v = mapOf(group)[value];
+    if (LANG === 'ko' || value == null) return value;
+    var v = look(group, value);
     return v === undefined ? value : v;
   }
 
@@ -43,19 +60,25 @@
   window.FimCountry = function (v) { return tr('countries', v); };
   // "🇰🇷 한국" 처럼 이모지가 앞에 붙은 라벨도 뒷부분만 갈아끼운다
   window.FimCountryLabel = function (label) {
-    if (LANG !== 'en' || !label) return label;
+    if (LANG === 'ko' || !label) return label;
     var m = String(label).match(/^(\S*\s*)(.+)$/);
     if (!m) return label;
-    var body = mapOf('countries')[m[2]];
+    var body = look('countries', m[2]);
     return body ? m[1] + body : label;
   };
 
+  window.FimAll = FimAll;
   window.FimTr = tr;   // 임의 그룹 조회 (via 등)
 
   // ISO 날짜 → 영어 표기. 한국어면 null 을 돌려 템플릿 원문을 그대로 두게 한다.
   var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   window.FimDate = function (iso) {
-    if (LANG !== 'en' || !iso) return null;
+    if (LANG === 'ko' || !iso) return null;
+    if (LANG === 'ja') {
+      var j = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(iso));
+      if (!j) return null;
+      return j[3] ? j[1] + '年' + (+j[2]) + '月' + (+j[3]) + '日' : j[1] + '年' + (+j[2]) + '月';
+    }
     var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(iso));
     if (!m) return null;
     var mon = MON[+m[2] - 1];
@@ -75,7 +98,7 @@
 
   // data-i18n 속성이 붙은 정적 문자열 일괄 치환
   function sweep(root) {
-    if (LANG !== 'en') return;
+    if (LANG === 'ko') return;
     (root || document).querySelectorAll('[data-i18n]').forEach(function (el) {
       var v = t(el.getAttribute('data-i18n'), null);
       if (v !== null && v !== undefined) el.textContent = v;
@@ -88,19 +111,32 @@
         });
       });
   }
+  // 한 열쇠의 모든 언어 값 (검색 색인용 — 화면 언어와 상관없이 다 찾히게)
+  function FimAll(group, key) {
+    var out = [];
+    LANGS.forEach(function (l) {
+      var d = DICTS[l];
+      var v = d && d[group] && d[group][key];
+      if (v && out.indexOf(String(v)) === -1) out.push(String(v));
+    });
+    return out;
+  }
+
   // UI 페이지 제목 — "지도 — Fimplace" 의 앞부분만 갈아끼운다
   function sweepTitle() {
-    if (LANG !== 'en') return;
+    if (LANG === 'ko') return;
+    var whole = look('titles', String(document.title || '').trim());  // 홈처럼 '—' 가 없는 제목
+    if (whole) { document.title = whole; return; }
     var parts = String(document.title || '').split('—');
     if (parts.length !== 2) return;
     var raw = parts[0].trim();
-    var head = mapOf('titles')[raw];
+    var head = look('titles', raw);
     if (!head && raw.charAt(0) === '#') {
-      var tg = mapOf('tags')[raw.slice(1)];
+      var tg = look('tags', raw.slice(1));
       if (tg) head = '#' + tg;
     }
     if (!head) {
-      var mb = mapOf('members')[raw];
+      var mb = look('members', raw);
       if (mb) head = mb;
     }
     if (head) document.title = head + ' — ' + parts[1].trim();
@@ -109,7 +145,7 @@
   // 브라우저 언어 추정만으로 영어가 된 사람은 내비의 작은 '한국어' 버튼을 못 볼 수 있다.
   // 한국어를 읽는 사람이 바로 알아보도록 상단에 한 줄 띠를 띄우고, 닫으면 다시 안 띄운다.
   function koBanner() {
-    if (LANG !== 'en' || !AUTO) return;
+    if (LANG === 'ko' || !AUTO) return;
     try { if (localStorage.getItem('fimLangHintClosed') === '1') return; } catch (e) {}
 
     var bar = document.createElement('div');
