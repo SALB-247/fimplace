@@ -3554,3 +3554,21 @@ sweetgreen Sunset Strip:
   cid: '16280058322592989687'
   fetched: '2026-09-22'
   name_en: 히팅스튜디오
+The Crab Pot:
+  address_en: 1301 Alaskan Way Pier 57, Seattle, WA 98101, United States
+  category_en: Seafood restaurant
+  cid: '7651403129190068081'
+  fetched: '2026-09-22'
+  name_en: The Crab Pot Seattle
+The Gum Wall:
+  address_en: 1428 Post Alley, Seattle, WA 98101, United States
+  category_en: Tourist attraction
+  cid: '2320667458848562723'
+  fetched: '2026-09-22'
+  name_en: The Gum Wall
+Victor Steinbrueck Park:
+  address_en: 1999 Western Ave, Seattle, WA 98121, United States
+  category_en: Park
+  cid: '7524507683480633865'
+  fetched: '2026-09-22'
+  name_en: Victor Steinbrueck Park

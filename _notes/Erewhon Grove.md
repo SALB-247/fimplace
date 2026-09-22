@@ -5,6 +5,7 @@ tags:
   - 인스타
   - 꾸라
   - 채원
+  - 즈하
   - 상점
   - 로스앤젤레스
   - 미국
@@ -13,15 +14,18 @@ country: us
 ---
 <iframe src="https://www.instagram.com/p/DddXOgsFPMR/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 <iframe src="https://www.instagram.com/p/DdcoHbsj0sL/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
+<iframe src="https://www.instagram.com/p/Ddjz5XcGSme/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 
 <img src="assets/ig_DddXOgsFPMR_09.jpg">
 <img src="assets/ig_DdcoHbsj0sL_09.jpg">
+<img src="assets/ig_Ddjz5XcGSme_01.jpg">
+<img src="assets/ig_Ddjz5XcGSme_05.jpg">
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-118.356562!3d34.0758869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2b92de73065e3%3A0x7c2caf9c53df081b!2sErewhon%20Grove!5e0!3m2!1sko!2skr!4v1789835691360!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-260919 사쿠라 인스타 / 260919 김채원 인스타
+260919 사쿠라 인스타 / 260919 김채원 인스타 / 260922 즈하 인스타
 
-유기농 식료품점. 사쿠라는 매장 앞에서 분홍 스무디를 들고 찍었고, 채원은 비타민·영양제 코너를 구경했다.
+유기농 식료품점. 사쿠라는 매장 앞에서 분홍 스무디를 들고 찍었고, 채원은 비타민·영양제 코너를 구경했다. 즈하는 매장 앞과 건너편 횡단보도에서 찍고 통로·과일 코너를 돌았다.
 
 ## 상호명
 Erewhon Grove
