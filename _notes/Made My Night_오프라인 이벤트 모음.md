@@ -12,6 +12,18 @@ tags:
 LE SSERAFIM 2nd Single Album **'Made My Night'** 관련 오프라인 이벤트 모음.
 {: .hub-intro}
 
+# KASINA ALBUM & BRAND MERCH.
+
+<img src="assets/mmn_kasina.jpg">
+
+**2026-09-26(토) 11:00 ~** (오프라인) · 온라인 9/24(목) 11:00 · 'Made My Night' 앨범 머치 + 르세라핌 브랜드 머치
+카시나 성수는 이번 컬렉션 스페셜 조닝 운영
+
+* [[카시나 성수 (Made My Night)]] — 성수이로7길 41 · 스페셜 조닝
+* [[카시나 도산 (Made My Night)]] — 압구정로42길 27
+* [[카시나 전포 (Made My Night)]] — 부산 서전로 44
+
+
 # LE SSERAFIM 2026 F/W POP UP
 
 <img src="assets/mmn_popup_guide.jpg">

@@ -1182,6 +1182,13 @@
   d: "m/mkpf_1600.webp"
   dw: 1187
   dh: 760
+"mmn_kasina.jpg":
+  d: "m/mmn_kasina_1600.webp"
+  dw: 1200
+  dh: 1600
+  m: "m/mmn_kasina_1200.webp"
+  mw: 900
+  mh: 1200
 "mmn_popup_merch.jpg":
   d: "m/mmn_popup_merch_1600.webp"
   dw: 431

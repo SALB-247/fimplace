@@ -7,6 +7,18 @@
 Offline events for LE SSERAFIM's 2nd single album **'Made My Night'** — pop-up store, lucky draws and special stores.
 {: .hub-intro}
 
+# KASINA ALBUM & BRAND MERCH.
+
+<img src="assets/mmn_kasina.jpg">
+
+**From Sat Sep 26, 2026, 11:00** (in store) · online from Thu Sep 24, 11:00 · 'Made My Night' album merch + new LE SSERAFIM brand merch
+KASINA Seongsu runs a special zone for the collection
+
+* [[카시나 성수 (Made My Night)|KASINA Seongsu]] — 41 Seongsui-ro 7-gil, Seongdong-gu, Seoul · special zone
+* [[카시나 도산 (Made My Night)|KASINA Dosan]] — 27 Apgujeong-ro 42-gil, Gangnam-gu, Seoul
+* [[카시나 전포 (Made My Night)|KASINA Jeonpo]] — 44 Seojeon-ro, Busanjin-gu, Busan
+
+
 # LE SSERAFIM 2026 F/W POP UP
 
 <img src="assets/mmn_popup_guide.jpg">
