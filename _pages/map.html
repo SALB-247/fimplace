@@ -519,7 +519,9 @@ permalink: /map/
     th:    { latMin: 5.6,  latMax: 20.5, lngMin: 97.3,  lngMax: 105.6 },
     fr:    { latMin: 41.3, latMax: 51.1, lngMin: -5.2, lngMax: 9.6 },
     it:    { latMin: 35.5, latMax: 47.1, lngMin: 6.6, lngMax: 18.5 },
-    gb:    { latMin: 49.8, latMax: 60.9, lngMin: -8.6, lngMax: 1.8 }
+    gb:    { latMin: 49.8, latMax: 60.9, lngMin: -8.6, lngMax: 1.8 },
+    eu:    { latMin: 34.0, latMax: 71.5, lngMin: -25.0, lngMax: 45.0 },
+    sea:   { latMin: -11.5, latMax: 28.5, lngMin: 92.0, lngMax: 141.5 }
   };
   function inBounds(b, c) {
     return c.lat >= b.latMin && c.lat <= b.latMax &&
@@ -786,7 +788,8 @@ permalink: /map/
       '</div>';
   }
 
-  function toggleCrew() {
+  // keepView: 마커만 띄우고 지도는 움직이지 않는다 (링크가 연 화면을 지킬 때)
+  function toggleCrew(keepView) {
     if (crewMarker) {
       map.removeLayer(crewMarker); crewMarker = null;
       if (crewBtn) crewBtn.style.background = '';
@@ -797,6 +800,7 @@ permalink: /map/
       icon: crewIcon(), zIndexOffset: 1000
     }).addTo(map).bindPopup(crewPopup(crewShow));
     if (crewBtn) crewBtn.style.background = '#ffe8ee';
+    if (keepView === true) return;   // 팝업을 열면 autoPan 이 지도를 끌고 가므로 그것도 생략
     map.setView([crewShow.show.lat, wrapLng(crewShow.show.lng)], Math.max(map.getZoom(), 6));
     crewMarker.openPopup();
   }
@@ -830,7 +834,13 @@ permalink: /map/
        : st === 'next' ? FimT('crew_next_short', '다음 공연 ')
        : FimT('crew_recent_short', '최근 공연 ')) +
         (crewShow.show.flag || '') + ' ' + FimTag(crewShow.show.city);
-      if (st === 'live') toggleCrew();   // 공연 당일이면 자동으로 표시
+      // 공연 당일이면 자동으로 표시. 단 링크가 필터(국가·지역·검색 등)를 들고 왔으면 그 화면을 지키고 마커만 띄운다
+      // (2026-09-23: 산호세 공연일에 ?country=eu 링크가 산호세로 끌려가 '영역 밖' 판정으로 국가 선택이 풀렸다.
+      //  장소·투어 두 fetch 중 투어가 늦게 끝날 때만 생겨 간헐적이었다)
+      if (st === 'live') {
+        var qp = new URLSearchParams(location.search);
+        toggleCrew(['country', 'region', 'category', 'tag', 'member', 'q'].some(function (k) { return qp.has(k); }));
+      }
     })
     .catch(function () { if (crewBtn) { crewBtn.style.opacity = '0.4'; crewBtn.title = FimT('crew_tour_load_fail', '투어 일정 로드 실패'); } });
   // ============== /현재 핌둥이들 위치 ==============
@@ -879,6 +889,9 @@ permalink: /map/
   var OVERSEAS_REGION = {};   // 해외 지역 태그 → true
   var REGION_ALIAS = {};      // 옛 도시 태그 → 지금의 지역(주) 값. places.json 이 내려준다
   function placeRegion(p) {
+    // 유럽·동남아처럼 나라가 여럿인 묶음은 나라가 곧 지역이다 (미국의 주 자리) — country_groups.yml 의 region: country
+    var g = COUNTRY_GROUPS[COUNTRY_TO_GROUP[p.country]];
+    if (g && g.region === 'country') return countryName(p.country);
     if (p.region) return p.region;
     var tags = p.tags || [];
     for (var i = 0; i < tags.length; i++) if (OVERSEAS_REGION[tags[i]]) return tags[i];
@@ -896,15 +909,18 @@ permalink: /map/
     sg: '🇸🇬 싱가포르', id: '🇮🇩 인도네시아', ph: '🇵🇭 필리핀',
     vn: '🇻🇳 베트남', mx: '🇲🇽 멕시코'
   };
-  // 여러 country 를 셀렉터에서 한 옵션으로 묶기 위한 그룹.
+  // 여러 country 를 셀렉터에서 한 옵션으로 묶기 위한 그룹 — 정의는 _data/country_groups.yml (방문 계획 페이지와 공유).
   // members 의 country 들은 그룹 ID 로 합쳐서 카운트·필터·setView 처리됨.
-  var COUNTRY_GROUPS = {
-    hk_mo: { label: '🇭🇰 홍콩·마카오', members: ['hk', 'mo'] }
-  };
+  var COUNTRY_GROUPS = {{ site.data.country_groups | jsonify }};
   var COUNTRY_TO_GROUP = {};
   Object.keys(COUNTRY_GROUPS).forEach(function (gid) {
     COUNTRY_GROUPS[gid].members.forEach(function (c) { COUNTRY_TO_GROUP[c] = gid; });
   });
+  // '🇬🇧 영국' → '영국' (나라 단위 지역의 값). 지역 셀렉터·필터 라벨에는 국기를 붙여 보여준다.
+  function countryName(cc) { return String(COUNTRY_LABEL[cc] || cc).replace(/^\S+\s+/, ''); }
+  var COUNTRY_BY_NAME = {};
+  Object.keys(COUNTRY_LABEL).forEach(function (cc) { COUNTRY_BY_NAME[countryName(cc)] = COUNTRY_LABEL[cc]; });
+  function regionLabel(v) { return COUNTRY_BY_NAME[v] ? FimCountryLabel(COUNTRY_BY_NAME[v]) : FimTag(v); }
 
   // country 변경 시 지도 중심/줌. '' (전체)는 한국+일본을 함께 보이는 줌.
   var COUNTRY_VIEW = {
@@ -929,8 +945,19 @@ permalink: /map/
     id:    { center: [-2.5, 118.0], zoom: 5 },
     ph:    { center: [12.5, 122.0], zoom: 6 },
     vn:    { center: [16.0, 107.5], zoom: 6 },
-    mx:    { center: [23.5, 258.0], zoom: 5 }
+    mx:    { center: [23.5, 258.0], zoom: 5 },
+    // 나라가 흩어진 묶음은 고정 뷰 대신 그 묶음의 장소 전체에 맞춘다 (화면 폭마다 알맞은 줌이 다르다)
+    eu:    { fit: true },
+    sea:   { fit: true }
   };
+  // 국가(묶음)를 고른 직후의 지도 위치. '전체'·fit 묶음은 render 의 자동 fitBounds 에 맡긴다.
+  function viewForCountry(cc) {
+    var v = COUNTRY_VIEW[cc];
+    if (cc === '' || (v && v.fit)) { skipFitBoundsOnce = false; return; }
+    v = v || COUNTRY_VIEW[''];
+    map.setView(v.center, v.zoom);
+    skipFitBoundsOnce = true;
+  }
   // 그룹 ID 선택 시 매칭 헬퍼 (render·rebuildOptions 공용)
   function countryMatches(p, cc) {
     if (!cc) return true;
@@ -1206,7 +1233,7 @@ permalink: /map/
     } else {
       regionSel.disabled = false;
       rebuildSelect(regionSel, regionItems, r,
-        function (v, n) { return FimTag(v) + ' (' + n + ')'; },
+        function (v, n) { return regionLabel(v) + ' (' + n + ')'; },
         FimT('filter_region_all', '🗺️ 지역 전체') + ' (' + afterCountry.length + ')');
     }
 
@@ -1353,13 +1380,13 @@ permalink: /map/
   function activeFilterLabels() {
     var out = [];
     if (countrySel.value) {
-      out.push((COUNTRY_GROUPS[countrySel.value] && COUNTRY_GROUPS[countrySel.value].label)
-               || COUNTRY_LABEL[countrySel.value] || countrySel.value.toUpperCase());
+      out.push(FimCountryLabel((COUNTRY_GROUPS[countrySel.value] && COUNTRY_GROUPS[countrySel.value].label)
+               || COUNTRY_LABEL[countrySel.value] || countrySel.value.toUpperCase()));
     }
-    if (regionSel.value)   out.push(regionSel.value);
-    if (categorySel.value) out.push(categorySel.value);
-    if (tagSel.value)      out.push('#' + tagSel.value);
-    if (memberSel.value)   out.push(memberSel.value);
+    if (regionSel.value)   out.push(regionLabel(regionSel.value));
+    if (categorySel.value) out.push(FimSection(categorySel.value));
+    if (tagSel.value)      out.push('#' + FimTag(tagSel.value));
+    if (memberSel.value)   out.push(FimMember(memberSel.value));
     if (TL.on)             out.push('기간');
     return out;
   }
@@ -1436,7 +1463,7 @@ permalink: /map/
     if (searchQ)            p.set('q', searchInput.value.trim());
     // 언어 선택은 필터가 아니지만 공유 링크에서 살아남아야 한다
     var lang = new URLSearchParams(location.search).get('lang');
-    if (lang === 'en' || lang === 'ko') p.set('lang', lang);
+    if (lang === 'en' || lang === 'ko' || lang === 'ja') p.set('lang', lang);
     var qs = p.toString();
     try { history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '')); } catch (e) {}
   }
@@ -1447,6 +1474,12 @@ permalink: /map/
     if (!keys.some(function (k) { return p.has(k); })) return false;
     endedCheck.checked = p.get('ended') === '1';
     var cc = p.get('country') || '';
+    // 묶음에 들어간 나라의 옛 링크(?country=fr · ?country=hk) → 묶음으로. 나라 단위 지역 묶음이면 그 나라를 지역으로.
+    var legacyRegion = '';
+    if (COUNTRY_TO_GROUP[cc]) {
+      if (COUNTRY_GROUPS[COUNTRY_TO_GROUP[cc]].region === 'country') legacyRegion = countryName(cc);
+      cc = COUNTRY_TO_GROUP[cc];
+    }
     countrySel.value  = cc;
     categorySel.value = p.get('category') || '';
     tagSel.value      = p.get('tag')      || '';
@@ -1454,7 +1487,7 @@ permalink: /map/
     //    '도쿄'·'캘리포니아' 처럼 없는 값을 대입하면 조용히 무시되고 필터가 통째로 날아간다.
     //    (2026-09-13 확인 — 한국 지역만 복원되고 일본·미국 링크는 전부 '지역 전체'로 떨어지던 버그)
     //    rebuildOptions() 로 옵션을 만든 뒤에 넣는다.
-    var pendingRegion = p.get('region') || '';
+    var pendingRegion = p.get('region') || legacyRegion;
     regionSel.value = '';
     // 해외 지역은 카테고리(해외 (지역)) → 지역 셀렉터로 옮겼다. 예전 링크(?category=해외 (지역)&tag=뉴욕)가
     // 지역 선택을 잃지 않도록 옮겨 담는다.
@@ -1471,13 +1504,7 @@ permalink: /map/
     setTileForCountry(cc === 'kr' ? 'kr' : '');
     rebuildOptions();  // 옵션 재구성 + 풀에 없는 선택은 자동으로 ''로 정리
     if (pendingRegion) { regionSel.value = pendingRegion; rebuildOptions(); }
-    if (cc === '') {
-      skipFitBoundsOnce = false;   // G: 국가 지정이 없으면 전 지점에 맞춘다
-    } else {
-      var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
-      map.setView(v.center, v.zoom);
-      skipFitBoundsOnce = true;
-    }
+    viewForCountry(countrySel.value);   // G: 국가 지정이 없으면(또는 fit 묶음이면) 전 지점에 맞춘다
     return true;
   }
 
@@ -1604,14 +1631,8 @@ permalink: /map/
     var cc = countrySel.value;
     setTileForCountry(cc);
     // G: '전체' 를 고정 뷰(동아시아 zoom 5)로 보내면 미국·유럽 등이 화면 밖에 남는다.
-    //    이때만 render 의 자동 fitBounds 에 맡겨 전 지점이 들어오게 한다.
-    if (cc === '') {
-      skipFitBoundsOnce = false;
-    } else {
-      var v = COUNTRY_VIEW[cc] || COUNTRY_VIEW[''];
-      map.setView(v.center, v.zoom);
-      skipFitBoundsOnce = true;
-    }
+    //    이때(와 유럽·동남아 묶음)만 render 의 자동 fitBounds 에 맡겨 전 지점이 들어오게 한다.
+    viewForCountry(cc);
     rebuildOptions();
     render();
   });

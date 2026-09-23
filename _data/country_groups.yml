@@ -1,0 +1,17 @@
+# 국가 셀렉터에서 여러 나라를 한 옵션으로 묶는다 — _pages/map.html · _pages/planner.html 이 같이 읽는다.
+#   region: country → 이 묶음을 고르면 지역 셀렉터에 나라가 뜬다 (미국의 주와 같은 자리).
+#                     노트가 적은 나라가 많은 묶음(유럽·동남아)에 쓴다. 도시는 태그(해외 (지역))로 남는다.
+#   region 이 없으면 → 해외 도시 태그가 지역이 된다 (홍콩·마카오).
+# 새 나라를 넣을 때는 map.html 의 COUNTRY_LABEL·VISIBLE_COUNTRIES 와 planner.html 의 LABELS 에도 추가할 것.
+# 대만은 동남아가 아니라 단독 옵션으로 둔다 (사용자 결정 2026-09-23).
+hk_mo:
+  label: 🇭🇰 홍콩·마카오
+  members: [hk, mo]
+eu:
+  label: 🇪🇺 유럽
+  region: country
+  members: [gb, fr, it, ch, nl, dk, de]
+sea:
+  label: SEA 동남아
+  region: country
+  members: [sg, vn, th, ph, id]

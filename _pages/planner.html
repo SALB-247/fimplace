@@ -54,6 +54,16 @@ permalink: /planner/
     hk:'🇭🇰 홍콩', mo:'🇲🇴 마카오', fr:'🇫🇷 프랑스', it:'🇮🇹 이탈리아', gb:'🇬🇧 영국', nl:'🇳🇱 네덜란드',
     dk:'🇩🇰 덴마크', de:'🇩🇪 독일', ch:'🇨🇭 스위스', sg:'🇸🇬 싱가포르', id:'🇮🇩 인도네시아',
     ph:'🇵🇭 필리핀', vn:'🇻🇳 베트남', mx:'🇲🇽 멕시코' };
+  // 국가 묶음(홍콩·마카오 / 유럽 / 동남아) — 지도와 같은 정의 _data/country_groups.yml
+  var GROUPS = {{ site.data.country_groups | jsonify }};
+  var TO_GROUP = {};
+  Object.keys(GROUPS).forEach(function (g) { GROUPS[g].members.forEach(function (c) { TO_GROUP[c] = g; }); });
+  // 목록 옆 괄호: 지역이 있으면 지역, 나라 단위 묶음(유럽·동남아)이면 나라
+  function where(p) {
+    if (p.region) return FimTag(p.region);
+    var g = GROUPS[TO_GROUP[p.country]];
+    return (g && g.region === 'country') ? FimCountryLabel(LABELS[p.country] || p.country) : '';
+  }
 
   var map = L.map('pl-map', FimMap.mapOptions(L)).setView([36.5, 127.8], 7);
   FimMap.tiles(L).voyager.addTo(map);
@@ -68,14 +78,14 @@ permalink: /planner/
   function renderList() {
     var cc = countrySel.value, q = (searchEl.value || '').toLowerCase();
     var pool = ALL.filter(function (p) {
-      if (cc && p.country !== cc) return false;
+      if (cc && p.country !== cc && TO_GROUP[p.country] !== cc) return false;
       if (q && p.title.toLowerCase().indexOf(q) === -1) return false;
       return true;
     }).slice(0, 300);
     listEl.innerHTML = pool.map(function (p) {
       var checked = plan.indexOf(p) !== -1 ? ' checked' : '';
       return '<label><input type="checkbox" data-url="' + p.url + '"' + checked + '><span>' + p.title +
-        (p.region ? ' <span style="color:var(--subtext); font-size:0.85em;">(' + FimTag(p.region) + ')</span>' : '') + '</span></label>';
+        (where(p) ? ' <span style="color:var(--subtext); font-size:0.85em;">(' + where(p) + ')</span>' : '') + '</span></label>';
     }).join('');
   }
 
@@ -138,9 +148,13 @@ permalink: /planner/
     .then(function (d) {
       ALL = (d.places || []).filter(function (p) { return p.lat != null; });
       var ccs = {};
-      ALL.forEach(function (p) { if (p.country) ccs[p.country] = (ccs[p.country] || 0) + 1; });
+      ALL.forEach(function (p) {
+        var k = TO_GROUP[p.country] || p.country;
+        if (k) ccs[k] = (ccs[k] || 0) + 1;
+      });
       Object.keys(ccs).sort().forEach(function (c) {
-        countrySel.add(new Option(FimCountryLabel(LABELS[c] || c) + ' (' + ccs[c] + ')', c));
+        var label = (GROUPS[c] && GROUPS[c].label) || LABELS[c] || c;
+        countrySel.add(new Option(FimCountryLabel(label) + ' (' + ccs[c] + ')', c));
       });
       renderList();
     });
