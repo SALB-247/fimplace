@@ -16,6 +16,7 @@ module RelatedBySource
     'yt' => [%r{youtube(?:-nocookie)?\.com/embed/([A-Za-z0-9_-]{11})}, '같은 영상'],
     'wv' => [%r{weverse\.io/lesserafim/(?:artist|live)/([A-Za-z0-9-]+)}, '같은 위버스 포스트'],
     'x'  => [%r{(?:twitter|x)\.com/\w+/status/(\d+)}, '같은 X 게시물'],
+    'tt' => [%r{tiktok\.com/(?:embed/v2/|@[\w.]+/video/)(\d{15,20})}, '같은 틱톡 영상'],
   }.freeze
   LIMIT = 12
 

@@ -225,6 +225,19 @@ content iframe[src*="instagram.com"] {
   }
 }
 
+/* TikTok embed: 공식 embed/v2 는 스크립트 없이 iframe 으로 뜬다. 세로(9:16) + 헤더·버튼 높이 */
+content iframe[src*="tiktok.com"] {
+  aspect-ratio: auto;
+  max-width: 325px;
+  height: 750px;
+  margin: 1em auto;
+}
+@media (max-width: 600px) {
+  content iframe[src*="tiktok.com"] {
+    height: 690px;
+  }
+}
+
 /* ---------- 외국인용 요약 줄 · 영어 주소 (영어 모드에서만 hidden 이 풀린다 — note.html) ---------- */
 .note-summary-en {
   margin: 0.3em 0 0.6em;

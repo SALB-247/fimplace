@@ -4,17 +4,17 @@ shortid: 33025
 tags:
   - DM
   - 은채
+  - 채원
   - 음식점
   - 시애틀
   - 미국
 coords: [47.606075, -122.3414167]
 country: us
 ---
-<img src="assets/dm_eunchae_260922_1.jpg">
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-122.3414167!3d47.606075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906aadfbe2e0b3%3A0x6a2f3e9b6cafaf71!2sThe%20Crab%20Pot%20Seattle!5e0!3m2!1sko!2skr!4v1790140000000!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-260922 홍은채 DM
+260922 홍은채 DM / 260922 김채원 DM
 
 시푸드 보일 — 종이를 깐 테이블에 던지니스 크랩·새우·조개·홍합·옥수수·감자·소시지를 통째로 쏟아 주고 나무 망치로 깨 먹는 시애틀 워터프론트(Pier 57)의 명물 가게
 

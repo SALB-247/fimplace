@@ -3,7 +3,10 @@ title: The Gum Wall
 shortid: myk3t
 tags:
   - 인스타
+  - DM
+  - 틱톡
   - 채원
+  - 은채
   - 관광지
   - 시애틀
   - 미국
@@ -15,9 +18,11 @@ country: us
 <img src="assets/ig_DdlLxO2m1WI_01.jpg">
 <img src="assets/ig_DdlLxO2m1WI_03.jpg">
 
+<iframe src="https://www.tiktok.com/embed/v2/7688247016987692296" allow="encrypted-media;" allowfullscreen scrolling="no"></iframe>
+
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-122.3403382!3d47.6083607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906ab259528c69%3A0x2034aac2267a1e23!2sThe%20Gum%20Wall!5e0!3m2!1sko!2skr!4v1790140000001!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-260922 김채원 인스타
+260922 김채원 인스타 / 260922 김채원 DM / 260922 공식 틱톡
 
 파이크 플레이스 마켓 아래 포스트 앨리(Post Alley)의 껌벽 — 씹던 껌으로 뒤덮인 벽돌 골목. 마켓 시어터(1428 Post Alley) 입구 앞
 
