@@ -793,12 +793,24 @@ The Boiling Crab Westwood:
   cid: '11522904897773057352'
   fetched: '2026-09-21'
   name_en: The Boiling Crab
+The Crab Pot:
+  address_en: 1301 Alaskan Way Pier 57, Seattle, WA 98101, United States
+  category_en: Seafood restaurant
+  cid: '7651403129190068081'
+  fetched: '2026-09-22'
+  name_en: The Crab Pot Seattle
 The Culver Steps:
   address_en: 9300 Culver Blvd, Culver City, CA 90232, United States
   category_en: Business center
   cid: '12129987516143425123'
   fetched: '2026-09-21'
   name_en: The Culver Steps
+The Gum Wall:
+  address_en: 1428 Post Alley, Seattle, WA 98101, United States
+  category_en: Tourist attraction
+  cid: '2320667458848562723'
+  fetched: '2026-09-22'
+  name_en: The Gum Wall
 The Parallel:
   address_en: 9 Old Bailey St, Central, Hong Kong Island, Hong Kong
   cid: '6368031031751725811'
@@ -865,6 +877,12 @@ Van Leeuwen Ice Cream Westwood:
   cid: '5793436419968533326'
   fetched: '2026-09-21'
   name_en: Van Leeuwen Ice Cream
+Victor Steinbrueck Park:
+  address_en: 1999 Western Ave, Seattle, WA 98121, United States
+  category_en: Park
+  cid: '7524507683480633865'
+  fetched: '2026-09-22'
+  name_en: Victor Steinbrueck Park
 Vince:
   address_en: 89 Mercer St, New York, NY 10012, United States
   category_en: Clothing store
@@ -1929,6 +1947,12 @@ sweetgreen Sunset Strip:
   cid: '1664157455974201860'
   fetched: '2026-09-22'
   name_en: 블리스풀라워 Blissfulower
+블리자드 엔터테인먼트 본사:
+  address_en: 16215 Alton Pkwy, Irvine, CA 92618, United States
+  category_en: Software company
+  cid: '14659503159360313136'
+  fetched: '2026-09-23'
+  name_en: Blizzard Entertainment
 비바살롱 신흥시장 2호점:
   address_en: 1-58 yongsan-dong 2(i)-ga, Yongsan District, Seoul
   cid: '11534681307566474047'
@@ -3554,21 +3578,3 @@ sweetgreen Sunset Strip:
   cid: '16280058322592989687'
   fetched: '2026-09-22'
   name_en: 히팅스튜디오
-The Crab Pot:
-  address_en: 1301 Alaskan Way Pier 57, Seattle, WA 98101, United States
-  category_en: Seafood restaurant
-  cid: '7651403129190068081'
-  fetched: '2026-09-22'
-  name_en: The Crab Pot Seattle
-The Gum Wall:
-  address_en: 1428 Post Alley, Seattle, WA 98101, United States
-  category_en: Tourist attraction
-  cid: '2320667458848562723'
-  fetched: '2026-09-22'
-  name_en: The Gum Wall
-Victor Steinbrueck Park:
-  address_en: 1999 Western Ave, Seattle, WA 98121, United States
-  category_en: Park
-  cid: '7524507683480633865'
-  fetched: '2026-09-22'
-  name_en: Victor Steinbrueck Park
