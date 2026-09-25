@@ -11,7 +11,7 @@ coords:
   - -87.6742
 country: us
 ---
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/United_Center_1.jpg/1600px-United_Center_1.jpg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/United_Center_1.jpg/1280px-United_Center_1.jpg" alt="사진: Alacoolwiki / Wikimedia Commons (CC BY-SA 4.0)">
 
 <iframe src="https://maps.google.com/maps?q=41.8806,-87.6742&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 

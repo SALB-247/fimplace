@@ -11,7 +11,7 @@ coords:
   - -99.175429
 country: mx
 ---
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/ACMX19.JPG/1600px-ACMX19.JPG">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/ACMX19.JPG/1280px-ACMX19.JPG" alt="사진: Santix1988 / Wikimedia Commons (CC BY-SA 3.0)">
 
 <iframe src="https://maps.google.com/maps?q=19.496309,-99.175429&output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
