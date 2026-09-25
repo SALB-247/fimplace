@@ -1106,6 +1106,11 @@ sweetgreen Sunset Strip:
   cid: '4843136578337683486'
   fetched: '2026-09-22'
   name_en: Donghwa Garden Tofu Restaurant
+갤럭시 아레나:
+  cid: '16644444715983997433'
+  address_en: Galaxy Arena, Galaxy Macau, Cotai, Macau
+  manual: true
+  name_en: Galaxy Arena
 건담베이스 아이파크점:
   address_en: "Seoul, Yongsan District, Hangang-daero 23-gil, 55 I'Park Mall Living Park \x01F"
   category_en: Toy store
@@ -2982,6 +2987,24 @@ sweetgreen Sunset Strip:
   cid: '1978719074806591162'
   fetched: '2026-09-22'
   name_en: Tsukishima Monja Okoge Shibuya
+카시나 도산 (Made My Night):
+  address_en: 27 Apgujeong-ro 42-gil, Gangnam District, Seoul
+  category_en: Shoe store
+  cid: '10288371727961328940'
+  fetched: '2026-09-25'
+  name_en: Kasina Dosan
+카시나 성수 (Made My Night):
+  address_en: 41 Seongsui-ro 7-gil, Seongdong-gu, Seoul
+  category_en: Shoe store
+  cid: '13727972543826482157'
+  fetched: '2026-09-25'
+  name_en: Kasina Seongsu
+카시나 전포 (Made My Night):
+  address_en: 44 Seojeon-ro, Busanjin District, Busan
+  category_en: Shoe store
+  cid: '3652375420185531860'
+  fetched: '2026-09-25'
+  name_en: Kasina Jeonpo
 카오산로드:
   cid: '4663227253779965814'
   fetched: '2026-09-22'

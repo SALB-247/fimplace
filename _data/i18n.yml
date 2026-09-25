@@ -882,6 +882,8 @@ body:
     DFW 공항: DFW Airport
     CTA 블루: CTA Blue Line
     K-아레나 요코하마: K-Arena Yokohama
+    코타이 웨스트: Cotai West
+    갤럭시 아레나: Galaxy Arena
     NTSU 아레나: NTSU Arena
     SM MOA 아레나: SM Mall of Asia Arena
     고베 월드기념홀: Kobe World Memorial Hall
@@ -1043,6 +1045,8 @@ cells:
   라자망갈라 국립경기장: Rajamangala National Stadium
   그래미 뮤지엄: GRAMMY Museum
   갤럭시 아레나 (갤럭시 마카오): Galaxy Arena (Galaxy Macau)
+  미정: TBA
+  입장: Doors
   냉터뷰: Naengterview
   골든디스크 어워즈: Golden Disc Awards
   NHK 홍백가합전: NHK Kōhaku Uta Gassen
