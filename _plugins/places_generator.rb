@@ -195,9 +195,13 @@ module PlacesGenerator
     content.gsub(/<!--.*?-->/m, '').each_line do |l|
       s = l.strip
       next if s.empty? || s.start_with?('<', '#', '|', '!', '```', '※')
-      seg = s.split(%r{\s+/\s+}).map(&:strip).find { |x| x !~ /\A\d{6,8}[ _]/ && x !~ /\A\[[^\]]*\]\(https?:/ }
+      seg = s.split(%r{\s+/\s+}).map(&:strip).find { |x| x !~ /\A\d{6,8}[ _]/ && x !~ /\A\[(?:[^\[\]]|\[[^\[\]]*\])*\]\(https?:/ }
       return nil unless seg
-      seg = seg.gsub(/\[([^\]]+)\]\([^)]*\)/, '\1').gsub('\|', '|').gsub('**', '').sub(/\s*\(\d{6}\)\z/, '').strip
+      # 마크다운 링크 → 글자만. 글자 안에 대괄호가 한 겹 더 있어도('[[DAYOFF] Season2](url)') 벗긴다 (2026-09-26 점검에서 7곳)
+      seg = seg.gsub(/\[((?:[^\[\]]|\[[^\[\]]*\])+)\]\([^)]*\)/, '\1').gsub('\|', '|').gsub('**', '')
+      seg = seg.sub(/\A(?:영상|Video)\s*:\s*/i, '').sub(/\s*\(\d{6}\)\z/, '').strip
+      head = seg.split(' — ').first.to_s.strip   # ' — 13:39 돌담 옆 귤밭' 같은 장면 설명은 노트 본문 몫
+      seg = head if head.length >= 4
       return nil if seg.empty?
       return seg.length > 60 ? "#{seg[0, 59]}…" : seg
     end

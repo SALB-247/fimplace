@@ -256,12 +256,13 @@ window.FimJson = function (name) {
   var PLATFORMS = [
     { re: /인스스|스토리/, key: 'home_chip_story', ko: '인스타 스토리', ico: '📷' },
     { re: /DM/, tag: 'DM', ico: '💬' },
-    { re: /인스타/, tag: '인스타', ico: '📷' },
+    { re: /인스타|공스타/, tag: '인스타', ico: '📷' },
     { re: /위버스/, tag: '위버스', ico: '💬' },
     { re: /틱톡/, tag: '틱톡', ico: '🎵' },
-    { re: /공트/, tag: '공트', ico: '📣' },
-    { re: /멤트/, tag: '멤트', ico: '📣' }
+    { re: /공트|공식\s*(?:트위터|X)/, tag: '공트', ico: '📣' },
+    { re: /멤트|트위터/, tag: '멤트', ico: '📣' }
   ];
+  var PF_IG = PLATFORMS.filter(function (x) { return x.tag === '인스타'; })[0];
   // 이벤트 유형 — _plugins/event_period_generator.rb 의 infer_type 과 같은 규칙
   var TYPES = {
     '생일카페': { key: 'home_chip_bdcafe', ico: '🎂' },
@@ -286,7 +287,8 @@ window.FimJson = function (name) {
     }
     return '';
   }
-  function norm(s) { return String(s || '').toLowerCase().replace(/[\s_]/g, ''); }
+  // 비교용: 공백·밑줄·점 무시 ('PUREFLOW pt.1' = 'PUREFLOW_pt1')
+  function norm(s) { return String(s || '').toLowerCase().replace(/[\s_.]/g, ''); }
   // 제목 정리: 파일명식 날짜 접미(_250317-250319)는 오른쪽 날짜와 겹치고, "(Made My Night)" 는 칩으로 옮긴다
   function cleanTitle(t, album) {
     t = String(t || '').replace(/_\d{6}(?:-\d{4,6})?$/, '');
@@ -330,6 +332,11 @@ window.FimJson = function (name) {
   }
   function platformOf(label) {
     for (var i = 0; i < PLATFORMS.length; i++) if (PLATFORMS[i].re.test(label || '')) return PLATFORMS[i];
+    return null;
+  }
+  // 메모 줄로 플랫폼을 못 정하면 노트의 SNS 태그(인스타·DM·위버스·틱톡·공트·멤트)에서
+  function platformTag(tags) {
+    for (var i = 0; i < PLATFORMS.length; i++) if (PLATFORMS[i].tag && (tags || []).indexOf(PLATFORMS[i].tag) >= 0) return PLATFORMS[i];
     return null;
   }
   function platformChip(pf) { return chip(pf.key ? T(pf.key, pf.ko) : tagLabel(pf.tag), pf.ico); }
@@ -418,7 +425,8 @@ window.FimJson = function (name) {
     items.forEach(function (it) {
       if (it.kind !== 'period') return;
       var s0 = it.p || it.ev;
-      var key = s0.event ? 'E|' + s0.event
+      // 다른 앨범 모음에 같은 소제목('팝업 스토어')이 있어도 섞이지 않게 앨범 이벤트 이름도 열쇠에 넣는다
+      var key = s0.event ? 'E|' + albumName(s0.tags) + '|' + s0.event
         : (it.p && it.label ? 'L|' + it.p.tags.filter(function (t) { return EVENT_TAGS[t]; }).sort().join(',') + '|' + it.label : '');
       if (key) (byKey[key] = byKey[key] || []).push(it);
     });
@@ -491,12 +499,12 @@ window.FimJson = function (name) {
         // 제목 = 이벤트 모음의 소제목(공식 이벤트 이름) → 모음에 없는 이벤트는 메모 줄 라벨
         head = link(hubHref(it.p.tags) || it.url, eventName(it.p) || it.label);
         chips = typeChip(eventType(it.p.tags)) + (album ? chip(album) : '');
-        // 매장 이름: 공통 앞말(카시나·세븐일레븐)은 빼고 지점만. 영어·일본어는 모든 매장에 현지 이름이 있을 때만 그 이름
-        var srcs = it.list.map(function (x) { return x.p || x.ev; });
-        var pick = function (f) { return srcs.every(function (x) { return f(x); }) ? srcs.map(f) : null; };
-        var names = (LANG === 'ja' && pick(function (x) { return x.name_ja; })) ||
-          (LANG !== 'ko' && (pick(function (x) { return x.label_en; }) || pick(function (x) { return x.name_en; }))) ||
-          srcs.map(function (x) { return x.title; });
+        // 매장 이름: 공통 앞말(카시나·세븐일레븐)은 빼고 지점만. 영어·일본어는 매장마다 있는 현지 이름(영어판 모음 라벨 → 영어 이름 → 원제)
+        var names = it.list.map(function (x) {
+          var o = x.p || x.ev;
+          if (LANG === 'ja' && o.name_ja) return o.name_ja;   // 같음·다름 비교를 한 줄에 같이 두면 markdown-highlighter 가 mark 태그로 깬다 (2026-09-26)
+          return (LANG !== 'ko' && (o.label_en || o.name_en)) || o.title;
+        });
         names = names.map(function (nm) { return cleanTitle(nm, album); });
         var brand = commonPrefix(names);
         var n = it.list.length;
@@ -532,7 +540,7 @@ window.FimJson = function (name) {
           var ct = p.src && norm(p.src).indexOf(norm(p.title)) < 0 && norm(p.title).indexOf(norm(p.src)) < 0 ? p.src : '';
           rest = sub(esc(ct || areaOf(p.tags)));
         } else if (lb === 'IG 게시') {
-          chips = platformChip(PLATFORMS[2]) + memberChips(membersFromNames(p.members));
+          chips = platformChip(PF_IG) + memberChips(membersFromNames(p.members));
           rest = sub(esc(areaOf(p.tags)));
         } else {
           var pf = platformOf(lb);
@@ -541,9 +549,11 @@ window.FimJson = function (name) {
             chips = platformChip(pf) + memberChips(mem);
             rest = sub(esc(areaOf(p.tags)));
           } else {
-            // 방송·역조공 같은 메모: 분류 칩은 노트 태그에서, 메모 줄은 그대로 보여 준다
+            // 방송·역조공·방문 메모: 분류 칩은 노트 태그에서 (시리즈 → 역조공 → SNS 플랫폼), 메모 줄은 그대로 보여 준다
             var se2 = seriesOf(p.tags);
-            chips = (se2 ? chip(se2, '🎬') : '') + memberChips(mem);
+            var pf2 = platformTag(p.tags);
+            var gift = (p.tags || []).indexOf('역조공') >= 0;
+            chips = (se2 ? chip(se2, '🎬') : gift ? chip(tagLabel('역조공'), '🎁') : pf2 ? platformChip(pf2) : '') + memberChips(mem);
             rest = sub(esc(lb));
           }
         }
