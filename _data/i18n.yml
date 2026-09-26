@@ -202,10 +202,16 @@ ui:
   home_loading: Loading schedule...
   home_no_events: Nothing to show.
   home_live: LIVE NOW
-  home_kind_period: event
-  home_kind_visit: visit
-  home_kind_upload: posted
-  home_kind_show: show
+  home_chip_popup: Pop-up
+  home_chip_bdcafe: Birthday cafe
+  home_chip_ad: Ad
+  home_chip_tourevent: Tour event
+  home_chip_event: Event
+  home_chip_show: Show
+  home_chip_video: Video
+  home_chip_story: Instagram story
+  home_more: "+%d more"
+  home_local_time: "%s local time"
   home_map_all: 🗺️ Full map →
   home_show_today: 🔴 Show today!
   home_show_next: Next show

@@ -165,10 +165,16 @@ ui:
   home_loading: 予定を読み込み中...
   home_no_events: 表示する予定はありません。
   home_live: 開催中
-  home_kind_period: 期間
-  home_kind_visit: 訪問
-  home_kind_upload: 投稿
-  home_kind_show: 公演
+  home_chip_popup: ポップアップ
+  home_chip_bdcafe: 誕生日カフェ
+  home_chip_ad: 広告
+  home_chip_tourevent: ツアーイベント
+  home_chip_event: イベント
+  home_chip_show: 公演
+  home_chip_video: 動画
+  home_chip_story: インスタストーリー
+  home_more: "ほか%d店舗"
+  home_local_time: "現地 %s"
   home_map_all: 🗺️ 全体マップ →
   home_show_today: 🔴 本日公演！
   home_show_next: 次の公演

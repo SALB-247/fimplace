@@ -187,6 +187,23 @@ module PlacesGenerator
     }.compact
   end
 
+  # 영상 노트의 콘텐츠 제목 (홈 '최근 일정' 둘째 줄, 2026-09-26) — 본문 첫 메모 줄에서 날짜 라벨·링크가 아닌 첫 조각.
+  #   "JEN TOUR Part.1 \| LE SSERAFIM in New York / 231223 허윤진 인스타" → "JEN TOUR Part.1 | LE SSERAFIM in New York"
+  #   유튜브 임베드가 있는 노트만 (SNS 노트의 메모 줄은 이미 visits 라벨에 있다)
+  def self.content_title(content)
+    return nil unless content =~ %r{youtube(?:-nocookie)?\.com/embed/}
+    content.gsub(/<!--.*?-->/m, '').each_line do |l|
+      s = l.strip
+      next if s.empty? || s.start_with?('<', '#', '|', '!', '```', '※')
+      seg = s.split(%r{\s+/\s+}).map(&:strip).find { |x| x !~ /\A\d{6,8}[ _]/ && x !~ /\A\[[^\]]*\]\(https?:/ }
+      return nil unless seg
+      seg = seg.gsub(/\[([^\]]+)\]\([^)]*\)/, '\1').gsub('\|', '|').gsub('**', '').sub(/\s*\(\d{6}\)\z/, '').strip
+      return nil if seg.empty?
+      return seg.length > 60 ? "#{seg[0, 59]}…" : seg
+    end
+    nil
+  end
+
   def self.business_variants(name)
     return [] if name.nil?
     out = [name]
@@ -593,6 +610,13 @@ module PlacesGenerator
           'visits' => Array(note.data['visit_dates']).map { |v| { 'date' => v['date'].strftime('%Y-%m-%d'), 'label' => v['label'] } },
           'tags' => tags, 'members' => Array(note.data['members']).map(&:to_s), 'categories' => categories
         }
+        src = PlacesGenerator.content_title(content)
+        places.last['src'] = src if src
+        if (he = note.data['hub_event'])   # _plugins/hub_events.rb — 이벤트 모음의 '# 소제목'
+          places.last['event'] = he['ko'] if he['ko']
+          places.last['event_en'] = he['en'] if he['en']
+          places.last['label_en'] = he['label_en'] if he['label_en']
+        end
       end
       if defined?(Jekyll)
         Jekyll.logger.info('Places', "mapped #{places.size}, skipped #{skipped.size} (#{newly_resolved} new resolved, #{newly_skipped} new skipped)")

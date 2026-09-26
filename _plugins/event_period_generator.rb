@@ -317,6 +317,10 @@ module EventPeriod
           'tags'    => tags,
           'members' => Array(note.data['members']).map(&:to_s)
         }
+        if (he = note.data['hub_event'])   # _plugins/hub_events.rb — 홈 '최근 일정' 묶음 제목
+          events.last['event'] = he['ko'] if he['ko']
+          events.last['event_en'] = he['en'] if he['en']
+        end
       end
 
       events.sort_by! { |ev| [ev['start'], ev['title']] }
