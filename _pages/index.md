@@ -244,13 +244,13 @@ window.FimJson = function (name) {
     return today;
   }
 
-  // 멤버: full = .member-chip 색 클래스, tag = 번역 사전 키, re = 메모 줄에서 찾는 이름
+  // 멤버: full = .member-chip 색 클래스, tag = 번역 사전 키. 칩은 항상 노트의 멤버 태그 전부 (2026-09-26 사용자 지시)
   var MEMBERS = [
-    { full: '사쿠라', tag: '꾸라', ko: '사쿠라', re: /사쿠라|꾸라/ },
-    { full: '김채원', tag: '채원', ko: '채원', re: /채원/ },
-    { full: '허윤진', tag: '윤진', ko: '윤진', re: /윤진/ },
-    { full: '카즈하', tag: '즈하', ko: '즈하', re: /즈하/ },
-    { full: '홍은채', tag: '은채', ko: '은채', re: /은채|만채/ }
+    { full: '사쿠라', tag: '꾸라', ko: '사쿠라' },
+    { full: '김채원', tag: '채원', ko: '채원' },
+    { full: '허윤진', tag: '윤진', ko: '윤진' },
+    { full: '카즈하', tag: '즈하', ko: '즈하' },
+    { full: '홍은채', tag: '은채', ko: '은채' }
   ];
   // 메모 줄의 플랫폼 — 앞에서부터 먼저 맞는 것 ('허윤진 위버스 DM' 은 DM)
   var PLATFORMS = [
@@ -320,9 +320,6 @@ window.FimJson = function (name) {
   function typeChip(type) { var d = TYPES[type] || TYPES['이벤트']; return chip(T(d.key, type), d.ico); }
   function membersFromNames(names) {
     return MEMBERS.filter(function (m) { return (names || []).indexOf(m.full) >= 0; });
-  }
-  function membersFromLabel(label) {
-    return MEMBERS.filter(function (m) { return m.re.test(label || ''); });
   }
   // 멤버 태그가 없거나 다섯 명이면 칩을 쓰지 않는다 (노트 규칙: 태그 없음 = 전원)
   function memberChips(list) {
@@ -539,8 +536,7 @@ window.FimJson = function (name) {
           rest = sub(esc(areaOf(p.tags)));
         } else {
           var pf = platformOf(lb);
-          var mem = membersFromLabel(lb);
-          if (!mem.length) mem = membersFromNames(p.members);
+          var mem = membersFromNames(p.members);   // 그 날짜 게시자만이 아니라 노트 멤버 태그 전부
           if (pf) {
             chips = platformChip(pf) + memberChips(mem);
             rest = sub(esc(areaOf(p.tags)));
