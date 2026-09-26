@@ -199,7 +199,8 @@ window.FimJson = function (name) {
 <strong data-i18n="home_recent">최근 일정 노트</strong>
 
 <!-- 두 줄 행 (2026-09-26 사용자 선택 'A안'): 1줄 = 진행 중 · 제목 · 날짜 / 2줄 = 분류 칩 · 멤버 칩 · 콘텐츠 제목(또는 지역)
-     멤버 칩은 노트 페이지와 같은 .member-chip 색. 같은 이벤트를 매장 3곳 이상이 함께 하면 한 줄로 묶는다. -->
+     멤버 칩은 노트 페이지와 같은 .member-chip 색. 같은 이벤트를 매장 3곳 이상이 함께 하면 한 줄로 묶는다.
+     서비스 칩의 로고(.ki)는 사이트 공통 img 규칙(display:block · margin auto · max-height)을 덮어써야 글자와 한 줄에 선다. -->
 <style>
   #upcoming-events { list-style:none; padding-left:0; margin:0.4em 0 1.4em; }
   #upcoming-events > li { padding:0.55em 0; border-bottom:1px solid var(--border); }
@@ -212,6 +213,8 @@ window.FimJson = function (name) {
   #upcoming-events .l2 { display:flex; flex-wrap:wrap; align-items:center; gap:0.3em 0.35em; margin-top:0.3em; }
   #upcoming-events .kc { display:inline-block; padding:0.1em 0.6em; border:1px solid var(--border); border-radius:999px;
                          background:var(--box-bg); color:var(--subtext); font-size:0.74em; line-height:1.5; white-space:nowrap; }
+  #upcoming-events .kc .ki { display:inline-block; width:1.1em; height:1.1em; vertical-align:-0.2em; margin:0 0.3em 0 0; }
+  #upcoming-events .kc img.ki { max-height:none; border-radius:0.25em; }
   #upcoming-events .member-chip { font-size:0.74em; padding:0.1em 0.6em; line-height:1.5; }
   #upcoming-events .sub { flex:1 1 12em; min-width:0; font-size:0.8em; color:var(--subtext);
                           overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -254,13 +257,14 @@ window.FimJson = function (name) {
   ];
   // 메모 줄의 플랫폼 — 앞에서부터 먼저 맞는 것 ('허윤진 위버스 DM' 은 DM)
   var PLATFORMS = [
-    { re: /인스스|스토리/, key: 'home_chip_story', ko: '인스타 스토리', ico: '📷' },
-    { re: /DM/, tag: 'DM', ico: '💬' },
-    { re: /인스타|공스타/, tag: '인스타', ico: '📷' },
-    { re: /위버스/, tag: '위버스', ico: '💬' },
-    { re: /틱톡/, tag: '틱톡', ico: '🎵' },
-    { re: /공트|공식\s*(?:트위터|X)/, tag: '공트', ico: '📣' },
-    { re: /멤트|트위터/, tag: '멤트', ico: '📣' }
+    { re: /인스스|스토리/, key: 'home_chip_story', ko: '인스타 스토리', logo: 'ig' },
+    { re: /DM/, tag: 'DM', logo: 'wv' },
+    { re: /인스타|공스타/, tag: '인스타', logo: 'ig' },
+    { re: /위버스\s*라이브/, tag: '위버스라이브', logo: 'wv' },
+    { re: /위버스/, tag: '위버스', logo: 'wv' },
+    { re: /틱톡/, tag: '틱톡', logo: 'tt' },
+    { re: /공트|공식\s*(?:트위터|X)/, tag: '공트', logo: 'x' },
+    { re: /멤트|트위터/, tag: '멤트', logo: 'x' }
   ];
   var PF_IG = PLATFORMS.filter(function (x) { return x.tag === '인스타'; })[0];
   // 이벤트 유형 — _plugins/event_period_generator.rb 의 infer_type 과 같은 규칙
@@ -318,7 +322,23 @@ window.FimJson = function (name) {
     return ev;
   }
 
+  // 서비스 로고 (2026-09-26 사용자 제안 — 이모지 대신 실제 로고). 경로는 Simple Icons(CC0), 위버스는 공식 앱 아이콘(48px).
+  //   X·틱톡은 검은 로고라 글자색을 따른다 (다크 모드에서 밝게). 칩 글자가 서비스 이름이라 로고는 장식(aria-hidden)
+  var LOGO = {
+    ig: { fill: '#E4405F', d: 'M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077' },
+    x: { d: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z' },
+    tt: { d: 'M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z' },
+    yt: { fill: '#FF0000', d: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' },
+    wv: { img: 'data:image/png;base64,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' }
+  };
+  function logo(k) {
+    var o = LOGO[k];
+    if (!o) return '';
+    if (o.img) return '<img class="ki" src="' + o.img + '" alt="">';
+    return '<svg class="ki" viewBox="0 0 24 24" aria-hidden="true"><path fill="' + (o.fill || 'currentColor') + '" d="' + o.d + '"/></svg>';
+  }
   function chip(text, ico) { return '<span class="kc">' + (ico ? ico + ' ' : '') + esc(text) + '</span>'; }
+  function logoChip(text, k) { return '<span class="kc">' + logo(k) + esc(text) + '</span>'; }
   function typeChip(type) { var d = TYPES[type] || TYPES['이벤트']; return chip(T(d.key, type), d.ico); }
   function membersFromNames(names) {
     return MEMBERS.filter(function (m) { return (names || []).indexOf(m.full) >= 0; });
@@ -339,7 +359,9 @@ window.FimJson = function (name) {
     for (var i = 0; i < PLATFORMS.length; i++) if (PLATFORMS[i].tag && (tags || []).indexOf(PLATFORMS[i].tag) >= 0) return PLATFORMS[i];
     return null;
   }
-  function platformChip(pf) { return chip(pf.key ? T(pf.key, pf.ko) : tagLabel(pf.tag), pf.ico); }
+  function platformChip(pf) { return logoChip(pf.key ? T(pf.key, pf.ko) : tagLabel(pf.tag), pf.logo); }
+  // 유튜브 임베드가 있는 노트 = 방문 기록에 '영상 업로드'(임베드 영상의 업로드일)가 있다
+  function hasYT(p) { return (p.visits || []).some(function (v) { return v.label === '영상 업로드'; }); }
   function sub(text, wrap) { return text ? '<span class="sub' + (wrap ? ' wrap' : '') + '">' + text + '</span>' : ''; }
 
   Promise.all([FimJson('places.json'), FimJson('tour_schedule.json'), FimJson('events.json')])
@@ -359,10 +381,14 @@ window.FimJson = function (name) {
       return '';
     }
     // 시리즈 칩: 가장 구체적인 시리즈 태그 (자체컨텐츠_촬영지·유튜브 같은 큰 분류는 다른 게 없을 때만)
-    function seriesOf(tags) {
+    function seriesTag(tags) {
       var list = (tags || []).filter(function (t) { return SERIES[t]; });
-      var best = list.filter(function (t) { return t !== '자체컨텐츠_촬영지' && t !== '유튜브'; })[0] || list[0];
-      return best ? tagLabel(best) : '';
+      return list.filter(function (t) { return t !== '자체컨텐츠_촬영지' && t !== '유튜브'; })[0] || list[0] || '';
+    }
+    // 시리즈 칩 로고: 위버스 라이브 → 위버스, 유튜브 임베드가 있는 노트 → 유튜브, 그 밖(TV 방송 등) → 🎬
+    function seriesChip(tag, p) {
+      if (tag === '위버스라이브') return logoChip(tagLabel(tag), 'wv');
+      return hasYT(p) ? logoChip(tagLabel(tag), 'yt') : chip(tagLabel(tag), '🎬');
     }
 
     var items = [];
@@ -534,8 +560,9 @@ window.FimJson = function (name) {
         head = link(it.url, nameOf(p));
         var lb = it.label || '';
         if (lb === '영상 업로드' || lb === '') {
-          var se = seriesOf(p.tags);
-          chips = (se ? chip(se, '🎬') : chip(T('home_chip_video', '영상'), '🎬')) + memberChips(membersFromNames(p.members));
+          var se = seriesTag(p.tags);
+          var vt = se ? tagLabel(se) : T('home_chip_video', '영상');
+          chips = (lb ? logoChip(vt, 'yt') : chip(vt, '🎬')) + memberChips(membersFromNames(p.members));
           // 메모 줄이 없어 제목이 그대로 뽑힌 노트는 지역으로
           var ct = p.src && norm(p.src).indexOf(norm(p.title)) < 0 && norm(p.title).indexOf(norm(p.src)) < 0 ? p.src : '';
           rest = sub(esc(ct || areaOf(p.tags)));
@@ -550,10 +577,10 @@ window.FimJson = function (name) {
             rest = sub(esc(areaOf(p.tags)));
           } else {
             // 방송·역조공·방문 메모: 분류 칩은 노트 태그에서 (시리즈 → 역조공 → SNS 플랫폼), 메모 줄은 그대로 보여 준다
-            var se2 = seriesOf(p.tags);
+            var se2 = seriesTag(p.tags);
             var pf2 = platformTag(p.tags);
             var gift = (p.tags || []).indexOf('역조공') >= 0;
-            chips = (se2 ? chip(se2, '🎬') : gift ? chip(tagLabel('역조공'), '🎁') : pf2 ? platformChip(pf2) : '') + memberChips(mem);
+            chips = (se2 ? seriesChip(se2, p) : gift ? chip(tagLabel('역조공'), '🎁') : pf2 ? platformChip(pf2) : '') + memberChips(mem);
             rest = sub(esc(lb));
           }
         }
