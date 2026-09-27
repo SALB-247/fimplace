@@ -128,7 +128,21 @@ ui:
   cal_today: 🔴 本日公演
   cal_next_dday: 次の公演まで D-%d
   cal_finished: ツアー終了
-  cal_progress: 全 %d 公演中 %d 公演終了
+  cal_progress: "%d 公演終了（全 %d 公演）"
+  cal_time_local: 現地
+  cal_time_mine: あなたの時間
+  cal_time_kst: 韓国時間
+  cal_time_selected: 選択した時間（%s）
+  tour_table_local: ※ 表の日付と時刻（⏰）はすべて会場の現地時間です。
+  cal_local_date: 現地日付
+  cal_tz_label: 時間の基準
+  cal_tz_device: 端末の時間
+  cal_tz_kst: 韓国時間 (KST)
+  cal_tz_venue: "会場: "
+  cal_next_day: 翌日
+  cal_prev_day: 前日
+  cal_days_after: "%d日後"
+  cal_days_before: "%d日前"
   cal_day_count: '%d 日間'
   cal_cancelled: （中止）
   cal_legend_today: 本日
@@ -141,7 +155,7 @@ ui:
   share_copy_short_hint: 非ラテン文字の URL でも壊れない短縮リンク（推奨）
   share_copy_full: 完全な URL
   share_copy_full_hint: ハングルを含む元の URL
-  share_twitter: 𝕏 Twitter
+  share_twitter: Twitter
   share_webshare: 📤 共有...
   share_toast: コピーしました！
   share_toast_short: 🔗 短縮リンクをコピーしました！

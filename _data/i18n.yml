@@ -162,6 +162,20 @@ ui:
   cal_next_dday: Next show D-%d
   cal_finished: Tour finished
   cal_progress: "%d of %d shows played"
+  cal_time_local: Local
+  cal_time_mine: Your time
+  cal_time_kst: Korea time
+  cal_time_selected: Selected (%s)
+  tour_table_local: "※ All dates and times (⏰) in this table are the venue's local time."
+  cal_local_date: local date
+  cal_tz_label: Time basis
+  cal_tz_device: My device time
+  cal_tz_kst: Korea time (KST)
+  cal_tz_venue: "Venue: "
+  cal_next_day: next day
+  cal_prev_day: previous day
+  cal_days_after: "+%d days"
+  cal_days_before: "-%d days"
   cal_day_count: "%d days"
   cal_cancelled: "(cancelled)"
   cal_legend_today: Today
@@ -175,7 +189,7 @@ ui:
   share_copy_short_hint: Short link that survives non-Latin URLs (recommended)
   share_copy_full: Full URL
   share_copy_full_hint: Original URL with Korean characters
-  share_twitter: 𝕏 Twitter
+  share_twitter: Twitter
   share_webshare: 📤 Share...
   share_toast: Copied!
   share_toast_short: 🔗 Short link copied!

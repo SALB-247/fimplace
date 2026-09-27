@@ -15,6 +15,7 @@
   .fim-pop-mini .pulse { position:absolute; left:50%; top:50%; width:24px; height:24px; margin:-12px 0 0 -12px; border-radius:50%; background:rgba(109,40,217,0.45); animation:home-crew-pulse 2s ease-out infinite; }
   .fim-pop-mini .badge { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; border:2px solid #6d28d9; background:#fff; box-sizing:border-box; box-shadow:0 2px 5px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; font-size:17px; line-height:1; font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
   @media (prefers-reduced-motion: reduce) { .fim-crew-mini .pulse, .fim-pop-mini .pulse { animation:none; } }
+  #home-map .leaflet-popup-content { overflow-wrap:anywhere; }
 </style>
 
 {% include map_tiles.html %}
@@ -30,6 +31,13 @@
     scrollWheelZoom: false   // 스크롤 중 지도에 잡히지 않게 (클릭 후 +/- 또는 더블클릭 줌)
   })).setView([33.5, 132.0], 3);
   FimMap.tiles(L).voyager.addTo(map);
+  // 팝업 폭을 지도 폭에 맞춘다 (2026-09-27 점검 BUG-03): Leaflet 기본 maxWidth 300 + 내용 여백 44px 이
+  //   폰에서 지도(≈330px)보다 넓어 팝업 오른쪽과 닫기 버튼이 지도 밖으로 잘렸다. 좌우 여백 12px 씩 남기고 자동 이동도 그 안으로
+  function popupOpts() {
+    var w = map.getSize().x;
+    return { autoClose: false, closeOnClick: false, maxWidth: Math.max(140, Math.min(300, w - 72)),
+             autoPanPadding: L.point(12, 12) };
+  }
   map.on('focus click', function () { map.scrollWheelZoom.enable(); });
   map.on('blur', function () { map.scrollWheelZoom.disable(); });
 
@@ -105,7 +113,7 @@
             if (!du) return '';
             return '<br><span style="font-size:0.8em;color:#888;">🕒 ' + du.local + (du.sameTz ? '' : ' · ' + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '')) + '</span>';
           })(),
-          { autoClose: false, closeOnClick: false });
+          popupOpts());
       pts.push(ll);
       autoCand.push({ marker: m, rank: state === 'live' ? 0 : 1,
                       gap: Math.abs(FimTime ? FimTime.dayDiff(pickToday, pickDate) : 0) });
@@ -137,19 +145,41 @@
         .addTo(map)
         .bindPopup('<strong>' + head + '</strong><br><a href="' + e.url + '">' + e.title + '</a>' +
           '<br><span style="font-size:0.85em;color:#888;">📅 ' + e.start + ' ~ ' + e.end + '</span>',
-          { autoClose: false, closeOnClick: false });
+          popupOpts());
       pts.push(ll);
       autoCand.push({ marker: m, rank: isLive ? 0 : 1, gap: Math.abs(dday) });
     });
 
     // ── 뷰 + 팝업 자동 열기 (가장 임박한 것 1개만 열어 말풍선 겹침 방지) ──
-    if (pts.length === 1) map.setView(pts[0], 5);
+    //   ⚠️ 첫 뷰는 애니메이션 없이 (2026-09-27 점검 BUG-03): 폰 폭에선 서울 팝업과 미국 공연이 한 화면에 안 들어가
+    //   팝업이 자동 이동(autoPan)해야 하는데, fitBounds 줌 애니메이션이 끝나면서 그 이동을 원래 중심으로 되돌려
+    //   팝업이 지도 왼쪽 밖(마커 x≈3px)에 남았다
+    if (pts.length === 1) map.setView(pts[0], 5, { animate: false });
     else if (pts.length > 1) {
-      try { map.fitBounds(L.latLngBounds(pts), { padding: [70,70], maxZoom: 6 }); }
-      catch (err) { map.setView(pts[0], 5); }
+      try { map.fitBounds(L.latLngBounds(pts), { padding: [70,70], maxZoom: 6, animate: false }); }
+      catch (err) { map.setView(pts[0], 5, { animate: false }); }
     }
     autoCand.sort(function (a, b) { return a.rank - b.rank || a.gap - b.gap; });
-    if (autoCand.length) autoCand[0].marker.openPopup();
+    if (autoCand.length) {
+      var first = autoCand[0].marker;
+      // 폰 폭에선 모든 점이 한 화면에 안 들어간다 — 자동으로 여는 말풍선의 마커가 화면 밖이면 그 마커를 가운데로 (애니메이션 없이).
+      //   그래야 말풍선이 처음부터 지도 안에 뜬다 (autoPan 의 이동 애니메이션에 기대지 않는다)
+      if (!map.getBounds().pad(-0.15).contains(first.getLatLng())) map.setView(first.getLatLng(), map.getZoom(), { animate: false });
+      // 첫 말풍선은 애니메이션 없이 지도 안으로 — Leaflet autoPan 의 이동 애니메이션(requestAnimationFrame)은 탭이 가려져 있으면
+      //   멈춰 말풍선이 가장자리에 걸린 채 남는다. 사용자가 여는 말풍선은 원래대로 autoPan
+      var pp = first.getPopup();
+      pp.options.autoPan = false;
+      first.openPopup();
+      pp.options.autoPan = true;
+      var pel = pp.getElement();
+      if (pel) {
+        var mr = map.getContainer().getBoundingClientRect(), pr = pel.getBoundingClientRect(), pdx = 0, pdy = 0;
+        if (pr.left < mr.left + 12) pdx = pr.left - mr.left - 12;
+        else if (pr.right > mr.right - 12) pdx = pr.right - mr.right + 12;
+        if (pr.top < mr.top + 12) pdy = pr.top - mr.top - 12;
+        if (pdx || pdy) map.panBy([pdx, pdy], { animate: false });
+      }
+    }
   })
   .catch(function () {});
 })();

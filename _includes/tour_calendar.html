@@ -80,8 +80,13 @@
     if (!s.start_time) return '';
     var du = FT.dual(s, d);
     if (!du) return '';
-    var l1 = (FimLang !== 'ko' ? 'Local ' : '현지 ') + du.local;
-    var l2 = du.sameTz ? '' : (FimLang !== 'ko' ? 'Your time ' : '내 시간 ') + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '');
+    var l1 = FimT('cal_time_local', '현지') + ' ' + du.local;
+    // 둘째 줄 이름은 고른 시간 기준을 따라간다 (2026-09-27 점검 — 피닉스를 골라도 '내 시간' 으로 나왔다)
+    var ch = FT.viewerTzChoice();
+    var who = ch === 'device' ? FimT('cal_time_mine', '내 시간')
+            : ch === 'Asia/Seoul' ? FimT('cal_time_kst', '한국 시간')
+            : FimFmt(FimT('cal_time_selected', '선택 시간 (%s)'), [ch]);
+    var l2 = du.sameTz ? '' : who + ' ' + du.viewer + (du.dayLabel ? ' [' + du.dayLabel + ']' : '');
     return '<div style="font-size:0.82em; color:var(--subtext); margin-top:0.25em;">🕒 ' + l1 + (l2 ? ' · ' + l2 : '') + '</div>';
   }
 
@@ -91,7 +96,7 @@
     var s = byDate[live[0]];
     badge = '<span class="tc-badge" style="background:#c9184a;color:#fff;">' + FimT('cal_today', '🔴 오늘 공연') + '</span>';
     sub = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? ' · ' + s.venue : '') +
-          (FimLang !== 'ko' ? ' · local date' : ' · 현지 날짜');
+          (' · ' + FimT('cal_local_date', '현지 날짜'));
     extra = timeLine(s, live[0]);
   } else if (next) {
     var n = byDate[next];
@@ -116,9 +121,9 @@
   function tzPicker() {
     if (!SHOWS.some(function (s) { return s.start_time; })) return '';
     var choice = FT.viewerTzChoice(), dev = FT.deviceTz();
-    var opts = [['device', (FimLang !== 'ko' ? 'My device time' : '내 기기 시간') + (dev ? ' (' + dev + ')' : '')], ['Asia/Seoul', FimLang !== 'ko' ? 'Korea time (KST)' : '한국 시간 (KST)']];
-    SHOWS.forEach(function (s) { if (FT.isValidTz(s.time_zone) && !opts.some(function (o) { return o[0] === s.time_zone; })) opts.push([s.time_zone, (FimLang !== 'ko' ? 'Venue: ' : '공연장: ') + s.time_zone]); });
-    return '<div style="font-size:0.8em; margin-top:0.35em;"><label>' + (FimLang !== 'ko' ? 'Time basis ' : '시간 기준 ') +
+    var opts = [['device', FimT('cal_tz_device', '내 기기 시간') + (dev ? ' (' + dev + ')' : '')], ['Asia/Seoul', FimT('cal_tz_kst', '한국 시간 (KST)')]];
+    SHOWS.forEach(function (s) { if (FT.isValidTz(s.time_zone) && !opts.some(function (o) { return o[0] === s.time_zone; })) opts.push([s.time_zone, FimT('cal_tz_venue', '공연장: ') + s.time_zone]); });
+    return '<div style="font-size:0.8em; margin-top:0.35em;"><label>' + (FimT('cal_tz_label', '시간 기준') + ' ') +
       '<select id="tc-tz" style="font-size:1em;">' + opts.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === choice ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label></div>';
   }
   renderStatus();
@@ -175,7 +180,7 @@
       if (!s) { html += '<div class="tc-cell">' + day + '</div>'; continue; }
       var st = state(ds);
       var label = (s.flag||'') + ' ' + FimTag(s.city||'') + (s.venue ? '\n' + s.venue : '') +
-                  (s.start_time ? '\n' + (FimLang !== 'ko' ? 'Local ' : '현지 ') + s.start_time : '') +
+                  (s.start_time ? '\n' + FimT('cal_time_local', '현지') + ' ' + s.start_time : '') +
                   (s.cancelled ? '\n' + FimT('cal_cancelled', '(취소)') : '');
       var tag = s.venue_url ? 'a' : 'div';
       var href = s.venue_url ? ' href="{{ site.baseurl }}' + s.venue_url + '"' : '';

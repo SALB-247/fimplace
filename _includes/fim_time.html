@@ -118,9 +118,14 @@
     if (!inst) return null;
     var vtz = viewerTz();
     var diff = dayDiff(date, dateIn(inst, vtz));
-    var dayLabel = diff === 0 ? '' : (window.FimLang !== 'ko'
-      ? (diff === 1 ? 'next day' : diff === -1 ? 'previous day' : (diff > 0 ? '+' + diff + ' days' : diff + ' days'))
-      : (diff === 1 ? '다음 날' : diff === -1 ? '전날' : (diff > 0 ? diff + '일 뒤' : (-diff) + '일 전')));
+    // 날짜 차이 이름은 사전에서 (일본어도 — 전에는 한국어가 아니면 전부 영어였다, 2026-09-27)
+    var tr = function (k, ko) { return window.FimT ? window.FimT(k, ko) : ko; };
+    var fmt = function (tpl, n) { return window.FimFmt ? window.FimFmt(tpl, [n]) : tpl.replace('%d', n); };
+    var dayLabel = '';
+    if (diff === 1) dayLabel = tr('cal_next_day', '다음 날');
+    else if (diff === -1) dayLabel = tr('cal_prev_day', '전날');
+    else if (diff > 1) dayLabel = fmt(tr('cal_days_after', '%d일 뒤'), diff);
+    else if (diff < -1) dayLabel = fmt(tr('cal_days_before', '%d일 전'), -diff);
     return { inst: inst, local: fmtInstant(inst, tz), viewer: fmtInstant(inst, vtz), dayLabel: dayLabel, sameTz: offsetAt(inst, tz) === offsetAt(inst, vtz), viewerTz: vtz };
   }
 

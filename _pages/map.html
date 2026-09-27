@@ -1055,19 +1055,31 @@ permalink: /map/
     return false;
   }
 
+  // 입력칸·말풍선·슬라이더·필터가 늘 같은 기간을 보이게 한다 (2026-09-27 점검 BUG-02):
+  //   기간은 항상 '시작일 0시 ~ 종료일 23:59:59' 날짜 단위. 역순으로 넣으면 입력칸까지 바꿔 적고,
+  //   한쪽을 지우면 그쪽 끝(전체 범위의 처음/끝)으로 채우고, 범위 밖 날짜는 끝값으로 자른다
   function tlSyncUI(fromSlider) {
+    var dayMin = tlMs(tlYmd(TL.min)), dayMax = tlMs(tlYmd(TL.max));
+    var f, t;
     if (fromSlider) {
       var v1 = Math.min(+tlSFrom.value, +tlSTo.value);
       var v2 = Math.max(+tlSFrom.value, +tlSTo.value);
-      TL.from = TL.min + (TL.max - TL.min) * v1 / 1000;
-      TL.to   = TL.min + (TL.max - TL.min) * v2 / 1000;
-      tlFrom.value = tlYmd(TL.from);
-      tlTo.value   = tlYmd(TL.to);
+      f = tlMs(tlYmd(TL.min + (TL.max - TL.min) * v1 / 1000));
+      t = tlMs(tlYmd(TL.min + (TL.max - TL.min) * v2 / 1000));
     } else {
-      var f = tlMs(tlFrom.value), t = tlMs(tlTo.value);
-      if (f !== null) TL.from = f;
-      if (t !== null) TL.to = t + 86399999; // 종료일 그날 포함
-      if (TL.from > TL.to) { var tmp = TL.from; TL.from = TL.to; TL.to = tmp; }
+      f = tlMs(tlFrom.value);
+      t = tlMs(tlTo.value);
+      if (f === null) f = dayMin;
+      if (t === null) t = dayMax;
+      if (f > t) { var tmp = f; f = t; t = tmp; }
+    }
+    f = Math.min(Math.max(f, dayMin), dayMax);
+    t = Math.min(Math.max(t, dayMin), dayMax);
+    TL.from = f;
+    TL.to = t + 86399999;   // 종료일 그날 포함
+    tlFrom.value = tlYmd(TL.from);
+    tlTo.value   = tlYmd(TL.to);
+    if (!fromSlider) {
       tlSFrom.value = Math.round((TL.from - TL.min) / (TL.max - TL.min) * 1000);
       tlSTo.value   = Math.round((TL.to   - TL.min) / (TL.max - TL.min) * 1000);
     }
@@ -1160,6 +1172,18 @@ permalink: /map/
     document.getElementById('tl-histo').innerHTML = hh;
     document.getElementById('tl-years').innerHTML = yy;
 
+    tlSyncUI(false);
+  }
+
+  // '필터 초기화' 가 기간 조건도 끈다 (2026-09-27 점검 BUG-01 — 스위치·두 날짜·슬라이더를 처음 상태로)
+  function tlReset() {
+    if (!TL.max) return;   // 날짜 있는 장소가 없어 타임라인이 숨은 경우
+    tlOn.checked = false; TL.on = false;
+    tlFrom.disabled = tlTo.disabled = true;
+    document.getElementById('tl-range').style.display = 'none';
+    document.getElementById('tl-hint').style.display = 'none';
+    tlFrom.value = tlYmd(TL.min);
+    tlTo.value   = tlYmd(TL.max);
     tlSyncUI(false);
   }
 
@@ -1658,6 +1682,7 @@ permalink: /map/
     regionSel.value = ''; categorySel.value = ''; memberSel.value = '';
     endedCheck.checked = false;
     if (searchInput) { searchInput.value = ''; searchQ = ''; }
+    tlReset();
     setTileForCountry('');
     skipFitBoundsOnce = false;   // G: 초기화 후에도 전 지점이 보이게
     rebuildOptions();

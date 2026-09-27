@@ -22,6 +22,18 @@
     var headers = Array.prototype.slice.call(headRow.children).map(function (th) {
       return th.textContent.trim();
     });
+    // 투어 일정 표 위에 '현지 기준' 한 줄 (2026-09-27 점검 제안 — 표만 읽으면 ⏰ 19:30 을 내 시간으로 오해할 수 있다)
+    var isTourTable = (headers.indexOf('날짜') !== -1 && headers.indexOf('공연장') !== -1) ||
+                      (headers.indexOf('Date') !== -1 && headers.indexOf('Venue') !== -1);
+    var prev = table.previousElementSibling;
+    if (isTourTable && !(prev && prev.classList.contains('tour-local-note'))) {
+      var note = document.createElement('p');
+      note.className = 'tour-local-note';
+      note.style.cssText = 'font-size:0.8em; color:var(--subtext); margin:0.2em 0 0.4em;';
+      note.textContent = window.FimT ? FimT('tour_table_local', '※ 표의 날짜와 시각(⏰)은 모두 공연장 현지 기준입니다.')
+                                     : '※ 표의 날짜와 시각(⏰)은 모두 공연장 현지 기준입니다.';
+      table.parentNode.insertBefore(note, table);
+    }
     // 영어면 열 이름을 i18n columns 사전으로 바꾼다 (뱃지 열 판정은 위 한국어 headers 로 먼저 한다)
     var labels = headers.slice();
     if (window.FimLang !== 'ko' && window.FimTr) {
