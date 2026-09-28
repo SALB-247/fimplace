@@ -231,7 +231,10 @@ window.FimJson = function (name) {
     return m ? new Date(+m[1], +m[2] - 1, +m[3]).getTime() : null;
   }
   var DAY = 86400000;
-  var now = new Date(); now.setHours(0, 0, 0, 0);
+  // 현지 '오늘' 은 지금 이 순간(nowAt)으로 계산한다. 자정으로 자른 now 를 넘기면 '서울 0시' 기준이 되어
+  // 미국 공연이 서울 하루 내내 '진행 중' 으로 남았다 (2026-09-28 — 9/27 포트워스가 서울 9/28 에도 진행 중)
+  var nowAt = new Date();
+  var now = new Date(nowAt.getTime()); now.setHours(0, 0, 0, 0);
   var today = now.getTime();
   var LANG = window.FimLang || 'ko';
   function T(key, ko) { return LANG !== 'ko' ? window.FimT(key, ko) : ko; }
@@ -243,7 +246,7 @@ window.FimJson = function (name) {
   }
   // 공연·이벤트는 그 장소의 현지 오늘로 판정한다 (서울에서 볼 때 미국 공연이 하루 먼저 끝나 보이던 문제, 2026-09-22)
   function todayFor(tz) {
-    if (window.FimTime && window.FimTime.isValidTz(tz)) return ms(window.FimTime.todayIn(tz, now)) || today;
+    if (window.FimTime && window.FimTime.isValidTz(tz)) return ms(window.FimTime.todayIn(tz, nowAt)) || today;
     return today;
   }
 
