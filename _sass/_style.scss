@@ -168,6 +168,16 @@ nav {
   grid-template-areas: "content";
 }
 
+/* 그리드 칸이 안쪽의 가장 긴 글자 폭보다 좁아지지 못해 320px 화면에서 영어 모음 페이지가 22px 넘쳤다 (2026-09-29) */
+#notes-entry-container > * { min-width: 0; }
+
+/* X 위젯이 안 뜰 때(차단·느린 연결) 남는 트윗 원문 — 띄어쓰기 없이 붙은 해시태그가 휴대폰 폭을 90px 뚫었다 (메르시쿠키, 2026-09-29) */
+content blockquote.twitter-tweet { overflow-wrap: anywhere; }
+
+/* 긴 영문·밑줄 이름('(PUREFLOW_pt1_260523-260528)' 제목)·링크 글자로 쓴 URL 이 휴대폰 폭을 80~100px 뚫던 것 (2026-09-29)
+   break-word 는 넘칠 때만 끊고 표의 칸 너비 계산(min-content)은 바꾸지 않는다 */
+h1, h2, h3, content { overflow-wrap: break-word; }
+
 .backlink-box {
   background: var(--box-bg);
   padding: 1em;
@@ -561,6 +571,8 @@ content table.collection-enhanced thead th:hover { color: var(--text); }
   content table.collection-mobile tr,
   content table.collection-mobile td { display: block; width: 100%; }
   content table.collection-mobile thead { display: none; }
+  /* 영어 칩('DM/Gift from the members (250307)')은 길어서 한 줄로 두면 카드를 뚫는다 → 카드 안에서 줄바꿈 */
+  content table.collection-mobile .ctag { white-space: normal; max-width: 100%; box-sizing: border-box; }
   content table.collection-mobile tr {
     border: 1px solid var(--border); border-radius: 8px;
     margin-bottom: 0.6em; padding: 0.35em 0.7em; background: var(--bg) !important;

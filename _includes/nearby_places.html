@@ -112,7 +112,7 @@
       return '<li data-i="' + i + '">' +
         '<span class="fim-num">' + (i + 1) + '</span>' +
         '<span class="fim-emoji">' + emojiOf(p) + '</span>' +
-        '<a class="fim-title internal-link" href="' + p.url + '">' + esc(p.title) + '</a>' +
+        '<a class="fim-title internal-link" href="' + p.url + '">' + esc(FimPlaceName(p)) + '</a>' +
         (cat ? '<span class="fim-cat">' + esc(cat) + '</span>' : '') +
         '<span class="fim-meta"><span class="fim-dir" style="transform:rotate(' + Math.round(c.b) + 'deg)" aria-hidden="true">↑</span>' +
         dir + ' ' + fmt(c.d) + '</span></li>';
@@ -144,7 +144,7 @@
         var m = L.marker(ll, {
           icon: L.divIcon({ className: '', html: '<div class="nb-pin" id="nb-pin-' + i + '">' + (i + 1) + '</div>', iconSize: [26, 26], iconAnchor: [13, 13] })
         }).addTo(map).bindPopup(
-          '<strong><a href="' + p.url + '">' + esc(p.title) + '</a></strong><br>' +
+          '<strong><a href="' + p.url + '">' + esc(FimPlaceName(p)) + '</a></strong><br>' +
           '<span style="color:var(--subtext)">' + DIRS[Math.round(c.b / 45) % 8] + ' ' + fmt(c.d) + '</span>'
         );
         markers.push(m);

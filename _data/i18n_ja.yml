@@ -63,6 +63,9 @@ ui:
   aria_member: メンバーフィルター
   aria_map_search: この地図の場所名を検索
   aria_list: 現在表示中の場所
+  aria_date_from: 開始日
+  aria_date_to: 終了日
+  aria_country: 国
   aria_tl_from: 開始日スライダー
   aria_tl_to: 終了日スライダー
   locate_title: 現在地を表示

@@ -11,8 +11,8 @@ permalink: /planner/
 </p>
 
 <div style="display:flex; gap:0.5em; flex-wrap:wrap; margin-bottom:0.6em;">
-  <select id="pl-country" style="padding:0.4em;"><option value="" data-i18n="plan_country_all">🌏 국가 전체</option></select>
-  <input id="pl-search" type="search" placeholder="장소 이름 검색..." data-i18n-ph="plan_search_ph" style="flex:1; min-width:160px; padding:0.4em;">
+  <select id="pl-country" aria-label="국가" data-i18n-aria="aria_country" style="padding:0.4em;"><option value="" data-i18n="plan_country_all">🌏 국가 전체</option></select>
+  <input id="pl-search" type="search" placeholder="장소 이름 검색..." data-i18n-ph="plan_search_ph" aria-label="장소 이름 검색" data-i18n-aria="plan_search_ph" style="flex:1; min-width:160px; padding:0.4em;">
 </div>
 
 <div id="pl-layout" style="display:flex; gap:0.8em; align-items:stretch;">
@@ -75,16 +75,27 @@ permalink: /planner/
   var countrySel = document.getElementById('pl-country');
   var searchEl = document.getElementById('pl-search');
 
+  // 현재 언어의 장소 이름 (i18n.html FimPlaceName — 일본어 이름 → 영어 이름 → 원제). 2026-09-29, 전에는 늘 원제만
+  var plName = window.FimPlaceName;
+  // 폐업·종료된 곳은 코스 후보에서 뺀다 — 지도 기본 화면과 같은 기준 (2026-09-29, 전에는 2025년에 끝난 광고·폐업 가게까지 떴다)
+  function plGone(p) {
+    if (p.closed || p.ended === true) return true;
+    if (!p.end) return false;
+    var tz = p.time_zone;
+    var today = (window.FimTime && FimTime.isValidTz(tz)) ? FimTime.todayIn(tz) : new Date().toISOString().slice(0, 10);
+    return p.end < today;
+  }
+
   function renderList() {
     var cc = countrySel.value, q = (searchEl.value || '').toLowerCase();
     var pool = ALL.filter(function (p) {
       if (cc && p.country !== cc && TO_GROUP[p.country] !== cc) return false;
-      if (q && p.title.toLowerCase().indexOf(q) === -1) return false;
+      if (q && plName(p).toLowerCase().indexOf(q) === -1) return false;
       return true;
     }).slice(0, 300);
     listEl.innerHTML = pool.map(function (p) {
       var checked = plan.indexOf(p) !== -1 ? ' checked' : '';
-      return '<label><input type="checkbox" data-url="' + p.url + '"' + checked + '><span>' + p.title +
+      return '<label><input type="checkbox" data-url="' + p.url + '"' + checked + '><span>' + plName(p) +
         (where(p) ? ' <span style="color:var(--subtext); font-size:0.85em;">(' + where(p) + ')</span>' : '') + '</span></label>';
     }).join('');
   }
@@ -92,7 +103,7 @@ permalink: /planner/
   function renderPlan() {
     document.getElementById('pl-count').textContent = plan.length ? (window.FimLang !== 'ko' ? FimPlural(plan.length, 'place') : plan.length + '곳') : '';
     routeEl.innerHTML = plan.map(function (p, i) {
-      return '<li><a class="internal-link" href="' + p.url + '">' + p.title + '</a>' +
+      return '<li><a class="internal-link" href="' + p.url + '">' + plName(p) + '</a>' +
         ' <button data-i="' + i + '" class="pl-rm" style="border:0;background:none;cursor:pointer;color:#c00;">✕</button></li>';
     }).join('');
     markers.forEach(function (m) { map.removeLayer(m); });
@@ -104,7 +115,7 @@ permalink: /planner/
       lls.push(ll);
       markers.push(L.marker(ll, {
         icon: L.divIcon({ className: '', html: '<div class="pl-num-icon">' + (i + 1) + '</div>', iconSize: [26, 26], iconAnchor: [13, 13] })
-      }).addTo(map).bindPopup('<strong>' + (i + 1) + '. ' + p.title + '</strong>'));
+      }).addTo(map).bindPopup('<strong>' + (i + 1) + '. ' + plName(p) + '</strong>'));
     });
     if (lls.length > 1) {
       line = L.polyline(lls, { color: '#c9184a', weight: 3, dashArray: '6 6', opacity: 0.8 }).addTo(map);
@@ -146,7 +157,7 @@ permalink: /planner/
   fetch('{{ site.baseurl }}/places.json')
     .then(function (r) { return r.json(); })
     .then(function (d) {
-      ALL = (d.places || []).filter(function (p) { return p.lat != null; });
+      ALL = (d.places || []).filter(function (p) { return p.lat != null && !plGone(p); });
       var ccs = {};
       ALL.forEach(function (p) {
         var k = TO_GROUP[p.country] || p.country;

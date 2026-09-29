@@ -7,3 +7,16 @@
   RUBY_VERSION = "3.2.1"
   # bundler 가 Linux native gem 자동 fetch
   BUNDLE_FORCE_RUBY_PLATFORM = "false"
+
+# 브라우저 캐시 (2026-09-29 사이트 점검 — 기본값 max-age=0 은 사진 하나하나를 볼 때마다 서버에 다시 묻는다)
+# 사진·영상(assets/, assets/m/ 포함)은 일주일 저장. 같은 파일 이름으로 사진을 바꾸면 이미 본 사람에게는 최대 일주일 옛 사진이 보인다
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# 번역 사전 — 주소에 빌드 시각(?v=)이 붙어 빌드마다 새 주소가 되므로 오래 저장해도 안전하다 (_includes/i18n.html)
+[[headers]]
+  for = "/i18n-dict.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

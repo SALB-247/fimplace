@@ -16,7 +16,7 @@
     {%- for r in g.items %}
     <li>
       <span class="fim-emoji">{{ r.emoji }}</span>
-      <a class="fim-title internal-link" href="{{ site.baseurl }}{{ r.url }}">{{ r.title }}</a>
+      <a class="fim-title internal-link" href="{{ site.baseurl }}{{ r.url }}"{% if r.name_en != '' %} data-name-en="{{ r.name_en | escape }}"{% endif %}{% if r.name_ja != '' %} data-name-ja="{{ r.name_ja | escape }}"{% endif %}>{{ r.title }}</a>
       {%- if groups.size == 1 %}<span class="fim-cat" data-via="{{ r.via }}">{{ r.via }}</span>{% endif %}
     </li>
     {%- endfor %}
@@ -36,6 +36,9 @@
   document.querySelectorAll('#related-places [data-via]').forEach(function (el) {
     el.textContent = el.getAttribute('data-via').split(' · ')
       .map(function (v) { return FimTr('via', v); }).join(' · ');
+  });
+  document.querySelectorAll('#related-places a.fim-title').forEach(function (a) {
+    a.textContent = FimPlaceName({ title: a.textContent, name_en: a.getAttribute('data-name-en'), name_ja: a.getAttribute('data-name-ja') });
   });
   var c = document.querySelector('#related-places .i18n-count');
   if (c) c.textContent = FimPlural(+c.getAttribute('data-n'), 'place');

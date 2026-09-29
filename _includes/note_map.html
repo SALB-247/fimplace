@@ -57,7 +57,7 @@
         matched.forEach(function (p) {
           var addr = p.address ? '<div style="font-size:0.8em; color:var(--subtext); margin-top:0.2em;">' + escapeHtml(p.address) + '</div>' : '';
           L.marker([p.lat, wrapLng(p.lng)])
-            .bindPopup('<strong><a href="' + p.url + '">' + escapeHtml(p.title) + '</a></strong>' + addr)
+            .bindPopup('<strong><a href="' + p.url + '">' + escapeHtml(FimPlaceName(p)) + '</a></strong>' + addr)
             .addTo(map);
         });
       });

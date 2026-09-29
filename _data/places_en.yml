@@ -1111,6 +1111,10 @@ sweetgreen Sunset Strip:
   cid: '16644444715983997433'
   manual: true
   name_en: Galaxy Arena
+갤럭시 프롬나드:
+  address_en: Galaxy Macau, Estrada da Baía de Nossa Senhora da Esperança, Cotai, Macau
+  manual: true
+  name_en: Galaxy Promenade
 건담베이스 아이파크점:
   address_en: "Seoul, Yongsan District, Hangang-daero 23-gil, 55 I'Park Mall Living Park \x01F"
   category_en: Toy store
@@ -1268,8 +1272,11 @@ sweetgreen Sunset Strip:
   fetched: '2026-09-22'
   name_en: 그릭커 성수 Greeker seongsu
 그린델발트:
+  address_en: Dorfstrasse, 3818 Grindelwald, Switzerland
   cid: '13810952427896516453'
   fetched: '2026-09-22'
+  manual: true
+  name_en: Grindelwald
 글리코사인:
   address_en: 1 Chome-10-3 Dotonbori, Chuo Ward, Osaka, 542-0071, Japan
   category_en: ''
@@ -1887,7 +1894,7 @@ sweetgreen Sunset Strip:
   fetched: '2026-09-22'
   name_en: bog tea house buubu
 볼베어파크 롯데몰 은평점:
-  address_en: Seoul, Eunpyeong District, Tongil-ro, 1050 3F 3F
+  address_en: Seoul, Eunpyeong District, Tongil-ro, 1050 3F
   category_en: Amusement park
   cid: '16087111582041165917'
   fetched: '2026-09-22'
@@ -2728,6 +2735,11 @@ sweetgreen Sunset Strip:
   cid: '3954708698703625287'
   fetched: '2026-09-22'
   name_en: Unagi Yondaime Kikukawa – Shinsegae Gangnam
+우드랜드 파크 동물원:
+  address_en: Woodland Park, Seattle, WA 98103, USA
+  cid: '8962776519554476210'
+  manual: true
+  name_en: Woodland Park Zoo
 우선:
   address_en: 122-9 Cheongdam-dong, Gangnam District, Seoul
   category_en: Beauty salon

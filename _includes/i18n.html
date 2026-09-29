@@ -1,11 +1,14 @@
 <!-- 영어 UI (Tier 1+2) — 껍데기 문자열과 태그 라벨만 바꾼다. 노트 본문은 원문 그대로.
      페이지를 복제하지 않고 한 벌로 운영하려고 클라이언트에서 치환한다. -->
+<script src="{{ site.baseurl }}/i18n-dict.js?v={{ site.time | date: '%s' }}"></script>
 <script>
 (function () {
-  var DICT = {{ site.data.i18n | jsonify }};
   // 언어별 사전. 한국어는 템플릿 원문이 정답이라 사전이 없다.
   // 일본어는 아직 UI 껍데기까지만 — 없는 키는 영어로 떨어진다 (tags·regions 등).
-  var DICTS = { en: DICT, ja: {% if site.data.i18n_ja %}{{ site.data.i18n_ja | jsonify }}{% else %}{}{% endif %} };
+  // 사전은 /i18n-dict.js 한 파일 — 브라우저가 빌드마다 한 번 받아 둔다 (2026-09-29, 전에는 페이지마다 약 80KB 인라인).
+  // 못 받으면(차단·오프라인) 빈 사전 → 한국어 원문이 그대로 보인다
+  var DICTS = window.FIM_I18N || { en: {}, ja: {} };
+  var DICT = DICTS.en || {};
   var LANGS = ['ko', 'en', 'ja'];
 
   // 언어를 '고른 것'과 '추정한 것' 을 구분한다 — 추정으로 외국어가 된 사람에게만 한국어 안내를 띄운다
@@ -86,8 +89,21 @@
   };
 
   // 단복수 — FimPlural(1,'place') = '1 place', FimPlural(3,'place') = '3 places'
+  // 일본어는 단복수 없이 조수사 — '6か所' (2026-09-29, 전에는 일본어 화면에도 '6 places' 가 나왔다)
+  var JA_UNITS = { place: 'か所' };
   window.FimPlural = function (n, one, many) {
+    if (LANG === 'ja') return n + (JA_UNITS[one] || '');
     return n + ' ' + (Number(n) === 1 ? one : (many || one + 's'));
+  };
+
+  // 장소 이름 — 일본어면 name_ja, 없으면 name_en, 둘 다 없으면 원제. 이름이 있으면 '이름 (원제)'.
+  // 지도 placeName 과 같은 규칙 — 근처 장소·함께 나온 장소·노트 지도·방문 계획이 같이 쓴다 (2026-09-29)
+  window.FimPlaceName = function (p) {
+    if (!p) return '';
+    if (LANG === 'ko') return p.title;
+    var nm = (LANG === 'ja' && p.name_ja) ? p.name_ja : p.name_en;
+    if (!nm || nm === p.title) return p.title;
+    return nm + ' (' + p.title + ')';
   };
 
   // sprintf 대용 — %s / %d 를 순서대로 채운다

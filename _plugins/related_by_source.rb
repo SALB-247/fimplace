@@ -88,6 +88,8 @@ module RelatedBySource
           end
           {
             'title' => o.data['title'].to_s,
+            'name_en' => o.data['name_en'].to_s,   # places_en(:normal) 가 먼저 넣어 둔다 — 영어·일본어 화면에서 이름 바꿔 끼우기
+            'name_ja' => o.data['name_ja'].to_s,
             'url'   => o.url,
             'via'   => vias.uniq.join(' · '),
             'emoji' => (emoji.empty? ? '📍' : emoji),
