@@ -1107,8 +1107,8 @@ sweetgreen Sunset Strip:
   fetched: '2026-09-22'
   name_en: Donghwa Garden Tofu Restaurant
 갤럭시 아레나:
-  cid: '16644444715983997433'
   address_en: Galaxy Arena, Galaxy Macau, Cotai, Macau
+  cid: '16644444715983997433'
   manual: true
   name_en: Galaxy Arena
 건담베이스 아이파크점:
@@ -2389,6 +2389,11 @@ sweetgreen Sunset Strip:
   cid: '8903549618604457427'
   fetched: '2026-09-22'
   name_en: BB Amemura
+아메티지 스튜디오:
+  address_en: Gyeonggi-do, Yangju-si, Eunhyeon-myeon, Yongam-ri, 842-6
+  category_en: Photography studio
+  cid: '18412774387860304317'
+  fetched: '2026-09-29'
 아스테리카 바이 더체어:
   address_en: 215 Jungbu-daero, Yangji-myeon, Cheoin-gu, Yongin-si, Gyeonggi-do
   category_en: Coffee shop

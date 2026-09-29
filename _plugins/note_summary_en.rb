@@ -108,8 +108,9 @@ module NoteSummaryEn
     types = section(site, '장소 유형')
     cat = tags.find { |t| types.include?(t) }
     ev  = tags.find { |t| t =~ /(_이벤트|생일카페|생일광고|생일_기타|주년_광고|_광고)\z/ }
-    label = note.data['category_en'].to_s
-    label = (cat == '기타장소' ? 'Place' : tr(site, 'tags', cat)) if label.empty? && cat
+    # 일본어 요약은 구글 일본어 카테고리가 있으면 그것 (2026-09-29 — 전에는 category_ja 가 있어도 'Restaurant' 로 나갔다)
+    label = (lang == 'ja' && note.data['category_ja'].to_s != '' ? note.data['category_ja'] : note.data['category_en']).to_s
+    label = (cat == '기타장소' ? (lang == 'ja' ? 'スポット' : 'Place') : tr(site, 'tags', cat)) if label.empty? && cat
     label = tr(site, 'tags', ev) if label.empty? && ev
     parts << label unless label.empty?
 
