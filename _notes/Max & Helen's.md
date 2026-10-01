@@ -17,9 +17,7 @@ country: us
 <iframe src="https://www.instagram.com/p/DdjxzW5mS0E/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 
 <img src="assets/ig_DddZ-VEFPK7_01.jpg">
-<img src="assets/ig_DddZ-VEFPK7_05.jpg">
 <img src="assets/ig_DdcoHbsj0sL_14.jpg">
-<img src="assets/ig_DdcoHbsj0sL_20.jpg">
 <img src="assets/ig_DdjxzW5mS0E_08.jpg">
 <img src="assets/ig_DdjxzW5mS0E_11.jpg">
 
@@ -38,6 +36,7 @@ Max & Helen's
 ## [🗺️ 구글맵](https://maps.google.com/?cid=7333578908953962740)
 
 <!-- TODO
+□ 사진 4장 제한 (사용자 규칙 2026-10-02): ig_DddZ-VEFPK7_05 · ig_DdcoHbsj0sL_20 를 뺌 (음식 접시 로고·아이들 그림 — 가게 이름은 즈하 11번 메뉴판으로 보인다). 파일은 assets/ 에서 지움 — 파일명으로 다시 만들 수 있다
 □ 근거: 사쿠라 5번 접시 테두리 "Max & Helen's" 로고 / 채원 14·15번 창문 "DINER"·흑백 줄무늬 차양·문 위 번지 "127" = 구글맵 커버 사진과 일치 / 채원 20번 벽에 붙은 아이들 그림도 Max & Helen's 로고
 □ 사쿠라 "みんなでランチ" — 즈하 260922 인스타(DdjxzW5mS0E) 8~11번이 같은 가게: 11번 메뉴판 "Max & Helen's A Neighborhood Diner", 8번 문 위 번지 127·줄무늬 차양 → 즈하 태그 추가 (x_watch 루프 2026-09-24)
 □ 영업 ~20:00, 웨이팅 긴 편 (구글맵 2026-09)

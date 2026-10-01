@@ -15,7 +15,6 @@ country: us
 <iframe src="https://www.instagram.com/p/Ddu1kcpmn7m/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 
 <img src="assets/ig_DdlLxO2m1WI_13.jpg">
-<img src="assets/ig_DdlLxO2m1WI_14.jpg">
 <img src="assets/ig_DdlLxO2m1WI_16.jpg">
 <img src="assets/ig_Ddu1kcpmn7m_08.jpg">
 <img src="assets/ig_Ddu1kcpmn7m_01.jpg">
@@ -35,6 +34,7 @@ Victor Steinbrueck Park
 ## [🗺️ 구글맵](https://maps.google.com/?cid=7524507683480633865)
 
 <!-- TODO
+□ 사진 4장 제한 (사용자 규칙 2026-10-02): ig_DdlLxO2m1WI_14 를 뺌 (16번과 같은 노을 난간). 파일은 assets/ 에서 지움 — 파일명으로 다시 만들 수 있다
 □ 채원 260922 피드 11·13(벤치·잔디)·14~16(노을) — 둥근 가로등·녹색 벤치·잔디밭 뒤 붉은 벽돌 건물(Market Place)·서쪽 난간(콘크리트 기둥+철제 난간)이 Commons 의 빅터 스타인브루크 파크 사진과 일치. 노을 컷의 두 사람 중 긴 머리 쪽은 은채(12번과 같은 복장) — 은채 본인 인스타로 확인 (아래).
 □ 14·16 은 바로 옆 Overlook Walk(2024 개장) 난간일 가능성도 있음 — 난간 형태(돌기둥)는 공원 쪽에 가깝다.
 □ 같은 게시물의 시애틀 아쿠아리움(Pier 59) 컷은 간판 앞을 지나는 사진뿐이라 노트를 만들지 않았다 (사용자 판단 2026-09-22).

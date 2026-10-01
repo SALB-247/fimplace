@@ -14,7 +14,6 @@ country: mo
 <iframe src="https://www.instagram.com/p/CzYn_XdyrwY/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 
 <img src="assets/vf_dzftJN5XYDY_1114.jpg">
-<img src="assets/vf_dzftJN5XYDY_1118.jpg">
 <img src="assets/ig_CzYn_XdyrwY_07.jpg">
 <img src="assets/pt_173828_04.jpg">
 <img src="assets/pt_180752_08.jpg">
@@ -34,6 +33,7 @@ Rua das Gaivotas 8, Coloane Village, Macau (路環 計單奴街 8號) — 12:00~
 ## [🗺️ 구글맵](https://maps.google.com/?cid=8697514673448514387)
 
 <!-- TODO
+□ 사진 4장 제한 (사용자 규칙 2026-10-02): vf_dzftJN5XYDY_1118 를 뺌 (사쿠라 IG 7번과 같은 테이블 실내). 파일은 assets/ 에서 지움 — 파일명으로 다시 만들 수 있다
 □ 근거 (2026-09-19 확정): EP.32 18:33 도착 컷의 흰 외벽·줄무늬 어닝·철제 격자문·랜턴 벽등 = 구글맵 외관 사진과 동일, 18:37~ 실내(크림색 벽·시어 커튼·소몰이 풍경화·노란 테두리 접시) = 구글맵 内観 사진과 동일.
    허윤진 231109 IG 4번 = 입구 앞 칼사다(포르투갈식 모자이크) 「8」 = 번지수 8 (구글맵 사진 동일). 사쿠라 231108 IG 7번(셋이 흰 식탁보 테이블·커튼·같은 풍경화) = 같은 자리.
 □ 촬영일 2023-07-11 추정: 사쿠라 231108 IG 1번 후지필름 카메라 표시 「2023 7.11 10:22 AM」(같은 날 오전 [[Cafe Match Box]] 브런치 → 페리 → [[마카오 타워]] → 이곳 저녁). TMEA 2023(7/8 갤럭시 마카오) 직후 일정.

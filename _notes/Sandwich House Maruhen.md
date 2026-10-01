@@ -14,7 +14,6 @@ coords: [35.671307076269294, 139.76562275703324]
 
 <img src="assets/FoQEZOgaUAAT5my.jpg">
 <img src="assets/FoQEayXacAAIF6x.jpg">
-<img src="assets/FoQEcLuagAAYq6f.jpg">
 <img src="assets/FoQEmA2aMAAkWPw.jpg">
 <img src="assets/FoQEnb3aAAI7zgb.jpg">
 
