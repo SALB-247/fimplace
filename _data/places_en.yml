@@ -2401,6 +2401,12 @@ sweetgreen Sunset Strip:
   cid: '3554386199905583530'
   fetched: '2026-09-22'
   name_en: Arimaonsen Station
+아맘 다코탄:
+  address_en: 3 Chome-7-6 Ropponmatsu, Chuo Ward, Fukuoka, 810-0044, Japan
+  category_en: Bakery
+  cid: '1383708783384891250'
+  fetched: '2026-10-06'
+  name_en: AMAM DACOTAN Ropponmatsu store
 아메리카나 앳 브랜드:
   address_en: 889 Americana Way, Glendale, CA 91210, United States
   category_en: Shopping mall
@@ -2869,6 +2875,12 @@ sweetgreen Sunset Strip:
   address_en: 24 Eurwang-ro, Jung-gu, Incheon
   cid: '10454614589640609739'
   fetched: '2026-09-22'
+자우오 난바점:
+  address_en: 1 Chome-1-13 Nipponbashi, Chuo Ward, Osaka, 542-0073, Japan
+  category_en: Izakaya restaurant
+  cid: '1560749825829787073'
+  fetched: '2026-10-06'
+  name_en: Zauo Fishing Restaurant Namba
 자카르타 인터내셔널 엑스포:
   manual: true
   name_en: Jakarta International Expo
