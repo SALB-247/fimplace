@@ -133,6 +133,11 @@ Cheese & Doria:
   cid: '8469461393251756084'
   fetched: '2026-09-21'
   name_en: Cheese & Doria . sweets Tokyo Dome City LaQua
+Chicago Riverwalk:
+  address_en: Chicago, IL, USA
+  cid: '10956374708392136269'
+  fetched: '2026-10-06'
+  name_en: Chicago Riverwalk
 Chiikawa Land Nagoya PARCO:
   address_en: Japan, 〒460-0008 Aichi, Nagoya, Naka Ward, Sakae, 3 Chome−29−1 名古屋 parco 東館 3F
   category_en: Hobby store
@@ -1361,6 +1366,12 @@ sweetgreen Sunset Strip:
   cid: '4805205997576757428'
   fetched: '2026-09-22'
   name_en: The National Gallery
+내셔널 갤러리 오브 아트:
+  address_en: Constitution Ave. NW, Washington, DC 20565, United States
+  category_en: Art museum
+  cid: '12172341452544837531'
+  fetched: '2026-10-06'
+  name_en: National Gallery of Art
 네이처스케이프 플러스:
   address_en: Gyeonggi-do, Hwaseong-si, Dongtan-daero 5-gil, 21, Lakeumong, 4F
   category_en: Theme park
@@ -2320,6 +2331,12 @@ sweetgreen Sunset Strip:
   cid: '713203869101344048'
   fetched: '2026-09-22'
   name_en: Shibuya Sushi Jinnan
+시카고 미술관:
+  address_en: 111 S Michigan Ave, Chicago, IL 60603, United States
+  category_en: Museum
+  cid: '5199955304902742238'
+  fetched: '2026-10-06'
+  name_en: The Art Institute of Chicago
 시코쓰 호:
   category_en: ''
   cid: '8924142796909183696'
@@ -2769,6 +2786,11 @@ sweetgreen Sunset Strip:
   cid: '2887596167889668546'
   fetched: '2026-09-22'
   name_en: 원조북성로우동불고기
+월트 디즈니 월드 리조트:
+  category_en: Amusement park
+  cid: '12042125262433612192'
+  fetched: '2026-09-30'
+  name_en: Walt Disney World Resort
 웨스터 민스터 사원:
   address_en: Dean's Yard, London SW1P 3PA, United Kingdom
   category_en: Anglican church
@@ -3618,8 +3640,3 @@ sweetgreen Sunset Strip:
   cid: '16280058322592989687'
   fetched: '2026-09-22'
   name_en: 히팅스튜디오
-월트 디즈니 월드 리조트:
-  category_en: Amusement park
-  cid: '12042125262433612192'
-  fetched: '2026-09-30'
-  name_en: Walt Disney World Resort
