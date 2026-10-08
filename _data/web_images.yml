@@ -1124,6 +1124,8 @@
   mh: 1200
 "ig_Ddu1kcpmn7m_11.jpg":
   skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
+"ig_DeN2NhDjiFP_02.jpg":
+  skip: "webp 가 원본의 70% 이상 — 원본 그대로 사용"
 "image.jpg":
   d: "m/image_1600.webp"
   dw: 1600

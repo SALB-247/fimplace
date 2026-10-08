@@ -246,6 +246,12 @@ Golden Apple Comics:
   cid: '2085507027674535923'
   fetched: '2026-09-21'
   name_en: Golden Apple Comics
+Gopchang Story BBQ (Manhattan):
+  address_en: 312 5th Ave 2nd floor, New York, NY 10001, United States
+  category_en: Korean barbecue restaurant
+  cid: '2927028165924074285'
+  fetched: '2026-10-08'
+  name_en: Gopchang Story BBQ - Manhattan
 Gozoroppu Sendai:
   address_en: 2 Chome-10-3 Kokubuncho, Aoba Ward, Sendai, Miyagi 980-0803, Japan
   category_en: Yakiniku restaurant
@@ -286,6 +292,12 @@ HYSTERIC GLAMOUR SHIBUYA:
   cid: '5829223830521654053'
   fetched: '2026-09-21'
   name_en: HYSTERIC GLAMOUR SHIBUYA
+Hamlet's Vintage:
+  address_en: 161 W 4th St, New York, NY 10014, United States
+  category_en: Vintage clothing store
+  cid: '7489753353168810102'
+  fetched: '2026-10-08'
+  name_en: Hamlet's Vintage
 Hanz Outdoor Resort (formerly Glamping Villa Hanz Kawaguchiko):
   address_en: 3283-1 Katsuyama, Fujikawaguchiko, Minamitsuru District, Yamanashi 401-0310, Japan
   category_en: 4-star hotel
@@ -444,6 +456,12 @@ La Pistacherie:
   cid: '13743592206193871560'
   fetched: '2026-09-21'
   name_en: La Pistacherie
+La Scarola:
+  address_en: 721 W Grand Ave, Chicago, IL 60654, United States
+  category_en: Italian restaurant
+  cid: '5861897834684476820'
+  fetched: '2026-10-08'
+  name_en: La Scarola
 La Terrazza:
   address_en: Piazza della Repùbblica, 4, 50122 Firenze FI, Italy
   category_en: Cafe
@@ -665,6 +683,12 @@ Rodeo Dr:
   cid: '17332104765457656028'
   fetched: '2026-09-21'
   name_en: Rodeo Dr, Beverly Hills, CA, USA
+Rōk Coffee and Tea (West Village):
+  address_en: 156 7th Ave S, New York, NY 10014, United States
+  category_en: Coffee shop
+  cid: '11720361536365051545'
+  fetched: '2026-10-08'
+  name_en: rōk Coffee and Tea - West Village
 SHARI SHARI Kakigori House (Central):
   address_en: 11 Old Bailey St, Central, Hong Kong Island, Hong Kong
   category_en: Dessert shop
