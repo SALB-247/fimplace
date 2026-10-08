@@ -401,10 +401,12 @@ window.FimJson = function (name) {
       seen[p.url] = 1;
       var s = ms(p.start), e = ms(p.end);
       if (s !== null || e !== null) {
-        // 이벤트(기간): 현지 오늘이 기간 안이면 diff 0, 밖이면 가까운 끝점까지 거리
+        // 이벤트(기간): 현지 오늘이 기간 안이면 diff 0, 시작 전이면 시작까지 거리
         var a = (s !== null ? s : e), b = (e !== null ? e : s);
         var tp = todayFor(p.time_zone);
-        var diff = tp < a ? a - tp : (tp > b ? tp - b : 0);
+        // 끝난 이벤트(팝업·생카·광고·럭키드로우…)는 현지 날짜로 끝난 다음 날부터 뺀다 — 지나면 갈 수 없어 쓸모가 없다 (사용자 지시 2026-10-08)
+        if (tp > b) return;
+        var diff = tp < a ? a - tp : 0;
         // 메모 줄 라벨 = 같은 이벤트인지 가르는 열쇠 (매장마다 같은 메모 줄을 쓴다)
         var lab = (p.visits || []).map(function (v) { return v.label; })
           .filter(function (l) { return l && l !== 'IG 게시' && l !== '영상 업로드'; })[0] || '';
@@ -443,7 +445,8 @@ window.FimJson = function (name) {
       var a = ms(ev.start), b = ms(ev.end) || a;
       if (a === null) return;
       var te = todayFor(ev.time_zone);
-      var diff = te < a ? a - te : (te > b ? te - b : 0);
+      if (te > b) return;   // 끝난 이벤트는 뺀다 (위와 같은 규칙)
+      var diff = te < a ? a - te : 0;
       items.push({ kind: 'period', ev: ev, url: ev.url, date: a, endDate: b, diff: diff, evt: true, today: te, label: '' });
     });
 
@@ -474,7 +477,8 @@ window.FimJson = function (name) {
 
     // 1) 절대값 정렬 → 15개 선정   2) 선정분을 날짜순 나열
     //  가중치 (성격이 반대라 분리):
-    //   · 이벤트(생카·팝업·광고·공연): 예정이 곧 정보 → 미래 페널티 없음(×1), 끝나면 ×2 로 빠르게 밀어냄
+    //   · 이벤트(생카·팝업·광고): 예정이 곧 정보 → 미래 페널티 없음(×1). 끝난 것은 위에서 이미 뺐다 (2026-10-08)
+    //   · 공연: 예정 ×1, 끝나면 ×2 로 빠르게 밀어냄 (공연장 노트는 끝나도 장소로 남는다)
     //   · 기록(방문·업로드): 과거가 본질 → 미래 ×3 (과거 중심 유지)
     function selKey(it) {
       var tt = it.today || today;

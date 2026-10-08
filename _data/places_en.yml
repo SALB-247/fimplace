@@ -1011,6 +1011,12 @@ sweetgreen Sunset Strip:
   cid: '3027784590045753438'
   fetched: '2026-09-22'
   name_en: sweetgreen - Healthy Salads, Wraps, and Bowls
+ÉCHIRÉ Marché au Beurre:
+  address_en: B2F Hankyu Umeda Main Store, 8-7 Kakudacho, Kita Ward, Osaka 530-8350, Japan
+  category_en: Pastry shop
+  cid: '4407673511360091443'
+  fetched: '2026-10-08'
+  name_en: ÉCHIRÉ Marché au Beurre
 くら寿司 グローバル旗艦店 浅草ROX:
   address_en: Japan, 〒111-0032 Tokyo, Taito City, Asakusa, 1 Chome−25−15 ROX4F
   cid: '18109923868748812372'
@@ -3201,6 +3207,12 @@ sweetgreen Sunset Strip:
   cid: '11087261080272701979'
   fetched: '2026-09-22'
   name_en: 쿨키즈쿠키 용산점
+클럽 하리에 우메다 한신점:
+  address_en: B1F Hanshin Department Store Umeda Main Store, 1-13-13 Umeda, Kita Ward, Osaka 530-8224, Japan
+  category_en: Pastry shop
+  cid: '5087218248625779277'
+  fetched: '2026-10-08'
+  name_en: CLUB HARIE Umeda Hanshin Shop
 키드문_250317-250319:
   address_en: 11-68 Hangang-daero 10-gil, Yongsan District, Seoul
   category_en: Cafe
