@@ -46,6 +46,12 @@ Apex @ EXPO:
   cid: '7217000260839808673'
   fetched: '2026-09-21'
   name_en: Apex @ EXPO
+Apollo Bagels (Tribeca):
+  address_en: 121 Reade St, New York, NY 10013, United States
+  category_en: Bagel shop
+  cid: '1868301760522363605'
+  fetched: '2026-10-09'
+  name_en: Apollo Bagels
 Baekjeong Los Angeles:
   address_en: '3465 W 6th St #20, Los Angeles, CA 90020, United States'
   cid: '3216329737770165249'
@@ -76,6 +82,18 @@ Blue Willow 夜来湘:
   cid: '604106950419482758'
   fetched: '2026-09-21'
   name_en: Blue Willow 夜来湘
+Bluestone Lane Tribeca Café:
+  address_en: 109 W Broadway, New York, NY 10013, United States
+  category_en: Cafe
+  cid: '3984914959653223720'
+  fetched: '2026-10-09'
+  name_en: Bluestone Lane Tribeca Café
+Bogardus Plaza:
+  address_en: 5 Hudson St, New York, NY 10013, United States
+  category_en: Garden
+  cid: '5439070755292185830'
+  fetched: '2026-10-09'
+  name_en: Bogardus Plaza
 Cafe Match Box:
   address_en: 57 Paterson St, Causeway Bay, Hong Kong Island, Hong Kong
   cid: '2898139876959735308'
@@ -387,6 +405,12 @@ Jiufen Photo Spot:
   cid: '10173592946766026023'
   fetched: '2026-09-21'
   name_en: Shuqi Road
+Jongro BBQ:
+  address_en: 22 W 32nd St 2nd floor, New York, NY 10001, United States
+  category_en: Korean barbecue restaurant
+  cid: '10486024807038987677'
+  fetched: '2026-10-11'
+  name_en: Jongro BBQ
 K-아레나 요코하마:
   manual: true
   name_en: K-Arena Yokohama
@@ -570,6 +594,12 @@ Mom's Kitchen and Bar:
   cid: '4995991170110278444'
   fetched: '2026-09-21'
   name_en: Mom's Kitchen and Bar
+Morgan's Market:
+  address_en: 13 Hudson St, New York, NY 10013, United States
+  category_en: Produce market
+  cid: '3185120794942448156'
+  fetched: '2026-10-09'
+  name_en: Morgans Market
 NBA Store:
   address_en: 545 5th Ave, New York, NY 10017, United States
   category_en: Sportswear store
@@ -846,6 +876,11 @@ The Gum Wall:
   cid: '2320667458848562723'
   fetched: '2026-09-22'
   name_en: The Gum Wall
+The High Line:
+  category_en: Park
+  cid: '6358908248867355793'
+  fetched: '2026-10-11'
+  name_en: The High Line
 The Parallel:
   address_en: 9 Old Bailey St, Central, Hong Kong Island, Hong Kong
   cid: '6368031031751725811'

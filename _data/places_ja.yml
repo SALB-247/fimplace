@@ -4,10 +4,23 @@
   category_ja: バー
   cid: '16762645515661265632'
   fetched: '2026-09-22'
+Apollo Bagels (Tribeca):
+  category_ja: ベーグル専門店
+  cid: '1868301760522363605'
+  fetched: '2026-10-09'
 Blue Willow 夜来湘:
   category_ja: 湖南料理店
   cid: '604106950419482758'
   fetched: '2026-09-22'
+Bluestone Lane Tribeca Café:
+  category_ja: カフェ・喫茶
+  cid: '3984914959653223720'
+  fetched: '2026-10-09'
+Bogardus Plaza:
+  category_ja: 庭園
+  cid: '5439070755292185830'
+  fetched: '2026-10-09'
+  name_ja: ボガーダス・ガーデン
 Cafe거부기 앤 쿠펫 판교점:
   category_ja: コーヒーショップ・喫茶店
   cid: '2475443012576120804'
@@ -45,6 +58,10 @@ Japanese Anime Gift Shop 一間小舖:
   cid: '8003860973745582792'
   fetched: '2026-09-22'
   name_ja: Japanese Anime Gift Shop 一間小舗
+Jongro BBQ:
+  category_ja: 韓国焼肉店
+  cid: '10486024807038987677'
+  fetched: '2026-10-11'
 La Scarola:
   category_ja: イタリア料理店
   cid: '5861897834684476820'
@@ -54,6 +71,11 @@ LazyDer懶得選物/LZD Vintage & Used Select Shop｜古著、二手、選物:
   cid: '13083559999260817504'
   fetched: '2026-09-22'
   name_ja: LazyDer嬾得選物/LZD Vintage & Used Select Shop｜古著、二手、選物
+Morgan's Market:
+  category_ja: 青果店
+  cid: '3185120794942448156'
+  fetched: '2026-10-09'
+  name_ja: モルガンズ マーケット
 QUIKSILVER & ROXY 大直美麗華 (BILLABONG):
   category_ja: ショッピング モール
   cid: '1061890826887085265'
@@ -80,6 +102,11 @@ Tea Fun 茶醺:
   category_ja: ファースト フード店
   cid: '7703102631495773781'
   fetched: '2026-09-22'
+The High Line:
+  category_ja: 公園
+  cid: '6358908248867355793'
+  fetched: '2026-10-11'
+  name_ja: ザ・ハイ・ライン
 ZOZO 마린 스타디움:
   category_ja: スタジアム
   cid: '7923470872734043561'
