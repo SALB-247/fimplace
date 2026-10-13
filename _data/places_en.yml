@@ -340,6 +340,12 @@ Hobson's Fish & Chips Charing Cross:
   cid: '16059438330008906686'
   fetched: '2026-09-21'
   name_en: Hobson's Fish & Chips Charing Cross
+Homie's Donuts:
+  address_en: 23 Cleveland Pl, New York, NY 10012, United States
+  category_en: Donut shop
+  cid: '16380671123307082713'
+  fetched: '2026-10-13'
+  name_en: Homie's Donuts
 Hong Kong Old Restaurant (Central):
   address_en: Wing Wo St, Hong Kong Island, Hong Kong
   category_en: Shanghainese restaurant
@@ -420,6 +426,12 @@ Kanekichien:
   cid: '17951680025479008713'
   fetched: '2026-09-21'
   name_en: Kanekichien
+Kazumi Omakase:
+  address_en: 31 W 8th St, New York, NY 10011, United States
+  category_en: Sushi restaurant
+  cid: '13075604503661422572'
+  fetched: '2026-10-13'
+  name_en: Kazumi Omakase
 Kitashinchi Shabu shabu Sukiyaki Kiraku(Osaka):
   address_en: Japan, 〒530-0003 Osaka, Kita Ward, Dojima, 1 Chome−2−7 パーマリィ・イン B1F
   category_en: ''
