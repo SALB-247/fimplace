@@ -180,6 +180,12 @@ Crescendo:
   cid: '6930698495216669112'
   fetched: '2026-09-21'
   name_en: Crescendo
+Darjeeling Express:
+  address_en: 36-40 Rupert St, London W1D 6DW, United Kingdom
+  category_en: Indian restaurant
+  cid: '10818355934690101148'
+  fetched: '2026-10-16'
+  name_en: Darjeeling Express
 Delicius:
   address_en: JR大阪駅構内, 3 Chome-1-1 Umeda, Kita Ward, Osaka, 530-0001, Japan
   category_en: Pastry shop
@@ -1087,6 +1093,12 @@ sweetgreen Sunset Strip:
   cid: '17172474421632480830'
   fetched: '2026-09-22'
   name_en: カプセル楽局谷中銀座商店街店
+一風堂 浜松町スタンド:
+  address_en: Japan, 〒105-0013 Tokyo, Minato City, Hamamatsucho, 1 Chome−27−6, 1F
+  category_en: Ramen restaurant
+  cid: '13133432296578632441'
+  fetched: '2026-10-16'
+  name_en: Ippudo - Hamamatsucho Stand
 上生·新所(哥倫比亞鄉村俱樂部):
   address_en: 1262 Yan'an Rd (W), Changning District, Shanghai, China, 201233
   category_en: Shopping mall
@@ -1836,6 +1848,12 @@ sweetgreen Sunset Strip:
   cid: '17784676563566721318'
   fetched: '2026-09-22'
   name_en: Mangwon Market
+맥셀 아쿠아파크 시나가와:
+  address_en: Japan, 〒108-8611 Tokyo, Minato City, Takanawa, 4 Chome−10−30, Shinagawa Prince Hotel
+  category_en: Aquarium
+  cid: '16690285742223308056'
+  fetched: '2026-10-16'
+  name_en: Maxell Aqua Park Shinagawa
 메르시쿠키_250317-250319:
   address_en: 11-44 Hangang-daero 10-gil, Yongsan District, Seoul
   cid: '1003768038739568949'
