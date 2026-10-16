@@ -36,7 +36,7 @@ tags:
 | 2026.10.16           | 🇬🇧 런던         | [[The O2 Arena]]            | ⏰ 미정 (입장 18:00) |
 | 2026.10.18           | 🇳🇱 암스테르담      | [[Ziggo Dome]]              | ⏰ 19:30 |
 | 2026.10.21           | 🇫🇷 파리         | [[Accor Arena]]             | ⏰ 20:00 |
-| 2026.10.23           | 🇩🇰 코펜하겐       | [[Royal Arena]]             | ⏰ 20:00 |
+| 2026.10.23           | 🇩🇰 코펜하겐       | [[Royal Arena]]             | ⏰ 19:30 |
 | 2026.10.26           | 🇩🇪 베를린        | [[Uber Arena]]              | ⏰ 19:30 |
 | 2026.11.07           | 🇲🇴 마카오        | [[갤럭시 아레나]]                 | ⏰ 19:00 |
 | 2026.11.08           | 🇲🇴 마카오        | [[갤럭시 아레나]]                 | ⏰ 18:00 |
@@ -50,7 +50,8 @@ tags:
 <!-- 공연 시작 시각(⏰, 현지) 출처 — 2026-09-25 확인
 인천: 위버스 공지 35577 / 일본 아레나 5곳: le-sserafim.jp/news/51726af4dd90 / 교세라 돔: le-sserafim.jp/news/cbabb5124a09
 미국: 각 공연장 페이지 (Event Starts). LA 는 공연 뒤 공연장 페이지가 내려가 Ticketmaster 표기 19:30. SAP Center 는 공연장 페이지 20:00 — 예매처(AXS·SeatGeek)는 19:30 이라 공연장을 따름
-유럽: 파리 accorarena.com · 코펜하겐 royalarena.dk · 베를린 uber-arena.de(입장 17:30) · 암스테르담 Ticketmaster NL(단독 예매처, 공연장 시간표는 아직 비어 있음) · 런던 theo2.co.uk 는 입장 18:00 만 발표
+유럽 (2026-10-16 재확인): 파리 accorarena.com 20:00 · 코펜하겐 royalarena.dk·Ticketmaster DK 19:30 (9/25 엔 공연장 페이지가 20:00 이었다) · 베를린 uber-arena.de 19:30(입장 17:30) · 암스테르담 ziggodome.nl 19:30(입장 18:00, 종료 22:00) ·
+  런던 theo2.co.uk 는 입장 18:00·종료 22:30 만 발표 — 공연 당일 오전(10/16 09:50 BST)까지 시작 시각 없음. 디 오투는 공연 당일 X(@TheO2)에 'set times' 를 올린다(ASAKE 10/15 09:00 BST). 주최 AEG Presents UK 페이지는 캡차라 못 봄
 아시아: 마카오 galaxymacau.com 행사 페이지·iMe Macau · 타이베이 iMe Taiwan · 싱가포르 iMe SG(Singapore EXPO 공동 게시) · 마닐라 SM Tickets
 -->
 

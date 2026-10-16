@@ -33,6 +33,7 @@ Hamlet's Vintage
 □ 근거: 채원 261008 인스타 DeN2NhDjiFP (11장, 10/08 11:20 KST = 뉴욕 10/07 22:20) 4~8번 — 진열장 장신구에 붙은 파란 'Hamlet's Vintage' 가격표.
   진열대 아래 강아지(캡션 '이 아이가 나한테 배를 깠다니까ㅠ' — Yelp 에 주인이 같은 강아지를 안은 사진), 6~8번 주인이 입혀 준 초록 털 재킷·체크 베레모
   ('사장님이 갑자기 나를 스타일링 하기 시작했다 / 맘에 들었다 / 아저씨 감사합니다'), 7번 천장 아래 유명인 손님 사진 액자 줄
+□ 가게 쪽 확인 (FIMDB 2026-10-12): @hamletsvintage·@dave.arredondo_ 공동 릴스 DeYDZA4xEGy (뉴욕 10/11 게시) 캡션 'Clothes from 1940's to early 90's, even @_chaechae_1 loved it too!'
 □ 가게가 161 W 4th St 로 옮겼다 (Yelp 'Our Store Move to a New Location 161 West 4th st') — 지금 주소는 구글·Yelp 모두 161 W 4th St
 □ 날짜는 현지 10/6~10/7 낮 (추정). 같은 날 Rōk Coffee and Tea West Village(약 350m)
 □ 사진 = 5번(강아지) · 6번(스타일링) · 7번(거울 셀카) — 4·8번은 같은 장면이라 뺌
