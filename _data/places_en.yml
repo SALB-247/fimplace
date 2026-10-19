@@ -316,6 +316,12 @@ HYSTERIC GLAMOUR SHIBUYA:
   cid: '5829223830521654053'
   fetched: '2026-09-21'
   name_en: HYSTERIC GLAMOUR SHIBUYA
+Hakata Senpachi:
+  address_en: Wielingenstraat 16, 1078 KK Amsterdam, Netherlands
+  category_en: Japanese restaurant
+  cid: '1789494563673904177'
+  fetched: '2026-10-19'
+  name_en: Hakata Senpachi
 Hamlet's Vintage:
   address_en: 161 W 4th St, New York, NY 10014, United States
   category_en: Vintage clothing store
@@ -1964,6 +1970,12 @@ sweetgreen Sunset Strip:
 반얀트리 클럽 앤 스파 서울:
   manual: true
   name_en: Banyan Tree Club & Spa Seoul
+받터:
+  address_en: 31-28 Hangang-daero 15-gil, Yongsan District, Seoul
+  category_en: Ice cream shop
+  cid: '11034795477065406825'
+  fetched: '2026-10-19'
+  name_en: Batt Turr
 방이옥:
   address_en: Seoul Yongsan District, Daesagwan-ro 31-gil, 7-2 1F
   category_en: Korean restaurant

@@ -43,6 +43,11 @@ HEYTEA 갤럭시 마카오점:
 HIDE AND SEEK 홍대점:
   cid: '13424946480134679080'
   fetched: '2026-09-22'
+Hakata Senpachi:
+  category_ja: 和食店
+  cid: '1789494563673904177'
+  fetched: '2026-10-19'
+  name_ja: 博多せん八
 Hamlet's Vintage:
   category_ja: ヴィンテージ クローズ専門店
   cid: '7489753353168810102'
@@ -783,6 +788,10 @@ ittan五條堂:
   cid: '14071310985980680449'
   fetched: '2026-09-22'
   name_ja: バンヤン ツリー クラブ & スパ ソウル
+받터:
+  category_ja: アイスクリーム店
+  cid: '11034795477065406825'
+  fetched: '2026-10-19'
 방이옥:
   category_ja: 韓国料理店
   cid: '322968018047313399'
