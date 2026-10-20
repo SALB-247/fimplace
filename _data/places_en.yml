@@ -400,6 +400,12 @@ Immanuel Presbyterian Church:
   cid: '15525704438554206392'
   fetched: '2026-09-21'
   name_en: Immanuel Presbyterian Church
+Ivan Alexis Amsterdam:
+  address_en: Heiligeweg 38, 1012 XS Amsterdam, Netherlands
+  category_en: Clothing store
+  cid: '4879235486797433261'
+  fetched: '2026-10-20'
+  name_en: Ivan Alexis Amsterdam
 JR東日本四季劇場 春:
   address_en: 1 Chome-10-45 Kaigan, Minato City, Tokyo 105-0022, Japan
   cid: '4018469856069819346'
@@ -721,6 +727,12 @@ ROLL ICE CREAM FACTORY 하라주쿠점:
   cid: '2103867740547656672'
   fetched: '2026-09-21'
   name_en: ロールアイスクリームファクトリー 原宿・表参道店
+Restaurant Black:
+  address_en: Prinsengracht 703, 1017 JV Amsterdam, Netherlands
+  category_en: Modern European restaurant
+  cid: '12611962870560698752'
+  fetched: '2026-10-20'
+  name_en: Restaurant Black
 Ristorante Dalla Zia:
   address_en: Via Gustavo Fara, 12, 20124 Milano MI, Italy
   category_en: Italian restaurant
@@ -1070,6 +1082,12 @@ sweetgreen Sunset Strip:
   cid: '3027784590045753438'
   fetched: '2026-09-22'
   name_en: sweetgreen - Healthy Salads, Wraps, and Bowls
+van Wonderen Stroopwafels:
+  address_en: Kalverstraat 190, 1012 XN Amsterdam, Netherlands
+  category_en: Cookie shop
+  cid: '3890648162392648084'
+  fetched: '2026-10-20'
+  name_en: van Wonderen Stroopwafels
 ÉCHIRÉ Marché au Beurre:
   address_en: B2F Hankyu Umeda Main Store, 8-7 Kakudacho, Kita Ward, Osaka 530-8350, Japan
   category_en: Pastry shop
@@ -1967,6 +1985,12 @@ sweetgreen Sunset Strip:
   cid: '14979232533955483318'
   fetched: '2026-09-22'
   name_en: Vatican Museums
+반 고흐 미술관:
+  address_en: Museumplein 6, 1071 DJ Amsterdam, Netherlands
+  category_en: Art museum
+  cid: '13990476974401570074'
+  fetched: '2026-10-20'
+  name_en: Van Gogh Museum
 반얀트리 클럽 앤 스파 서울:
   manual: true
   name_en: Banyan Tree Club & Spa Seoul

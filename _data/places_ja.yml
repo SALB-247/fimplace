@@ -61,6 +61,10 @@ IFC몰:
   cid: '2028915265556733783'
   fetched: '2026-09-22'
   name_ja: IFCモール
+Ivan Alexis Amsterdam:
+  category_ja: 衣料品店
+  cid: '4879235486797433261'
+  fetched: '2026-10-20'
 JR東日本四季劇場 春:
   category_ja: 劇場
   cid: '4018469856069819346'
@@ -102,6 +106,10 @@ ROLL ICE CREAM FACTORY 하라주쿠점:
   category_ja: アイスクリーム店
   cid: '2103867740547656672'
   fetched: '2026-09-22'
+Restaurant Black:
+  category_ja: モダン ヨーロッパ料理店
+  cid: '12611962870560698752'
+  fetched: '2026-10-20'
 Rōk Coffee and Tea (West Village):
   category_ja: コーヒーショップ・喫茶店
   cid: '11720361536365051545'
@@ -137,6 +145,10 @@ ittan五條堂:
   category_ja: 和菓子屋
   cid: '3759266478501775000'
   fetched: '2026-09-22'
+van Wonderen Stroopwafels:
+  category_ja: クッキー店
+  cid: '3890648162392648084'
+  fetched: '2026-10-20'
 ÉCHIRÉ Marché au Beurre:
   category_ja: 洋菓子店
   cid: '4407673511360091443'
@@ -783,6 +795,11 @@ ittan五條堂:
   cid: '14979232533955483318'
   fetched: '2026-09-22'
   name_ja: ヴァチカン美術館
+반 고흐 미술관:
+  category_ja: 美術館
+  cid: '13990476974401570074'
+  fetched: '2026-10-20'
+  name_ja: ゴッホ美術館
 반얀트리 클럽 앤 스파 서울:
   category_ja: 5 つ星ホテル
   cid: '14071310985980680449'
