@@ -582,6 +582,12 @@ MUN Korean Steakhouse:
   cid: '11366807038953278815'
   fetched: '2026-09-21'
   name_en: MUN Korean Steakhouse
+MaDang Courtyard:
+  address_en: 621 S Western Ave, Los Angeles, CA 90005, United States
+  category_en: Shopping mall
+  cid: '11013455977310662040'
+  fetched: '2026-10-24'
+  name_en: MaDang Courtyard
 Madhappy West Hollywood:
   address_en: 8906 Melrose Ave, West Hollywood, CA 90069, United States
   category_en: Clothing store
@@ -663,6 +669,11 @@ NewsBar Café:
   cid: '12678476241956376509'
   fetched: '2026-09-21'
   name_en: NewsBar Café
+Nyhavn:
+  address_en: Nyhavn, 1051 København K, Denmark
+  cid: '12664403842460690385'
+  fetched: '2026-10-24'
+  name_en: Nyhavn
 O" by Cirque du Soleil:
   address_en: Bellagio Hotel & Casino, 3600 S Las Vegas Blvd, Las Vegas, NV 89109, United States
   category_en: Circus
