@@ -20,6 +20,7 @@ carto_api_key:       'cb1_2lvy_1_c887146d3808c102d018b22e'
 include:             ['_pages']
 exclude:
   - CLAUDE.md          # 로컬 작업 가이드 (gitignore) — _site 로 복사되지 않게
+  - AGENTS.md          # Mixdog 작업 입구 (gitignore) — 〃
   - .github/
   - .obsidian/
   - _notes/.obsidian/

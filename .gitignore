@@ -19,6 +19,8 @@ _notes_import_output/
 # === Claude Code 메모리 / 로컬 작업 흐름 가이드 (개인 환경) ===
 CLAUDE.md
 .claude/
+AGENTS.md
+.mixdog/
 
 # === Obsidian / 에디터 설정 (개인 환경) ===
 .obsidian/
