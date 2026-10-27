@@ -1057,6 +1057,12 @@ YẾN NHI RESTAURANT:
 ZOZO 마린 스타디움:
   manual: true
   name_en: ZOZO Marine Stadium
+Zollpackhof:
+  address_en: Elisabeth-Abegg-Straße 1, 10557 Berlin, Germany
+  category_en: German restaurant
+  cid: '16858087506954263585'
+  fetched: '2026-10-27'
+  name_en: Zollpackhof
 bar420:
   address_en: 31-6 Jong-ro 16-gil, Jongno District, Seoul
   category_en: Wine bar
