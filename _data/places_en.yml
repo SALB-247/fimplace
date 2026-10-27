@@ -1756,6 +1756,12 @@ van Wonderen Stroopwafels:
   cid: '1774666465849728809'
   fetched: '2026-09-22'
   name_en: Lego Store I-Park Mall Yongsan
+레스토랑 막시밀리안스 베를린:
+  address_en: Friedrichstraße 185-190, 10117 Berlin, Germany
+  category_en: Bavarian restaurant
+  cid: '17181815897205505261'
+  fetched: '2026-10-27'
+  name_en: Restaurant Maximilians Berlin
 레이크프런트 공원:
   address_en: E Ohio St, Chicago, IL 60611, United States
   category_en: Monument
@@ -2029,6 +2035,12 @@ van Wonderen Stroopwafels:
   cid: '14162779829090648908'
   fetched: '2026-09-22'
   name_en: 벌툰 파리지앵 강남본점
+베를린 동물원:
+  address_en: Hardenbergpl. 8, 10787 Berlin, Germany
+  category_en: Zoo
+  cid: '9311732342823366270'
+  fetched: '2026-10-27'
+  name_en: Berlin Zoological Garden
 베키오 다리:
   address_en: Ponte Vecchio, 50125 Firenze FI, Italy
   category_en: Bridge
@@ -2113,6 +2125,12 @@ van Wonderen Stroopwafels:
   cid: '17217838491629189348'
   fetched: '2026-09-22'
   name_en: Bryant Park Winter Village
+브란덴부르크 문:
+  address_en: Pariser Platz, 10117 Berlin, Germany
+  category_en: Historical place
+  cid: '2791100708733537379'
+  fetched: '2026-10-27'
+  name_en: Brandenburg Gate
 브루잉 세레모니:
   address_en: 315-27 Seongsu-dong 2(i)-ga, Seongdong-gu, Seoul
   category_en: Cafe

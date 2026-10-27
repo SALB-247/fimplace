@@ -633,6 +633,10 @@ van Wonderen Stroopwafels:
   category_ja: おもちゃ店
   cid: '1774666465849728809'
   fetched: '2026-09-22'
+레스토랑 막시밀리안스 베를린:
+  category_ja: バイエルン料理店
+  cid: '17181815897205505261'
+  fetched: '2026-10-27'
 레이크프런트 공원:
   category_ja: 記念碑
   cid: '8328857204895023361'
@@ -829,6 +833,11 @@ van Wonderen Stroopwafels:
   category_ja: 漫画喫茶
   cid: '14162779829090648908'
   fetched: '2026-09-22'
+베를린 동물원:
+  category_ja: 動物園
+  cid: '9311732342823366270'
+  fetched: '2026-10-27'
+  name_ja: ベルリン動物園
 베키오 다리:
   cid: '4625490284655346408'
   fetched: '2026-09-22'
@@ -886,6 +895,11 @@ van Wonderen Stroopwafels:
   cid: '17217838491629189348'
   fetched: '2026-09-22'
   name_ja: ブライアント・パーク・ウィンター・ビレッジ
+브란덴부르크 문:
+  category_ja: 史跡
+  cid: '2791100708733537379'
+  fetched: '2026-10-27'
+  name_ja: ブランデンブルク門
 브루잉 세레모니:
   category_ja: カフェ・喫茶
   cid: '113351586431260632'
