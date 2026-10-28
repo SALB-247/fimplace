@@ -79,6 +79,10 @@ Jongro BBQ:
   category_ja: 韓国焼肉店
   cid: '10486024807038987677'
   fetched: '2026-10-11'
+Kamome Frozen dessert:
+  cid: '4544087226665088338'
+  fetched: '2026-10-28'
+  name_ja: カモメ氷菓店
 Kazumi Omakase:
   category_ja: 寿司店
   cid: '13075604503661422572'
@@ -122,6 +126,11 @@ Rōk Coffee and Tea (West Village):
   category_ja: コーヒーショップ・喫茶店
   cid: '11720361536365051545'
   fetched: '2026-10-08'
+Sagamiya Sushi:
+  category_ja: 寿司店
+  cid: '4042003496522155192'
+  fetched: '2026-10-28'
+  name_ja: 寿し さがみや
 Soothr:
   category_ja: タイ料理店
   cid: '6610913188635627298'
@@ -1749,6 +1758,11 @@ van Wonderen Stroopwafels:
   fetched: '2026-09-22'
   google_closed: true
   name_ja: カラープールミュージアム
+컵 누들 박물관 요코하마:
+  category_ja: 博物館
+  cid: '8316009374312643262'
+  fetched: '2026-10-28'
+  name_ja: カップヌードルミュージアム 横浜
 케이타운포유 SPECIAL STORE_250319-250325:
   category_ja: 音楽専門店
   cid: '10501978833505379552'

@@ -438,6 +438,11 @@ Jongro BBQ:
 K-아레나 요코하마:
   manual: true
   name_en: K-Arena Yokohama
+Kamome Frozen dessert:
+  address_en: 4 Chome-22 Kaigandori, Naka Ward, Yokohama, Kanagawa 231-0002, Japan
+  cid: '4544087226665088338'
+  fetched: '2026-10-28'
+  name_en: Kamome Frozen dessert
 Kanekichien:
   address_en: 3 Chome-11-10 Yanaka, Taito City, Tokyo 110-0001, Japan
   category_en: Tea store
@@ -798,6 +803,12 @@ Safari Cafe:
   cid: '2180752976668453077'
   fetched: '2026-09-21'
   name_en: Safari Cafe
+Sagamiya Sushi:
+  address_en: 1-1 Yamanouchicho, Kanagawa Ward, Yokohama, Kanagawa 221-0054, Japan
+  category_en: Sushi restaurant
+  cid: '4042003496522155192'
+  fetched: '2026-10-28'
+  name_en: Sagamiya Sushi
 Sandwich House Maruhen:
   address_en: Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 4 Chome−6−16 三越 地下 2階
   category_en: Sandwich shop
@@ -3296,6 +3307,12 @@ van Wonderen Stroopwafels:
 컬러풀뮤지엄 인사동:
   manual: true
   name_en: Colorful Museum Insadong
+컵 누들 박물관 요코하마:
+  address_en: 2 Chome-3-4 Shinko, Naka Ward, Yokohama, Kanagawa 231-0001, Japan
+  category_en: Museum
+  cid: '8316009374312643262'
+  fetched: '2026-10-28'
+  name_en: Cup Noodles Museum
 케이타운포유 SPECIAL STORE_250319-250325:
   address_en: 513 Yeongdong-daero, Gangnam District, Seoul
   category_en: Music store
