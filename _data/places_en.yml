@@ -809,6 +809,12 @@ Sagamiya Sushi:
   cid: '4042003496522155192'
   fetched: '2026-10-28'
   name_en: Sagamiya Sushi
+Saigon Spring Restaurant:
+  address_en: 1683 US-9, Clifton Park, NY 12065, United States
+  category_en: Vietnamese restaurant
+  cid: '9185969993460209843'
+  fetched: '2026-11-01'
+  name_en: Saigon Spring Restaurant
 Sandwich House Maruhen:
   address_en: Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 4 Chome−6−16 三越 地下 2階
   category_en: Sandwich shop
@@ -2305,6 +2311,12 @@ van Wonderen Stroopwafels:
   cid: '8105309336848208500'
   fetched: '2026-09-22'
   name_en: 서울승마클럽
+서울식물원:
+  address_en: 161 Magokdong-ro, Gangseo-gu, Seoul
+  category_en: Botanical garden
+  cid: '10697481585437405338'
+  fetched: '2026-10-29'
+  name_en: Seoul Botanic Park
 서일본 종합전시장 신관:
   manual: true
   name_en: West Japan General Exhibition Center (New Building)

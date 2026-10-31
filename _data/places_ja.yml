@@ -131,6 +131,10 @@ Sagamiya Sushi:
   cid: '4042003496522155192'
   fetched: '2026-10-28'
   name_ja: 寿し さがみや
+Saigon Spring Restaurant:
+  category_ja: ベトナム料理店
+  cid: '9185969993460209843'
+  fetched: '2026-11-01'
 Soothr:
   category_ja: タイ料理店
   cid: '6610913188635627298'
@@ -1025,6 +1029,11 @@ van Wonderen Stroopwafels:
   category_ja: 乗馬クラブ
   cid: '8105309336848208500'
   fetched: '2026-09-22'
+서울식물원:
+  category_ja: 植物園
+  cid: '10697481585437405338'
+  fetched: '2026-10-29'
+  name_ja: ソウル植物園
 서피비치:
   category_ja: 屋根付き施設
   cid: '10400029251151324372'
