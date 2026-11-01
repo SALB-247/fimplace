@@ -284,6 +284,10 @@ van Wonderen Stroopwafels:
   cid: '8035482904308493516'
   fetched: '2026-09-22'
   name_ja: 海遊館
+강릉 수제 어묵고로케:
+  category_ja: レストラン
+  cid: '3252027544332928475'
+  fetched: '2026-11-01'
 강릉짬뽕순두부 동화가든 본점:
   category_ja: 豆腐料理店
   cid: '4843136578337683486'
@@ -463,6 +467,10 @@ van Wonderen Stroopwafels:
   category_ja: トッカルビ専門店
   cid: '7521108720966179247'
   fetched: '2026-09-22'
+남항진해변:
+  category_ja: 浜
+  cid: '11299162800602538847'
+  fetched: '2026-11-01'
 낫베드커피 한남:
   category_ja: コーヒーショップ・喫茶店
   cid: '4497065661460420041'
@@ -851,6 +859,10 @@ van Wonderen Stroopwafels:
   category_ja: 韓国料理店
   cid: '322968018047313399'
   fetched: '2026-09-22'
+배니새우강정오징어순대:
+  category_ja: シーフード・海鮮料理店
+  cid: '15151486471217056344'
+  fetched: '2026-11-01'
 벌툰 파리지앵 강남본점:
   category_ja: 漫画喫茶
   cid: '14162779829090648908'

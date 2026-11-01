@@ -1264,6 +1264,12 @@ van Wonderen Stroopwafels:
   cid: '8035482904308493516'
   fetched: '2026-09-22'
   name_en: Osaka Aquarium Kaiyukan
+강릉 수제 어묵고로케:
+  address_en: 8 Geumseong-ro 13beon-gil, Gangneung-si, Gangwon-do
+  category_en: Restaurant
+  cid: '3252027544332928475'
+  fetched: '2026-11-01'
+  name_en: Gangneung Handmade Fish Cake Croquettes
 강릉짬뽕순두부 동화가든 본점:
   address_en: 15 Chodangsundubu-gil 77beon-gil, Gangneung-si, Gangwon-do
   category_en: Tofu restaurant
@@ -1513,6 +1519,12 @@ van Wonderen Stroopwafels:
   cid: '7521108720966179247'
   fetched: '2026-09-22'
   name_en: Namdoyedam
+남항진해변:
+  address_en: Namhangjin-dong, Gangneung-si, Gangwon-do
+  category_en: Beach
+  cid: '11299162800602538847'
+  fetched: '2026-11-01'
+  name_en: 남항진해변
 낫베드커피 한남:
   address_en: 744-19 Hannam-dong, Yongsan District, Seoul
   category_en: Coffee shop
@@ -2058,6 +2070,12 @@ van Wonderen Stroopwafels:
   cid: '322968018047313399'
   fetched: '2026-09-22'
   name_en: 방이옥 한남점
+배니새우강정오징어순대:
+  address_en: 5-1 Geumseong-ro 13beon-gil, Gangneung-si, Gangwon-do
+  category_en: Seafood restaurant
+  cid: '15151486471217056344'
+  fetched: '2026-11-01'
+  name_en: 배니새우강정오징어순대
 벌툰 파리지앵 강남본점:
   address_en: 1307-18 Seocho-dong, Seocho District, Seoul
   category_en: Comic cafe
