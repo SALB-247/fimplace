@@ -1,7 +1,9 @@
 ---
 title: FIM'S HOLIDAY EXPRESS POP UP
 shortid: 6p0nz
+# 첫 태그 = 홈 '주요 모음' 카드가 사라지는 기준 (이 태그 이벤트의 마지막 종료일). 이 팝업 전용 태그를 앞에 둔다
 tags:
+  - FIMS_HOLIDAY_EXPRESS
   - 팝업스토어
   - 용산
 coords: [37.5245525, 126.96419]
