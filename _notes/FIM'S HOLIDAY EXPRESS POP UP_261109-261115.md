@@ -9,6 +9,8 @@ tags:
 coords: [37.5245525, 126.96419]
 country: kr
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q4nmQ4v4Ak0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <img src="assets/x_2117436673701368006_1.jpg" alt="FIM'S HOLIDAY EXPRESS POP UP 포스터 (@HYBE_MERCH)">
 <img src="assets/x_2117436676851245386_1.jpg" alt="FIM'S HOLIDAY EXPRESS POP UP 판매 상품 안내 (@HYBE_MERCH)">
 <img src="assets/x_2117436679355281545_1.jpg" alt="FIM'S HOLIDAY EXPRESS POP UP 이벤트 안내 (@HYBE_MERCH)">
@@ -18,6 +20,8 @@ country: kr
 261103_FIM'S CLUB 〈FIM'S HOLIDAY EXPRESS〉 팝업
 
 [위버스 공지](https://weverse.io/lesserafim/notice/40434) / [HYBE MERCH 안내 (X)](https://x.com/HYBE_MERCH/status/2117436673701368006)
+
+261106 공식 유튜브 [FIM'S HOLIDAY EXPRESS POP UP](https://www.youtube.com/watch?v=q4nmQ4v4Ak0)
 
 ## 기간
 2026-11-09 ~ 2026-11-15
@@ -66,5 +70,7 @@ country: kr
 □ 근거: 위버스 공지 40434 (2026-11-03 11:00, 로그아웃 브라우저로 읽음) · HYBE_MERCH X 2026-11-03 포스터·판매 상품·이벤트 안내 3개 (사진은 각 첫 장)
 □ 공지의 사은품 문구 중 '미공개 인스턴트 포토카드' 한 줄은 이벤트 이미지·앞 문장의 '미공개 셀피 포토카드' 와 다름 — 셀피로 씀
 □ 상품별 구매 제한 수량은 현장에서만 안내 (공지)
+□ 영상: LE SSERAFIM 공식 유튜브 q4nmQ4v4Ak0 'FIM’S HOLIDAY EXPRESS POP UP' (2026-11-06 16:59 KST, 68초). 설명에 팝업 기간·HYBE YONGSAN 1F·예약 링크 (FIMDB archive/2026/11/06/youtube). 멤버 이름 없음 → 멤버 태그 안 붙임
+  · 10-30 'SPECIAL DELIVERY FOR FEARNOT!'(co7HrDDi63c)은 핌즈클럽 홀리데이 티저 — 설명에 팝업·장소가 없어 넣지 않음
 □ 좌표·지도는 같은 장소의 LE SSERAFIM 2026 F/W POP UP 노트와 같음 (하이브 본사 fid) — 이번에 구글 조회 안 함
 -->
