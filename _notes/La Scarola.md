@@ -11,6 +11,8 @@ tags:
 coords: [41.8910547, -87.646832]
 country: us
 ---
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0TwzhwLt5l0?start=397" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <iframe src="https://www.instagram.com/p/DeGaHGpkSb0/embed" frameborder="0" scrolling="auto" allowtransparency="true" height="600"></iframe>
 
 <img src="assets/ig_DeGaHGpkSb0_06.jpg">
@@ -20,6 +22,8 @@ country: us
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-87.646832!3d41.8910547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ccddc6531f1%3A0x5159a505e1ffed94!2sLa%20Scarola!5e0!3m2!1sko!2skr!4v1791427308025!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 261005 허윤진 인스타 / 261005 김채원 [인스타](https://www.instagram.com/p/DeFk2Owk027/)
+
+영상: [이거 우리 북미 투어 핌로그양 😎 \| FIM-LOG](https://youtu.be/0TwzhwLt5l0?t=397) — 6:37 가게 앞 도착, 검은 필름 띠 배너 옆 자리에서 식사 (윤진·채원)
 
 시카고 리버 웨스트 그랜드 애비뉴의 이탈리안 레스토랑. 벽을 가득 채운 유명인 사진으로 이름난 곳
 ## 상호명
@@ -39,5 +43,6 @@ La Scarola
   나머지는 도자 캣 공연(United Center 관람석)·루프탑 화로 라운지. 채원 261005 인스타 DeFk2Owk027 ('시카고', 19장, 10/05 06:14 KST) — 17~19번이 이 식당
 □ 날짜: 두 사람 모두 같은 옷차림(채원 올리브 재킷·분홍 슬립 원피스 = 같은 날 밤 리버워크 사진) — 현지 10/3 저녁 무렵 (추정)
 □ 사진 3장 = 윤진 6번(액자 벽·배너 앞 테이블) · 윤진 8번(채원과 함께) · 채원 18번(배너 앞, 빨간 냅킨)
+□ FIM-LOG 0TwzhwLt5l0 (2026-11-09 업로드) 6:37~ — 같은 검은 필름 띠 배너(흰 칸에 검은 눈)·액자 벽, 메뉴판 표지 'La Scarola'
 □ 구글: fid 0x880e2ccddc6531f1:0x5159a505e1ffed94 · cid 5861897834684476820 ("La Scarola") — 2026-10-08 대기열 처리, 좌표는 구글 마커 (전 값 Yelp 와 2m)
 -->
