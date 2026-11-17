@@ -10,6 +10,7 @@ tags:
   - 즈하
 coords: [40.7562183, -73.9702486]
 country: us
+closed: 2026-11-17
 ---
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NbhwH2DzDG4?start=922" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -25,6 +26,11 @@ country: us
 베이글 전문점
 
 영상: [뉴욕 패션위크 카즈하 브이로그](https://youtu.be/NbhwH2DzDG4?t=922) — 11:07 베이글 이야기, 15:25 압착 틴 천장·원목 벽·'Hand-Rolled Bagels' 간판. (즈하, 2026-02)
+
+※ 폐업함 (구글맵 「폐업함」 2026-11 확인) — 촬영 당시 매장인 831 3rd Ave 점포는 문을 닫았고, 가게는 2026-07 근처 770 3rd Ave (E 48th St 모퉁이) 로 이전해 영업 중
+<!-- TODO
+□ 2026-11-17 폐업·이전 근거: 구글맵 cid 5939257602523573008 「폐업함」 / Commercial Observer 2025-11 (commercialobserver.com/2025/11/ess-a-bagel-lease-buchanan-midtown-east/) The Buchanan 임대 / WhatNow 2026-06-19 "new flagship store at 770 Third Avenue … opening July 16"
+-->
 
 ## 상호명
 Ess-a-Bagel
